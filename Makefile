@@ -110,8 +110,8 @@ tests_run:		fn_tests_run
 cr_tests_run:	LDFLAGS += $(CR_TEST_LDFLAGS)
 cr_tests_run:	CFLAGS += $(TFLAGS)
 cr_tests_run:	fclean $(LIB_TARGET) $(TOBJ)
-	@$(CC) $(TOBJ) -o $(TNAME) $(LDFLAGS) $(CFLAGS)
-	@./$(TNAME)
+	@$(CC) $(TOBJ) -o $(NAME) $(LDFLAGS) $(CFLAGS)
+	@./$(NAME)
 	@gcovr --exclude tests/
 	@gcovr --exclude tests/ --branch
 
@@ -119,8 +119,8 @@ cr_tests_run:	fclean $(LIB_TARGET) $(TOBJ)
 fn_tests_run:	LDFLAGS += $(FN_TEST_LDFLAGS)
 fn_tests_run:	CFLAGS += $(TFLAGS)
 fn_tests_run:	fclean $(LIB_TARGET) $(OBJ)
-	@$(CC) $(OBJ) -o $(TNAME) $(LDFLAGS) $(CFLAGS)
-	@./tests/fn_tests.sh ./$(TNAME)
+	@$(CC) $(OBJ) -o $(NAME) $(LDFLAGS) $(CFLAGS)
+	@./tests/fn_tests.sh ./$(NAME)
 	@gcovr --exclude tests/
 	@gcovr --exclude tests/ --branch
 # ----------------------------------------------------------------------------
