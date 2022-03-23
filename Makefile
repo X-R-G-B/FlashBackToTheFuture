@@ -102,7 +102,7 @@ re:				fclean all
 # ----------------------------------------------------------------------------
 # Test
 .PHONY: 		tests_run
-tests_run:		cr_tests_run
+tests_run:		fn_tests_run
 
 .PHONY: 		cr_tests_run
 cr_tests_run:	LDFLAGS += $(CR_TEST_LDFLAGS)
