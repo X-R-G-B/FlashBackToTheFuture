@@ -24,7 +24,9 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC			:=	...
+SRC			:=	src/main.c
+
+OBJ			:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------
@@ -52,7 +54,7 @@ TOBJ		:=	$(TSRC:%.c=%.o)
 
 %.o: %.c
 	@$(CC) $(CFLAGS) $^ -c -o $@
-	@echo -e $(BLUE)'[builded]'$(RESET)'$(notdir $^) -> $(notdir $@)'
+	@echo -e $(BLUE)'[builded]'$(RESET)': $(notdir $^) -> $(notdir $@)'
 
 # ----------------------------------------------------------------------------
 # Make the rpg
