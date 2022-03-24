@@ -51,6 +51,12 @@ SRC_CORE		:=	add.c					\
 					start.c
 SRC_CORE		:=	$(addprefix core/,$(SRC_CORE))
 
+SRC_BUTTON		:= 	check_set_color.c	\
+					create_button.c		\
+					set_event.c			\
+	 				fill_obj_list.c
+SRC_BUTTON		:=	$(addprefix create_button/,$(SRC_BUTTON))
+
 SRC_PRESET		:=	preset_display.c			\
 					set_unset_bigdata_display.c
 SRC_PRESET		:=	$(addprefix preset/,$(SRC_PRESET))
@@ -69,7 +75,7 @@ SRC_HITBOX		:=	check_image_pixel.c			\
 SRC_HITBOX		:=	$(addprefix hitbox/,$(SRC_HITBOX))
 
 SRC		:=	$(SRC_COMPONENTS) $(SRC_CORE) $(SRC_PRESET) $(SRC_UTILS)	\
-			$(SRC_HITBOX)
+			$(SRC_HITBOX) $(SRC_BUTTON)
 SRC		:=	$(addprefix $(SRCDIR),$(SRC))
 
 OBJ		=	$(SRC:%.c=%.o)
