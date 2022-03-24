@@ -40,7 +40,8 @@ window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style)
         return NULL;
     }
     win->scenes = list_create();
-    if (win->scenes == NULL) {
+    win->to_remove = list_create();
+    if (win->scenes == NULL || win->to_remove == NULL) {
         return NULL;
     }
     win->click_prev_call = false;

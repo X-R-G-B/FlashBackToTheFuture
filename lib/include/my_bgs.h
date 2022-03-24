@@ -89,6 +89,7 @@ struct window_s {
     sfRenderWindow *win;
     int scene_index;
     list_ptr_t *scenes;
+    list_ptr_t *to_remove;
     dico_t *components;
 };
 
