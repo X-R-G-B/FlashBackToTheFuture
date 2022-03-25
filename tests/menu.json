@@ -1,9 +1,0 @@
-{
-    "buttons": [
-        {
-            "text": "scene 2",
-            "sprite path": "./tests/button.png",
-            "pos": [400.0, 200.0]
-        }
-    ]
-}
