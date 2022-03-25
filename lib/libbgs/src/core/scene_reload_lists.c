@@ -50,7 +50,7 @@ int scene_reload_lists(scene_t *scene)
     object_t *object = NULL;
 
     if (scene == NULL || reset_list(scene) != BGS_OK) {
-        return BGS_ERR_MALLOC;
+        return BGS_ERR_INPUT;
     }
     elem = scene->objects->start;
     for (int i = 0; i < scene->objects->len; i++, elem = elem->next) {
