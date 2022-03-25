@@ -5,9 +5,13 @@
 ** cast the void ptr
 */
 
+#include <stddef.h>
 #include "list.h"
 
 char *str_from_list(list_t *elem)
 {
+    if (elem == NULL) {
+        return (NULL);
+    }
     return ((char *) (elem->var));
 }

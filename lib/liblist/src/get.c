@@ -12,9 +12,13 @@ void *get_element_i_var(list_ptr_t *list_ptr, int x)
 {
     list_t *ptr;
 
+    if (list_ptr == NULL || x >= list_ptr->len) {
+        return (NULL);
+    }
     ptr = list_ptr->start;
-    for (int i = 0; i < x && ptr != list_ptr->end; i++)
+    for (int i = 0; i < x && ptr != list_ptr->end; i++) {
         ptr = ptr->next;
+    }
     return ptr->var;
 }
 
@@ -22,6 +26,9 @@ list_t *get_element_i(list_ptr_t *list_ptr, int x)
 {
     list_t *ptr = NULL;
 
+    if (list_ptr == NULL || x >= list_ptr->len) {
+        return (NULL);
+    }
     ptr = list_ptr->start;
     for (int i = 0; i < x; i++)
         ptr = ptr->next;
