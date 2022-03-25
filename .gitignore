@@ -1,7 +1,7 @@
 *.a
 *.o
 my_rpg
-.gnco
-.gcda
-.vscode
-.swp
+*.gnco
+*.gcda
+*.vscode
+*.swp
