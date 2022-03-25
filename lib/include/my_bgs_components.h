@@ -145,7 +145,7 @@ void set_display(object_t *object);
 /**
 ** @brief set object as not visible
 **
-** @param object to set
+** @param object object to set
 **/
 void unset_display(object_t *object);
 
