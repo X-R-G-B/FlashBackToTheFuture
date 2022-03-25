@@ -135,14 +135,49 @@ int object_add_collision(object_t *object, scene_t *scene,
     void (*collision)(object_t *this, object_t *other, scene_t *scene,
     window_t *win), bool is_pixel);
 
+/**
+** @brief set object as visible
+**
+** @param object object to set
+**/
 void set_display(object_t *object);
 
+/**
+** @brief set object as not visible
+**
+** @param object to set
+**/
 void unset_display(object_t *object);
 
 int object_set_event(object_t *object, set_event_t *usr_event);
 
+/**
+** @brief add a conditon event to an already created event
+**
+** choose between sfMouseButton and sfKeyCode with the enum and this as an
+** added condition to trigger the event
+**
+** @param event event in which the condition will be added
+** @param params {sfMouseButton, sfKeyCode, enum event_type} condition to add
+**
+** @return
+**/
 int event_add_node(set_event_t *event, node_params_t params);
 
+/**
+** @brief create an event for an object
+**
+** @param on function to call when event trigger
+** @param hover whether the event need to have the cursor on the object
+** @param object object in which the event will be added
+** @param off function called when the event stops
+**
+** @return {
+** NULL : object is NULL,
+** NULL : malloc failed,
+** set_event_t *: the event has been created
+** }
+**/
 set_event_t *create_event(void (*on)(object_t *, scene_t *, window_t *,
     set_event_t *), bool hover, object_t *object,
     void (*off)(object_t *, scene_t *, window_t *, set_event_t *));
