@@ -12,8 +12,9 @@ list_ptr_t *list_create(void)
 {
     list_ptr_t *list_ptr = malloc(sizeof(list_ptr_t));
 
-    if (!list_ptr)
+    if (list_ptr == NULL) {
         return NULL;
+    }
     list_ptr->len = 0;
     list_ptr->start = NULL;
     list_ptr->end = NULL;

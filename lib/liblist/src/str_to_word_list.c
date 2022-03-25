@@ -6,9 +6,8 @@
 */
 
 #include <stdlib.h>
+#include "my_strings.h"
 #include "list.h"
-
-int my_strlen(char const *str);
 
 char *cut_str(char *str, int fst, int scd)
 {
@@ -61,7 +60,7 @@ list_ptr_t *str_to_word_list(char *str)
     int i = 1;
     list_ptr_t *list = list_create();
 
-    if (!str || !list)
+    if (str == NULL || list == NULL)
         return NULL;
     strlen = my_strlen(str);
     if (strlen == 0)
