@@ -47,6 +47,7 @@ SRC_CORE		:=	add.c					\
 					object_set_origin.c		\
 					loop.c					\
 					object_update.c			\
+					window_remove.c			\
 					remove.c				\
 					start.c
 SRC_CORE		:=	$(addprefix core/,$(SRC_CORE))

@@ -54,12 +54,7 @@ static time_clock_t *init_clock(void)
 
 static int scene_handling(window_t **win, scene_t **scene, time_clock_t *timer)
 {
-    static int last_index = -1;
-
-    if (last_index != (*win)->scene_index) {
-        *scene = get_scene_i((*win)->scenes, (*win)->scene_index);
-        last_index = (*win)->scene_index;
-    }
+    *scene = get_scene_i((*win)->scenes, (*win)->scene_index);
     if (*scene == NULL) {
         return BGS_ERR_INPUT;
     }

@@ -49,6 +49,6 @@ int set_event(object_t *object, dico_t *dico)
         }
     }
     on = event_add_node(create_event(on_click[on], true, object,
-        off_click[off]) ,(node_params_t) {sfMouseLeft, sfKeyA, MOUSE});
+        off_click[off]), (node_params_t) {sfMouseLeft, sfKeyA, MOUSE});
     return (on == BGS_OK) ? set_hover_event(object, txt->value.str) : 1;
 }

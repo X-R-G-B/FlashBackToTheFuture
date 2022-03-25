@@ -103,5 +103,6 @@ list_ptr_t *create_button(scene_t *scene, const char *path)
         ret = get_button_data(scene, get_from_any(any, "da", "buttons", i));
     }
     destroy_any(any);
-    return (buttons_array != NULL) ? fill_obj_list(list, scene) : NULL;
+    return (buttons_array != NULL && ret == BGS_OK) ?
+        fill_obj_list(list, scene) : NULL;
 }
