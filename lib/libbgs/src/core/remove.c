@@ -22,30 +22,6 @@ bool check_list(list_ptr_t *list, void *data)
     return false;
 }
 
-void window_remove(scene_t *scene, window_t *win)
-{
-    void *elem = NULL;
-
-    if (scene == NULL || scene->to_remove->len == 0) {
-        return;
-    }
-    while (scene->to_remove->len > 0 && scene->to_remove->start != NULL) {
-        elem = scene->to_remove->start->var;
-        if (check_list(scene->objects, elem) == true) {
-            check_list(scene->displayables, elem);
-            check_list(scene->updates, elem);
-            rm_fst_elem(scene->to_remove);
-            remove_object((object_t *) elem);
-        }
-    }
-    while (win->to_remove->len > 0 && win->to_remove->start != NULL) {
-        elem = win->to_remove->start;
-        if (check_list(win->scenes, scene)) {
-            remove_scene((scene_t *) scene);
-        }
-    }
-}
-
 void remove_object(object_t *object)
 {
     switch (object->type) {
@@ -100,6 +76,7 @@ void remove_window(window_t *win)
         elem = elem->next;
     }
     free_list(win->scenes);
+    free_list(win->to_remove);
     dico_t_destroy(win->components);
     sfRenderWindow_destroy(win->win);
     free(win);
