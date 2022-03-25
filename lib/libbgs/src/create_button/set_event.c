@@ -13,13 +13,13 @@ static int set_hover_event(object_t *obj, char *txt)
     int on = 0;
     int off = 0;
 
-    for (int i = 1; str_on_hover[i] != NULL && on == -1; i++) {
+    for (int i = 1; str_on_hover[i] != NULL && on == 0; i++) {
         if (my_strcmp(txt, str_on_hover[i]) == 1) {
             on = i;
         }
     }
-    for (int i = 1; str_off_hover[i] != NULL && off == -1; i++) {
-        if (my_strcmp(txt, str_off_hover[i]) == 1) {
+    for (int i = 1; str_off_hover[i - 1] != NULL && off == 0; i++) {
+        if (my_strcmp(txt, str_off_hover[i - 1]) == 1) {
             off = i;
         }
     }
@@ -38,13 +38,13 @@ int set_event(object_t *object, dico_t *dico)
     if (txt == NULL || txt->type != STR) {
         return BGS_ERR_INPUT;
     }
-    for (int i = 1; str_on_click[i - 1] != NULL && on == -1; i++) {
+    for (int i = 1; str_on_click[i - 1] != NULL && on == 0; i++) {
         if (my_strcmp(txt->value.str, str_on_click[i - 1]) == 0) {
             on = i;
         }
     }
-    for (int i = 1; str_off_click[i] != NULL && off == -1; i++) {
-        if (my_strcmp(txt->value.str, str_off_click[i]) == 0) {
+    for (int i = 1; str_off_click[i - 1] != NULL && off == 0; i++) {
+        if (my_strcmp(txt->value.str, str_off_click[i - 1]) == 0) {
             off = i;
         }
     }
