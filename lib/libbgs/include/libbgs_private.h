@@ -14,6 +14,15 @@
     #include "my_bgs_components.h"
 
 typedef struct square_s square_t;
+typedef struct scene_loading_s scene_loading_t;
+
+struct scene_loading_s {
+    sfThread *thread;
+    sfMutex *mutex;
+    int need_terminate;
+    int index;
+    int countor;
+};
 
 struct square_s {
     int y;
@@ -74,5 +83,11 @@ int window_update_event(window_t *win, scene_t *scene);
 int scene_update_event(window_t *win, scene_t *scene);
 
 bool check_click_prev_call(bool check, window_t *win, set_event_t *set_event);
+
+int scene_handling(window_t **win, time_clock_t *timer, int index);
+
+void scene_loading_handling(window_t *win);
+
+time_clock_t *init_clock(void);
 
 #endif
