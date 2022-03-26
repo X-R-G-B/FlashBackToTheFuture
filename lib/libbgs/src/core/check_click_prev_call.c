@@ -21,7 +21,7 @@ bool check_click_prev_call(bool check, window_t *win, set_event_t *set_event)
         return check;
     }
     if (check == true && win->click_prev_call == true) {
-        check = false;
+        check = true;
     }
     if (check == true) {
         win->click_prev_call = true;
