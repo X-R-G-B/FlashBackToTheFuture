@@ -77,6 +77,11 @@ int scene_add_object(scene_t *scene, object_t *object)
     if (scene == NULL || object == NULL) {
         return BGS_ERR_INPUT;
     }
+    if ((object->display != NULL && list_add_to_end(scene->displayables, object)
+        == NULL) || (object->update != NULL &&
+        list_add_to_end(scene->updates, object) == NULL)) {
+        return BGS_ERR_MALLOC;
+    }
     if (object->type == UNSET &&
             list_add_to_end(scene->objects, object) == NULL) {
         return BGS_ERR_MALLOC;

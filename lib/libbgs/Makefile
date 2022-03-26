@@ -42,8 +42,8 @@ SRC_CORE		:=	add.c					\
 					create_object.c			\
 					create_scene.c			\
 					event.c					\
-					scene_reload_lists.c	\
 					check_click_prev_call.c	\
+					object_set_type.c		\
 					object_set_origin.c		\
 					loop.c					\
 					object_update.c			\
