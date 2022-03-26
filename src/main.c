@@ -5,9 +5,9 @@
 ** tests
 */
 
-#include "my_bgs_components.h"
+#include "my_bgs.h"
 
-int main(int ac, char **av)
+int main(void)
 {
     return (0);
 }
