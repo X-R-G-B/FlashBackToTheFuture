@@ -1,11 +1,13 @@
 /*
 ** EPITECH PROJECT, 2022
-** rpg
+** tests
 ** File description:
-** main entry point
+** tests
 */
 
-int main(void)
+#include "my_bgs_components.h"
+
+int main(int ac, char **av)
 {
     return (0);
 }
