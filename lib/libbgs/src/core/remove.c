@@ -5,9 +5,12 @@
 ** remove
 */
 
+#include <SFML/System/Mutex.h>
+#include <SFML/System/Thread.h>
 #include <stdlib.h>
 #include "list.h"
 #include "my_bgs.h"
+#include "libbgs_private.h"
 
 bool check_list(list_ptr_t *list, void *data)
 {
@@ -20,30 +23,6 @@ bool check_list(list_ptr_t *list, void *data)
         }
     }
     return false;
-}
-
-void window_remove(scene_t *scene, window_t *win)
-{
-    void *elem = NULL;
-
-    if (scene == NULL || scene->to_remove->len == 0) {
-        return;
-    }
-    while (scene->to_remove->len > 0 && scene->to_remove->start != NULL) {
-        elem = scene->to_remove->start->var;
-        if (check_list(scene->objects, elem) == true) {
-            check_list(scene->displayables, elem);
-            check_list(scene->updates, elem);
-            rm_fst_elem(scene->to_remove);
-            remove_object((object_t *) elem);
-        }
-    }
-    while (win->to_remove->len > 0 && win->to_remove->start != NULL) {
-        elem = win->to_remove->start;
-        if (check_list(win->scenes, scene)) {
-            remove_scene((scene_t *) scene);
-        }
-    }
 }
 
 void remove_object(object_t *object)
@@ -89,18 +68,40 @@ void remove_scene(scene_t *scene)
     free(scene);
 }
 
+void remove_loading_scene(window_t *win)
+{
+    if (win->loading == NULL) {
+        return;
+    }
+    if (win->loading->mutex != NULL) {
+        sfMutex_destroy(win->loading->mutex);
+    }
+    if (win->loading->thread != NULL) {
+        sfThread_destroy(win->loading->thread);
+    }
+    if (win->loading->countor == 0) {
+        sfRenderWindow_destroy(win->win);
+    }
+    free(win->loading);
+}
+
 void remove_window(window_t *win)
 {
-    list_t *elem = win->scenes->start;
+    list_t *elem = NULL;
     scene_t *scene = NULL;
 
+    if (win == NULL) {
+        return;
+    }
+    elem = win->scenes->start;
     for (int i = 0; i < win->scenes->len; i++) {
         scene = ((scene_t *) elem->var);
         remove_scene(scene);
         elem = elem->next;
     }
     free_list(win->scenes);
+    free_list(win->to_remove);
     dico_t_destroy(win->components);
-    sfRenderWindow_destroy(win->win);
+    remove_loading_scene(win);
     free(win);
 }

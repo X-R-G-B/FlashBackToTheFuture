@@ -27,6 +27,7 @@ typedef struct window_s window_t;
 typedef struct scene_s scene_t;
 typedef struct sprite_bigdata_s sprite_bigdata_t;
 typedef struct text_bigdata_s text_bigdata_t;
+typedef struct scene_loading_s scene_loading_t;
 
 enum object_type {
     SPRITE,
@@ -91,6 +92,7 @@ struct window_s {
     list_ptr_t *scenes;
     list_ptr_t *to_remove;
     dico_t *components;
+    scene_loading_t *loading;
 };
 
 int window_set_icon(window_t *win, char const path[]);
@@ -286,6 +288,24 @@ void window_set_framerate_limit(window_t *win, unsigned int limit);
 ** @return window : the window is created
 **/
 window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style);
+
+// ----------------------------------------------------------------------------
+// scene_loading.c
+// ----------------------------------------------------------------------------
+
+/**
+** @brief launch a different scene when loading some data
+**
+** @param window window used by loop
+** @param index index of the scene to use when loading
+**
+** @return {
+** BGS_OK : the scene loading has started
+** }
+**/
+int launch_scene_loading(window_t *window, int index);
+
+list_ptr_t *create_button(scene_t *scene, const char *path);
 
 void remove_object(object_t *object);
 
