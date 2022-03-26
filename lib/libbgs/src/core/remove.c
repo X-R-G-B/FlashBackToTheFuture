@@ -5,9 +5,12 @@
 ** remove
 */
 
+#include <SFML/System/Mutex.h>
+#include <SFML/System/Thread.h>
 #include <stdlib.h>
 #include "list.h"
 #include "my_bgs.h"
+#include "libbgs_private.h"
 
 bool check_list(list_ptr_t *list, void *data)
 {
@@ -65,11 +68,32 @@ void remove_scene(scene_t *scene)
     free(scene);
 }
 
+void remove_loading_scene(window_t *win)
+{
+    if (win->loading == NULL) {
+        return;
+    }
+    if (win->loading->mutex != NULL) {
+        sfMutex_destroy(win->loading->mutex);
+    }
+    if (win->loading->thread != NULL) {
+        sfThread_destroy(win->loading->thread);
+    }
+    //if (win->loading->is_end == 0) {
+    //sfRenderWindow_destroy(win->win);
+    //}
+    free(win->loading);
+}
+
 void remove_window(window_t *win)
 {
-    list_t *elem = win->scenes->start;
+    list_t *elem = NULL;
     scene_t *scene = NULL;
 
+    if (win == NULL) {
+        return;
+    }
+    elem = win->scenes->start;
     for (int i = 0; i < win->scenes->len; i++) {
         scene = ((scene_t *) elem->var);
         remove_scene(scene);
@@ -78,6 +102,6 @@ void remove_window(window_t *win)
     free_list(win->scenes);
     free_list(win->to_remove);
     dico_t_destroy(win->components);
-    sfRenderWindow_destroy(win->win);
+    remove_loading_scene(win);
     free(win);
 }
