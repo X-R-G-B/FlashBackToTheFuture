@@ -12,7 +12,8 @@
 
 static int set_sprite(object_t *sprite, dico_t *dico, scene_t *scene)
 {
-    if (set_event(sprite, dico) != BGS_OK || set_clr(sprite, dico) != BGS_OK) {
+    if (set_event(sprite, dico) != BGS_OK ||
+        set_color(sprite, dico) != BGS_OK) {
         return BGS_ERR_MALLOC;
     }
     list_add_to_end(scene->updates, sprite);
@@ -58,7 +59,7 @@ static int init_text(float *pos, scene_t *scene, char *arg[2], dico_t *dico)
     if (char_size != NULL && char_size->type == INT) {
         sfText_setCharacterSize(text->drawable.text, char_size->value.i);
     }
-    set_clr(text, dico);
+    set_color(text, dico);
     list_add_to_end(scene->displayables, text);
     return BGS_OK;
 }
@@ -89,14 +90,15 @@ static int get_button_data(scene_t *scene, any_t *dico)
 
 list_ptr_t *create_button(scene_t *scene, const char *path)
 {
-    list_t *list = scene->objects->end;
+    list_t *list = NULL;
     any_t *any = parse_json_file(path);
     any_t *buttons_array = NULL;
     int ret = BGS_OK;
 
-    if (any == NULL) {
+    if (any == NULL || scene == NULL) {
         return NULL;
     }
+    list = scene->objects->end;
     buttons_array = dico_t_get_any(any->value.dict, "buttons");
     for (int i = 0; buttons_array != NULL && ret == BGS_OK &&
         i < buttons_array->value.array->len; i++) {

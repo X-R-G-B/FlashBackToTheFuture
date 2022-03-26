@@ -18,7 +18,7 @@ sfColor get_color(any_t *color_arr)
     return sfColor_fromRGBA(color[0], color[1], color[2], color[3]);
 }
 
-int set_clr(object_t *object, dico_t *dico)
+int set_color(object_t *object, dico_t *dico)
 {
     any_t *color = NULL;
 
