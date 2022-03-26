@@ -307,8 +307,6 @@ int launch_scene_loading(window_t *window, int index);
 
 list_ptr_t *create_button(scene_t *scene, const char *path);
 
-int scene_reload_lists(scene_t *scene);
-
 void remove_object(object_t *object);
 
 void remove_scene(scene_t *scene);
