@@ -49,6 +49,8 @@ SRC_CORE		:=	add.c					\
 					object_update.c			\
 					window_remove.c			\
 					remove.c				\
+					scene_loading.c			\
+					scene_loop.c			\
 					start.c
 SRC_CORE		:=	$(addprefix core/,$(SRC_CORE))
 
