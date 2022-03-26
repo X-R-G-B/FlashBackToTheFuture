@@ -56,6 +56,7 @@ int launch_scene_loading(window_t *window, int index)
     }
     window->loading->thread = sfThread_create(scene_loading_loop, window);
     window->loading->index = index;
+    window->loading->countor += 1;
     if (window->loading->thread != NULL) {
         sfThread_launch(window->loading->thread);
     }

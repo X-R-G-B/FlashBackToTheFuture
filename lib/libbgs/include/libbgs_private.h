@@ -21,6 +21,7 @@ struct scene_loading_s {
     sfMutex *mutex;
     int need_terminate;
     int index;
+    int countor;
 };
 
 struct square_s {

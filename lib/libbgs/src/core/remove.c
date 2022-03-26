@@ -79,9 +79,9 @@ void remove_loading_scene(window_t *win)
     if (win->loading->thread != NULL) {
         sfThread_destroy(win->loading->thread);
     }
-    //if (win->loading->is_end == 0) {
-    //sfRenderWindow_destroy(win->win);
-    //}
+    if (win->loading->countor == 0) {
+        sfRenderWindow_destroy(win->win);
+    }
     free(win->loading);
 }
 

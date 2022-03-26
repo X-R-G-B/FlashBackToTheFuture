@@ -5,6 +5,7 @@
 ** object check event
 */
 
+#include <SFML/Graphics/RenderWindow.h>
 #include <stdlib.h>
 #include "my_bgs.h"
 #include "my_strings.h"
@@ -58,12 +59,12 @@ void check_event(set_event_t *set_event, object_t *object,
     check = check_event_nodes(set_event, object, win);
     check = check_click_prev_call(check, win, set_event);
     if (check == true && set_event->prev_call == false &&
-            set_event->on != NULL) {
+            set_event->on != NULL && sfRenderWindow_isOpen(win->win)) {
         set_event->on(object, scene, win, set_event);
         scene_loading_handling(win);
     }
     if (set_event->prev_call == true && check == false &&
-            set_event->off != NULL) {
+            set_event->off != NULL && sfRenderWindow_isOpen(win->win)) {
         set_event->off(object, scene, win, set_event);
         scene_loading_handling(win);
     }
@@ -83,5 +84,5 @@ void object_check_event(object_t *object, scene_t *scene,
             check_event(cursor->value, object, win, scene);
         }
         cursor = cursor->next;
-    } while (cursor != object->components);
+    } while (cursor != object->components && sfRenderWindow_isOpen(win->win));
 }
