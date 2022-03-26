@@ -5,20 +5,20 @@
 ** tests
 */
 
-#include "my_bgs.h"
-#include "my_bgs_components.h"
 #include <SFML/Graphics/Color.h>
 #include <SFML/System/Vector2.h>
 #include <SFML/Window/VideoMode.h>
-#include <unistd.h>
+#include "my_bgs.h"
+#include "my_bgs_components.h"
+#include "my_puts.h"
 
 void change_scene(object_t *obj, scene_t *scene, window_t *window,
         set_event_t *evt)
 {
     launch_scene_loading(window, 2);
     window->scene_index = 1;
-    printf("coucou\n");
-    sleep(5);
+    my_putstr(1, "coucou\n");
+    //sleep_(5);
 }
 
 int main(int ac, char **av)
