@@ -12,13 +12,14 @@
 #include "my_bgs_components.h"
 #include "my_puts.h"
 
+// call launch_scene_loading first, after the function can take a infinte time
+// at the end, it will just restart normaly
 void change_scene(object_t *obj, scene_t *scene, window_t *window,
         set_event_t *evt)
 {
     launch_scene_loading(window, 2);
     window->scene_index = 1;
     my_putstr(1, "coucou\n");
-    //sleep_(5);
 }
 
 int main(int ac, char **av)
