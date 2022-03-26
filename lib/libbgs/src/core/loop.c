@@ -73,7 +73,7 @@ int loop(window_t *win)
     scene_t *scene = NULL;
     time_clock_t *timer = init_clock();
 
-    if (timer == NULL || win->scenes->len == 0) {
+    if (timer == NULL || win == NULL || win->scenes->len == 0) {
         return 0;
     }
     window_setup_scene(win);
