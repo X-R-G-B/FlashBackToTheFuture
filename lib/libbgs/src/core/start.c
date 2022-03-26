@@ -44,6 +44,7 @@ static void create_scene_loading(window_t *win)
     }
     win->loading->thread = NULL;
     win->loading->need_terminate = 0;
+    win->loading->countor = 0;
 }
 
 window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style)
