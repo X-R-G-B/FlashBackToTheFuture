@@ -57,15 +57,15 @@ void check_event(set_event_t *set_event, object_t *object,
     }
     check = check_event_nodes(set_event, object, win);
     check = check_click_prev_call(check, win, set_event);
-    if (check == true && set_event->prev_call == false) {
-        if (set_event->on != NULL) {
-            set_event->on(object, scene, win, set_event);
-        }
+    if (check == true && set_event->prev_call == false &&
+            set_event->on != NULL) {
+        set_event->on(object, scene, win, set_event);
+        scene_loading_handling(win);
     }
-    if (set_event->prev_call == true && check == false) {
-        if (set_event->off != NULL) {
-            set_event->off(object, scene, win, set_event);
-        }
+    if (set_event->prev_call == true && check == false &&
+            set_event->off != NULL) {
+        set_event->off(object, scene, win, set_event);
+        scene_loading_handling(win);
     }
     set_event->prev_call = check;
 }
