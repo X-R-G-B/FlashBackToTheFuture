@@ -8,7 +8,7 @@
 #include "my_bgs.h"
 #include "libbgs_private.h"
 
-static int check_object_is_in_list(object_t *obj)
+static int check_display_function(object_t *obj)
 {
     scene_t *scene = dico_t_get_value(obj->components, "scene");
     void *ret = NULL;
@@ -79,7 +79,7 @@ int object_set_text(object_t *object, char const *path, char const *text,
     sfText_setFont(object->drawable.text, object->bigdata.text_bigdata.font);
     sfText_setString(object->drawable.text, text);
     object->type = TEXT;
-    check_object_is_in_list(object);
+    check_display_function(object);
     object_set_origin(object);
     return BGS_OK;
 }
@@ -101,7 +101,7 @@ int object_set_sprite(object_t *object, char const *path, sfIntRect rect,
     object->bigdata.sprite_bigdata.pos = pos;
     object->bigdata.sprite_bigdata.rect = rect;
     object->type = SPRITE;
-    check_object_is_in_list(object);
+    check_display_function(object);
     object_set_origin(object);
     return BGS_OK;
 }
