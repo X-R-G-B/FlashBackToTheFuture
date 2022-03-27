@@ -6,12 +6,14 @@
 */
 
 #include <SFML/Graphics/Color.h>
+#include <SFML/System/Mutex.h>
 #include <SFML/System/Vector2.h>
 #include <SFML/Window/VideoMode.h>
+#include "list.h"
 #include "my_bgs.h"
 #include "my_bgs_components.h"
 #include "my_puts.h"
-#include "unistd.h"
+#include <unistd.h>
 
 // call launch_scene_loading first, after the function can take a infinte time
 // at the end, it will just restart normaly
@@ -28,7 +30,9 @@ void change_scene_2(object_t *obj, scene_t *scene, window_t *window,
         set_event_t *evt)
 {
     launch_scene_loading(window, "SCENE_3");
+    my_putstr(1, "salutslaut\n");
     window_change_scene(window, "SCENE_1");
+    my_putstr(1, "salutcou\n");
     sleep(5);
     my_putstr(1, "salut\n");
 }
