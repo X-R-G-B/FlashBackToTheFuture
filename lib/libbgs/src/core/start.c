@@ -45,6 +45,7 @@ static void create_scene_loading(window_t *win)
     win->loading->thread = NULL;
     win->loading->need_terminate = 0;
     win->loading->countor = 0;
+    win->loading->scene_name = NULL;
 }
 
 window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style)
@@ -59,13 +60,13 @@ window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style)
     if (win->win == NULL) {
         return NULL;
     }
-    win->scenes = list_create();
+    win->scenes = NULL;
     win->to_remove = list_create();
-    if (win->scenes == NULL || win->to_remove == NULL) {
+    if (win->to_remove == NULL) {
         return NULL;
     }
     win->click_prev_call = false;
-    win->scene_index = 0;
+    win->current_scene = NULL;
     create_scene_loading(win);
     return win;
 }

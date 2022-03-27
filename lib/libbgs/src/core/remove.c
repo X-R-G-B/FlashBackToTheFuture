@@ -11,6 +11,7 @@
 #include "list.h"
 #include "my_bgs.h"
 #include "libbgs_private.h"
+#include "my_dico.h"
 
 bool check_list(list_ptr_t *list, void *data)
 {
@@ -48,10 +49,15 @@ void remove_object(object_t *object)
     free(object);
 }
 
-void remove_scene(scene_t *scene)
+void remove_scene(void *scene_void)
 {
-    list_t *elem = scene->objects->start;
+    scene_t *scene = scene_void;
+    list_t *elem = NULL;
 
+    if (scene == NULL) {
+        return;
+    }
+    elem = scene->objects->start;
     for (int i = 0; i < scene->objects->len; i++, elem = elem->next) {
         remove_object(((object_t *) elem->var));
     }
@@ -86,21 +92,15 @@ void remove_loading_scene(window_t *win)
 
 void remove_window(window_t *win)
 {
-    list_t *elem = NULL;
-    scene_t *scene = NULL;
-
     if (win == NULL) {
         return;
     }
-    elem = win->scenes->start;
-    for (int i = 0; i < win->scenes->len; i++) {
-        scene = ((scene_t *) elem->var);
-        remove_scene(scene);
-        elem = elem->next;
-    }
-    free_list(win->scenes);
+    dico_t_destroy(win->scenes);
     free_list(win->to_remove);
     dico_t_destroy(win->components);
     remove_loading_scene(win);
+    if (win->current_scene != NULL) {
+        free(win->current_scene);
+    }
     free(win);
 }

@@ -87,8 +87,8 @@ struct scene_s {
 struct window_s {
     bool click_prev_call;
     sfRenderWindow *win;
-    int scene_index;
-    list_ptr_t *scenes;
+    char *current_scene;
+    dico_t *scenes;
     list_ptr_t *to_remove;
     dico_t *components;
     scene_loading_t *loading;
@@ -99,16 +99,6 @@ int window_set_icon(window_t *win, char const path[]);
 // ----------------------------------------------------------------------------
 // add.c
 // ----------------------------------------------------------------------------
-
-/**
-** @brief add a scene_t to a window_t
-** @param win the window in which the scene will be added
-** @param scene the scene to add
-** @return BGS_ERR_INPUT : win or scene is NULL;
-** BGS_ERR_MALLOC : malloc failed;
-** BGS_OK : the scene has been added;
-**/
-int window_add_scene(window_t *win, scene_t *scene);
 
 /**
 ** @brief add an object_t to a scene_t
@@ -213,11 +203,25 @@ object_t *create_object(
 ** @return NULL : malloc failed
 ** @return scene : the scene is created
 **/
-scene_t *create_scene(window_t *win, sfColor bg_color);
+scene_t *create_scene(window_t *win, sfColor bg_color, const char *scene_name);
 
 // ----------------------------------------------------------------------------
 // loop.c
 // ----------------------------------------------------------------------------
+
+/**
+** @brief change current scene
+**
+** @param window window in which you want change the scene
+** @param scene_name scene name of the next current scene
+**
+** @return {
+** BGS_ERR_INPUT : window or scene is NULL,
+** BGS_ERR_MALLOC : malloc failed,
+** BGS_OK : the change will be on the next loop
+** }
+**/
+int window_change_scene(window_t *window, const char *scene_name);
 
 /**
 ** @brief launch the game (you have added a scene, and some object to it)
@@ -302,13 +306,13 @@ window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style);
 ** BGS_OK : the scene loading has started
 ** }
 **/
-int launch_scene_loading(window_t *window, int index);
+int launch_scene_loading(window_t *window, const char *scene_name);
 
 list_ptr_t *create_button(scene_t *scene, const char *path);
 
 void remove_object(object_t *object);
 
-void remove_scene(scene_t *scene);
+void remove_scene(void *scene);
 
 bool check_list(list_ptr_t *list, void *data);
 
