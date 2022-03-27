@@ -31,7 +31,6 @@ void remove_object(object_t *object)
         case SPRITE:
             sfSprite_destroy(object->drawable.sprite);
             sfTexture_destroy(object->bigdata.sprite_bigdata.texture);
-            sfImage_destroy(object->bigdata.sprite_bigdata.image);
             break;
         case TEXT:
             sfText_destroy(object->drawable.text);
