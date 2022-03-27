@@ -45,7 +45,7 @@ static void window_display(scene_t *scene, window_t *win)
     }
 }
 
-static void window_update(scene_t *scene, window_t *win, float seconds)
+static void scene_update(scene_t *scene, window_t *win, float seconds)
 {
     object_t *obj = NULL;
     list_t *elem = scene->updates->start;
@@ -65,7 +65,8 @@ static void window_update(scene_t *scene, window_t *win, float seconds)
     }
 }
 
-int scene_handling(window_t **win, time_clock_t *timer, const char *scene_name)
+int scene_handling(window_t **win, time_clock_t *timer, const char *scene_name,
+        bool is_in_thread)
 {
     scene_t *scene = NULL;
 
@@ -79,8 +80,10 @@ int scene_handling(window_t **win, time_clock_t *timer, const char *scene_name)
     sfRenderWindow_clear((*win)->win, scene->bg_color);
     timer->time = sfClock_restart(timer->clock);
     timer->seconds = sfTime_asSeconds(timer->time);
-    window_update(scene, *win, timer->seconds);
+    scene_update(scene, *win, timer->seconds);
     window_display(scene, *win);
-    window_remove(scene, *win);
+    if (is_in_thread == false) {
+        window_remove(scene, *win);
+    }
     return BGS_OK;
 }
