@@ -16,13 +16,7 @@
 
 int window_change_scene(window_t *window, const char *scene_name)
 {
-    dico_t *scene = NULL;
-
     if (window == NULL || scene_name == NULL) {
-        return (BGS_ERR_INPUT);
-    }
-    scene = dico_t_get_elem(window->scenes, scene_name);
-    if (scene == NULL) {
         return (BGS_ERR_INPUT);
     }
     if (window->current_scene != NULL) {
@@ -65,7 +59,7 @@ int loop(window_t *win)
     }
     window_setup_scene(win);
     while (sfRenderWindow_isOpen(win->win) && ret == BGS_OK) {
-        ret = scene_handling(&win, timer, win->current_scene);
+        ret = scene_handling(&win, timer, win->current_scene, false);
         if (ret == BGS_OK) {
             ret = event_handling(win->win, win);
         }

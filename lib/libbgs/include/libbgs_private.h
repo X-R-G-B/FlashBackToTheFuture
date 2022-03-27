@@ -85,7 +85,7 @@ int scene_update_event(window_t *win, scene_t *scene);
 bool check_click_prev_call(bool check, window_t *win, set_event_t *set_event);
 
 int scene_handling(window_t **win, time_clock_t *timer,
-        const char *scene_name);
+        const char *scene_name, bool is_in_thread);
 
 void scene_loading_handling(window_t *win);
 
