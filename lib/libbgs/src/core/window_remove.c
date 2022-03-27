@@ -6,6 +6,7 @@
 */
 
 #include "my_bgs.h"
+#include "my_dico.h"
 
 static void check_scene_lists(scene_t *scene, void *elem)
 {
@@ -30,8 +31,7 @@ void window_remove(scene_t *scene, window_t *win)
     }
     while (win->to_remove->len > 0 && win->to_remove->start != NULL) {
         elem = win->to_remove->start->var;
-        if (check_list(win->scenes, elem) == true) {
-            remove_scene((scene_t *) elem);
+        if (dico_t_rem_ptr(win->scenes, elem) == 1) {
             rm_fst_elem(win->to_remove);
         }
     }

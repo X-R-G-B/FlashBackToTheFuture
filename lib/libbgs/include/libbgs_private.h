@@ -20,7 +20,7 @@ struct scene_loading_s {
     sfThread *thread;
     sfMutex *mutex;
     int need_terminate;
-    int index;
+    char *scene_name;
     int countor;
 };
 
@@ -84,10 +84,13 @@ int scene_update_event(window_t *win, scene_t *scene);
 
 bool check_click_prev_call(bool check, window_t *win, set_event_t *set_event);
 
-int scene_handling(window_t **win, time_clock_t *timer, int index);
+int scene_handling(window_t **win, time_clock_t *timer,
+        const char *scene_name);
 
 void scene_loading_handling(window_t *win);
 
 time_clock_t *init_clock(void);
+
+int window_add_scene(window_t *win, scene_t *scene, const char *scene_name);
 
 #endif

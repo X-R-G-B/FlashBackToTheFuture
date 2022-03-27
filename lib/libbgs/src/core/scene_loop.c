@@ -5,9 +5,11 @@
 ** internal loop for a scene
 */
 
+#include <stdlib.h>
 #include "list.h"
 #include "my_bgs.h"
 #include "libbgs_private.h"
+#include "my_dico.h"
 
 void scene_loading_handling(window_t *win)
 {
@@ -20,6 +22,10 @@ void scene_loading_handling(window_t *win)
     sfThread_destroy(win->loading->thread);
     win->loading->need_terminate = 0;
     win->loading->thread = NULL;
+    if (win->loading->scene_name != NULL) {
+        free(win->loading->scene_name);
+        win->loading->scene_name = NULL;
+    }
 }
 
 static void window_display(scene_t *scene, window_t *win)
@@ -59,11 +65,14 @@ static void window_update(scene_t *scene, window_t *win, float seconds)
     }
 }
 
-int scene_handling(window_t **win, time_clock_t *timer, int index)
+int scene_handling(window_t **win, time_clock_t *timer, const char *scene_name)
 {
     scene_t *scene = NULL;
 
-    scene = get_scene_i((*win)->scenes, index);
+    if (win == NULL || *win == NULL || timer == NULL || scene_name == NULL) {
+        return (BGS_ERR_INPUT);
+    }
+    scene = dico_t_get_value((*win)->scenes, scene_name);
     if (scene == NULL) {
         return BGS_ERR_INPUT;
     }
