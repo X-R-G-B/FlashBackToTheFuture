@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include "my_bgs.h"
 #include "libbgs_private.h"
+#include "my_strings.h"
 
 static int get_state(scene_loading_t *load)
 {
@@ -38,7 +39,7 @@ static void scene_loading_loop(void *win)
     }
     while (sfRenderWindow_isOpen(window->win) && ret == BGS_OK &&
             need_terminate == 0) {
-        ret = scene_handling(&window, timer, window->loading->index);
+        ret = scene_handling(&window, timer, window->loading->scene_name);
         if (ret == BGS_OK) {
             ret = event_handling(window->win, window);
         }
@@ -48,14 +49,14 @@ static void scene_loading_loop(void *win)
     free(timer);
 }
 
-int launch_scene_loading(window_t *window, int index)
+int launch_scene_loading(window_t *window, const char *scene_name)
 {
     if (window == NULL || window->loading == NULL ||
             window->loading->thread != NULL) {
         return (BGS_ERR_INPUT);
     }
     window->loading->thread = sfThread_create(scene_loading_loop, window);
-    window->loading->index = index;
+    window->loading->scene_name = my_strdup(scene_name);
     window->loading->countor += 1;
     if (window->loading->thread != NULL) {
         sfThread_launch(window->loading->thread);

@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include "my_bgs.h"
+#include "libbgs_private.h"
 
 int sprite_set_texture(object_t *object, sfVector2f pos, sfIntRect rect)
 {
@@ -49,17 +50,22 @@ static int init_list(scene_t *scene)
     return BGS_OK;
 }
 
-scene_t *create_scene(window_t *win, sfColor bg_color)
+scene_t *create_scene(window_t *win, sfColor bg_color, const char *scene_name)
 {
-    scene_t *scene = malloc(sizeof(scene_t));
+    scene_t *scene = NULL;
 
-    if (scene == NULL || win == NULL) {
+    if (win == NULL) {
         return NULL;
+    }
+    scene = malloc(sizeof(scene_t));
+    if (scene == NULL) {
+        return (NULL);
     }
     scene->components = NULL;
     scene->bg_color = bg_color;
     scene->pause = false;
-    if (init_list(scene) != BGS_OK || window_add_scene(win, scene) != BGS_OK) {
+    if (init_list(scene) != BGS_OK ||
+            window_add_scene(win, scene, scene_name) != BGS_OK) {
         return NULL;
     }
     return scene;
