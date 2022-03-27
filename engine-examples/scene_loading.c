@@ -18,8 +18,8 @@
 void change_scene_1(object_t *obj, scene_t *scene, window_t *window,
         set_event_t *evt)
 {
-    launch_scene_loading(window, 2);
-    window->scene_index = 1;
+    launch_scene_loading(window, "SCENE_3");
+    window_change_scene(window, "SCENE_2");
     sleep(5);
     my_putstr(1, "coucou\n");
 }
@@ -27,8 +27,8 @@ void change_scene_1(object_t *obj, scene_t *scene, window_t *window,
 void change_scene_2(object_t *obj, scene_t *scene, window_t *window,
         set_event_t *evt)
 {
-    launch_scene_loading(window, 2);
-    window->scene_index = 0;
+    launch_scene_loading(window, "SCENE_3");
+    window_change_scene(window, "SCENE_1");
     sleep(5);
     my_putstr(1, "salut\n");
 }
@@ -37,9 +37,9 @@ int main(int ac, char **av)
 {
     window_t *win = create_window((sfVideoMode) {800, 600, 32}, "coucou",
             sfClose);
-    scene_t *scene_1 = create_scene(win, sfBlack);
-    scene_t *scene_2 = create_scene(win, sfWhite);
-    scene_t *scene_3 = create_scene(win, sfMagenta);
+    scene_t *scene_1 = create_scene(win, sfBlack, "SCENE_1");
+    scene_t *scene_2 = create_scene(win, sfWhite, "SCENE_2");
+    scene_t *scene_3 = create_scene(win, sfMagenta, "SCENE_3");
     object_t *obj = create_object(NULL, NULL, scene_1);
 
     object_set_sprite(obj,
@@ -51,7 +51,7 @@ int main(int ac, char **av)
         "/home/saverio/.src/test-csfml-webassembly/assets/neovim-logo.png",
         (sfIntRect) {-1, -1, -1, -1}, (sfVector2f) {0, 0});
     create_event(NULL, 1, obj, change_scene_2);
+    window_change_scene(win, "SCENE_1");
     loop(win);
-    printf("ici\n");
     remove_window(win);
 }
