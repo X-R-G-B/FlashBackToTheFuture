@@ -69,16 +69,8 @@ SRC_UTILS		:=	cast.c			\
 					set_window_style.c
 SRC_UTILS		:=	$(addprefix utils/,$(SRC_UTILS))
 
-SRC_HITBOX		:=	check_image_pixel.c			\
-					squares_gestion.c			\
-					get_right_checkbox.c		\
-					find_higher_pixels_group.c	\
-					check_collision.c			\
-					get_rect_arr.c
-SRC_HITBOX		:=	$(addprefix hitbox/,$(SRC_HITBOX))
-
 SRC		:=	$(SRC_COMPONENTS) $(SRC_CORE) $(SRC_PRESET) $(SRC_UTILS)	\
-			$(SRC_HITBOX) $(SRC_BUTTON)
+			$(SRC_BUTTON)
 SRC		:=	$(addprefix $(SRCDIR),$(SRC))
 
 OBJ		=	$(SRC:%.c=%.o)

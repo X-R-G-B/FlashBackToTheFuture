@@ -8,11 +8,12 @@
 #include <stdlib.h>
 #include "my_bgs.h"
 
-int sprite_set_texture(object_t *object, sfVector2f pos, sfIntRect rect)
+int sprite_set_texture(object_t *object, sfVector2f pos, sfIntRect rect,
+    const char *path)
 {
     object->drawable.sprite = sfSprite_create();
-    object->bigdata.sprite_bigdata.texture = sfTexture_createFromImage(
-        object->bigdata.sprite_bigdata.image, NULL);
+    object->bigdata.sprite_bigdata.texture =
+        sfTexture_createFromFile(path, NULL);
     if (object->drawable.sprite == NULL ||
         object->bigdata.sprite_bigdata.texture == NULL) {
         return BGS_ERR_MALLOC;
