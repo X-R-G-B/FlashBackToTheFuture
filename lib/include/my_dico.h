@@ -40,4 +40,6 @@ dico_t *dico_t_get_elem(dico_t *dico, char const *key);
 
 void dico_t_destroy_void(void *data);
 
+int dico_t_rem_ptr(dico_t *dico, void *ptr);
+
 #endif

@@ -29,3 +29,16 @@ int dico_t_rem(dico_t *dico, char const *key)
     free(elem);
     return (1);
 }
+
+int dico_t_rem_ptr(dico_t *dico, void *ptr)
+{
+    if (dico == NULL) {
+        return (0);
+    }
+    for (dico_t *tmp = dico->next; tmp != dico; tmp = tmp->next) {
+        if (tmp->value == ptr) {
+            return (dico_t_rem(dico, tmp->key));
+        }
+    }
+    return (0);
+}
