@@ -38,7 +38,6 @@ enum object_type {
 };
 
 struct sprite_bigdata_s {
-    sfImage *image;
     sfTexture *texture;
     sfVector2f pos;
     sfIntRect rect;

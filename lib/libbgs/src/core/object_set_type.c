@@ -91,12 +91,8 @@ int object_set_sprite(object_t *object, char const *path, sfIntRect rect,
         return BGS_ERR_INPUT;
     }
     object->is_visible = true;
-    object->bigdata.sprite_bigdata.image = sfImage_createFromFile(path);
-    if (object->bigdata.sprite_bigdata.image == NULL) {
-        return BGS_ERR_PATH;
-    }
-    if (sprite_set_texture(object, pos, rect) != BGS_OK) {
-        return (BGS_ERR_MALLOC);
+    if (sprite_set_texture(object, pos, rect, path) != BGS_OK) {
+        return BGS_ERR_MALLOC;
     }
     object->bigdata.sprite_bigdata.pos = pos;
     object->bigdata.sprite_bigdata.rect = rect;
