@@ -217,7 +217,7 @@ scene_t *create_scene(window_t *win, sfColor bg_color, const char *scene_name);
 ** @param scene_name scene name of the next current scene
 **
 ** @return {
-** BGS_ERR_INPUT : window or scene is NULL or scene_name not in window scenes,
+** BGS_ERR_INPUT : window or scene is NULL,
 ** BGS_ERR_MALLOC : malloc failed,
 ** BGS_OK : the change will be on the next loop
 ** }
