@@ -28,32 +28,32 @@ void scene_loading_handling(window_t *win)
     }
 }
 
-static void window_display(scene_t *scene, window_t *win, list_ptr_t *display)
+static void window_display(scene_t *scene, window_t *win)
 {
     object_t *obj = NULL;
-    list_t *elem = display->start;
+    list_t *elem = scene->displayables->start;
 
-    obj = elem->var;
-    sfRenderWindow_drawSprite(win->win, obj->drawable.sprite, NULL);
-    for (int i = 0; i < display->len &&
+    for (int i = 0; i < scene->displayables->len &&
             sfRenderWindow_isOpen(win->win); i++) {
         obj = ((object_t *) elem->var);
         obj->display(obj, scene->components, win->components, win->win);
         elem = elem->next;
         scene_loading_handling(win);
     }
+    if (sfRenderWindow_isOpen(win->win)) {
+        sfRenderWindow_display(win->win);
+    }
 }
 
-static void window_update(list_ptr_t *updates, window_t *win, float seconds,
-    scene_t *scene)
+static void scene_update(scene_t *scene, window_t *win, float seconds)
 {
     object_t *obj = NULL;
-    list_t *elem = updates->start;
+    list_t *elem = scene->updates->start;
     list_t *tmp;
 
     window_update_event(win, scene);
     scene_update_event(win, scene);
-    for (int i = 0; i < updates->len &&
+    for (int i = 0; i < scene->updates->len &&
             sfRenderWindow_isOpen(win->win); i++) {
         tmp = elem->next;
         obj = ((object_t *) elem->var);
@@ -65,26 +65,8 @@ static void window_update(list_ptr_t *updates, window_t *win, float seconds,
     }
 }
 
-static void scene_plan_handling(scene_t *scene, window_t *win, float seconds)
-{
-    list_t *elem = scene->plan->start;
-    plan_t *plan = NULL;
-
-    for (int i = 0; i < scene->plan->len; i++, elem = elem->next) {
-        plan = elem->var;
-        window_update(plan->updates, win, seconds, scene);
-    }
-    elem = scene->plan->end;
-    for (int i = 0; i < scene->plan->len; i++, elem = elem->back) {
-        plan = elem->var;
-        window_display(scene, win, plan->displayables);
-    }
-    if (sfRenderWindow_isOpen(win->win)) {
-        sfRenderWindow_display(win->win);
-    }
-}
-
-int scene_handling(window_t **win, time_clock_t *timer, const char *scene_name)
+int scene_handling(window_t **win, time_clock_t *timer, const char *scene_name,
+        bool is_in_thread)
 {
     scene_t *scene = NULL;
 
@@ -98,7 +80,10 @@ int scene_handling(window_t **win, time_clock_t *timer, const char *scene_name)
     sfRenderWindow_clear((*win)->win, scene->bg_color);
     timer->time = sfClock_restart(timer->clock);
     timer->seconds = sfTime_asSeconds(timer->time);
-    scene_plan_handling(scene, *win, timer->seconds);
-    window_remove(scene, *win);
+    scene_update(scene, *win, timer->seconds);
+    window_display(scene, *win);
+    if (is_in_thread == false) {
+        window_remove(scene, *win);
+    }
     return BGS_OK;
 }
