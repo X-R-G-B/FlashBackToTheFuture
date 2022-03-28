@@ -39,7 +39,8 @@ static void scene_loading_loop(void *win)
     }
     while (sfRenderWindow_isOpen(window->win) && ret == BGS_OK &&
             need_terminate == 0) {
-        ret = scene_handling(&window, timer, window->loading->scene_name);
+        ret = scene_handling(&window, timer, window->loading->scene_name,
+                true);
         if (ret == BGS_OK) {
             ret = event_handling(window->win, window);
         }
