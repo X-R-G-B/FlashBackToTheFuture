@@ -41,7 +41,7 @@ int main(int ac, char **av)
 {
     sfVideoMode mode = {1920, 1080, 32};
     window_t *win = create_window(mode, "t", sfResize | sfClose);
-    scene_t *scene = create_scene(win, sfBlack);
+    scene_t *scene = create_scene(win, sfBlack, "SALUT");
     list_ptr_t *list = create_button(scene, "./tests/t.json");
 
     loop(win);
