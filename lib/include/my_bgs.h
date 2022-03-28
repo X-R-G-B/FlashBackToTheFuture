@@ -296,5 +296,4 @@ void remove_scene(scene_t *scene);
 
 bool check_list(list_ptr_t *list, void *data);
 
-
 #endif /* !BGS_H_ */
