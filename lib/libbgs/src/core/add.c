@@ -8,14 +8,17 @@
 #include "my_bgs.h"
 #include "my_bgs_components.h"
 #include "libbgs_private.h"
+#include "my_dico.h"
 
-int window_add_scene(window_t *win, scene_t *scene)
+int window_add_scene(window_t *win, scene_t *scene, const char *scene_name)
 {
     if (win == NULL || scene == NULL) {
         return BGS_ERR_INPUT;
     }
-    if (list_add_to_end(win->scenes, scene) == NULL) {
-        return BGS_ERR_MALLOC;
+    win->scenes = dico_t_add_data(win->scenes, scene_name, scene,
+            remove_scene);
+    if (win->scenes == NULL) {
+        return (BGS_ERR_MALLOC);
     }
     return BGS_OK;
 }
@@ -58,24 +61,29 @@ void check_scene(scene_t *scene)
 
 void window_setup_scene(window_t *win)
 {
-    list_t *scene_elem = NULL;
+    dico_t *scene_elem = NULL;
     scene_t *scene = NULL;
 
     if (win == NULL || win->scenes == NULL) {
         return;
     }
-    scene_elem = win->scenes->start;
-    for (int i = 0; i < win->scenes->len; i++) {
-        scene = ((scene_t *) scene_elem->var);
+    scene_elem = win->scenes;
+    do {
+        scene = (scene_t *) scene_elem->value;
         check_scene(scene);
         scene_elem = scene_elem->next;
-    }
+    } while (scene_elem != NULL && scene_elem != win->scenes);
 }
 
 int scene_add_object(scene_t *scene, object_t *object)
 {
     if (scene == NULL || object == NULL) {
         return BGS_ERR_INPUT;
+    }
+    if ((object->display != NULL && list_add_to_end(scene->displayables, object)
+        == NULL) || (object->update != NULL &&
+        list_add_to_end(scene->updates, object) == NULL)) {
+        return BGS_ERR_MALLOC;
     }
     if (object->type == UNSET &&
             list_add_to_end(scene->objects, object) == NULL) {

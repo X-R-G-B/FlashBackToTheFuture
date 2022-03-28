@@ -23,7 +23,7 @@ const char *str_off_click[] = {NULL};
 
 void (*off_click[])(object_t *, scene_t *, window_t *win, set_event_t *);
 
-int main(int ac, char **av)
+int main(void)
 {
     return 0;
 }
