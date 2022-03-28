@@ -32,12 +32,16 @@ int sprite_set_texture(object_t *object, sfVector2f pos, sfIntRect rect,
 
 static int init_list(scene_t *scene)
 {
-    scene->plan = list_create();
-    if (scene->plan == NULL) {
+    scene->displayables = list_create();
+    if (scene->displayables == NULL) {
         return BGS_ERR_MALLOC;
     }
     scene->objects = list_create();
     if (scene->objects == NULL) {
+        return BGS_ERR_MALLOC;
+    }
+    scene->updates = list_create();
+    if (scene->updates == NULL) {
         return BGS_ERR_MALLOC;
     }
     scene->to_remove = list_create();

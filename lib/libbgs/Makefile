@@ -47,7 +47,6 @@ SRC_CORE		:=	add.c					\
 					object_set_origin.c		\
 					loop.c					\
 					object_update.c			\
-					check_list.c			\
 					window_remove.c			\
 					remove.c				\
 					scene_loading.c			\
