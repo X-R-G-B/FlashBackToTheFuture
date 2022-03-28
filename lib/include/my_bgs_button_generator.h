@@ -31,6 +31,6 @@ int set_event(object_t *object, dico_t *dico);
 
 list_ptr_t *fill_obj_list(list_t *elem, scene_t *scene);
 
-int set_clr(object_t *object, dico_t *dico);
+int set_color(object_t *object, dico_t *dico);
 
 #endif /* !BUTTON_H_ */
