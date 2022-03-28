@@ -57,9 +57,8 @@ int loop(window_t *win)
     if (timer == NULL || win == NULL || win->scenes == NULL) {
         return 0;
     }
-    window_setup_scene(win);
     while (sfRenderWindow_isOpen(win->win) && ret == BGS_OK) {
-        ret = scene_handling(&win, timer, win->current_scene, false);
+        ret = scene_handling(&win, timer, win->current_scene);
         if (ret == BGS_OK) {
             ret = event_handling(win->win, win);
         }
