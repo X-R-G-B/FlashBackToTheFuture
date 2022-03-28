@@ -32,23 +32,23 @@ static int set_hover_event(object_t *obj, char *txt)
 int set_event(object_t *object, dico_t *dico)
 {
     any_t *txt = dico_t_get_any(dico, "text");
-    int on = 0;
-    int off = 0;
+    void (*on)(object_t *, scene_t *, window_t *, set_event_t *) = NULL;
+    void (*off)(object_t *, scene_t *, window_t *, set_event_t *) = NULL;
 
     if (txt == NULL || txt->type != STR) {
         return BGS_ERR_INPUT;
     }
-    for (int i = 1; str_on_click[i - 1] != NULL && on == 0; i++) {
-        if (my_strcmp(txt->value.str, str_on_click[i - 1]) == 0) {
-            on = i;
+    for (int i = 0; str_on_click[i] != NULL && on == NULL; i++) {
+        if (my_strcmp(txt->value.str, str_on_click[i]) == 0) {
+            on = on_click[i];
         }
     }
-    for (int i = 1; str_off_click[i - 1] != NULL && off == 0; i++) {
-        if (my_strcmp(txt->value.str, str_off_click[i - 1]) == 0) {
-            off = i;
+    for (int i = 0; str_off_click[i] != NULL && off == NULL; i++) {
+        if (my_strcmp(txt->value.str, str_off_click[i]) == 0) {
+            off = off_click[i];
         }
     }
-    on = event_add_node(create_event(on_click[on], true, object,
-        off_click[off]) ,(node_params_t) {sfMouseLeft, sfKeyA, MOUSE});
-    return (on == BGS_OK) ? set_hover_event(object, txt->value.str) : 1;
+    return (event_add_node(create_event(on, true, object, off),
+        (node_params_t) {sfMouseLeft, sfKeyA, MOUSE}) == BGS_OK) ?
+        set_hover_event(object, txt->value.str) : 1;
 }
