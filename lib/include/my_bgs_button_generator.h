@@ -11,25 +11,21 @@
     #include "my_bgs_components.h"
     #include "my_json.h"
 
-static void (*on_click[])(object_t *, scene_t *, window_t *,
-    set_event_t *) = {NULL};
+extern void (*on_click[])(object_t *, scene_t *, window_t *, set_event_t *);
 
-static const char *str_on_click[] = {NULL};
+extern const char *str_on_click[];
 
-static void (*off_click[])(object_t *, scene_t *, window_t *,
-    set_event_t *) = {NULL};
+extern void (*off_click[])(object_t *, scene_t *, window_t *, set_event_t *);
 
-static const char *str_off_click[] = {NULL};
+extern const char *str_off_click[];
 
-static void (*on_hover[])(object_t *, scene_t *, window_t *,
-    set_event_t *) = {NULL};
+extern void (*on_hover[])(object_t *, scene_t *, window_t *, set_event_t *);
 
-static const char *str_on_hover[] = {NULL};
+extern const char *str_on_hover[];
 
-static void (*off_hover[])(object_t *, scene_t *, window_t *,
-    set_event_t *) = {NULL};
+extern void (*off_hover[])(object_t *, scene_t *, window_t *, set_event_t *);
 
-static const char *str_off_hover[] = {NULL};
+extern const char *str_off_hover[];
 
 int set_event(object_t *object, dico_t *dico);
 
