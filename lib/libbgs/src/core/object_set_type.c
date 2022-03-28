@@ -11,24 +11,24 @@
 static int check_display_function(object_t *obj)
 {
     scene_t *scene = dico_t_get_value(obj->components, "scene");
-    void *ret = NULL;
-    bool check = false;
+    list_t *elem = NULL;
+    plan_t *plan = NULL;
 
-    if (obj->type == SPRITE && scene != NULL) {
-        if (obj->display == NULL) {
-            ret = list_add_to_end(scene->displayables, obj);
-            obj->display = display_sprite;
-            check = true;
-        }
-    } else if (obj->type == TEXT && scene != NULL) {
-        if (obj->display == NULL) {
-            ret = list_add_to_end(scene->displayables, obj);
-            obj->display = display_text;
-            check = true;
+    if (scene == NULL) {
+        return BGS_ERR_INPUT;
+    } else if (obj->display != NULL) {
+        return BGS_OK;
+    }
+    obj->display = (obj->type == SPRITE) ? display_sprite : display_text;
+    elem = scene->plan->start;
+    for (int i = 0; i < scene->plan->len; i++, elem = elem->next) {
+        plan = elem->var;
+        if (plan->id == obj->plan &&
+            list_add_to_end(plan->displayables, obj) == NULL) {
+            return BGS_ERR_MALLOC;
         }
     }
-    return (check == true && ret == NULL && scene != NULL) ?
-        BGS_ERR_MALLOC : BGS_OK;
+    return BGS_OK;
 }
 
 int object_set_audio(object_t *object, char const *path, bool play_now,
@@ -79,9 +79,8 @@ int object_set_text(object_t *object, char const *path, char const *text,
     sfText_setFont(object->drawable.text, object->bigdata.text_bigdata.font);
     sfText_setString(object->drawable.text, text);
     object->type = TEXT;
-    check_display_function(object);
     object_set_origin(object);
-    return BGS_OK;
+    return check_display_function(object);
 }
 
 int object_set_sprite(object_t *object, char const *path, sfIntRect rect,
@@ -97,7 +96,6 @@ int object_set_sprite(object_t *object, char const *path, sfIntRect rect,
     object->bigdata.sprite_bigdata.pos = pos;
     object->bigdata.sprite_bigdata.rect = rect;
     object->type = SPRITE;
-    check_display_function(object);
     object_set_origin(object);
-    return BGS_OK;
+    return check_display_function(object);
 }
