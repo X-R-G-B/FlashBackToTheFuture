@@ -16,14 +16,12 @@ static int set_sprite(object_t *sprite, dico_t *dico, scene_t *scene)
         set_color(sprite, dico) != BGS_OK) {
         return BGS_ERR_MALLOC;
     }
-    list_add_to_end(scene->updates, sprite);
-    list_add_to_end(scene->displayables, sprite);
     return BGS_OK;
 }
 
 static int init_sprite(float *pos, char *path, scene_t *scene, dico_t *dico)
 {
-    object_t *sprite = create_object(NULL, NULL, scene);
+    object_t *sprite = create_object(NULL, NULL, scene, 0);
     any_t *size = dico_t_get_any(dico, "size");
 
     if (sprite == NULL || object_set_sprite(sprite, path, (sfIntRect)
@@ -46,7 +44,7 @@ static int init_text(float *pos, scene_t *scene, char *arg[2], dico_t *dico)
 {
     any_t *size = dico_t_get_any(dico, "text size");
     any_t *char_size = dico_t_get_any(dico, "char size");
-    object_t *text = create_object(NULL, NULL, scene);
+    object_t *text = create_object(NULL, NULL, scene, 0);
 
     if (text == NULL || object_set_text(text, arg[0], arg[1],
         (sfVector2f) {pos[1], pos[0]}) != BGS_OK) {
@@ -60,7 +58,6 @@ static int init_text(float *pos, scene_t *scene, char *arg[2], dico_t *dico)
         sfText_setCharacterSize(text->drawable.text, char_size->value.i);
     }
     set_color(text, dico);
-    list_add_to_end(scene->displayables, text);
     return BGS_OK;
 }
 
