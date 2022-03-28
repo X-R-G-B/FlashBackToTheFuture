@@ -31,10 +31,13 @@ void scene_loading_handling(window_t *win)
 static void window_display(scene_t *scene, window_t *win, list_ptr_t *display)
 {
     object_t *obj = NULL;
-    list_t *elem = display->start;
+    list_t *elem = NULL;
 
+    if (display == NULL || display->len == 0) {
+        return;
+    }
+    elem = display->start;
     obj = elem->var;
-    sfRenderWindow_drawSprite(win->win, obj->drawable.sprite, NULL);
     for (int i = 0; i < display->len &&
             sfRenderWindow_isOpen(win->win); i++) {
         obj = ((object_t *) elem->var);
