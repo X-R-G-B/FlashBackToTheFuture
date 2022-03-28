@@ -58,7 +58,7 @@ int loop(window_t *win)
         return 0;
     }
     while (sfRenderWindow_isOpen(win->win) && ret == BGS_OK) {
-        ret = scene_handling(&win, timer, win->current_scene, false);
+        ret = scene_handling(&win, timer, win->current_scene);
         if (ret == BGS_OK) {
             ret = event_handling(win->win, win);
         }
