@@ -47,6 +47,7 @@ SRC_CORE		:=	add.c					\
 					object_set_origin.c		\
 					loop.c					\
 					object_update.c			\
+					check_list.c			\
 					window_remove.c			\
 					remove.c				\
 					scene_loading.c			\
@@ -56,6 +57,7 @@ SRC_CORE		:=	$(addprefix core/,$(SRC_CORE))
 
 SRC_BUTTON		:= 	check_set_color.c	\
 					create_button.c		\
+					check_plan.c		\
 					set_event.c			\
 	 				fill_obj_list.c
 SRC_BUTTON		:=	$(addprefix create_button/,$(SRC_BUTTON))

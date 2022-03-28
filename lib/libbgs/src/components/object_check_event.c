@@ -66,6 +66,7 @@ void check_event(set_event_t *set_event, object_t *object,
     if (set_event->prev_call == true && check == false &&
             set_event->off != NULL && sfRenderWindow_isOpen(win->win)) {
         set_event->off(object, scene, win, set_event);
+        win->click = NULL;
         scene_loading_handling(win);
     }
     set_event->prev_call = check;
