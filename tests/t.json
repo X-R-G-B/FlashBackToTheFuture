@@ -2,14 +2,13 @@
     "buttons": [
         {
             "pos": [200.0, 200.0],
-            "plan": 0,
             "text": "fst",
             "sprite path": "./tests/dirt.png"
         },
         {
             "pos": [200.0, 200.0],
-            "plan": -1,
             "text": "scd",
+            "plan": -1,
             "sprite path": "./tests/path.png"
         }
     ]
