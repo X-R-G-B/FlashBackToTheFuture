@@ -65,7 +65,7 @@ window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style)
     if (win->to_remove == NULL) {
         return NULL;
     }
-    win->click_prev_call = false;
+    win->click = NULL;
     win->current_scene = NULL;
     create_scene_loading(win);
     return win;

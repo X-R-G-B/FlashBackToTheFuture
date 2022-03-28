@@ -13,19 +13,6 @@
 #include "libbgs_private.h"
 #include "my_dico.h"
 
-bool check_list(list_ptr_t *list, void *data)
-{
-    list_t *elem = list->start;
-
-    for (int i = 0; i < list->len; i++, elem = elem->next) {
-        if (elem->var == data) {
-            rm_elem_i(list, i);
-            return true;
-        }
-    }
-    return false;
-}
-
 void remove_object(object_t *object)
 {
     switch (object->type) {
@@ -49,6 +36,25 @@ void remove_object(object_t *object)
     free(object);
 }
 
+static void destroy_plan(list_ptr_t *list)
+{
+    list_t *elem = NULL;
+    plan_t *plan = NULL;
+
+    if (list == NULL) {
+        return;
+    }
+    elem = list->start;
+    for (int i = 0; i < list->len; i++, elem = elem->next) {
+        plan = elem->var;
+        free_list(plan->displayables);
+        free_list(plan->updates);
+        free_list(plan->object);
+        free(plan);
+    }
+    free_list(list);
+}
+
 void remove_scene(void *scene_void)
 {
     scene_t *scene = scene_void;
@@ -64,8 +70,7 @@ void remove_scene(void *scene_void)
     if (scene->components != NULL) {
         dico_t_destroy(scene->components);
     }
-    free_list(scene->displayables);
-    free_list(scene->updates);
+    destroy_plan(scene->plan);
     free_list(scene->objects);
     if (scene->to_remove != NULL) {
         free_list(scene->to_remove);

@@ -7,6 +7,7 @@
 
 #include "my_bgs_button_generator.h"
 #include "my_bgs.h"
+#include "my_bgs_components.h"
 
 const char *str_on_hover[] = {NULL};
 
