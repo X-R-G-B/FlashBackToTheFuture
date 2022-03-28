@@ -1,0 +1,9 @@
+{
+    "buttons": [
+        {
+            "pos": [200.0, 200.0],
+            "text": "test",
+            "sprite path": "./tests/dirt.png"
+        }
+    ]
+}
