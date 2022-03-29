@@ -57,6 +57,7 @@ window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style)
     }
     win->components = NULL;
     win->win = sfRenderWindow_create(mode, title, style, NULL);
+    sfRenderWindow_setPosition(win->win, (sfVector2i) {0, 0});
     if (win->win == NULL) {
         return NULL;
     }
