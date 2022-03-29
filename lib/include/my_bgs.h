@@ -28,6 +28,7 @@ typedef struct scene_s scene_t;
 typedef struct sprite_bigdata_s sprite_bigdata_t;
 typedef struct text_bigdata_s text_bigdata_t;
 typedef struct scene_loading_s scene_loading_t;
+typedef struct set_event_s set_event_t;
 
 enum object_type {
     SPRITE,
@@ -92,7 +93,7 @@ struct scene_s {
 };
 
 struct window_s {
-    bool click_prev_call;
+    set_event_t *click;
     sfRenderWindow *win;
     char *current_scene;
     dico_t *scenes;
@@ -322,5 +323,7 @@ void remove_object(object_t *object);
 void remove_scene(void *scene);
 
 bool check_list(list_ptr_t *list, void *data);
+
+int check_plan(dico_t *dico);
 
 #endif /* !BGS_H_ */
