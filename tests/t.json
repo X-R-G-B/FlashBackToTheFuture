@@ -3,12 +3,12 @@
         {
             "pos": [200.0, 200.0],
             "text": "fst",
+            "plan": -1,
             "sprite path": "./tests/dirt.png"
         },
         {
             "pos": [200.0, 200.0],
             "text": "scd",
-            "plan": -1,
             "sprite path": "./tests/path.png"
         }
     ]
