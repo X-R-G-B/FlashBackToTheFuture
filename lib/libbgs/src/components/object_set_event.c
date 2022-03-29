@@ -46,14 +46,14 @@ static bool check_elem_in_list(list_ptr_t *list, void *data)
 static void check_obj_in_update_list(object_t *obj)
 {
     scene_t *scene = dico_t_get_value(obj->components, "scene");
-    plan_t *plan = NULL;
+    layer_t *layer = NULL;
 
     if (scene == NULL) {
         return;
     }
-    plan = get_element_i_var(scene->plan, obj->plan);
-    if (check_elem_in_list(plan->updates, obj) == false) {
-        list_add_to_end(plan->updates, obj);
+    layer = get_element_i_var(scene->layer, obj->layer);
+    if (check_elem_in_list(layer->updates, obj) == false) {
+        list_add_to_end(layer->updates, obj);
     }
 }
 

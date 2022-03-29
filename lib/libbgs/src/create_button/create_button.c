@@ -21,8 +21,8 @@ static int set_sprite(object_t *sprite, dico_t *dico)
 
 static int init_sprite(float *pos, char *path, scene_t *scene, dico_t *dico)
 {
-    int plan = check_plan(dico);
-    object_t *sprite = create_object(NULL, NULL, scene, plan);
+    int layer = check_layer(dico);
+    object_t *sprite = create_object(NULL, NULL, scene, layer);
     any_t *size = dico_t_get_any(dico, "size");
 
     if (sprite == NULL || object_set_sprite(sprite, path, (sfIntRect)
@@ -45,8 +45,8 @@ static int init_text(float *pos, scene_t *scene, char *arg[2], dico_t *dico)
 {
     any_t *size = dico_t_get_any(dico, "text size");
     any_t *char_size = dico_t_get_any(dico, "char size");
-    int plan = check_plan(dico);
-    object_t *text = create_object(NULL, NULL, scene, plan);
+    int layer = check_layer(dico);
+    object_t *text = create_object(NULL, NULL, scene, layer);
 
     if (text == NULL || object_set_text(text, arg[0], arg[1],
         (sfVector2f) {pos[1], pos[0]}) != BGS_OK) {

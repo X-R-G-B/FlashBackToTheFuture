@@ -10,14 +10,14 @@
 
 static void scene_remove_obj(scene_t *scene, void *elem)
 {
-    list_t *list_elem = scene->plan->start;
-    plan_t *plan = NULL;
+    list_t *list_elem = scene->layer->start;
+    layer_t *layer = NULL;
 
-    for (int i = 0; i < scene->plan->len; i++, list_elem = list_elem->next) {
-        plan = list_elem->var;
-        if (check_list(plan->object, elem) == true) {
-            check_list(plan->displayables, elem);
-            check_list(plan->updates, elem);
+    for (int i = 0; i < scene->layer->len; i++, list_elem = list_elem->next) {
+        layer = list_elem->var;
+        if (check_list(layer->object, elem) == true) {
+            check_list(layer->displayables, elem);
+            check_list(layer->updates, elem);
         }
     }
     rm_fst_elem(scene->to_remove);
