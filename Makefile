@@ -24,7 +24,7 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC			:=	engine_examples/button.c
+SRC			:=	src/main.c
 
 OBJ			:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------
