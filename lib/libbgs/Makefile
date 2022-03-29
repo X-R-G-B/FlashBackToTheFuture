@@ -35,7 +35,8 @@ SRC_COMPONENTS	:= 	add_components.c					\
 					object_check_event.c				\
 					object_set_event.c					\
 					object_check_health.c				\
-					object_update_mouse_event.c
+					object_update_mouse_event.c			\
+					add_window_component.c
 SRC_COMPONENTS	:= $(addprefix components/,$(SRC_COMPONENTS))
 
 SRC_CORE		:=	add.c					\

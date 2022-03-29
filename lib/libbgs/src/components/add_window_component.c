@@ -8,7 +8,7 @@
 #include "my_bgs_components.h"
 #include "my_bgs.h"
 
-int window_add_component(window_t *win, void *data, char key[],
+int window_add_component(window_t *win, void *data, const char key[],
     void (*destroy)(void *))
 {
     if (win == NULL || data == NULL || key == NULL) {
