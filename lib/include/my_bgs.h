@@ -28,6 +28,7 @@ typedef struct scene_s scene_t;
 typedef struct sprite_bigdata_s sprite_bigdata_t;
 typedef struct text_bigdata_s text_bigdata_t;
 typedef struct scene_loading_s scene_loading_t;
+typedef struct set_event_s set_event_t;
 
 enum object_type {
     SPRITE,
@@ -59,6 +60,7 @@ struct object_s {
         sfText *text;
         sfMusic *music;
     } drawable;
+    int plan;
     dico_t *components;
     bool is_visible;
     void (*update)(object_t *, scene_t *scene, window_t *win, float);
@@ -73,19 +75,25 @@ struct time_clock_s {
     sfTime time;
 };
 
+typedef struct plan_s {
+    int id;
+    list_ptr_t *displayables;
+    list_ptr_t *updates;
+    list_ptr_t *object;
+} plan_t;
+
 struct scene_s {
     bool pause;
     sfColor bg_color;
     list_ptr_t *to_remove;
-    list_ptr_t *updates;
+    list_ptr_t *plan;
     list_ptr_t *objects;
-    list_ptr_t *displayables;
     dico_t *components;
     void (*destroy)(void *);
 };
 
 struct window_s {
-    bool click_prev_call;
+    set_event_t *click;
     sfRenderWindow *win;
     char *current_scene;
     dico_t *scenes;
@@ -108,7 +116,7 @@ int window_set_icon(window_t *win, char const path[]);
 ** @return BGS_ERR_MALLOC : malloc failed
 ** @return BGS_OK : the object has been added
 **/
-int scene_add_object(scene_t *scene, object_t *object);
+int scene_add_object(scene_t *scene, object_t *object, int plan);
 
 // ----------------------------------------------------------------------------
 // create_object.c
@@ -184,7 +192,7 @@ int object_set_sprite(object_t *object, char const *path, sfIntRect rect,
 object_t *create_object(
     void (*update)(object_t *, scene_t *, window_t *win, float),
     void (*display)(object_t *, dico_t *, dico_t *, sfRenderWindow *),
-    scene_t *scene);
+    scene_t *scene, int plan);
 
 // ----------------------------------------------------------------------------
 // create_scene.c
@@ -315,5 +323,7 @@ void remove_object(object_t *object);
 void remove_scene(void *scene);
 
 bool check_list(list_ptr_t *list, void *data);
+
+int check_plan(dico_t *dico);
 
 #endif /* !BGS_H_ */

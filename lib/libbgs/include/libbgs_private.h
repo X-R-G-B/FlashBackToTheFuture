@@ -53,8 +53,6 @@ char *get_id_generator_cat(char dest[255]);
 
 int check_hover(object_t *object, window_t *win);
 
-void window_setup_scene(window_t *win);
-
 int object_set_event(object_t *object, set_event_t *usr_event);
 
 void object_check_event(object_t *object, scene_t *scene,
@@ -84,7 +82,7 @@ int scene_update_event(window_t *win, scene_t *scene);
 bool check_click_prev_call(bool check, window_t *win, set_event_t *set_event);
 
 int scene_handling(window_t **win, time_clock_t *timer,
-        const char *scene_name, bool is_in_thread);
+        const char *scene_name);
 
 void scene_loading_handling(window_t *win);
 
