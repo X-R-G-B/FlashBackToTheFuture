@@ -8,12 +8,13 @@
 #include <stdlib.h>
 #include "list.h"
 
-void *list_add_to_end(list_ptr_t *list_ptr, void *content)
+list_t *list_add_to_end(list_ptr_t *list_ptr, void *content)
 {
     list_t *newelem = malloc(sizeof(list_t));
 
-    if (!newelem || content == NULL)
+    if (newelem == NULL || content == NULL || list_ptr == NULL) {
         return NULL;
+    }
     newelem->var = content;
     if (list_ptr->len == 0) {
         list_ptr->start = newelem;
@@ -28,12 +29,13 @@ void *list_add_to_end(list_ptr_t *list_ptr, void *content)
     return (newelem);
 }
 
-void *list_add_to_start(list_ptr_t *list_ptr, void *content)
+list_t *list_add_to_start(list_ptr_t *list_ptr, void *content)
 {
     list_t *newelem = malloc(sizeof(list_t));
 
-    if (!newelem)
+    if (newelem == NULL || list_ptr == NULL || content == NULL) {
         return NULL;
+    }
     newelem->var = content;
     if (list_ptr->len == 0) {
         list_ptr->start = newelem;
@@ -48,7 +50,7 @@ void *list_add_to_start(list_ptr_t *list_ptr, void *content)
     return (newelem);
 }
 
-void *list_add_to_i(list_ptr_t *list_ptr, void *content, int i)
+list_t *list_add_to_i(list_ptr_t *list_ptr, void *content, int i)
 {
     list_t *newelem = NULL;
     list_t *id = NULL;
