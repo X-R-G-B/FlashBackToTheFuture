@@ -44,6 +44,7 @@ int main(int ac, char **av)
     scene_t *scene = create_scene(win, sfBlack, "SALUT");
     list_ptr_t *list = create_button(scene, "./tests/t.json");
 
+    window_change_scene(win, "SALUT");
     loop(win);
     remove_window(win);
     return 0;

@@ -36,7 +36,7 @@ int set_event(object_t *object, dico_t *dico)
     void (*off)(object_t *, scene_t *, window_t *, set_event_t *) = NULL;
 
     if (txt == NULL || txt->type != STR) {
-        return BGS_ERR_INPUT;
+        return BGS_OK;
     }
     for (int i = 0; str_on_click[i] != NULL && on == NULL; i++) {
         if (my_strcmp(txt->value.str, str_on_click[i]) == 0) {
