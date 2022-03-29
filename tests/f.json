@@ -6,6 +6,7 @@
             "font path": "./tests/menlo.ttf",
             "sprite path": "./tests/path.png",
             "pos": [100.0, 100.0],
+            "plan": -1,
             "text color": [255, 0, 0, 255]
         },
         {

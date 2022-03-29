@@ -47,6 +47,20 @@ static bool check_event_nodes(set_event_t *set_event, object_t *object,
     return (check);
 }
 
+void check_off_event(set_event_t *set_event, object_t *obj,
+    window_t *win, scene_t *scene)
+{
+    if (set_event->prev_call == true &&
+            sfRenderWindow_isOpen(win->win)) {
+        if (set_event->off != NULL) {
+            set_event->off(obj, scene, win, set_event);
+        }
+        if (win->click == set_event) {
+            win->click = NULL;
+        }
+        scene_loading_handling(win);
+    }
+}
 void check_event(set_event_t *set_event, object_t *object,
     window_t *win, scene_t *scene)
 {
@@ -58,16 +72,13 @@ void check_event(set_event_t *set_event, object_t *object,
     }
     check = check_event_nodes(set_event, object, win);
     check = check_click_prev_call(check, win, set_event);
-    if (check == true && set_event->prev_call == false &&
+    if (check == true /*&& set_event->prev_call == false*/ &&
             set_event->on != NULL && sfRenderWindow_isOpen(win->win)) {
         set_event->on(object, scene, win, set_event);
         scene_loading_handling(win);
     }
-    if (set_event->prev_call == true && check == false &&
-            set_event->off != NULL && sfRenderWindow_isOpen(win->win)) {
-        set_event->off(object, scene, win, set_event);
-        win->click = NULL;
-        scene_loading_handling(win);
+    if (check == false) {
+        check_off_event(set_event, object, win, scene);
     }
     set_event->prev_call = check;
 }
