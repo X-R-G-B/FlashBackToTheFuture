@@ -78,11 +78,9 @@ struct sprite_health_s {
 
 struct on_collision_s {
     char key[255];
-    bool is_pixel;
     dico_t *collisions_dico;
     void (*collision)(object_t *this, object_t *other, scene_t *scene,
         window_t *win);
-    list_ptr_t *solid_squares;
 };
 
 struct sprite_chrono_s {
@@ -133,7 +131,7 @@ void object_update_mouse_event(object_t *object, scene_t *scene,
 
 int object_add_collision(object_t *object, scene_t *scene,
     void (*collision)(object_t *this, object_t *other, scene_t *scene,
-    window_t *win), bool is_pixel);
+    window_t *win));
 
 /**
 ** @brief set object as visible

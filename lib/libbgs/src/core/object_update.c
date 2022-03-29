@@ -82,7 +82,7 @@ void object_update_collision_event(object_t *this, scene_t *scene,
     for (int i = 0; i < list->len; i++, elem = elem->next) {
         other = ((object_t *) elem->var);
         other_rect = get_object_global_bounces(other);
-        if (check_collision(&this_rect, &other_rect, this, other) == true) {
+        if (sfFloatRect_intersects(&this_rect, &other_rect, NULL) == sfTrue) {
             call_collision_fct(this, other, scene, win);
         } else {
             remove_object_this(this, other);

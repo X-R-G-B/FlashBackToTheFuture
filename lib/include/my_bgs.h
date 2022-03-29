@@ -27,6 +27,8 @@ typedef struct window_s window_t;
 typedef struct scene_s scene_t;
 typedef struct sprite_bigdata_s sprite_bigdata_t;
 typedef struct text_bigdata_s text_bigdata_t;
+typedef struct scene_loading_s scene_loading_t;
+typedef struct set_event_s set_event_t;
 
 enum object_type {
     SPRITE,
@@ -37,7 +39,6 @@ enum object_type {
 };
 
 struct sprite_bigdata_s {
-    sfImage *image;
     sfTexture *texture;
     sfVector2f pos;
     sfIntRect rect;
@@ -59,6 +60,7 @@ struct object_s {
         sfText *text;
         sfMusic *music;
     } drawable;
+    int plan;
     dico_t *components;
     bool is_visible;
     void (*update)(object_t *, scene_t *scene, window_t *win, float);
@@ -73,23 +75,31 @@ struct time_clock_s {
     sfTime time;
 };
 
+typedef struct plan_s {
+    int id;
+    list_ptr_t *displayables;
+    list_ptr_t *updates;
+    list_ptr_t *object;
+} plan_t;
+
 struct scene_s {
     bool pause;
     sfColor bg_color;
     list_ptr_t *to_remove;
-    list_ptr_t *updates;
+    list_ptr_t *plan;
     list_ptr_t *objects;
-    list_ptr_t *displayables;
     dico_t *components;
     void (*destroy)(void *);
 };
 
 struct window_s {
-    bool click_prev_call;
+    set_event_t *click;
     sfRenderWindow *win;
-    int scene_index;
-    list_ptr_t *scenes;
+    char *current_scene;
+    dico_t *scenes;
+    list_ptr_t *to_remove;
     dico_t *components;
+    scene_loading_t *loading;
 };
 
 int window_set_icon(window_t *win, char const path[]);
@@ -97,20 +107,6 @@ int window_set_icon(window_t *win, char const path[]);
 // ----------------------------------------------------------------------------
 // add.c
 // ----------------------------------------------------------------------------
-
-/**
-** @brief add a scene_t to a window_t
-**
-** @param win window in which the scene will be added
-** @param scene scene to add to the window
-**
-** @return {
-** BGS_ERR_INPUT : win or scene is NULL,
-** BGS_ERR_MALLOC : malloc failed,
-** BGS_OK : the scene has been added
-** }
-**/
-int window_add_scene(window_t *win, scene_t *scene);
 
 /**
 ** @brief add an object_t to a scene_t
@@ -124,7 +120,7 @@ int window_add_scene(window_t *win, scene_t *scene);
 ** BGS_OK : the object has been added
 ** }
 **/
-int scene_add_object(scene_t *scene, object_t *object);
+int scene_add_object(scene_t *scene, object_t *object, int plan);
 
 // ----------------------------------------------------------------------------
 // create_object.c
@@ -216,7 +212,7 @@ int object_set_sprite(object_t *object, char const *path, sfIntRect rect,
 object_t *create_object(
     void (*update)(object_t *, scene_t *, window_t *win, float),
     void (*display)(object_t *, dico_t *, dico_t *, sfRenderWindow *),
-    scene_t *scene);
+    scene_t *scene, int plan);
 
 // ----------------------------------------------------------------------------
 // create_scene.c
@@ -234,23 +230,32 @@ object_t *create_object(
 ** scene_t *: the scene has been created
 ** }
 **/
-scene_t *create_scene(window_t *win, sfColor bg_color);
+scene_t *create_scene(window_t *win, sfColor bg_color, const char *scene_name);
 
 // ----------------------------------------------------------------------------
 // loop.c
 // ----------------------------------------------------------------------------
 
 /**
-** @brief loop the game until the end
+** @brief change current scene
 **
-** @param win window to play
+** @param window window in which you want change the scene
+** @param scene_name scene name of the next current scene
 **
 ** @return {
-** BGS_ERR_INPUT : win is NULL,
-** BGS_ERR_INPUT : scene_index is bad,
-** BGS_OK : game ended successfully,
-** any other int : not registered errors
+** BGS_ERR_INPUT : window or scene is NULL,
+** BGS_ERR_MALLOC : malloc failed,
+** BGS_OK : the change will be on the next loop
 ** }
+**/
+int window_change_scene(window_t *window, const char *scene_name);
+
+/**
+** @brief launch the game (you have added a scene, and some object to it)
+** @param win the window of the game
+** @return BGS_ERR_INPUT : the scene index don't match any scene
+** @return BGS_OK : the game is ended succesfully
+** @return any other : some error
 **/
 int loop(window_t *win);
 
@@ -323,18 +328,23 @@ void window_set_framerate_limit(window_t *win, unsigned int limit);
 **/
 window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style);
 
+// ----------------------------------------------------------------------------
+// scene_loading.c
+// ----------------------------------------------------------------------------
+
 /**
-** @brief reload configs of object_t of a scene_t
+** @brief launch a different scene when loading some data
 **
-** @param scene scene to reload
+** @param window window used by loop
+** @param index index of the scene to use when loading
 **
 ** @return {
-** BGS_ERR_INPUT : scene is NULL or scene's object list can't be reset
-** BGS_ERR_MALLOC : malloc failed
-** BGS_OK : the scene has been reloaded
+** BGS_OK : the scene loading has started
 ** }
 **/
-int scene_reload_lists(scene_t *scene);
+int launch_scene_loading(window_t *window, const char *scene_name);
+
+list_ptr_t *create_button(scene_t *scene, const char *path);
 
 /**
 ** @brief remove an object (might cause segv)
@@ -345,14 +355,7 @@ int scene_reload_lists(scene_t *scene);
 **/
 void remove_object(object_t *object);
 
-/**
-** @brief remove a scene (might cause segv)
-**
-** use list_add_to_start(window->to_remove, scene) instead
-**
-** @param scene scene to destroy
-**/
-void remove_scene(scene_t *scene);
+void remove_scene(void *scene);
 
 /**
 ** @brief check and remove link if data is in list
@@ -366,5 +369,7 @@ void remove_scene(scene_t *scene);
 ** }
 **/
 bool check_list(list_ptr_t *list, void *data);
+
+int check_plan(dico_t *dico);
 
 #endif /* !BGS_H_ */

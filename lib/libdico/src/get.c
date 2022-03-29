@@ -12,22 +12,19 @@
 
 dico_t *dico_t_get_elem(dico_t *dico, char const *key)
 {
-    dico_t *cursor_last;
-    dico_t *cursor;
-    int is_found = 0;
-
     if (dico == NULL) {
         return (NULL);
     }
-    cursor = dico;
-    do {
-        if (my_strcmp(cursor->key, key) == 0) {
-            is_found = 1;
+    if (my_strcmp(dico->key, key) == 0) {
+        return (dico);
+    }
+    for (dico_t *tmp = dico->next; tmp != NULL &&
+            tmp != dico; tmp = tmp->next) {
+        if (my_strcmp(tmp->key, key) == 0) {
+            return (tmp);
         }
-        cursor_last = cursor;
-        cursor = cursor->next;
-    } while (cursor != NULL && is_found == 0 && cursor != dico);
-    return ((is_found) ? cursor_last : NULL);
+    }
+    return (NULL);
 }
 
 void *dico_t_get_value(dico_t *dico, char const *key)
@@ -39,4 +36,20 @@ void *dico_t_get_value(dico_t *dico, char const *key)
         return (NULL);
     }
     return (elem->value);
+}
+
+dico_t *dico_t_get_elem_ptr(dico_t *dico, void *ptr)
+{
+    if (dico == NULL) {
+        return (NULL);
+    }
+    if (dico->value == ptr) {
+        return (dico);
+    }
+    for (dico_t *tmp = dico->next; tmp != dico; tmp = tmp->next) {
+        if (tmp->value == ptr) {
+            return (tmp);
+        }
+    }
+    return (NULL);
 }

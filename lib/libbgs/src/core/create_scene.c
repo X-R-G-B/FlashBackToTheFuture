@@ -7,12 +7,14 @@
 
 #include <stdlib.h>
 #include "my_bgs.h"
+#include "libbgs_private.h"
 
-int sprite_set_texture(object_t *object, sfVector2f pos, sfIntRect rect)
+int sprite_set_texture(object_t *object, sfVector2f pos, sfIntRect rect,
+    const char *path)
 {
     object->drawable.sprite = sfSprite_create();
-    object->bigdata.sprite_bigdata.texture = sfTexture_createFromImage(
-        object->bigdata.sprite_bigdata.image, NULL);
+    object->bigdata.sprite_bigdata.texture =
+        sfTexture_createFromFile(path, NULL);
     if (object->drawable.sprite == NULL ||
         object->bigdata.sprite_bigdata.texture == NULL) {
         return BGS_ERR_MALLOC;
@@ -30,16 +32,12 @@ int sprite_set_texture(object_t *object, sfVector2f pos, sfIntRect rect)
 
 static int init_list(scene_t *scene)
 {
-    scene->displayables = list_create();
-    if (scene->displayables == NULL) {
+    scene->plan = list_create();
+    if (scene->plan == NULL) {
         return BGS_ERR_MALLOC;
     }
     scene->objects = list_create();
     if (scene->objects == NULL) {
-        return BGS_ERR_MALLOC;
-    }
-    scene->updates = list_create();
-    if (scene->updates == NULL) {
         return BGS_ERR_MALLOC;
     }
     scene->to_remove = list_create();
@@ -49,17 +47,22 @@ static int init_list(scene_t *scene)
     return BGS_OK;
 }
 
-scene_t *create_scene(window_t *win, sfColor bg_color)
+scene_t *create_scene(window_t *win, sfColor bg_color, const char *scene_name)
 {
-    scene_t *scene = malloc(sizeof(scene_t));
+    scene_t *scene = NULL;
 
-    if (scene == NULL || win == NULL) {
+    if (win == NULL) {
         return NULL;
+    }
+    scene = malloc(sizeof(scene_t));
+    if (scene == NULL) {
+        return (NULL);
     }
     scene->components = NULL;
     scene->bg_color = bg_color;
     scene->pause = false;
-    if (init_list(scene) != BGS_OK || window_add_scene(win, scene) != BGS_OK) {
+    if (init_list(scene) != BGS_OK ||
+            window_add_scene(win, scene, scene_name) != BGS_OK) {
         return NULL;
     }
     return scene;
