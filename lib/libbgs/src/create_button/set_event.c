@@ -10,20 +10,20 @@
 
 static int set_hover_event(object_t *obj, char *txt)
 {
-    int on = 0;
-    int off = 0;
+    void (*on)(object_t *, scene_t *, window_t *, set_event_t *) = NULL;
+    void (*off)(object_t *, scene_t *, window_t *, set_event_t *) = NULL;
 
-    for (int i = 1; str_on_hover[i] != NULL && on == 0; i++) {
-        if (my_strcmp(txt, str_on_hover[i]) == 1) {
-            on = i;
+    for (int i = 0; str_on_hover[i] != NULL && on == NULL; i++) {
+        if (my_strcmp(txt, str_on_hover[i]) == 0) {
+            on = on_hover[i];
         }
     }
-    for (int i = 1; str_off_hover[i - 1] != NULL && off == 0; i++) {
-        if (my_strcmp(txt, str_off_hover[i - 1]) == 1) {
-            off = i;
+    for (int i = 0; str_off_hover[i] != NULL && off == NULL; i++) {
+        if (my_strcmp(txt, str_off_hover[i]) == 0) {
+            off = off_hover[i];
         }
     }
-    if (create_event(on_hover[on], true, obj, off_hover[off]) == NULL) {
+    if (create_event(on, true, obj, off) == NULL) {
         return BGS_ERR_MALLOC;
     }
     return BGS_OK;

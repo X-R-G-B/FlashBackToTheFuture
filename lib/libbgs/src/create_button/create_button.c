@@ -10,7 +10,7 @@
 #include "my_strings.h"
 #include "my_bgs_button_generator.h"
 
-static int set_sprite(object_t *sprite, dico_t *dico, scene_t *scene)
+static int set_sprite(object_t *sprite, dico_t *dico)
 {
     if (set_event(sprite, dico) != BGS_OK ||
         set_color(sprite, dico) != BGS_OK) {
@@ -21,7 +21,8 @@ static int set_sprite(object_t *sprite, dico_t *dico, scene_t *scene)
 
 static int init_sprite(float *pos, char *path, scene_t *scene, dico_t *dico)
 {
-    object_t *sprite = create_object(NULL, NULL, scene, 0);
+    int plan = check_plan(dico);
+    object_t *sprite = create_object(NULL, NULL, scene, plan);
     any_t *size = dico_t_get_any(dico, "size");
 
     if (sprite == NULL || object_set_sprite(sprite, path, (sfIntRect)
@@ -37,14 +38,15 @@ static int init_sprite(float *pos, char *path, scene_t *scene, dico_t *dico)
         sfSprite_setScale(sprite->drawable.sprite, (sfVector2f) {size->value.f,
             size->value.f});
     }
-    return set_sprite(sprite, dico, scene);
+    return set_sprite(sprite, dico);
 }
 
 static int init_text(float *pos, scene_t *scene, char *arg[2], dico_t *dico)
 {
     any_t *size = dico_t_get_any(dico, "text size");
     any_t *char_size = dico_t_get_any(dico, "char size");
-    object_t *text = create_object(NULL, NULL, scene, 0);
+    int plan = check_plan(dico);
+    object_t *text = create_object(NULL, NULL, scene, plan);
 
     if (text == NULL || object_set_text(text, arg[0], arg[1],
         (sfVector2f) {pos[1], pos[0]}) != BGS_OK) {

@@ -31,6 +31,18 @@ void destroy_event(void *data)
     free(event);
 }
 
+static bool check_elem_in_list(list_ptr_t *list, void *data)
+{
+    list_t *elem = list->start;
+
+    for (int i = 0; i < list->len; i++, elem = elem->next) {
+        if (elem->var == data) {
+            return true;
+        }
+    }
+    return false;
+}
+
 static void check_obj_in_update_list(object_t *obj)
 {
     scene_t *scene = dico_t_get_value(obj->components, "scene");
@@ -40,7 +52,7 @@ static void check_obj_in_update_list(object_t *obj)
         return;
     }
     plan = get_element_i_var(scene->plan, obj->plan);
-    if (check_list(plan->updates, obj) == false) {
+    if (check_elem_in_list(plan->updates, obj) == false) {
         list_add_to_end(plan->updates, obj);
     }
 }
