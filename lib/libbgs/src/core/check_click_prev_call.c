@@ -20,11 +20,12 @@ bool check_click_prev_call(bool check, window_t *win, set_event_t *set_event)
         event_node->event_code.mouse != sfMouseLeft) {
         return check;
     }
-    if (check == true && win->click_prev_call == true) {
-        check = true;
-    }
-    if (check == true) {
-        win->click_prev_call = true;
+    if (check == true && win->click == NULL) {
+        win->click = set_event;
+    } else if (win->click == set_event) {
+        return check;
+    } else {
+        return false;
     }
     return check;
 }

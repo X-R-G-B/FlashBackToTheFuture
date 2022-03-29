@@ -6,7 +6,14 @@
         },
         {
             "pos": [400.0, 400.0],
+            "text": "fst",
+            "plan": -1,
             "sprite path": "./tests/dirt.png"
+        },
+        {
+            "pos": [200.0, 200.0],
+            "text": "scd",
+            "sprite path": "./tests/path.png"
         }
     ]
 }
