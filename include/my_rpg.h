@@ -19,8 +19,16 @@ typedef enum state_e {
     STUNT
 } state_t;
 
+typedef enum dir_e {
+    UP,
+    RIGHT,
+    DOWN,
+    LEFT
+} dir_t;
+
 typedef struct player_s {
     state_t state;
+    dir_t dir;
     object_t *obj;
 } player_t;
 
