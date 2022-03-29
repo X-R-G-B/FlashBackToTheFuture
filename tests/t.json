@@ -2,6 +2,10 @@
     "buttons": [
         {
             "pos": [200.0, 200.0],
+            "sprite path": "./tests/dirt.png"
+        },
+        {
+            "pos": [400.0, 400.0],
             "text": "fst",
             "plan": -1,
             "sprite path": "./tests/dirt.png"
