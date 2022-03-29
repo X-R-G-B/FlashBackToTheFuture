@@ -109,23 +109,6 @@ int window_set_icon(window_t *win, char const path[]);
 // ----------------------------------------------------------------------------
 
 /**
-<<<<<<< HEAD
-=======
-** @brief add a scene_t to a window_t
-**
-** @param win window in which the scene will be added
-** @param scene scene to add to the window
-**
-** @return {
-** BGS_ERR_INPUT : win or scene is NULL,
-** BGS_ERR_MALLOC : malloc failed,
-** BGS_OK : the scene has been added
-** }
-**/
-int window_add_scene(window_t *win, scene_t *scene);
-
-/**
->>>>>>> dev
 ** @brief add an object_t to a scene_t
 **
 ** @param scene scene in which the object will be added
@@ -254,7 +237,6 @@ scene_t *create_scene(window_t *win, sfColor bg_color, const char *scene_name);
 // ----------------------------------------------------------------------------
 
 /**
-<<<<<<< HEAD
 ** @brief change current scene
 **
 ** @param window window in which you want change the scene
@@ -274,18 +256,6 @@ int window_change_scene(window_t *window, const char *scene_name);
 ** @return BGS_ERR_INPUT : the scene index don't match any scene
 ** @return BGS_OK : the game is ended succesfully
 ** @return any other : some error
-=======
-** @brief loop the game until the end
-**
-** @param win window to play
-**
-** @return {
-** BGS_ERR_INPUT : win is NULL,
-** BGS_ERR_INPUT : scene_index is bad,
-** BGS_OK : game ended successfully,
-** any other int : not registered errors
-** }
->>>>>>> dev
 **/
 int loop(window_t *win);
 
