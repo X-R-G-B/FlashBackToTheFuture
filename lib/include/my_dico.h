@@ -30,7 +30,7 @@ void *dico_t_pop_value(dico_t *elem, char const *key);
 
 dico_t *dico_t_pop_elem(dico_t *elem, char const *key);
 
-int dico_t_rem(dico_t *dico, char const *key);
+dico_t *dico_t_rem(dico_t *dico, char const *key);
 
 int dico_t_destroy(dico_t *dico);
 
@@ -38,6 +38,10 @@ void *dico_t_get_value(dico_t *dico, char const *key);
 
 dico_t *dico_t_get_elem(dico_t *dico, char const *key);
 
+dico_t *dico_t_get_elem_ptr(dico_t *dico, void *);
+
 void dico_t_destroy_void(void *data);
+
+dico_t *dico_t_rem_ptr(dico_t *dico, void *ptr);
 
 #endif

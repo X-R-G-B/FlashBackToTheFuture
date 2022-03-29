@@ -5,46 +5,13 @@
 ** remove
 */
 
+#include <SFML/System/Mutex.h>
+#include <SFML/System/Thread.h>
 #include <stdlib.h>
 #include "list.h"
 #include "my_bgs.h"
-
-bool check_list(list_ptr_t *list, void *data)
-{
-    list_t *elem = list->start;
-
-    for (int i = 0; i < list->len; i++, elem = elem->next) {
-        if (elem->var == data) {
-            rm_elem_i(list, i);
-            return true;
-        }
-    }
-    return false;
-}
-
-void window_remove(scene_t *scene, window_t *win)
-{
-    object_t *elem = NULL;
-
-    if (scene->to_remove == NULL) {
-        check_list(win->scenes, scene);
-        remove_scene(scene);
-        return;
-    }
-    if (scene == NULL || scene->to_remove->len == 0) {
-        return;
-    }
-    elem = scene->to_remove->start->var;
-    for (; scene->to_remove->len > 0; elem = (scene->to_remove->start != NULL)
-        ? scene->to_remove->start->var : NULL) {
-        if (check_list(scene->objects, elem) == true) {
-            check_list(scene->displayables, elem);
-            check_list(scene->updates, elem);
-            rm_fst_elem(scene->to_remove);
-            remove_object(elem);
-        }
-    }
-}
+#include "libbgs_private.h"
+#include "my_dico.h"
 
 void remove_object(object_t *object)
 {
@@ -52,7 +19,6 @@ void remove_object(object_t *object)
         case SPRITE:
             sfSprite_destroy(object->drawable.sprite);
             sfTexture_destroy(object->bigdata.sprite_bigdata.texture);
-            sfImage_destroy(object->bigdata.sprite_bigdata.image);
             break;
         case TEXT:
             sfText_destroy(object->drawable.text);
@@ -70,18 +36,41 @@ void remove_object(object_t *object)
     free(object);
 }
 
-void remove_scene(scene_t *scene)
+static void destroy_plan(list_ptr_t *list)
 {
-    list_t *elem = scene->objects->start;
+    list_t *elem = NULL;
+    plan_t *plan = NULL;
 
+    if (list == NULL) {
+        return;
+    }
+    elem = list->start;
+    for (int i = 0; i < list->len; i++, elem = elem->next) {
+        plan = elem->var;
+        free_list(plan->displayables);
+        free_list(plan->updates);
+        free_list(plan->object);
+        free(plan);
+    }
+    free_list(list);
+}
+
+void remove_scene(void *scene_void)
+{
+    scene_t *scene = scene_void;
+    list_t *elem = NULL;
+
+    if (scene == NULL) {
+        return;
+    }
+    elem = scene->objects->start;
     for (int i = 0; i < scene->objects->len; i++, elem = elem->next) {
         remove_object(((object_t *) elem->var));
     }
     if (scene->components != NULL) {
         dico_t_destroy(scene->components);
     }
-    free_list(scene->displayables);
-    free_list(scene->updates);
+    destroy_plan(scene->plan);
     free_list(scene->objects);
     if (scene->to_remove != NULL) {
         free_list(scene->to_remove);
@@ -89,18 +78,34 @@ void remove_scene(scene_t *scene)
     free(scene);
 }
 
+void remove_loading_scene(window_t *win)
+{
+    if (win->loading == NULL) {
+        return;
+    }
+    if (win->loading->mutex != NULL) {
+        sfMutex_destroy(win->loading->mutex);
+    }
+    if (win->loading->thread != NULL) {
+        sfThread_destroy(win->loading->thread);
+    }
+    if (win->loading->countor == 0) {
+        sfRenderWindow_destroy(win->win);
+    }
+    free(win->loading);
+}
+
 void remove_window(window_t *win)
 {
-    list_t *elem = win->scenes->start;
-    scene_t *scene = NULL;
-
-    for (int i = 0; i < win->scenes->len; i++) {
-        scene = ((scene_t *) elem->var);
-        remove_scene(scene);
-        elem = elem->next;
+    if (win == NULL) {
+        return;
     }
-    free_list(win->scenes);
+    dico_t_destroy(win->scenes);
+    free_list(win->to_remove);
     dico_t_destroy(win->components);
-    sfRenderWindow_destroy(win->win);
+    remove_loading_scene(win);
+    if (win->current_scene != NULL) {
+        free(win->current_scene);
+    }
     free(win);
 }

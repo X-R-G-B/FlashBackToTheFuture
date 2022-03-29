@@ -42,14 +42,25 @@ SRC_CORE		:=	add.c					\
 					create_object.c			\
 					create_scene.c			\
 					event.c					\
-					scene_reload_lists.c	\
 					check_click_prev_call.c	\
+					object_set_type.c		\
 					object_set_origin.c		\
 					loop.c					\
 					object_update.c			\
+					check_list.c			\
+					window_remove.c			\
 					remove.c				\
+					scene_loading.c			\
+					scene_loop.c			\
 					start.c
 SRC_CORE		:=	$(addprefix core/,$(SRC_CORE))
+
+SRC_BUTTON		:= 	check_set_color.c	\
+					create_button.c		\
+					check_plan.c		\
+					set_event.c			\
+	 				fill_obj_list.c
+SRC_BUTTON		:=	$(addprefix create_button/,$(SRC_BUTTON))
 
 SRC_PRESET		:=	preset_display.c			\
 					set_unset_bigdata_display.c
@@ -60,16 +71,8 @@ SRC_UTILS		:=	cast.c			\
 					set_window_style.c
 SRC_UTILS		:=	$(addprefix utils/,$(SRC_UTILS))
 
-SRC_HITBOX		:=	check_image_pixel.c			\
-					squares_gestion.c			\
-					get_right_checkbox.c		\
-					find_higher_pixels_group.c	\
-					check_collision.c			\
-					get_rect_arr.c
-SRC_HITBOX		:=	$(addprefix hitbox/,$(SRC_HITBOX))
-
 SRC		:=	$(SRC_COMPONENTS) $(SRC_CORE) $(SRC_PRESET) $(SRC_UTILS)	\
-			$(SRC_HITBOX)
+			$(SRC_BUTTON)
 SRC		:=	$(addprefix $(SRCDIR),$(SRC))
 
 OBJ		=	$(SRC:%.c=%.o)
