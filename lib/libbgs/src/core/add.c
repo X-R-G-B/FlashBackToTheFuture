@@ -26,9 +26,10 @@ int window_add_scene(window_t *win, scene_t *scene, const char *scene_name)
 
 static int add_obj_in_layer(layer_t *layer, object_t *obj)
 {
-    if (list_add_to_end(layer->object, obj) == NULL || (obj->update != NULL &&
-        list_add_to_end(layer->updates, obj) == NULL) || (obj->display != NULL
-        && list_add_to_end(layer->displayables, obj) == NULL)) {
+    if (list_add_to_end(layer->object, obj) == NULL ||
+        (obj->update != NULL && list_add_to_end(layer->updates, obj) == NULL) ||
+        (obj->display != NULL &&
+        list_add_to_end(layer->displayables, obj) == NULL)) {
         return BGS_ERR_MALLOC;
     }
     return BGS_OK;
