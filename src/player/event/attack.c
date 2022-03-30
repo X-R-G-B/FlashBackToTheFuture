@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-void attack(__attribute__((unused)) object_t *obj, __attribute__((unused))
+void attack_event(__attribute__((unused)) object_t *obj, __attribute__((unused))
     scene_t *scene, window_t *win,
     __attribute__((unused)) set_event_t *set_event)
 {

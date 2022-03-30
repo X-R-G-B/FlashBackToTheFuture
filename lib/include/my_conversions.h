@@ -14,7 +14,8 @@
 ** @return the number (0 if it not a number (my_atoi_err))
 **/
 int my_atoi(char const *str);
-float my_atof(char const *str);
+int my_compute_power_rec(int, int);
+double my_atof(char const *str);
 double my_atodf(char const *str);
 
 /**
