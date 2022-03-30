@@ -24,7 +24,8 @@ int object_set_sound(object_t *object, char const *path, bool play_now,
     if (object->drawable.sound == NULL) {
         return BGS_ERR_MALLOC;
     }
-    sfSound_setBuffer(object->drawable.sound, object->bigdata.sound_bigdata.buffer);
+    sfSound_setBuffer(object->drawable.sound,
+            object->bigdata.sound_bigdata.buffer);
     if (play_now == true) {
         sfSound_play(object->drawable.sound);
     }
