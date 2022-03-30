@@ -5,10 +5,10 @@
 ** set object type sound
 */
 
-#include "my_bgs.h"
-#include "my_bgs_components.h"
 #include <SFML/Audio/Sound.h>
 #include <SFML/Audio/SoundBuffer.h>
+#include "my_bgs.h"
+#include "my_bgs_components.h"
 
 int object_set_sound(object_t *object, char const *path, bool play_now,
     bool loop_now)
