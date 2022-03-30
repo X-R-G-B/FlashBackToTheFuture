@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2022
-** my_atof
+** libconv
 ** File description:
 ** change string to float (double)
 */
@@ -8,12 +8,10 @@
 #include <stddef.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include "my_strings.h"
+#include "my_conversions.h"
 
-int my_compute_power_rec(int, int);
-int my_strlen(char *);
-int my_atoi(char const *);
-
-int get_float_gap(char *str)
+int get_float_gap(const char *str)
 {
     int len = 0;
     int i = 0;
@@ -37,7 +35,7 @@ int increment_str(char str, char *result, int *indx)
     return 0;
 }
 
-char *get_int_str(char *str)
+char *get_int_str(const char *str)
 {
     char *result = NULL;
     int check = 0;
@@ -48,7 +46,7 @@ char *get_int_str(char *str)
     }
     for (; str[check] != '\0' && str[check] != '.'; check++);
     if (str[check] != '.') {
-        return str;
+        return my_strdup(str);
     }
     result = malloc(sizeof(char) * my_strlen(str));
     for (int i = 0; str[i] != '\0'; i++) {
@@ -57,7 +55,7 @@ char *get_int_str(char *str)
     return result;
 }
 
-double my_atof(char *str)
+double my_atof(const char *str)
 {
     char *int_str = NULL;
     int gap_float = 0;

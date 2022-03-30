@@ -1,6 +1,6 @@
 /*
 ** EPITECH PROJECT, 2022
-** FlashBackToTheFuture
+** libconv
 ** File description:
 ** my_compute_power_rec
 */
