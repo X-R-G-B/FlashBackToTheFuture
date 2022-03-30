@@ -102,6 +102,26 @@ struct on_left_click_s {
     void (*left_click)(object_t *, scene_t *, window_t *win);
 };
 
+/**
+** @brief add a component to the window component
+**
+** You can add any component to a window component
+**
+** @param win window_t window in which you will add a component
+** @param data void *data is your component
+** @param key const char[] is your key linked to the component
+** @param destroy void (*destroy)(void *) is the function pointer
+** which will destroy your component
+**
+** @return {
+** BGS_ERR_INPUT : win or data or key is NULL
+** BGS_ERR_MALLOC : malloc failed
+** BGS_OK : the component has been successfully added to the window
+** }
+**/
+int window_add_component(window_t *win, void *data, const char key[],
+    void (*destroy)(void *));
+
 int object_add_components(object_t *object, void *data, const char key[],
     void (*destroy)(void *));
 
