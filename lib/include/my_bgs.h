@@ -26,6 +26,7 @@ typedef struct object_s object_t;
 typedef struct window_s window_t;
 typedef struct scene_s scene_t;
 typedef struct sprite_bigdata_s sprite_bigdata_t;
+typedef struct sound_bigdata_s sound_bigdata_t;
 typedef struct text_bigdata_s text_bigdata_t;
 typedef struct scene_loading_s scene_loading_t;
 typedef struct set_event_s set_event_t;
@@ -34,6 +35,7 @@ enum object_type {
     SPRITE,
     TEXT,
     AUDIO,
+    SOUND,
     CUSTOM,
     UNSET
 };
@@ -49,16 +51,22 @@ struct text_bigdata_s {
     sfVector2f pos;
 };
 
+struct sound_bigdata_s {
+    sfSoundBuffer *buffer;
+};
+
 struct object_s {
     enum object_type type;
     union bigdata {
         sprite_bigdata_t sprite_bigdata;
         text_bigdata_t text_bigdata;
+        sound_bigdata_t sound_bigdata;
     } bigdata;
     union drawable {
         sfSprite *sprite;
         sfText *text;
         sfMusic *music;
+        sfSound *sound;
     } drawable;
     int plan;
     dico_t *components;
@@ -141,6 +149,23 @@ int scene_add_object(scene_t *scene, object_t *object, int plan);
 ** }
 **/
 int object_set_audio(object_t *object, char const *path, bool play_now,
+    bool loop_now);
+
+/**
+** @brief setup an object_t to be a sound
+**
+** @param object object to setup
+** @param path path to the sound (.ogg is better)
+** @param play_now indicate if the sound need to be played just after creation
+** @param loop_now indicate if the sound need to be looped
+**
+** @return {
+** BGS_ERR_INPUT : object ot path is NULL,
+** BGS_ERR_PATH : path to the sound is bad,
+** BGS_OK : the object has been setup
+** }
+**/
+int object_set_sound(object_t *object, char const *path, bool play_now,
     bool loop_now);
 
 /**
