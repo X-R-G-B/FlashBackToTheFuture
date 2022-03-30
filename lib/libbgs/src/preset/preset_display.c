@@ -24,9 +24,6 @@ void display_sprite(object_t *object,
         sfSprite_setTextureRect(object->drawable.sprite,
             object->bigdata.sprite_bigdata.rect);
     }
-    sfSprite_setOrigin(object->drawable.sprite, (sfVector2f)
-        {object->bigdata.sprite_bigdata.rect.width / 2,
-        object->bigdata.sprite_bigdata.rect.height / 2});
     sfRenderWindow_drawSprite(win, object->drawable.sprite, NULL);
 }
 

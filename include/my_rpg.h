@@ -21,9 +21,9 @@ typedef enum state_e {
 
 typedef enum dir_e {
     UP,
-    RIGHT,
+    LEFT,
     DOWN,
-    LEFT
+    RIGHT
 } dir_t;
 
 typedef struct player_s {
@@ -41,5 +41,8 @@ void set_stop(player_t *player);
 
 void attack(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *set_event);
+
+void attack_event(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *set_event);
 
 #endif /* !RPG_H_ */
