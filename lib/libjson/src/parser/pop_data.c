@@ -50,6 +50,7 @@ static int fill_nb(list_ptr_t *pile, any_t *any)
     if (my_strcontainc(any_str.value.str, '.')) {
         any->type = FLOAT;
         any->value.f = my_atof(any_str.value.str);
+        printf("valuea: %f\n", any->value.f);
     } else {
         any->value.i = my_atoi(any_str.value.str);
     }

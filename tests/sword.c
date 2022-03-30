@@ -27,7 +27,7 @@ int main(void)
     any_t *stop = parse_json_file("./assets/data/player/stop.json");
 
     win->components = dico_t_add_data(win->components, "player", player, free);
-    player->dir = DOWN;
+    player->dir = LEFT;
     player->state = STOP;
     player->obj = create_object(update_player, NULL, scene, 0);
     player->obj->components = dico_t_add_data(player->obj->components, "stop",
