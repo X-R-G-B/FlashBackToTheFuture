@@ -34,9 +34,8 @@ SRC_UPDATE	:= $(addprefix update/,$(SRC_UPDATE))
 SRC_PLAYER	:=	set_stop.c $(SRC_EVENT) $(SRC_UPDATE)
 SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))
 
-SRC			:=	$(SRC_PLAYER)
+SRC			:=	main.c $(SRC_PLAYER)
 SRC			:=	$(addprefix src/,$(SRC))
-SRC			:=	$(SRC) tests/sword.c
 
 OBJ			:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------

@@ -17,6 +17,8 @@ static void apply_rect(player_t *player, const char *key, dico_t *dico)
     }
     player->obj->bigdata.sprite_bigdata.rect = (sfIntRect) {rect[0], rect[1],
         rect[2], rect[3]};
+    sfSprite_setOrigin(player->obj->drawable.sprite, (sfVector2f)
+        {rect[2] / 2, rect[3] / 2});
     player->state = STOP;
 }
 
@@ -27,7 +29,6 @@ static void check_state(player_t *player, any_t *stop)
         apply_rect(player, "up", stop->value.dict);
         break;
     case RIGHT:
-        sfSprite_setScale(player->obj->drawable.sprite, (sfVector2f) {-1, 1});
         apply_rect(player, "left", stop->value.dict);
         break;
     case LEFT:
