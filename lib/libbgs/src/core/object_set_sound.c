@@ -7,6 +7,7 @@
 
 #include "my_bgs.h"
 #include "my_bgs_components.h"
+#include <SFML/Audio/Sound.h>
 #include <SFML/Audio/SoundBuffer.h>
 
 int object_set_sound(object_t *object, char const *path, bool play_now,
@@ -23,12 +24,11 @@ int object_set_sound(object_t *object, char const *path, bool play_now,
     if (object->drawable.sound == NULL) {
         return BGS_ERR_MALLOC;
     }
+    sfSound_setBuffer(object->drawable.sound, object->bigdata.sound_bigdata.buffer);
     if (play_now == true) {
         sfSound_play(object->drawable.sound);
     }
-    if (loop_now == true) {
-        sfSound_setLoop(object->drawable.sound, sfTrue);
-    }
+    sfSound_setLoop(object->drawable.sound, loop_now);
     object->type = SOUND;
     return BGS_OK;
 }
