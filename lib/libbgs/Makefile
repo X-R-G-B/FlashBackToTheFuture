@@ -52,7 +52,8 @@ SRC_CORE		:=	add.c					\
 					remove.c				\
 					scene_loading.c			\
 					scene_loop.c			\
-					start.c
+					start.c					\
+					object_set_sound.c
 SRC_CORE		:=	$(addprefix core/,$(SRC_CORE))
 
 SRC_BUTTON		:= 	check_set_color.c	\
