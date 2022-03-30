@@ -28,16 +28,18 @@ SRCDIR		=	src/
 
 # ----------------------------------------------------------------------------
 # SRC
-SRC		:=	my_atoi.c 			\
-			my_atoi_err.c 		\
-			my_itoa.c			\
-			my_itoa_base.c		\
-			my_itoa_base_err.c	\
-			my_atof.c			\
-			my_atof_err.c		\
-			my_itoa_err.c		\
-			my_atodf.c			\
-			my_atodf_err.c
+SRC		:=	my_atoi.c 				\
+			my_atoi_err.c 			\
+			my_itoa.c				\
+			my_itoa_base.c			\
+			my_itoa_base_err.c		\
+			my_atof.c				\
+			my_atof_err.c			\
+			my_itoa_err.c			\
+			my_atodf.c				\
+			my_atodf_err.c			\
+			my_compute_power_rec.c
+
 SRC		:=	$(addprefix $(SRCDIR),$(SRC))
 
 OBJ		=	$(SRC:%.c=%.o)
