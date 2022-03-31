@@ -41,7 +41,7 @@ static void scene_loading_loop(void *win)
             need_terminate == 0) {
         ret = scene_handling(&window, timer, window->loading->scene_name);
         if (ret == BGS_OK) {
-            ret = event_handling(window->win, window);
+            ret = event_handling(window->win);
         }
         need_terminate = get_state(window->loading);
     }
