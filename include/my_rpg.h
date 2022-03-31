@@ -23,9 +23,17 @@ typedef enum state_e {
     STUNT
 } state_t;
 
+typedef enum player_dir_e {
+    PLAYER_RIGHT,
+    PLAYER_DOWN,
+    PLAYER_LEFT,
+    PLAYER_UP
+} player_dir_t;
+
 typedef struct player_s {
     state_t state;
     object_t *obj;
+    player_dir_t player_dir;
 } player_t;
 
 #endif /* !RPG_H_ */
