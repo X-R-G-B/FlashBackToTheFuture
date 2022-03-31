@@ -60,7 +60,7 @@ int loop(window_t *win)
     while (sfRenderWindow_isOpen(win->win) && ret == BGS_OK) {
         ret = scene_handling(&win, timer, win->current_scene);
         if (ret == BGS_OK) {
-            ret = event_handling(win->win, win);
+            ret = event_handling(win->win);
         }
     }
     destroy_loop_data(win, timer, ret);
