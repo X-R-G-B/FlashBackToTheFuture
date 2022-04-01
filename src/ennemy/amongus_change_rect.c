@@ -6,20 +6,39 @@
 */
 
 #include <SFML/Graphics/Rect.h>
+#include <SFML/Graphics/Sprite.h>
+#include <SFML/System/Vector2.h>
+#include <math.h>
 #include "my_bgs.h"
 #include "my_dico.h"
 #include "my_json.h"
+#include "my_strings.h"
 
-static void change_among_us_state(any_t *dico, object_t *obj, window_t *win)
+static const double pi = 3.1415926535;
+
+static void change_among_us_state(object_t *obj, window_t *win, any_t *state)
 {
-    any_t *state = get_from_any(dico, "d", "state");
+    sfVector2i direction = sfMouse_getPositionRenderWindow(win->win);
+    sfVector2f current = sfSprite_getPosition(obj->drawable.sprite);
+    double angle = 0;
 
-    if (state == NULL || state->type != STR) {
-        return;
+    angle = atan2(current.y - direction.y, current.x - direction.x)
+        * 180 / pi;
+    if (45 <= angle && angle < 135 && my_strcmp(state->value.str, "1")) {
+        my_strealloc(&state->value.str, "1");
+    }
+    if ((135 <= angle || -135 > angle) && my_strcmp(state->value.str, "0")) {
+        my_strealloc(&state->value.str, "0");
+    }
+    if (-135 <= angle && angle < -45 && my_strcmp(state->value.str, "2")) {
+        my_strealloc(&state->value.str, "2");
+    }
+    if (-45 <= angle && angle < 45 && my_strcmp(state->value.str, "3")) {
+        my_strealloc(&state->value.str, "3");
     }
 }
 
-static float *get_amongus_rect(any_t *dico)
+static float *get_amongus_rect(any_t *dico, object_t *obj, window_t *win)
 {
     static float rect[4] = {0};
     any_t *state = get_from_any(dico, "d", "state");
@@ -28,6 +47,7 @@ static float *get_amongus_rect(any_t *dico)
     if (dico == NULL || state == NULL || state->type != STR) {
         return (NULL);
     }
+    change_among_us_state(obj, win, state);
     for (int i = 0; i < 4; i++) {
         tmp = get_from_any(dico, "da", state->value.str, i);
         if (tmp == NULL || tmp->type != FLOAT) {
@@ -38,14 +58,14 @@ static float *get_amongus_rect(any_t *dico)
     return (rect);
 }
 
-int change_amongus_rect(any_t *dico, object_t *obj)
+int change_amongus_rect(any_t *dico, object_t *obj, window_t *win)
 {
     sfIntRect rect = {0};
     float *rect_any = NULL;
     any_t *current = get_from_any(dico, "d", "current");
     any_t *nb_current = get_from_any(dico, "d", "max_current");
 
-    rect_any = get_amongus_rect(dico);
+    rect_any = get_amongus_rect(dico, obj, win);
     if (rect_any == NULL || current == NULL || current->type != INT ||
             nb_current == NULL || nb_current->type != INT) {
         return (BGS_ERR_INPUT);
@@ -55,7 +75,7 @@ int change_amongus_rect(any_t *dico, object_t *obj)
     rect.left += rect.width * current->value.i;
     obj->bigdata.sprite_bigdata.rect = rect;
     sfSprite_setOrigin(obj->drawable.sprite,
-            (sfVector2f) {rect.width / 2, rect.height / 2});
+            (sfVector2f) {rect.width / 2.0, rect.height / 2.0});
     current->value.i = (current->value.i + 1) % nb_current->value.i;
     return (BGS_OK);
 }
