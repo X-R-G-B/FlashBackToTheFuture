@@ -24,7 +24,9 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC			:=	src/main.c
+SRC			:=	src/main.c	\
+				./src/ennemy/amongus.c \
+				./src/ennemy/amongus_change_rect.c
 
 OBJ			:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------
