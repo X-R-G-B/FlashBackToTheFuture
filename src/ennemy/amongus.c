@@ -17,7 +17,8 @@ static const char ennemy_among_us[] = "ENNEMY_AMONG_US";
 static const char ennemy_among_us_json[] = "./assets/json/amongus.json";
 static const char ennemy_among_us_png[] = "./assets/amongus.png";
 
-static void update_among_us_time(object_t *obj, any_t *dico, float dtime)
+static void update_among_us_time(object_t *obj, any_t *dico, float dtime,
+        window_t *win)
 {
     any_t *value = get_from_any(dico, "d", "time");
     value->value.f += dtime;
@@ -25,14 +26,16 @@ static void update_among_us_time(object_t *obj, any_t *dico, float dtime)
         return;
     }
     value->value.f -= 1;
-    change_amongus_rect(dico, obj);
+    change_amongus_rect(dico, obj, win);
 }
 
-static void update_among_us(object_t *obj, scene_t *scn, window_t *win, float dtime)
+static void update_among_us(object_t *obj,
+        __attribute__((unused)) scene_t *scn, window_t *win,
+        float dtime)
 {
     any_t *dico = dico_t_get_value(obj->components, ennemy_among_us);
 
-    update_among_us_time(obj, dico, dtime);
+    update_among_us_time(obj, dico, dtime, win);
 }
 
 int create_amongus(scene_t *scene, int pos_x, int pos_y)
