@@ -29,6 +29,7 @@ typedef enum player_dir_e {
     PLAYER_LEFT,
     PLAYER_UP
 } player_dir_t;
+
 typedef enum dir_e {
     UP,
     LEFT,
