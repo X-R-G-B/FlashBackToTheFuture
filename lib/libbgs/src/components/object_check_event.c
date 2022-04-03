@@ -66,14 +66,15 @@ void check_event(set_event_t *set_event, object_t *object,
 {
     bool check = true;
 
-    if ((set_event->list_event == NULL && set_event->hover == false) ||
-        set_event == NULL) {
+    if (set_event == NULL ||
+        (set_event->list_event == NULL && set_event->hover == false)) {
         return;
     }
     check = check_event_nodes(set_event, object, win);
     check = check_click_prev_call(check, win, set_event);
     if (check == true && set_event->on != NULL &&
         sfRenderWindow_isOpen(win->win)) {
+        printf("%p, %p, %p, %p, %p\n", set_event, set_event->on, object, scene, win);
         set_event->on(object, scene, win, set_event);
         scene_loading_handling(win);
     }
