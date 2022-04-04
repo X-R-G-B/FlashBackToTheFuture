@@ -41,12 +41,17 @@ static void check_state(player_t *player, any_t *stop)
 
 void set_stop(player_t *player)
 {
+    any_t *data = NULL;
     any_t *stop = NULL;
 
     if (player == NULL) {
         return;
     }
-    stop = dico_t_get_value(player->obj->components, "stop");
+    data = dico_t_get_value(player->obj->components, "data");
+    if (data == NULL) {
+        return;
+    }
+    stop = dico_t_get_any(data->value.dict, "stop");
     if (stop == NULL) {
         return;
     }

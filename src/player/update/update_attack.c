@@ -25,15 +25,14 @@ void update_attack(player_t *player, __attribute__((unused)) scene_t *scene,
     __attribute__((unused)) window_t *win, __attribute__((unused)) float dtime)
 {
     static int rect_index = 0;
-    any_t *attack = dico_t_get_any(player->obj->components, "attack");
+    any_t *attack = dico_t_get_any(player->obj->components, "data");
     any_t *rect_arr = NULL;
     int *rect = NULL;
 
     if (attack == NULL) {
         return;
     }
-    rect_arr = get_from_any(attack, "ddi", "sword rect",
-        "down");
+    rect_arr = get_from_any(attack, "dddi", "attack", "sword", player->dir);
     if (rect_arr == NULL) {
         return;
     }
