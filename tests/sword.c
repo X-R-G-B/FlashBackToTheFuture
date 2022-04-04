@@ -14,21 +14,9 @@ int main(void)
     sfVideoMode mode = {1920, 1080, 32};
     window_t *win = create_window(mode, "t", sfResize | sfClose);
     scene_t *scene = create_scene(win, sfBlack, "TEST");
-    player_t *player = malloc(sizeof(player_t));
-    any_t *attack = parse_json_file("./assets/data/player/event/attack.json");
-    any_t *stop = parse_json_file("./assets/data/player/stop.json");
+    player_t *player = create_player(win, scene,
+        "./assets/data/player/stats.json");
 
-    win->components = dico_t_add_data(win->components, "player", player, free);
-    player->dir = DOWN;
-    player->state = STOP;
-    player->obj = create_object(update_player, NULL, scene, 0);
-    player->obj->components = dico_t_add_data(player->obj->components, "stop",
-        stop, destroy_any);
-    player->obj->components = dico_t_add_data(player->obj->components, "attack",
-        attack, destroy_any);
-    object_set_sprite(player->obj, "./assets/link_with_weapon.png",
-        (sfIntRect) {12, 210, 57, 69}, (sfVector2f) {500, 500});
-    set_stop(player);
     window_change_scene(win, "TEST");
     loop(win);
     remove_window(win);
