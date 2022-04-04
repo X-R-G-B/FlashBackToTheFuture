@@ -14,9 +14,9 @@
     #define PLAN_MENUS 2
     #define PLAN_BUTTON 1
 
-    #define GO_RIGHT 0
-    #define GO_UP 1
-    #define GO_LEFT 2
-    #define GO_DOWN 3
+    #define GO_RT "0"
+    #define GO_UP "1"
+    #define GO_LT "2"
+    #define GO_DN "3"
 
 #endif

@@ -13,27 +13,27 @@
 #include "my_dico.h"
 #include "my_json.h"
 #include "my_strings.h"
+#include "macro.h"
 
 static const double pi = 3.1415926535;
 
 static void change_among_us_state(object_t *obj, window_t *win, any_t *state)
 {
-    sfVector2i direction = sfMouse_getPositionRenderWindow(win->win);
-    sfVector2f current = sfSprite_getPosition(obj->drawable.sprite);
+    sfVector2i dir = sfMouse_getPositionRenderWindow(win->win);
+    sfVector2f cur = sfSprite_getPosition(obj->drawable.sprite);
     double angle = 0;
 
-    angle = atan2(current.y - direction.y, current.x - direction.x)
-        * 180 / pi;
-    if (45 <= angle && angle < 135 && my_strcmp(state->value.str, "1")) {
-        my_strealloc(&state->value.str, "1");
+    angle = atan2(cur.y - dir.y, cur.x - dir.x) * 180 / pi;
+    if (45 <= angle && angle < 135 && my_strcmp(state->value.str, GO_UP)) {
+        my_strealloc(&state->value.str, GO_UP);
     }
-    if ((135 <= angle || -135 > angle) && my_strcmp(state->value.str, "0")) {
-        my_strealloc(&state->value.str, "0");
+    if ((135 <= angle || -135 > angle) && my_strcmp(state->value.str, GO_RT)) {
+        my_strealloc(&state->value.str, GO_RT);
     }
-    if (-135 <= angle && angle < -45 && my_strcmp(state->value.str, "2")) {
+    if (-135 <= angle && angle < -45 && my_strcmp(state->value.str, GO_DN)) {
         my_strealloc(&state->value.str, "2");
     }
-    if (-45 <= angle && angle < 45 && my_strcmp(state->value.str, "3")) {
+    if (-45 <= angle && angle < 45 && my_strcmp(state->value.str, GO_LT)) {
         my_strealloc(&state->value.str, "3");
     }
 }
