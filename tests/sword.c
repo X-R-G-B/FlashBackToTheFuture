@@ -6,8 +6,16 @@
 */
 
 #include <stdlib.h>
+#include "my_bgs_components.h"
 #include "my_rpg.h"
 #include "my_json.h"
+
+void att(object_t *obj, scene_t *scene, window_t *win, set_event_t *evt)
+{
+    player_t *player = dico_t_get_value(win->components, "player");
+
+    update_attack(player, scene, win, 0);
+}
 
 int main(void)
 {
