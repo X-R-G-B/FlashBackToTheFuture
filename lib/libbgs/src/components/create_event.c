@@ -14,7 +14,6 @@ int event_add_node(set_event_t *event, node_params_t params)
     event_node_t *node = malloc(sizeof(event_node_t));
 
     if (event == NULL) {
-        printf("ntm\n");
         return BGS_ERR_INPUT;
     } else if (node == NULL) {
         return BGS_ERR_MALLOC;
@@ -24,11 +23,8 @@ int event_add_node(set_event_t *event, node_params_t params)
     } else if (params.event == KEY) {
         node->event_code.key = params.key;
     }
-    printf("je passe\n");
     node->event_type = params.event;
-    printf("modulo p %p\n", event->list_event);
     if (list_add_to_end(event->list_event, node) == NULL) {
-        printf("ouhu\n");
         return BGS_ERR_MALLOC;
     }
     return BGS_OK;

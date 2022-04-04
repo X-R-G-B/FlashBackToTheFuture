@@ -41,7 +41,6 @@ typedef struct player_s {
     state_t state;
     dir_t dir;
     object_t *obj;
-    player_dir_t player_dir;
 } player_t;
 
 void update_player(object_t *obj, scene_t *scene, window_t *win, float dtime);
@@ -56,5 +55,14 @@ void attack(object_t *obj, scene_t *scene, window_t *win,
 
 void attack_event(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *set_event);
+
+void update_movements(object_t *object, scene_t *scene, window_t *win,
+    float delta_time);
+
+void event_movements(object_t *object, scene_t *scene, window_t *win,
+    set_event_t *event);
+
+void stop_player_after_movments(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
 
 #endif /* !RPG_H_ */
