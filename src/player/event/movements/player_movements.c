@@ -16,11 +16,13 @@ void stop_player_after_movments(object_t *obj, scene_t *scene,
 {
     player_t *player = NULL;
 
-    if (obj == NULL || scene == NULL || win == NULL || event == NULL)
+    if (obj == NULL || scene == NULL || win == NULL || event == NULL) {
         return;
+    }
     player = dico_t_get_value(win->components, "player");
-    if (player == NULL)
+    if (player == NULL) {
         return;
+    }
     set_stop(player);
 }
 
@@ -71,15 +73,17 @@ void handle_move_player(object_t *obj, window_t *win, float delta_time)
 
     movements_rect = dico_t_get_any(player->obj->components,
         "movements_rect");
-    if (player == NULL || movements_rect == NULL || player->state != MOVING)
+    if (player == NULL || movements_rect == NULL || player->state != MOVING) {
         return;
+    }
     move_player(obj, player, delta_time, movements_rect);
 }
 
 void update_movements(object_t *object, scene_t *scene, window_t *win,
     float delta_time)
 {
-    if (object == NULL || scene == NULL || win == NULL)
+    if (object == NULL || scene == NULL || win == NULL) {
         return;
+    }
     handle_move_player(object, win, delta_time);
 }

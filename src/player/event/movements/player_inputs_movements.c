@@ -31,11 +31,13 @@ void event_movements(object_t *object, scene_t *scene, window_t *win,
     player_t *player = NULL;
     sfKeyCode key[] = {sfKeyUp, sfKeyLeft, sfKeyDown, sfKeyRight, 0};
 
-    if (object == NULL || scene == NULL || win == NULL || event == NULL)
+    if (object == NULL || scene == NULL || win == NULL || event == NULL) {
         return;
+    }
     player = dico_t_get_value(win->components, "player");
-    if (player == NULL)
+    if (player == NULL) {
         return;
+    }
     player->state = MOVING;
     for (int dir = 0; key[dir] != 0; dir++) {
         if (event->input_key.event_code.key == key[dir]) {
