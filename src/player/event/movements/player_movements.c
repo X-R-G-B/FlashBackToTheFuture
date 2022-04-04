@@ -36,14 +36,14 @@ int move_player(object_t *obj, player_t *player, float delta_time,
 }
 
 void handle_move_player(object_t *obj, scene_t *scene,
-                        window_t *win, float delta_time)
+    window_t *win, float delta_time)
 {
     any_t *movements_rect = NULL;
     player_t *player = dico_t_get_value(win->components, "player");
 
     movements_rect = dico_t_get_any(obj->components,
         "movements_rect");
-    if (player == NULL || movements_rect == NULL)
+    if (player == NULL || movements_rect == NULL || player->state != MOVING)
         return;
     move_player(obj, player, delta_time, movements_rect);
 }
