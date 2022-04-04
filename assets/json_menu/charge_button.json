@@ -5,14 +5,14 @@
             "sprite path": "./assets/Buttons_sprites/first_save.png",
             "size": 1.5,
             "pos": [350.0, 900.0],
-            "plan": 1
+            "plan": 0
         },
         {
             "text": "Retour",
             "sprite path": "./assets/Buttons_sprites/Retour_button.png",
             "size": 5.0,
             "pos": [950.0, 60.0],
-            "plan": 1
+            "plan": 0
         }
     ]
 }

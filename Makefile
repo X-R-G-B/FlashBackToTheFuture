@@ -24,7 +24,10 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC			:=	src/main.c
+SRC			:=	src/main.c \
+				src/init_menu.c \
+				src/pop_up_management.c \
+				src/play_menu.c
 
 OBJ			:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------
