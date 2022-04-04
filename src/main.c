@@ -9,27 +9,24 @@
 #include "my_bgs.h"
 #include "my_bgs_components.h"
 
+void set_is_visible_false(list_ptr_t *);
 
-void close_window(object_t *obj, scene_t *scene, window_t *win, set_event_t *event)
+int init_menu(window_t *);
+
+void load_save_scene(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+
+void close_window(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event)
 {
+    if (check_if_pop_up_true(scene, "POP_UP_PLAY"))
+        return;
     sfRenderWindow_close(win->win);
 }
 
 void retour(object_t *obj, scene_t *scene, window_t *win, set_event_t *event)
 {
-    window_change_scene(win, "MENU");
-}
-
-void load_save_scene(object_t *obj, scene_t *scene, window_t *win, set_event_t *event)
-{
-    list_ptr_t *buttons = NULL;
-
-    scene = create_scene(win, sfBlack, "CHARGE GAME");
-    buttons = create_button(scene, "./assets/json_menu/charge_button.json");
-    // obj = create_object(NULL, NULL, scene, 0);
-    window_change_scene(win, "CHARGE GAME");
-    // event = create_event(NULL, false, obj, &close_window);
-    // event_add_node(event, (node_params_t) {sfMouseLeft, sfKeyEscape, KEY});
+    set_is_visible_false(dico_t_get_value(scene->components, "POP_UP_PLAY"));
 }
 
 const char *str_on_hover[] = {NULL};
@@ -49,25 +46,19 @@ void (*on_click[])(object_t *, scene_t *, window_t *win, set_event_t *) = {
     NULL
 };
 
-const char *str_off_click[] = {"QUIT", "PLAY","Retour", NULL};
+const char *str_off_click[] = {"QUIT", "PLAY", "Retour", "Back", NULL};
 
 void (*off_click[])(object_t *, scene_t *, window_t *win, set_event_t *) = {
-    &close_window, &load_save_scene, &retour, NULL
+    &close_window, &load_save_scene, &retour, &retour, NULL
 };
 
 int main(void)
 {
     sfVideoMode mode = {1920, 1080, 32};
     window_t *win = create_window(mode, "My_Rpg", sfResize | sfClose);
-    scene_t *scene = create_scene(win, sfBlack, "MENU");
-    list_ptr_t *list = create_button(scene, "./assets/json_menu//button.json");
-    object_t *obj = create_object(NULL, NULL, scene, 0);
 
-    object_set_custom(obj);
-    window_change_scene(win, "MENU");
-    set_event_t *salut_event = create_event(NULL, false, obj, &close_window);
-    event_add_node(salut_event, (node_params_t)
-                    {sfMouseLeft, sfKeyEscape, KEY});
+    init_menu(win);
+    window_change_scene(win, "MAIN MENU");
     loop(win);
     remove_window(win);
     return 0;
