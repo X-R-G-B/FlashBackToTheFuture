@@ -12,14 +12,18 @@
 #include "my_bgs_components.h"
 #include "../include/libbgs_private.h"
 
-static bool check_node(event_node_t *node)
+static bool check_node(event_node_t *node, set_event_t *set_event)
 {
     if (node->event_type == MOUSE) {
         if (sfMouse_isButtonPressed(node->event_code.mouse) == sfTrue) {
+            set_event->input_key.event_type = MOUSE;
+            set_event->input_key.event_code.mouse = node->event_code.mouse;
             return true;
         }
     } else if (node->event_type == KEY) {
         if (sfKeyboard_isKeyPressed(node->event_code.key) == sfTrue) {
+            set_event->input_key.event_type = KEY;
+            set_event->input_key.event_code.key = node->event_code.key;
             return true;
         }
     }
@@ -42,7 +46,7 @@ static bool check_event_nodes(set_event_t *set_event, object_t *object,
     for (int i = 0; elem != NULL && i < set_event->list_event->len &&
         check == true; i++, elem = elem->next) {
         node = ((event_node_t *) elem->var);
-        check = check_node(node);
+        check = check_node(node, set_event);
     }
     return (check);
 }
