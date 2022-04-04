@@ -25,6 +25,7 @@ static player_t *add_components(player_t *player, const char *stats)
     if (player->obj->components == NULL) {
         return NULL;
     }
+    set_stop(player);
     return player;
 }
 
@@ -37,7 +38,7 @@ static int add_event(player_t *player)
     if (ret != RET_OK) {
         return ret;
     }
-    ret = event_add_node(create_event(NULL, false, player->obj, attack),
+    ret = event_add_node(create_event(NULL, false, player->obj, attack_event),
         (node_params_t) {sfMouseLeft, sfKeyL, KEY});
     return ret;
 }
@@ -59,6 +60,5 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats)
     if (player->obj == NULL) {
         return NULL;
     }
-    set_stop(player);
     return (add_event(player) == RET_OK) ? add_components(player, stats) : NULL;
 }
