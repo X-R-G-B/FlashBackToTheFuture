@@ -30,7 +30,8 @@ int window_update_event(window_t *win, scene_t *scene)
     return (BGS_OK);
 }
 
-int event_handling(sfRenderWindow *win, window_t *window)
+int event_handling(sfRenderWindow *win,
+    __attribute__((unused)) window_t *window)
 {
     sfEvent event;
 
