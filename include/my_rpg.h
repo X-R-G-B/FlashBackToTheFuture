@@ -8,6 +8,10 @@
 #ifndef RPG_H_
     #define RPG_H_
 
+    #define RET_OK 0
+    #define RET_ERR_MALLOC 1
+    #define RET_ERR_INPUT 2
+
     #include "my_bgs.h"
 
     #define RET_OK 0
@@ -43,8 +47,7 @@ void update_attack(player_t *player, scene_t *scene, window_t *win,
 
 void set_stop(player_t *player);
 
-void attack(object_t *obj, scene_t *scene, window_t *win,
-    set_event_t *set_event);
+player_t *create_player(window_t *win, scene_t *scene, const char *stats);
 
 void attack_event(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *set_event);
