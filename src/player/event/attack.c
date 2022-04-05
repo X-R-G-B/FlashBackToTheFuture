@@ -13,7 +13,7 @@ void attack_event(__attribute__((unused)) object_t *obj, __attribute__((unused))
 {
     player_t *player = dico_t_get_value(win->components, "player");
 
-    if (player == NULL || player->state != STOP) {
+    if (player == NULL || (player->state != STOP && player->state != MOVING)) {
         return;
     }
     player->state = ATTACKING;
