@@ -18,6 +18,7 @@ static const node_params_t node[] = {{sfMouseLeft, sfKeyL, KEY},
     {sfMouseLeft, sfKeyZ, KEY}, {sfMouseLeft, sfKeyQ, KEY},
     {sfMouseLeft, sfKeyS, KEY}, {sfMouseLeft, sfKeyD, KEY}};
 static const int event_nb = 5;
+static const char player_path[] = "./assets/image/player/link_with_weapon.png";
 
 static player_t *add_components(player_t *player, const char *stats)
 {
@@ -43,7 +44,7 @@ static int add_event(player_t *player)
     int ret = RET_OK;
     object_t *obj = player->obj;
 
-    if (object_set_sprite(player->obj, "./assets/link_with_weapon.png",
+    if (object_set_sprite(player->obj, player_path,
         (sfIntRect) {12, 210, 57, 69}, (sfVector2f) {500, 500}) != BGS_OK) {
         return RET_ERR_INPUT;
     }
