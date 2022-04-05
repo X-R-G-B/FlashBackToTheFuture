@@ -9,9 +9,11 @@
 #include "my_bgs_components.h"
 #include "my_rpg.h"
 
-int handle_changings_movments(player_t *player, int dir)
+static const dir_t player_dir[] = {UP, LEFT, DOWN, RIGHT};
+static const sfKeyCode key[] = {sfKeyUp, sfKeyLeft, sfKeyDown, sfKeyRight, 0};
+
+int handle_changings_movements(player_t *player, int dir)
 {
-    dir_t player_dir[] = {UP, LEFT, DOWN, RIGHT};
     dir_t prev_dir = player->dir;
 
     player->dir = player_dir[dir];
@@ -29,7 +31,6 @@ void event_movements(object_t *object, scene_t *scene, window_t *win,
     set_event_t *event)
 {
     player_t *player = NULL;
-    sfKeyCode key[] = {sfKeyUp, sfKeyLeft, sfKeyDown, sfKeyRight, 0};
 
     if (object == NULL || scene == NULL || win == NULL || event == NULL) {
         return;
@@ -41,7 +42,7 @@ void event_movements(object_t *object, scene_t *scene, window_t *win,
     player->state = MOVING;
     for (int dir = 0; key[dir] != 0; dir++) {
         if (event->input_key.event_code.key == key[dir]) {
-            handle_changings_movments(player, dir);
+            handle_changings_movements(player, dir);
         }
     }
 }

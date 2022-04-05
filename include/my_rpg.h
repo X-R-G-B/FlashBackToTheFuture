@@ -23,13 +23,6 @@ typedef enum state_e {
     STUNT
 } state_t;
 
-typedef enum player_dir_e {
-    PLAYER_RIGHT,
-    PLAYER_DOWN,
-    PLAYER_LEFT,
-    PLAYER_UP
-} player_dir_t;
-
 typedef enum dir_e {
     UP,
     LEFT,

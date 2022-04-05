@@ -11,6 +11,8 @@
 #include "my_json.h"
 #include "my_rpg.h"
 
+static const char *rects_keys[] = {"up", "left", "down", "right", NULL};
+
 void stop_player_after_movments(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event)
 {
@@ -29,7 +31,6 @@ void stop_player_after_movments(object_t *obj, scene_t *scene,
 int apply_player_positions(object_t *obj, player_t *player, int state,
     any_t *movements_rect)
 {
-    const char *rects_keys[] = {"up", "left", "down", "right", NULL};
     int *rect = NULL;
 
     rect = get_any_int_array(get_from_any(movements_rect, "da",
@@ -46,7 +47,6 @@ int apply_player_positions(object_t *obj, player_t *player, int state,
 int move_player(object_t *obj, player_t *player, float delta_time,
     any_t *movements_rect)
 {
-    const char *rects_keys[] = {"up", "left", "down", "right", NULL};
     static int state = 1;
     static float timer = 0;
     int ret = RET_OK;
@@ -60,10 +60,7 @@ int move_player(object_t *obj, player_t *player, float delta_time,
         }
     }
     ret = apply_player_positions(obj, player, state, movements_rect);
-    if (ret != RET_OK) {
-        return RET_ERR_MALLOC;
-    }
-    return RET_OK;
+    return ret;
 }
 
 void handle_move_player(object_t *obj, window_t *win, float delta_time)
