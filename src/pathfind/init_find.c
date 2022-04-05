@@ -6,6 +6,7 @@
 */
 
 #include <stddef.h>
+#include "list.h"
 #include "my_wordarray.h"
 #include "my_strings.h"
 #include "ennemy_pathfind.h"
@@ -26,15 +27,11 @@ static int init_new_buffer(pathfind_impl_t *maps)
 
 static int put_distance_buffer(pathfind_impl_t *maps)
 {
-    int sizex = 0;
+    list_ptr_t *list = NULL;
 
-    sizex = maps->size_x;
-    for (int i = 0; i < maps->size_y * sizex; i++) {
-        if (maps->buffer[i % sizex][i / sizex] != maps->end_char &&
-                maps->buffer[i % sizex][i / sizex] != maps->start_char &&
-                maps->buffer[i % sizex][i / sizex] != '\0') {
-            maps->buffer[i % sizex][i / sizex] = '\0';
-        }
+    list = list_create();
+    while (list != NULL && list->len != 0) {
+
     }
     return (0);
 }
