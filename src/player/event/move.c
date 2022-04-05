@@ -10,9 +10,9 @@
 #include "my_rpg.h"
 
 static const dir_t player_dir[] = {UP, LEFT, DOWN, RIGHT};
-static const sfKeyCode key[] = {sfKeyUp, sfKeyLeft, sfKeyDown, sfKeyRight, 0};
+static const sfKeyCode key[] = {sfKeyZ, sfKeyQ, sfKeyS, sfKeyD, -1};
 
-int handle_changings_movements(player_t *player, int dir)
+static int handle_changings_movements(player_t *player, int dir)
 {
     dir_t prev_dir = player->dir;
 
@@ -27,7 +27,7 @@ int handle_changings_movements(player_t *player, int dir)
     return RET_OK;
 }
 
-void event_movements(object_t *object, scene_t *scene, window_t *win,
+void move_on(object_t *object, scene_t *scene, window_t *win,
     set_event_t *event)
 {
     player_t *player = NULL;
@@ -36,13 +36,27 @@ void event_movements(object_t *object, scene_t *scene, window_t *win,
         return;
     }
     player = dico_t_get_value(win->components, "player");
-    if (player == NULL) {
+    if (player == NULL || player->state == ATTACKING) {
         return;
     }
     player->state = MOVING;
-    for (int dir = 0; key[dir] != 0; dir++) {
+    for (int dir = 0; key[dir] != -1; dir++) {
         if (event->input_key.event_code.key == key[dir]) {
             handle_changings_movements(player, dir);
         }
     }
+}
+
+void move_off(object_t *obj, scene_t *scene, window_t *win, set_event_t *event)
+{
+    player_t *player = NULL;
+
+    if (obj == NULL || scene == NULL || win == NULL || event == NULL) {
+        return;
+    }
+    player = dico_t_get_value(win->components, "player");
+    if (player == NULL) {
+        return;
+    }
+    set_stop(player);
 }
