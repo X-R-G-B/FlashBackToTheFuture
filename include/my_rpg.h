@@ -14,10 +14,6 @@
 
     #include "my_bgs.h"
 
-    #define RET_OK 0
-    #define RET_ERR_MALLOC 1
-    #define RET_ERR_INPUT 2
-
 static const char MOVEMENTS_RECT[] = "movements_rect";
 
 typedef enum state_e {
@@ -53,10 +49,6 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats);
 
 void attack_event(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *set_event);
-    #define RET_ERR_INPUT 1
-    #define RET_ERR_MALLOC 2
-
-    #include "my_bgs.h"
 
 list_ptr_t *create_pause_menu(scene_t *scene);
 
