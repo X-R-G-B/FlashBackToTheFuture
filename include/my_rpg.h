@@ -18,6 +18,8 @@
     #define RET_ERR_MALLOC 1
     #define RET_ERR_INPUT 2
 
+static const char MOVEMENTS_RECT[] = "movements_rect";
+
 typedef enum state_e {
     ATTACKING,
     STOP,
