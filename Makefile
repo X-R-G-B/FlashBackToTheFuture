@@ -24,7 +24,14 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC			:=	src/main.c
+SRC_MENU	:=	create_pause_menu.c		\
+				pressed_button_event.c	\
+				pause_button_event.c
+SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
+
+SRC			:=	$(SRC_MENU)
+SRC			:= 	$(addprefix src/,$(SRC))
+SRC			:=	$(SRC) tests/pause_menu.c
 
 OBJ			:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------
