@@ -24,10 +24,34 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC			:=	src/main.c \
-				src/init_menu.c \
+SRC_MOVEMENTS	:=	player_movements.c			\
+					player_inputs_movements.c
+SRC_MOVEMENTS	:= $(addprefix movements/,$(SRC_MOVEMENTS))
+
+SRC_EVENT	:=	attack.c $(SRC_MOVEMENTS)
+SRC_EVENT	:= $(addprefix event/,$(SRC_EVENT))
+
+SRC_UPDATE	:=	update_player.c	\
+				update_attack.c
+SRC_UPDATE	:= $(addprefix update/,$(SRC_UPDATE))
+
+SRC_PLAYER	:=	set_stop.c		\
+				create_player.c	\
+				$(SRC_EVENT)	\
+				$(SRC_UPDATE)
+SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))
+
+SRC_MENU	:=	create_pause_menu.c		\
+				pressed_button_event.c	\
+				pause_button_event.c
+SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
+
+SRC			:=	main.c          \
+        init_menu.c         \
 				src/pop_up_management.c \
-				src/event_menu.c
+				src/event_menu.c    \
+        $(SRC_MENU) $(SRC_PLAYER)
+SRC			:= 	$(addprefix src/,$(SRC))
 
 OBJ			:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------
@@ -37,7 +61,7 @@ OBJ			:=	$(SRC:%.c=%.o)
 LIB_TARGET		=	lib/libmy.a
 
 LDFLAGS			=	-L$(dir $(LIB_TARGET)) -lmy -lcsfml-graphics \
-					-lcsfml-audio -lcsfml-system -lcsfml-window
+					-lcsfml-audio -lcsfml-system -lcsfml-window -lm
 # ----------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------

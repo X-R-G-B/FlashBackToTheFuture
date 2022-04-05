@@ -35,7 +35,8 @@ SRC_COMPONENTS	:= 	add_components.c					\
 					object_check_event.c				\
 					object_set_event.c					\
 					object_check_health.c				\
-					object_update_mouse_event.c
+					object_update_mouse_event.c			\
+					add_window_component.c
 SRC_COMPONENTS	:= $(addprefix components/,$(SRC_COMPONENTS))
 
 SRC_CORE		:=	add.c					\
@@ -52,12 +53,13 @@ SRC_CORE		:=	add.c					\
 					remove.c				\
 					scene_loading.c			\
 					scene_loop.c			\
-					start.c
+					start.c					\
+					object_set_sound.c
 SRC_CORE		:=	$(addprefix core/,$(SRC_CORE))
 
 SRC_BUTTON		:= 	check_set_color.c	\
 					create_button.c		\
-					check_plan.c		\
+					check_layer.c		\
 					set_event.c			\
 	 				fill_obj_list.c		\
 					toggle_pop_up.c

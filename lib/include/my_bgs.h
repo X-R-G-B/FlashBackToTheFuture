@@ -26,6 +26,7 @@ typedef struct object_s object_t;
 typedef struct window_s window_t;
 typedef struct scene_s scene_t;
 typedef struct sprite_bigdata_s sprite_bigdata_t;
+typedef struct sound_bigdata_s sound_bigdata_t;
 typedef struct text_bigdata_s text_bigdata_t;
 typedef struct scene_loading_s scene_loading_t;
 typedef struct set_event_s set_event_t;
@@ -34,6 +35,7 @@ enum object_type {
     SPRITE,
     TEXT,
     AUDIO,
+    SOUND,
     CUSTOM,
     UNSET
 };
@@ -49,18 +51,24 @@ struct text_bigdata_s {
     sfVector2f pos;
 };
 
+struct sound_bigdata_s {
+    sfSoundBuffer *buffer;
+};
+
 struct object_s {
     enum object_type type;
     union bigdata {
         sprite_bigdata_t sprite_bigdata;
         text_bigdata_t text_bigdata;
+        sound_bigdata_t sound_bigdata;
     } bigdata;
     union drawable {
         sfSprite *sprite;
         sfText *text;
         sfMusic *music;
+        sfSound *sound;
     } drawable;
-    int plan;
+    int layer;
     dico_t *components;
     bool is_visible;
     void (*update)(object_t *, scene_t *scene, window_t *win, float);
@@ -75,18 +83,18 @@ struct time_clock_s {
     sfTime time;
 };
 
-typedef struct plan_s {
+typedef struct layer_s {
     int id;
     list_ptr_t *displayables;
     list_ptr_t *updates;
     list_ptr_t *object;
-} plan_t;
+} layer_t;
 
 struct scene_s {
     bool pause;
     sfColor bg_color;
     list_ptr_t *to_remove;
-    list_ptr_t *plan;
+    list_ptr_t *layer;
     list_ptr_t *objects;
     dico_t *components;
     void (*destroy)(void *);
@@ -120,7 +128,7 @@ int window_set_icon(window_t *win, char const path[]);
 ** BGS_OK : the object has been added
 ** }
 **/
-int scene_add_object(scene_t *scene, object_t *object, int plan);
+int scene_add_object(scene_t *scene, object_t *object, int layer);
 
 // ----------------------------------------------------------------------------
 // create_object.c
@@ -141,6 +149,23 @@ int scene_add_object(scene_t *scene, object_t *object, int plan);
 ** }
 **/
 int object_set_audio(object_t *object, char const *path, bool play_now,
+    bool loop_now);
+
+/**
+** @brief setup an object_t to be a sound
+**
+** @param object object to setup
+** @param path path to the sound (.ogg is better)
+** @param play_now indicate if the sound need to be played just after creation
+** @param loop_now indicate if the sound need to be looped
+**
+** @return {
+** BGS_ERR_INPUT : object ot path is NULL,
+** BGS_ERR_PATH : path to the sound is bad,
+** BGS_OK : the object has been setup
+** }
+**/
+int object_set_sound(object_t *object, char const *path, bool play_now,
     bool loop_now);
 
 /**
@@ -212,7 +237,7 @@ int object_set_sprite(object_t *object, char const *path, sfIntRect rect,
 object_t *create_object(
     void (*update)(object_t *, scene_t *, window_t *win, float),
     void (*display)(object_t *, dico_t *, dico_t *, sfRenderWindow *),
-    scene_t *scene, int plan);
+    scene_t *scene, int layer);
 
 // ----------------------------------------------------------------------------
 // create_scene.c
@@ -370,6 +395,6 @@ void remove_scene(void *scene);
 **/
 bool check_list(list_ptr_t *list, void *data);
 
-int check_plan(dico_t *dico);
+int check_layer(dico_t *dico);
 
 #endif /* !BGS_H_ */

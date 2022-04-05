@@ -47,15 +47,15 @@ static plan_t *get_obj_plan(object_t *obj)
 {
     scene_t *scene = dico_t_get_value(obj->components, "scene");
     list_t *elem = NULL;
-    plan_t *plan = NULL;
+    layer_t *layer = NULL;
 
     if (scene == NULL) {
         return NULL;
     }
     elem = scene->plan->start;
-    for (int i = 0; i < scene->plan->len; i++, elem = elem->next) {
-        plan = elem->var;
-        if (plan->id == obj->plan) {
+    for (int i = 0; i < scene->layer->len; i++, elem = elem->next) {
+        layer = elem->var;
+        if (plan->id == obj->layer) {
             return plan;
         }
     }
@@ -70,8 +70,9 @@ static void check_obj_in_update_list(object_t *obj)
     if (plan == NULL) {
         return;
     }
-    if (check_elem_in_list(plan->updates, obj) == false) {
-        list_add_to_end(plan->updates, obj);
+    layer = get_element_i_var(scene->layer, obj->layer);
+    if (check_elem_in_list(layer->updates, obj) == false) {
+        list_add_to_end(layer->updates, obj);
     }
 }
 

@@ -12,7 +12,7 @@ static int check_display_function(object_t *obj)
 {
     scene_t *scene = dico_t_get_value(obj->components, "scene");
     list_t *elem = NULL;
-    plan_t *plan = NULL;
+    layer_t *layer = NULL;
 
     if (scene == NULL) {
         return BGS_ERR_INPUT;
@@ -20,11 +20,11 @@ static int check_display_function(object_t *obj)
         return BGS_OK;
     }
     obj->display = (obj->type == SPRITE) ? display_sprite : display_text;
-    elem = scene->plan->start;
-    for (int i = 0; i < scene->plan->len; i++, elem = elem->next) {
-        plan = elem->var;
-        if (plan->id == obj->plan &&
-            list_add_to_end(plan->displayables, obj) == NULL) {
+    elem = scene->layer->start;
+    for (int i = 0; i < scene->layer->len; i++, elem = elem->next) {
+        layer = elem->var;
+        if (layer->id == obj->layer &&
+            list_add_to_end(layer->displayables, obj) == NULL) {
             return BGS_ERR_MALLOC;
         }
     }
