@@ -55,7 +55,7 @@ void update_movements(object_t *object, scene_t *scene, window_t *win,
 void event_movements(object_t *object, scene_t *scene, window_t *win,
     set_event_t *event);
 
-void stop_player_after_movments(object_t *obj, scene_t *scene,
+void stop_player_after_movements(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 
 #endif /* !RPG_H_ */

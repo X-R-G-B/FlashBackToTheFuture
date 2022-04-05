@@ -13,7 +13,7 @@
 
 static const char *rects_keys[] = {"up", "left", "down", "right", NULL};
 
-void stop_player_after_movments(object_t *obj, scene_t *scene,
+void stop_player_after_movements(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event)
 {
     player_t *player = NULL;

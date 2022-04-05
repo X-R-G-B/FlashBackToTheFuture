@@ -53,13 +53,13 @@ int main(int ac, char **av)
         "./assets/link.png", (sfIntRect) {19, 340, 52, 76},
         (sfVector2f) {200, 200});
     event_add_node(create_event(event_movements, false,
-        player_object, stop_player_after_movments), (node_params_t) {sfMouseLeft, sfKeyUp, KEY});
+        player_object, stop_player_after_movements), (node_params_t) {sfMouseLeft, sfKeyUp, KEY});
     event_add_node(create_event(event_movements, false,
-        player_object, stop_player_after_movments), (node_params_t) {sfMouseLeft, sfKeyRight, KEY});
+        player_object, stop_player_after_movements), (node_params_t) {sfMouseLeft, sfKeyRight, KEY});
     event_add_node(create_event(event_movements, false,
-        player_object, stop_player_after_movments), (node_params_t) {sfMouseLeft, sfKeyDown, KEY});
+        player_object, stop_player_after_movements), (node_params_t) {sfMouseLeft, sfKeyDown, KEY});
     event_add_node(create_event(event_movements, false,
-        player_object, stop_player_after_movments), (node_params_t) {sfMouseLeft, sfKeyLeft, KEY});
+        player_object, stop_player_after_movements), (node_params_t) {sfMouseLeft, sfKeyLeft, KEY});
     object_add_components(player_object, movements_rect, "movements_rect",
         destroy_any);
     object_add_components(player_object, stop, "stop", destroy_any);
