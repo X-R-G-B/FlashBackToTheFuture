@@ -36,7 +36,7 @@ int main(void)
     window_t *win = create_window(mode, "tests", sfResize | sfClose);
     scene_t *scene = create_scene(win, sfBlack, "START");
 
-    create_pause_menu(scene);
+    free_list(create_pause_menu(scene));
     window_change_scene(win, "START");
     loop(win);
     remove_window(win);
