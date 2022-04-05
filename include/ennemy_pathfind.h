@@ -12,6 +12,7 @@
 
 typedef struct pathfind_impl_s pathfind_impl_t;
 typedef struct vect2i_s vect2i_t;
+typedef struct pathfind_s pathfind_t;
 
 struct vect2i_s {
     int x;
@@ -29,8 +30,17 @@ struct pathfind_impl_s {
     vect2i_t start;
 };
 
+struct pathfind_s {
+    char **map;
+    int sizex;
+    int sizey;
+    vect2i_t end;
+};
+
 int put_distance_buffer(pathfind_impl_t *maps);
 
 int check_start_in_list(list_ptr_t *list, vect2i_t *start);
+
+pathfind_t *init_pathfind(char **array, char end, char start);
 
 #endif
