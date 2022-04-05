@@ -67,7 +67,7 @@ static void handle_move_player(player_t *player, float delta_time)
     any_t *data = NULL;
 
     data = dico_t_get_any(player->obj->components, "data");
-    if (data == NULL || player->state != MOVING) {
+    if (data == NULL) {
         return;
     }
     move = dico_t_get_any(data->value.dict, "move");
@@ -80,7 +80,8 @@ static void handle_move_player(player_t *player, float delta_time)
 void update_movements(player_t *player, scene_t *scene, window_t *win,
     float delta_time)
 {
-    if (player == NULL || scene == NULL || win == NULL) {
+    if (player == NULL || player->state != MOVING || scene == NULL ||
+        win == NULL) {
         return;
     }
     handle_move_player(player, delta_time);

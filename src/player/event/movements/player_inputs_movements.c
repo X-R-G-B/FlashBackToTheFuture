@@ -10,7 +10,7 @@
 #include "my_rpg.h"
 
 static const dir_t player_dir[] = {UP, LEFT, DOWN, RIGHT};
-static const sfKeyCode key[] = {sfKeyUp, sfKeyLeft, sfKeyDown, sfKeyRight, 0};
+static const sfKeyCode key[] = {sfKeyZ, sfKeyQ, sfKeyS, sfKeyD, -1};
 
 static int handle_changings_movements(player_t *player, int dir)
 {
@@ -40,7 +40,7 @@ void move_on(object_t *object, scene_t *scene, window_t *win,
         return;
     }
     player->state = MOVING;
-    for (int dir = 0; key[dir] != 0; dir++) {
+    for (int dir = 0; key[dir] != -1; dir++) {
         if (event->input_key.event_code.key == key[dir]) {
             handle_changings_movements(player, dir);
         }
