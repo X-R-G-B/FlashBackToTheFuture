@@ -37,9 +37,13 @@ SRC_PLAYER	:=	set_stop.c		\
 				$(SRC_UPDATE)
 SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))
 
-SRC			:=	$(SRC_PLAYER)
-SRC			:=	$(addprefix src/,$(SRC))
-SRC			:=	$(SRC) tests/sword.c
+SRC_MENU	:=	create_pause_menu.c		\
+				pressed_button_event.c	\
+				pause_button_event.c
+SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
+
+SRC			:=	main.c $(SRC_MENU) $(SRC_PLAYER)
+SRC			:= 	$(addprefix src/,$(SRC))
 
 OBJ			:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------
