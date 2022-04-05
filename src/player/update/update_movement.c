@@ -13,20 +13,6 @@
 
 static const char *rects_keys[] = {"up", "left", "down", "right", NULL};
 
-void move_off(object_t *obj, scene_t *scene, window_t *win, set_event_t *event)
-{
-    player_t *player = NULL;
-
-    if (obj == NULL || scene == NULL || win == NULL || event == NULL) {
-        return;
-    }
-    player = dico_t_get_value(win->components, "player");
-    if (player == NULL) {
-        return;
-    }
-    set_stop(player);
-}
-
 static int apply_player_positions(player_t *player, int state,
     any_t *movements_rect)
 {
@@ -39,6 +25,8 @@ static int apply_player_positions(player_t *player, int state,
     }
     player->obj->bigdata.sprite_bigdata.rect =
         (sfIntRect) {rect[0], rect[1], rect[2], rect[3]};
+    sfSprite_setOrigin(player->obj->drawable.sprite,
+        (sfVector2f) {rect[2] / 2, rect[3] / 2});
     free(rect);
     return RET_OK;
 }
