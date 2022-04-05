@@ -24,7 +24,11 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC_EVENT	:=	attack.c
+SRC_MOVEMENTS	:=	player_movements.c			\
+					player_inputs_movements.c
+SRC_MOVEMENTS	:= $(addprefix movements/,$(SRC_MOVEMENTS))
+
+SRC_EVENT	:=	attack.c $(SRC_MOVEMENTS)
 SRC_EVENT	:= $(addprefix event/,$(SRC_EVENT))
 
 SRC_UPDATE	:=	update_player.c	\
