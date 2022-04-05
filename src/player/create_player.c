@@ -11,9 +11,9 @@
 #include "my_json.h"
 
 static void (*event_on[])(object_t *, scene_t *, window_t *,
-    set_event_t *) = {NULL, move_on};
+    set_event_t *) = {attack_event, move_on};
 static void (*event_off[])(object_t *, scene_t *, window_t *,
-    set_event_t *) = {attack_event, move_off};
+    set_event_t *) = {NULL, move_off};
 static const node_params_t node[] = {{sfMouseLeft, sfKeyL, KEY},
     {sfMouseLeft, sfKeyZ, KEY}, {sfMouseLeft, sfKeyQ, KEY},
     {sfMouseLeft, sfKeyS, KEY}, {sfMouseLeft, sfKeyD, KEY}};
