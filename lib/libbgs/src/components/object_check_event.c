@@ -70,8 +70,8 @@ void check_event(set_event_t *set_event, object_t *object,
 {
     bool check = true;
 
-    if ((set_event->list_event == NULL && set_event->hover == false) ||
-        set_event == NULL) {
+    if (set_event == NULL ||
+        (set_event->list_event == NULL && set_event->hover == false)) {
         return;
     }
     check = check_event_nodes(set_event, object, win);

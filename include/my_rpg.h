@@ -14,6 +14,10 @@
 
     #include "my_bgs.h"
 
+    #define RET_OK 0
+    #define RET_ERR_MALLOC 1
+    #define RET_ERR_INPUT 2
+
 typedef enum state_e {
     ATTACKING,
     STOP,
@@ -74,5 +78,14 @@ void settings_button_off(object_t *obj, scene_t *scene, window_t *win,
 
 void restart_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
+
+void update_movements(object_t *object, scene_t *scene, window_t *win,
+    float delta_time);
+
+void event_movements(object_t *object, scene_t *scene, window_t *win,
+    set_event_t *event);
+
+void stop_player_after_movements(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
 
 #endif /* !RPG_H_ */
