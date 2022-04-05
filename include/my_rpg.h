@@ -47,5 +47,32 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats);
 
 void attack_event(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *set_event);
+    #define RET_ERR_INPUT 1
+    #define RET_ERR_MALLOC 2
+
+    #include "my_bgs.h"
+
+list_ptr_t *create_pause_menu(scene_t *scene);
+
+void home_button_off(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
+
+void pressed_button_on(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
+
+void pressed_button_off(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
+
+void exit_button_off(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
+
+void resume_event_off(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
+
+void settings_button_off(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
+
+void restart_button_off(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
 
 #endif /* !RPG_H_ */
