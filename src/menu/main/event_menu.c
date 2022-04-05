@@ -6,7 +6,7 @@
 */
 
 #include "my_bgs_button_generator.h"
-#include "menu.h"
+#include "main_menu.h"
 
 void close_window(__attribute__((unused)) object_t *obj, scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *event)
