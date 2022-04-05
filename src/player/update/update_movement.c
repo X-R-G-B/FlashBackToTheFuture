@@ -12,6 +12,7 @@
 #include "my_rpg.h"
 
 static const char *rects_keys[] = {"up", "left", "down", "right", NULL};
+static const int speed = 200;
 
 static int apply_player_positions(player_t *player, int state,
     any_t *movements_rect)
@@ -31,12 +32,34 @@ static int apply_player_positions(player_t *player, int state,
     return RET_OK;
 }
 
+static int change_player_pos(player_t *player, float delta_time)
+{
+    switch (player->dir) {
+        case RIGHT:
+            player->obj->bigdata.sprite_bigdata.pos.x += delta_time * speed;
+            break;
+        case DOWN:
+            player->obj->bigdata.sprite_bigdata.pos.y += delta_time * speed;
+            break;
+        case LEFT:
+            player->obj->bigdata.sprite_bigdata.pos.x -= delta_time * speed;
+            break;
+        case UP:
+            player->obj->bigdata.sprite_bigdata.pos.y -= delta_time * speed;
+            break;
+        default:
+            break;
+    }
+    return 0;
+}
+
 static int move_player(player_t *player, float delta_time,
     any_t *movements_rect)
 {
     static int state = 1;
     static float timer = 0;
     int ret = RET_OK;
+    float speed = 1;
 
     for (timer += delta_time; timer >= 0.09; timer -= 0.09) {
         state += 1;
@@ -45,6 +68,7 @@ static int move_player(player_t *player, float delta_time,
             state = 0;
         }
     }
+    change_player_pos(player, delta_time);
     ret = apply_player_positions(player, state, movements_rect);
     return ret;
 }
