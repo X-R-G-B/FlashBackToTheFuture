@@ -68,7 +68,7 @@ struct object_s {
         sfMusic *music;
         sfSound *sound;
     } drawable;
-    int plan;
+    int layer;
     dico_t *components;
     bool is_visible;
     void (*update)(object_t *, scene_t *scene, window_t *win, float);
@@ -83,18 +83,18 @@ struct time_clock_s {
     sfTime time;
 };
 
-typedef struct plan_s {
+typedef struct layer_s {
     int id;
     list_ptr_t *displayables;
     list_ptr_t *updates;
     list_ptr_t *object;
-} plan_t;
+} layer_t;
 
 struct scene_s {
     bool pause;
     sfColor bg_color;
     list_ptr_t *to_remove;
-    list_ptr_t *plan;
+    list_ptr_t *layer;
     list_ptr_t *objects;
     dico_t *components;
     void (*destroy)(void *);
@@ -128,7 +128,7 @@ int window_set_icon(window_t *win, char const path[]);
 ** BGS_OK : the object has been added
 ** }
 **/
-int scene_add_object(scene_t *scene, object_t *object, int plan);
+int scene_add_object(scene_t *scene, object_t *object, int layer);
 
 // ----------------------------------------------------------------------------
 // create_object.c
@@ -237,7 +237,7 @@ int object_set_sprite(object_t *object, char const *path, sfIntRect rect,
 object_t *create_object(
     void (*update)(object_t *, scene_t *, window_t *win, float),
     void (*display)(object_t *, dico_t *, dico_t *, sfRenderWindow *),
-    scene_t *scene, int plan);
+    scene_t *scene, int layer);
 
 // ----------------------------------------------------------------------------
 // create_scene.c
@@ -395,6 +395,6 @@ void remove_scene(void *scene);
 **/
 bool check_list(list_ptr_t *list, void *data);
 
-int check_plan(dico_t *dico);
+int check_layer(dico_t *dico);
 
 #endif /* !BGS_H_ */

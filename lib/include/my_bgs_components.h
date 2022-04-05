@@ -53,6 +53,7 @@ struct event_node_s {
 
 struct set_event_s {
     list_ptr_t *list_event;
+    event_node_t input_key;
     bool hover;
     bool prev_call;
     void (*on)(object_t *object, scene_t *scene, window_t *win,
