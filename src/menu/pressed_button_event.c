@@ -19,8 +19,9 @@ static void set_sprite_new_data(object_t *obj, int *rect, int *origin)
     free(origin);
 }
 
-void pressed_button_on(object_t *obj, scene_t *scene, window_t *win,
-    set_event_t *evt)
+void pressed_button_on(object_t *obj, __attribute__((unused)) scene_t *scene,
+    __attribute__((unused)) window_t *win,
+    __attribute__((unused)) set_event_t *evt)
 {
     any_t *data = dico_t_get_any(obj->components, "data");
     int *rect = NULL;
@@ -41,8 +42,9 @@ void pressed_button_on(object_t *obj, scene_t *scene, window_t *win,
     set_sprite_new_data(obj, rect, origin);
 }
 
-void pressed_button_off(object_t *obj, scene_t *scene, window_t *win,
-    set_event_t *evt)
+void pressed_button_off(object_t *obj, __attribute__((unused)) scene_t *scene,
+    __attribute__((unused)) window_t *win,
+    __attribute__((unused)) set_event_t *evt)
 {
     any_t *data = dico_t_get_any(obj->components, "data");
     int *rect = NULL;
