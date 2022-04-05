@@ -5,7 +5,8 @@
 ** init_menu
 */
 
-#include "menu.h"
+#include "my_rpg.h"
+#include "main_menu.h"
 
 static void init_components(object_t *obj)
 {
@@ -14,7 +15,7 @@ static void init_components(object_t *obj)
         {sfMouseLeft, sfKeyEscape, KEY});
 }
 
-void init_main_menu_buttons(list_ptr_t **main_menu,
+static void init_main_menu_buttons(list_ptr_t **main_menu,
     list_ptr_t **load_game, scene_t *scene)
 {
     *main_menu = create_button(scene, "./assets/json_menu/button.json");
@@ -31,16 +32,16 @@ int init_menu(window_t *win)
 
     scene = create_scene(win, sfBlack, "MAIN MENU");
     if (scene == NULL) {
-        return (BGS_ERR_MALLOC);
+        return (RET_ERR_MALLOC);
     }
     obj = create_object(NULL, NULL, scene, 0);
     init_main_menu_buttons(&main_menu, &load_game, scene);
     if (main_menu == NULL || load_game == NULL || obj == NULL) {
-        return (BGS_ERR_MALLOC);
+        return (RET_ERR_MALLOC);
     }
     init_components(obj);
     scene->components = dico_t_add_data(scene->components,
         PLAY, load_game, free_pop_up);
     set_is_visible_false(load_game);
-    return (0);
+    return RET_OK;
 }

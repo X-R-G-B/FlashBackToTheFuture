@@ -44,6 +44,8 @@ void update_player(object_t *obj, scene_t *scene, window_t *win, float dtime);
 void update_attack(player_t *player, scene_t *scene, window_t *win,
     float dtime);
 
+int launch_game(void);
+
 void set_stop(player_t *player);
 
 player_t *create_player(window_t *win, scene_t *scene, const char *stats);

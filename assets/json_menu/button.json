@@ -16,7 +16,7 @@
             "plan": 0
         },
         {
-            "text": "Back",
+            "text": "BACK",
             "sprite path": "./assets/Buttons_sprites/main_menu.jpg",
             "pos": [540.0, 960.0],
             "plan": 1
