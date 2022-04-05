@@ -14,6 +14,9 @@
 
     #include "my_bgs.h"
 
+static const char PLAYER_DATA[] = "./assets/data/player/data.json";
+static const char PLAYER_STATS[] = "./assets/data/player/stats.json";
+
 static const char MOVEMENTS_RECT[] = "movements_rect";
 
 typedef enum state_e {
