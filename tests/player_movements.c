@@ -10,9 +10,6 @@
 #include "my_bgs_components.h"
 #include "my_rpg.h"
 
-#define sfNigger sfBlack
-#define null NULL
-
 const char *str_on_hover[] = {NULL};
 
 void (*on_hover[])(object_t *, scene_t *, window_t *win, set_event_t *) = {
@@ -41,8 +38,8 @@ int main(int ac, char **av)
 {
     window_t* win = create_window((sfVideoMode) {1920, 1080, 32},
         "Test player", sfClose | sfFullscreen);
-    scene_t* scene = create_scene(win, sfNigger, "player_movements");
-    object_t *player_object = create_object(update_movements, null, scene, 0);
+    scene_t* scene = create_scene(win, sfBlack, "player_movements");
+    object_t *player_object = create_object(update_movements, NULL, scene, 0);
     any_t *movements_rect = parse_json_file(
         "./assets/data/player/movements/player_movement.json");
     any_t *stop = parse_json_file("./assets/data/player/stop.json");
