@@ -13,10 +13,8 @@ void object_set_origin(object_t *object)
     sfFloatRect rect;
 
     if (object->type == TEXT) {
-        sfText_setTextureRect(object->drawable.sprite,
-            object->bigdata.sprite_bigdata.rect);
-        sfText_setPosition(object->drawable.sprite,
-            object->bigdata.sprite_bigdata.pos);
+        sfText_setPosition(object->drawable.text,
+            object->bigdata.text_bigdata.pos);
         rect = sfText_getGlobalBounds(object->drawable.text);
         sfText_setOrigin(object->drawable.text,
             (sfVector2f) {rect.width / 2, rect.height / 2});
