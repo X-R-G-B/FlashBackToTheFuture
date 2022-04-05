@@ -12,7 +12,6 @@
 #include "my_rpg.h"
 
 static const char *rects_keys[] = {"up", "left", "down", "right", NULL};
-static const int speed = 200;
 
 static int apply_player_positions(player_t *player, int state,
     any_t *movements_rect)
@@ -32,7 +31,7 @@ static int apply_player_positions(player_t *player, int state,
     return RET_OK;
 }
 
-static int change_player_pos(player_t *player, float delta_time)
+static int change_player_pos(player_t *player, float delta_time, int speed)
 {
     switch (player->dir) {
         case RIGHT:
@@ -59,7 +58,7 @@ static int move_player(player_t *player, float delta_time,
     static int state = 1;
     static float timer = 0;
     int ret = RET_OK;
-    float speed = 1;
+    any_t *speed = NULL;
 
     for (timer += delta_time; timer >= 0.09; timer -= 0.09) {
         state += 1;
@@ -68,7 +67,11 @@ static int move_player(player_t *player, float delta_time,
             state = 0;
         }
     }
-    change_player_pos(player, delta_time);
+    speed = dico_t_get_any(movements_rect->value.dict, "speed");
+    if (speed == NULL || speed->type != INT) {
+        return RET_ERR_INPUT;
+    }
+    change_player_pos(player, delta_time, speed->value.i);
     ret = apply_player_positions(player, state, movements_rect);
     return ret;
 }
