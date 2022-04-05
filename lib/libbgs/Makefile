@@ -59,7 +59,8 @@ SRC_BUTTON		:= 	check_set_color.c	\
 					create_button.c		\
 					check_plan.c		\
 					set_event.c			\
-	 				fill_obj_list.c
+	 				fill_obj_list.c		\
+					toggle_pop_up.c
 SRC_BUTTON		:=	$(addprefix create_button/,$(SRC_BUTTON))
 
 SRC_PRESET		:=	preset_display.c			\
