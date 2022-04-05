@@ -26,7 +26,8 @@ CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
 SRC			:=	src/main.c \
 				src/init_menu.c \
-				src/pop_up_management.c
+				src/pop_up_management.c \
+				src/event_menu.c
 
 OBJ			:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------

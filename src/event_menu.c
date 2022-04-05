@@ -16,7 +16,7 @@ void close_window(object_t *obj, scene_t *scene,
     sfRenderWindow_close(win->win);
 }
 
-void retour(object_t *obj, scene_t *scene, window_t *win, set_event_t *event)
+void go_back(object_t *obj, scene_t *scene, window_t *win, set_event_t *event)
 {
     set_is_visible_false(dico_t_get_value(scene->components, PLAY));
 }
