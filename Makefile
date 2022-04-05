@@ -46,8 +46,9 @@ SRC_MENU	:=	create_pause_menu.c		\
 				pause_button_event.c
 SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
 
-SRC			:=	main.c $(SRC_MENU) $(SRC_PLAYER)
+SRC			:=	$(SRC_MENU) $(SRC_PLAYER)
 SRC			:= 	$(addprefix src/,$(SRC))
+SRC			:=	$(SRC) tests/player.c
 
 OBJ			:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------
