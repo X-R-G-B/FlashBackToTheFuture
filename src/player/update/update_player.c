@@ -8,7 +8,7 @@
 #include "my_rpg.h"
 #include "my_json.h"
 
-void (*update_ptr[])(player_t *, scene_t *, window_t *, float) = {
+static void (*update_ptr[])(player_t *, scene_t *, window_t *, float) = {
     update_attack,
     update_movements
 };
