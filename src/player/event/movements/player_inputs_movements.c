@@ -12,7 +12,7 @@
 static const dir_t player_dir[] = {UP, LEFT, DOWN, RIGHT};
 static const sfKeyCode key[] = {sfKeyUp, sfKeyLeft, sfKeyDown, sfKeyRight, 0};
 
-int handle_changings_movements(player_t *player, int dir)
+static int handle_changings_movements(player_t *player, int dir)
 {
     dir_t prev_dir = player->dir;
 
@@ -27,7 +27,7 @@ int handle_changings_movements(player_t *player, int dir)
     return RET_OK;
 }
 
-void event_movements(object_t *object, scene_t *scene, window_t *win,
+void move_on(object_t *object, scene_t *scene, window_t *win,
     set_event_t *event)
 {
     player_t *player = NULL;

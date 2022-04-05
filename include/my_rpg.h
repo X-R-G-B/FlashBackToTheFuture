@@ -17,14 +17,12 @@
 static const char PLAYER_DATA[] = "./assets/data/player/data.json";
 static const char PLAYER_STATS[] = "./assets/data/player/stats.json";
 
-static const char MOVEMENTS_RECT[] = "movements_rect";
-
 typedef enum state_e {
     ATTACKING,
+    MOVING,
     STOP,
     DYING,
     DIE,
-    MOVING,
     STUNT
 } state_t;
 
@@ -76,13 +74,13 @@ void settings_button_off(object_t *obj, scene_t *scene, window_t *win,
 void restart_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
 
-void update_movements(object_t *object, scene_t *scene, window_t *win,
+void update_movements(player_t *object, scene_t *scene, window_t *win,
     float delta_time);
 
-void event_movements(object_t *object, scene_t *scene, window_t *win,
+void move_on(object_t *object, scene_t *scene, window_t *win,
     set_event_t *event);
 
-void stop_player_after_movements(object_t *obj, scene_t *scene,
+void move_off(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 
 #endif /* !RPG_H_ */

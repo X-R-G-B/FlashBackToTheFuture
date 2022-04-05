@@ -9,7 +9,8 @@
 #include "my_json.h"
 
 void (*update_ptr[])(player_t *, scene_t *, window_t *, float) = {
-    update_attack
+    update_attack,
+    update_movements
 };
 
 void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
@@ -19,7 +20,7 @@ void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
 
     if (player == NULL) {
         return;
-    } else if (player->state == 0) {
+    } else if (player->state >= 0 && player->state <= 1) {
         update_ptr[player->state](player, scene, win, dtime);
     }
 }
