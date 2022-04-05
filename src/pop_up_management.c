@@ -26,13 +26,14 @@ void set_is_visible_false(list_ptr_t *list)
     }
 }
 
-int check_if_pop_up_true(scene_t *scene, char *key)
+int check_if_pop_up_true(dico_t *dico, char *key)
 {
     list_t *elem = NULL;
-    list_ptr_t *list = dico_t_get_value(scene->components, key);
+    list_ptr_t *list = dico_t_get_value(dico, key);
 
-    if (!list)
+    if (!list) {
         return (1);
+    }
     elem = list->start;
     if (((object_t *) elem->var)->is_visible == true) {
         set_is_visible_false(list);

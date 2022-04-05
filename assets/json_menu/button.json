@@ -6,8 +6,7 @@
             "size":  5.0,
             "sprite path": "./assets/Buttons_sprites/EXIT_BUTTON.png",
             "pos": [700.0, 200.0],
-            "plan": 0,
-            "text color": [255, 0, 0, 255]
+            "plan": 0
         },
         {
             "text": "PLAY",
