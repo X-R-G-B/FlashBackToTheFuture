@@ -35,7 +35,10 @@ SRC_UPDATE	:=	update_player.c	\
 				update_attack.c
 SRC_UPDATE	:= $(addprefix update/,$(SRC_UPDATE))
 
-SRC_PLAYER	:=	set_stop.c $(SRC_EVENT) $(SRC_UPDATE)
+SRC_PLAYER	:=	set_stop.c		\
+				create_player.c	\
+				$(SRC_EVENT)	\
+				$(SRC_UPDATE)
 SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))
 
 SRC			:=	$(SRC_PLAYER)
