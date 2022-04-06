@@ -34,6 +34,7 @@ struct pathfind_s {
     int sizex;
     int sizey;
     vect2i_t end;
+    char wall_char;
 };
 
 int put_distance_buffer(pathfind_impl_t *maps);

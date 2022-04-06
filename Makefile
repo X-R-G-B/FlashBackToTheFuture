@@ -22,37 +22,42 @@ RESET		=	'\033[0m'
 
 # ----------------------------------------------------------------------------
 # SRC
-CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
+CFLAGS			=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC_EVENT	:=	attack.c	\
-				move.c
-SRC_EVENT	:= $(addprefix event/,$(SRC_EVENT))
+SRC_EVENT		:=	attack.c	\
+					move.c
+SRC_EVENT		:=	$(addprefix event/,$(SRC_EVENT))
 
-SRC_UPDATE	:=	update_player.c		\
-				update_movement.c	\
-				update_attack.c
-SRC_UPDATE	:= $(addprefix update/,$(SRC_UPDATE))
+SRC_UPDATE		:=	update_player.c		\
+					update_movement.c	\
+					update_attack.c
+SRC_UPDATE		:=	$(addprefix update/,$(SRC_UPDATE))
 
-SRC_PLAYER	:=	set_stop.c		\
-				create_player.c	\
-				$(SRC_EVENT)	\
-				$(SRC_UPDATE)
-SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))
+SRC_PLAYER		:=	set_stop.c		\
+					create_player.c	\
+					$(SRC_EVENT)	\
+					$(SRC_UPDATE)
+SRC_PLAYER		:=	$(addprefix player/,$(SRC_PLAYER))
 
-SRC_MENU	:=	create_pause_menu.c		\
-				pressed_button_event.c	\
-				pause_button_event.c
-SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
+SRC_MENU		:=	create_pause_menu.c		\
+					pressed_button_event.c	\
+					pause_button_event.c
+SRC_MENU		:=	$(addprefix menu/,$(SRC_MENU))
 
-SRC			:=	main.c				\
-        		init_menu.c			\
-				pop_up_management.c	\
-				event_menu.c		\
-        		$(SRC_MENU)			\
-				$(SRC_PLAYER)
-SRC			:= 	$(addprefix src/,$(SRC))
+SRC_PATHFIND	:=	init_find.c	\
+					init_path.c
+SRC_PATHFIND	:=	$(addprefix pathfind/,$(SRC_PATHFIND))
 
-OBJ			:=	$(SRC:%.c=%.o)
+SRC				:=	main.c				\
+        			init_menu.c			\
+					pop_up_management.c	\
+					event_menu.c		\
+        			$(SRC_MENU)			\
+					$(SRC_PLAYER)		\
+					$(SRC_PATHFIND)
+SRC				:=	$(addprefix src/,$(SRC))
+
+OBJ				:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------
@@ -73,7 +78,7 @@ TSRCDIR		:=	tests/
 
 TSRC		:=	pathfind.c
 TSRC		:=	$(addprefix $(TSRCDIR),$(TSRC))
-TSRC		:= 	$(filter-out $(SRCDIR)main.c,$(SRC)) $(TSRC)
+TSRC		:= 	$(filter-out src/main.c,$(SRC)) $(TSRC)
 
 TOBJ		:=	$(TSRC:%.c=%.o)
 # ----------------------------------------------------------------------------
