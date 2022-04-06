@@ -32,9 +32,10 @@ static int check_pos(vect2i_t *pos, list_ptr_t *tmp, pathfind_impl_t *maps)
         pos->x - 1 >= 0, pos->y - 1 >= 0
     };
 
+    curr = (curr + 1 == maps->wall_char) ? curr + 2 : curr + 1;
     for (int i = 0; i < 4; i++) {
         if (condd[i] && maps->origins[poss[i].y][poss[i].x] == '\0') {
-            maps->origins[poss[i].y][poss[i].x] = curr + 1;
+            maps->origins[poss[i].y][poss[i].x] = curr;
             list_add_to_start(tmp, create_vectpos(poss[i].x, poss[i].y));
         }
     }
@@ -76,8 +77,7 @@ int put_distance_buffer(pathfind_impl_t *maps)
 
     list = list_create();
     list_add_to_start(list, create_vectpos(maps->end.x, maps->end.y));
-    while (list != NULL && list->len == 0 &&
-            check_start_in_list(list, &maps->start)) {
+    while (list != NULL && list->len == 0) {
         tmp = itterate_list(list, maps);
         destroy_list_vect(list);
         list = tmp;
