@@ -13,7 +13,7 @@
 object_t *create_object(
     void (*update)(object_t *, scene_t *, window_t *win, float),
     void (*display)(object_t *, dico_t *, dico_t *, sfRenderWindow *),
-    scene_t *scene, int plan)
+    scene_t *scene, int layer)
 {
     object_t *object = malloc(sizeof(object_t));
 
@@ -25,13 +25,13 @@ object_t *create_object(
     object->components = NULL;
     object->update = update;
     object->display = display;
-    object->plan = plan;
+    object->layer = layer;
     object->is_visible = (display) ? true : false;
     object->type = UNSET;
     object->components = dico_t_add_data(object->components, "scene",
         scene, NULL);
     if (object->components == NULL ||
-        scene_add_object(scene, object, plan) != BGS_OK) {
+        scene_add_object(scene, object, layer) != BGS_OK) {
         return NULL;
     }
     return object;
