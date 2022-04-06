@@ -10,14 +10,14 @@
 void toggle_pop_up(dico_t *dico, char *key)
 {
     list_t *elem = NULL;
-    list_ptr_t *load_game = dico_t_get_value(dico, key);
+    list_ptr_t *list = dico_t_get_value(dico, key);
     object_t *obj = NULL;
 
-    if (load_game == NULL) {
+    if (list == NULL) {
         return;
     }
-    elem = load_game->start;
-    for (int i = 0; i != load_game->len; i++) {
+    elem = list->start;
+    for (int i = 0; i != list->len; i++) {
         obj = elem->var;
         obj->is_visible = (obj->is_visible == false) ? true : false;
         elem = elem->next;
