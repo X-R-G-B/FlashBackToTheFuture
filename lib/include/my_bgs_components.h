@@ -53,6 +53,7 @@ struct event_node_s {
 
 struct set_event_s {
     list_ptr_t *list_event;
+    event_node_t input_key;
     bool hover;
     bool prev_call;
     void (*on)(object_t *object, scene_t *scene, window_t *win,
@@ -78,11 +79,9 @@ struct sprite_health_s {
 
 struct on_collision_s {
     char key[255];
-    bool is_pixel;
     dico_t *collisions_dico;
     void (*collision)(object_t *this, object_t *other, scene_t *scene,
         window_t *win);
-    list_ptr_t *solid_squares;
 };
 
 struct sprite_chrono_s {
@@ -103,6 +102,26 @@ struct on_left_click_s {
     bool prev_left_click;
     void (*left_click)(object_t *, scene_t *, window_t *win);
 };
+
+/**
+** @brief add a component to the window component
+**
+** You can add any component to a window component
+**
+** @param win window_t window in which you will add a component
+** @param data void *data is your component
+** @param key const char[] is your key linked to the component
+** @param destroy void (*destroy)(void *) is the function pointer
+** which will destroy your component
+**
+** @return {
+** BGS_ERR_INPUT : win or data or key is NULL
+** BGS_ERR_MALLOC : malloc failed
+** BGS_OK : the component has been successfully added to the window
+** }
+**/
+int window_add_component(window_t *win, void *data, const char key[],
+    void (*destroy)(void *));
 
 int object_add_components(object_t *object, void *data, const char key[],
     void (*destroy)(void *));
@@ -133,16 +152,51 @@ void object_update_mouse_event(object_t *object, scene_t *scene,
 
 int object_add_collision(object_t *object, scene_t *scene,
     void (*collision)(object_t *this, object_t *other, scene_t *scene,
-    window_t *win), bool is_pixel);
+    window_t *win));
 
+/**
+** @brief set object as visible
+**
+** @param object object to set
+**/
 void set_display(object_t *object);
 
+/**
+** @brief set object as not visible
+**
+** @param object object to set
+**/
 void unset_display(object_t *object);
 
 int object_set_event(object_t *object, set_event_t *usr_event);
 
+/**
+** @brief add a conditon event to an already created event
+**
+** choose between sfMouseButton and sfKeyCode with the enum and this as an
+** added condition to trigger the event
+**
+** @param event event in which the condition will be added
+** @param params {sfMouseButton, sfKeyCode, enum event_type} condition to add
+**
+** @return
+**/
 int event_add_node(set_event_t *event, node_params_t params);
 
+/**
+** @brief create an event for an object
+**
+** @param on function to call when event trigger
+** @param hover whether the event need to have the cursor on the object
+** @param object object in which the event will be added
+** @param off function called when the event stops
+**
+** @return {
+** NULL : object is NULL,
+** NULL : malloc failed,
+** set_event_t *: the event has been created
+** }
+**/
 set_event_t *create_event(void (*on)(object_t *, scene_t *, window_t *,
     set_event_t *), bool hover, object_t *object,
     void (*off)(object_t *, scene_t *, window_t *, set_event_t *));

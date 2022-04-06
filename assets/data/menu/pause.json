@@ -1,0 +1,33 @@
+{
+    "buttons": [
+        {
+            "sprite path": "./assets/image/menu/pause/back.png",
+            "pos": [500.0, 960.0]
+        },
+        {
+            "text": "resume",
+            "sprite path": "./assets/image/menu/pause/resume.png",
+            "pos": [310.0, 960.0]
+        },
+        {
+            "text": "restart",
+            "sprite path": "./assets/image/menu/pause/restart.png",
+            "pos": [400.0, 960.0]
+        },
+        {
+            "text": "settings",
+            "sprite path": "./assets/image/menu/pause/settings.png",
+            "pos": [490.0, 960.0]
+        },
+        {
+            "text": "home",
+            "sprite path": "./assets/image/menu/pause/home.png",
+            "pos": [580.0, 960.0]
+        },
+        {
+            "text": "exit",
+            "sprite path": "./assets/image/menu/pause/exit.png",
+            "pos": [670.0, 960.0]
+        }
+    ]
+} 

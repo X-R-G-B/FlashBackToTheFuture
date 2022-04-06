@@ -41,24 +41,9 @@ void free_col(void *data)
     free(collision);
 }
 
-list_ptr_t *create_square_list(object_t *object)
-{
-    list_ptr_t *list = list_create();
-    char **arr = NULL;
-
-    if (object->type != SPRITE) {
-        return NULL;
-    }
-    arr = check_image_pixel(object->bigdata.sprite_bigdata.image);
-    if (squares_handling(arr, list) != BGS_OK) {
-        return NULL;
-    }
-    return list;
-}
-
 int object_add_collision(object_t *object, scene_t *scene,
     void (*collision)(object_t *this, object_t *other, scene_t *scene,
-    window_t *win), bool is_pixel)
+    window_t *win))
 {
     on_collision_t *on_collision = NULL;
 
@@ -71,8 +56,6 @@ int object_add_collision(object_t *object, scene_t *scene,
         return BGS_ERR_MALLOC;
     }
     get_id_generator(on_collision->key);
-    on_collision->is_pixel = is_pixel;
-    on_collision->solid_squares = create_square_list(object);
     on_collision->collision = collision;
     on_collision->collisions_dico = NULL;
     if (scene_add_solid_list(scene) != BGS_OK || list_add_to_end(
