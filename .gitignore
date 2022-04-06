@@ -1,7 +1,8 @@
-.a
-.o
+*.a
+*.o
 my_rpg
-.gnco
-.gcda
-.vscode
-.swp
+*.gcno
+*.gcda
+*.vscode
+*.swp
+butto.png

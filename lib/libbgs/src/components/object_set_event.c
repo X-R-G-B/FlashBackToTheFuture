@@ -31,6 +31,32 @@ void destroy_event(void *data)
     free(event);
 }
 
+static bool check_elem_in_list(list_ptr_t *list, void *data)
+{
+    list_t *elem = list->start;
+
+    for (int i = 0; i < list->len; i++, elem = elem->next) {
+        if (elem->var == data) {
+            return true;
+        }
+    }
+    return false;
+}
+
+static void check_obj_in_update_list(object_t *obj)
+{
+    scene_t *scene = dico_t_get_value(obj->components, "scene");
+    layer_t *layer = NULL;
+
+    if (scene == NULL) {
+        return;
+    }
+    layer = get_element_i_var(scene->layer, obj->layer);
+    if (check_elem_in_list(layer->updates, obj) == false) {
+        list_add_to_end(layer->updates, obj);
+    }
+}
+
 int object_set_event(object_t *object, set_event_t *event)
 {
     char key[255] = {0};
@@ -44,6 +70,7 @@ int object_set_event(object_t *object, set_event_t *event)
     }
     get_id_generator_cat(key);
     object->components = dico_t_add_data(object->components, key, event,
-        &destroy_event);
+            &destroy_event);
+    check_obj_in_update_list(object);
     return (BGS_OK);
 }

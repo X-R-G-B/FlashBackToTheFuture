@@ -9,16 +9,20 @@
 #include "my_bgs.h"
 #include "my_strings.h"
 #include "my_bgs_components.h"
-#include "../include/libbgs_private.h"
+#include "libbgs_private.h"
 
-static bool check_node(event_node_t *node)
+static bool check_node(event_node_t *node, set_event_t *set_event)
 {
     if (node->event_type == MOUSE) {
         if (sfMouse_isButtonPressed(node->event_code.mouse) == sfTrue) {
+            set_event->input_key.event_type = MOUSE;
+            set_event->input_key.event_code.mouse = node->event_code.mouse;
             return true;
         }
     } else if (node->event_type == KEY) {
         if (sfKeyboard_isKeyPressed(node->event_code.key) == sfTrue) {
+            set_event->input_key.event_type = KEY;
+            set_event->input_key.event_code.key = node->event_code.key;
             return true;
         }
     }
@@ -41,9 +45,23 @@ static bool check_event_nodes(set_event_t *set_event, object_t *object,
     for (int i = 0; elem != NULL && i < set_event->list_event->len &&
         check == true; i++, elem = elem->next) {
         node = ((event_node_t *) elem->var);
-        check = check_node(node);
+        check = check_node(node, set_event);
     }
     return (check);
+}
+
+void check_off_event(set_event_t *set_event, object_t *obj,
+    window_t *win, scene_t *scene)
+{
+    if (set_event->prev_call == true && sfRenderWindow_isOpen(win->win)) {
+        if (set_event->off != NULL) {
+            set_event->off(obj, scene, win, set_event);
+        }
+        if (win->click == set_event) {
+            win->click = NULL;
+        }
+        scene_loading_handling(win);
+    }
 }
 
 void check_event(set_event_t *set_event, object_t *object,
@@ -51,21 +69,19 @@ void check_event(set_event_t *set_event, object_t *object,
 {
     bool check = true;
 
-    if ((set_event->list_event == NULL && set_event->hover == false) ||
-        set_event == NULL) {
+    if (set_event == NULL ||
+        (set_event->list_event == NULL && set_event->hover == false)) {
         return;
     }
     check = check_event_nodes(set_event, object, win);
     check = check_click_prev_call(check, win, set_event);
-    if (check == true && set_event->prev_call == false) {
-        if (set_event->on != NULL) {
-            set_event->on(object, scene, win, set_event);
-        }
+    if (check == true && set_event->on != NULL &&
+        sfRenderWindow_isOpen(win->win)) {
+        set_event->on(object, scene, win, set_event);
+        scene_loading_handling(win);
     }
-    if (set_event->prev_call == true && check == false) {
-        if (set_event->off != NULL) {
-            set_event->off(object, scene, win, set_event);
-        }
+    if (check == false) {
+        check_off_event(set_event, object, win, scene);
     }
     set_event->prev_call = check;
 }
@@ -83,5 +99,5 @@ void object_check_event(object_t *object, scene_t *scene,
             check_event(cursor->value, object, win, scene);
         }
         cursor = cursor->next;
-    } while (cursor != object->components);
+    } while (cursor != object->components && sfRenderWindow_isOpen(win->win));
 }

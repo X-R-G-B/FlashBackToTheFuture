@@ -24,7 +24,46 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC			:=	src/main.c
+SRC_LAUNCH	:=	launch_game.c	\
+				launch_stage.c	\
+				launch_story_mode.c
+SRC_LAUNCH	:= $(addprefix launch/,$(SRC_LAUNCH))
+
+SRC_EVENT	:=	attack.c	\
+				move.c
+SRC_EVENT	:= $(addprefix event/,$(SRC_EVENT))
+
+SRC_UPDATE	:=	update_player.c		\
+				update_movement.c	\
+				update_attack.c
+SRC_UPDATE	:= $(addprefix update/,$(SRC_UPDATE))
+
+SRC_PLAYER	:=	set_stop.c		\
+				create_player.c	\
+				$(SRC_EVENT)	\
+				$(SRC_UPDATE)
+SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))
+
+SRC_MAIN	:=	event_menu.c	\
+				init_menu.c		\
+				pop_up_management.c
+SRC_MAIN	:=	$(addprefix main/,$(SRC_MAIN))
+
+SRC_PAUSE	:=	create_pause_menu.c		\
+				pressed_button_event.c	\
+				pause_button_event.c
+SRC_PAUSE	:=	$(addprefix pause/,$(SRC_PAUSE))
+
+SRC_MENU	:=	$(SRC_PAUSE)	\
+				$(SRC_MAIN)		\
+				button_event_array.c
+SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
+
+SRC			:=	main.c				\
+				$(SRC_LAUNCH)		\
+        		$(SRC_MENU)			\
+				$(SRC_PLAYER)
+SRC			:= 	$(addprefix src/,$(SRC))
 
 OBJ			:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------
@@ -34,7 +73,7 @@ OBJ			:=	$(SRC:%.c=%.o)
 LIB_TARGET		=	lib/libmy.a
 
 LDFLAGS			=	-L$(dir $(LIB_TARGET)) -lmy -lcsfml-graphics \
-					-lcsfml-audio -lcsfml-system -lcsfml-window
+					-lcsfml-audio -lcsfml-system -lcsfml-window -lm
 # ----------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------

@@ -1,11 +1,13 @@
 /*
 ** EPITECH PROJECT, 2022
-** rpg
+** button generator
 ** File description:
-** main entry point
+** tests
 */
+
+#include "my_rpg.h"
 
 int main(void)
 {
-    return (0);
+    return launch_game();
 }
