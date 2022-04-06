@@ -45,7 +45,7 @@ FN_TEST_LDFLAGS	=	-lgcov
 
 TSRCDIR		:=	tests/
 
-TSRC		:=	...
+TSRC		:=	pathfind.c
 TSRC		:=	$(addprefix $(TSRCDIR),$(TSRC))
 TSRC		:= 	$(filter-out $(SRCDIR)main.c,$(SRC)) $(TSRC)
 
