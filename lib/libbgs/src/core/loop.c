@@ -53,19 +53,12 @@ int loop(window_t *win)
 {
     int ret = BGS_OK;
     time_clock_t *timer = init_clock();
-    dico_t *dict = NULL;
 
     if (timer == NULL || win == NULL || win->scenes == NULL) {
         return 0;
     }
     while (sfRenderWindow_isOpen(win->win) && ret == BGS_OK) {
         ret = scene_handling(&win, timer, win->current_scene);
-        dict = win->scenes;
-        //printf("\nframe*****\n");
-        do {
-            //printf("dico key: %s\n", dict->key);
-            dict = dict->next;
-        } while (dict != win->scenes);
         if (ret == BGS_OK) {
             ret = event_handling(win->win);
         }

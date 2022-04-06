@@ -56,7 +56,6 @@ int launch_story_mode(window_t *win, const char save_path[])
     char *stage_path = NULL;
 
     if (save == NULL) {
-        printf("save path: %s\n", save_path);
         return RET_ERR_INPUT;
     }
     current_stage = dico_t_get_any(save->value.dict, "current stage");
