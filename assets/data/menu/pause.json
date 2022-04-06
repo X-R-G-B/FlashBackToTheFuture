@@ -2,7 +2,7 @@
     "buttons": [
         {
             "sprite path": "./assets/image/menu/pause/back.png",
-            "pos": [690.0, 1520.0]
+            "pos": [500.0, 960.0]
         },
         {
             "text": "resume",

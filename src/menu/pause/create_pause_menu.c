@@ -13,10 +13,13 @@
 static const char button_path[] = "./assets/data/menu/pause.json";
 static const char data_path[] = "./assets/data/menu/pressed.json";
 
-static int button_add_data(object_t *obj, any_t *file, int *rect, int *origin)
+static int button_set_rect(object_t *obj, any_t *file, int *rect, int *origin)
 {
     obj->components = dico_t_add_data(obj->components, "data", file,
         destroy_any);
+    if (obj->components == NULL) {
+        return RET_ERR_MALLOC;
+    }
     obj->bigdata.sprite_bigdata.rect = (sfIntRect) {rect[0], rect[1], rect[2],
         rect[3]};
     sfSprite_setOrigin(obj->drawable.sprite, (sfVector2f) {origin[0],
@@ -37,7 +40,7 @@ static list_ptr_t *browse_list(list_ptr_t *list, int *rect, int *origin,
         if (file == NULL) {
             return NULL;
         }
-        ret = button_add_data(elem->var, file, rect, origin);
+        ret = button_set_rect(elem->var, file, rect, origin);
     }
     free(rect);
     free(origin);

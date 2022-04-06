@@ -32,7 +32,8 @@ void move_on(object_t *object, scene_t *scene, window_t *win,
 {
     player_t *player = NULL;
 
-    if (object == NULL || scene == NULL || win == NULL || event == NULL) {
+    if (scene->pause == true || object == NULL || scene == NULL ||
+        win == NULL || event == NULL) {
         return;
     }
     player = dico_t_get_value(win->components, "player");
@@ -51,7 +52,8 @@ void move_off(object_t *obj, scene_t *scene, window_t *win, set_event_t *event)
 {
     player_t *player = NULL;
 
-    if (obj == NULL || scene == NULL || win == NULL || event == NULL) {
+    if (scene->pause == true || obj == NULL || scene == NULL || win == NULL ||
+        event == NULL) {
         return;
     }
     player = dico_t_get_value(win->components, "player");
