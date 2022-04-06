@@ -6,6 +6,7 @@
 */
 
 #include "main_menu.h"
+#include "my_rpg.h"
 
 const char *str_on_hover[] = {NULL};
 
@@ -24,8 +25,9 @@ void (*on_click[])(object_t *, scene_t *, window_t *win, set_event_t *) = {
     NULL
 };
 
-const char *str_off_click[] = {"QUIT", "PLAY", "Retour", "BACK", NULL};
+const char *str_off_click[] = {"QUIT", "PLAY", "Retour", "BACK", "First save",
+    NULL};
 
 void (*off_click[])(object_t *, scene_t *, window_t *win, set_event_t *) = {
-    &close_window, &play_pop_up, &go_back, &go_back, NULL
+    close_window, play_pop_up, go_back, go_back, click_save, NULL
 };

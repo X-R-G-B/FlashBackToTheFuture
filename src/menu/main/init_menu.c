@@ -18,9 +18,9 @@ static void init_components(object_t *obj)
 static void init_main_menu_buttons(list_ptr_t **main_menu,
     list_ptr_t **load_game, scene_t *scene)
 {
-    *main_menu = create_button(scene, "./assets/json_menu/button.json");
+    *main_menu = create_button(scene, "./assets/data/menu/main.json");
     *load_game = create_button(scene,
-        "./assets/json_menu/charge_button.json");
+        "./assets/data/menu/charge_button.json");
 }
 
 int init_menu(window_t *win)
@@ -43,5 +43,6 @@ int init_menu(window_t *win)
     scene->components = dico_t_add_data(scene->components,
         PLAY, load_game, free_pop_up);
     set_is_visible_false(load_game);
+    free_list(main_menu);
     return RET_OK;
 }
