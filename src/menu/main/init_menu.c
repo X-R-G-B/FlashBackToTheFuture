@@ -8,7 +8,7 @@
 #include "my_rpg.h"
 #include "main_menu.h"
 
-static void init_components(object_t *obj)
+static void add_escape_event(object_t *obj)
 {
     event_add_node(create_event(NULL, false, obj,
         &close_window), (node_params_t)
@@ -39,7 +39,7 @@ int init_menu(window_t *win)
     if (main_menu == NULL || load_game == NULL || obj == NULL) {
         return (RET_ERR_MALLOC);
     }
-    init_components(obj);
+    add_escape_event(obj);
     scene->components = dico_t_add_data(scene->components,
         PLAY, load_game, free_pop_up);
     set_is_visible_false(load_game);

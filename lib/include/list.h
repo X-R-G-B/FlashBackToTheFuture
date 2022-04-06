@@ -68,6 +68,7 @@ list_t *list_add_to_start(list_ptr_t *list_ptr, void *content);
 **
 ** @param list_ptr list in which the content will be added
 ** @param content content to add
+** @param i the index i to insert the content
 **
 ** @return {
 ** NULL : list_ptr or content is NULL,

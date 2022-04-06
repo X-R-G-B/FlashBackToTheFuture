@@ -9,7 +9,7 @@
 #include "my_rpg.h"
 #include "my_json.h"
 
-static void set_sprite_new_data(object_t *obj, int *rect, int *origin)
+static void set_sprite_new_rect(object_t *obj, int *rect, int *origin)
 {
     obj->bigdata.sprite_bigdata.rect = (sfIntRect) {rect[0], rect[1], rect[2],
         rect[3]};
@@ -39,7 +39,7 @@ void pressed_button_on(object_t *obj, scene_t *scene,
     if (rect == NULL || origin == NULL) {
         return;
     }
-    set_sprite_new_data(obj, rect, origin);
+    set_sprite_new_rect(obj, rect, origin);
 }
 
 void pressed_button_off(object_t *obj, __attribute__((unused)) scene_t *scene,
@@ -62,5 +62,5 @@ void pressed_button_off(object_t *obj, __attribute__((unused)) scene_t *scene,
     if (rect == NULL || origin == NULL) {
         return;
     }
-    set_sprite_new_data(obj, rect, origin);
+    set_sprite_new_rect(obj, rect, origin);
 }

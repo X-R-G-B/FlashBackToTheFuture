@@ -5,7 +5,6 @@
 ** object check event
 */
 
-#include <SFML/Graphics/RenderWindow.h>
 #include <stdlib.h>
 #include "my_bgs.h"
 #include "my_strings.h"

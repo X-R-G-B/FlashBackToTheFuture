@@ -15,8 +15,8 @@
 static char stage_name_start[] = "stage_";
 static int start_len = 6;
 
-static void click_pause(__attribute__((unused)) object_t *obj, scene_t *scene, window_t *win,
-    __attribute__((unused)) set_event_t *evt)
+static void click_pause(__attribute__((unused)) object_t *obj, scene_t *scene,
+    window_t *win, __attribute__((unused)) set_event_t *evt)
 {
     player_t *player = dico_t_get_value(win->components, "player");
 
