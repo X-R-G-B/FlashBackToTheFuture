@@ -9,7 +9,7 @@
 
 int check_layer(dico_t *dico)
 {
-    any_t *layer = dico_t_get_any(dico, "layer");
+    any_t *layer = dico_t_get_any(dico, "plan");
 
     if (layer == NULL || layer->type != INT) {
         return 0;

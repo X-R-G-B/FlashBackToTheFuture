@@ -17,6 +17,9 @@ static int button_add_data(object_t *obj, any_t *file, int *rect, int *origin)
 {
     obj->components = dico_t_add_data(obj->components, "data", file,
         destroy_any);
+    if (obj->components == NULL) {
+        return RET_ERR_MALLOC;
+    }
     obj->bigdata.sprite_bigdata.rect = (sfIntRect) {rect[0], rect[1], rect[2],
         rect[3]};
     sfSprite_setOrigin(obj->drawable.sprite, (sfVector2f) {origin[0],
@@ -32,7 +35,7 @@ static list_ptr_t *browse_list(list_ptr_t *list, int *rect, int *origin,
     list_t *elem = NULL;
 
     elem = list->start->next;
-    for (int i = 1; i < list->len && ret == RET_OK; i++, elem = elem->next) {
+    for (int i = 0; i < list->len && ret == RET_OK; i++, elem = elem->next) {
         file = parse_json_file(data_path);
         if (file == NULL) {
             return NULL;

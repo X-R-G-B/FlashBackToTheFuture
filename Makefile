@@ -24,7 +24,9 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC_LAUNCH	:=	launch_game.c
+SRC_LAUNCH	:=	launch_game.c	\
+				launch_stage.c	\
+				launch_story_mode.c
 SRC_LAUNCH	:= $(addprefix launch/,$(SRC_LAUNCH))
 
 SRC_EVENT	:=	attack.c	\
