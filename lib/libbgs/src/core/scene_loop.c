@@ -68,19 +68,19 @@ static void window_update(list_ptr_t *updates, window_t *win, float seconds,
     }
 }
 
-static void scene_plan_handling(scene_t *scene, window_t *win, float seconds)
+static void scene_layer_handling(scene_t *scene, window_t *win, float seconds)
 {
-    list_t *elem = scene->plan->start;
-    plan_t *plan = NULL;
+    list_t *elem = scene->layer->start;
+    layer_t *layer = NULL;
 
-    for (int i = 0; i < scene->plan->len; i++, elem = elem->next) {
-        plan = elem->var;
-        window_update(plan->updates, win, seconds, scene);
+    for (int i = 0; i < scene->layer->len; i++, elem = elem->next) {
+        layer = elem->var;
+        window_update(layer->updates, win, seconds, scene);
     }
-    elem = scene->plan->end;
-    for (int i = 0; i < scene->plan->len; i++, elem = elem->back) {
-        plan = elem->var;
-        window_display(scene, win, plan->displayables);
+    elem = scene->layer->end;
+    for (int i = 0; i < scene->layer->len; i++, elem = elem->back) {
+        layer = elem->var;
+        window_display(scene, win, layer->displayables);
     }
     if (sfRenderWindow_isOpen(win->win)) {
         sfRenderWindow_display(win->win);
@@ -101,7 +101,7 @@ int scene_handling(window_t **win, time_clock_t *timer, const char *scene_name)
     sfRenderWindow_clear((*win)->win, scene->bg_color);
     timer->time = sfClock_restart(timer->clock);
     timer->seconds = sfTime_asSeconds(timer->time);
-    scene_plan_handling(scene, *win, timer->seconds);
+    scene_layer_handling(scene, *win, timer->seconds);
     window_remove(scene, *win);
     return BGS_OK;
 }

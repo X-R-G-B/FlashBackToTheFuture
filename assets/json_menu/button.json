@@ -1,0 +1,25 @@
+{
+    "buttons": [
+        {
+            "text": "QUIT",
+            "text pos": [200.0, 200.0],
+            "size":  5.0,
+            "sprite path": "./assets/Buttons_sprites/EXIT_BUTTON.png",
+            "pos": [700.0, 200.0],
+            "plan": 0
+        },
+        {
+            "text": "PLAY",
+            "size": 5.0,
+            "sprite path": "./assets/Buttons_sprites/PLAY_BUTTON.png",
+            "pos": [400.0, 200.0],
+            "plan": 0
+        },
+        {
+            "text": "Back",
+            "sprite path": "./assets/Buttons_sprites/main_menu.jpg",
+            "pos": [540.0, 960.0],
+            "plan": 1
+        }
+    ]
+}

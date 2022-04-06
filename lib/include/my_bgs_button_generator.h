@@ -33,4 +33,12 @@ list_ptr_t *fill_obj_list(list_t *elem, scene_t *scene);
 
 int set_color(object_t *object, dico_t *dico);
 
+/**
+** @brief toggle pop up true or false
+**
+** @param dico components of the list of pop up
+** @param key string that will catch the pop up list
+**/
+void toggle_pop_up(dico_t *dico, char *key);
+
 #endif /* !BUTTON_H_ */
