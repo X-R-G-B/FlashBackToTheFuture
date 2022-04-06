@@ -25,9 +25,8 @@ struct pathfind_impl_s {
     int size_x;
     int size_y;
     char end_char;
-    char start_char;
+    char wall_char;
     vect2i_t end;
-    vect2i_t start;
 };
 
 struct pathfind_s {
@@ -38,8 +37,6 @@ struct pathfind_s {
 };
 
 int put_distance_buffer(pathfind_impl_t *maps);
-
-int check_start_in_list(list_ptr_t *list, vect2i_t *start);
 
 pathfind_t *init_pathfind(char **array, char end, char start);
 

@@ -18,7 +18,7 @@ static int init_new_buffer(pathfind_impl_t *maps)
     sizex = maps->size_x;
     for (int i = 0; i < maps->size_y * sizex; i++) {
         if (maps->buffer[i / sizex][i % sizex] != maps->end_char &&
-                maps->buffer[i / sizex][i % sizex] != maps->start_char) {
+                maps->buffer[i / sizex][i % sizex] != maps->wall_char) {
             maps->buffer[i / sizex][i % sizex] = '\0';
         }
     }
@@ -35,10 +35,6 @@ static int fill_vect_pos(pathfind_impl_t *maps)
         if (maps->origins[i / sizex][i % sizex] == maps->end_char) {
             maps->end.x = i % sizex;
             maps->end.y = i / sizex;
-            count += 1;
-        } else if (maps->origins[i / sizex][i % sizex] == maps->start_char) {
-            maps->start.x = i % sizex;
-            maps->start.y = i / sizex;
             count += 1;
         }
     }
@@ -64,16 +60,16 @@ static pathfind_t *create_pathfind(pathfind_impl_t *maps)
 }
 
 static int fill_pathfind_impl(pathfind_impl_t *maps, char **array, char end,
-        char start)
+        char wall)
 {
     if (array == NULL) {
         return (-1);
     }
     maps->origins = array;
-    maps->start_char = start;
+    maps->wall_char = wall;
     maps->end_char = end;
     maps->size_y = my_wordarray_len(array);
-    if (maps->size_y == 0 || end == '\0' || start == '\0') {
+    if (maps->size_y == 0 || end == '\0' || wall == '\0') {
         return (-1);
     }
     maps->size_x = my_strlen(array[0]);
@@ -84,12 +80,12 @@ static int fill_pathfind_impl(pathfind_impl_t *maps, char **array, char end,
     return (0);
 }
 
-pathfind_t *init_pathfind(char **array, char end, char start)
+pathfind_t *init_pathfind(char **array, char end, char wall)
 {
     pathfind_impl_t maps = {0};
     pathfind_t *path = NULL;
 
-    if (fill_pathfind_impl(&maps, array, end, start)) {
+    if (fill_pathfind_impl(&maps, array, end, wall)) {
         return (NULL);
     }
     if (init_new_buffer(&maps) || fill_vect_pos(&maps) ||
