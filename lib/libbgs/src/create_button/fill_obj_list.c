@@ -11,7 +11,8 @@ list_ptr_t *fill_obj_list(list_t *elem, scene_t *scene)
 {
     list_ptr_t *list = list_create();
 
-    if (scene == NULL || list == NULL || scene->objects->len == 0) {
+    if (scene == NULL || list == NULL || scene->objects == NULL ||
+        scene->objects->len == 0) {
         return NULL;
     } else if (elem == NULL) {
         elem = scene->objects->end;

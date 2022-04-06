@@ -5,6 +5,7 @@
 ** update attack
 */
 
+#include <stdlib.h>
 #include "my_rpg.h"
 #include "my_json.h"
 
@@ -43,6 +44,8 @@ static void increment_rect(list_ptr_t *data, int index[2], player_t *player,
     sfSprite_setOrigin(player->obj->drawable.sprite,
         (sfVector2f) {origin[0], origin[1]});
     increment_index(index, player, time);
+    free(rect);
+    free(origin);
 }
 
 void update_attack(player_t *player, __attribute__((unused)) scene_t *scene,
