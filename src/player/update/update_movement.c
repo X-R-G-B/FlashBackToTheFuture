@@ -5,6 +5,8 @@
 ** player_movements
 */
 
+#include <SFML/Graphics/View.h>
+#include <SFML/System/Vector2.h>
 #include <stdlib.h>
 #include "my_bgs.h"
 #include "my_bgs_components.h"
@@ -26,33 +28,22 @@ static int apply_player_positions(player_t *player, int state,
     player->obj->bigdata.sprite_bigdata.rect =
         (sfIntRect) {rect[0], rect[1], rect[2], rect[3]};
     sfSprite_setOrigin(player->obj->drawable.sprite,
-        (sfVector2f) {rect[2] / 2, rect[3] / 2});
+        (sfVector2f) {rect[2] / 2.0, rect[3] / 2.0});
     free(rect);
     return RET_OK;
 }
 
-static int change_player_pos(player_t *player, float delta_time, int speed,
+static int change_player_pos(player_t *player, float move,
     scene_t *scene)
 {
+    sfVector2f news[4] = {{0, 0 - move}, {0 - move, 0}, {0, move}, {move, 0}};
+
     if (check_collision(player, scene) == true) {
         return 0;
     }
-    switch (player->dir) {
-        case RIGHT:
-            player->obj->bigdata.sprite_bigdata.pos.x += delta_time * speed;
-            break;
-        case DOWN:
-            player->obj->bigdata.sprite_bigdata.pos.y += delta_time * speed;
-            break;
-        case LEFT:
-            player->obj->bigdata.sprite_bigdata.pos.x -= delta_time * speed;
-            break;
-        case UP:
-            player->obj->bigdata.sprite_bigdata.pos.y -= delta_time * speed;
-            break;
-        default:
-            break;
-    }
+    player->obj->bigdata.sprite_bigdata.pos.x += news[player->dir].x;
+    player->obj->bigdata.sprite_bigdata.pos.y += news[player->dir].y;
+    sfView_move(player->view, news[player->dir]);
     return 0;
 }
 
@@ -75,7 +66,7 @@ static int move_player(player_t *player, float delta_time,
     if (speed == NULL || speed->type != INT) {
         return RET_ERR_INPUT;
     }
-    change_player_pos(player, delta_time, speed->value.i, scene);
+    change_player_pos(player, delta_time * speed->value.i, scene);
     ret = apply_player_positions(player, state, movements_rect);
     return ret;
 }
@@ -105,4 +96,5 @@ void update_movements(player_t *player, scene_t *scene, window_t *win,
         return;
     }
     handle_move_player(player, delta_time, scene);
+    sfRenderWindow_setView(win->win, player->view);
 }
