@@ -95,18 +95,10 @@ int launch_stage(window_t *win, char *stage_path, int stage_id)
     list_ptr_t *pause_menu = NULL;
     char *stage_name = get_stage_name(stage_id);
 
-<<<<<<< HEAD
-    if (stage_name == NULL) {
-        return RET_ERR_INPUT;
-    }
-    scene = create_scene(win, sfWhite, stage_name);
-    if (scene == NULL || create_player(win, scene, PLAYER_DATA) == NULL) {
-=======
     scene = init_scene(stage_path, win, stage_name);
     if (scene == NULL || create_player(win, scene, PLAYER_DATA) == NULL ||
         create_map(scene) != RET_OK ||
         add_collision_array_in_scene(scene) != RET_OK) {
->>>>>>> dev
         return RET_ERR_MALLOC;
     }
     pause_menu = create_pause_menu(scene);
