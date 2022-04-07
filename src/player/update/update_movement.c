@@ -31,8 +31,12 @@ static int apply_player_positions(player_t *player, int state,
     return RET_OK;
 }
 
-static int change_player_pos(player_t *player, float delta_time, int speed)
+static int change_player_pos(player_t *player, float delta_time, int speed,
+    scene_t *scene)
 {
+    if (check_collision(player, scene) == true) {
+        return 0;
+    }
     switch (player->dir) {
         case RIGHT:
             player->obj->bigdata.sprite_bigdata.pos.x += delta_time * speed;
@@ -53,7 +57,7 @@ static int change_player_pos(player_t *player, float delta_time, int speed)
 }
 
 static int move_player(player_t *player, float delta_time,
-    any_t *movements_rect)
+    any_t *movements_rect, scene_t *scene)
 {
     static int state = 1;
     static float timer = 0;
@@ -71,12 +75,13 @@ static int move_player(player_t *player, float delta_time,
     if (speed == NULL || speed->type != INT) {
         return RET_ERR_INPUT;
     }
-    change_player_pos(player, delta_time, speed->value.i);
+    change_player_pos(player, delta_time, speed->value.i, scene);
     ret = apply_player_positions(player, state, movements_rect);
     return ret;
 }
 
-static void handle_move_player(player_t *player, float delta_time)
+static void handle_move_player(player_t *player, float delta_time,
+    scene_t *scene)
 {
     any_t *move = NULL;
     any_t *data = NULL;
@@ -89,7 +94,7 @@ static void handle_move_player(player_t *player, float delta_time)
     if (move == NULL || move->type != DICT) {
         return;
     }
-    move_player(player, delta_time, move);
+    move_player(player, delta_time, move, scene);
 }
 
 void update_movements(player_t *player, scene_t *scene, window_t *win,
@@ -99,5 +104,5 @@ void update_movements(player_t *player, scene_t *scene, window_t *win,
         win == NULL) {
         return;
     }
-    handle_move_player(player, delta_time);
+    handle_move_player(player, delta_time, scene);
 }
