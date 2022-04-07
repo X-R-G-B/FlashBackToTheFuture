@@ -31,6 +31,9 @@ static int init_main_menu_buttons(scene_t *scene)
         PLAY, load_game, free_pop_up);
     scene->components = dico_t_add_data(scene->components,
         SETTINGS_MENU, settings, free_pop_up);
+    if (scene->components == NULL) {
+        return (RET_ERR_MALLOC);
+    }
     set_is_visible_false(settings);
     set_is_visible_false(load_game);
     free_list(main_menu);
