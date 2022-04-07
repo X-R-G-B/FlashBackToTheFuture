@@ -5,19 +5,32 @@
 ** create player
 */
 
+#include <SFML/Graphics/Types.h>
+#include <SFML/Graphics/View.h>
 #include <stdlib.h>
+#include "my_bgs.h"
 #include "my_bgs_components.h"
 #include "my_rpg.h"
 #include "my_json.h"
 
 static void (*event_on[])(object_t *, scene_t *, window_t *,
-    set_event_t *) = {attack_event, move_on};
+    set_event_t *) = {
+    attack_event, move_on
+};
+
 static void (*event_off[])(object_t *, scene_t *, window_t *,
-    set_event_t *) = {NULL, move_off};
-static const node_params_t node[] = {{sfMouseLeft, sfKeyL, KEY},
-    {sfMouseLeft, sfKeyZ, KEY}, {sfMouseLeft, sfKeyQ, KEY},
-    {sfMouseLeft, sfKeyS, KEY}, {sfMouseLeft, sfKeyD, KEY}};
+    set_event_t *) = {
+    NULL, move_off
+};
+
+static const node_params_t node[] = {
+    {sfMouseLeft, sfKeyL, KEY}, {sfMouseLeft, sfKeyZ, KEY},
+    {sfMouseLeft, sfKeyQ, KEY}, {sfMouseLeft, sfKeyS, KEY},
+    {sfMouseLeft, sfKeyD, KEY}
+};
+
 static const int event_nb = 5;
+
 static const char player_path[] = "./assets/image/player/link_with_weapon.png";
 
 static player_t *add_components(player_t *player, const char *stats)
@@ -60,6 +73,19 @@ static int add_event(player_t *player)
     return ret;
 }
 
+sfView *create_view(window_t *win, player_t *player)
+{
+    sfView *view = sfView_create();
+
+    if (view == NULL) {
+        return (NULL);
+    }
+    sfView_setSize(view, (sfVector2f) {800, 600});
+    sfRenderWindow_setView(win->win, view);
+    player->view = view;
+    return (view);
+}
+
 player_t *create_player(window_t *win, scene_t *scene, const char *stats)
 {
     player_t *player = malloc(sizeof(player_t));
@@ -67,8 +93,7 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats)
     if (player == NULL) {
         return NULL;
     }
-    win->components = dico_t_add_data(win->components, "player", player, free);
-    if (win->components == NULL) {
+    if (window_add_component(win, player, "player", destroy_player) != BGS_OK) {
         return NULL;
     }
     player->dir = DOWN;
@@ -76,6 +101,9 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats)
     player->obj = create_object(update_player, NULL, scene, 0);
     if (player->obj == NULL) {
         return NULL;
+    }
+    if (create_view(win, player) == NULL) {
+        return (NULL);
     }
     return (add_event(player) == RET_OK) ? add_components(player, stats) : NULL;
 }
