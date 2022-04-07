@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include "my_bgs.h"
 #include "my_rpg.h"
 #include "my_conversions.h"
 #include "main_menu.h"
@@ -57,7 +58,8 @@ static int temp_pause_button(window_t *win, list_ptr_t *pause_menu,
     int ret = RET_OK;
 
     if (object == NULL ||
-        object_set_sprite(object, "./assets/Buttons_sprites/Retour_button.png",
+        object_set_sprite(object,
+            "./assets/image/menu/main_menu/default_screen/Retour_button.png",
         (sfIntRect) {-1, -1, -1, -1}, (sfVector2f) {50, 50}) != BGS_OK) {
         return RET_ERR_INPUT;
     }
@@ -73,22 +75,39 @@ static int temp_pause_button(window_t *win, list_ptr_t *pause_menu,
         (node_params_t) {sfMouseLeft, sfKeyEscape, KEY});
 }
 
+static scene_t *init_scene(char *stage_path, window_t *win, char *stage_name)
+{
+    any_t *data = parse_json_file(stage_path);
+    scene_t *scene = create_scene(win, sfBlack, stage_name);
+
+    if (data == NULL || scene == NULL) {
+        return NULL;
+    }
+    scene->components = dico_t_add_data(scene->components, SAVE, data,
+        destroy_any);
+    if (scene->components == NULL) {
+        return NULL;
+    }
+    return scene;
+}
+
 int launch_stage(window_t *win, char *stage_path, int stage_id)
 {
     scene_t *scene = NULL;
     list_ptr_t *pause_menu = NULL;
     char *stage_name = get_stage_name(stage_id);
 
-    if (stage_name == NULL) {
-        return RET_ERR_INPUT;
-    }
-    scene = create_scene(win, sfBlack, stage_name);
-    if (scene == NULL || create_player(win, scene, PLAYER_DATA) == NULL) {
+    launch_scene_loading(win, "SCENE_LOADING_BASIC");
+    scene = init_scene(stage_path, win, stage_name);
+    if (scene == NULL || create_player(win, scene, PLAYER_DATA) == NULL ||
+        create_map(scene) != RET_OK ||
+        add_collision_array_in_scene(scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     pause_menu = create_pause_menu(scene);
     if (window_change_scene(win, stage_name) != BGS_OK ||
-        temp_pause_button(win, pause_menu, scene) != RET_OK) {
+        temp_pause_button(win, pause_menu, scene) != RET_OK ||
+        init_dead_menu(win, scene) != RET_OK) {
         return RET_ERR_INPUT;
     }
     free(stage_path);

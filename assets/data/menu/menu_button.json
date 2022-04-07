@@ -1,0 +1,32 @@
+{
+    "buttons": [
+        {
+            "text": "QUIT",
+            "text pos": [200.0, 200.0],
+            "sprite path": "./assets/image/menu/main_menu/default_screen/QUIT.png",
+            "size": 1.5,
+            "pos": [700.0, 200.0],
+            "plan": 0
+        },
+        {
+            "text": "PLAY",
+            "sprite path": "./assets/image/menu/main_menu/default_screen/PLAY.png",
+            "pos": [400.0, 200.0],
+            "size": 1.5,
+            "plan": 0
+        },
+        {
+            "text": "SETTINGS menu",
+            "sprite path": "./assets/image/menu/main_menu/default_screen/OPTIONS.png",
+            "pos": [540.0, 200.0],
+            "size": 1.5,
+            "plan": 0
+        },
+        {
+            "text": "BACK",
+            "sprite path": "./assets/image/menu/main_menu/default_screen/background.jpg",
+            "pos": [540.0, 960.0],
+            "plan": 1
+        }
+    ]
+}

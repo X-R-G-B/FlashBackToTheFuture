@@ -1,3 +1,54 @@
 {
-    
+    "map data": {
+        "map": [
+            "################################################",
+            "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "################################################",
+            "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "ddddddddddddffffffffffffffffffffdddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "ddddddddddd####################ddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "ddddddddddd####################ddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd"
+        ],
+        "char type": {
+            "a": {
+                "path": "./assets/image/map/squares/fall.png",
+                "col": 1
+            },
+            "b": {
+                "path": "./assets/image/map/squares/dirt_border.png"
+            },
+            ".": {
+                "col": 0
+            },
+            "#": {
+                "col": 1
+            },
+            "d": {
+                "path": "./assets/image/map/squares/dirt.png"
+            },
+            "f": {
+                "path": "./assets/image/map/squares/flower.png"
+            }
+        }
+    }
 }
