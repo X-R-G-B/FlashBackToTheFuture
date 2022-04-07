@@ -59,7 +59,7 @@ int launch_story_mode(window_t *win, const char save_path[])
         return RET_ERR_INPUT;
     }
     current_stage = dico_t_get_any(save->value.dict, "current stage");
-    win->components = dico_t_add_data(win->components, STORY_DATA, save,
+    win->components = dico_t_add_data(win->components, SAVE, save,
         destroy_any);
     if (win->components == NULL || current_stage == NULL ||
         current_stage->type != INT) {

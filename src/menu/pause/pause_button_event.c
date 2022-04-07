@@ -54,6 +54,9 @@ void home_button_off(object_t *obj, scene_t *scene, window_t *win,
         return;
     }
     window_change_scene(win, "MAIN MENU");
+    win->components = dico_t_rem(win->components, "player");
+    win->components = dico_t_rem(win->components, "pause");
+    win->components = dico_t_rem(win->components, SAVE);
     pressed_button_off(obj, scene, win, evt);
     list_add_to_end(win->to_remove, scene);
 }
