@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include "list.h"
+#include "my_bgs.h"
 #include "my_wordarray.h"
 #include "my_strings.h"
 #include "ennemy_pathfind.h"
@@ -44,7 +45,7 @@ static int fill_vect_pos(pathfind_impl_t *maps)
     return (-1);
 }
 
-static pathfind_t *create_pathfind(pathfind_impl_t *maps)
+static pathfind_t *create_pathfind(pathfind_impl_t *maps, scene_t *scene)
 {
     pathfind_t *path = NULL;
 
@@ -56,6 +57,12 @@ static pathfind_t *create_pathfind(pathfind_impl_t *maps)
     path->map = maps->buffer;
     path->sizex = maps->size_x;
     path->sizey = maps->size_y;
+    path->wall_char = maps->wall_char;
+    if (scene_add_components(scene, path, SCENE_PATHFIND_PATH,
+            destroy_pathfind) != BGS_OK) {
+        destroy_pathfind(path);
+        return (NULL);
+    }
     return (path);
 }
 
@@ -80,7 +87,7 @@ static int fill_pathfind_impl(pathfind_impl_t *maps, char **array, char end,
     return (0);
 }
 
-pathfind_t *init_pathfind(char **array, char end, char wall)
+pathfind_t *init_pathfind(char **array, char end, char wall, scene_t *scene)
 {
     pathfind_impl_t maps = {0};
     pathfind_t *path = NULL;
@@ -92,7 +99,6 @@ pathfind_t *init_pathfind(char **array, char end, char wall)
             put_distance_buffer(&maps)) {
         return (NULL);
     }
-    path = create_pathfind(&maps);
-    my_wordarray_free(maps.buffer);
+    path = create_pathfind(&maps, scene);
     return (path);
 }
