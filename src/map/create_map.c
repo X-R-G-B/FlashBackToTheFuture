@@ -36,8 +36,8 @@ static int browse_squares_pos(scene_t *scene, char **map, dico_t *char_type)
     sfVector2f current_pos = {SQUARE_SIZE / 2, SQUARE_SIZE / 2};
     int ret = RET_OK;
 
-    for (int i = 0; i < SQUARE_NB_Y && ret == RET_OK; i++) {
-        for (int x = 0; x < SQUARE_NB_X && ret == RET_OK; x++) {
+    for (int i = 0; map[i] != NULL && ret == RET_OK; i++) {
+        for (int x = 0; map[i][x] != '\0' && ret == RET_OK; x++) {
             ret = init_square(scene, map[i][x], char_type, current_pos);
             current_pos.x += SQUARE_SIZE;
         }
