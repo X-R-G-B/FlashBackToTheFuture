@@ -12,6 +12,10 @@
     #define RET_ERR_MALLOC 1
     #define RET_ERR_INPUT 2
 
+    #define SQUARE_SIZE 40
+    #define SQUARE_NB_Y 27
+    #define SQUARE_NB_X 48
+
     #include "my_bgs.h"
 
 static const char PLAYER_DATA[] = "./assets/data/player/data.json";
@@ -45,6 +49,8 @@ typedef struct player_s {
 
 void click_save(__attribute__((unused)) object_t *obj, scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *event);
+
+int create_map(scene_t *scene);
 
 void update_player(object_t *obj, scene_t *scene, window_t *win, float dtime);
 
