@@ -3,29 +3,30 @@
         {
             "text": "QUIT",
             "text pos": [200.0, 200.0],
-            "size":  5.0,
-            "sprite path": "./assets/image/menu/main_menu/EXIT_BUTTON.png",
+            "sprite path": "./assets/image/menu/main_menu/default_screen/QUIT.png",
+            "size": 1.5,
             "pos": [700.0, 200.0],
             "plan": 0
         },
         {
             "text": "PLAY",
-            "size": 5.0,
-            "sprite path": "./assets/image/menu/main_menu/PLAY_BUTTON.png",
+            "sprite path": "./assets/image/menu/main_menu/default_screen/PLAY.png",
             "pos": [400.0, 200.0],
+            "size": 1.5,
             "plan": 0
         },
         {
-            "text": "SETTINGS",
-            "sprite path": "./assets/image/menu/main_menu/OPTIONS.jpg",
-            "pos": [540.0, 960.0],
+            "text": "SETTINGS menu",
+            "sprite path": "./assets/image/menu/main_menu/default_screen/OPTIONS.png",
+            "pos": [540.0, 200.0],
+            "size": 1.5,
             "plan": 0
         },
         {
-            "text": "Back",
-            "sprite path": "./assets/image/menu/main_menu/background.jpg",
+            "text": "BACK",
+            "sprite path": "./assets/image/menu/main_menu/default_screen/background.jpg",
             "pos": [540.0, 960.0],
-            "plan": 0
+            "plan": 1
         }
     ]
 }

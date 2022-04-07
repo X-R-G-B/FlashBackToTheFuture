@@ -57,7 +57,8 @@ static int temp_pause_button(window_t *win, list_ptr_t *pause_menu,
     int ret = RET_OK;
 
     if (object == NULL ||
-        object_set_sprite(object, "./assets/Buttons_sprites/Retour_button.png",
+        object_set_sprite(object,
+            "./assets/image/menu/main_menu/default_screen/Retour_button.png",
         (sfIntRect) {-1, -1, -1, -1}, (sfVector2f) {50, 50}) != BGS_OK) {
         return RET_ERR_INPUT;
     }
