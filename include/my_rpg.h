@@ -35,16 +35,17 @@ typedef enum state_e {
 } state_t;
 
 typedef enum dir_e {
-    UP,
-    LEFT,
-    DOWN,
-    RIGHT
+    UP = 0,
+    LEFT = 1,
+    DOWN = 2,
+    RIGHT = 3
 } dir_t;
 
 typedef struct player_s {
     state_t state;
     dir_t dir;
     object_t *obj;
+    sfView *view;
 } player_t;
 
 bool check_collision(player_t *player, scene_t *scene);
@@ -130,5 +131,7 @@ void update_dead(player_t *player, scene_t *screen,
     window_t *win, float delta_time);
 
 int init_dead_menu(window_t *win, scene_t *scene);
+
+void destroy_player(void *player_void);
 
 #endif /* !RPG_H_ */
