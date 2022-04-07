@@ -20,6 +20,7 @@ static const char PLAYER_STATS[] = "./assets/data/player/stats.json";
 static const char STORY_DATA_PATH[] =
     "./assets/data/story_mode/story_data.json";
 static const char STORY_DATA[] = "story_data";
+static const char STAGE_DATA[] = "stage data";
 
 typedef enum state_e {
     ATTACKING,
@@ -58,6 +59,8 @@ int launch_game(void);
 void set_stop(player_t *player);
 
 player_t *create_player(window_t *win, scene_t *scene, const char *stats);
+
+char **stage_map_to_collision_array(scene_t *scene);
 
 int launch_stage(window_t *win, char *stage_path, int stage_id);
 
