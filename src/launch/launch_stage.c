@@ -73,16 +73,20 @@ static int temp_pause_button(window_t *win, list_ptr_t *pause_menu,
         (node_params_t) {sfMouseLeft, sfKeyEscape, KEY});
 }
 
-static void add_stage_data_to_scene_components(scene_t *scene,
-    char *stage_path)
+static scene_t *init_scene(char *stage_path, window_t *win, char *stage_name)
 {
     any_t *data = parse_json_file(stage_path);
+    scene_t *scene = create_scene(win, sfBlack, stage_name);
 
-    if (data == NULL) {
-        return;
+    if (data == NULL || scene == NULL) {
+        return NULL;
     }
     scene->components = dico_t_add_data(scene->components, SAVE, data,
         destroy_any);
+    if (scene->components == NULL) {
+        return NULL;
+    }
+    return scene;
 }
 
 int launch_stage(window_t *win, char *stage_path, int stage_id)
@@ -91,11 +95,9 @@ int launch_stage(window_t *win, char *stage_path, int stage_id)
     list_ptr_t *pause_menu = NULL;
     char *stage_name = get_stage_name(stage_id);
 
-    if (stage_name == NULL) {
-        return RET_ERR_INPUT;
-    }
-    scene = create_scene(win, sfBlack, stage_name);
-    if (scene == NULL || create_player(win, scene, PLAYER_DATA) == NULL) {
+    scene = init_scene(stage_path, win, stage_name);
+    if (scene == NULL || create_player(win, scene, PLAYER_DATA) == NULL ||
+        create_map(scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     pause_menu = create_pause_menu(scene);
@@ -103,7 +105,6 @@ int launch_stage(window_t *win, char *stage_path, int stage_id)
         temp_pause_button(win, pause_menu, scene) != RET_OK) {
         return RET_ERR_INPUT;
     }
-    add_stage_data_to_scene_components(scene, stage_path);
     free(stage_path);
     free(stage_name);
     return RET_OK;

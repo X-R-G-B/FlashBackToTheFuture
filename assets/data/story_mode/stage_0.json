@@ -1,22 +1,46 @@
 {
     "map data": {
-        "map": ["AATTTAA",
-                "AAATANN",
-                "IAATANN"],
+        "map": [
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "ddddddddddddffffffffffffffffffffdddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "ddddddddddd....................ddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "ddddddddddd####################ddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd"
+        ],
         "char type": {
-            "A": {
-                "path": "path",
+            ".": {
                 "col": 0
             },
-            "N": {
-                "path": "path"
-            },
-            "T": {
-                "path": "path",
+            "#": {
                 "col": 1
             },
-            "I": {
-                "col": 1
+            "d": {
+                "path": "./assets/image/map/squares/dirt.png"
+            },
+            "f": {
+                "path": "./assets/image/map/squares/flower.png"
             }
         }
     }
