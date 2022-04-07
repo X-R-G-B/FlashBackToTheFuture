@@ -10,11 +10,15 @@
 
 const char *str_on_hover[] = {NULL};
 
-void (*on_hover[])(object_t *, scene_t *, window_t *win, set_event_t *) = {NULL};
+void (*on_hover[])(object_t *, scene_t *, window_t *win, set_event_t *) = {
+    NULL
+};
 
 const char *str_off_hover[] = {NULL};
 
-void (*off_hover[])(object_t *, scene_t *, window_t *win, set_event_t *) = {NULL};
+void (*off_hover[])(object_t *, scene_t *, window_t *win, set_event_t *) = {
+    NULL
+};
 
 const char *str_on_click[] = {
     "resume", "home", "exit", "settings", "restart", NULL
