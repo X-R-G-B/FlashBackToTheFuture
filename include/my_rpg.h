@@ -24,8 +24,8 @@ static const char SAVE[] = "story_mode_data";
 typedef enum state_e {
     ATTACKING,
     MOVING,
-    STOP,
     DYING,
+    STOP,
     DIE,
     STUNT
 } state_t;
@@ -95,5 +95,16 @@ void move_on(object_t *object, scene_t *scene, window_t *win,
 
 void move_off(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
+
+void update_dead_message(object_t *object, scene_t *scene,
+    window_t *window_t, float delta_time);
+
+void update_dead_screen(object_t *object, scene_t *scene,
+    window_t *window_t, float delta_time);
+
+void update_dead(player_t *player, scene_t *screen,
+    window_t *win, float delta_time);
+
+int init_dead_menu(window_t *win, scene_t *scene);
 
 #endif /* !RPG_H_ */
