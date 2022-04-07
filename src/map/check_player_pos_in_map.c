@@ -26,7 +26,7 @@ bool check_left_collision(object_t *player, char **map, sfVector2i pos)
     int pos_y = pos_f.y + (player->bigdata.sprite_bigdata.rect.height / 2);
 
     pos_y = (pos_y + 13) / SQUARE_SIZE;
-    if (pos.x < 0 || map[pos_y - 1][pos.x - 1] == '#' ||
+    if (pos.x - 1 < 0 || map[pos_y - 1][pos.x - 1] == '#' ||
         map[pos.y][pos.x - 1] == '#') {
         return true;
     }
