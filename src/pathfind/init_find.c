@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include "list.h"
 #include "my_bgs.h"
+#include "my_dico.h"
 #include "my_wordarray.h"
 #include "my_strings.h"
 #include "ennemy_pathfind.h"
@@ -58,6 +59,7 @@ static pathfind_t *create_pathfind(pathfind_impl_t *maps, scene_t *scene)
     path->sizex = maps->size_x;
     path->sizey = maps->size_y;
     path->wall_char = maps->wall_char;
+    dico_t_rem(scene->components, SCENE_PATHFIND_PATH);
     if (scene_add_components(scene, path, SCENE_PATHFIND_PATH,
             destroy_pathfind) != BGS_OK) {
         destroy_pathfind(path);
