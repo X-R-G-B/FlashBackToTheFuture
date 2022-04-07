@@ -9,6 +9,10 @@
     #define ENNEMY_PATHFIND_H_
 
     #include "list.h"
+    #include "my_bgs.h"
+    #include "my_rpg.h"
+
+    #define SCENE_PATHFIND_PATH "SCENE_PATHFIND_PATH"
 
 typedef struct pathfind_impl_s pathfind_impl_t;
 typedef struct vect2i_s vect2i_t;
@@ -39,6 +43,10 @@ struct pathfind_s {
 
 int put_distance_buffer(pathfind_impl_t *maps);
 
-pathfind_t *init_pathfind(char **array, char end, char start);
+void destroy_pathfind(void *path_void);
+
+pathfind_t *init_pathfind(char **array, char end, char start, scene_t *scene);
+
+dir_t get_path_find_dir(object_t *obj, scene_t *scene);
 
 #endif
