@@ -104,7 +104,8 @@ int launch_stage(window_t *win, char *stage_path, int stage_id)
     }
     pause_menu = create_pause_menu(scene);
     if (window_change_scene(win, stage_name) != BGS_OK ||
-        temp_pause_button(win, pause_menu, scene) != RET_OK) {
+        temp_pause_button(win, pause_menu, scene) != RET_OK ||
+        init_dead_menu(win, scene) != RET_OK) {
         return RET_ERR_INPUT;
     }
     free(stage_path);
