@@ -48,8 +48,8 @@ typedef struct player_s {
     object_t *obj;
 } player_t;
 
-void click_save(__attribute__((unused)) object_t *obj, scene_t *scene,
-    window_t *win, __attribute__((unused)) set_event_t *event);
+void click_save(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *event);
 
 int create_map(scene_t *scene);
 
