@@ -35,7 +35,8 @@ typedef enum state_e {
 } state_t;
 
 typedef enum dir_e {
-    UP,
+    UNKNOWN_STATE = -1,
+    UP = 0,
     LEFT,
     DOWN,
     RIGHT
