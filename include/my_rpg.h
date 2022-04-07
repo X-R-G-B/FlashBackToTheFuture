@@ -13,8 +13,6 @@
     #define RET_ERR_INPUT 2
 
     #define SQUARE_SIZE 40
-    #define SQUARE_NB_Y 27
-    #define SQUARE_NB_X 48
 
     #include "my_bgs.h"
 
@@ -49,12 +47,22 @@ typedef struct player_s {
     object_t *obj;
 } player_t;
 
+bool check_collision(player_t *player, scene_t *scene);
+
 void click_save(__attribute__((unused)) object_t *obj, scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *event);
 
 int create_map(scene_t *scene);
 
 void update_player(object_t *obj, scene_t *scene, window_t *win, float dtime);
+
+bool check_up_collision(object_t *player, char **map, sfVector2i pos);
+
+bool check_right_collision(object_t *player, char **map, sfVector2i pos);
+
+bool check_left_collision(object_t *player, char **map, sfVector2i pos);
+
+bool check_down_collision(object_t *player, char **map);
 
 void update_attack(player_t *player, scene_t *scene, window_t *win,
     float dtime);

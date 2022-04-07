@@ -34,6 +34,8 @@ SRC_LAUNCH	:= $(addprefix launch/,$(SRC_LAUNCH))
 
 SRC_MAP		:=	stage_map_to_collision_array.c	\
 				wordarray_free_cast.c			\
+				check_player_pos_in_map.c		\
+				check_collision.c				\
 				create_map.c					\
 				create_collision_map.c
 SRC_MAP		:= $(addprefix map/,$(SRC_MAP))
