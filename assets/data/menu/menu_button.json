@@ -16,6 +16,12 @@
             "plan": 0
         },
         {
+            "text": "SETTINGS",
+            "sprite path": "./assets/image/menu/main_menu/OPTIONS.jpg",
+            "pos": [540.0, 960.0],
+            "plan": 0
+        },
+        {
             "text": "Back",
             "sprite path": "./assets/image/menu/main_menu/background.jpg",
             "pos": [540.0, 960.0],
