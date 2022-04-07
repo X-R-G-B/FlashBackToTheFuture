@@ -6,13 +6,53 @@
 */
 
 #include "my_rpg.h"
+#include "my_wordarray.h"
 #include "my_json.h"
+
+static int init_square(scene_t *scene, char current_char, dico_t *char_type,
+    sfVector2f current_pos)
+{
+    object_t *square = NULL;
+    char char_name[2] = {current_char, '\0'};
+    any_t *square_data = dico_t_get_any(char_type, char_name);
+
+    if (square_data == NULL || square_data->type != DICT) {
+        return RET_ERR_INPUT;
+    }
+    any_t *path = dico_t_get_any(square_data->value.dict, "path");
+    if (path == NULL || path->type != STR) {
+        return RET_OK;
+    }
+    square = create_object(NULL, NULL, scene, 2);
+    if (square == NULL || object_set_sprite(square, path->value.str,
+        (sfIntRect) {-1, -1, -1, -1}, current_pos) != BGS_OK) {
+        return RET_ERR_MALLOC;
+    }
+    return RET_OK;
+}
+
+static int browse_squares_pos(scene_t *scene, char **map, dico_t *char_type)
+{
+    sfVector2f current_pos = {SQUARE_SIZE / 2, SQUARE_SIZE / 2};
+    int ret = RET_OK;
+
+    for (int i = 0; i < SQUARE_NB_Y && ret == RET_OK; i++) {
+        for (int x = 0; x < SQUARE_NB_X && ret == RET_OK; x++) {
+            ret = init_square(scene, map[i][x], char_type, current_pos);
+            current_pos.x += SQUARE_SIZE;
+        }
+        current_pos.x = SQUARE_SIZE / 2;
+        current_pos.y += SQUARE_SIZE;
+    }
+    my_wordarray_free(map);
+    return ret;
+}
 
 int create_map(scene_t *scene)
 {
     any_t *data = NULL;
     any_t *char_type = NULL;
-    any_t *map = NULL;
+    char **map = NULL;
 
     if (scene == NULL) {
         return RET_ERR_INPUT;
@@ -21,10 +61,10 @@ int create_map(scene_t *scene)
     if (data == NULL) {
         return RET_ERR_MALLOC;
     }
-    map = get_from_any(data, "dd", "map data", "map");
+    map = get_any_string_array(get_from_any(data, "dd", "map data", "map"));
     char_type = get_from_any(data, "dd", "map data", "char type");
-    if (char_type == NULL || char_type->type != DICT || map == NULL ||
-        map->type != ARRAY) {
+    if (char_type == NULL || char_type->type != DICT || map == NULL) {
         return RET_ERR_INPUT;
     }
+    return browse_squares_pos(scene, map, char_type->value.dict);
 }

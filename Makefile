@@ -24,6 +24,9 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
+SRC_MAP		:=	create_map.c
+SRC_MAP		:=	$(addprefix map/,$(SRC_MAP))
+
 SRC_LAUNCH	:=	launch_game.c	\
 				launch_stage.c	\
 				launch_story_mode.c
@@ -61,6 +64,7 @@ SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
 
 SRC			:=	main.c				\
 				$(SRC_LAUNCH)		\
+				$(SRC_MAP)			\
         		$(SRC_MENU)			\
 				$(SRC_PLAYER)
 SRC			:= 	$(addprefix src/,$(SRC))
