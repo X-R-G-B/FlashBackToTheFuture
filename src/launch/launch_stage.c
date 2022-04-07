@@ -73,6 +73,18 @@ static int temp_pause_button(window_t *win, list_ptr_t *pause_menu,
         (node_params_t) {sfMouseLeft, sfKeyEscape, KEY});
 }
 
+static void add_stage_data_to_scene_components(scene_t *scene,
+    char *stage_path)
+{
+    any_t *data = parse_json_file(stage_path);
+
+    if (data == NULL) {
+        return;
+    }
+    scene->components = dico_t_add_data(scene->components, SAVE, data,
+        destroy_any);
+}
+
 int launch_stage(window_t *win, char *stage_path, int stage_id)
 {
     scene_t *scene = NULL;
@@ -91,6 +103,7 @@ int launch_stage(window_t *win, char *stage_path, int stage_id)
         temp_pause_button(win, pause_menu, scene) != RET_OK) {
         return RET_ERR_INPUT;
     }
+    add_stage_data_to_scene_components(scene, stage_path);
     free(stage_path);
     free(stage_name);
     return RET_OK;
