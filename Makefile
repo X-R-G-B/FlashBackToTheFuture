@@ -67,21 +67,19 @@ SRC_MENU	:=	$(SRC_PAUSE)	\
 				button_event_array.c
 SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
 
+SRC_PATH	:=	init_find.c			\
+				init_path.c			\
+				get_new_pos.c		\
+				destroy_pathfind.c
+SRC_PATH	:=	$(addprefix pathfind/,$(SRC_PATH))
+
 SRC			:=	main.c				\
 				$(SRC_LAUNCH)		\
+				$(SRC_PATH)			\
 				$(SRC_MAP)			\
         		$(SRC_MENU)			\
 				$(SRC_PLAYER)
 SRC			:= 	$(addprefix src/,$(SRC))
-
-SRC				:=	main.c				\
-        			init_menu.c			\
-					pop_up_management.c	\
-					event_menu.c		\
-        			$(SRC_MENU)			\
-					$(SRC_PLAYER)		\
-					$(SRC_PATHFIND)
-SRC				:=	$(addprefix src/,$(SRC))
 
 OBJ				:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------
