@@ -29,6 +29,10 @@ SRC_LAUNCH	:=	launch_game.c	\
 				launch_story_mode.c
 SRC_LAUNCH	:= $(addprefix launch/,$(SRC_LAUNCH))
 
+SRC_MAP		:=	stage_map_to_collision_array.c	\
+				create_collision_map.c
+SRC_MAP		:= $(addprefix map/,$(SRC_MAP))
+
 SRC_EVENT	:=	attack.c	\
 				move.c
 SRC_EVENT	:= $(addprefix event/,$(SRC_EVENT))
@@ -61,6 +65,7 @@ SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
 
 SRC			:=	main.c				\
 				$(SRC_LAUNCH)		\
+				$(SRC_MAP)			\
         		$(SRC_MENU)			\
 				$(SRC_PLAYER)
 SRC			:= 	$(addprefix src/,$(SRC))
