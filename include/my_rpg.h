@@ -59,6 +59,8 @@ void set_stop(player_t *player);
 
 player_t *create_player(window_t *win, scene_t *scene, const char *stats);
 
+char **create_new_map(char **map);
+
 char **stage_map_to_collision_array(scene_t *scene);
 
 int launch_stage(window_t *win, char *stage_path, int stage_id);
