@@ -1,0 +1,10 @@
+{
+    "buttons": [
+        {
+            "text": "Settings back",
+            "sprite path": "./assets/image/menu/main_menu/settings/Parchemin.png",
+            "pos": [540.0, 960.0],
+            "plan": 0
+        }
+    ]
+}
