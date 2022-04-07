@@ -51,7 +51,7 @@ scene_t *create_scene(window_t *win, sfColor bg_color, const char *scene_name)
 {
     scene_t *scene = NULL;
 
-    if (win == NULL) {
+    if (win == NULL || scene_name == NULL) {
         return NULL;
     }
     scene = malloc(sizeof(scene_t));
