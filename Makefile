@@ -22,7 +22,7 @@ RESET		=	'\033[0m'
 
 # ----------------------------------------------------------------------------
 # SRC
-CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
+CFLAGS			=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
 SRC_MAP		:=	create_map.c
 SRC_MAP		:=	$(addprefix map/,$(SRC_MAP))
@@ -41,16 +41,16 @@ SRC_EVENT	:=	attack.c	\
 				move.c
 SRC_EVENT	:= $(addprefix event/,$(SRC_EVENT))
 
-SRC_UPDATE	:=	update_player.c		\
-				update_movement.c	\
-				update_attack.c
-SRC_UPDATE	:= $(addprefix update/,$(SRC_UPDATE))
+SRC_UPDATE		:=	update_player.c		\
+					update_movement.c	\
+					update_attack.c
+SRC_UPDATE		:=	$(addprefix update/,$(SRC_UPDATE))
 
-SRC_PLAYER	:=	set_stop.c		\
-				create_player.c	\
-				$(SRC_EVENT)	\
-				$(SRC_UPDATE)
-SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))
+SRC_PLAYER		:=	set_stop.c		\
+					create_player.c	\
+					$(SRC_EVENT)	\
+					$(SRC_UPDATE)
+SRC_PLAYER		:=	$(addprefix player/,$(SRC_PLAYER))
 
 SRC_MAIN	:=	event_menu.c	\
 				init_menu.c		\
@@ -67,14 +67,21 @@ SRC_MENU	:=	$(SRC_PAUSE)	\
 				button_event_array.c
 SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
 
+SRC_PATH	:=	init_find.c			\
+				init_path.c			\
+				get_new_pos.c		\
+				destroy_pathfind.c
+SRC_PATH	:=	$(addprefix pathfind/,$(SRC_PATH))
+
 SRC			:=	main.c				\
 				$(SRC_LAUNCH)		\
+				$(SRC_PATH)			\
 				$(SRC_MAP)			\
         		$(SRC_MENU)			\
 				$(SRC_PLAYER)
 SRC			:= 	$(addprefix src/,$(SRC))
 
-OBJ			:=	$(SRC:%.c=%.o)
+OBJ				:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------
@@ -93,9 +100,9 @@ FN_TEST_LDFLAGS	=	-lgcov
 
 TSRCDIR		:=	tests/
 
-TSRC		:=	...
+TSRC		:=	pathfind.c
 TSRC		:=	$(addprefix $(TSRCDIR),$(TSRC))
-TSRC		:= 	$(filter-out $(SRCDIR)main.c,$(SRC)) $(TSRC)
+TSRC		:= 	$(filter-out src/main.c,$(SRC)) $(TSRC)
 
 TOBJ		:=	$(TSRC:%.c=%.o)
 # ----------------------------------------------------------------------------
