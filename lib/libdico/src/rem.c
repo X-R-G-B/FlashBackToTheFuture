@@ -8,6 +8,16 @@
 #include <stdlib.h>
 #include "my_dico.h"
 
+static void check_last_elem(dico_t *elem, dico_t **tmp, dico_t *dico)
+{
+    if (elem != dico) {
+        *tmp = dico;
+    }
+    if (elem->last == elem && elem->next == elem) {
+        *tmp = NULL;
+    }
+}
+
 dico_t *dico_t_rem(dico_t *dico, char const *key)
 {
     dico_t *elem = dico_t_get_elem(dico, key);
@@ -27,8 +37,9 @@ dico_t *dico_t_rem(dico_t *dico, char const *key)
     if (elem->destroy != NULL) {
         elem->destroy(elem->value);
     }
+    check_last_elem(elem, &tmp, dico);
     free(elem);
-    return ((elem == dico) ? tmp : dico);
+    return tmp;
 }
 
 dico_t *dico_t_rem_ptr(dico_t *dico, void *ptr)

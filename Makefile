@@ -24,10 +24,22 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC_LAUNCH	:=	launch_game.c	\
-				launch_stage.c	\
-				launch_story_mode.c
+SRC_MAP		:=	create_map.c
+SRC_MAP		:=	$(addprefix map/,$(SRC_MAP))
+
+SRC_LAUNCH	:=	launch_game.c		\
+				launch_stage.c		\
+				launch_story_mode.c	\
+				scene_loading_basic.c
 SRC_LAUNCH	:= $(addprefix launch/,$(SRC_LAUNCH))
+
+SRC_MAP		:=	stage_map_to_collision_array.c	\
+				wordarray_free_cast.c			\
+				check_player_pos_in_map.c		\
+				check_collision.c				\
+				create_map.c					\
+				create_collision_map.c
+SRC_MAP		:= $(addprefix map/,$(SRC_MAP))
 
 SRC_EVENT	:=	attack.c	\
 				move.c
@@ -38,9 +50,10 @@ SRC_UPDATE	:=	update_player.c		\
 				update_attack.c
 SRC_UPDATE	:= $(addprefix update/,$(SRC_UPDATE))
 
-SRC_PLAYER	:=	set_stop.c		\
-				create_player.c	\
-				$(SRC_EVENT)	\
+SRC_PLAYER	:=	set_stop.c			\
+				create_player.c		\
+				destroy_player.c	\
+				$(SRC_EVENT)		\
 				$(SRC_UPDATE)
 SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))
 
@@ -54,13 +67,19 @@ SRC_PAUSE	:=	create_pause_menu.c		\
 				pause_button_event.c
 SRC_PAUSE	:=	$(addprefix pause/,$(SRC_PAUSE))
 
+SRC_DEAD	:=	configure_dead_screen.c	\
+				dead_screen.c
+SRC_DEAD	:=	$(addprefix dead/,$(SRC_DEAD))
+
 SRC_MENU	:=	$(SRC_PAUSE)	\
 				$(SRC_MAIN)		\
+				$(SRC_DEAD)		\
 				button_event_array.c
 SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
 
 SRC			:=	main.c				\
 				$(SRC_LAUNCH)		\
+				$(SRC_MAP)			\
         		$(SRC_MENU)			\
 				$(SRC_PLAYER)
 SRC			:= 	$(addprefix src/,$(SRC))
