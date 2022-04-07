@@ -1,7 +1,23 @@
 {
     "map data": {
-        "map": ["..###..",
-                "...#...",
-                "...#..."]
+        "map": ["AATTTAA",
+                "AAATANN",
+                "IAATANN"],
+        "char type": {
+            "A": {
+                "path": "path",
+                "col": 0
+            },
+            "N": {
+                "path": "path"
+            },
+            "T": {
+                "path": "path",
+                "col": 1
+            },
+            "I": {
+                "col": 1
+            }
+        }
     }
 }
