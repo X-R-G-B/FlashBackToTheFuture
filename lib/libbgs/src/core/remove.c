@@ -36,21 +36,21 @@ void remove_object(object_t *object)
     free(object);
 }
 
-static void destroy_plan(list_ptr_t *list)
+static void destroy_layer(list_ptr_t *list)
 {
     list_t *elem = NULL;
-    plan_t *plan = NULL;
+    layer_t *layer = NULL;
 
     if (list == NULL) {
         return;
     }
     elem = list->start;
     for (int i = 0; i < list->len; i++, elem = elem->next) {
-        plan = elem->var;
-        free_list(plan->displayables);
-        free_list(plan->updates);
-        free_list(plan->object);
-        free(plan);
+        layer = elem->var;
+        free_list(layer->displayables);
+        free_list(layer->updates);
+        free_list(layer->object);
+        free(layer);
     }
     free_list(list);
 }
@@ -70,7 +70,7 @@ void remove_scene(void *scene_void)
     if (scene->components != NULL) {
         dico_t_destroy(scene->components);
     }
-    destroy_plan(scene->plan);
+    destroy_layer(scene->layer);
     free_list(scene->objects);
     if (scene->to_remove != NULL) {
         free_list(scene->to_remove);
