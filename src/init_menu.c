@@ -35,7 +35,7 @@ int init_menu(window_t *win)
     }
     obj = create_object(NULL, NULL, scene, 0);
     init_main_menu_buttons(&main_menu, &load_game, scene);
-    if (main_menu == NULL || load_game == NULL || obj == NULL) {
+    if (main_menu == NULL || obj == NULL) {
         return (BGS_ERR_MALLOC);
     }
     init_components(obj);
