@@ -5,12 +5,11 @@
 ** object check event
 */
 
-#include <SFML/Graphics/RenderWindow.h>
 #include <stdlib.h>
 #include "my_bgs.h"
 #include "my_strings.h"
 #include "my_bgs_components.h"
-#include "../include/libbgs_private.h"
+#include "libbgs_private.h"
 
 static bool check_node(event_node_t *node, set_event_t *set_event)
 {

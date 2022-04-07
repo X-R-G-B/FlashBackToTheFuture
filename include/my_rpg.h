@@ -17,6 +17,10 @@
 static const char PLAYER_DATA[] = "./assets/data/player/data.json";
 static const char PLAYER_STATS[] = "./assets/data/player/stats.json";
 
+static const char STORY_DATA_PATH[] =
+    "./assets/data/story_mode/save.json";
+static const char SAVE[] = "story_mode_data";
+
 typedef enum state_e {
     ATTACKING,
     MOVING,
@@ -39,14 +43,23 @@ typedef struct player_s {
     object_t *obj;
 } player_t;
 
+void click_save(__attribute__((unused)) object_t *obj, scene_t *scene,
+    window_t *win, __attribute__((unused)) set_event_t *event);
+
 void update_player(object_t *obj, scene_t *scene, window_t *win, float dtime);
 
 void update_attack(player_t *player, scene_t *scene, window_t *win,
     float dtime);
 
+int launch_story_mode(window_t *win, const char save_path[]);
+
+int launch_game(void);
+
 void set_stop(player_t *player);
 
 player_t *create_player(window_t *win, scene_t *scene, const char *stats);
+
+int launch_stage(window_t *win, char *stage_path, int stage_id);
 
 void attack_event(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *set_event);

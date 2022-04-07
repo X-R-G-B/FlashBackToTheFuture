@@ -5,6 +5,7 @@
 ** set stop
 */
 
+#include <stdlib.h>
 #include "my_rpg.h"
 #include "my_json.h"
 
@@ -20,6 +21,7 @@ static void apply_rect(player_t *player, const char *key, dico_t *dico)
     sfSprite_setOrigin(player->obj->drawable.sprite, (sfVector2f)
         {rect[2] / 2, rect[3] / 2});
     player->state = STOP;
+    free(rect);
 }
 
 static void check_state(player_t *player, any_t *stop)
