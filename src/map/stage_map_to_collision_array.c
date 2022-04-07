@@ -18,7 +18,7 @@ char **stage_map_to_collision_array(scene_t *scene)
     if (scene == NULL) {
         return NULL;
     }
-    stage_data = dico_t_get_any(scene->components, STAGE_DATA);
+    stage_data = dico_t_get_any(scene->components, SAVE);
     if (stage_data == NULL) {
         return NULL;
     }

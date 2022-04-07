@@ -81,7 +81,7 @@ static void add_stage_data_to_scene_components(scene_t *scene,
     if (data == NULL) {
         return;
     }
-    scene->components = dico_t_add_data(scene->components, STAGE_DATA, data,
+    scene->components = dico_t_add_data(scene->components, SAVE, data,
         destroy_any);
 }
 
