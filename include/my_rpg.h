@@ -17,6 +17,8 @@
 static const char PLAYER_DATA[] = "./assets/data/player/data.json";
 static const char PLAYER_STATS[] = "./assets/data/player/stats.json";
 
+static const char COLLISION_ARRAY[] = "collision array";
+
 static const char STORY_DATA_PATH[] =
     "./assets/data/story_mode/save.json";
 static const char SAVE[] = "story_mode_data";
