@@ -97,7 +97,8 @@ int launch_stage(window_t *win, char *stage_path, int stage_id)
 
     scene = init_scene(stage_path, win, stage_name);
     if (scene == NULL || create_player(win, scene, PLAYER_DATA) == NULL ||
-        create_map(scene) != RET_OK) {
+        create_map(scene) != RET_OK ||
+        add_collision_array_in_scene(scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     pause_menu = create_pause_menu(scene);

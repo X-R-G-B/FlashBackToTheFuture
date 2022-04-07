@@ -42,7 +42,7 @@ static int fill_current_string(char **map, int i, any_t *char_type, char **new)
     return RET_OK;
 }
 
-static char **get_right_char(char **map, any_t *char_type)
+static int get_right_char(char **map, any_t *char_type, scene_t *scene)
 {
     int arr_len = my_wordarray_len(map);
     char **new = create_new_map(map);
@@ -51,32 +51,37 @@ static char **get_right_char(char **map, any_t *char_type)
         if (new != NULL) {
             my_wordarray_free(new);
         }
-        return NULL;
+        return RET_ERR_MALLOC;
     }
     for (int i = 0; i < arr_len; i++) {
-        fill_current_string(map, i, char_type, new);
+        if (fill_current_string(map, i, char_type, new) != RET_OK) {
+            return RET_ERR_INPUT;
+        }
     }
-    return new;
+    my_wordarray_free(map);
+    scene->components = dico_t_add_data(scene->components, COLLISION_ARRAY,
+        new, wordarray_free_ptr);
+    return (scene->components == NULL) ? RET_ERR_MALLOC : RET_OK;
 }
 
-char **stage_map_to_collision_array(scene_t *scene)
+int add_collision_array_in_scene(scene_t *scene)
 {
     any_t *stage_data = NULL;
     any_t *map = NULL;
     char **stage_map = NULL;
 
     if (scene == NULL) {
-        return NULL;
+        return RET_ERR_INPUT;
     }
     stage_data = dico_t_get_any(scene->components, SAVE);
     map = get_from_any(stage_data, "dd", "map data", "map");
     if (map == NULL || map->type != ARRAY) {
-        return NULL;
+        return RET_ERR_INPUT;
     }
     stage_map = get_any_string_array(map);
     if (stage_map == NULL) {
-        return NULL;
+        return RET_ERR_MALLOC;
     }
     return get_right_char(stage_map, get_from_any(stage_data, "dd", "map data",
-        "char type"));
+        "char type"), scene);
 }

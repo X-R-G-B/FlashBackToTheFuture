@@ -21,6 +21,8 @@
 static const char PLAYER_DATA[] = "./assets/data/player/data.json";
 static const char PLAYER_STATS[] = "./assets/data/player/stats.json";
 
+static const char COLLISION_ARRAY[] = "collision array";
+
 static const char STORY_DATA_PATH[] =
     "./assets/data/story_mode/save.json";
 static const char SAVE[] = "story_mode_data";
@@ -58,6 +60,10 @@ void update_attack(player_t *player, scene_t *scene, window_t *win,
     float dtime);
 
 int launch_story_mode(window_t *win, const char save_path[]);
+
+int add_collision_array_in_scene(scene_t *scene);
+
+void wordarray_free_ptr(void *data);
 
 int launch_game(void);
 
