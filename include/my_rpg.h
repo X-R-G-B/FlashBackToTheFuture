@@ -61,6 +61,10 @@ void update_attack(player_t *player, scene_t *scene, window_t *win,
 
 int launch_story_mode(window_t *win, const char save_path[]);
 
+int add_collision_array_in_scene(scene_t *scene);
+
+void wordarray_free_ptr(void *data);
+
 int launch_game(void);
 
 void set_stop(player_t *player);
