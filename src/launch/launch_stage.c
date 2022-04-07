@@ -105,7 +105,6 @@ int launch_stage(window_t *win, char *stage_path, int stage_id)
         temp_pause_button(win, pause_menu, scene) != RET_OK) {
         return RET_ERR_INPUT;
     }
-    add_stage_data_to_scene_components(scene, stage_path);
     free(stage_path);
     free(stage_name);
     return RET_OK;
