@@ -15,15 +15,21 @@ static void add_escape_event(object_t *obj)
         {sfMouseLeft, sfKeyEscape, KEY});
 }
 
+static void set_buttons(list_ptr_t **settings,
+    list_ptr_t **main_menu, list_ptr_t **load_game, scene_t *scene)
+{
+    *settings = create_button(scene, "./assets/data/menu/settings_menu.json");
+    *main_menu = create_button(scene, "./assets/data/menu/menu_button.json");
+    *load_game = create_button(scene,"./assets/data/menu/play_pop_up.json");
+}
+
 static int init_main_menu_buttons(scene_t *scene)
 {
     list_ptr_t *main_menu = NULL;
     list_ptr_t *load_game = NULL;
     list_ptr_t *settings = NULL;
 
-    settings = create_button(scene, "./assets/data/menu/settings_menu.json");
-    main_menu = create_button(scene, "./assets/data/menu/menu_button.json");
-    load_game = create_button(scene,"./assets/data/menu/play_pop_up.json");
+    set_buttons(&settings, &main_menu, &load_game, scene);
     if (main_menu == NULL || load_game == NULL || settings == NULL) {
         return (RET_ERR_MALLOC);
     }
