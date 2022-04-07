@@ -11,13 +11,23 @@
 #include "my_json.h"
 
 static void (*event_on[])(object_t *, scene_t *, window_t *,
-    set_event_t *) = {attack_event, move_on};
+    set_event_t *) = {
+    attack_event, move_on
+};
+
 static void (*event_off[])(object_t *, scene_t *, window_t *,
-    set_event_t *) = {NULL, move_off};
-static const node_params_t node[] = {{sfMouseLeft, sfKeyL, KEY},
-    {sfMouseLeft, sfKeyZ, KEY}, {sfMouseLeft, sfKeyQ, KEY},
-    {sfMouseLeft, sfKeyS, KEY}, {sfMouseLeft, sfKeyD, KEY}};
+    set_event_t *) = {
+    NULL, move_off
+};
+
+static const node_params_t node[] = {
+    {sfMouseLeft, sfKeyL, KEY}, {sfMouseLeft, sfKeyZ, KEY},
+    {sfMouseLeft, sfKeyQ, KEY}, {sfMouseLeft, sfKeyS, KEY},
+    {sfMouseLeft, sfKeyD, KEY}
+};
+
 static const int event_nb = 5;
+
 static const char player_path[] = "./assets/image/player/link_with_weapon.png";
 
 static player_t *add_components(player_t *player, const char *stats)
