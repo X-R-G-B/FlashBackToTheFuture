@@ -1,3 +1,14 @@
 {
-    
+    "map data": {
+        "char type": {
+            ".": {
+                "path": "path",
+                "col": 0
+            },
+            "#": {
+                "path": "path",
+                "col": 1
+            }
+        }
+    }
 }
