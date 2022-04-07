@@ -94,11 +94,11 @@ pathfind_t *init_pathfind(char **array, char end, char wall, scene_t *scene)
     pathfind_impl_t maps = {0};
     pathfind_t *path = NULL;
 
-    if (fill_pathfind_impl(&maps, array, end, wall)) {
+    if (fill_pathfind_impl(&maps, array, end, wall) != 0) {
         return (NULL);
     }
-    if (init_new_buffer(&maps) || fill_vect_pos(&maps) ||
-            put_distance_buffer(&maps)) {
+    if (init_new_buffer(&maps) != 0 || fill_vect_pos(&maps) != 0||
+            put_distance_buffer(&maps) != 0) {
         return (NULL);
     }
     path = create_pathfind(&maps, scene);
