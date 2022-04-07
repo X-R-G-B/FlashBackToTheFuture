@@ -1,13 +1,46 @@
 {
     "map data": {
+        "map": [
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "ddddddddddddffffffffffffffffffffdddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "ddddddddddd....................ddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "ddddddddddd####################ddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "dddddddddddddddddddddddddddddddddddddddddddddddd"
+        ],
         "char type": {
             ".": {
-                "path": "path",
                 "col": 0
             },
             "#": {
-                "path": "path",
                 "col": 1
+            },
+            "d": {
+                "path": "./assets/image/map/squares/dirt.png"
+            },
+            "f": {
+                "path": "./assets/image/map/squares/flower.png"
             }
         }
     }
