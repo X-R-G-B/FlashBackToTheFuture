@@ -24,9 +24,55 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC			:=	src/main.c	\
-				./src/ennemy/amongus.c \
-				./src/ennemy/amongus_change_rect.c
+SRC_MAP		:=	create_map.c
+SRC_MAP		:=	$(addprefix map/,$(SRC_MAP))
+
+SRC_LAUNCH	:=	launch_game.c	\
+				launch_stage.c	\
+				launch_story_mode.c
+SRC_LAUNCH	:= $(addprefix launch/,$(SRC_LAUNCH))
+
+SRC_MAP		:=	stage_map_to_collision_array.c	\
+				create_map.c					\
+				create_collision_map.c
+SRC_MAP		:= $(addprefix map/,$(SRC_MAP))
+
+SRC_EVENT	:=	attack.c	\
+				move.c
+SRC_EVENT	:= $(addprefix event/,$(SRC_EVENT))
+
+SRC_UPDATE	:=	update_player.c		\
+				update_movement.c	\
+				update_attack.c
+SRC_UPDATE	:= $(addprefix update/,$(SRC_UPDATE))
+
+SRC_PLAYER	:=	set_stop.c		\
+				create_player.c	\
+				$(SRC_EVENT)	\
+				$(SRC_UPDATE)
+SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))
+
+SRC_MAIN	:=	event_menu.c	\
+				init_menu.c		\
+				pop_up_management.c
+SRC_MAIN	:=	$(addprefix main/,$(SRC_MAIN))
+
+SRC_PAUSE	:=	create_pause_menu.c		\
+				pressed_button_event.c	\
+				pause_button_event.c
+SRC_PAUSE	:=	$(addprefix pause/,$(SRC_PAUSE))
+
+SRC_MENU	:=	$(SRC_PAUSE)	\
+				$(SRC_MAIN)		\
+				button_event_array.c
+SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
+
+SRC			:=	main.c				\
+				$(SRC_LAUNCH)		\
+				$(SRC_MAP)			\
+        		$(SRC_MENU)			\
+				$(SRC_PLAYER)
+SRC			:= 	$(addprefix src/,$(SRC))
 
 OBJ			:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------

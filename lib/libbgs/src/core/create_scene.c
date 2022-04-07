@@ -32,8 +32,8 @@ int sprite_set_texture(object_t *object, sfVector2f pos, sfIntRect rect,
 
 static int init_list(scene_t *scene)
 {
-    scene->plan = list_create();
-    if (scene->plan == NULL) {
+    scene->layer = list_create();
+    if (scene->layer == NULL) {
         return BGS_ERR_MALLOC;
     }
     scene->objects = list_create();
@@ -51,7 +51,7 @@ scene_t *create_scene(window_t *win, sfColor bg_color, const char *scene_name)
 {
     scene_t *scene = NULL;
 
-    if (win == NULL) {
+    if (win == NULL || scene_name == NULL) {
         return NULL;
     }
     scene = malloc(sizeof(scene_t));
