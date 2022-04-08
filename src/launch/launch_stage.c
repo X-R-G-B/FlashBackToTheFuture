@@ -101,6 +101,7 @@ int launch_stage(window_t *win, char *stage_path, int stage_id)
     list_ptr_t *pause_menu = NULL;
     char *stage_name = get_stage_name(stage_id);
 
+    launch_scene_loading(win, "SCENE_LOADING_BASIC");
     scene = init_scene(stage_path, win, stage_name);
     if (scene == NULL || create_player(win, scene, PLAYER_DATA) == NULL ||
         create_map(scene) != RET_OK ||
