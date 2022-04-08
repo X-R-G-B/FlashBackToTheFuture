@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2022
+** EPITECH PROJECT, 2021
 ** my rpg
 ** File description:
 ** header
@@ -8,7 +8,8 @@
 #ifndef RPG_H_
     #define RPG_H_
 
-    #define RET_OK 0
+    #include <SFML/System/Vector2.h>
+#define RET_OK 0
     #define RET_ERR_MALLOC 1
     #define RET_ERR_INPUT 2
 
@@ -64,7 +65,7 @@ bool check_right_collision(object_t *player, char **map, sfVector2i pos);
 
 bool check_left_collision(object_t *player, char **map, sfVector2i pos);
 
-bool check_down_collision(object_t *player, char **map);
+bool check_down_collision(object_t *player, char **map, sfVector2i pos);
 
 void update_attack(player_t *player, scene_t *scene, window_t *win,
     float dtime);

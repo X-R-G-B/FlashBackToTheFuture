@@ -39,6 +39,8 @@ static void check_state(player_t *player, any_t *stop)
     case DOWN:
         apply_rect(player, "down", stop->value.dict);
         break;
+    default:
+        break;
     }
 }
 
