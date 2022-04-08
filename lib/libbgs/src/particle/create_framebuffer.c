@@ -9,7 +9,8 @@
 #include <SFML/Config.h>
 #include "my_bgs_framebuffer.h"
 
-framebuffer_t *create_framebuffer(unsigned int width, unsigned int height)
+framebuffer_t *create_framebuffer(unsigned int width, unsigned int height,
+        sfVector2f pos_on_win)
 {
     framebuffer_t *buf = NULL;
 
@@ -29,5 +30,6 @@ framebuffer_t *create_framebuffer(unsigned int width, unsigned int height)
     buf->elements = NULL;
     buf->height = height;
     buf->width = width;
+    buf->pos_on_win = pos_on_win;
     return (buf);
 }

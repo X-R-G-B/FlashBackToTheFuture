@@ -42,6 +42,7 @@ struct framebuffer_s {
     sfUint8 *pixels;
     unsigned int width;
     unsigned int height;
+    sfVector2f pos_on_win;
     struct element_s {
         struct element_s *next;
         enum elem_data_type {
@@ -69,7 +70,11 @@ struct framebuffer_s {
 ** framebuffer_t *: framebuffer has been created
 ** }
 **/
-framebuffer_t *create_framebuffer(unsigned int width, unsigned int height);
+framebuffer_t *create_framebuffer(
+    unsigned int width,
+    unsigned int height,
+    sfVector2f pos_on_win
+);
 
 /**
 ** @brief put a color everywhere on the framebuffer
