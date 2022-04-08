@@ -58,7 +58,7 @@ static int add_event(player_t *player)
     object_t *obj = player->obj;
 
     if (object_set_sprite(player->obj, player_path,
-        (sfIntRect) {12, 210, 57, 69}, (sfVector2f) {500, 500}) != BGS_OK) {
+        (sfIntRect) {12, 210, 57, 69}, (sfVector2f) {1000, 700}) != BGS_OK) {
         return RET_ERR_INPUT;
     }
     for (int i = 0; i < event_nb && ret == RET_OK; i++) {
@@ -80,6 +80,7 @@ sfView *create_view(window_t *win, player_t *player)
     if (view == NULL) {
         return (NULL);
     }
+    sfView_setCenter(view, (sfVector2f) {1000, 700});
     sfView_setSize(view, (sfVector2f) {1920, 1080});
     sfRenderWindow_setView(win->win, view);
     player->view = view;
