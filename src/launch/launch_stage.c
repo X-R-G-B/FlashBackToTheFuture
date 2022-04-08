@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include "my_bgs.h"
 #include "my_rpg.h"
 #include "my_conversions.h"
 #include "main_menu.h"
@@ -77,9 +78,12 @@ static int temp_pause_button(window_t *win, list_ptr_t *pause_menu,
 
 static scene_t *init_scene(char *stage_path, window_t *win, char *stage_name)
 {
-    any_t *data = parse_json_file(stage_path);
-    scene_t *scene = create_scene(win, sfBlack, stage_name);
+    any_t *data = NULL;
+    scene_t *scene = NULL;
 
+    launch_scene_loading(win, "SCENE_LOADING_BASIC");
+    data = parse_json_file(stage_path);
+    scene = create_scene(win, sfBlack, stage_name);
     if (data == NULL || scene == NULL) {
         return NULL;
     }
