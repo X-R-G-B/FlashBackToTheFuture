@@ -19,26 +19,37 @@ static const char ennemy_among_us_png[] = "./assets/amongus.png";
 
 static const float time_max = 1 / 5.0;
 
-static void update_among_us_time(object_t *obj, any_t *dico, float dtime,
+static int update_among_us_time(object_t *obj, any_t *dico, float dtime,
         window_t *win)
 {
     any_t *value = get_from_any(dico, "d", "time");
 
+    if (value == NULL || value->type != FLOAT) {
+        return (0);
+    }
     value->value.f += dtime;
     if (value->value.f < time_max) {
-        return;
+        return (0);
     }
     value->value.f -= time_max;
-    change_amongus_rect(dico, obj, win);
+    return (1);
 }
 
 static void update_among_us(object_t *obj,
         __attribute__((unused)) scene_t *scn, window_t *win,
         float dtime)
 {
+    int update = 0;
     any_t *dico = dico_t_get_value(obj->components, ennemy_among_us);
 
-    update_among_us_time(obj, dico, dtime, win);
+    if (dico == NULL) {
+        return;
+    }
+    update = update_among_us_time(obj, dico, dtime, win);
+    if (update == 0) {
+        return;
+    }
+    change_amongus_rect(dico, obj, win);
 }
 
 int create_amongus(scene_t *scene, int pos_x, int pos_y)
