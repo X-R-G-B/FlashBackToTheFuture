@@ -11,6 +11,8 @@
     #include <SFML/Config.h>
     #include <SFML/Graphics/Color.h>
     #include <SFML/Graphics/Rect.h>
+    #include <SFML/Graphics/Sprite.h>
+    #include <SFML/Graphics/Texture.h>
     #include <SFML/System/Vector2.h>
     #include <stdbool.h>
     #include "list.h"
@@ -18,6 +20,7 @@
 typedef struct elem_circle_s elem_circle_t;
 typedef struct elem_rect_s elem_rect_t;
 typedef struct elem_line_s elem_line_t;
+typedef struct window_s window_t;
 
 struct elem_circle_s {
     sfVector2f center;
@@ -43,6 +46,8 @@ struct framebuffer_s {
     unsigned int width;
     unsigned int height;
     sfVector2f pos_on_win;
+    sfTexture *texture;
+    sfSprite *sprite;
     struct element_s {
         struct element_s *next;
         enum elem_data_type {
@@ -96,5 +101,18 @@ int clear_framebuffer(framebuffer_t *buf, sfColor color);
 ** @param buf framebuffer to destroy
 **/
 void destroy_framebuffer(framebuffer_t *buf);
+
+/**
+** @brief draw framebuffer to window
+**
+** @param win window in which to draw
+** @param buf the framebuffer to draw
+**
+** @return {
+** BGS_ERR_INPUT : win or buf is NULL,
+** BGS_OK : framebuffer has been drawn
+** }
+**/
+int draw_framebuffer(window_t *win, framebuffer_t *buf);
 
 #endif
