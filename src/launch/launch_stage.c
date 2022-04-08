@@ -62,6 +62,7 @@ static int temp_pause_button(window_t *win, list_ptr_t *pause_menu,
         (sfIntRect) {-1, -1, -1, -1}, (sfVector2f) {50, 50}) != BGS_OK) {
         return RET_ERR_INPUT;
     }
+    object->is_visible = false;
     win->components = dico_t_add_data(win->components, "pause",
         pause_menu, free_pop_up);
     ret = event_add_node(create_event(NULL, true, object, click_pause),
