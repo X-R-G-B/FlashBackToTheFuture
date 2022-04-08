@@ -5,9 +5,11 @@
 ** create map
 */
 
+#include "ennemies.h"
 #include "my_rpg.h"
 #include "my_wordarray.h"
 #include "my_json.h"
+#include "macro.h"
 
 static int init_square(scene_t *scene, char current_char, dico_t *char_type,
     sfVector2f current_pos)
@@ -23,7 +25,7 @@ static int init_square(scene_t *scene, char current_char, dico_t *char_type,
     if (path == NULL || path->type != STR) {
         return RET_OK;
     }
-    square = create_object(NULL, NULL, scene, 2);
+    square = create_object(NULL, NULL, scene, PLAN_MAP);
     if (square == NULL || object_set_sprite(square, path->value.str,
         (sfIntRect) {-1, -1, -1, -1}, current_pos) != BGS_OK) {
         return RET_ERR_MALLOC;
@@ -33,7 +35,7 @@ static int init_square(scene_t *scene, char current_char, dico_t *char_type,
 
 static int browse_squares_pos(scene_t *scene, char **map, dico_t *char_type)
 {
-    sfVector2f current_pos = {SQUARE_SIZE / 2, SQUARE_SIZE / 2};
+    sfVector2f current_pos = {SQUARE_SIZE / 2.0, SQUARE_SIZE / 2.0};
     int ret = RET_OK;
 
     for (int i = 0; map[i] != NULL && ret == RET_OK; i++) {
@@ -41,10 +43,11 @@ static int browse_squares_pos(scene_t *scene, char **map, dico_t *char_type)
             ret = init_square(scene, map[i][x], char_type, current_pos);
             current_pos.x += SQUARE_SIZE;
         }
-        current_pos.x = SQUARE_SIZE / 2;
+        current_pos.x = SQUARE_SIZE / 2.0;
         current_pos.y += SQUARE_SIZE;
     }
     my_wordarray_free(map);
+    create_amongus(scene, 500, 500);
     return ret;
 }
 

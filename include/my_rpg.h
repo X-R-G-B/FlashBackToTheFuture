@@ -1,5 +1,5 @@
 /*
-** EPITECH PROJECT, 2022
+** EPITECH PROJECT, 2021
 ** my rpg
 ** File description:
 ** header
@@ -14,6 +14,7 @@
 
     #define SQUARE_SIZE 40
 
+    #include <SFML/System/Vector2.h>
     #include "my_bgs.h"
 
 static const char PLAYER_DATA[] = "./assets/data/player/data.json";
@@ -35,6 +36,7 @@ typedef enum state_e {
 } state_t;
 
 typedef enum dir_e {
+    UNKNOWN_STATE = -1,
     UP = 0,
     LEFT = 1,
     DOWN = 2,
@@ -48,10 +50,10 @@ typedef struct player_s {
     sfView *view;
 } player_t;
 
-bool check_collision(player_t *player, scene_t *scene);
+void click_save(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *event);
 
-void click_save(__attribute__((unused)) object_t *obj, scene_t *scene,
-    window_t *win, __attribute__((unused)) set_event_t *event);
+bool check_collision(player_t *player, scene_t *scene);
 
 int create_map(scene_t *scene);
 
@@ -63,7 +65,7 @@ bool check_right_collision(object_t *player, char **map, sfVector2i pos);
 
 bool check_left_collision(object_t *player, char **map, sfVector2i pos);
 
-bool check_down_collision(object_t *player, char **map);
+bool check_down_collision(object_t *player, char **map, sfVector2i pos);
 
 void update_attack(player_t *player, scene_t *scene, window_t *win,
     float dtime);
