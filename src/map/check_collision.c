@@ -8,12 +8,13 @@
 #include "my_rpg.h"
 #include "my_strings.h"
 #include "my_wordarray.h"
+#include <SFML/System/Vector2.h>
 #include <stdbool.h>
 
 static sfVector2i get_player_pos_in_map(object_t *obj)
 {
     sfVector2f pos = obj->bigdata.sprite_bigdata.pos;
-    int pos_y = pos.y + (obj->bigdata.sprite_bigdata.rect.height / 2);
+    int pos_y = pos.y + (obj->bigdata.sprite_bigdata.rect.height / 2.0);
 
     return (sfVector2i) {pos.x / SQUARE_SIZE, pos_y / SQUARE_SIZE};
 }
@@ -21,17 +22,15 @@ static sfVector2i get_player_pos_in_map(object_t *obj)
 static bool check_char_in_player_direction(char **map,
     sfVector2i pos, player_t *player)
 {
-    switch (player->dir) {
-    case UP:
-        return check_up_collision(player->obj, map, pos);
-    case LEFT:
-        return check_left_collision(player->obj, map, pos);
-    case DOWN:
-        return check_down_collision(player->obj, map);
-    case RIGHT:
-        return check_right_collision(player->obj, map, pos);
+    bool (*funcs[4])(object_t *player, char **map, sfVector2i pos) = {
+        &check_up_collision, &check_left_collision,
+        &check_down_collision, &check_right_collision
+    };
+
+    if (player->dir == UNKNOWN_STATE) {
+        return (true);
     }
-    return true;
+    return (funcs[player->dir](player->obj, map, pos));
 }
 
 bool check_collision(player_t *player, scene_t *scene)
