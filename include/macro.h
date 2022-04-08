@@ -16,7 +16,7 @@
 
     #define GO_RT "0"
     #define GO_UP "1"
-    #define GO_LT "2"
-    #define GO_DN "3"
+    #define GO_LT "3"
+    #define GO_DN "2"
 
 #endif

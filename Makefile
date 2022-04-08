@@ -24,13 +24,14 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS			=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC_MAP		:=	create_map.c
-SRC_MAP		:=	$(addprefix map/,$(SRC_MAP))
+SRC_ENNEMY	:=	amongus.c				\
+				amongus_change_rect.c
+SRC_ENNEMY	:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 
 SRC_LAUNCH	:=	launch_game.c	\
 				launch_stage.c	\
 				launch_story_mode.c
-SRC_LAUNCH	:= $(addprefix launch/,$(SRC_LAUNCH))
+SRC_LAUNCH	:=	$(addprefix launch/,$(SRC_LAUNCH))
 
 SRC_MAP		:=	stage_map_to_collision_array.c	\
 				wordarray_free_cast.c			\
@@ -87,7 +88,8 @@ SRC			:=	main.c				\
 				$(SRC_PATH)			\
 				$(SRC_MAP)			\
         		$(SRC_MENU)			\
-				$(SRC_PLAYER)
+				$(SRC_PLAYER)		\
+				$(SRC_ENNEMY)
 SRC			:= 	$(addprefix src/,$(SRC))
 
 OBJ				:=	$(SRC:%.c=%.o)
