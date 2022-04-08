@@ -13,8 +13,10 @@ bool check_right_collision(object_t *player, char **map, sfVector2i pos)
     int pos_y = pos_f.y + (player->bigdata.sprite_bigdata.rect.height / 2);
 
     pos_y = (pos_y + 13) / SQUARE_SIZE;
-    if (map[pos_y - 1][pos.x + 1] == '\0' || map[pos_y][pos.x + 1] == '\0' ||
-        map[pos_y - 1][pos.x + 1] == '#' || map[pos.y][pos.x + 1] == '#') {
+    if (map[pos_y - 1][pos.x + 1] == '\0' ||
+        (map[pos_y] != NULL && map[pos_y][pos.x + 1] == '\0') ||
+        map[pos_y - 1][pos.x + 1] == '#' ||
+        (map[pos_y] != NULL && map[pos.y][pos.x + 1] == '#')) {
         return true;
     }
     return false;
@@ -27,7 +29,7 @@ bool check_left_collision(object_t *player, char **map, sfVector2i pos)
 
     pos_y = (pos_y + 13) / SQUARE_SIZE;
     if (pos.x - 1 < 0 || map[pos_y - 1][pos.x - 1] == '#' ||
-        map[pos.y][pos.x - 1] == '#') {
+        (map[pos.y] != NULL && map[pos.y][pos.x - 1] == '#')) {
         return true;
     }
     return false;
@@ -61,7 +63,7 @@ bool check_down_collision(object_t *player, char **map)
     pos_y = pos_y / SQUARE_SIZE;
     fst_pos_x = fst_pos_x / SQUARE_SIZE;
     scd_pos_x = scd_pos_x / SQUARE_SIZE;
-    if (map[pos_y + 1] == NULL || map[pos_y][fst_pos_x] == '#' ||
+    if (map[pos_y] == NULL || map[pos_y][fst_pos_x] == '#' ||
         map[pos_y][scd_pos_x] == '#') {
         return true;
     }
