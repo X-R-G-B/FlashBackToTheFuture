@@ -64,9 +64,9 @@ int create_amongus(scene_t *scene, int pos_x, int pos_y)
         return (BGS_ERR_MALLOC);
     }
     if (object_set_sprite(obj, ennemy_among_us_png,
-                (sfIntRect) {-1, -1, -1, -1}, pos) != BGS_OK ||
-            object_add_components(obj, parse_json_file(ennemy_among_us_json),
-                ennemy_among_us, &destroy_any) != BGS_OK) {
+            (sfIntRect) {-1, -1, -1, -1}, pos) != BGS_OK ||
+        object_add_components(obj, parse_json_file(ennemy_among_us_json),
+            ennemy_among_us, &destroy_any) != BGS_OK) {
         return (BGS_ERR_MALLOC);
     }
     return (BGS_OK);
