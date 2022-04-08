@@ -19,8 +19,7 @@ static const char ennemy_among_us_png[] = "./assets/amongus.png";
 
 static const float time_max = 1 / 5.0;
 
-static int update_among_us_time(object_t *obj, any_t *dico, float dtime,
-        window_t *win)
+static int update_among_us_time(any_t *dico, float dtime)
 {
     any_t *value = get_from_any(dico, "d", "time");
 
@@ -45,7 +44,7 @@ static void update_among_us(object_t *obj,
     if (dico == NULL) {
         return;
     }
-    update = update_among_us_time(obj, dico, dtime, win);
+    update = update_among_us_time(dico, dtime);
     if (update == 0) {
         return;
     }
@@ -61,9 +60,14 @@ int create_amongus(scene_t *scene, int pos_x, int pos_y)
         return (BGS_ERR_INPUT);
     }
     obj = create_object(update_among_us, NULL, scene, PLAN_ENNEMY);
-    object_set_sprite(obj, ennemy_among_us_png, (sfIntRect) {-1, -1, -1, -1},
-            pos);
-    object_add_components(obj, parse_json_file(ennemy_among_us_json),
-            ennemy_among_us, &destroy_any);
+    if (obj == NULL) {
+        return (BGS_ERR_MALLOC);
+    }
+    if (object_set_sprite(obj, ennemy_among_us_png,
+                (sfIntRect) {-1, -1, -1, -1}, pos) != BGS_OK ||
+            object_add_components(obj, parse_json_file(ennemy_among_us_json),
+                ennemy_among_us, &destroy_any) != BGS_OK) {
+        return (BGS_ERR_MALLOC);
+    }
     return (BGS_OK);
 }
