@@ -80,7 +80,7 @@ sfView *create_view(window_t *win, player_t *player)
     if (view == NULL) {
         return (NULL);
     }
-    sfView_setSize(view, (sfVector2f) {800, 600});
+    sfView_setSize(view, (sfVector2f) {1920, 1080});
     sfRenderWindow_setView(win->win, view);
     player->view = view;
     return (view);
