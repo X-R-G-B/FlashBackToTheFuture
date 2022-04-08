@@ -17,15 +17,18 @@ static const char ennemy_among_us[] = "ENNEMY_AMONG_US";
 static const char ennemy_among_us_json[] = "./assets/json/amongus.json";
 static const char ennemy_among_us_png[] = "./assets/amongus.png";
 
+static const float time_max = 1 / 30.0;
+
 static void update_among_us_time(object_t *obj, any_t *dico, float dtime,
         window_t *win)
 {
     any_t *value = get_from_any(dico, "d", "time");
+
     value->value.f += dtime;
-    if (value->value.f < 1) {
+    if (value->value.f < time_max) {
         return;
     }
-    value->value.f -= 1;
+    value->value.f -= time_max;
     change_amongus_rect(dico, obj, win);
 }
 

@@ -12,14 +12,27 @@
 #include "my_bgs.h"
 #include "my_dico.h"
 #include "my_json.h"
+#include "my_rpg.h"
 #include "my_strings.h"
 #include "macro.h"
 
 static const double pi = 3.1415926535;
 
+static sfVector2f get_position_player(window_t *win)
+{
+    sfVector2f pos = {500, 500};
+    player_t *player = dico_t_get_value(win->components, "player");
+
+    if (player == NULL) {
+        return (pos);
+    }
+    pos = player->obj->bigdata.sprite_bigdata.pos;
+    return (pos);
+}
+
 static void change_among_us_state(object_t *obj, window_t *win, any_t *state)
 {
-    sfVector2i dir = sfMouse_getPositionRenderWindow(win->win);
+    sfVector2f dir = get_position_player(win);
     sfVector2f cur = sfSprite_getPosition(obj->drawable.sprite);
     double angle = 0;
 
@@ -31,10 +44,10 @@ static void change_among_us_state(object_t *obj, window_t *win, any_t *state)
         my_strealloc(&state->value.str, GO_RT);
     }
     if (-135 <= angle && angle < -45 && my_strcmp(state->value.str, GO_DN)) {
-        my_strealloc(&state->value.str, "2");
+        my_strealloc(&state->value.str, GO_DN);
     }
     if (-45 <= angle && angle < 45 && my_strcmp(state->value.str, GO_LT)) {
-        my_strealloc(&state->value.str, "3");
+        my_strealloc(&state->value.str, GO_LT);
     }
 }
 
