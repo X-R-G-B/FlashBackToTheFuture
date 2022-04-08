@@ -50,6 +50,7 @@ struct framebuffer_s {
     sfSprite *sprite;
     struct element_s {
         struct element_s *next;
+        void (*update)(void *element, framebuffer_t *buf);
         enum elem_data_type {
             CIRCLE,
             RECT,
