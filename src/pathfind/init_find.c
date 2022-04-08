@@ -59,7 +59,7 @@ static pathfind_t *create_pathfind(pathfind_impl_t *maps, scene_t *scene)
     path->sizex = maps->size_x;
     path->sizey = maps->size_y;
     path->wall_char = maps->wall_char;
-    dico_t_rem(scene->components, SCENE_PATHFIND_PATH);
+    scene->components = dico_t_rem(scene->components, SCENE_PATHFIND_PATH);
     if (scene_add_components(scene, path, SCENE_PATHFIND_PATH,
             destroy_pathfind) != BGS_OK) {
         destroy_pathfind(path);
@@ -97,7 +97,7 @@ pathfind_t *init_pathfind(char **array, char end, char wall, scene_t *scene)
     if (fill_pathfind_impl(&maps, array, end, wall) != 0) {
         return (NULL);
     }
-    if (init_new_buffer(&maps) != 0 || fill_vect_pos(&maps) != 0||
+    if (init_new_buffer(&maps) != 0 || fill_vect_pos(&maps) != 0 ||
             put_distance_buffer(&maps) != 0) {
         return (NULL);
     }
