@@ -10,7 +10,7 @@
 #include "my_bgs.h"
 
 static const char background_path[] =
-    "./assets/image/menu/main_menu/default_screen/background.jpg";
+    "./assets/image/menu/thread.jpg";
 
 int create_scene_loading_basic(window_t *win)
 {
