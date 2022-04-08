@@ -1,35 +1,42 @@
 {
     "map data": {
         "map": [
+            "################################################",
+            "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+            "################################################",
+            "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
             "dddddddddddddddddddddddddddddddddddddddddddddddd",
             "dddddddddddddddddddddddddddddddddddddddddddddddd",
             "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "ffffffffffffffffffffffffffffffffffffffffffffffff",
+            "ffffffffffffffffffffffffffffffffffffffffffffffff",
+            "ffffffffffffffffffffffffffffffffffffffffffffffff",
+            "ffffffffffffffffffffffffffffffffffffffffffffffff",
+            "fffffffffff####################fffffffffffffffff",
             "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "ddddddddddddffffffffffffffffffffdddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "ddddddddddd....................ddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "ffffffffffffffffffffffffffffffffffffffffffffffff",
+            "ffffffffffffffffffffffffffffffffffffffffffffffff",
+            "ffffffffffffffffffffffffffffffffffffffffffffffff",
+            "ffffffffffffffffffffffffffffffffffffffffffffffff",
+            "ffffffffffffffffffffffffffffffffffffffffffffffff",
+            "ffffffffffffffffffffffffffffffffffffffffffffffff",
             "dddddddddddddddddddddddddddddddddddddddddddddddd",
             "ddddddddddd####################ddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
-            "dddddddddddddddddddddddddddddddddddddddddddddddd",
+            "ffffffffffffffffffffffffffffffffffffffffffffffff",
+            "ffffffffffffffffffffffffffffffffffffffffffffffff",
+            "ffffffffffffffffffffffffffffffffffffffffffffffff",
+            "ffffffffffffffffffffffffffffffffffffffffffffffff",
+            "ffffffffffffffffffffffffffffffffffffffffffffffff",
             "dddddddddddddddddddddddddddddddddddddddddddddddd"
         ],
         "char type": {
+            "a": {
+                "path": "./assets/image/map/squares/fall.png",
+                "col": 1
+            },
+            "b": {
+                "path": "./assets/image/map/squares/dirt_border.png"
+            },
             ".": {
                 "col": 0
             },

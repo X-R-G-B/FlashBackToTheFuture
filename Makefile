@@ -33,6 +33,9 @@ SRC_LAUNCH	:=	launch_game.c	\
 SRC_LAUNCH	:= $(addprefix launch/,$(SRC_LAUNCH))
 
 SRC_MAP		:=	stage_map_to_collision_array.c	\
+				wordarray_free_cast.c			\
+				check_player_pos_in_map.c		\
+				check_collision.c				\
 				create_map.c					\
 				create_collision_map.c
 SRC_MAP		:= $(addprefix map/,$(SRC_MAP))
@@ -46,11 +49,12 @@ SRC_UPDATE		:=	update_player.c		\
 					update_attack.c
 SRC_UPDATE		:=	$(addprefix update/,$(SRC_UPDATE))
 
-SRC_PLAYER		:=	set_stop.c		\
-					create_player.c	\
-					$(SRC_EVENT)	\
-					$(SRC_UPDATE)
-SRC_PLAYER		:=	$(addprefix player/,$(SRC_PLAYER))
+SRC_PLAYER	:=	set_stop.c			\
+				create_player.c		\
+				destroy_player.c	\
+				$(SRC_EVENT)		\
+				$(SRC_UPDATE)
+SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))
 
 SRC_MAIN	:=	event_menu.c	\
 				init_menu.c		\
@@ -62,8 +66,13 @@ SRC_PAUSE	:=	create_pause_menu.c		\
 				pause_button_event.c
 SRC_PAUSE	:=	$(addprefix pause/,$(SRC_PAUSE))
 
+SRC_DEAD	:=	configure_dead_screen.c	\
+				dead_screen.c
+SRC_DEAD	:=	$(addprefix dead/,$(SRC_DEAD))
+
 SRC_MENU	:=	$(SRC_PAUSE)	\
 				$(SRC_MAIN)		\
+				$(SRC_DEAD)		\
 				button_event_array.c
 SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
 
