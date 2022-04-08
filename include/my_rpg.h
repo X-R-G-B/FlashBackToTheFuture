@@ -8,13 +8,13 @@
 #ifndef RPG_H_
     #define RPG_H_
 
-    #include <SFML/System/Vector2.h>
-#define RET_OK 0
+    #define RET_OK 0
     #define RET_ERR_MALLOC 1
     #define RET_ERR_INPUT 2
 
     #define SQUARE_SIZE 40
 
+    #include <SFML/System/Vector2.h>
     #include "my_bgs.h"
 
 static const char PLAYER_DATA[] = "./assets/data/player/data.json";
