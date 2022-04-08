@@ -26,5 +26,6 @@ void play_pop_up(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 void settings_pop_up( object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
+int create_scene_loading_basic(window_t *win);
 
 #endif /* !MENU_H_ */
