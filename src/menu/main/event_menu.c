@@ -27,8 +27,8 @@ void go_back(__attribute__((unused)) object_t *obj, scene_t *scene,
     __attribute__((unused)) window_t *win,
     __attribute__((unused)) set_event_t *event)
 {
-    set_is_visible_false(dico_t_get_value(scene->components, PLAY));
-    set_is_visible_false(dico_t_get_value(scene->components, SETTINGS_MENU));
+    /*set_is_visible_false(dico_t_get_value(scene->components, PLAY));
+    set_is_visible_false(dico_t_get_value(scene->components, SETTINGS_MENU));*/
 }
 
 void play_pop_up(__attribute__((unused)) object_t *obj, scene_t *scene,
