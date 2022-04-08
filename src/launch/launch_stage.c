@@ -57,10 +57,12 @@ static int temp_pause_button(window_t *win, list_ptr_t *pause_menu,
     int ret = RET_OK;
 
     if (object == NULL ||
-        object_set_sprite(object, "./assets/Buttons_sprites/Retour_button.png",
+        object_set_sprite(object,
+            "./assets/image/menu/main_menu/default_screen/Retour_button.png",
         (sfIntRect) {-1, -1, -1, -1}, (sfVector2f) {50, 50}) != BGS_OK) {
         return RET_ERR_INPUT;
     }
+    object->is_visible = false;
     win->components = dico_t_add_data(win->components, "pause",
         pause_menu, free_pop_up);
     ret = event_add_node(create_event(NULL, true, object, click_pause),
@@ -97,12 +99,14 @@ int launch_stage(window_t *win, char *stage_path, int stage_id)
 
     scene = init_scene(stage_path, win, stage_name);
     if (scene == NULL || create_player(win, scene, PLAYER_DATA) == NULL ||
-        create_map(scene) != RET_OK) {
+        create_map(scene) != RET_OK ||
+        add_collision_array_in_scene(scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     pause_menu = create_pause_menu(scene);
     if (window_change_scene(win, stage_name) != BGS_OK ||
-        temp_pause_button(win, pause_menu, scene) != RET_OK) {
+        temp_pause_button(win, pause_menu, scene) != RET_OK ||
+        init_dead_menu(win, scene) != RET_OK) {
         return RET_ERR_INPUT;
     }
     free(stage_path);
