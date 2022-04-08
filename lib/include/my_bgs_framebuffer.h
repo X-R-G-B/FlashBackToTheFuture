@@ -10,7 +10,7 @@
 
     #include <SFML/Config.h>
     #include <SFML/Graphics/Color.h>
-#include <SFML/Graphics/Rect.h>
+    #include <SFML/Graphics/Rect.h>
     #include <SFML/System/Vector2.h>
     #include <stdbool.h>
     #include "list.h"
@@ -88,5 +88,13 @@ framebuffer_t *create_framebuffer(
 ** }
 **/
 int clear_framebuffer(framebuffer_t *buf, sfColor color);
+
+
+/**
+** @brief destroy a framebuffer
+**
+** @param buf framebuffer to destroy
+**/
+void destroy_framebuffer(framebuffer_t *buf);
 
 #endif
