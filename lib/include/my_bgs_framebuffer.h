@@ -32,11 +32,13 @@ struct elem_circle_s {
 struct elem_rect_s {
     sfFloatRect rect;
     bool is_plain;
+    sfColor color;
 };
 
 struct elem_line_s {
     sfVector2f point_a;
     sfVector2f point_b;
+    sfColor color;
 };
 
 typedef struct framebuffer_s framebuffer_t;
@@ -50,7 +52,7 @@ struct framebuffer_s {
     sfSprite *sprite;
     struct element_s {
         struct element_s *next;
-        void (*update)(void *element, framebuffer_t *buf);
+        void (*update)(struct element_s *element, framebuffer_t *buf, float dtime);
         enum elem_data_type {
             CIRCLE,
             RECT,
@@ -115,5 +117,18 @@ void destroy_framebuffer(framebuffer_t *buf);
 ** }
 **/
 int draw_framebuffer(window_t *win, framebuffer_t *buf);
+
+/**
+** @brief update all elements on the framebuffer
+**
+** @param buf framebuffer to update
+** @param dtime delta time between last update
+**
+** @return {
+** BGS_ERR_INPUT : buf is NULL,
+** BGS_OK : framebuffer has been updated
+** }
+**/
+int update_framebuffer(framebuffer_t *buf, float dtime);
 
 #endif

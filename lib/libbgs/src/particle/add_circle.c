@@ -23,7 +23,7 @@ static int init_values(elem_circle_t *dest, elem_circle_t *src)
 }
 
 int fb_add_circle(framebuffer_t *buf, elem_circle_t circle_info,
-    void (*update)(void *element, framebuffer_t *buf))
+    void (*update)(struct element_s *element, framebuffer_t *buf, float dtime))
 {
     struct element_s *new = NULL;
 

@@ -21,7 +21,7 @@ static int init_values(elem_rect_t *dest, elem_rect_t *src)
 }
 
 int fb_add_rect(framebuffer_t *buf, elem_rect_t rect_info,
-    void (*update)(void *element, framebuffer_t *buf))
+    void (*update)(struct element_s *element, framebuffer_t *buf, float dtime))
 {
     struct element_s *new = NULL;
 

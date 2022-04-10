@@ -10,7 +10,7 @@
 #include "framebuffer.h"
 
 struct element_s *add_element(framebuffer_t *buf, enum elem_data_type type,
-    void (*update)(void *element, framebuffer_t *buf))
+    void (*update)(struct element_s *element, framebuffer_t *buf, float dtime))
 {
     struct element_s *elem = NULL;
 

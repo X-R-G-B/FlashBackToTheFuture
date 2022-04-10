@@ -21,7 +21,7 @@ static int init_values(elem_line_t *dest, elem_line_t *src)
 }
 
 int fb_add_line(framebuffer_t *buf, elem_line_t line_info,
-    void (*update)(void *element, framebuffer_t *buf))
+    void (*update)(struct element_s *element, framebuffer_t *buf, float dtime))
 {
     struct element_s *new = NULL;
 
