@@ -10,6 +10,7 @@
 #include <SFML/System/Vector2.h>
 #include <stdlib.h>
 #include <SFML/Config.h>
+#include "list.h"
 #include "my_bgs_framebuffer.h"
 
 static int create_pixels(framebuffer_t *buf, unsigned int width,
@@ -37,6 +38,11 @@ static int init_default_values(framebuffer_t *buf, unsigned int width,
     buf->height = height;
     buf->width = width;
     buf->pos_on_win = pos_on_win;
+    buf->to_remove = list_create();
+    if (buf->to_remove == NULL) {
+        free(buf);
+        return (1);
+    }
     return (0);
 }
 

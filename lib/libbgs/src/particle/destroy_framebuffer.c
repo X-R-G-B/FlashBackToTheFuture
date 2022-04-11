@@ -22,6 +22,7 @@ void destroy_framebuffer(framebuffer_t *buf)
         tmp_tmp = tmp->next;
         free(tmp);
     }
+    free_list(buf->to_remove);
     sfSprite_destroy(buf->sprite);
     sfTexture_destroy(buf->texture);
     free(buf);

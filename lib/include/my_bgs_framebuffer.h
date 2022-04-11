@@ -50,6 +50,7 @@ struct framebuffer_s {
     sfVector2f pos_on_win;
     sfTexture *texture;
     sfSprite *sprite;
+    list_ptr_t *to_remove;
     struct element_s {
         struct element_s *next;
         void (*update)(struct element_s *element, framebuffer_t *buf,
