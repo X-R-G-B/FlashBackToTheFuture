@@ -131,4 +131,24 @@ int draw_framebuffer(window_t *win, framebuffer_t *buf);
 **/
 int update_framebuffer(framebuffer_t *buf, float dtime);
 
+
+int fb_add_circle(
+    framebuffer_t *buf,
+    elem_circle_t circle_info,
+    void (*update)(struct element_s *element, framebuffer_t *buf, float dtime)
+);
+
+
+int fb_add_line(
+    framebuffer_t *buf,
+    elem_line_t line_info,
+    void (*update)(struct element_s *element, framebuffer_t *buf, float dtime)
+);
+
+int fb_add_rect(
+    framebuffer_t *buf,
+    elem_rect_t rect_info,
+    void (*update)(struct element_s *element, framebuffer_t *buf, float dtime)
+);
+
 #endif
