@@ -18,6 +18,9 @@ int draw_circle_pixel(sfVector2f pos, elem_circle_t *circle,
     float dist_rad = 0;
     bool is_draw = false;
 
+    if (buf == NULL || is_out_of_range(pos, buf->width, buf->height) != 0) {
+        return (1);
+    }
     dist = pow(pos.x - circle->center.x, 2) + pow(pos.y - circle->center.y, 2);
     dist_rad = pow(circle->radius, 2);
     if (circle->is_plain == true) {
@@ -26,7 +29,7 @@ int draw_circle_pixel(sfVector2f pos, elem_circle_t *circle,
         is_draw = dist <= (dist_rad + circle->radius * 2) &&
             dist >= (dist_rad - circle->radius * 2);
     }
-    if (is_draw == 0) {
+    if (is_draw != 0) {
         fb_put_pixel(buf, pos, circle->color);
     }
     return (0);

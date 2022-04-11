@@ -15,9 +15,12 @@ int draw_line_pixel(sfVector2f pos, int calc_values[2], framebuffer_t *buf,
     float calc2 = 0;
     float div = 0;
 
-    if (buf == NULL || calc_values == NULL || pos.x >= buf->width ||
+    if (buf == NULL || is_out_of_range(pos, buf->width, buf->height) != 0) {
+        return (1);
+    }
+    if (calc_values == NULL || pos.x >= buf->width ||
             pos.x < 0 || pos.y >= buf->height || pos.y <= 0) {
-        return (0);
+        return (1);
     }
     div = calc_values[0];
     calc1 = (div * pos.x) + calc_values[1];
