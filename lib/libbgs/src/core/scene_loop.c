@@ -67,7 +67,6 @@ static void window_update(list_ptr_t *updates, window_t *win, float seconds,
         }
         elem = tmp;
     }
-    update_framebuffer(win->buf, seconds);
 }
 
 static void scene_layer_handling(scene_t *scene, window_t *win, float seconds)
@@ -75,6 +74,7 @@ static void scene_layer_handling(scene_t *scene, window_t *win, float seconds)
     list_t *elem = scene->layer->start;
     layer_t *layer = NULL;
 
+    update_framebuffer(win->buf, seconds);
     for (int i = 0; i < scene->layer->len; i++, elem = elem->next) {
         layer = elem->var;
         window_update(layer->updates, win, seconds, scene);
