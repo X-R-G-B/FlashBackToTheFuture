@@ -5,6 +5,8 @@
 ** destroy a framebuffer
 */
 
+#include <SFML/Graphics/Texture.h>
+#include <SFML/Graphics/Sprite.h>
 #include <stdlib.h>
 #include "my_bgs_framebuffer.h"
 
@@ -20,4 +22,7 @@ void destroy_framebuffer(framebuffer_t *buf)
         tmp_tmp = tmp->next;
         free(tmp);
     }
+    sfSprite_destroy(buf->sprite);
+    sfTexture_destroy(buf->texture);
+    free(buf);
 }

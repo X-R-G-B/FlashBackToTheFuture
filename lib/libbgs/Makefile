@@ -74,8 +74,23 @@ SRC_UTILS		:=	cast.c			\
 					set_window_style.c
 SRC_UTILS		:=	$(addprefix utils/,$(SRC_UTILS))
 
+SRC_PARTICLE	:=	pixels/circle.c			\
+					pixels/line.c			\
+					pixels/put_pixel.c		\
+					pixels/rect.c			\
+					add_circle.c			\
+					add_elem.c				\
+					add_line.c				\
+					add_rect.c				\
+					clear_framebuffer.c		\
+					create_framebuffer.c	\
+					destroy_framebuffer.c	\
+					draw_framebuffer.c		\
+					update_framebuffer.c
+SRC_PARTICLE	:=	$(addprefix particle/,$(SRC_PARTICLE))
+
 SRC		:=	$(SRC_COMPONENTS) $(SRC_CORE) $(SRC_PRESET) $(SRC_UTILS)	\
-			$(SRC_BUTTON)
+			$(SRC_BUTTON) $(SRC_PARTICLE)
 SRC		:=	$(addprefix $(SRCDIR),$(SRC))
 
 OBJ		=	$(SRC:%.c=%.o)
@@ -83,7 +98,7 @@ OBJ		=	$(SRC:%.c=%.o)
 
 # ----------------------------------------------------------------------------
 # FLAGS
-CFLAGS		=	-I../include -Iinclude/ -Wall -Wextra -Wpedantic
+CFLAGS		=	-I../include -Iinclude/ -Wall -Wextra -Wpedantic -g3
 # ----------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------

@@ -9,6 +9,7 @@
 #include "list.h"
 #include "my_bgs.h"
 #include "libbgs_private.h"
+#include "my_bgs_framebuffer.h"
 #include "my_dico.h"
 
 void scene_loading_handling(window_t *win)
@@ -66,6 +67,7 @@ static void window_update(list_ptr_t *updates, window_t *win, float seconds,
         }
         elem = tmp;
     }
+    update_framebuffer(win->buf, seconds);
 }
 
 static void scene_layer_handling(scene_t *scene, window_t *win, float seconds)
@@ -83,6 +85,7 @@ static void scene_layer_handling(scene_t *scene, window_t *win, float seconds)
         window_display(scene, win, layer->displayables);
     }
     if (sfRenderWindow_isOpen(win->win)) {
+        draw_framebuffer(win, win->buf);
         sfRenderWindow_display(win->win);
     }
 }

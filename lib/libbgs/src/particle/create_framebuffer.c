@@ -73,10 +73,10 @@ framebuffer_t *create_framebuffer(unsigned int width, unsigned int height,
     if (buf == NULL) {
         return (NULL);
     }
-    if (create_pixels(buf, width, height) == 1) {
+    if (init_default_values(buf, width, height, pos_on_win) == 1) {
         return (NULL);
     }
-    if (init_default_values(buf, width, height, pos_on_win) == 1) {
+    if (create_pixels(buf, width, height) == 1) {
         return (NULL);
     }
     if (create_texture_sprite(buf) == 1) {

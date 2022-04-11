@@ -13,7 +13,8 @@ int clear_framebuffer(framebuffer_t *buf, sfColor color)
     if (buf == NULL) {
         return (BGS_ERR_INPUT);
     }
-    for (int index = 0; index < buf->width * buf->height * 4; index += 4) {
+    for (unsigned int index = 0; index < buf->width * buf->height * 4;
+            index += 4) {
         buf->pixels[index + 0] = color.r;
         buf->pixels[index + 1] = color.g;
         buf->pixels[index + 2] = color.b;
