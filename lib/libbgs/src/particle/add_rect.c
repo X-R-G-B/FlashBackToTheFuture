@@ -17,6 +17,7 @@ static int init_values(elem_rect_t *dest, elem_rect_t *src)
     }
     dest->is_plain = src->is_plain;
     dest->rect = src->rect;
+    dest->color = src->color;
     return (0);
 }
 

@@ -17,6 +17,7 @@ static int init_values(elem_line_t *dest, elem_line_t *src)
     }
     dest->point_a = src->point_a;
     dest->point_b = src->point_b;
+    dest->color = src->color;
     return (0);
 }
 
