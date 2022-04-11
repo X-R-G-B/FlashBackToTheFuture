@@ -33,4 +33,6 @@ int draw_line_pixel(
 
 int draw_rect_pixel(sfVector2f pos, elem_rect_t rect, framebuffer_t *buf);
 
+int is_out_of_range(sfVector2f pos, int width, int height);
+
 #endif
