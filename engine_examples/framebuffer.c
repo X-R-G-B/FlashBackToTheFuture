@@ -8,6 +8,7 @@
 #include <SFML/Graphics/Rect.h>
 #include <SFML/System/Vector2.h>
 #include <stdbool.h>
+#include "list.h"
 #include "my_bgs.h"
 #include "my_bgs_framebuffer.h"
 
@@ -45,21 +46,18 @@ void create_circle(window_t *win)
     fb_add_circle(win->buf, circle, NULL);
 }
 
-void update_rect(struct element_s *elem,
-    __attribute((unused)) framebuffer_t *buf, float dtime)
+void update_rect(struct element_s *elem, framebuffer_t *buf, float dtime)
 {
-    static int is_expense = 1;
     static float time_change_expanse = 0;
     static float time_update = 0;
 
     time_change_expanse += dtime;
     time_update += dtime;
-    if (time_change_expanse > 2.0) {
-        is_expense *= -1;
-        time_change_expanse -= 2;
+    if (time_change_expanse > 6.0) {
+        list_add_to_start(buf->to_remove, elem);
     }
     if (time_update > 1 / 5.0) {
-        elem->data.rect.rect.height += 10 * is_expense;
+        elem->data.rect.rect.height += 10;
         time_update -= 1 / 5.0;
     }
 }
