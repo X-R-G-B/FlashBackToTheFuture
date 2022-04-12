@@ -10,7 +10,8 @@
 
 static void (*update_ptr[])(player_t *, scene_t *, window_t *, float) = {
     update_attack,
-    update_movements
+    update_movements,
+    update_dead
 };
 
 void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
@@ -20,7 +21,7 @@ void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
 
     if (player == NULL) {
         return;
-    } else if (player->state >= 0 && player->state <= 1) {
+    } else if (player->state >= 0 && player->state <= 2) {
         update_ptr[player->state](player, scene, win, dtime);
     }
 }

@@ -1,0 +1,24 @@
+{
+    "buttons": [
+        {
+            "text": "First save",
+            "sprite path": "./assets/image/menu/main_menu/default_screen/New_game.png",
+            "pos": [280.0, 880.0],
+            "plan": -1
+        },
+        {
+            "text": "Background",
+            "sprite path": "./assets/image/menu/pause/back.png",
+            "pos": [540.0, 875.0],
+            "size": 1.8,
+            "plan": 0
+        },
+        {
+            "text": "Retour",
+            "sprite path": "./assets/image/menu/main_menu/default_screen/Retour_button.png",
+            "size": 1.5,
+            "pos": [150.0, 650.0],
+            "plan": 0
+        }
+    ]
+}

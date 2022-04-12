@@ -50,7 +50,7 @@ layer_t *get_layer(scene_t *scene, int layer)
 
     for (int i = 0; i < scene->layer->len; i++, elem = elem->next) {
         layer_elem = elem->var;
-        if (layer_elem == layer) {
+        if (layer_elem->id == layer) {
             return layer_elem;
         }
     }

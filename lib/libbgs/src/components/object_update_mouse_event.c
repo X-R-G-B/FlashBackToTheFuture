@@ -8,8 +8,25 @@
 #include <stdbool.h>
 #include "my_bgs_components.h"
 #include "my_bgs.h"
-// !!!
-// unused functions
+
+static sfVector2i get_mouse_pos(window_t *win)
+{
+    sfVector2i vector;
+    const sfView *view = NULL;
+    sfVector2f pos;
+    sfVector2f size;
+
+    vector = sfMouse_getPositionRenderWindow(win->win);
+    view = sfRenderWindow_getView(win->win);
+    if (view == NULL) {
+        return vector;
+    }
+    pos = sfView_getCenter(view);
+    size = sfView_getSize(view);
+    return (sfVector2i) {vector.x + (pos.x - (size.x / 2)),
+        vector.y + (pos.y - (size.y / 2))};
+}
+
 int check_hover(object_t *object, window_t *win)
 {
     sfFloatRect rect;
@@ -22,7 +39,7 @@ int check_hover(object_t *object, window_t *win)
     } else {
         return false;
     }
-    vector = sfMouse_getPositionRenderWindow(win->win);
+    vector = get_mouse_pos(win);
     if (sfFloatRect_contains(&rect, vector.x, vector.y) == sfTrue) {
         return true;
     } else {

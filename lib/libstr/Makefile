@@ -38,6 +38,7 @@ SRC			:=	my_calloc.c 		\
 				my_strcontains.c	\
 				my_strcpy.c			\
 				my_strdup.c			\
+				my_strealloc.c		\
 				my_strlen.c			\
 				my_strstartswith.c
 SRC 		:=	$(addprefix $(SRCDIR),$(SRC))

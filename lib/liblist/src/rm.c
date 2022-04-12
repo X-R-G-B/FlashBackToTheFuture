@@ -8,6 +8,17 @@
 #include <stdlib.h>
 #include "list.h"
 
+static void relink_ptr(list_ptr_t *list_ptr)
+{
+    if (list_ptr->start != NULL) {
+        list_ptr->start = list_ptr->start->next;
+        list_ptr->start->back = list_ptr->end;
+    }
+    if (list_ptr->end != NULL) {
+        list_ptr->end->next = list_ptr->start;
+    }
+}
+
 void rm_fst_elem(list_ptr_t *list_ptr)
 {
     list_t *cpy;
@@ -23,9 +34,7 @@ void rm_fst_elem(list_ptr_t *list_ptr)
         return;
     }
     cpy = list_ptr->start;
-    list_ptr->start = list_ptr->start->next;
-    list_ptr->start->back = list_ptr->end;
-    list_ptr->end->next = list_ptr->start;
+    relink_ptr(list_ptr);
     free(cpy);
     list_ptr->len -= 1;
 }
