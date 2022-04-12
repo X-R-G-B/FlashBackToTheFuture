@@ -53,7 +53,7 @@ static int add_obj_to_dest(object_t *obj, scene_t *dest)
 {
     layer_t *layer = NULL;
 
-    if (scene_add_object(dest, obj, obj->layer) != 0) {
+    if (scene_add_object(dest, obj, obj->layer) != BGS_OK) {
         return BGS_ERR_MALLOC;
     }
     if (obj->update == NULL && check_obj_have_event(obj) == true) {
@@ -69,8 +69,9 @@ int obj_change_scene(object_t *obj, scene_t *src, scene_t *dest)
 {
     if (obj == NULL || src == NULL || dest == NULL) {
         return BGS_ERR_INPUT;
-    } else if (change_scene_in_obj_components(obj, dest) != 0 ||
-        remove_obj_from_src(obj, src) != 0 || add_obj_to_dest(obj, dest) != 0) {
+    } else if (change_scene_in_obj_components(obj, dest) != BGS_OK ||
+        remove_obj_from_src(obj, src) != BGS_OK ||
+        add_obj_to_dest(obj, dest) != BGS_OK) {
         return BGS_ERR_MALLOC;
     }
     return BGS_OK;
