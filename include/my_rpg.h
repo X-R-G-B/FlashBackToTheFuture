@@ -14,6 +14,9 @@
 
     #define SQUARE_SIZE 40
 
+    #define WIN_SIZE_Y 1080
+    #define WIN_SIZE_X 1920
+
     #include <SFML/System/Vector2.h>
     #include "my_bgs.h"
 
@@ -21,6 +24,8 @@ static const char PLAYER_DATA[] = "./assets/data/player/data.json";
 static const char PLAYER_STATS[] = "./assets/data/player/stats.json";
 
 static const char COLLISION_ARRAY[] = "collision array";
+
+static const char UID_ELEMENTS[] = "uid_elements";
 
 static const char STORY_DATA_PATH[] =
     "./assets/data/story_mode/save.json";
@@ -54,6 +59,10 @@ void click_save(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *event);
 
 bool check_collision(player_t *player, scene_t *scene);
+
+void increment_uid_pos(scene_t *scene, sfVector2f to_add);
+
+void uid_apply_right_pos(object_t *obj, sfVector2f screen_pos);
 
 int create_map(scene_t *scene);
 

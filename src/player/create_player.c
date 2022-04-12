@@ -33,6 +33,23 @@ static const int event_nb = 5;
 
 static const char player_path[] = "./assets/image/player/link_with_weapon.png";
 
+static int *get_player_spawn(scene_t *scene)
+{
+    any_t *data = dico_t_get_value(scene->components, SAVE);
+    int *spawn = NULL;
+
+    if (data == NULL) {
+        return NULL;
+    }
+    spawn = get_any_int_array(dico_t_get_any(data->value.dict, "spawn"));
+    if (spawn == NULL) {
+        return NULL;
+    }
+    spawn[0] = (spawn[0] * SQUARE_SIZE) + (SQUARE_SIZE / 2);
+    spawn[1] = (spawn[1] * SQUARE_SIZE) + (SQUARE_SIZE / 2);
+    return spawn;
+}
+
 static player_t *add_components(player_t *player, const char *stats)
 {
     any_t *data = parse_json_file("./assets/data/player/data.json");
@@ -52,13 +69,13 @@ static player_t *add_components(player_t *player, const char *stats)
     return player;
 }
 
-static int add_event(player_t *player)
+static int add_event(player_t *player, int *spawn)
 {
     int ret = RET_OK;
     object_t *obj = player->obj;
 
-    if (object_set_sprite(player->obj, player_path,
-        (sfIntRect) {12, 210, 57, 69}, (sfVector2f) {1000, 700}) != BGS_OK) {
+    if (object_set_sprite(player->obj, player_path, (sfIntRect)
+        {12, 210, 57, 69}, (sfVector2f) {spawn[0], spawn[1]}) != BGS_OK) {
         return RET_ERR_INPUT;
     }
     for (int i = 0; i < event_nb && ret == RET_OK; i++) {
@@ -73,15 +90,15 @@ static int add_event(player_t *player)
     return ret;
 }
 
-sfView *create_view(window_t *win, player_t *player)
+sfView *create_view(window_t *win, player_t *player, int *spawn)
 {
     sfView *view = sfView_create();
 
     if (view == NULL) {
         return (NULL);
     }
-    sfView_setCenter(view, (sfVector2f) {1000, 700});
-    sfView_setSize(view, (sfVector2f) {1920, 1080});
+    sfView_setCenter(view, (sfVector2f) {spawn[0], spawn[1]});
+    sfView_setSize(view, (sfVector2f) {WIN_SIZE_X, WIN_SIZE_Y});
     sfRenderWindow_setView(win->win, view);
     player->view = view;
     return (view);
@@ -90,6 +107,7 @@ sfView *create_view(window_t *win, player_t *player)
 player_t *create_player(window_t *win, scene_t *scene, const char *stats)
 {
     player_t *player = malloc(sizeof(player_t));
+    int *spawn = NULL;
 
     if (player == NULL) {
         return NULL;
@@ -103,8 +121,10 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats)
     if (player->obj == NULL) {
         return NULL;
     }
-    if (create_view(win, player) == NULL) {
+    spawn = get_player_spawn(scene);
+    if (spawn == NULL || create_view(win, player, spawn) == NULL) {
         return (NULL);
     }
-    return (add_event(player) == RET_OK) ? add_components(player, stats) : NULL;
+    return (add_event(player, spawn) == RET_OK) ?
+        add_components(player, stats) : NULL;
 }

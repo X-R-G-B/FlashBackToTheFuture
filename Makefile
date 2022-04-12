@@ -28,10 +28,12 @@ SRC_ENNEMY	:=	amongus.c				\
 				amongus_change_rect.c
 SRC_ENNEMY	:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 
-SRC_LAUNCH	:=	launch_game.c		\
-				launch_stage.c		\
-				launch_story_mode.c	\
-				scene_loading_basic.c
+SRC_LAUNCH	:=	launch_game.c			\
+				launch_stage.c			\
+				launch_story_mode.c		\
+				uid_apply_right_pos.c	\
+				scene_loading_basic.c	\
+				temp_file_temp_pause_button.c
 SRC_LAUNCH	:=	$(addprefix launch/,$(SRC_LAUNCH))
 
 SRC_MAP		:=	stage_map_to_collision_array.c	\
@@ -47,6 +49,7 @@ SRC_EVENT	:=	attack.c	\
 SRC_EVENT	:= $(addprefix event/,$(SRC_EVENT))
 
 SRC_UPDATE		:=	update_player.c		\
+					increment_uid_pos.c	\
 					update_movement.c	\
 					update_attack.c
 SRC_UPDATE		:=	$(addprefix update/,$(SRC_UPDATE))
