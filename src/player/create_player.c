@@ -116,7 +116,6 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats)
         return NULL;
     }
     player->dir = DOWN;
-    player->state = STOP;
     player->obj = create_object(update_player, NULL, scene, 0);
     if (player->obj == NULL) {
         return NULL;
