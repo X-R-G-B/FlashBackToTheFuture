@@ -6,6 +6,7 @@
 */
 
 #include "my_bgs.h"
+#include "my_strings.h"
 #include "libbgs_private.h"
 
 static int change_scene_in_obj_components(object_t *obj, scene_t *dest)
@@ -37,7 +38,7 @@ static bool check_obj_have_event(object_t *obj)
     dico_t *cursor = obj->components;
 
     if (cursor == NULL) {
-        return;
+        return false;
     }
     do {
         if (my_strstartswith(cursor->key, SET_EVENT) == 1) {
@@ -53,15 +54,15 @@ static int add_obj_to_dest(object_t *obj, scene_t *dest)
     layer_t *layer = NULL;
 
     if (scene_add_object(dest, obj, obj->layer) != 0) {
-        return 1;
+        return BGS_ERR_MALLOC;
     }
     if (obj->update == NULL && check_obj_have_event(obj) == true) {
         layer = get_layer(dest, obj->layer);
         if (layer == NULL || list_add_to_end(layer->updates, obj) == NULL) {
-            return 1;
+            return BGS_ERR_MALLOC;
         }
     }
-    return 0;
+    return BGS_OK;
 }
 
 int obj_change_scene(object_t *obj, scene_t *src, scene_t *dest)
