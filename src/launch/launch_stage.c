@@ -13,8 +13,11 @@
 #include "my_strings.h"
 #include "my_bgs_button_generator.h"
 
-static char stage_name_start[] = "stage_";
-static int start_len = 6;
+static const int back_color[] = {51, 136, 238};
+
+static const char stage_name_start[] = "stage_";
+
+static const int start_len = 6;
 
 static char *get_stage_name(int stage_id)
 {
@@ -38,14 +41,15 @@ static char *get_stage_name(int stage_id)
     return res;
 }
 
-static scene_t *init_scene(char *stage_path, window_t *win, char *stage_name)
+scene_t *init_scene(char *stage_path, window_t *win, char *stage_name)
 {
     any_t *data = NULL;
     scene_t *scene = NULL;
 
     launch_scene_loading(win, "SCENE_LOADING_BASIC");
     data = parse_json_file(stage_path);
-    scene = create_scene(win, sfBlack, stage_name);
+    scene = create_scene(win, sfColor_fromRGB(back_color[0], back_color[1],
+        back_color[2]), stage_name);
     if (data == NULL || scene == NULL) {
         return NULL;
     }

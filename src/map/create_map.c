@@ -10,6 +10,40 @@
 #include "my_wordarray.h"
 #include "my_json.h"
 #include "macro.h"
+#include "my_bgs_components.h"
+
+static void (*event_array_on[])(object_t *, scene_t *, window_t *,
+    set_event_t *) = {
+        knockback
+};
+
+static void (*event_array_off[])(object_t *, scene_t *, window_t *,
+    set_event_t *);
+
+static const char square_type_on[] = "r";
+
+static const char square_type_off[] = "\0";
+
+static int square_set_event(object_t *square, char current_char)
+{
+    void (*event_on)(object_t *, scene_t *, window_t *, set_event_t*) = NULL;
+    void (*event_off)(object_t *, scene_t *, window_t *, set_event_t*) = NULL;
+
+    for (int i = 0; square_type_on[i] != '\0' && event_on != NULL; i++) {
+        if (current_char == square_type_on[i]) {
+            event_on = event_array_on[i];
+        }
+    }
+    for (int i = 0; square_type_off[i] != '\0' && event_off != NULL; i++) {
+        if (current_char == square_type_off[i]) {
+            event_off = event_array_off[i];
+        }
+    }
+    
+    if (event_on != NULL || event_off != NULL) {
+        if (event_add_node(create_event()))
+    }
+}
 
 static int init_square(scene_t *scene, char current_char, dico_t *char_type,
     sfVector2f current_pos)
@@ -27,7 +61,8 @@ static int init_square(scene_t *scene, char current_char, dico_t *char_type,
     }
     square = create_object(NULL, NULL, scene, PLAN_MAP);
     if (square == NULL || object_set_sprite(square, path->value.str,
-        (sfIntRect) {-1, -1, -1, -1}, current_pos) != BGS_OK) {
+        (sfIntRect) {-1, -1, -1, -1}, current_pos) != BGS_OK ||
+        square_set_event(square, current_char) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     return RET_OK;

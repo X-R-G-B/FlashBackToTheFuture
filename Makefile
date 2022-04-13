@@ -28,20 +28,25 @@ SRC_ENNEMY	:=	amongus.c				\
 				amongus_change_rect.c
 SRC_ENNEMY	:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 
-SRC_LAUNCH	:=	launch_game.c			\
-				launch_stage.c			\
-				launch_story_mode.c		\
-				uid_apply_right_pos.c	\
-				scene_loading_basic.c	\
+SRC_LAUNCH	:=	launch_game.c					\
+				launch_stage.c					\
+				launch_story_mode.c				\
+				uid_apply_right_pos.c			\
+				scene_loading_basic.c			\
 				temp_file_temp_pause_button.c
 SRC_LAUNCH	:=	$(addprefix launch/,$(SRC_LAUNCH))
+
+SRC_SQUARE_EVENT	:=	is_player_on_square.c	\
+						knockback.c
+SRC_SQUARE_EVENT	:=	$(addprefix square_event/,$(SRC_SQUARE_EVENT))
 
 SRC_MAP		:=	stage_map_to_collision_array.c	\
 				wordarray_free_cast.c			\
 				check_player_pos_in_map.c		\
 				check_collision.c				\
 				create_map.c					\
-				create_collision_map.c
+				create_collision_map.c			\
+				$(SRC_SQUARE_EVENT)
 SRC_MAP		:= $(addprefix map/,$(SRC_MAP))
 
 SRC_EVENT	:=	attack.c	\

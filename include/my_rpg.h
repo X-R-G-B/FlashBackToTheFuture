@@ -89,6 +89,10 @@ int launch_game(void);
 
 void set_stop(player_t *player);
 
+void knockback(object_t *obj, scene_t *scene, window_t *win, set_event_t *evt);
+
+bool is_player_on_square(window_t *win, object_t *square);
+
 player_t *create_player(window_t *win, scene_t *scene, const char *stats);
 
 char **create_new_map(char **map);
