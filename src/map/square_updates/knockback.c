@@ -7,7 +7,7 @@
 
 #include "my_rpg.h"
 
-void knockback(object_t *obj, scene_t *scene, window_t *win, set_event_t *evt)
+void knockback(object_t *obj, scene_t *scene, window_t *win, float time)
 {
     player_t *player = NULL;
 
