@@ -5,6 +5,12 @@
             "sprite path": "./assets/image/menu/main_menu/settings/Parchemin.png",
             "pos": [540.0, 960.0],
             "plan": 0
+        },
+        {
+            "text": "Retou1r",
+            "sprite path": "./assets/image/menu/main_menu/default_screen/Retour_button.png",
+            "pos": [20, 20],
+            "plan": 0
         }
     ]
 }
