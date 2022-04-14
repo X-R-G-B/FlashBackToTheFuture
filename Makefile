@@ -36,9 +36,9 @@ SRC_LAUNCH	:=	launch_game.c					\
 				temp_file_temp_pause_button.c
 SRC_LAUNCH	:=	$(addprefix launch/,$(SRC_LAUNCH))
 
-SRC_SQUARE_EVENT	:=	is_player_on_square.c	\
+SRC_SQUARE_UPDATES	:=	is_player_on_square.c	\
 						knockback.c
-SRC_SQUARE_EVENT	:=	$(addprefix square_event/,$(SRC_SQUARE_EVENT))
+SRC_SQUARE_UPDATES	:=	$(addprefix square_updates/,$(SRC_SQUARE_UPDATES))
 
 SRC_MAP		:=	stage_map_to_collision_array.c	\
 				wordarray_free_cast.c			\
@@ -46,7 +46,7 @@ SRC_MAP		:=	stage_map_to_collision_array.c	\
 				check_collision.c				\
 				create_map.c					\
 				create_collision_map.c			\
-				$(SRC_SQUARE_EVENT)
+				$(SRC_SQUARE_UPDATES)
 SRC_MAP		:= $(addprefix map/,$(SRC_MAP))
 
 SRC_EVENT	:=	attack.c	\

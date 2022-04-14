@@ -13,7 +13,7 @@ bool is_player_on_square(window_t *win, object_t *square)
     sfFloatRect player_rect;
     sfFloatRect square_rect;
 
-    if (win == NULL || square == NULL) {
+    if (win == NULL || square == NULL || square->type != SPRITE) {
         return false;
     }
     player = dico_t_get_value(win->components, "player");

@@ -12,38 +12,29 @@
 #include "macro.h"
 #include "my_bgs_components.h"
 
-static void (*event_array_on[])(object_t *, scene_t *, window_t *,
-    set_event_t *) = {
-        knockback
+static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
+    knockback
 };
 
-static void (*event_array_off[])(object_t *, scene_t *, window_t *,
-    set_event_t *) = {NULL};
+static const char square_type_update[] = "r";
 
-static const char square_type_on[] = "r";
-
-static const char square_type_off[] = "\0";
-
-static int square_set_event(object_t *square, char current_char)
+static void get_square_update(char current_char,
+    void (**update)(object_t *, scene_t *, window_t *, float))
 {
-    void (*event_on)(object_t *, scene_t *, window_t *, set_event_t*) = NULL;
-    void (*event_off)(object_t *, scene_t *, window_t *, set_event_t*) = NULL;
+    for (int i = 0; square_type_update[i] != '\0'; i++) {
+        if (current_char == square_type_update[i]) {
+            *update = square_updates[i];
+            return;
+        }
+    }
+    return;
+}
 
-    for (int i = 0; square_type_on[i] != '\0' && event_on == NULL; i++) {
-        if (current_char == square_type_on[i]) {
-            event_on = event_array_on[i];
-        }
-    }
-    for (int i = 0; square_type_off[i] != '\0' && event_off == NULL; i++) {
-        if (current_char == square_type_off[i]) {
-            event_off = event_array_off[i];
-        }
-    }
-    if (event_on != NULL || event_off != NULL) {
-        printf("current char : %c\n", current_char);
-        if (create_event(event_on, false, square, event_off) != BGS_OK) {
-            return RET_ERR_MALLOC;
-        }
+static int init_sprite(object_t *square, any_t *path, sfVector2f current_pos)
+{
+    if (square == NULL || object_set_sprite(square, path->value.str,
+        (sfIntRect) {-1, -1, -1, -1}, current_pos) != BGS_OK) {
+        return RET_ERR_MALLOC;
     }
     return RET_OK;
 }
@@ -52,23 +43,23 @@ static int init_square(scene_t *scene, char current_char, dico_t *char_type,
     sfVector2f current_pos)
 {
     object_t *square = NULL;
+    void (*update)(object_t *, scene_t *, window_t *, float) = NULL;
     char char_name[2] = {current_char, '\0'};
     any_t *square_data = dico_t_get_any(char_type, char_name);
 
-    if (square_data == NULL || square_data->type != DICT ||
-        square_set_event(square, current_char) != RET_OK) {
+    if (square_data == NULL || square_data->type != DICT) {
         return RET_ERR_INPUT;
     }
     any_t *path = dico_t_get_any(square_data->value.dict, "path");
-    if (path == NULL || path->type != STR) {
-        return RET_OK;
+    get_square_update(current_char, &update);
+    if ((path != NULL && path->type == STR) || update != NULL) {
+        square = create_object(update, NULL, scene, PLAN_MAP);
+        if (square == NULL) {
+            return RET_ERR_MALLOC;
+        }
     }
-    square = create_object(NULL, NULL, scene, PLAN_MAP);
-    if (square == NULL || object_set_sprite(square, path->value.str,
-        (sfIntRect) {-1, -1, -1, -1}, current_pos) != BGS_OK) {
-        return RET_ERR_MALLOC;
-    }
-    return RET_OK;
+    return (path != NULL && path->type == STR) ?
+        init_sprite(square, path, current_pos) : RET_OK;
 }
 
 static int browse_squares_pos(scene_t *scene, char **map, dico_t *char_type)
