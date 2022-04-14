@@ -32,6 +32,33 @@ int add_leaf(window_t *win, int x);
 int add_snow(window_t *win, int x);
 int add_sun(window_t *win, int x);
 
+/**
+** @brief create the meteo data and object to manage it
+**
+** @param win window to use
+** @param scene scene in which the manager will go
+**
+** @return {
+** RET_ERR_INPUT : win or scene is NULL,
+** RET_ERR_MALLOC : malloc failed,
+** RET_ERR_MALLOC : the components already exists (but not error in some case)
+** RET_OK : componenet meteo created and managor too
+** }
+**/
 int create_meteo_handler(window_t *win, scene_t *scene);
+
+/**
+** @brief change the meteo (change component in window)
+**
+** @param win window to change the meteo
+** @param type meteo to use (SNOW LEAF SUN UNKNOW)
+**
+** @return {
+** RET_ERR_INPUT : win is NULL,
+** RET_ERR_INPUT : meteo struct is not on window,
+** RET_OK : meteo has been changed
+** }
+**/
+int change_meteo(window_t *win, enum meteo_type_e type);
 
 #endif
