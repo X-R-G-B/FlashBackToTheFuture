@@ -45,6 +45,7 @@ static int change_player_pos(player_t *player, float delta_time, int speed)
             break;
         case UP:
             player->obj->bigdata.sprite_bigdata.pos.y -= delta_time * speed;
+            player->state = DYING;
             break;
         default:
             break;
