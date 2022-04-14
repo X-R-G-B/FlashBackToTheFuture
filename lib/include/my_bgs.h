@@ -395,6 +395,8 @@ void remove_scene(void *scene);
 **/
 bool check_list(list_ptr_t *list, void *data);
 
+int obj_change_scene(object_t *obj, scene_t *src, scene_t *dest);
+
 int check_layer(dico_t *dico);
 
 #endif /* !BGS_H_ */
