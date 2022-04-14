@@ -51,7 +51,7 @@ static void execute_function(window_t *win, struct meteo_rpg_s *meteo)
 }
 
 void update_meteo_handler(__attribute__((unused)) object_t *obj,
-   __attribute__((unused))  scene_t *scene, window_t *win,
+    __attribute__((unused)) scene_t *scene, window_t *win,
     float dtime)
 {
     static float time_spaw = 0;
