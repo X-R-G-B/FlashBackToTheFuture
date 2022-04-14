@@ -43,7 +43,7 @@ static bool check_elem_in_list(list_ptr_t *list, void *data)
     return false;
 }
 
-static layer_t *get_layer(scene_t *scene, int layer)
+layer_t *get_layer(scene_t *scene, int layer)
 {
     list_t *elem = scene->layer->start;
     layer_t *layer_elem = NULL;
