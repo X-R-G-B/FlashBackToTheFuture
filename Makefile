@@ -27,6 +27,7 @@ CFLAGS			=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 SRC_METEO	:=	add_leaf.c				\
 				add_snow.c				\
 				add_sunshine.c			\
+				change_meteo.c			\
 				meteo_handler.c			\
 				meteo_handler_init.c
 SRC_METEO	:=	$(addprefix meteo/,$(SRC_METEO))
