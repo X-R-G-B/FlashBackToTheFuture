@@ -85,7 +85,9 @@ static void scene_layer_handling(scene_t *scene, window_t *win, float seconds)
         window_display(scene, win, layer->displayables);
     }
     if (sfRenderWindow_isOpen(win->win)) {
-        draw_framebuffer(win, win->buf);
+        if (win->loading == NULL || win->loading->thread == NULL) {
+            draw_framebuffer(win, win->buf);
+        }
         sfRenderWindow_display(win->win);
     }
 }
