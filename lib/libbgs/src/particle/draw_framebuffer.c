@@ -15,17 +15,17 @@
 
 static void draw_elem_rect(framebuffer_t *buf, union elem_data_s *elem)
 {
-    sfVector2f pa = {elem->rect.rect.left, elem->rect.rect.top};
+    sfVector2f pa = {.x = elem->rect.rect.left, .y = elem->rect.rect.top};
     sfVector2f pb = {
-        elem->rect.rect.left + elem->rect.rect.width,
-        elem->rect.rect.top + elem->rect.rect.height
+        .x = elem->rect.rect.left + elem->rect.rect.width,
+        .y = elem->rect.rect.top + elem->rect.rect.height
     };
     sfVector2f pos = {0};
     int need_break = 0;
     int status = 0;
 
-    for (pos.y = pa.y; pos.y <= pb.y && need_break == 0; pos.y++) {
-        for (pos.x = pa.x; pos.x <= pb.x && need_break == 0; pos.x++) {
+    for (pos.y = (int) pa.y; pos.y <= pb.y && need_break == 0; pos.y++) {
+        for (pos.x = (int) pa.x; pos.x <= pb.x && need_break == 0; pos.x++) {
             status = draw_rect_pixel(pos, elem->rect, buf);
             need_break = (need_break == 1) ? 1 : status;
         }
@@ -36,8 +36,8 @@ static void draw_elem_line(framebuffer_t *buf, union elem_data_s *elem)
 {
     sfVector2f pa = elem->line.point_a;
     sfVector2f pb = elem->line.point_b;
-    sfVector2f max = {MAX(pa.x, pb.x), MAX(pa.y, pb.y)};
-    sfVector2f min = {MIN(pa.x, pb.x), MIN(pa.y, pb.y)};
+    sfVector2f max = {(int) MAX(pa.x, pb.x), (int) MAX(pa.y, pb.y)};
+    sfVector2f min = {(int) MIN(pa.x, pb.x), (int) MIN(pa.y, pb.y)};
     int calc_values[2] = {(pa.y - pb.y) / (pa.x - pb.x), 0};
     sfVector2f pos = {0};
     int need_break = 0;
@@ -63,9 +63,9 @@ static void draw_elem_circle(framebuffer_t *buf, union elem_data_s *elem)
     if (elem->circle.radius <= 0) {
         return;
     }
-    for (pos.y = center.y - radius; pos.y < center.y + radius &&
+    for (pos.y = (int) (center.y - radius); pos.y < center.y + radius &&
             need_break == 0; pos.y++) {
-        for (pos.x = center.x - radius; pos.x < center.x + radius &&
+        for (pos.x = (int) (center.x - radius); pos.x < center.x + radius &&
                 need_break == 0; pos.x++) {
             status = draw_circle_pixel(pos, &elem->circle, buf);
             need_break = (need_break == 1) ? 1 : status;
@@ -102,6 +102,7 @@ int draw_framebuffer(window_t *win, framebuffer_t *buf)
     }
     sfTexture_updateFromPixels(buf->texture, buf->pixels, buf->width,
         buf->height, 0, 0);
+    sfSprite_setPosition(buf->sprite, buf->pos_on_win);
     sfRenderWindow_drawSprite(win->win, buf->sprite, NULL);
     return (BGS_OK);
 }

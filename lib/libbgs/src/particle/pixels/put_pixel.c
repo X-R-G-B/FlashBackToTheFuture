@@ -23,12 +23,14 @@ int is_out_of_range(sfVector2f pos, int width, int height)
 
 int fb_put_pixel(framebuffer_t *buf, sfVector2f pos, sfColor color)
 {
-    int index = 0;
+    unsigned int index = 0;
+    int x = pos.x;
+    int y = pos.y;
 
     if (is_out_of_range(pos, buf->width, buf->height) != 0) {
         return (0);
     }
-    index = ((pos.y * buf->width) + pos.x) * 4;
+    index = ((y * (int) buf->width) + x) * 4;
     buf->pixels[index + 0] = color.r;
     buf->pixels[index + 1] = color.g;
     buf->pixels[index + 2] = color.b;

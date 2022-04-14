@@ -20,7 +20,7 @@ int draw_rect_pixel(sfVector2f pos, elem_rect_t rect, framebuffer_t *buf)
     }
     re = rect.rect;
     if (rect.is_plain == true) {
-        if (sfFloatRect_contains(&re, pos.x, pos.y)) {
+        if (sfFloatRect_contains(&rect.rect, pos.x, pos.y)) {
             fb_put_pixel(buf, pos, rect.color);
         }
         return (0);
