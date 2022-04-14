@@ -20,7 +20,7 @@ static struct meteo_rpg_s *create_meteo(void)
     if (meteo == NULL) {
         return (NULL);
     }
-    meteo->type_now = LEAF;
+    meteo->type_now = SNOW;
     return (meteo);
 }
 
@@ -48,22 +48,22 @@ static void destroy_meteo(void *meteo_void)
 
 int create_meteo_handler(window_t *win, scene_t *scene)
 {
-//    struct meteo_rpg_s *meteo = NULL;
-//
-//    if (win == NULL) {
-//        return (RET_OK);
-//    }
-//    meteo = create_meteo();
-//    if (meteo == NULL) {
-//        return (RET_ERR_MALLOC);
-//    }
-//    printf("oki\n");
-//    if (window_add_component(win, meteo, METEO_HANDLER_COMP,
-//            destroy_meteo) != BGS_OK) {
-//        printf("okino\n");
-//        destroy_meteo(meteo);
-//        return (RET_ERR_MALLOC);
-//    }
-//    create_meteo_obj(scene);
+    struct meteo_rpg_s *meteo = NULL;
+
+    if (win == NULL) {
+        return (RET_OK);
+    }
+    meteo = create_meteo();
+    if (meteo == NULL) {
+        return (RET_ERR_MALLOC);
+    }
+    printf("oki\n");
+    if (window_add_component(win, meteo, METEO_HANDLER_COMP,
+            destroy_meteo) != BGS_OK) {
+        printf("okino\n");
+        destroy_meteo(meteo);
+        return (RET_ERR_MALLOC);
+    }
+    create_meteo_obj(scene);
     return (RET_OK);
 }
