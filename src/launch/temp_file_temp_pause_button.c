@@ -22,7 +22,7 @@ static void click_pause(__attribute__((unused)) object_t *obj, scene_t *scene,
 }
 
 int temp_pause_button(window_t *win, list_ptr_t *pause_menu,
-    scene_t *scene)
+    scene_t *scene, list_ptr_t *uid_elements)
 {
     object_t *object = create_object(NULL, NULL, scene, 0);
     int ret = RET_OK;
@@ -33,6 +33,7 @@ int temp_pause_button(window_t *win, list_ptr_t *pause_menu,
         (sfIntRect) {-1, -1, -1, -1}, (sfVector2f) {50, 50}) != BGS_OK) {
         return RET_ERR_INPUT;
     }
+    list_add_to_end(uid_elements, object);
     object->is_visible = false;
     win->components = dico_t_add_data(win->components, "pause",
         pause_menu, free_pop_up);

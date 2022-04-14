@@ -57,6 +57,9 @@ typedef struct player_s {
     sfView *view;
 } player_t;
 
+void add_list_obj_to_uid_list(list_ptr_t *uid_elements,
+    list_ptr_t *to_cpy, player_t *player);
+
 char *get_stage_path(int current_stage);
 
 void click_save(object_t *obj, scene_t *scene, window_t *win,
@@ -64,9 +67,12 @@ void click_save(object_t *obj, scene_t *scene, window_t *win,
 
 bool check_collision(player_t *player, scene_t *scene);
 
+int move_object_between_scene(window_t *win, char *fst_scene_key,
+    char *scd_scene_key);
+
 void increment_uid_pos(scene_t *scene, sfVector2f to_add);
 
-void uid_apply_right_pos(object_t *obj, sfVector2f screen_pos);
+void uid_apply_right_pos(object_t *obj, object_t *player);
 
 int create_map(scene_t *scene);
 
@@ -82,6 +88,9 @@ bool check_down_collision(object_t *player, char **map, sfVector2i pos);
 
 void update_attack(player_t *player, scene_t *scene, window_t *win,
     float dtime);
+
+void add_main_menu_elements_to_uid_list(window_t *win, scene_t *scene,
+    list_ptr_t *uid_list);
 
 int launch_story_mode(window_t *win, const char save_path[]);
 

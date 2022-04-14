@@ -28,12 +28,13 @@ SRC_ENNEMY	:=	amongus.c				\
 				amongus_change_rect.c
 SRC_ENNEMY	:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 
-SRC_LAUNCH	:=	launch_game.c				\
-				launch_stage.c				\
-				move_object_between_scene.c	\
-				launch_story_mode.c			\
-				uid_apply_right_pos.c		\
-				scene_loading_basic.c		\
+SRC_LAUNCH	:=	launch_game.c							\
+				launch_stage.c							\
+				move_object_between_scene.c				\
+				launch_story_mode.c						\
+				add_main_menu_elements_to_uid_list.c	\
+				uid_apply_right_pos.c					\
+				scene_loading_basic.c					\
 				temp_file_temp_pause_button.c
 SRC_LAUNCH	:=	$(addprefix launch/,$(SRC_LAUNCH))
 

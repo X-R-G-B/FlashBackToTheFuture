@@ -60,26 +60,6 @@ scene_t *init_scene(char *stage_path, window_t *win, char *stage_name)
     return scene;
 }
 
-static void add_list_obj_to_uid_list(list_ptr_t *uid_elements,
-    list_ptr_t *to_cpy, player_t *player)
-{
-    list_t *elem = NULL;
-    sfVector2f screen_pos = {0};
-
-    if (player == NULL || uid_elements == NULL || to_cpy == NULL) {
-        return;
-    }
-    screen_pos = (sfVector2f) {
-        player->obj->bigdata.sprite_bigdata.pos.x - WIN_SIZE_X / 2,
-        player->obj->bigdata.sprite_bigdata.pos.y - WIN_SIZE_Y / 2
-    };
-    elem = to_cpy->start;
-    for (int i = 0; i < to_cpy->len; i++, elem = elem->next) {
-        uid_apply_right_pos(elem->var, screen_pos);
-        list_add_to_end(uid_elements, elem->var);
-    }
-}
-
 static int init_new_scene_components(window_t *win, scene_t *scene)
 {
     list_ptr_t *pause_menu = NULL;
@@ -92,9 +72,10 @@ static int init_new_scene_components(window_t *win, scene_t *scene)
     }
     pause_menu = create_pause_menu(scene);
     if (pause_menu == NULL ||
-        temp_pause_button(win, pause_menu, scene) != RET_OK) {
+        temp_pause_button(win, pause_menu, scene, uid_elements) != RET_OK) {
         return RET_ERR_MALLOC;
     }
+    add_main_menu_elements_to_uid_list(win, scene, uid_elements);
     add_list_obj_to_uid_list(uid_elements, pause_menu,
         dico_t_get_value(win->components, "player"));
     scene->components = dico_t_add_data(scene->components, UID_ELEMENTS,
