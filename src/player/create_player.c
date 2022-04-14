@@ -35,7 +35,7 @@ static const char player_path[] = "./assets/image/player/link_with_weapon.png";
 
 static int *get_player_spawn(scene_t *scene)
 {
-    any_t *data = dico_t_get_value(scene->components, SAVE);
+    any_t *data = dico_t_get_value(scene->components, STAGE_DATA);
     int *spawn = NULL;
 
     if (data == NULL) {

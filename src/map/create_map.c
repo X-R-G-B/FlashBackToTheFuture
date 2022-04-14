@@ -89,7 +89,7 @@ int create_map(scene_t *scene)
     if (scene == NULL) {
         return RET_ERR_INPUT;
     }
-    data = dico_t_get_any(scene->components, SAVE);
+    data = dico_t_get_any(scene->components, STAGE_DATA);
     if (data == NULL) {
         return RET_ERR_MALLOC;
     }

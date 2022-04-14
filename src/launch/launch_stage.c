@@ -6,7 +6,6 @@
 */
 
 #include <stdlib.h>
-#include "my_bgs.h"
 #include "my_rpg.h"
 #include "my_conversions.h"
 #include "main_menu.h"
@@ -19,13 +18,13 @@ static const char stage_name_start[] = "stage_";
 
 static const int start_len = 6;
 
-static char *get_stage_name(int stage_id)
+char *get_stage_name(int stage_id)
 {
     char *number = my_itoa(stage_id);
     int number_len = 0;
     char *res = NULL;
 
-    if (number == NULL) {
+    if (number == NULL || stage_id < 0) {
         return NULL;
     }
     number_len = my_strlen(number);
@@ -53,7 +52,7 @@ scene_t *init_scene(char *stage_path, window_t *win, char *stage_name)
     if (data == NULL || scene == NULL) {
         return NULL;
     }
-    scene->components = dico_t_add_data(scene->components, SAVE, data,
+    scene->components = dico_t_add_data(scene->components, STAGE_DATA, data,
         destroy_any);
     if (scene->components == NULL) {
         return NULL;
@@ -110,12 +109,12 @@ int launch_stage(window_t *win, char *stage_path, int stage_id)
 
     launch_scene_loading(win, "SCENE_LOADING_BASIC");
     scene = init_scene(stage_path, win, stage_name);
-    if (scene == NULL || init_new_scene_components(win, scene) != RET_OK) {
+    if (scene == NULL || move_object_between_scene(win, "MAIN MENU",
+        stage_name) != RET_OK ||
+        init_new_scene_components(win, scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     if (window_change_scene(win, stage_name) != BGS_OK ||
-        move_object_between_scene(win, "MAIN MENU",
-        "SCENE_LOADING_BASIC") != RET_OK ||
         init_dead_menu(win, scene) != RET_OK) {
         return RET_ERR_INPUT;
     }

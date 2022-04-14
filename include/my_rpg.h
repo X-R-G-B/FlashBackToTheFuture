@@ -31,6 +31,8 @@ static const char STORY_DATA_PATH[] =
     "./assets/data/story_mode/save.json";
 static const char SAVE[] = "story_mode_data";
 
+static const char STAGE_DATA[] = "stage_data";
+
 typedef enum state_e {
     ATTACKING,
     MOVING,
@@ -54,6 +56,8 @@ typedef struct player_s {
     object_t *obj;
     sfView *view;
 } player_t;
+
+char *get_stage_path(int current_stage);
 
 void click_save(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *event);
@@ -84,6 +88,8 @@ int launch_story_mode(window_t *win, const char save_path[]);
 int add_collision_array_in_scene(scene_t *scene);
 
 void wordarray_free_ptr(void *data);
+
+char *get_stage_name(int stage_id);
 
 int launch_game(void);
 

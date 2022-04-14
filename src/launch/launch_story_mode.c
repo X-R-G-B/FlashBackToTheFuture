@@ -29,13 +29,13 @@ static void fill_string(int number_len, char *res, char *number)
     }
 }
 
-static char *get_stage_path(int current_stage)
+char *get_stage_path(int current_stage)
 {
     char *number = my_itoa(current_stage);
     char *res = NULL;
     int number_len = 0;
 
-    if (number == NULL) {
+    if (number == NULL || current_stage < 0) {
         return NULL;
     }
     number_len = my_strlen(number);
