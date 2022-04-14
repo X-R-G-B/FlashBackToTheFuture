@@ -5,12 +5,12 @@
 ** init the meteo
 */
 
+#include <stdlib.h>
 #include "meteo.h"
 #include "my_bgs.h"
 #include "my_bgs_components.h"
 #include "my_bgs_framebuffer.h"
 #include "my_rpg.h"
-#include <stdlib.h>
 
 static struct meteo_rpg_s *create_meteo(void)
 {
@@ -20,7 +20,7 @@ static struct meteo_rpg_s *create_meteo(void)
     if (meteo == NULL) {
         return (NULL);
     }
-    meteo->type_now = SNOW;
+    meteo->type_now = DEFAULT_METEO;
     return (meteo);
 }
 

@@ -21,6 +21,8 @@ struct meteo_rpg_s {
     } type_now;
 };
 
+    #define DEFAULT_METEO SUN
+
 void update_meteo_handler(
     object_t *obj,
     scene_t *scene,
