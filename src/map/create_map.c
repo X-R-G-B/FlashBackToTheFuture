@@ -10,11 +10,40 @@
 #include "my_wordarray.h"
 #include "my_json.h"
 #include "macro.h"
+#include "my_bgs_components.h"
+
+static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
+    knockback
+};
+
+static const char square_type_update[] = "r";
+
+static void get_square_update(char current_char,
+    void (**update)(object_t *, scene_t *, window_t *, float))
+{
+    for (int i = 0; square_type_update[i] != '\0'; i++) {
+        if (current_char == square_type_update[i]) {
+            *update = square_updates[i];
+            return;
+        }
+    }
+    return;
+}
+
+static int init_sprite(object_t *square, any_t *path, sfVector2f current_pos)
+{
+    if (square == NULL || object_set_sprite(square, path->value.str,
+        (sfIntRect) {-1, -1, -1, -1}, current_pos) != BGS_OK) {
+        return RET_ERR_MALLOC;
+    }
+    return RET_OK;
+}
 
 static int init_square(scene_t *scene, char current_char, dico_t *char_type,
     sfVector2f current_pos)
 {
     object_t *square = NULL;
+    void (*update)(object_t *, scene_t *, window_t *, float) = NULL;
     char char_name[2] = {current_char, '\0'};
     any_t *square_data = dico_t_get_any(char_type, char_name);
 
@@ -22,15 +51,15 @@ static int init_square(scene_t *scene, char current_char, dico_t *char_type,
         return RET_ERR_INPUT;
     }
     any_t *path = dico_t_get_any(square_data->value.dict, "path");
-    if (path == NULL || path->type != STR) {
-        return RET_OK;
+    get_square_update(current_char, &update);
+    if ((path != NULL && path->type == STR) || update != NULL) {
+        square = create_object(update, NULL, scene, PLAN_MAP);
+        if (square == NULL) {
+            return RET_ERR_MALLOC;
+        }
     }
-    square = create_object(NULL, NULL, scene, PLAN_MAP);
-    if (square == NULL || object_set_sprite(square, path->value.str,
-        (sfIntRect) {-1, -1, -1, -1}, current_pos) != BGS_OK) {
-        return RET_ERR_MALLOC;
-    }
-    return RET_OK;
+    return (path != NULL && path->type == STR) ?
+        init_sprite(square, path, current_pos) : RET_OK;
 }
 
 static int browse_squares_pos(scene_t *scene, char **map, dico_t *char_type)
@@ -47,7 +76,7 @@ static int browse_squares_pos(scene_t *scene, char **map, dico_t *char_type)
         current_pos.y += SQUARE_SIZE;
     }
     my_wordarray_free(map);
-    create_amongus(scene, 500, 500);
+    create_amongus(scene, 1000, 1000);
     return ret;
 }
 
