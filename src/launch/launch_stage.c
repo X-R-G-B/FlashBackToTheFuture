@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include "meteo.h"
 #include "my_bgs.h"
 #include "my_rpg.h"
 #include "my_conversions.h"
@@ -58,6 +59,7 @@ scene_t *init_scene(char *stage_path, window_t *win, char *stage_name)
     if (scene->components == NULL) {
         return NULL;
     }
+    create_meteo_handler(win, scene);
     return scene;
 }
 
