@@ -61,6 +61,7 @@ void home_button_off(object_t *obj, scene_t *scene, window_t *win,
         return;
     }
     window_change_scene(win, "MAIN MENU");
+    list_add_to_end(win->to_remove, scene);
     sfView_setCenter(player->view,
         (sfVector2f) {WIN_SIZE_X / 2, WIN_SIZE_Y / 2});
     sfRenderWindow_setView(win->win, player->view);
