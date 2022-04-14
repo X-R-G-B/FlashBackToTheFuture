@@ -110,6 +110,8 @@ int launch_stage(window_t *win, char *stage_path, int stage_id)
         return RET_ERR_MALLOC;
     }
     if (window_change_scene(win, stage_name) != BGS_OK ||
+        move_object_between_scene(win, "MAIN MENU",
+        "SCENE_LOADING_BASIC") != RET_OK ||
         init_dead_menu(win, scene) != RET_OK) {
         return RET_ERR_INPUT;
     }
