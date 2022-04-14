@@ -50,17 +50,15 @@ int create_meteo_handler(window_t *win, scene_t *scene)
 {
     struct meteo_rpg_s *meteo = NULL;
 
-    if (win == NULL) {
-        return (RET_OK);
+    if (win == NULL || scene == NULL) {
+        return (RET_ERR_INPUT);
     }
     meteo = create_meteo();
     if (meteo == NULL) {
         return (RET_ERR_MALLOC);
     }
-    printf("oki\n");
     if (window_add_component(win, meteo, METEO_HANDLER_COMP,
             destroy_meteo) != BGS_OK) {
-        printf("okino\n");
         destroy_meteo(meteo);
         return (RET_ERR_MALLOC);
     }
