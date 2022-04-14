@@ -57,6 +57,12 @@ typedef struct player_s {
     sfView *view;
 } player_t;
 
+int move_list_element(dico_t *dico, char *elem_key, scene_t *fst_scene,
+    scene_t *scd_scene);
+
+void change_player_pos(player_t *player, float move,
+    scene_t *scene);
+
 void add_list_obj_to_uid_list(list_ptr_t *uid_elements,
     list_ptr_t *to_cpy, player_t *player);
 

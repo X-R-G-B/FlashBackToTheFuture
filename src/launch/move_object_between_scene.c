@@ -8,7 +8,7 @@
 #include "my_rpg.h"
 #include "main_menu.h"
 
-static int move_list_element(dico_t *dico, char *elem_key, scene_t *fst_scene,
+int move_list_element(dico_t *dico, char *elem_key, scene_t *fst_scene,
     scene_t *scd_scene)
 {
     list_ptr_t *list = NULL;
@@ -57,7 +57,7 @@ int move_object_between_scene(window_t *win, char *fst_scene_key,
     }
     fst_scene = dico_t_get_value(win->scenes, fst_scene_key);
     scd_scene = dico_t_get_value(win->scenes, scd_scene_key);
-    if (fst_scene == NULL || scd_scene ||
+    if (fst_scene == NULL || scd_scene == NULL ||
         move_list_element(fst_scene->components, SETTINGS_MENU, fst_scene,
         scd_scene) != RET_OK || move_list_element(fst_scene->components,
         UID_ELEMENTS, fst_scene, scd_scene) != RET_OK ||

@@ -35,10 +35,7 @@ void play_pop_up(__attribute__((unused)) object_t *obj, scene_t *scene,
     __attribute__((unused)) window_t *win,
     __attribute__((unused)) set_event_t *event)
 {
-    if (check_if_pop_up_true(scene->components, SETTINGS_MENU)) {
-        set_is_visible_false(dico_t_get_value(scene->components,
-            SETTINGS_MENU));
-    }
+    check_if_pop_up_true(scene->components, SETTINGS_MENU);
     toggle_pop_up(scene->components, PLAY);
 }
 

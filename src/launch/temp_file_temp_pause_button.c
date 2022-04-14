@@ -18,6 +18,7 @@ static void click_pause(__attribute__((unused)) object_t *obj, scene_t *scene,
     }
     scene->pause = (scene->pause == true) ? false : true;
     set_stop(player);
+    set_is_visible_false(dico_t_get_value(scene->components, SETTINGS_MENU));
     toggle_pop_up(win->components, "pause");
 }
 
