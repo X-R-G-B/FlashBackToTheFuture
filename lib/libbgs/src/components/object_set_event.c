@@ -87,7 +87,7 @@ int object_set_event(object_t *object, set_event_t *event)
     }
     get_id_generator_cat(key);
     object->components = dico_t_add_data(object->components, key, event,
-            &destroy_event);
+        &destroy_event);
     check_obj_in_update_list(object);
     return (BGS_OK);
 }
