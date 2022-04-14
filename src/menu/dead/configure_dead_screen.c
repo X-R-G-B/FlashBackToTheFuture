@@ -24,6 +24,30 @@ static void configure_color_for_dead_screen(object_t *dead_message,
     sfSprite_setColor(dead_screen->drawable.sprite, color[1]);
 }
 
+void dead_event_input(object_t *object, scene_t *scene,
+    window_t *window, set_event_t *event)
+{
+    player_t *player = NULL;
+
+    if (object == NULL || object->components == NULL ||
+            scene == NULL || window == NULL || event == NULL ||
+                event->input_key.event_type != KEY) {
+        return;
+    }
+    player = (player_t *) dico_t_get_value(window->win, "player");
+    if (player == NULL || player->state != DIE) {
+        return;
+    }
+    if (event->input_key.event_code.key == sfKeyQ) {
+        sfRenderWindow_close(window->win);
+        return;
+    }
+    if (event->input_key.event_code.key == sfKeyH) {
+        window_change_scene(window, "MAIN MENU");
+        return;
+    }
+}
+
 int init_dead_menu(window_t *win, scene_t *scene)
 {
     player_t *player = dico_t_get_value(win->components, "player");
@@ -40,6 +64,10 @@ int init_dead_menu(window_t *win, scene_t *scene)
         (sfIntRect) {0, 0, 1920, 1080}, (sfVector2f) {960, 540}) != BGS_OK) {
         return RET_ERR_INPUT;
     }
+    event_add_node(create_event(dead_event_input, false, dead_message,
+        NULL), (node_params_t) {sfMouseLeft, sfKeyQ, KEY});
+    event_add_node(create_event(dead_event_input, false, dead_message,
+        NULL), (node_params_t) {sfMouseLeft, sfKeyH, KEY});
     configure_color_for_dead_screen(dead_message, dead_screen);
     window_add_component(win, dead_message, "dead_message", NULL);
     window_add_component(win, dead_screen, "dead_screen", NULL);
