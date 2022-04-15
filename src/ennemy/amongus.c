@@ -13,6 +13,7 @@
 #include "my_json.h"
 #include "my_conversions.h"
 #include "ennemies.h"
+#include <SFML/System/Vector2.h>
 
 static const char ennemy_among_us[] = "ENNEMY_AMONG_US";
 static const char ennemy_among_us_json[] = "./assets/json/amongus.json";
@@ -71,5 +72,6 @@ int create_amongus(scene_t *scene, int pos_x, int pos_y)
             ennemy_among_us, &destroy_any) != BGS_OK) {
         return (BGS_ERR_MALLOC);
     }
+    sfSprite_setScale(obj->drawable.sprite, (sfVector2f) {2, 2});
     return (BGS_OK);
 }

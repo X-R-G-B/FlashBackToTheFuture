@@ -58,11 +58,13 @@ dir_t get_path_find_dir(object_t *obj, scene_t *scene)
     if (obj == NULL || scene == NULL) {
         return (UNKNOWN_STATE);
     }
+    printf("ici\n");
     pos = obj->bigdata.sprite_bigdata.pos;
     path = dico_t_get_value(scene->components, SCENE_PATHFIND_PATH);
     if (path == NULL) {
         return (UNKNOWN_STATE);
     }
+    printf("icietla\n");
     current = get_new_dir(path, pos);
     return (current);
 }

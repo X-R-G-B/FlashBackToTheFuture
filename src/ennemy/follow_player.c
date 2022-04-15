@@ -20,10 +20,13 @@ int follow_player(object_t *obj, scene_t *scene, float dtime)
     if (obj == NULL || scene == NULL) {
         return (RET_ERR_INPUT);
     }
+    pathfind_add_to_scene(scene, obj);
+    printf("yyyy\n");
     current = get_path_find_dir(obj, scene);
     if (current == UNKNOWN_STATE) {
         return (RET_ERR_INPUT);
     }
+    printf("batard\n");
     obj->bigdata.sprite_bigdata.pos.x += move[current].x;
     obj->bigdata.sprite_bigdata.pos.y += move[current].y;
     return (RET_OK);
