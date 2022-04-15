@@ -38,7 +38,8 @@ int add_leaf(window_t *win, int x)
         .is_plain = true
     };
     elem_rect_t rect2 = {
-        .rect = (sfFloatRect) {x - 2, sizey / 2.0, 2, sizey},
+        .rect = (sfFloatRect) {x + (int) (sizex / 2) - 2, sizey / 2.0,
+            2, sizey},
         .color = sfColor_fromRGBA(255, 0, 0, 255),
         .is_plain = true
     };

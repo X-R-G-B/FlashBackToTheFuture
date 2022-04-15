@@ -47,7 +47,7 @@ int add_sun(window_t *win, __attribute__((unused)) int x)
     if (win == NULL) {
         return (RET_ERR_INPUT);
     }
-    for (int i = 0; i < 5; i++) {
+    for (int i = 0; i < 7; i++) {
         sizey = 3 + rand() % (int) (WIN_SIZE_Y / 100);
         sizex = 3 + rand() % (int) (WIN_SIZE_X / 100);
         line.point_b = (sfVector2f) {(int) (sizex * 2), (int) (sizey * 2)};
