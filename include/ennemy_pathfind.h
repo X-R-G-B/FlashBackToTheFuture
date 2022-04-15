@@ -49,4 +49,17 @@ pathfind_t *init_pathfind(char **array, char end, char start, scene_t *scene);
 
 dir_t get_path_find_dir(object_t *obj, scene_t *scene);
 
+/**
+** @brief add to scene the pathfind
+**
+** @param scene scene where need the pathfind
+** @param obj obj representing the player
+**
+** @return {
+** RET_ERR_INPUT : scene or obj is NULL,
+** RET_OK : pathfind is init
+** }
+**/
+int pathfind_add_to_scene(scene_t *scene, object_t *obj);
+
 #endif
