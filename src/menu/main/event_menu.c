@@ -13,6 +13,10 @@ void click_save(__attribute__((unused)) object_t *obj,
     __attribute__((unused)) scene_t *scene, window_t *win,
     __attribute__((unused)) set_event_t *event)
 {
+    if (!check_if_pop_up_true(scene->components, PLAY)) {
+        win->click = NULL;
+        return;
+    }
     launch_story_mode(win, STORY_DATA_PATH);
 }
 
@@ -27,8 +31,8 @@ void go_back(__attribute__((unused)) object_t *obj, scene_t *scene,
     __attribute__((unused)) window_t *win,
     __attribute__((unused)) set_event_t *event)
 {
-    /*set_is_visible_false(dico_t_get_value(scene->components, PLAY));
-    set_is_visible_false(dico_t_get_value(scene->components, SETTINGS_MENU));*/
+    set_is_visible_false(dico_t_get_value(scene->components, PLAY));
+    set_is_visible_false(dico_t_get_value(scene->components, SETTINGS_MENU));
 }
 
 void play_pop_up(__attribute__((unused)) object_t *obj, scene_t *scene,
@@ -36,6 +40,7 @@ void play_pop_up(__attribute__((unused)) object_t *obj, scene_t *scene,
     __attribute__((unused)) set_event_t *event)
 {
     if (check_if_pop_up_true(scene->components, SETTINGS_MENU)) {
+        win->click = NULL;
         set_is_visible_false(dico_t_get_value(scene->components,
             SETTINGS_MENU));
     }
@@ -47,6 +52,7 @@ void settings_pop_up(__attribute__((unused)) object_t *obj, scene_t *scene,
     __attribute__((unused)) set_event_t *event)
 {
     if (check_if_pop_up_true(scene->components, PLAY)) {
+        win->click = NULL;
         set_is_visible_false(dico_t_get_value(scene->components, PLAY));
     }
     toggle_pop_up(scene->components, SETTINGS_MENU);
