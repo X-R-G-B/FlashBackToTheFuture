@@ -29,8 +29,8 @@
             "fffffffffffffffffffffffffffffffffffffffffffffffff",
             "fffffffffffffffffffffffffffffffffffffffffffffffff",
             "fffffffffffffffffffffffffffffffffffffffffffffffff",
-            "ddddddddddddddddddddddddddddddddddddddddddddddddd",
-            "ddddddddddddddddddddddHdddddddddddddddddddddddddd",
+            "fffffffffffffffffffffffffffffffffffffffffffffffff",
+            "fffffffffffffffffffffffffffffffffffffffffffffffff",
             "ddddddddddddddddddddddddddddddddddddddddddddddddd",
             "ddddddddddd####################dddddddddddddddddd",
             "fffffffffffffffffffffffffffffffffffffffffffffffff",
@@ -87,9 +87,6 @@
             },
             "r": {
                 "path": "./assets/image/map/squares/dirt.png"
-            },
-            "H": {
-                "path": "./assets/image/map/squares/hole.png"
             }
         }
     },

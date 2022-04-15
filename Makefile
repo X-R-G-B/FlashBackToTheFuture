@@ -32,6 +32,7 @@ SRC_LAUNCH	:=	launch_game.c							\
 				launch_stage.c							\
 				move_object_between_scene.c				\
 				launch_story_mode.c						\
+				launch_next_stage.c						\
 				add_main_menu_elements_to_uid_list.c	\
 				uid_apply_right_pos.c					\
 				scene_loading_basic.c					\
@@ -39,6 +40,7 @@ SRC_LAUNCH	:=	launch_game.c							\
 SRC_LAUNCH	:=	$(addprefix launch/,$(SRC_LAUNCH))
 
 SRC_SQUARE_UPDATES	:=	is_player_on_square.c	\
+						next_stage.c			\
 						knockback.c
 SRC_SQUARE_UPDATES	:=	$(addprefix square_updates/,$(SRC_SQUARE_UPDATES))
 

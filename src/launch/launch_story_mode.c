@@ -66,7 +66,7 @@ static int init_stage(window_t *win, any_t **save,
     return RET_OK;
 }
 
-int launch_story_mode(window_t *win, const char save_path[])
+int launch_story_mode(window_t *win, const char save_path[], scene_t *scene)
 {
     any_t *save = parse_json_file(save_path);
     any_t *current_stage = NULL;
@@ -76,5 +76,5 @@ int launch_story_mode(window_t *win, const char save_path[])
         return RET_ERR_INPUT;
     }
     init_stage(win, &save, &current_stage, &stage_path);
-    return launch_stage(win, stage_path, current_stage->value.i);
+    return launch_stage(win, stage_path, current_stage->value.i, scene);
 }

@@ -13,7 +13,7 @@ void click_save(__attribute__((unused)) object_t *obj,
     __attribute__((unused)) scene_t *scene, window_t *win,
     __attribute__((unused)) set_event_t *event)
 {
-    launch_story_mode(win, STORY_DATA_PATH);
+    launch_story_mode(win, STORY_DATA_PATH, scene);
 }
 
 void close_window(__attribute__((unused)) object_t *obj,

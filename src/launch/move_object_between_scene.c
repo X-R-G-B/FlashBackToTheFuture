@@ -46,23 +46,17 @@ static int move_player(dico_t *dico, scene_t *fst_scene, scene_t *scd_scene)
     return object_change_scene(player->obj, fst_scene, scd_scene);
 }
 
-int move_object_between_scene(window_t *win, char *fst_scene_key,
-    char *scd_scene_key)
+int move_object_between_scene(window_t *win, scene_t *fst_scene,
+    scene_t *scd_scene)
 {
-    scene_t *fst_scene = NULL;
-    scene_t *scd_scene = NULL;
-
-    if (win == NULL || fst_scene_key == NULL || scd_scene_key == NULL) {
+    if (win == NULL || fst_scene == NULL || scd_scene == NULL) {
         return RET_ERR_INPUT;
-    }
-    fst_scene = dico_t_get_value(win->scenes, fst_scene_key);
-    scd_scene = dico_t_get_value(win->scenes, scd_scene_key);
-    if (fst_scene == NULL || scd_scene == NULL ||
-        move_list_element(fst_scene->components, SETTINGS_MENU, fst_scene,
-        scd_scene) != RET_OK || move_list_element(fst_scene->components,
-        ((char *) UID_ELEMENTS), fst_scene, scd_scene) != RET_OK ||
+    } else if (move_list_element(fst_scene->components, SETTINGS_MENU,
+        fst_scene, scd_scene) != RET_OK ||
+        move_list_element(fst_scene->components, ((char *) UID_ELEMENTS),
+        fst_scene, scd_scene) != RET_OK ||
         move_player(win->components, fst_scene, scd_scene) != RET_OK) {
-        return RET_ERR_INPUT;
+        return RET_ERR_MALLOC;
     }
     return RET_OK;
 }

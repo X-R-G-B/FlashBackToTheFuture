@@ -57,6 +57,10 @@ typedef struct player_s {
     sfView *view;
 } player_t;
 
+void next_stage(object_t *obj, scene_t *scene, window_t *win, float time);
+
+int launch_next_stage(window_t *win);
+
 int move_list_element(dico_t *dico, char *elem_key, scene_t *fst_scene,
     scene_t *scd_scene);
 
@@ -73,8 +77,8 @@ void click_save(object_t *obj, scene_t *scene, window_t *win,
 
 bool check_collision(player_t *player, scene_t *scene);
 
-int move_object_between_scene(window_t *win, char *fst_scene_key,
-    char *scd_scene_key);
+int move_object_between_scene(window_t *win, scene_t *fst_scene,
+    scene_t *scd_scene);
 
 void increment_uid_pos(scene_t *scene, sfVector2f to_add);
 
@@ -98,7 +102,7 @@ void update_attack(player_t *player, scene_t *scene, window_t *win,
 void add_main_menu_elements_to_uid_list(window_t *win, scene_t *scene,
     list_ptr_t *uid_list);
 
-int launch_story_mode(window_t *win, const char save_path[]);
+int launch_story_mode(window_t *win, const char save_path[], scene_t *scene);
 
 int add_collision_array_in_scene(scene_t *scene);
 
@@ -120,7 +124,7 @@ char **create_new_map(char **map);
 
 char **stage_map_to_collision_array(scene_t *scene);
 
-int launch_stage(window_t *win, char *stage_path, int stage_id);
+int launch_stage(window_t *win, char *stage_path, int stage_id, scene_t *scene);
 
 void attack_event(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *set_event);

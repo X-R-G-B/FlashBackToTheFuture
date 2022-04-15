@@ -5,6 +5,7 @@
 ** launch_next_stage
 */
 
+#include <stdlib.h>
 #include "my_rpg.h"
 #include "my_json.h"
 
@@ -12,7 +13,7 @@ static const int back_color[] = {51, 136, 238};
 
 static int increment_current_stage_data(any_t *save)
 {
-    any_t *current_stage = dico_t_get_any(save, "current stage");
+    any_t *current_stage = dico_t_get_any(save->value.dict, "current stage");
 
     if (current_stage == NULL || current_stage->type != INT) {
         return -1;
@@ -54,8 +55,9 @@ static int create_new_scene(char *stage_path, char *stage_name, window_t *win,
         return RET_ERR_MALLOC;
     }
     free(stage_name);
-    scene->components = dico_t_add_data(scene, STAGE_DATA, stage_data,
-        destroy_any);
+    scene->components = dico_t_add_data(scene->components, STAGE_DATA,
+        stage_data, destroy_any);
+    printf("ee\n");
     return (scene->components == NULL) ? RET_ERR_MALLOC :
         create_scene_objects(win, prev_scene, scene);
 }
@@ -71,11 +73,14 @@ int launch_next_stage(window_t *win)
     }
     launch_scene_loading(win, "SCENE_LOADING_BASIC");
     save = dico_t_get_any(win->components, SAVE);
-    current_scene = dico_t_get_value(win->components, win->current_scene);
+    current_scene = dico_t_get_value(win->scenes, win->current_scene);
     if (current_scene == NULL || save == NULL) {
         return RET_ERR_INPUT;
     }
     new_stage = increment_current_stage_data(save);
+    if (new_stage < 0) {
+        return RET_ERR_INPUT;
+    }
     list_add_to_end(win->to_remove, current_scene);
     return create_new_scene(get_stage_path(new_stage),
         get_stage_name(new_stage), win, current_scene);
