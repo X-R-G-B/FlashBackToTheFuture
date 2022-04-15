@@ -5,6 +5,7 @@
 ** create among us adn destroy it
 */
 
+#include "ennemy_pathfind.h"
 #include "my_bgs.h"
 #include "my_bgs_components.h"
 #include "my_dico.h"
@@ -49,6 +50,7 @@ static void update_among_us(object_t *obj,
         return;
     }
     change_amongus_rect(dico, obj, win);
+    follow_player(obj, scn, dtime);
 }
 
 int create_amongus(scene_t *scene, int pos_x, int pos_y)
