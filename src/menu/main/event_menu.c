@@ -24,6 +24,13 @@ void close_window(__attribute__((unused)) object_t *obj,
     __attribute__((unused)) scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *event)
 {
+    if (check_if_pop_up_true(scene->components, PLAY) ||
+        check_if_pop_up_true(scene->components, SETTINGS_MENU)) {
+        set_is_visible_false(dico_t_get_value(scene->components, PLAY));
+        set_is_visible_false(dico_t_get_value(scene->components,
+        SETTINGS_MENU));
+        return;
+    }
     sfRenderWindow_close(win->win);
 }
 
