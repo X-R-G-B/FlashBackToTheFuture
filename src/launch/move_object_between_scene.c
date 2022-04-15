@@ -60,7 +60,7 @@ int move_object_between_scene(window_t *win, char *fst_scene_key,
     if (fst_scene == NULL || scd_scene == NULL ||
         move_list_element(fst_scene->components, SETTINGS_MENU, fst_scene,
         scd_scene) != RET_OK || move_list_element(fst_scene->components,
-        UID_ELEMENTS, fst_scene, scd_scene) != RET_OK ||
+        ((char *) UID_ELEMENTS), fst_scene, scd_scene) != RET_OK ||
         move_player(win->components, fst_scene, scd_scene) != RET_OK) {
         return RET_ERR_INPUT;
     }

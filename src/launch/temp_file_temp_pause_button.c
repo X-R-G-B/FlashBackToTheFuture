@@ -27,7 +27,6 @@ int temp_pause_button(window_t *win, list_ptr_t *pause_menu,
     scene_t *scene, list_ptr_t *uid_elements)
 {
     object_t *object = create_object(NULL, NULL, scene, 0);
-    int ret = RET_OK;
 
     if (object == NULL ||
         object_set_sprite(object,
@@ -39,9 +38,9 @@ int temp_pause_button(window_t *win, list_ptr_t *pause_menu,
     object->is_visible = false;
     win->components = dico_t_add_data(win->components, "pause",
         pause_menu, free_pop_up);
-    ret = event_add_node(create_event(NULL, true, object, click_pause),
-        (node_params_t) {sfMouseLeft, sfKeyA, MOUSE});
-    if (win->components == NULL || ret != RET_OK) {
+    if (win->components == NULL || event_add_node(create_event(NULL, true,
+        object, click_pause), (node_params_t)
+        {sfMouseLeft, sfKeyA, MOUSE}) != BGS_OK) {
         return RET_ERR_MALLOC;
     }
     toggle_pop_up(win->components, "pause");

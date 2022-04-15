@@ -13,6 +13,7 @@ static void check_type(dico_t *dico, list_t *elem, list_t **button_elem)
     float *pos = NULL;
     object_t *obj = elem->var;
 
+    obj->is_visible = false;
     if (obj->type == SPRITE) {
         pos = get_any_float_array(dico_t_get_any(dico, "pos"));
         if (pos == NULL) {

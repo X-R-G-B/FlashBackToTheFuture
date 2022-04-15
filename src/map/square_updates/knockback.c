@@ -7,7 +7,8 @@
 
 #include "my_rpg.h"
 
-void knockback(object_t *obj, scene_t *scene, window_t *win, float time)
+void knockback(object_t *obj, scene_t *scene, window_t *win,
+    __attribute__((unused)) float time)
 {
     player_t *player = NULL;
 
