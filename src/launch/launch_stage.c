@@ -79,7 +79,7 @@ static int init_new_scene_components(window_t *win, scene_t *scene)
     add_list_obj_to_uid_list(uid_elements, pause_menu,
         dico_t_get_value(win->components, "player"));
     scene->components = dico_t_add_data(scene->components, UID_ELEMENTS,
-        uid_elements, free_pop_up);
+        uid_elements, NULL);
     return (scene->components == NULL) ? RET_ERR_MALLOC : RET_OK;
 }
 

@@ -46,11 +46,12 @@ static int init_square(scene_t *scene, char current_char, dico_t *char_type,
     void (*update)(object_t *, scene_t *, window_t *, float) = NULL;
     char char_name[2] = {current_char, '\0'};
     any_t *square_data = dico_t_get_any(char_type, char_name);
+    any_t *path = NULL;
 
     if (square_data == NULL || square_data->type != DICT) {
         return RET_ERR_INPUT;
     }
-    any_t *path = dico_t_get_any(square_data->value.dict, "path");
+    path = dico_t_get_any(square_data->value.dict, "path");
     get_square_update(current_char, &update);
     if ((path != NULL && path->type == STR) || update != NULL) {
         square = create_object(update, NULL, scene, PLAN_MAP);

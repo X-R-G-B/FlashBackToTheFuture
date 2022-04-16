@@ -28,11 +28,20 @@ static int increment_current_stage_data(any_t *save)
 static int create_scene_objects(window_t *win, scene_t *prev_scene,
     scene_t *scene)
 {
+    int *spawn = NULL;
+    player_t *player = dico_t_get_value(win->components, "player");
+
     if (move_object_between_scene(win, prev_scene, scene) != RET_OK ||
         create_map(scene) != RET_OK ||
         add_collision_array_in_scene(scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
+    spawn = get_player_spawn(scene);
+    if (player == NULL || spawn == NULL) {
+        return RET_ERR_INPUT;
+    }
+    player->obj->bigdata.sprite_bigdata.pos = (sfVector2f) {spawn[0], spawn[1]};
+    free(spawn);
     return RET_OK;
 }
 
@@ -57,7 +66,6 @@ static int create_new_scene(char *stage_path, char *stage_name, window_t *win,
     free(stage_name);
     scene->components = dico_t_add_data(scene->components, STAGE_DATA,
         stage_data, destroy_any);
-    printf("ee\n");
     return (scene->components == NULL) ? RET_ERR_MALLOC :
         create_scene_objects(win, prev_scene, scene);
 }

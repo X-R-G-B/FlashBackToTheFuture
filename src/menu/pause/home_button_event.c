@@ -68,6 +68,15 @@ static void move_setting_menu_to_main_menu(window_t *win, scene_t *scene)
     browse_list(setting_menu, buttons->value.array, scene, next_scene);
 }
 
+static void destroy_stage_components(scene_t *scene)
+{
+    list_ptr_t *uid_list = dico_t_get_value(scene->components, UID_ELEMENTS);
+
+    if (uid_list != NULL) {
+        free_list(uid_list);
+    }
+}
+
 void home_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt)
 {
@@ -77,6 +86,7 @@ void home_button_off(object_t *obj, scene_t *scene, window_t *win,
         pressed_button_off(obj, scene, win, evt);
         return;
     }
+    destroy_stage_components(scene);
     move_setting_menu_to_main_menu(win, scene);
     window_change_scene(win, "MAIN MENU");
     list_add_to_end(win->to_remove, scene);

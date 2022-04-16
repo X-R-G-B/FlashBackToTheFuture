@@ -88,6 +88,8 @@ int create_map(scene_t *scene);
 
 void update_player(object_t *obj, scene_t *scene, window_t *win, float dtime);
 
+int *get_player_spawn(scene_t *scene);
+
 bool check_up_collision(object_t *player, char **map, sfVector2i pos);
 
 bool check_right_collision(object_t *player, char **map, sfVector2i pos);
