@@ -42,7 +42,11 @@ bool check_collision(player_t *player, scene_t *scene)
         return true;
     }
     map = dico_t_get_value(scene->components, COLLISION_ARRAY);
-    if (map == NULL) {
+    if (map == NULL ||
+        (player->obj->bigdata.sprite_bigdata.pos.y / SQUARE_SIZE) >=
+        (my_wordarray_len(map) - 1) ||
+        (player->obj->bigdata.sprite_bigdata.pos.y / SQUARE_SIZE) >=
+        (my_strlen(map[0]) - 1)) {
         return true;
     }
     player_pos_in_map = get_player_pos_in_map(player->obj);

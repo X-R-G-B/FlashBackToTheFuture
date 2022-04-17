@@ -1,53 +1,56 @@
 {
     "map data": {
         "map": [
-            "##########################################################",
-            "#c#####################################################C##",
-            "####aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa####",
-            "###....................................................###",
-            "##B.dddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
-            "##B.dddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
-            "##B.dddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
-            "##B.dddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
-            "##B.dddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
-            "##B.dddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dffffffffffffffffffffffffffffffffffffffffffffffffd.b##",
-            "##B.dddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
-            "##B.dddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
-            "###....................................................###",
-            "#v##AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA#V##",
-            "##########################################################",
-            "##########################################################"
+            "#c#########################################################C#",
+            "####aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa####",
+            "###.......................................................###",
+            "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
+            "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.ddddddddddddddddddddddddd...ddddddddddddddddddddddddd.b##",
+            "##B.ddddddddddddddddddddddddd.p.ddddddddddddddddddddddddd.b##",
+            "##B.ddddddddddddddddddddddddd...ddddddddddddddddddddddddd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "###.......................................................###",
+            "####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####",
+            "#v#########################################################V#"
         ],
         "char type": {
             "V": {
-                "path": "./assets/image/map/squares/corner_180.png",
+                "path": "./assets/image/map/squares/corner.png",
+                "rotation": 180.0,
                 "col": 1
             },
             "v": {
-                "path": "./assets/image/map/squares/corner_270.png",
+                "path": "./assets/image/map/squares/corner.png",
+                "rotation": 270.0,
                 "col": 1
             },
             "C": {
-                "path": "./assets/image/map/squares/corner_90.png",
+                "path": "./assets/image/map/squares/corner.png",
+                "rotation": 90.0,
                 "col": 1
             },
             "c": {
@@ -55,24 +58,27 @@
                 "col": 1
             },
             "b": {
-                "path": "./assets/image/map/squares/fall_90.png",
+                "path": "./assets/image/map/squares/fall.png",
+                "rotation": 90.0,
                 "col": 1
             },
             "B": {
-                "path": "./assets/image/map/squares/fall_270.png",
-                "col": 1
-            },
-            "w": {
-                "path": "./assets/image/map/squares/water.png",
+                "rotation": 270.0,
+                "path": "./assets/image/map/squares/fall.png",
                 "col": 1
             },
             "A": {
-                "path": "./assets/image/map/squares/fall_180.png",
+                "path": "./assets/image/map/squares/fall.png",
+                "rotation": 180.0,
                 "col": 1
             },
             "a": {
                 "path": "./assets/image/map/squares/fall.png",
                 "col": 1
+            },
+            "p": {
+                "path": "./assets/image/map/squares/way.png",
+                "rotation": 90.0
             },
             ".": {
                 "col": 0
@@ -85,11 +91,8 @@
             },
             "f": {
                 "path": "./assets/image/map/squares/flower.png"
-            },
-            "r": {
-                "path": "./assets/image/map/squares/dirt.png"
             }
         }
     },
-    "spawn": [10, 15]
+    "spawn": [30, 3]
 }
