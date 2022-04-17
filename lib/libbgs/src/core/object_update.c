@@ -103,7 +103,6 @@ void object_update(object_t *object, scene_t *scene,
     if (object->components == NULL) {
         return;
     }
-    printf("win scene: %s\n", win->current_scene);
     object_check_health(object, scene, win);
     object_check_event(object, scene, win);
     object_update_mouse_event(object, scene, win);
