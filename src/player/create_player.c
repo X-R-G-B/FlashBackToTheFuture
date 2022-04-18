@@ -12,6 +12,7 @@
 #include "my_bgs_components.h"
 #include "my_rpg.h"
 #include "my_json.h"
+#include "ennemy_pathfind.h"
 
 static void (*event_on[])(object_t *, scene_t *, window_t *,
     set_event_t *) = {
@@ -87,7 +88,7 @@ static int add_event(player_t *player, int *spawn, scene_t *scene)
                 event_off[1]), node[i]);
         }
     }
-    pathfind_add_to_scene(scene, obj);
+    pathfind_add_to_scene(scene);
     return ret;
 }
 
