@@ -37,7 +37,7 @@ static int update_among_us_time(any_t *dico, float dtime)
 }
 
 static void update_among_us(object_t *obj,
-        __attribute__((unused)) scene_t *scn, window_t *win,
+        scene_t *scn, window_t *win,
         float dtime)
 {
     int update = 0;
@@ -47,11 +47,11 @@ static void update_among_us(object_t *obj,
         return;
     }
     update = update_among_us_time(dico, dtime);
+    follow_player(obj, scn, dtime);
     if (update == 0) {
         return;
     }
     change_amongus_rect(dico, obj, win);
-    follow_player(obj, scn, dtime);
 }
 
 int create_amongus(scene_t *scene, int pos_x, int pos_y)
