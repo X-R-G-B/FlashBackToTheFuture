@@ -60,8 +60,6 @@ dir_t get_path_find_dir(object_t *obj, scene_t *scene);
 ** RET_OK : pathfind is init
 ** }
 **/
-int pathfind_add_to_scene(scene_t *scene, object_t *obj);
-
-int follow_player(object_t *obj, scene_t *scene, float dtime);
+int pathfind_add_to_scene(scene_t *scene);
 
 #endif

@@ -12,6 +12,18 @@
 #include "my_rpg.h"
 #include "ennemy_pathfind.h"
 
+//print map for debug (utils but use only when needed)
+//void print_map_debug(pathfind_t *path)
+//{
+//    for (int i = 0; i < path->sizey; i++) {
+//        for (int j = 0; j < path->sizex; j++) {
+//            printf("|%03d|", path->map[i][j]);
+//        }
+//        printf("\n");
+//    }
+//    printf("ok\n");
+//}
+
 static dir_t get_next_case(int x, int y, pathfind_t *path)
 {
     sfVector2i poss[5] = {{x, y}, {x, y - 1}, {x - 1, y},
@@ -21,10 +33,10 @@ static dir_t get_next_case(int x, int y, pathfind_t *path)
     int max_i_val = path->map[poss[0].y][poss[0].x];
 
     for (int i = 1; i < 5; i++) {
-        if (!condd[i]) {
+        if (condd[i] == 0) {
             continue;
         }
-        if (path->map[poss[i].y][poss[i].x] > max_i_val) {
+        if (path->map[poss[i].y][poss[i].x] < max_i_val) {
             max_i = i;
             max_i_val = path->map[poss[i].y][poss[i].x];
         }
@@ -34,8 +46,8 @@ static dir_t get_next_case(int x, int y, pathfind_t *path)
 
 static dir_t get_new_dir(pathfind_t *path, sfVector2f cur_pos)
 {
-    int cur_x = ((int) cur_pos.x) / 1920;
-    int cur_y = ((int) cur_pos.y) / 1080;
+    int cur_x = ((int) cur_pos.x) / SQUARE_SIZE;
+    int cur_y = ((int) cur_pos.y) / SQUARE_SIZE;
     dir_t dir = UNKNOWN_STATE;
 
     if (path == NULL) {
@@ -58,13 +70,11 @@ dir_t get_path_find_dir(object_t *obj, scene_t *scene)
     if (obj == NULL || scene == NULL) {
         return (UNKNOWN_STATE);
     }
-    printf("ici\n");
     pos = obj->bigdata.sprite_bigdata.pos;
     path = dico_t_get_value(scene->components, SCENE_PATHFIND_PATH);
     if (path == NULL) {
         return (UNKNOWN_STATE);
     }
-    printf("icietla\n");
     current = get_new_dir(path, pos);
     return (current);
 }
