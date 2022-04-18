@@ -16,7 +16,7 @@ static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
     knockback
 };
 
-static const char square_type_update[] = "r";
+static const char square_type_update[] = "p";
 
 static void get_square_update(char current_char,
     void (**update)(object_t *, scene_t *, window_t *, float))
@@ -30,11 +30,17 @@ static void get_square_update(char current_char,
     return;
 }
 
-static int init_sprite(object_t *square, any_t *path, sfVector2f current_pos)
+static int init_sprite(object_t *square, any_t *path, sfVector2f current_pos,
+    dico_t *square_data)
 {
+    any_t *rotation = dico_t_get_any(square_data, "rotation");
+
     if (square == NULL || object_set_sprite(square, path->value.str,
         (sfIntRect) {-1, -1, -1, -1}, current_pos) != BGS_OK) {
         return RET_ERR_MALLOC;
+    }
+    if (rotation != NULL && rotation->type == FLOAT) {
+        sfSprite_setRotation(square->drawable.sprite, rotation->value.f);
     }
     return RET_OK;
 }
@@ -59,7 +65,8 @@ static int init_square(scene_t *scene, char current_char, dico_t *char_type,
         }
     }
     return (path != NULL && path->type == STR) ?
-        init_sprite(square, path, current_pos) : RET_OK;
+        init_sprite(square, path, current_pos,
+        square_data->value.dict) : RET_OK;
 }
 
 static int browse_squares_pos(scene_t *scene, char **map, dico_t *char_type)

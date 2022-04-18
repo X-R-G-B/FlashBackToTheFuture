@@ -6,6 +6,7 @@
 */
 
 #include "my_bgs.h"
+#include "my_bgs_framebuffer.h"
 #include "my_dico.h"
 
 static void scene_remove_obj(scene_t *scene, void *elem)
