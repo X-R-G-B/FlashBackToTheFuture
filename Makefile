@@ -24,6 +24,14 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS			=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
+SRC_METEO	:=	add_leaf.c				\
+				add_snow.c				\
+				add_sunshine.c			\
+				change_meteo.c			\
+				meteo_handler.c			\
+				meteo_handler_init.c
+SRC_METEO	:=	$(addprefix meteo/,$(SRC_METEO))
+
 SRC_ENNEMY	:=	amongus.c				\
 				amongus_change_rect.c
 SRC_ENNEMY	:=	$(addprefix ennemy/,$(SRC_ENNEMY))
@@ -98,7 +106,8 @@ SRC			:=	main.c				\
 				$(SRC_MAP)			\
         		$(SRC_MENU)			\
 				$(SRC_PLAYER)		\
-				$(SRC_ENNEMY)
+				$(SRC_ENNEMY)		\
+				$(SRC_METEO)
 SRC			:= 	$(addprefix src/,$(SRC))
 
 OBJ				:=	$(SRC:%.c=%.o)
