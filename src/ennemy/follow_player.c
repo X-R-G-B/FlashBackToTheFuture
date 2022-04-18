@@ -14,20 +14,17 @@
 int follow_player(object_t *obj, scene_t *scene, float dtime)
 {
     dir_t current = UNKNOWN_STATE;
-    sfVector2f move[4] = {{0, -10 * dtime}, {-10 * dtime, 0}, {0, 10 * dtime},
-        {10 * dtime, 0}};
+    sfVector2f move[4] = {{0, -1 * dtime}, {-1 * dtime, 0}, {0, 1 * dtime},
+        {1 * dtime, 0}};
 
     if (obj == NULL || scene == NULL) {
         return (RET_ERR_INPUT);
     }
-    pathfind_add_to_scene(scene, obj);
-    printf("yyyy\n");
     current = get_path_find_dir(obj, scene);
     if (current == UNKNOWN_STATE) {
         return (RET_ERR_INPUT);
     }
-    printf("batard\n");
-    obj->bigdata.sprite_bigdata.pos.x += move[current].x;
-    obj->bigdata.sprite_bigdata.pos.y += move[current].y;
+    obj->bigdata.sprite_bigdata.pos.x += move[current].x * SPEED_ENN_AMONGUS;
+    obj->bigdata.sprite_bigdata.pos.y += move[current].y * SPEED_ENN_AMONGUS;
     return (RET_OK);
 }
