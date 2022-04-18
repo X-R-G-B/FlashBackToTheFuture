@@ -9,6 +9,9 @@
 
 void free_pop_up(void *list)
 {
+    if (list == NULL) {
+        return;
+    }
     free_list(list);
 }
 

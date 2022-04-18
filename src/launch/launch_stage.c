@@ -6,27 +6,19 @@
 */
 
 #include <stdlib.h>
+#include "meteo.h"
+#include "my_bgs.h"
 #include "my_rpg.h"
 #include "my_conversions.h"
 #include "main_menu.h"
 #include "my_strings.h"
 #include "my_bgs_button_generator.h"
 
-static char stage_name_start[] = "stage_";
-static int start_len = 6;
+static const int back_color[] = {51, 136, 238};
 
-static void click_pause(__attribute__((unused)) object_t *obj, scene_t *scene,
-    window_t *win, __attribute__((unused)) set_event_t *evt)
-{
-    player_t *player = dico_t_get_value(win->components, "player");
+static const char stage_name_start[] = "stage_";
 
-    if (player == NULL) {
-        return;
-    }
-    scene->pause = (scene->pause == true) ? false : true;
-    set_stop(player);
-    toggle_pop_up(win->components, "pause");
-}
+static const int start_len = 6;
 
 static char *get_stage_name(int stage_id)
 {
@@ -50,45 +42,81 @@ static char *get_stage_name(int stage_id)
     return res;
 }
 
-static int temp_pause_button(window_t *win, list_ptr_t *pause_menu,
-    scene_t *scene)
+scene_t *init_scene(char *stage_path, window_t *win, char *stage_name)
 {
-    object_t *object = create_object(NULL, NULL, scene, 0);
-    int ret = RET_OK;
+    any_t *data = NULL;
+    scene_t *scene = NULL;
 
-    if (object == NULL ||
-        object_set_sprite(object, "./assets/Buttons_sprites/Retour_button.png",
-        (sfIntRect) {-1, -1, -1, -1}, (sfVector2f) {50, 50}) != BGS_OK) {
-        return RET_ERR_INPUT;
+    launch_scene_loading(win, "SCENE_LOADING_BASIC");
+    data = parse_json_file(stage_path);
+    scene = create_scene(win, sfColor_fromRGB(back_color[0], back_color[1],
+        back_color[2]), stage_name);
+    if (data == NULL || scene == NULL) {
+        return NULL;
     }
-    win->components = dico_t_add_data(win->components, "pause",
-        pause_menu, free_pop_up);
-    ret = event_add_node(create_event(NULL, true, object, click_pause),
-        (node_params_t) {sfMouseLeft, sfKeyA, MOUSE});
-    if (win->components == NULL || ret != RET_OK) {
+    scene->components = dico_t_add_data(scene->components, SAVE, data,
+        destroy_any);
+    if (scene->components == NULL) {
+        return NULL;
+    }
+    create_meteo_handler(win, scene);
+    return scene;
+}
+
+static void add_list_obj_to_uid_list(list_ptr_t *uid_elements,
+    list_ptr_t *to_cpy, player_t *player)
+{
+    list_t *elem = NULL;
+    sfVector2f screen_pos = {0};
+
+    if (player == NULL || uid_elements == NULL || to_cpy == NULL) {
+        return;
+    }
+    screen_pos = (sfVector2f) {
+        player->obj->bigdata.sprite_bigdata.pos.x - WIN_SIZE_X / 2,
+        player->obj->bigdata.sprite_bigdata.pos.y - WIN_SIZE_Y / 2
+    };
+    elem = to_cpy->start;
+    for (int i = 0; i < to_cpy->len; i++, elem = elem->next) {
+        uid_apply_right_pos(elem->var, screen_pos);
+        list_add_to_end(uid_elements, elem->var);
+    }
+}
+
+static int init_new_scene_components(window_t *win, scene_t *scene)
+{
+    list_ptr_t *pause_menu = NULL;
+    list_ptr_t *uid_elements = list_create();
+
+    if (uid_elements == NULL || create_map(scene) != RET_OK ||
+        create_player(win, scene, PLAYER_DATA) == NULL ||
+        add_collision_array_in_scene(scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
-    toggle_pop_up(win->components, "pause");
-    return event_add_node(create_event(NULL, false, object, click_pause),
-        (node_params_t) {sfMouseLeft, sfKeyEscape, KEY});
+    pause_menu = create_pause_menu(scene);
+    if (pause_menu == NULL ||
+        temp_pause_button(win, pause_menu, scene) != RET_OK) {
+        return RET_ERR_MALLOC;
+    }
+    add_list_obj_to_uid_list(uid_elements, pause_menu,
+        dico_t_get_value(win->components, "player"));
+    scene->components = dico_t_add_data(scene->components, UID_ELEMENTS,
+        uid_elements, free_pop_up);
+    return (scene->components == NULL) ? RET_ERR_MALLOC : RET_OK;
 }
 
 int launch_stage(window_t *win, char *stage_path, int stage_id)
 {
     scene_t *scene = NULL;
-    list_ptr_t *pause_menu = NULL;
     char *stage_name = get_stage_name(stage_id);
 
-    if (stage_name == NULL) {
-        return RET_ERR_INPUT;
-    }
-    scene = create_scene(win, sfBlack, stage_name);
-    if (scene == NULL || create_player(win, scene, PLAYER_DATA) == NULL) {
+    launch_scene_loading(win, "SCENE_LOADING_BASIC");
+    scene = init_scene(stage_path, win, stage_name);
+    if (scene == NULL || init_new_scene_components(win, scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
-    pause_menu = create_pause_menu(scene);
     if (window_change_scene(win, stage_name) != BGS_OK ||
-        temp_pause_button(win, pause_menu, scene) != RET_OK) {
+        init_dead_menu(win, scene) != RET_OK) {
         return RET_ERR_INPUT;
     }
     free(stage_path);

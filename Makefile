@@ -22,31 +22,62 @@ RESET		=	'\033[0m'
 
 # ----------------------------------------------------------------------------
 # SRC
-CFLAGS		= 	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
+CFLAGS			=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC_LAUNCH	:=	launch_game.c	\
-				launch_stage.c	\
-				launch_story_mode.c
-SRC_LAUNCH	:= $(addprefix launch/,$(SRC_LAUNCH))
+SRC_METEO	:=	add_leaf.c				\
+				add_snow.c				\
+				add_sunshine.c			\
+				change_meteo.c			\
+				meteo_handler.c			\
+				meteo_handler_init.c
+SRC_METEO	:=	$(addprefix meteo/,$(SRC_METEO))
+
+SRC_ENNEMY	:=	amongus.c				\
+				amongus_change_rect.c
+SRC_ENNEMY	:=	$(addprefix ennemy/,$(SRC_ENNEMY))
+
+SRC_LAUNCH	:=	launch_game.c					\
+				launch_stage.c					\
+				launch_story_mode.c				\
+				uid_apply_right_pos.c			\
+				scene_loading_basic.c			\
+				temp_file_temp_pause_button.c
+SRC_LAUNCH	:=	$(addprefix launch/,$(SRC_LAUNCH))
+
+SRC_SQUARE_UPDATES	:=	is_player_on_square.c	\
+						knockback.c
+SRC_SQUARE_UPDATES	:=	$(addprefix square_updates/,$(SRC_SQUARE_UPDATES))
+
+SRC_MAP		:=	stage_map_to_collision_array.c	\
+				wordarray_free_cast.c			\
+				check_player_pos_in_map.c		\
+				check_collision.c				\
+				create_map.c					\
+				create_collision_map.c			\
+				$(SRC_SQUARE_UPDATES)
+SRC_MAP		:= $(addprefix map/,$(SRC_MAP))
 
 SRC_EVENT	:=	attack.c	\
 				move.c
 SRC_EVENT	:= $(addprefix event/,$(SRC_EVENT))
 
-SRC_UPDATE	:=	update_player.c		\
-				update_movement.c	\
-				update_attack.c
-SRC_UPDATE	:= $(addprefix update/,$(SRC_UPDATE))
+SRC_UPDATE		:=	update_player.c		\
+					increment_uid_pos.c	\
+					update_movement.c	\
+					update_attack.c
+SRC_UPDATE		:=	$(addprefix update/,$(SRC_UPDATE))
 
-SRC_PLAYER	:=	set_stop.c		\
-				create_player.c	\
-				$(SRC_EVENT)	\
+SRC_PLAYER	:=	set_stop.c			\
+				create_player.c		\
+				destroy_player.c	\
+				$(SRC_EVENT)		\
 				$(SRC_UPDATE)
 SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))
 
 SRC_MAIN	:=	event_menu.c	\
 				init_menu.c		\
-				pop_up_management.c
+				pop_up_management.c \
+				set_frame.c
 SRC_MAIN	:=	$(addprefix main/,$(SRC_MAIN))
 
 SRC_PAUSE	:=	create_pause_menu.c		\
@@ -54,18 +85,33 @@ SRC_PAUSE	:=	create_pause_menu.c		\
 				pause_button_event.c
 SRC_PAUSE	:=	$(addprefix pause/,$(SRC_PAUSE))
 
+SRC_DEAD	:=	configure_dead_screen.c	\
+				dead_screen.c
+SRC_DEAD	:=	$(addprefix dead/,$(SRC_DEAD))
+
 SRC_MENU	:=	$(SRC_PAUSE)	\
 				$(SRC_MAIN)		\
+				$(SRC_DEAD)		\
 				button_event_array.c
 SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
 
+SRC_PATH	:=	init_find.c			\
+				init_path.c			\
+				get_new_pos.c		\
+				destroy_pathfind.c
+SRC_PATH	:=	$(addprefix pathfind/,$(SRC_PATH))
+
 SRC			:=	main.c				\
 				$(SRC_LAUNCH)		\
+				$(SRC_PATH)			\
+				$(SRC_MAP)			\
         		$(SRC_MENU)			\
-				$(SRC_PLAYER)
+				$(SRC_PLAYER)		\
+				$(SRC_ENNEMY)		\
+				$(SRC_METEO)
 SRC			:= 	$(addprefix src/,$(SRC))
 
-OBJ			:=	$(SRC:%.c=%.o)
+OBJ				:=	$(SRC:%.c=%.o)
 # ----------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------
@@ -84,9 +130,9 @@ FN_TEST_LDFLAGS	=	-lgcov
 
 TSRCDIR		:=	tests/
 
-TSRC		:=	...
+TSRC		:=	pathfind.c
 TSRC		:=	$(addprefix $(TSRCDIR),$(TSRC))
-TSRC		:= 	$(filter-out $(SRCDIR)main.c,$(SRC)) $(TSRC)
+TSRC		:= 	$(filter-out src/main.c,$(SRC)) $(TSRC)
 
 TOBJ		:=	$(TSRC:%.c=%.o)
 # ----------------------------------------------------------------------------

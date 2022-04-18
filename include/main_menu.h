@@ -8,6 +8,7 @@
 #ifndef MENU_H_
     #define MENU_H_
     #define PLAY "POP_UP_PLAY"
+    #define SETTINGS_MENU "SETTINGS_POP_UP"
 
     #include "my_bgs_button_generator.h"
     #include "my_bgs.h"
@@ -23,5 +24,16 @@ void close_window(object_t *obj, scene_t *scene,
 void go_back(object_t *obj, scene_t *scene, window_t *win, set_event_t *event);
 void play_pop_up(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
+void settings_pop_up( object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+int create_scene_loading_basic(window_t *win);
+void set_60_fps(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *event);
+void set_144_fps(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *event);
+void set_120_fps(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *event);
+void set_165_fps(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *event);
 
 #endif /* !MENU_H_ */
