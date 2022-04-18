@@ -13,6 +13,7 @@
     #include "my_rpg.h"
 
     #define SCENE_PATHFIND_PATH "SCENE_PATHFIND_PATH"
+    #define TIME_UPDATE_PATH 0.3
 
 typedef struct pathfind_impl_s pathfind_impl_t;
 typedef struct vect2i_s vect2i_t;

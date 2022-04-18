@@ -37,7 +37,7 @@ static void pathfind_update_path(__attribute__((unused)) object_t *obj_cust,
     static float timer = 0;
 
     timer += dtime;
-    if (timer < 0.5 || scene == NULL) {
+    if (timer < TIME_UPDATE_PATH || scene == NULL) {
         return;
     }
     collision_array = dico_t_get_value(scene->components, COLLISION_ARRAY);
