@@ -60,6 +60,6 @@ void click_exit(__attribute__((unused)) object_t *obj,
     if (buttons == NULL) {
         return;
     }
-    exit = get_element_i_var(buttons, 1);
+    exit = get_element_i_var(buttons, 0);
     exit->bigdata.sprite_bigdata.rect.left = 243;
 }
