@@ -149,4 +149,9 @@ int init_dead_menu(window_t *win, scene_t *scene);
 
 void destroy_player(void *player_void);
 
+void dead_event_input(object_t *object, scene_t *scene,
+    window_t *window, set_event_t *event);
+
+void init_dead_screen_pos(list_ptr_t *uid_elements, window_t *win);
+
 #endif /* !RPG_H_ */

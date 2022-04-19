@@ -107,5 +107,6 @@ void remove_window(window_t *win)
     if (win->current_scene != NULL) {
         free(win->current_scene);
     }
+    destroy_framebuffer(win->buf);
     free(win);
 }

@@ -33,6 +33,14 @@ SRC_ENNEMY	:=	amongus.c					\
 				is_player_in_range.c
 SRC_ENNEMY	:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 
+SRC_METEO	:=	add_leaf.c				\
+				add_snow.c				\
+				add_sunshine.c			\
+				change_meteo.c			\
+				meteo_handler.c			\
+				meteo_handler_init.c
+SRC_METEO	:=	$(addprefix meteo/,$(SRC_METEO))
+
 SRC_LAUNCH	:=	launch_game.c					\
 				launch_stage.c					\
 				launch_story_mode.c				\
@@ -82,6 +90,7 @@ SRC_PAUSE	:=	create_pause_menu.c		\
 SRC_PAUSE	:=	$(addprefix pause/,$(SRC_PAUSE))
 
 SRC_DEAD	:=	configure_dead_screen.c	\
+				event_dead_screen.c		\
 				dead_screen.c
 SRC_DEAD	:=	$(addprefix dead/,$(SRC_DEAD))
 
@@ -103,7 +112,8 @@ SRC			:=	main.c				\
 				$(SRC_MAP)			\
         		$(SRC_MENU)			\
 				$(SRC_PLAYER)		\
-				$(SRC_ENNEMY)
+				$(SRC_ENNEMY)		\
+				$(SRC_METEO)
 SRC			:= 	$(addprefix src/,$(SRC))
 
 OBJ				:=	$(SRC:%.c=%.o)

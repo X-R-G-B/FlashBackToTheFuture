@@ -9,6 +9,7 @@
 #include "list.h"
 #include "my_bgs.h"
 #include "libbgs_private.h"
+#include "my_bgs_framebuffer.h"
 #include "my_dico.h"
 
 void scene_loading_handling(window_t *win)
@@ -73,6 +74,7 @@ static void scene_layer_handling(scene_t *scene, window_t *win, float seconds)
     list_t *elem = scene->layer->start;
     layer_t *layer = NULL;
 
+    update_framebuffer(win->buf, seconds);
     for (int i = 0; i < scene->layer->len; i++, elem = elem->next) {
         layer = elem->var;
         window_update(layer->updates, win, seconds, scene);
@@ -83,6 +85,9 @@ static void scene_layer_handling(scene_t *scene, window_t *win, float seconds)
         window_display(scene, win, layer->displayables);
     }
     if (sfRenderWindow_isOpen(win->win)) {
+        if (win->loading == NULL || win->loading->thread == NULL) {
+            draw_framebuffer(win, win->buf);
+        }
         sfRenderWindow_display(win->win);
     }
 }

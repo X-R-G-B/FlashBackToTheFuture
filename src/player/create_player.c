@@ -89,10 +89,11 @@ static int add_event(player_t *player, int *spawn)
                 event_off[1]), node[i]);
         }
     }
+    free(spawn);
     return ret;
 }
 
-sfView *create_view(window_t *win, player_t *player, int *spawn)
+static sfView *create_view(window_t *win, player_t *player, int *spawn)
 {
     sfView *view = sfView_create();
 
