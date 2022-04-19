@@ -55,14 +55,20 @@ static void config_input_and_componets(window_t *win,
     bool *can_play = malloc(sizeof(bool));
 
     *can_play = false;
-    event_add_node(create_event(dead_event_input, false, dead_message,
-        NULL), (node_params_t) {sfMouseLeft, sfKeyQ, KEY});
-    event_add_node(create_event(dead_event_input, false, dead_message,
-        NULL), (node_params_t) {sfMouseLeft, sfKeyH, KEY});
+    if (event_add_node(create_event(dead_event_input, false, dead_message,
+            NULL), (node_params_t) {sfMouseLeft, sfKeyQ, KEY}) != BGS_OK ||
+        event_add_node(create_event(dead_event_input, false, dead_message,
+            NULL), (node_params_t) {sfMouseLeft, sfKeyH, KEY}) != BGS_OK) {
+        return;
+    }
     configure_color_for_dead_screen(dead_message, dead_screen);
-    scene_add_components(scene, can_play, "can_play", free);
-    window_add_component(win, dead_message, "dead_message", NULL);
-    window_add_component(win, dead_screen, "dead_screen", NULL);
+    if (scene_add_components(scene, can_play, "can_play", free) ||
+        window_add_component(win, dead_message,
+            "dead_message", NULL) != BGS_OK ||
+        window_add_component(win, dead_screen,
+            "dead_screen", NULL) != BGS_OK) {
+        return;
+    }
 }
 
 int init_dead_menu(window_t *win, scene_t *scene)
