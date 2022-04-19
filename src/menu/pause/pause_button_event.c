@@ -53,8 +53,6 @@ void resume_event_off(object_t *obj, scene_t *scene, window_t *win,
     toggle_pop_up(win->components, "pause");
     scene->pause = false;
 }
-<<<<<<< HEAD
-=======
 
 void home_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt)
@@ -78,4 +76,3 @@ void home_button_off(object_t *obj, scene_t *scene, window_t *win,
     pressed_button_off(obj, scene, win, evt);
     list_add_to_end(win->to_remove, scene);
 }
->>>>>>> dev
