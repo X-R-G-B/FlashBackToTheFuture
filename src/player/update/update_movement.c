@@ -41,7 +41,6 @@ static int change_player_pos(player_t *player, float move,
     if (check_collision(player, scene) == true) {
         return 0;
     }
-    player->state = DYING;
     player->obj->bigdata.sprite_bigdata.pos.x += news[player->dir].x;
     player->obj->bigdata.sprite_bigdata.pos.y += news[player->dir].y;
     sfView_move(player->view, news[player->dir]);

@@ -13,7 +13,7 @@ static void click_pause(__attribute__((unused)) object_t *obj, scene_t *scene,
 {
     player_t *player = dico_t_get_value(win->components, "player");
 
-    if (player == NULL) {
+    if (player == NULL || player->state == DYING || player->state == DIE) {
         return;
     }
     scene->pause = (scene->pause == true) ? false : true;

@@ -13,14 +13,10 @@ void uid_apply_right_pos(object_t *obj, sfVector2f screen_pos)
         return;
     }
     if (obj->type == SPRITE) {
-        obj->bigdata.sprite_bigdata.pos.x = screen_pos.x +
-            obj->bigdata.sprite_bigdata.pos.x;
-        obj->bigdata.sprite_bigdata.pos.y = screen_pos.y +
-            obj->bigdata.sprite_bigdata.pos.y;
+        obj->bigdata.sprite_bigdata.pos.x += screen_pos.x;
+        obj->bigdata.sprite_bigdata.pos.y += screen_pos.y;
     } else if (obj->type == TEXT) {
-        obj->bigdata.text_bigdata.pos.x = screen_pos.x +
-            obj->bigdata.text_bigdata.pos.x;
-        obj->bigdata.text_bigdata.pos.y = screen_pos.y +
-            obj->bigdata.text_bigdata.pos.y;
+        obj->bigdata.text_bigdata.pos.x += screen_pos.x;
+        obj->bigdata.text_bigdata.pos.y += screen_pos.y;
     }
 }

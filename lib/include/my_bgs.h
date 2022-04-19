@@ -397,6 +397,8 @@ bool check_list(list_ptr_t *list, void *data);
 
 int obj_change_scene(object_t *obj, scene_t *src, scene_t *dest);
 
+layer_t *get_layer(scene_t *scene, int layer);
+
 int check_layer(dico_t *dico);
 
 #endif /* !BGS_H_ */
