@@ -2,7 +2,6 @@
     "buttons": [
         {
             "text": "QUIT",
-            "text pos": [200.0, 200.0],
             "sprite path": "./assets/image/menu/main_menu/default_screen/QUIT.png",
             "pos": [700.0, 300.0],
             "plan": 0
@@ -23,6 +22,12 @@
             "text": "BACK",
             "sprite path": "./assets/image/menu/main_menu/default_screen/background.jpg",
             "pos": [540.0, 960.0],
+            "plan": 1
+        },
+        {
+            "text": "Overlay",
+            "sprite path": "./assets/image/menu/main_menu/default_screen/selection_overlay.png",
+            "pos": [390.0, 340.0],
             "plan": 1
         }
     ]

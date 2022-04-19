@@ -47,5 +47,13 @@ void click_settings(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *event);
 void click_exit(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *event);
+void exit_game(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *event);
+void set_exit_overlay(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+void set_settings_overlay(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+void set_play_overlay(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
 
 #endif /* !MENU_H_ */
