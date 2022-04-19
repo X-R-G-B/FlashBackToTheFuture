@@ -33,7 +33,8 @@ SRC_METEO	:=	add_leaf.c				\
 SRC_METEO	:=	$(addprefix meteo/,$(SRC_METEO))
 
 SRC_ENNEMY	:=	amongus.c				\
-				amongus_change_rect.c
+				amongus_change_rect.c	\
+				follow_player.c
 SRC_ENNEMY	:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 
 SRC_LAUNCH	:=	launch_game.c					\
@@ -98,7 +99,8 @@ SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
 SRC_PATH	:=	init_find.c			\
 				init_path.c			\
 				get_new_pos.c		\
-				destroy_pathfind.c
+				destroy_pathfind.c	\
+				pathfind_add_to_scene.c
 SRC_PATH	:=	$(addprefix pathfind/,$(SRC_PATH))
 
 SRC			:=	main.c				\
