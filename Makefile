@@ -57,7 +57,6 @@ SRC_UPDATE		:=	$(addprefix update/,$(SRC_UPDATE))
 SRC_PLAYER	:=	set_stop.c			\
 				create_player.c		\
 				destroy_player.c	\
-				init_player_view.c	\
 				$(SRC_EVENT)		\
 				$(SRC_UPDATE)
 SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))

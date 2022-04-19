@@ -13,6 +13,9 @@ static void go_to_home_from_dead_screen(object_t *object, scene_t *scene,
 {
     player_t *player = dico_t_get_value(window->components, "player");
 
+    if (player == NULL) {
+        return;
+    }
     window_change_scene(window, "MAIN MENU");
     list_add_to_end(window->to_remove, scene);
     sfView_setCenter(player->view,
