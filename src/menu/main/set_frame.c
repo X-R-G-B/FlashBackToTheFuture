@@ -7,6 +7,8 @@
 
 #include "main_menu.h"
 
+static const int circle_i = 7;
+
 static list_ptr_t *get_settings_components(scene_t *scene)
 {
     list_ptr_t *list = NULL;
@@ -28,7 +30,7 @@ void set_60_fps(object_t *obj, scene_t *scene,
     if (list == NULL) {
         return;
     }
-    circle = get_element_i_var(list, 7);
+    circle = get_element_i_var(list, circle_i);
     if (circle == NULL) {
         return;
     }
@@ -47,7 +49,7 @@ void set_120_fps(object_t *obj,
     if (list == NULL) {
         return;
     }
-    circle = get_element_i_var(list, 7);
+    circle = get_element_i_var(list, circle_i);
     if (circle == NULL) {
         return;
     }
@@ -67,7 +69,7 @@ void set_144_fps(object_t *obj,
     if (list == NULL) {
         return;
     }
-    circle = get_element_i_var(list, 7);
+    circle = get_element_i_var(list, circle_i);
     if (circle == NULL) {
         return;
     }
@@ -86,7 +88,7 @@ void set_165_fps(object_t *obj,
     if (list == NULL) {
         return;
     }
-    circle = get_element_i_var(list, 7);
+    circle = get_element_i_var(list, circle_i);
     if (circle == NULL) {
         return;
     }
