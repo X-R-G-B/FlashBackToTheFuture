@@ -12,6 +12,7 @@
 #include "my_bgs_components.h"
 #include "my_rpg.h"
 #include "my_json.h"
+#include "ennemy_pathfind.h"
 
 static void (*event_on[])(object_t *, scene_t *, window_t *,
     set_event_t *) = {
@@ -69,13 +70,14 @@ static player_t *add_components(player_t *player, const char *stats)
     return player;
 }
 
-static int add_event(player_t *player, int *spawn)
+static int add_event(player_t *player, int *spawn, scene_t *scene)
 {
     int ret = RET_OK;
     object_t *obj = player->obj;
 
     if (object_set_sprite(player->obj, player_path, (sfIntRect)
         {12, 210, 57, 69}, (sfVector2f) {spawn[0], spawn[1]}) != BGS_OK) {
+        free(spawn);
         return RET_ERR_INPUT;
     }
     for (int i = 0; i < event_nb && ret == RET_OK; i++) {
@@ -87,10 +89,12 @@ static int add_event(player_t *player, int *spawn)
                 event_off[1]), node[i]);
         }
     }
+    free(spawn);
+    pathfind_add_to_scene(scene);
     return ret;
 }
 
-sfView *create_view(window_t *win, player_t *player, int *spawn)
+static sfView *create_view(window_t *win, player_t *player, int *spawn)
 {
     sfView *view = sfView_create();
 
@@ -124,6 +128,6 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats)
     if (spawn == NULL || create_view(win, player, spawn) == NULL) {
         return (NULL);
     }
-    return (add_event(player, spawn) == RET_OK) ?
+    return (add_event(player, spawn, scene) == RET_OK) ?
         add_components(player, stats) : NULL;
 }

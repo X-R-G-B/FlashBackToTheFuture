@@ -24,8 +24,17 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS			=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
+SRC_METEO	:=	add_leaf.c				\
+				add_snow.c				\
+				add_sunshine.c			\
+				change_meteo.c			\
+				meteo_handler.c			\
+				meteo_handler_init.c
+SRC_METEO	:=	$(addprefix meteo/,$(SRC_METEO))
+
 SRC_ENNEMY	:=	amongus.c				\
-				amongus_change_rect.c
+				amongus_change_rect.c	\
+				follow_player.c
 SRC_ENNEMY	:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 
 SRC_LAUNCH	:=	launch_game.c							\
@@ -72,7 +81,8 @@ SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))
 
 SRC_MAIN	:=	event_menu.c	\
 				init_menu.c		\
-				pop_up_management.c
+				pop_up_management.c \
+				set_frame.c
 SRC_MAIN	:=	$(addprefix main/,$(SRC_MAIN))
 
 SRC_PAUSE	:=	create_pause_menu.c		\
@@ -82,6 +92,7 @@ SRC_PAUSE	:=	create_pause_menu.c		\
 SRC_PAUSE	:=	$(addprefix pause/,$(SRC_PAUSE))
 
 SRC_DEAD	:=	configure_dead_screen.c	\
+				event_dead_screen.c		\
 				dead_screen.c
 SRC_DEAD	:=	$(addprefix dead/,$(SRC_DEAD))
 
@@ -94,7 +105,8 @@ SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
 SRC_PATH	:=	init_find.c			\
 				init_path.c			\
 				get_new_pos.c		\
-				destroy_pathfind.c
+				destroy_pathfind.c	\
+				pathfind_add_to_scene.c
 SRC_PATH	:=	$(addprefix pathfind/,$(SRC_PATH))
 
 SRC			:=	main.c				\
@@ -103,7 +115,8 @@ SRC			:=	main.c				\
 				$(SRC_MAP)			\
         		$(SRC_MENU)			\
 				$(SRC_PLAYER)		\
-				$(SRC_ENNEMY)
+				$(SRC_ENNEMY)		\
+				$(SRC_METEO)
 SRC			:= 	$(addprefix src/,$(SRC))
 
 OBJ				:=	$(SRC:%.c=%.o)

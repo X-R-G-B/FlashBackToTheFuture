@@ -5,6 +5,7 @@
 ** create among us adn destroy it
 */
 
+#include "ennemy_pathfind.h"
 #include "my_bgs.h"
 #include "my_bgs_components.h"
 #include "my_dico.h"
@@ -12,6 +13,7 @@
 #include "my_json.h"
 #include "my_conversions.h"
 #include "ennemies.h"
+#include <SFML/System/Vector2.h>
 
 static const char ennemy_among_us[] = "ENNEMY_AMONG_US";
 static const char ennemy_among_us_json[] = "./assets/json/amongus.json";
@@ -35,7 +37,7 @@ static int update_among_us_time(any_t *dico, float dtime)
 }
 
 static void update_among_us(object_t *obj,
-        __attribute__((unused)) scene_t *scn, window_t *win,
+        scene_t *scn, window_t *win,
         float dtime)
 {
     int update = 0;
@@ -45,6 +47,7 @@ static void update_among_us(object_t *obj,
         return;
     }
     update = update_among_us_time(dico, dtime);
+    follow_player(obj, scn, dtime);
     if (update == 0) {
         return;
     }
@@ -69,5 +72,6 @@ int create_amongus(scene_t *scene, int pos_x, int pos_y)
             ennemy_among_us, &destroy_any) != BGS_OK) {
         return (BGS_ERR_MALLOC);
     }
+    sfSprite_setScale(obj->drawable.sprite, (sfVector2f) {2, 2});
     return (BGS_OK);
 }
