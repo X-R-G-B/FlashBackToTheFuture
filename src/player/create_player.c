@@ -77,6 +77,7 @@ static int add_event(player_t *player, int *spawn, scene_t *scene)
 
     if (object_set_sprite(player->obj, player_path, (sfIntRect)
         {12, 210, 57, 69}, (sfVector2f) {spawn[0], spawn[1]}) != BGS_OK) {
+        free(spawn);
         return RET_ERR_INPUT;
     }
     for (int i = 0; i < event_nb && ret == RET_OK; i++) {
@@ -88,11 +89,12 @@ static int add_event(player_t *player, int *spawn, scene_t *scene)
                 event_off[1]), node[i]);
         }
     }
+    free(spawn);
     pathfind_add_to_scene(scene);
     return ret;
 }
 
-sfView *create_view(window_t *win, player_t *player, int *spawn)
+static sfView *create_view(window_t *win, player_t *player, int *spawn)
 {
     sfView *view = sfView_create();
 

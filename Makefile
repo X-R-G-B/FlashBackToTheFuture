@@ -87,6 +87,7 @@ SRC_PAUSE	:=	create_pause_menu.c		\
 SRC_PAUSE	:=	$(addprefix pause/,$(SRC_PAUSE))
 
 SRC_DEAD	:=	configure_dead_screen.c	\
+				event_dead_screen.c		\
 				dead_screen.c
 SRC_DEAD	:=	$(addprefix dead/,$(SRC_DEAD))
 

@@ -67,6 +67,8 @@ void home_button_off(object_t *obj, scene_t *scene, window_t *win,
     sfRenderWindow_setView(win->win, player->view);
     win->components = dico_t_rem(win->components, "player");
     win->components = dico_t_rem(win->components, "pause");
+    win->components = dico_t_rem(win->components, "dead_screen");
+    win->components = dico_t_rem(win->components, "dead_message");
     win->components = dico_t_rem(win->components, SAVE);
     pressed_button_off(obj, scene, win, evt);
     list_add_to_end(win->to_remove, scene);
