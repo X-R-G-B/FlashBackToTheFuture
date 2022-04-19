@@ -86,11 +86,15 @@ int object_set_text(object_t *object, char const *path, char const *text,
 int object_set_sprite(object_t *object, char const *path, sfIntRect rect,
     sfVector2f pos)
 {
+    scene_t *scene = NULL;
+
     if (object == NULL || path == NULL) {
         return BGS_ERR_INPUT;
     }
+    scene = dico_t_get_value(object->components, "scene");
     object->is_visible = true;
     if (sprite_set_texture(object, pos, rect, path) != BGS_OK) {
+        list_add_to_end(scene->to_remove, object);
         return BGS_ERR_MALLOC;
     }
     object->bigdata.sprite_bigdata.pos = pos;

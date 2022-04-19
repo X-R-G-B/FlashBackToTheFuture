@@ -82,8 +82,7 @@ static int get_button_data(scene_t *scene, any_t *dico)
         arg[1] = text->value.str;
         ret = init_text(txt_pos, scene, arg, dico->value.dict);
     }
-    free(txt_pos);
-    free(pos);
+    destroy_pos_array(txt_pos, pos);
     return ret;
 }
 

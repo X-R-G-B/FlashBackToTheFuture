@@ -90,7 +90,6 @@ static int add_event(player_t *player, int *spawn, scene_t *scene)
                 event_off[1]), node[i]);
         }
     }
-    free(spawn);
     pathfind_add_to_scene(scene);
     return ret;
 }

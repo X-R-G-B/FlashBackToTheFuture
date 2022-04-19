@@ -37,6 +37,7 @@ static int init_sprite(object_t *square, any_t *path, sfVector2f current_pos,
 
     if (square == NULL || object_set_sprite(square, path->value.str,
         (sfIntRect) {-1, -1, -1, -1}, current_pos) != BGS_OK) {
+        printf("!!!!!!\n");
         return RET_ERR_MALLOC;
     }
     if (rotation != NULL && rotation->type == FLOAT) {

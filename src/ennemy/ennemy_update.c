@@ -7,6 +7,7 @@
 
 #include "my_rpg.h"
 #include "my_json.h"
+#include "ennemy_pathfind.h"
 #include "ennemies.h"
 
 static void update_ennemy_attack(ennemy_t *ennemy, scene_t *scene,
@@ -38,8 +39,7 @@ static void update_ennemy_dying(__attribute__((unused)) ennemy_t *ennemy,
 
 }
 
-static void update_ennemy_stop(ennemy_t *ennemy,
-    __attribute__((unused)) scene_t *scene, window_t *win,
+static void update_ennemy_stop(ennemy_t *ennemy, scene_t *scene, window_t *win,
     __attribute__((unused)) float time)
 {
     dir_t prev_dir = ennemy->dir;
@@ -47,7 +47,7 @@ static void update_ennemy_stop(ennemy_t *ennemy,
     if (is_player_in_range(ennemy, win) == false) {
         return;
     }
-    ennemy->dir = get_new_dir(ennemy->obj, win);
+    ennemy->dir = get_path_find_dir(ennemy->obj, scene);
     if (prev_dir != RIGHT && ennemy->dir == RIGHT) {
         sfSprite_setScale(ennemy->obj->drawable.sprite, (sfVector2f) {-1, 1});
     } else if (prev_dir == RIGHT && ennemy->dir != RIGHT) {
