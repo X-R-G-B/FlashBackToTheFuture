@@ -3,10 +3,6 @@
         {
             "text": "Settings back",
             "sprite path": "./assets/image/menu/main_menu/settings/Parchemin.png",
-<<<<<<< HEAD
-            "pos": [540.0, 960.0],
-            "plan": -1
-=======
             "pos": [540.0, 1150.0],
             "plan": 0
         },
@@ -49,11 +45,16 @@
             "plan": -1
         },
         {
+            "text": "Circle",
+            "sprite path": "./assets/image/menu/main_menu/settings/circle.png",
+            "pos": [740.0, 860.0],
+            "plan": 0
+        },
+        {
             "text": "Audio",
             "sprite path": "./assets/image/menu/main_menu/settings/Audio.png",
             "pos": [380.0, 1150.0],
             "plan": 0
->>>>>>> dev
         }
     ]
 }
