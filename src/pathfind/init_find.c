@@ -40,7 +40,7 @@ static int fill_vect_pos(pathfind_impl_t *maps)
             count += 1;
         }
     }
-    if (count == 2) {
+    if (count == 1) {
         return (0);
     }
     return (-1);

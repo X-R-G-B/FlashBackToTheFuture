@@ -31,6 +31,8 @@ static const char STORY_DATA_PATH[] =
     "./assets/data/story_mode/save.json";
 static const char SAVE[] = "story_mode_data";
 
+static const char STAGE_DATA[] = "stage_data";
+
 typedef enum state_e {
     ATTACKING,
     MOVING,
@@ -55,18 +57,38 @@ typedef struct player_s {
     sfView *view;
 } player_t;
 
+void next_stage(object_t *obj, scene_t *scene, window_t *win, float time);
+
+int launch_next_stage(window_t *win);
+
+int move_list_element(dico_t *dico, char *elem_key, scene_t *fst_scene,
+    scene_t *scd_scene);
+
+void change_player_pos(player_t *player, float move,
+    scene_t *scene);
+
+void add_list_obj_to_uid_list(list_ptr_t *uid_elements,
+    list_ptr_t *to_cpy, player_t *player);
+
+char *get_stage_path(int current_stage);
+
 void click_save(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *event);
 
 bool check_collision(player_t *player, scene_t *scene);
 
+int move_object_between_scene(window_t *win, scene_t *fst_scene,
+    scene_t *scd_scene);
+
 void increment_uid_pos(scene_t *scene, sfVector2f to_add);
 
-void uid_apply_right_pos(object_t *obj, sfVector2f screen_pos);
+void uid_apply_right_pos(object_t *obj, object_t *player);
 
 int create_map(scene_t *scene);
 
 void update_player(object_t *obj, scene_t *scene, window_t *win, float dtime);
+
+int *get_player_spawn(scene_t *scene);
 
 bool check_up_collision(object_t *player, char **map, sfVector2i pos);
 
@@ -79,15 +101,24 @@ bool check_down_collision(object_t *player, char **map, sfVector2i pos);
 void update_attack(player_t *player, scene_t *scene, window_t *win,
     float dtime);
 
-int launch_story_mode(window_t *win, const char save_path[]);
+void add_main_menu_elements_to_uid_list(window_t *win, scene_t *scene,
+    list_ptr_t *uid_list);
+
+int launch_story_mode(window_t *win, const char save_path[], scene_t *scene);
 
 int add_collision_array_in_scene(scene_t *scene);
 
 void wordarray_free_ptr(void *data);
 
+char *get_stage_name(int stage_id);
+
 int launch_game(void);
 
 void set_stop(player_t *player);
+
+void knockback(object_t *obj, scene_t *scene, window_t *win, float time);
+
+bool is_player_on_square(window_t *win, object_t *square);
 
 player_t *create_player(window_t *win, scene_t *scene, const char *stats);
 
@@ -95,7 +126,7 @@ char **create_new_map(char **map);
 
 char **stage_map_to_collision_array(scene_t *scene);
 
-int launch_stage(window_t *win, char *stage_path, int stage_id);
+int launch_stage(window_t *win, char *stage_path, int stage_id, scene_t *scene);
 
 void attack_event(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *set_event);
@@ -144,5 +175,10 @@ void update_dead(player_t *player, scene_t *screen,
 int init_dead_menu(window_t *win, scene_t *scene);
 
 void destroy_player(void *player_void);
+
+void dead_event_input(object_t *object, scene_t *scene,
+    window_t *window, set_event_t *event);
+
+void init_dead_screen_pos(list_ptr_t *uid_elements, window_t *win);
 
 #endif /* !RPG_H_ */

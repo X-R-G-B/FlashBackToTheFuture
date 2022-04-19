@@ -33,19 +33,20 @@ static int apply_player_positions(player_t *player, int state,
     return RET_OK;
 }
 
-static int change_player_pos(player_t *player, float move,
+void change_player_pos(player_t *player, float move,
     scene_t *scene)
 {
     sfVector2f news[4] = {{0, 0 - move}, {0 - move, 0}, {0, move}, {move, 0}};
 
     if (check_collision(player, scene) == true) {
-        return 0;
+        return;
     }
+    player->state = DYING;
     player->obj->bigdata.sprite_bigdata.pos.x += news[player->dir].x;
     player->obj->bigdata.sprite_bigdata.pos.y += news[player->dir].y;
     sfView_move(player->view, news[player->dir]);
     increment_uid_pos(scene, news[player->dir]);
-    return 0;
+    return;
 }
 
 static int move_player(player_t *player, float delta_time,

@@ -41,4 +41,3 @@ char **create_new_map(char **map)
     }
     return fill_array(new, arr_len, str_len);
 }
-
