@@ -40,15 +40,24 @@ SRC_METEO	:=	add_leaf.c				\
 				meteo_handler_init.c
 SRC_METEO	:=	$(addprefix meteo/,$(SRC_METEO))
 
-SRC_LAUNCH	:=	launch_game.c					\
-				launch_stage.c					\
-				launch_story_mode.c				\
-				uid_apply_right_pos.c			\
-				scene_loading_basic.c			\
+SRC_ENNEMY	:=	amongus.c				\
+				amongus_change_rect.c	\
+				follow_player.c
+SRC_ENNEMY	:=	$(addprefix ennemy/,$(SRC_ENNEMY))
+
+SRC_LAUNCH	:=	launch_game.c							\
+				launch_stage.c							\
+				move_object_between_scene.c				\
+				launch_story_mode.c						\
+				launch_next_stage.c						\
+				add_main_menu_elements_to_uid_list.c	\
+				uid_apply_right_pos.c					\
+				scene_loading_basic.c					\
 				temp_file_temp_pause_button.c
 SRC_LAUNCH	:=	$(addprefix launch/,$(SRC_LAUNCH))
 
 SRC_SQUARE_UPDATES	:=	is_player_on_square.c	\
+						next_stage.c			\
 						knockback.c
 SRC_SQUARE_UPDATES	:=	$(addprefix square_updates/,$(SRC_SQUARE_UPDATES))
 
@@ -80,10 +89,12 @@ SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))
 
 SRC_MAIN	:=	event_menu.c	\
 				init_menu.c		\
-				pop_up_management.c
+				pop_up_management.c \
+				set_frame.c
 SRC_MAIN	:=	$(addprefix main/,$(SRC_MAIN))
 
 SRC_PAUSE	:=	create_pause_menu.c		\
+				home_button_event.c		\
 				pressed_button_event.c	\
 				pause_button_event.c
 SRC_PAUSE	:=	$(addprefix pause/,$(SRC_PAUSE))
@@ -102,7 +113,8 @@ SRC_MENU	:=	$(addprefix menu/,$(SRC_MENU))
 SRC_PATH	:=	init_find.c			\
 				init_path.c			\
 				get_new_pos.c		\
-				destroy_pathfind.c
+				destroy_pathfind.c	\
+				pathfind_add_to_scene.c
 SRC_PATH	:=	$(addprefix pathfind/,$(SRC_PATH))
 
 SRC			:=	main.c				\

@@ -65,7 +65,7 @@ static int add_obj_to_dest(object_t *obj, scene_t *dest)
     return BGS_OK;
 }
 
-int obj_change_scene(object_t *obj, scene_t *src, scene_t *dest)
+int object_change_scene(object_t *obj, scene_t *src, scene_t *dest)
 {
     if (obj == NULL || src == NULL || dest == NULL) {
         return BGS_ERR_INPUT;

@@ -12,6 +12,7 @@
 #include "my_bgs_components.h"
 #include "my_rpg.h"
 #include "my_json.h"
+#include "ennemy_pathfind.h"
 
 static void (*event_on[])(object_t *, scene_t *, window_t *,
     set_event_t *) = {
@@ -33,9 +34,9 @@ static const int event_nb = 5;
 
 static const char player_path[] = "./assets/image/player/link_with_weapon.png";
 
-static int *get_player_spawn(scene_t *scene)
+int *get_player_spawn(scene_t *scene)
 {
-    any_t *data = dico_t_get_value(scene->components, SAVE);
+    any_t *data = dico_t_get_value(scene->components, STAGE_DATA);
     int *spawn = NULL;
 
     if (data == NULL) {
@@ -69,7 +70,7 @@ static player_t *add_components(player_t *player, const char *stats)
     return player;
 }
 
-static int add_event(player_t *player, int *spawn)
+static int add_event(player_t *player, int *spawn, scene_t *scene)
 {
     int ret = RET_OK;
     object_t *obj = player->obj;
@@ -90,6 +91,7 @@ static int add_event(player_t *player, int *spawn)
         }
     }
     free(spawn);
+    pathfind_add_to_scene(scene);
     return ret;
 }
 
@@ -127,6 +129,6 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats)
     if (spawn == NULL || create_view(win, player, spawn) == NULL) {
         return (NULL);
     }
-    return (add_event(player, spawn) == RET_OK) ?
+    return (add_event(player, spawn, scene) == RET_OK) ?
         add_components(player, stats) : NULL;
 }

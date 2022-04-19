@@ -29,13 +29,13 @@ static void fill_string(int number_len, char *res, char *number)
     }
 }
 
-static char *get_stage_path(int current_stage)
+char *get_stage_path(int current_stage)
 {
     char *number = my_itoa(current_stage);
     char *res = NULL;
     int number_len = 0;
 
-    if (number == NULL) {
+    if (number == NULL || current_stage < 0) {
         return NULL;
     }
     number_len = my_strlen(number);
@@ -66,7 +66,7 @@ static int init_stage(window_t *win, any_t **save,
     return RET_OK;
 }
 
-int launch_story_mode(window_t *win, const char save_path[])
+int launch_story_mode(window_t *win, const char save_path[], scene_t *scene)
 {
     any_t *save = parse_json_file(save_path);
     any_t *current_stage = NULL;
@@ -76,5 +76,5 @@ int launch_story_mode(window_t *win, const char save_path[])
         return RET_ERR_INPUT;
     }
     init_stage(win, &save, &current_stage, &stage_path);
-    return launch_stage(win, stage_path, current_stage->value.i);
+    return launch_stage(win, stage_path, current_stage->value.i, scene);
 }
