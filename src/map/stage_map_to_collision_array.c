@@ -73,7 +73,7 @@ int add_collision_array_in_scene(scene_t *scene)
     if (scene == NULL) {
         return RET_ERR_INPUT;
     }
-    stage_data = dico_t_get_any(scene->components, SAVE);
+    stage_data = dico_t_get_any(scene->components, STAGE_DATA);
     map = get_from_any(stage_data, "dd", "map data", "map");
     if (map == NULL || map->type != ARRAY) {
         return RET_ERR_INPUT;

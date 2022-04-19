@@ -17,7 +17,7 @@ void click_save(__attribute__((unused)) object_t *obj,
         win->click = NULL;
         return;
     }
-    launch_story_mode(win, STORY_DATA_PATH);
+    launch_story_mode(win, STORY_DATA_PATH, scene);
 }
 
 void close_window(__attribute__((unused)) object_t *obj,
@@ -25,7 +25,7 @@ void close_window(__attribute__((unused)) object_t *obj,
     window_t *win, __attribute__((unused)) set_event_t *event)
 {
     if (check_if_pop_up_true(scene->components, PLAY) == 1 ||
-        check_if_pop_up_true(scene->components, SETTINGS_MENU == 1)) {
+        check_if_pop_up_true(scene->components, SETTINGS_MENU) == 1) {
         set_is_visible_false(dico_t_get_value(scene->components, PLAY));
         set_is_visible_false(dico_t_get_value(scene->components,
         SETTINGS_MENU));

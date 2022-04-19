@@ -37,15 +37,19 @@ SRC_ENNEMY	:=	amongus.c				\
 				follow_player.c
 SRC_ENNEMY	:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 
-SRC_LAUNCH	:=	launch_game.c					\
-				launch_stage.c					\
-				launch_story_mode.c				\
-				uid_apply_right_pos.c			\
-				scene_loading_basic.c			\
+SRC_LAUNCH	:=	launch_game.c							\
+				launch_stage.c							\
+				move_object_between_scene.c				\
+				launch_story_mode.c						\
+				launch_next_stage.c						\
+				add_main_menu_elements_to_uid_list.c	\
+				uid_apply_right_pos.c					\
+				scene_loading_basic.c					\
 				temp_file_temp_pause_button.c
 SRC_LAUNCH	:=	$(addprefix launch/,$(SRC_LAUNCH))
 
 SRC_SQUARE_UPDATES	:=	is_player_on_square.c	\
+						next_stage.c			\
 						knockback.c
 SRC_SQUARE_UPDATES	:=	$(addprefix square_updates/,$(SRC_SQUARE_UPDATES))
 
@@ -82,6 +86,7 @@ SRC_MAIN	:=	event_menu.c	\
 SRC_MAIN	:=	$(addprefix main/,$(SRC_MAIN))
 
 SRC_PAUSE	:=	create_pause_menu.c		\
+				home_button_event.c		\
 				pressed_button_event.c	\
 				pause_button_event.c
 SRC_PAUSE	:=	$(addprefix pause/,$(SRC_PAUSE))
