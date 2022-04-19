@@ -10,10 +10,14 @@
 void click_play(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *event)
 {
-    list_ptr_t *buttons = dico_t_get_value(scene->components, MENU);
+    list_ptr_t *buttons = NULL;
     object_t *play = NULL;
 
-    if (buttons == NULL || scene == NULL) {
+    if (scene == NULL) {
+        return;
+    }
+    buttons  = dico_t_get_value(scene->components, MENU);
+    if (buttons == NULL) {
         return;
     }
     play = get_element_i_var(buttons, 1);
@@ -23,10 +27,14 @@ void click_play(object_t *obj, scene_t *scene, window_t *win,
 void click_settings(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *event)
 {
-    list_ptr_t *buttons = dico_t_get_value(scene->components, MENU);
+    list_ptr_t *buttons = NULL;
     object_t *settings = NULL;
 
-    if (buttons == NULL || scene == NULL) {
+    if (scene == NULL) {
+        return;
+    }
+    buttons  = dico_t_get_value(scene->components, MENU);
+    if (buttons == NULL) {
         return;
     }
     settings = get_element_i_var(buttons, 2);
@@ -36,10 +44,14 @@ void click_settings(object_t *obj, scene_t *scene, window_t *win,
 void click_exit(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *event)
 {
-    list_ptr_t *buttons = dico_t_get_value(scene->components, MENU);
+    list_ptr_t *buttons = NULL;
     object_t *exit = NULL;
 
-    if (buttons == NULL || scene == NULL) {
+    if (scene == NULL) {
+        return;
+    }
+    buttons  = dico_t_get_value(scene->components, MENU);
+    if (buttons == NULL) {
         return;
     }
     exit = get_element_i_var(buttons, 1);
