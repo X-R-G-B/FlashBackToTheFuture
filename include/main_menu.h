@@ -9,6 +9,7 @@
     #define MENU_H_
     #define PLAY "POP_UP_PLAY"
     #define SETTINGS_MENU "SETTINGS_POP_UP"
+    #define MENU "MAIN_MENU_BUTTONS"
 
     #include "my_bgs_button_generator.h"
     #include "my_bgs.h"
@@ -19,6 +20,11 @@ int init_menu(window_t *);
 void close_window(object_t *, scene_t *, window_t *, set_event_t *);
 void free_pop_up(void *list);
 int check_if_pop_up_true(dico_t *dico, char *key);
+void add_scene_pop_up_component(scene_t *scene, list_ptr_t *buttons,
+    char *key);
+void add_scene_component(scene_t *scene, list_ptr_t *component,
+    char *key);
+
 void close_window(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 void go_back(object_t *obj, scene_t *scene, window_t *win, set_event_t *event);
@@ -34,6 +40,12 @@ void set_144_fps(object_t *obj, scene_t *scene, window_t *win,
 void set_120_fps(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *event);
 void set_165_fps(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *event);
+void click_play(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *event);
+void click_settings(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *event);
+void click_exit(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *event);
 
 #endif /* !MENU_H_ */
