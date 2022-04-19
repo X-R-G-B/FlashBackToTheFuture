@@ -10,6 +10,7 @@
 #include "my_conversions.h"
 #include "main_menu.h"
 #include "my_strings.h"
+#include "meteo.h"
 #include "my_bgs_button_generator.h"
 
 static const int back_color[] = {51, 136, 238};

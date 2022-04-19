@@ -13,15 +13,11 @@ void click_save(__attribute__((unused)) object_t *obj,
     __attribute__((unused)) scene_t *scene, window_t *win,
     __attribute__((unused)) set_event_t *event)
 {
-<<<<<<< HEAD
-    launch_story_mode(win, STORY_DATA_PATH, scene);
-=======
     if (check_if_pop_up_true(scene->components, PLAY) == 0) {
         win->click = NULL;
         return;
     }
-    launch_story_mode(win, STORY_DATA_PATH);
->>>>>>> dev
+    launch_story_mode(win, STORY_DATA_PATH, scene);
 }
 
 void close_window(__attribute__((unused)) object_t *obj,
@@ -29,7 +25,7 @@ void close_window(__attribute__((unused)) object_t *obj,
     window_t *win, __attribute__((unused)) set_event_t *event)
 {
     if (check_if_pop_up_true(scene->components, PLAY) == 1 ||
-        check_if_pop_up_true(scene->components, SETTINGS_MENU == 1)) {
+        check_if_pop_up_true(scene->components, SETTINGS_MENU) ==  1) {
         set_is_visible_false(dico_t_get_value(scene->components, PLAY));
         set_is_visible_false(dico_t_get_value(scene->components,
         SETTINGS_MENU));
@@ -50,9 +46,6 @@ void play_pop_up(__attribute__((unused)) object_t *obj, scene_t *scene,
     __attribute__((unused)) window_t *win,
     __attribute__((unused)) set_event_t *event)
 {
-<<<<<<< HEAD
-    check_if_pop_up_true(scene->components, SETTINGS_MENU);
-=======
     list_ptr_t *buttons = dico_t_get_value(scene->components, MENU);
 
     if (check_if_pop_up_true(scene->components, SETTINGS_MENU) == 1) {
@@ -60,7 +53,6 @@ void play_pop_up(__attribute__((unused)) object_t *obj, scene_t *scene,
         set_is_visible_false(dico_t_get_value(scene->components,
             SETTINGS_MENU));
     }
->>>>>>> dev
     toggle_pop_up(scene->components, PLAY);
     if (buttons == NULL) {
         return;

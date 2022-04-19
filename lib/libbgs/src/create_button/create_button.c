@@ -82,6 +82,9 @@ static int get_button_data(scene_t *scene, any_t *dico)
         arg[1] = text->value.str;
         ret = init_text(txt_pos, scene, arg, dico->value.dict);
     }
+    if (txt_pos == NULL) {
+        printf("uu\n");
+    }
     free(txt_pos);
     free(pos);
     return ret;
