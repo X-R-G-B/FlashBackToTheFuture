@@ -92,7 +92,7 @@ int launch_stage(window_t *win, char *stage_path, int stage_id,
     scene_t *scene = NULL;
     char *stage_name = get_stage_name(stage_id);
 
-    launch_scene_loading(win, "SCENE_LOADING_BASIC");
+    // launch_scene_loading(win, "SCENE_LOADING_BASIC");
     scene = init_scene(stage_path, win, stage_name);
     if (scene == NULL || move_object_between_scene(win, prev_scene,
         scene) != RET_OK || init_new_scene_components(win, scene) != RET_OK) {
