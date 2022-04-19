@@ -5,6 +5,10 @@ The Best RPG
 
 # SPRITES
 
+https://cooltext.com/Logo-Design-White
+
+https://cooltext.com/Logo-Design-Epic-Stone
+
 ## LINK
 
 __true link__
