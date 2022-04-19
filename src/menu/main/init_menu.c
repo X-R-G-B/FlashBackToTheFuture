@@ -23,6 +23,26 @@ static void set_buttons(list_ptr_t **settings,
     *load_game = create_button(scene,"./assets/data/menu/play_pop_up.json");
 }
 
+static void set_button_rectangle(list_ptr_t *buttons)
+{
+    object_t *obj = get_element_i_var(buttons, 1);
+
+    if (obj == NULL) {
+        return;
+    }
+    obj->bigdata.sprite_bigdata.rect = (sfIntRect) {273, 9, 231, 76};
+    obj = get_element_i_var(buttons, 2);
+    if (obj == NULL) {
+        return;
+    }
+    obj->bigdata.sprite_bigdata.rect = (sfIntRect) {17, 8, 454, 80};
+    obj = get_element_i_var(buttons, 0);
+    if (obj == NULL) {
+        return;
+    }
+    obj->bigdata.sprite_bigdata.rect = (sfIntRect) {13, 5, 217, 75};
+}
+
 static int init_main_menu_buttons(scene_t *scene)
 {
     list_ptr_t *main_menu = NULL;
@@ -33,16 +53,15 @@ static int init_main_menu_buttons(scene_t *scene)
     if (main_menu == NULL || load_game == NULL || settings == NULL) {
         return (RET_ERR_MALLOC);
     }
-    scene->components = dico_t_add_data(scene->components,
-        PLAY, load_game, free_pop_up);
-    scene->components = dico_t_add_data(scene->components,
-        SETTINGS_MENU, settings, free_pop_up);
+    set_button_rectangle(main_menu);
+    add_scene_pop_up_component(scene, settings, SETTINGS_MENU);
+    add_scene_pop_up_component(scene, load_game, PLAY);
+    add_scene_pop_up_component(scene, main_menu, MENU);
     if (scene->components == NULL) {
         return (RET_ERR_MALLOC);
     }
     set_is_visible_false(settings);
     set_is_visible_false(load_game);
-    free_list(main_menu);
     return (RET_OK);
 }
 
@@ -57,7 +76,6 @@ int init_menu(window_t *win)
     }
     create_scene_loading_basic(win);
     obj = create_object(NULL, NULL, scene, 0);
-    init_main_menu_buttons(scene);
     if (init_main_menu_buttons(scene) == RET_ERR_MALLOC || obj == NULL) {
         return (RET_ERR_MALLOC);
     }

@@ -4,19 +4,19 @@
             "text": "QUIT",
             "text pos": [200.0, 200.0],
             "sprite path": "./assets/image/menu/main_menu/default_screen/QUIT.png",
-            "pos": [700.0, 190.0],
+            "pos": [700.0, 300.0],
             "plan": 0
         },
         {
             "text": "PLAY",
             "sprite path": "./assets/image/menu/main_menu/default_screen/PLAY.png",
-            "pos": [400.0, 200.0],
+            "pos": [400.0, 340.0],
             "plan": 0
         },
         {
             "text": "SETTINGS menu",
             "sprite path": "./assets/image/menu/main_menu/default_screen/SETTINGS.png",
-            "pos": [540.0, 300.0],
+            "pos": [540.0, 540.0],
             "plan": 0
         },
         {
