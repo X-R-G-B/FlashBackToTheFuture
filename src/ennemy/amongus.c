@@ -15,7 +15,7 @@
 
 static const char ennemy_among_us[] = "ENNEMY_AMONG_US";
 static const char ennemy_among_us_json[] = "./assets/json/amongus.json";
-static const char ennemy_among_us_png[] = "./assets/amongus.png";
+static const char ennemy_among_us_png[] = "./assets/image/ennemy/amongus.png";
 
 static const float time_max = 1 / 5.0;
 

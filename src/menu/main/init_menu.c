@@ -57,7 +57,6 @@ int init_menu(window_t *win)
     }
     create_scene_loading_basic(win);
     obj = create_object(NULL, NULL, scene, 0);
-    init_main_menu_buttons(scene);
     if (init_main_menu_buttons(scene) == RET_ERR_MALLOC || obj == NULL) {
         return (RET_ERR_MALLOC);
     }

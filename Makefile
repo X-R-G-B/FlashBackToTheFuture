@@ -24,8 +24,13 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS			=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC_ENNEMY	:=	amongus.c				\
-				amongus_change_rect.c
+SRC_ENNEMY	:=	amongus.c					\
+				create_ennemy.c				\
+				amongus_change_rect.c		\
+				ennemy_update.c				\
+				update_ennemy_move.c		\
+				temp_file_temp_path_find.c	\
+				is_player_in_range.c
 SRC_ENNEMY	:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 
 SRC_LAUNCH	:=	launch_game.c					\
