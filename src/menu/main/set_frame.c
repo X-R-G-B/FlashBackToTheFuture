@@ -10,9 +10,13 @@
 void set_60_fps(__attribute__((unused)) object_t *obj, scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *event)
 {
-    list_ptr_t *list = dico_t_get_value(scene->components, SETTINGS_MENU);
+    list_ptr_t *list = NULL;
     object_t *circle = NULL;
 
+    if (scene == NULL) {
+        return;
+    }
+    list = dico_t_get_value(scene->components, SETTINGS_MENU);
     if (list == NULL) {
         return;
     }
@@ -28,9 +32,13 @@ void set_120_fps(__attribute__((unused)) object_t *obj,
     scene_t *scene, window_t *win,
     __attribute__((unused)) set_event_t *event)
 {
-    list_ptr_t *list = dico_t_get_value(scene->components, SETTINGS_MENU);
+    list_ptr_t *list = NULL;
     object_t *circle = NULL;
 
+    if (scene == NULL) {
+        return;
+    }
+    list = dico_t_get_value(scene->components, SETTINGS_MENU);
     if (list == NULL) {
         return;
     }
@@ -47,9 +55,13 @@ void set_144_fps(__attribute__((unused)) object_t *obj,
     window_t *win,
     __attribute__((unused)) set_event_t *event)
 {
-    list_ptr_t *list = dico_t_get_value(scene->components, SETTINGS_MENU);
+    list_ptr_t *list = NULL;
     object_t *circle = NULL;
 
+    if (scene == NULL) {
+        return;
+    }
+    list = dico_t_get_value(scene->components, SETTINGS_MENU);
     if (list == NULL) {
         return;
     }
@@ -65,9 +77,13 @@ void set_165_fps(__attribute__((unused)) object_t *obj,
     scene_t *scene, window_t *win,
     __attribute__((unused)) set_event_t *event)
 {
-    list_ptr_t *list = dico_t_get_value(scene->components, SETTINGS_MENU);
+    list_ptr_t *list = NULL;
     object_t *circle = NULL;
 
+    if (scene == NULL) {
+        return;
+    }
+    list = dico_t_get_value(scene->components, SETTINGS_MENU);
     if (list == NULL) {
         return;
     }
