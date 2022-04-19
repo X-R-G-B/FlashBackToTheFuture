@@ -29,7 +29,6 @@ SRC_ENNEMY	:=	amongus.c					\
 				amongus_change_rect.c		\
 				ennemy_update.c				\
 				update_ennemy_move.c		\
-				temp_file_temp_path_find.c	\
 				is_player_in_range.c
 SRC_ENNEMY	:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 

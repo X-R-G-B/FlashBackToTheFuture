@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include "ennemies.h"
+#include "ennemy_pathfind.h"
 
 static int get_data(any_t **rect_speed, any_t **move_speed, any_t *data,
     any_t **rect_list)
@@ -39,12 +40,12 @@ static void set_new_data(ennemy_t *ennemy, float move, any_t *data, int rect_id)
     free(rect);
 }
 
-static void check_next_move(ennemy_t *ennemy, window_t *win)
+static void check_next_move(ennemy_t *ennemy, window_t *win, scene_t *scene)
 {
     dir_t prev_dir = ennemy->dir;
 
     if (is_player_in_range(ennemy, win) == true) {
-        ennemy->dir = get_new_dir(ennemy->obj, win);
+        ennemy->dir = get_path_find_dir(ennemy->obj, scene);
         if (prev_dir != RIGHT && ennemy->dir == RIGHT) {
             sfSprite_setScale(ennemy->obj->drawable.sprite,
                 (sfVector2f) {-1, 1});
@@ -79,5 +80,5 @@ void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
         }
     }
     set_new_data(ennemy, time * move_speed->value.f, data, rect_id);
-    check_next_move(ennemy, win);
+    check_next_move(ennemy, win, scene);
 }
