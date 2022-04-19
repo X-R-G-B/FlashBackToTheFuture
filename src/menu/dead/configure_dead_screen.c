@@ -5,6 +5,7 @@
 ** configure_dead_screen
 */
 
+#include <stdlib.h>
 #include "my_bgs.h"
 #include "my_bgs_components.h"
 #include "my_rpg.h"
@@ -24,61 +25,42 @@ static void configure_color_for_dead_screen(object_t *dead_message,
     sfSprite_setColor(dead_screen->drawable.sprite, color[1]);
 }
 
-static void go_to_home_from_dead_screen(object_t *object, scene_t *scene,
-    window_t *window, set_event_t *event)
+//variables' values aren't checked because they have been already checked
+void init_dead_screen_pos(list_ptr_t *uid_elements, window_t *win)
 {
     player_t *player = NULL;
+    sfVector2f screen_pos = {0};
 
-    player = (player_t *) dico_t_get_value(window->components, "player");
-    if (player == NULL || player->state != DIE) {
+    player = dico_t_get_value(win->components, "player");
+    if (player == NULL) {
         return;
     }
-    window_change_scene(window, "MAIN MENU");
-    list_add_to_end(window->to_remove, scene);
-    sfView_setCenter(player->view,
-        (sfVector2f) {WIN_SIZE_X / 2, WIN_SIZE_Y / 2});
-    sfRenderWindow_setView(window->win, player->view);
-    window->components = dico_t_rem(window->components, "player");
-    window->components = dico_t_rem(window->components, "pause");
-    window->components = dico_t_rem(window->components, SAVE);
-    window->components = dico_t_rem(window->components, "dead_screen");
-    window->components = dico_t_rem(window->components, "dead_message");
-    pressed_button_off(object, scene, window, event);
-    list_add_to_end(window->to_remove, scene);
-}
-
-void dead_event_input(object_t *object, scene_t *scene,
-    window_t *window, set_event_t *event)
-{
-    player_t *player = NULL;
-
-    if (object == NULL || object->components == NULL ||
-            scene == NULL || window == NULL || event == NULL ||
-                event->input_key.event_type != KEY) {
-        return;
-    }
-    player = dico_t_get_value(window->components, "player");
-    if (player == NULL || player->state != DIE) {
-        return;
-    }
-    if (event->input_key.event_code.key == sfKeyQ) {
-        sfRenderWindow_close(window->win);
-        return;
-    }
-    if (event->input_key.event_code.key == sfKeyH) {
-        go_to_home_from_dead_screen(object, scene, window, event);
-        return;
-    }
+    screen_pos = (sfVector2f) {
+        player->obj->bigdata.sprite_bigdata.pos.x - WIN_SIZE_X / 2,
+        player->obj->bigdata.sprite_bigdata.pos.y - WIN_SIZE_Y / 2
+    };
+    list_add_to_end(uid_elements,
+        dico_t_get_value(win->components, "dead_message"));
+    list_add_to_end(uid_elements,
+        dico_t_get_value(win->components, "dead_screen"));
+    uid_apply_right_pos(dico_t_get_value(win->components,
+        "dead_message"), screen_pos);
+    uid_apply_right_pos(dico_t_get_value(win->components,
+        "dead_screen"), screen_pos);
 }
 
 static void config_input_and_componets(window_t *win,
-    object_t *dead_message, object_t *dead_screen)
+    object_t *dead_message, object_t *dead_screen, scene_t *scene)
 {
+    bool *can_play = malloc(sizeof(bool));
+
+    *can_play = false;
     event_add_node(create_event(dead_event_input, false, dead_message,
         NULL), (node_params_t) {sfMouseLeft, sfKeyQ, KEY});
     event_add_node(create_event(dead_event_input, false, dead_message,
         NULL), (node_params_t) {sfMouseLeft, sfKeyH, KEY});
     configure_color_for_dead_screen(dead_message, dead_screen);
+    scene_add_components(scene, can_play, "can_play", free);
     window_add_component(win, dead_message, "dead_message", NULL);
     window_add_component(win, dead_screen, "dead_screen", NULL);
 }
@@ -98,6 +80,6 @@ int init_dead_menu(window_t *win, scene_t *scene)
         (sfIntRect) {0, 0, 1920, 1080}, (sfVector2f) {960, 540}) != BGS_OK) {
         return RET_ERR_INPUT;
     }
-    config_input_and_componets(win, dead_message, dead_screen);
+    config_input_and_componets(win, dead_message, dead_screen, scene);
     return RET_OK;
 }

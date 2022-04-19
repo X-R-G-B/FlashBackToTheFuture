@@ -82,16 +82,17 @@ static int init_new_scene_components(window_t *win, scene_t *scene)
     list_ptr_t *pause_menu = NULL;
     list_ptr_t *uid_elements = list_create();
 
-    if (uid_elements == NULL || create_map(scene) != RET_OK ||
+    if (win == NULL || uid_elements == NULL || create_map(scene) != RET_OK ||
         create_player(win, scene, PLAYER_DATA) == NULL ||
         add_collision_array_in_scene(scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     pause_menu = create_pause_menu(scene);
-    if (pause_menu == NULL ||
+    if (pause_menu == NULL || init_dead_menu(win, scene) != RET_OK ||
         temp_pause_button(win, pause_menu, scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
+    init_dead_screen_pos(uid_elements, win);
     add_list_obj_to_uid_list(uid_elements, pause_menu,
         dico_t_get_value(win->components, "player"));
     scene->components = dico_t_add_data(scene->components, UID_ELEMENTS,
@@ -109,8 +110,7 @@ int launch_stage(window_t *win, char *stage_path, int stage_id)
     if (scene == NULL || init_new_scene_components(win, scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
-    if (window_change_scene(win, stage_name) != BGS_OK ||
-        init_dead_menu(win, scene) != RET_OK) {
+    if (window_change_scene(win, stage_name) != BGS_OK) {
         return RET_ERR_INPUT;
     }
     free(stage_path);

@@ -57,6 +57,7 @@ SRC_UPDATE		:=	$(addprefix update/,$(SRC_UPDATE))
 SRC_PLAYER	:=	set_stop.c			\
 				create_player.c		\
 				destroy_player.c	\
+				init_player_view.c	\
 				$(SRC_EVENT)		\
 				$(SRC_UPDATE)
 SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))
@@ -72,6 +73,7 @@ SRC_PAUSE	:=	create_pause_menu.c		\
 SRC_PAUSE	:=	$(addprefix pause/,$(SRC_PAUSE))
 
 SRC_DEAD	:=	configure_dead_screen.c	\
+				event_dead_screen.c		\
 				dead_screen.c
 SRC_DEAD	:=	$(addprefix dead/,$(SRC_DEAD))
 

@@ -38,7 +38,8 @@ void move_on(object_t *object, scene_t *scene, window_t *win,
     }
     player = dico_t_get_value(win->components, "player");
     if (player == NULL ||
-        player->state == ATTACKING || player->state == DYING) {
+        player->state == ATTACKING || player->state == DYING ||
+            player->state == DIE) {
         return;
     }
     player->state = MOVING;
@@ -61,7 +62,7 @@ void move_off(object_t *obj, scene_t *scene, window_t *win, set_event_t *event)
     if (player == NULL) {
         return;
     }
-    if (player->state != DYING) {
+    if (player->state != DYING && player->state != DIE) {
         set_stop(player);
     }
 }

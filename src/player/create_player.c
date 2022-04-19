@@ -87,21 +87,8 @@ static int add_event(player_t *player, int *spawn)
                 event_off[1]), node[i]);
         }
     }
+    free(spawn);
     return ret;
-}
-
-sfView *create_view(window_t *win, player_t *player, int *spawn)
-{
-    sfView *view = sfView_create();
-
-    if (view == NULL) {
-        return (NULL);
-    }
-    sfView_setCenter(view, (sfVector2f) {spawn[0], spawn[1]});
-    sfView_setSize(view, (sfVector2f) {WIN_SIZE_X, WIN_SIZE_Y});
-    sfRenderWindow_setView(win->win, view);
-    player->view = view;
-    return (view);
 }
 
 player_t *create_player(window_t *win, scene_t *scene, const char *stats)
