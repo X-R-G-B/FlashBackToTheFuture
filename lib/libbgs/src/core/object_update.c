@@ -60,7 +60,8 @@ void remove_object_this(object_t *this, object_t *other)
     }
     dict_other_col = dico_t_get_elem(this_col->collisions_dico, other_col->key);
     if (dict_other_col != NULL) {
-        dico_t_rem(this_col->collisions_dico, other_col->key);
+        this_col->collisions_dico =
+            dico_t_rem(this_col->collisions_dico, other_col->key);
         this_col->collisions_dico = NULL;
     }
 }
