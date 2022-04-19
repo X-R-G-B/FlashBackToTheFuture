@@ -65,8 +65,7 @@ SRC_MAIN	:=	event_menu.c	\
 				init_menu.c		\
 				pop_up_management.c \
 				set_frame.c			\
-				on_click_event.c	\
-				add_component.c
+				on_click_event.c
 SRC_MAIN	:=	$(addprefix main/,$(SRC_MAIN))
 
 SRC_PAUSE	:=	create_pause_menu.c		\

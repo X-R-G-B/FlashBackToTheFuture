@@ -54,9 +54,9 @@ static int init_main_menu_buttons(scene_t *scene)
         return (RET_ERR_MALLOC);
     }
     set_button_rectangle(main_menu);
-    add_scene_pop_up_component(scene, settings, SETTINGS_MENU);
-    add_scene_pop_up_component(scene, load_game, PLAY);
-    add_scene_pop_up_component(scene, main_menu, MENU);
+    scene_add_components(scene, settings, SETTINGS_MENU, free_pop_up);
+    scene_add_components(scene, load_game, PLAY, free_pop_up);
+    scene_add_components(scene, main_menu, MENU, free_pop_up);
     if (scene->components == NULL) {
         return (RET_ERR_MALLOC);
     }
