@@ -78,7 +78,8 @@ static int ennemy_set_sprite(object_t *ennemy, any_t *ennemy_data,
         return RET_ERR_INPUT;
     }
     if (object_set_sprite(ennemy, sprite->value.str,
-        (sfIntRect) {-1, -1, -1, -1}, pos) != BGS_OK) {
+        (sfIntRect) {-1, -1, -1, -1}, pos) != BGS_OK ||
+        sprite_set_change(ennemy, ennemy_data) != RET_OK) {
         list_add_to_end(scene->to_remove, ennemy);
         return RET_ERR_MALLOC;
     }

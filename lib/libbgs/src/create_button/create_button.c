@@ -103,6 +103,7 @@ list_ptr_t *create_button(scene_t *scene, const char *path)
         ret = get_button_data(scene, get_from_any(any, "da", "buttons", i));
     }
     if (ret != BGS_OK) {
+        destroy_any(any);
         return NULL;
     }
     destroy_any(any);

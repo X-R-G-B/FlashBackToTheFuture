@@ -38,6 +38,8 @@ int create_amongus(scene_t *scene, int pos_x, int pos_y);
 
 int change_amongus_rect(any_t *dico, object_t *obj, window_t *win);
 
+int sprite_set_change(object_t *ennemy, any_t *ennemy_data);
+
 int ennemy_set_stop(ennemy_t *ennemy);
 
 /**
