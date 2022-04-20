@@ -42,16 +42,8 @@ static void update_ennemy_dying(__attribute__((unused)) ennemy_t *ennemy,
 static void update_ennemy_stop(ennemy_t *ennemy, scene_t *scene, window_t *win,
     __attribute__((unused)) float time)
 {
-    dir_t prev_dir = ennemy->dir;
-
     if (is_player_in_range(ennemy, win) == false) {
         return;
-    }
-    ennemy->dir = get_path_find_dir(ennemy->obj, scene);
-    if (prev_dir != RIGHT && ennemy->dir == RIGHT) {
-        sfSprite_setScale(ennemy->obj->drawable.sprite, (sfVector2f) {-1, 1});
-    } else if (prev_dir == RIGHT && ennemy->dir != RIGHT) {
-        sfSprite_setScale(ennemy->obj->drawable.sprite, (sfVector2f) {1, 1});
     }
     ennemy->state = MOVING;
 }

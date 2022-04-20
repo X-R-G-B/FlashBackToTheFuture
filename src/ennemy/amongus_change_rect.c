@@ -30,27 +30,6 @@ static sfVector2f get_position_player(window_t *win)
     return (pos);
 }
 
-static void change_among_us_state(object_t *obj, window_t *win, any_t *state)
-{
-    sfVector2f dir = get_position_player(win);
-    sfVector2f cur = sfSprite_getPosition(obj->drawable.sprite);
-    double angle = 0;
-
-    angle = atan2(cur.y - dir.y, cur.x - dir.x) * 180 / pi;
-    if (45 <= angle && angle < 135 && my_strcmp(state->value.str, GO_UP)) {
-        my_strealloc(&state->value.str, GO_UP);
-    }
-    if ((135 <= angle || -135 > angle) && my_strcmp(state->value.str, GO_RT)) {
-        my_strealloc(&state->value.str, GO_RT);
-    }
-    if (-135 <= angle && angle < -45 && my_strcmp(state->value.str, GO_DN)) {
-        my_strealloc(&state->value.str, GO_DN);
-    }
-    if (-45 <= angle && angle < 45 && my_strcmp(state->value.str, GO_LT)) {
-        my_strealloc(&state->value.str, GO_LT);
-    }
-}
-
 static float *get_amongus_rect(any_t *dico, object_t *obj, window_t *win)
 {
     static float rect[4] = {0};
