@@ -24,10 +24,8 @@ RESET		=	'\033[0m'
 # SRC
 CFLAGS			=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC_ENNEMY	:=	amongus.c					\
-				create_ennemy.c				\
-				amongus_change_rect.c		\
-				follow_player.c				\
+SRC_ENNEMY	:=	create_ennemy.c				\
+				ennemy_get_view_dir.c		\
 				sprite_set_change.c			\
 				ennemy_update.c				\
 				update_ennemy_move.c		\

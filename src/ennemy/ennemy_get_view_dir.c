@@ -5,7 +5,10 @@
 ** ennemy get new dir
 */
 
+#include "math.h"
 #include "my_rpg.h"
+#include "ennemies.h"
+#include "my_json.h"
 
 static const double pi = 3.1415926535;
 
@@ -21,7 +24,7 @@ static sfVector2f get_position_player(window_t *win)
     return (pos);
 }
 
-dir_t ennemy_get_view_dir(object_t *obj, window_t *win)
+static dir_t ennemy_get_view_dir(object_t *obj, window_t *win)
 {
     sfVector2f dir = get_position_player(win);
     sfVector2f cur = sfSprite_getPosition(obj->drawable.sprite);
@@ -40,5 +43,12 @@ dir_t ennemy_get_view_dir(object_t *obj, window_t *win)
     if (-45 <= angle && angle < 45) {
         return LEFT;
     }
+    return UNKNOWN_STATE;
 }
 
+int *get_rect(ennemy_t *ennemy, window_t *win, any_t *data, int rect_id)
+{
+    dir_t view_dir = ennemy_get_view_dir(ennemy->obj, win);
+    return get_any_int_array(get_from_any(data, "daa", "move", view_dir,
+        rect_id));
+}

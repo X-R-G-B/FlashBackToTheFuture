@@ -39,8 +39,9 @@ static void update_ennemy_dying(__attribute__((unused)) ennemy_t *ennemy,
 
 }
 
-static void update_ennemy_stop(ennemy_t *ennemy, scene_t *scene, window_t *win,
-    __attribute__((unused)) float time)
+static void update_ennemy_stop(ennemy_t *ennemy,
+    __attribute__((unused)) scene_t *scene,
+    window_t *win, __attribute__((unused)) float time)
 {
     if (is_player_in_range(ennemy, win) == false) {
         return;

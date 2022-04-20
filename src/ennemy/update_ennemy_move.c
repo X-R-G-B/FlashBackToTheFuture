@@ -24,12 +24,9 @@ static int get_data(any_t **rect_speed, any_t **move_speed, any_t *data,
     return RET_OK;
 }
 
-static void set_new_data(ennemy_t *ennemy, float move, any_t *data, int rect_id)
+static void set_new_data(ennemy_t *ennemy, float move, int *rect)
 {
     sfVector2f news[4] = {{0, 0 - move}, {0 - move, 0}, {0, move}, {move, 0}};
-    dir_t view_dir = ennemy_get_view_dir(ennemy->obj, );
-    int *rect = get_any_int_array(get_from_any(data, "daa", "move", view_dir,
-        rect_id));
 
     ennemy->obj->bigdata.sprite_bigdata.pos.x += news[ennemy->dir].x;
     ennemy->obj->bigdata.sprite_bigdata.pos.y += news[ennemy->dir].y;
@@ -60,14 +57,14 @@ static void set_new_dir(ennemy_t *ennemy, any_t *ennemy_data, scene_t *scene)
     }
 }
 
-static void cross_time(float dtime, any_t *rect_speed, any_t *rect_id,
+static void cross_time(float dtime, any_t *rect_speed, int *rect_id,
     any_t *rect_list)
 {
     for (; dtime >= rect_speed->value.f;
         dtime -= rect_speed->value.f) {
-        rect_id += 1;
-        if (rect_id >= rect_list->value.array->len) {
-            rect_id = 0;
+        *rect_id += 1;
+        if (*rect_id >= rect_list->value.array->len) {
+            *rect_id = 0;
         }
     }
 }
@@ -81,6 +78,7 @@ void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
     any_t *rect_speed = NULL;
     any_t *move_speed = NULL;
     any_t *rect_list = NULL;
+    int *rect = get_rect(ennemy, win, data, rect_id);
 
     if (data == NULL ||
         get_data(&rect_speed, &move_speed, data, &rect_list) != RET_OK) {
@@ -88,8 +86,8 @@ void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
     }
     set_new_dir(ennemy, data, scene);
     dtime += time;
-    cross_time(dtime, rect_speed, rect_id, rect_list);
-    set_new_data(ennemy, time * move_speed->value.f, data, rect_id);
+    cross_time(dtime, rect_speed, &rect_id, rect_list);
+    set_new_data(ennemy, time * move_speed->value.f, rect_id);
     if (is_player_in_range(ennemy, win) == false) {
         rect_id = 0;
         ennemy_set_stop(ennemy);

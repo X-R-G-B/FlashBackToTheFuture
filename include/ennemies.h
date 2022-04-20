@@ -32,13 +32,9 @@ void update_ennemy(object_t *obj, scene_t *scene, window_t *win,
 void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
     float time);
 
-    #define SPEED_ENN_AMONGUS 200
-
-int create_amongus(scene_t *scene, int pos_x, int pos_y);
-
 int change_amongus_rect(any_t *dico, object_t *obj, window_t *win);
 
-dir_t ennemy_get_view_dir(object_t *obj, window_t *win);
+int *get_rect(ennemy_t *ennemy, window_t *win, any_t *data, int rect_id);
 
 int sprite_set_change(object_t *ennemy, any_t *ennemy_data);
 
