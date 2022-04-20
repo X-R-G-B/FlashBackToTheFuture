@@ -52,7 +52,7 @@ layer_t *get_layer(scene_t *scene, int layer)
     list_t *elem = NULL;
     layer_t *layer_elem = NULL;
 
-    if (scene == NULL || scene->layer == NULL || scene->layer->start) {
+    if (scene == NULL || scene->layer == NULL || scene->layer->start == NULL) {
         return (NULL);
     }
     elem = scene->layer->start;
