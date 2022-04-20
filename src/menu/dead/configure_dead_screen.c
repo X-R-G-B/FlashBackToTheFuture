@@ -56,11 +56,25 @@ static void config_input_and_components(window_t *win,
     }
 }
 
+static int add_object_to_update_list(scene_t *scene, object_t *dead_screens)
+{
+    layer_t *tmp_layer = NULL;
+
+    if (scene == NULL || dead_screens == NULL) {
+        return RET_ERR_INPUT;
+    }
+    tmp_layer = get_layer(scene, dead_screens->layer);
+    if (tmp_layer == NULL || tmp_layer->updates == NULL) {
+        return BGS_ERR_INPUT;
+    }
+    list_add_to_end(tmp_layer->updates, dead_screens);
+    return BGS_OK;
+}
+
 int init_dead_menu(window_t *win, scene_t *scene)
 {
     object_t *dead_screens[2] = {NULL, NULL};
     list_ptr_t *dead_objects = create_button(scene, dead_screen_path);
-    layer_t *tmp_layer = NULL;
 
     if (dead_objects == NULL) {
         return BGS_ERR_MALLOC;
@@ -71,8 +85,9 @@ int init_dead_menu(window_t *win, scene_t *scene)
             return BGS_ERR_MALLOC;
         }
         dead_screens[i]->update = dead_screen_update[i];
-        tmp_layer = get_layer(scene, dead_screens[i]->layer);
-        list_add_to_end(tmp_layer->updates, dead_screens[i]);
+        if (add_object_to_update_list(scene, dead_screens[i]) != BGS_OK) {
+            return RET_ERR_INPUT;
+        }
     }
     config_input_and_components(win, dead_screens[0], dead_screens[1], scene);
     return RET_OK;
