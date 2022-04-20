@@ -30,7 +30,7 @@ int object_add_sprite_health(object_t *object, float life, float max_life,
 {
     sprite_health_t *sprite_health = NULL;
 
-    if (object->type != SPRITE) {
+    if (object == NULL || object->type != SPRITE) {
         return BGS_ERR_INPUT;
     }
     sprite_health = malloc(sizeof(sprite_health_t));
@@ -50,8 +50,12 @@ int object_add_sprite_health(object_t *object, float life, float max_life,
 
 int object_add_sprite_move(object_t *object, sfVector2f vect)
 {
-    sprite_move_t *sprite_move = malloc(sizeof(sprite_anim_t));
+    sprite_move_t *sprite_move = NULL;
 
+    if (object == NULL) {
+        return (BGS_ERR_INPUT);
+    }
+    sprite_move = malloc(sizeof(sprite_anim_t));
     if (sprite_move == NULL) {
         return BGS_ERR_MALLOC;
     }
@@ -63,7 +67,7 @@ int object_add_sprite_anim(object_t *object, sfIntRect rect)
 {
     sprite_anim_t *sprite_anim = NULL;
 
-    if (object->type != SPRITE) {
+    if (object == NULL || object->type != SPRITE) {
         return BGS_ERR_INPUT;
     }
     sprite_anim = malloc(sizeof(sprite_anim_t));

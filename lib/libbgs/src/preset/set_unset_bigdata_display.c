@@ -10,10 +10,16 @@
 
 void set_display(object_t *object)
 {
+    if (object == NULL) {
+        return;
+    }
     object->is_visible = true;
 }
 
 void unset_display(object_t *object)
 {
+    if (object == NULL) {
+        return;
+    }
     object->is_visible = false;
 }
