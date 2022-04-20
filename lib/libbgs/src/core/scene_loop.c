@@ -78,7 +78,6 @@ static void scene_layer_handling(scene_t *scene, window_t *win, float seconds)
     list_t *elem = scene->layer->start;
     layer_t *layer = NULL;
 
-    update_framebuffer(win->buf, seconds);
     for (int i = 0; i < scene->layer->len; i++, elem = elem->next) {
         layer = elem->var;
         window_update(layer->updates, win, seconds, scene);
@@ -110,6 +109,9 @@ int scene_handling(window_t **win, time_clock_t *timer, const char *scene_name)
     sfRenderWindow_clear((*win)->win, scene->bg_color);
     timer->time = sfClock_restart(timer->clock);
     timer->seconds = sfTime_asSeconds(timer->time);
+    if ((*win)->loading == NULL || (*win)->loading->thread == NULL) {
+        update_framebuffer((*win)->buf, timer->seconds);
+    }
     scene_layer_handling(scene, *win, timer->seconds);
     window_remove(scene, *win);
     return BGS_OK;
