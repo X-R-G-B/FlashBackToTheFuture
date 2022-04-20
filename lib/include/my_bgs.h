@@ -13,6 +13,7 @@
     #include <stdbool.h>
     #include "list.h"
     #include "my_dico.h"
+    #include "my_bgs_framebuffer.h"
 
     #define BGS_OK 0
     #define BGS_ERR_PATH 1
@@ -108,6 +109,7 @@ struct window_s {
     list_ptr_t *to_remove;
     dico_t *components;
     scene_loading_t *loading;
+    framebuffer_t *buf;
 };
 
 int window_set_icon(window_t *win, char const path[]);
@@ -395,7 +397,7 @@ void remove_scene(void *scene);
 **/
 bool check_list(list_ptr_t *list, void *data);
 
-int obj_change_scene(object_t *obj, scene_t *src, scene_t *dest);
+int object_change_scene(object_t *obj, scene_t *src, scene_t *dest);
 
 layer_t *get_layer(scene_t *scene, int layer);
 

@@ -40,6 +40,7 @@ int check_hover(object_t *object, window_t *win)
         return false;
     }
     vector = get_mouse_pos(win);
+    vector.y += 15;
     if (sfFloatRect_contains(&rect, vector.x, vector.y) == sfTrue) {
         return true;
     } else {

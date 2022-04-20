@@ -35,7 +35,7 @@ static list_ptr_t *browse_list(list_ptr_t *list, int *rect, int *origin,
     list_t *elem = NULL;
 
     elem = list->start->next;
-    for (int i = 0; i < list->len && ret == RET_OK; i++, elem = elem->next) {
+    for (int i = 1; i < list->len && ret == RET_OK; i++, elem = elem->next) {
         file = parse_json_file(data_path);
         if (file == NULL) {
             return NULL;

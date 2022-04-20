@@ -6,14 +6,20 @@
 */
 
 #include <SFML/Graphics.h>
+#include <SFML/System/Vector2.h>
+#include <SFML/Window/VideoMode.h>
 #include <stdlib.h>
 #include "libbgs_private.h"
 #include "my_bgs.h"
+#include "my_bgs_framebuffer.h"
 
 void window_toglle_vsync(window_t *win)
 {
     static sfBool is_vsynced = sfFalse;
 
+    if (win == NULL) {
+        return;
+    }
     if (is_vsynced == sfFalse) {
         sfRenderWindow_setVerticalSyncEnabled(win->win, sfTrue);
         is_vsynced = sfTrue;
@@ -25,6 +31,9 @@ void window_toglle_vsync(window_t *win)
 
 void window_set_framerate_limit(window_t *win, unsigned int limit)
 {
+    if (win == NULL) {
+        return;
+    }
     sfRenderWindow_setFramerateLimit(win->win, limit);
 }
 
@@ -48,6 +57,19 @@ static void create_scene_loading(window_t *win)
     win->loading->scene_name = NULL;
 }
 
+static int window_set_default(window_t *win, sfVideoMode mode)
+{
+    win->components = NULL;
+    win->scenes = NULL;
+    win->click = NULL;
+    win->current_scene = NULL;
+    win->buf = create_framebuffer(mode.width, mode.height, (sfVector2f) {0, 0});
+    if (win->buf == NULL) {
+        return (BGS_ERR_MALLOC);
+    }
+    return (BGS_OK);
+}
+
 window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style)
 {
     window_t *win = malloc(sizeof(window_t));
@@ -55,19 +77,18 @@ window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style)
     if (win == NULL || title == NULL) {
         return NULL;
     }
-    win->components = NULL;
     win->win = sfRenderWindow_create(mode, title, style, NULL);
-    sfRenderWindow_setPosition(win->win, (sfVector2i) {0, 0});
     if (win->win == NULL) {
         return NULL;
     }
-    win->scenes = NULL;
+    sfRenderWindow_setPosition(win->win, (sfVector2i) {0, 0});
     win->to_remove = list_create();
     if (win->to_remove == NULL) {
         return NULL;
     }
-    win->click = NULL;
-    win->current_scene = NULL;
+    if (window_set_default(win, mode) != BGS_OK) {
+        return (NULL);
+    }
     create_scene_loading(win);
     return win;
 }

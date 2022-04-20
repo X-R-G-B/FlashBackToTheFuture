@@ -24,18 +24,18 @@ vect2i_t *create_vectpos(int x, int y)
 
 static int check_pos(vect2i_t *pos, list_ptr_t *tmp, pathfind_impl_t *maps)
 {
-    char curr = maps->origins[pos->y][pos->x];
+    char curr = maps->buffer[pos->y][pos->x];
     vect2i_t poss[4] = {{pos->x + 1, pos->y}, {pos->x, pos->y + 1},
         {pos->x - 1, pos->y}, {pos->x, pos->y - 1}
     };
-    int condd[4] = {pos->x + 1 <= maps->size_x, pos->y + 1 <= maps->size_y,
-        pos->x - 1 >= 0, pos->y - 1 >= 0
+    int condd[4] = {pos->x + 1 < maps->size_x, pos->y + 1 < maps->size_y,
+        pos->x > 0, pos->y > 0
     };
 
     curr = (curr + 1 == maps->wall_char) ? curr + 2 : curr + 1;
     for (int i = 0; i < 4; i++) {
-        if (condd[i] && maps->origins[poss[i].y][poss[i].x] == '\0') {
-            maps->origins[poss[i].y][poss[i].x] = curr;
+        if (condd[i] != 0 && maps->buffer[poss[i].y][poss[i].x] == '\0') {
+            maps->buffer[poss[i].y][poss[i].x] = curr;
             list_add_to_start(tmp, create_vectpos(poss[i].x, poss[i].y));
         }
     }
@@ -77,7 +77,8 @@ int put_distance_buffer(pathfind_impl_t *maps)
 
     list = list_create();
     list_add_to_start(list, create_vectpos(maps->end.x, maps->end.y));
-    while (list != NULL && list->len == 0) {
+    maps->buffer[maps->end.y][maps->end.x] = '\0';
+    while (list != NULL && list->len != 0) {
         tmp = itterate_list(list, maps);
         destroy_list_vect(list);
         list = tmp;

@@ -42,6 +42,9 @@ time_clock_t *init_clock(void)
 
 static void destroy_loop_data(window_t *win, time_clock_t *timer, int ret)
 {
+    if (timer == NULL) {
+        return;
+    }
     if (ret != BGS_OK) {
         sfRenderWindow_close(win->win);
     }

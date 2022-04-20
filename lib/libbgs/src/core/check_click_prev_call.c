@@ -11,7 +11,7 @@ bool check_click_prev_call(bool check, window_t *win, set_event_t *set_event)
 {
     event_node_t *event_node = NULL;
 
-    if (set_event == NULL || set_event->list_event == NULL ||
+    if (win == NULL || set_event == NULL || set_event->list_event == NULL ||
         set_event->list_event->start == NULL) {
         return check;
     }

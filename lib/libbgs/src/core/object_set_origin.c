@@ -12,6 +12,9 @@ static void set_sprite_bigdata(object_t *object)
 {
     sfFloatRect rect = {0};
 
+    if (object == NULL) {
+        return;
+    }
     if (object->bigdata.sprite_bigdata.rect.height != -1) {
         sfSprite_setTextureRect(object->drawable.sprite,
             object->bigdata.sprite_bigdata.rect);
@@ -29,6 +32,9 @@ void object_set_origin(object_t *object)
 {
     sfFloatRect rect = {0};
 
+    if (object == NULL) {
+        return;
+    }
     if (object->type == TEXT) {
         sfText_setPosition(object->drawable.text,
             object->bigdata.text_bigdata.pos);

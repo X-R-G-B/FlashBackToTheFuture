@@ -18,24 +18,19 @@ static void (*dead_screen_update[2])(object_t *, scene_t *,
 void init_dead_screen_pos(list_ptr_t *uid_elements, window_t *win)
 {
     player_t *player = NULL;
-    sfVector2f screen_pos = {0};
 
     player = dico_t_get_value(win->components, "player");
     if (player == NULL) {
         return;
     }
-    screen_pos = (sfVector2f) {
-        player->obj->bigdata.sprite_bigdata.pos.x - WIN_SIZE_X / 2,
-        player->obj->bigdata.sprite_bigdata.pos.y - WIN_SIZE_Y / 2
-    };
     list_add_to_end(uid_elements,
         dico_t_get_value(win->components, "dead_message"));
     list_add_to_end(uid_elements,
         dico_t_get_value(win->components, "dead_screen"));
     uid_apply_right_pos(dico_t_get_value(win->components,
-        "dead_message"), screen_pos);
+        "dead_message"), player->obj);
     uid_apply_right_pos(dico_t_get_value(win->components,
-        "dead_screen"), screen_pos);
+        "dead_screen"), player->obj);
 }
 
 static void config_input_and_components(window_t *win,

@@ -80,7 +80,7 @@ void remove_scene(void *scene_void)
 
 void remove_loading_scene(window_t *win)
 {
-    if (win->loading == NULL) {
+    if (win == NULL || win->loading == NULL) {
         return;
     }
     if (win->loading->mutex != NULL) {
@@ -107,5 +107,6 @@ void remove_window(window_t *win)
     if (win->current_scene != NULL) {
         free(win->current_scene);
     }
+    destroy_framebuffer(win->buf);
     free(win);
 }

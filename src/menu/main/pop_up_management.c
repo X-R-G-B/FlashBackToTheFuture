@@ -19,7 +19,7 @@ void set_is_visible_false(list_ptr_t *list)
 {
     list_t *elem = NULL;
 
-    if (!list) {
+    if (list == NULL) {
         return;
     }
     elem = list->start;
@@ -34,7 +34,7 @@ int check_if_pop_up_true(dico_t *dico, char *key)
     list_t *elem = NULL;
     list_ptr_t *list = dico_t_get_value(dico, key);
 
-    if (!list) {
+    if (list == NULL) {
         return (1);
     }
     elem = list->start;
