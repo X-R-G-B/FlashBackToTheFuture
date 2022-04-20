@@ -55,6 +55,7 @@ typedef struct player_s {
     dir_t dir;
     object_t *obj;
     sfView *view;
+    float life;
 } player_t;
 
 void next_stage(object_t *obj, scene_t *scene, window_t *win, float time);
