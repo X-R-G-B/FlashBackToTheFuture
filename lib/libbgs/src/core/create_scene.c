@@ -32,6 +32,9 @@ int sprite_set_texture(object_t *object, sfVector2f pos, sfIntRect rect,
 
 static int init_list(scene_t *scene)
 {
+    if (scene == NULL) {
+        return (BGS_ERR_INPUT);
+    }
     scene->layer = list_create();
     if (scene->layer == NULL) {
         return BGS_ERR_MALLOC;

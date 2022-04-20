@@ -34,7 +34,7 @@ static void window_display(scene_t *scene, window_t *win, list_ptr_t *display)
     object_t *obj = NULL;
     list_t *elem = NULL;
 
-    if (display == NULL || display->len == 0) {
+    if (display == NULL || display->len == 0 || scene == NULL || win == NULL) {
         return;
     }
     elem = display->start;
@@ -52,9 +52,13 @@ static void window_update(list_ptr_t *updates, window_t *win, float seconds,
     scene_t *scene)
 {
     object_t *obj = NULL;
-    list_t *elem = updates->start;
-    list_t *tmp;
+    list_t *elem = NULL;
+    list_t *tmp = NULL;
 
+    if (updates == NULL || win == NULL || scene == NULL) {
+        return;
+    }
+    elem = updates->start;
     window_update_event(win, scene);
     scene_update_event(win, scene);
     for (int i = 0; i < updates->len &&

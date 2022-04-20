@@ -11,9 +11,13 @@
 
 static void scene_remove_obj(scene_t *scene, void *elem)
 {
-    list_t *list_elem = scene->layer->start;
+    list_t *list_elem = NULL;
     layer_t *layer = NULL;
 
+    if (scene == NULL || scene->layer == NULL) {
+        return;
+    }
+    list_elem = scene->layer->start;
     for (int i = 0; i < scene->layer->len; i++, list_elem = list_elem->next) {
         layer = list_elem->var;
         if (check_list(layer->object, elem) == true) {
@@ -28,6 +32,9 @@ static void check_remove_scene_obj(scene_t *scene)
 {
     list_t *elem = NULL;
 
+    if (scene == NULL || scene->to_remove == NULL) {
+        return;
+    }
     while (scene->to_remove->len > 0 && scene->to_remove->start != NULL) {
         elem = scene->to_remove->start->var;
         scene_remove_obj(scene, elem);
@@ -41,7 +48,7 @@ void window_remove(scene_t *scene, window_t *win)
     dico_t *scene_elem = NULL;
 
     check_remove_scene_obj(scene);
-    if (win == NULL) {
+    if (win == NULL || win->to_remove == NULL) {
         return;
     }
     while (win->to_remove->len > 0 && win->to_remove->start != NULL) {
