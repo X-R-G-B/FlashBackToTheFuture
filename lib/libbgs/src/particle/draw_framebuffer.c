@@ -93,7 +93,7 @@ static int draw_element_s(framebuffer_t *buf, struct element_s *elem)
 
 int draw_framebuffer(window_t *win, framebuffer_t *buf)
 {
-    if (win == NULL || buf == NULL) {
+    if (win == NULL || buf == NULL || buf->texture == NULL) {
         return (BGS_ERR_INPUT);
     }
     clear_framebuffer(buf, sfTransparent);
