@@ -11,6 +11,9 @@
 
 static int change_scene_in_obj_components(object_t *obj, scene_t *dest)
 {
+    if (obj == NULL || dest == NULL) {
+        return (BGS_ERR_INPUT);
+    }
     obj->components = dico_t_rem(obj->components, "scene");
     obj->components = dico_t_add_data(obj->components, "scene", dest, NULL);
     if (obj->components == NULL) {
@@ -21,8 +24,12 @@ static int change_scene_in_obj_components(object_t *obj, scene_t *dest)
 
 static int remove_obj_from_src(object_t *obj, scene_t *src)
 {
-    layer_t *layer = get_layer(src, obj->layer);
+    layer_t *layer = NULL;
 
+    if (obj == NULL || src == NULL) {
+        return (BGS_ERR_INPUT);
+    }
+    layer = get_layer(src, obj->layer);
     if (layer == NULL) {
         return BGS_ERR_INPUT;
     }
@@ -35,8 +42,12 @@ static int remove_obj_from_src(object_t *obj, scene_t *src)
 
 static bool check_obj_have_event(object_t *obj)
 {
-    dico_t *cursor = obj->components;
+    dico_t *cursor = NULL;
 
+    if (obj == NULL) {
+        return (false);
+    }
+    cursor = obj->components;
     if (cursor == NULL) {
         return false;
     }
@@ -53,6 +64,9 @@ static int add_obj_to_dest(object_t *obj, scene_t *dest)
 {
     layer_t *layer = NULL;
 
+    if (obj == NULL || dest == NULL) {
+        return (BGS_ERR_INPUT);
+    }
     if (scene_add_object(dest, obj, obj->layer) != BGS_OK) {
         return BGS_ERR_MALLOC;
     }

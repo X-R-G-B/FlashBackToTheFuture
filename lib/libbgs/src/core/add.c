@@ -13,7 +13,7 @@
 
 int window_add_scene(window_t *win, scene_t *scene, const char *scene_name)
 {
-    if (win == NULL || scene == NULL) {
+    if (win == NULL || scene == NULL || scene_name == NULL) {
         return BGS_ERR_INPUT;
     }
     win->scenes = dico_t_add_data(win->scenes, scene_name, scene,
@@ -26,6 +26,9 @@ int window_add_scene(window_t *win, scene_t *scene, const char *scene_name)
 
 static int add_obj_in_layer(layer_t *layer, object_t *obj)
 {
+    if (layer == NULL || obj == NULL) {
+        return (BGS_ERR_INPUT);
+    }
     if (list_add_to_end(layer->object, obj) == NULL ||
         (obj->update != NULL && list_add_to_end(layer->updates, obj) == NULL) ||
         (obj->display != NULL &&
@@ -37,8 +40,12 @@ static int add_obj_in_layer(layer_t *layer, object_t *obj)
 
 static int create_layer(scene_t *scene, object_t *object, int id, int pos)
 {
-    layer_t *layer = malloc(sizeof(layer_t));
+    layer_t *layer = NULL;
 
+    if (scene == NULL || object == NULL) {
+        return (BGS_ERR_INPUT);
+    }
+    layer = malloc(sizeof(layer_t));
     if (layer == NULL) {
         return BGS_ERR_MALLOC;
     }
@@ -57,9 +64,13 @@ static int create_layer(scene_t *scene, object_t *object, int id, int pos)
 
 static int add_to_layer(scene_t *scene, object_t *object, int layer)
 {
-    list_t *elem = scene->layer->start;
+    list_t *elem = NULL;
     layer_t *ptr = NULL;
 
+    if (scene == NULL || scene->layer == NULL || object == NULL) {
+        return (BGS_ERR_INPUT);
+    }
+    elem = scene->layer->start;
     if (scene->layer->len == 0) {
         return create_layer(scene, object, layer, 0);
     }
@@ -81,8 +92,7 @@ int scene_add_object(scene_t *scene, object_t *object, int layer)
     }
     if (add_to_layer(scene, object, layer) != BGS_OK) {
         return BGS_ERR_MALLOC;
-    } else if (object->type == UNSET &&
-            list_add_to_end(scene->objects, object) == NULL) {
+    } else if (list_add_to_end(scene->objects, object) == NULL) {
         return BGS_ERR_MALLOC;
     }
     return BGS_OK;
