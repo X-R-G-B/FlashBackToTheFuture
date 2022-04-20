@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include "my_bgs.h"
 #include "my_bgs_button_generator.h"
 
 sfColor get_color(any_t *color_arr)
@@ -22,6 +23,9 @@ int set_color(object_t *object, dico_t *dico)
 {
     any_t *color = NULL;
 
+    if (object == NULL || dico == NULL) {
+        return (BGS_ERR_INPUT);
+    }
     if (object->type == SPRITE) {
         color = dico_t_get_any(dico, "color");
         if (color == NULL || color->type != ARRAY) {

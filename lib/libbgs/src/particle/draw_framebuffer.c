@@ -75,6 +75,9 @@ static void draw_elem_circle(framebuffer_t *buf, union elem_data_s *elem)
 
 static int draw_element_s(framebuffer_t *buf, struct element_s *elem)
 {
+    if (elem == NULL || buf == NULL) {
+        return (1);
+    }
     switch (elem->type) {
         case LINE:
             draw_elem_line(buf, &elem->data);
@@ -93,7 +96,8 @@ static int draw_element_s(framebuffer_t *buf, struct element_s *elem)
 
 int draw_framebuffer(window_t *win, framebuffer_t *buf)
 {
-    if (win == NULL || buf == NULL || buf->texture == NULL) {
+    if (win == NULL || buf == NULL || buf->texture == NULL ||
+            buf->pixels == NULL) {
         return (BGS_ERR_INPUT);
     }
     clear_framebuffer(buf, sfTransparent);
