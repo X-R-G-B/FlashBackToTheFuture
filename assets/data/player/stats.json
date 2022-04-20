@@ -1,3 +1,7 @@
 {
-    "oui": "oui"
+    
+    "health max": 100,
+    "level max": 10,
+    "energy max": 100,
+    "xp max": 100
 }
