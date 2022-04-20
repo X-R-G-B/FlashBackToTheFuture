@@ -92,8 +92,7 @@ int scene_add_object(scene_t *scene, object_t *object, int layer)
     }
     if (add_to_layer(scene, object, layer) != BGS_OK) {
         return BGS_ERR_MALLOC;
-    } else if (object->type == UNSET &&
-            list_add_to_end(scene->objects, object) == NULL) {
+    } else if (list_add_to_end(scene->objects, object) == NULL) {
         return BGS_ERR_MALLOC;
     }
     return BGS_OK;
