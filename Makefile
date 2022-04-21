@@ -45,7 +45,8 @@ SRC_LAUNCH	:=	launch_game.c							\
 				add_main_menu_elements_to_uid_list.c	\
 				uid_apply_right_pos.c					\
 				scene_loading_basic.c					\
-				temp_file_temp_pause_button.c
+				temp_file_temp_pause_button.c			\
+				stats_component.c
 SRC_LAUNCH	:=	$(addprefix launch/,$(SRC_LAUNCH))
 
 SRC_SQUARE_UPDATES	:=	is_player_on_square.c	\

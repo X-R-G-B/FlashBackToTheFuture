@@ -17,6 +17,8 @@
     #define WIN_SIZE_Y 1080
     #define WIN_SIZE_X 1920
 
+    #define STATS_UPGRADE_KEY "stats_update_pop_up"
+
     #include <SFML/System/Vector2.h>
     #include "my_bgs.h"
 
@@ -180,5 +182,10 @@ void dead_event_input(object_t *object, scene_t *scene,
     window_t *window, set_event_t *event);
 
 void init_dead_screen_pos(list_ptr_t *uid_elements, window_t *win);
+
+void free_pop_up(void *list);
+
+int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
+    window_t *win);
 
 #endif /* !RPG_H_ */

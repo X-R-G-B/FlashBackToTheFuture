@@ -74,7 +74,8 @@ static int init_new_scene_components(window_t *win, scene_t *scene)
     }
     pause_menu = create_pause_menu(scene);
     if (pause_menu == NULL ||
-        temp_pause_button(win, pause_menu, scene, uid_elements) != RET_OK) {
+        temp_pause_button(win, pause_menu, scene, uid_elements) != RET_OK ||
+        init_stat_upgrade_pop_up(scene, uid_elements, win) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     add_main_menu_elements_to_uid_list(win, scene, uid_elements);
@@ -92,7 +93,7 @@ int launch_stage(window_t *win, char *stage_path, int stage_id,
     scene_t *scene = NULL;
     char *stage_name = get_stage_name(stage_id);
 
-    launch_scene_loading(win, "SCENE_LOADING_BASIC");
+    // launch_scene_loading(win, "SCENE_LOADING_BASIC");
     scene = init_scene(stage_path, win, stage_name);
     if (scene == NULL || move_object_between_scene(win, prev_scene,
         scene) != RET_OK || init_new_scene_components(win, scene) != RET_OK) {
