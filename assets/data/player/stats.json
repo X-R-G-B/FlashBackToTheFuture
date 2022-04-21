@@ -1,4 +1,5 @@
 {
     "oui": "oui",
-    "max_life": 100.0
+    "max_life": 260.0,
+    "max_energy": 1000.0
 }

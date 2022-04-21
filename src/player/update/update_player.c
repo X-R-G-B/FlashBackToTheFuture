@@ -24,4 +24,7 @@ void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
     } else if (player->state >= 0 && player->state <= 2) {
         update_ptr[player->state](player, scene, win, dtime);
     }
+    if (player->life < 0 && player->state != DIE) {
+        player->state = DYING;
+    }
 }
