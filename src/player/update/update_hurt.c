@@ -17,6 +17,7 @@ void check_blink_time_end(float since_start, float dtime, any_t *data,
         return;
     }
     since_start += dtime;
+    printf("%f %f\n", since_start, blink_time->value.f);
     if (since_start >= blink_time->value.f) {
         since_start = 0;
         player->state = STOP;
@@ -28,7 +29,7 @@ void update_hurt(player_t *player, __attribute__((unused)) scene_t *scene,
     __attribute__((unused)) window_t *win, float dtime)
 {
     static float since_start = 0;
-    any_t *data = dico_t_get_value(player->obj->components, PLAYER_DATA);
+    any_t *data = dico_t_get_value(player->obj->components, "data");
 
     if (data == NULL) {
         return;

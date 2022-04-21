@@ -38,6 +38,7 @@ void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
     } else if (player->state >= 0 && player->state <= 4) {
         update_ptr[player->state](player, scene, win, dtime);
     }
+    printf("state%d\n", player->state);
     if (player->state != HURT) {
         player_check_hurt(player, scene);
     }

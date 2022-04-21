@@ -81,7 +81,6 @@ int *get_any_int_array(any_t *array)
     for (int i = 0; i < array->value.array->len; i++, elem = elem->next) {
         any = elem->var;
         if (any->type != INT) {
-            printf("type: %d\n", any->type);
             return NULL;
         }
         ret[i] = any->value.i;

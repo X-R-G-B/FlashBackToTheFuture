@@ -15,11 +15,8 @@ static int browse_rect_list(list_t *elem, list_ptr_t *rect_list,
     int *list_rect = NULL;
     sfIntRect rect = player->obj->bigdata.sprite_bigdata.rect;
 
-    printf("rect %d %d\n", rect.left, rect.top);
-    printf("list len: %d\n", rect_list->len);
     for (int i = 0; i < rect_list->len; i++, elem = elem->next) {
         list_rect = get_any_int_array(get_from_any(elem->var, "a", 0));
-        printf("%d %d\n", list_rect[0], list_rect[1]);
         if (list_rect == NULL) {
             return -1;
         } else if (list_rect[0] == rect.left && list_rect[1] == rect.top) {
@@ -28,7 +25,6 @@ static int browse_rect_list(list_t *elem, list_ptr_t *rect_list,
         }
         free(list_rect);
     }
-    printf("ptn\n");
     return -1;
 }
 
@@ -53,11 +49,10 @@ static sfFloatRect calculate_righ_rect(sfFloatRect player_rect, any_t *hitbox)
     if (rect == NULL) {
         return player_rect;
     }
-    player_rect.left += player_rect.left - rect[0];
-    player_rect.top += player_rect.top - rect[1];
-    player_rect.width += player_rect.width - rect[2];
-    player_rect.height += player_rect.height - rect[3];
-    printf("ca calcul\n");
+    player_rect.left += ((float) rect[0]);
+    player_rect.top += ((float) rect[1]);
+    player_rect.width = ((float) rect[2]);
+    player_rect.height = ((float) rect[3]);
     return player_rect;
 }
 
