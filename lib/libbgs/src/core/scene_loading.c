@@ -55,11 +55,17 @@ int launch_scene_loading(window_t *window, const char *scene_name)
             window->loading->thread != NULL) {
         return (BGS_ERR_INPUT);
     }
+    window->loading->scene_name = NULL;
     window->loading->thread = sfThread_create(scene_loading_loop, window);
-    window->loading->scene_name = my_strdup(scene_name);
-    window->loading->countor += 1;
-    if (window->loading->thread != NULL) {
-        sfThread_launch(window->loading->thread);
+    if (window->loading->thread == NULL) {
+        return (BGS_ERR_MALLOC);
     }
+    window->loading->scene_name = my_strdup(scene_name);
+    if (window->loading->scene_name == NULL) {
+        sfThread_destroy(window->loading->thread);
+        return (BGS_ERR_MALLOC);
+    }
+    window->loading->countor += 1;
+    sfThread_launch(window->loading->thread);
     return (BGS_OK);
 }
