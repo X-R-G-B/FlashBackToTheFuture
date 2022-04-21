@@ -12,7 +12,7 @@ void knockback(object_t *obj, scene_t *scene, window_t *win,
 {
     player_t *player = NULL;
 
-    if (is_player_on_square(win, obj) == false) {
+    if (is_player_on_square(win, obj->bigdata.sprite_bigdata.rect) == false) {
         return;
     }
     player = dico_t_get_value(win->components, "player");
