@@ -38,6 +38,7 @@ SRC_ENNEMY			:=	create_ennemy.c			\
 						ennemy_get_view_dir.c	\
 						sprite_set_change.c		\
 						ennemy_update.c			\
+						add_to_ennemy_list.c	\
 						update_ennemy_move.c	\
 						is_player_in_range.c
 SRC_ENNEMY			:=	$(addprefix ennemy/,$(SRC_ENNEMY))
@@ -76,12 +77,15 @@ SRC_EVENT			:=	$(addprefix event/,$(SRC_EVENT))
 
 SRC_UPDATE			:=	update_player.c							\
 						increment_uid_pos.c						\
+						update_hurt.c							\
 						update_movement.c						\
 						update_attack.c
 SRC_UPDATE			:=	$(addprefix update/,$(SRC_UPDATE))
 
 SRC_PLAYER			:=	set_stop.c								\
 						create_player.c							\
+						player_check_hurt_during_attack.c		\
+						player_check_hurt.c						\
 						destroy_player.c						\
 						$(SRC_EVENT)							\
 						$(SRC_UPDATE)

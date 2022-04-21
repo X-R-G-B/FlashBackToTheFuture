@@ -85,7 +85,7 @@ static int browse_squares_pos(scene_t *scene, char **map, dico_t *char_type)
     }
     my_wordarray_free(map);
     create_ennemy(scene, "./assets/data/ennemy/amongus.json",
-        (sfVector2f) {190, 900});
+        (sfVector2f) {590, 500});
     return ret;
 }
 
