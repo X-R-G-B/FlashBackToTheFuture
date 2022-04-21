@@ -68,7 +68,7 @@ static int init_new_scene_components(window_t *win, scene_t *scene)
     list_ptr_t *uid_elements = list_create();
 
     if (win == NULL || uid_elements == NULL || create_map(scene) != RET_OK ||
-        create_player(win, scene, PLAYER_DATA) == NULL ||
+        create_player(win, scene, PLAYER_STATS) == NULL ||
         add_collision_array_in_scene(scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
@@ -97,7 +97,8 @@ int launch_stage(window_t *win, char *stage_path, int stage_id,
         scene) != RET_OK || init_new_scene_components(win, scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
-    if (window_change_scene(win, stage_name) != BGS_OK) {
+    if (window_change_scene(win, stage_name) != BGS_OK ||
+        init_life_hud(win, scene) != RET_OK) {
         return RET_ERR_INPUT;
     }
     free(stage_path);

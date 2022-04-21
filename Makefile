@@ -79,6 +79,9 @@ SRC_PLAYER	:=	set_stop.c			\
 				$(SRC_UPDATE)
 SRC_PLAYER	:=	$(addprefix player/,$(SRC_PLAYER))
 
+SRC_HUD		:= life_hud.c
+SRC_HUD		:= $(addprefix hud/,$(SRC_HUD))
+
 SRC_MAIN	:=	event_menu.c	\
 				init_menu.c		\
 				pop_up_management.c \
@@ -119,7 +122,8 @@ SRC			:=	main.c				\
         		$(SRC_MENU)			\
 				$(SRC_PLAYER)		\
 				$(SRC_ENNEMY)		\
-				$(SRC_METEO)
+				$(SRC_METEO)		\
+				$(SRC_HUD)
 SRC			:= 	$(addprefix src/,$(SRC))
 
 OBJ				:=	$(SRC:%.c=%.o)

@@ -182,4 +182,6 @@ void dead_event_input(object_t *object, scene_t *scene,
 
 void init_dead_screen_pos(list_ptr_t *uid_elements, window_t *win);
 
+int init_life_hud(window_t *win, scene_t *scene);
+
 #endif /* !RPG_H_ */
