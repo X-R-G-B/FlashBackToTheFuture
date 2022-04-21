@@ -36,7 +36,7 @@ set_event_t *create_event(void (*on)(object_t *, scene_t *, window_t *,
 {
     set_event_t *event = malloc(sizeof(set_event_t));
 
-    if (event == NULL) {
+    if (event == NULL || object == NULL) {
         return NULL;
     }
     event->on = on;

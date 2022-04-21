@@ -14,7 +14,7 @@ static void free_node_elem(list_t *to_remove, framebuffer_t *buf)
 {
     struct element_s *elem = NULL;
 
-    if (buf->elements == NULL) {
+    if (buf == NULL || buf->elements == NULL) {
         return;
     }
     if (buf->elements == to_remove->var) {

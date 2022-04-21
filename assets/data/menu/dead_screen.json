@@ -1,0 +1,16 @@
+{
+    "buttons": [
+        {
+            "sprite path": "./assets/image/menu/dead/dead_message.png",
+            "pos": [540.0, 960.0],
+            "color": [255, 255, 255, 0],
+            "plan": -3
+        },
+        {
+            "sprite path": "./assets/image/menu/dead/dead_screen.png",
+            "pos": [540.0, 960.0],
+            "color": [255, 255, 255, 0],
+            "plan": -3
+        }
+    ]
+}

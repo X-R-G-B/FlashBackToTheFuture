@@ -5,6 +5,7 @@
 ** id_generator
 */
 
+#include <stddef.h>
 #include "my_strings.h"
 
 unsigned char *get_id_generator(char dest[255])
@@ -12,6 +13,9 @@ unsigned char *get_id_generator(char dest[255])
     static unsigned char keys[255] = {0};
     static int index = 0;
 
+    if (dest == NULL) {
+        return (keys);
+    }
     if (keys[index] >= 254) {
         index++;
     }
@@ -33,6 +37,9 @@ char *get_id_generator_cat(char dest[255])
     char id[255];
     int i = 0;
 
+    if (dest == NULL) {
+        return (dest);
+    }
     get_id_generator(id);
     size = my_strlen(dest);
     for (i = size; i < 254 && id[i - size] != '\0'; i++) {

@@ -10,6 +10,9 @@
 
 static void destroy_image(void *data)
 {
+    if (data == NULL) {
+        return;
+    }
     sfImage_destroy(data);
 }
 

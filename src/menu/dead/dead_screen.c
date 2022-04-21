@@ -53,7 +53,7 @@ void update_dead_screen(object_t *object, scene_t *scene,
     window_t *window, float delta_time)
 {
     static float time_elapsed = 0;
-    sfColor opacity = sfBlue;
+    sfColor opacity = sfRed;
     player_t *player = NULL;
 
     if (object == NULL || object->is_visible == false || window == NULL ||

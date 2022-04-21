@@ -1,0 +1,40 @@
+/*
+** EPITECH PROJECT, 2022
+** myrpg
+** File description:
+** check if segment is in rect
+*/
+
+#include <SFML/Config.h>
+#include <SFML/Graphics/Rect.h>
+#include <SFML/System/Vector2.h>
+#include <stdbool.h>
+#include "my_bgs.h"
+#include "my_macro.h"
+
+static int nb_intervals = 100;
+
+bool rect_contains_segment(
+    sfFloatRect rect,
+    sfVector2f point_a,
+    sfVector2f point_b)
+{
+    sfVector2f delta_x = {
+        .x = (point_a.x - point_b.x) / nb_intervals,
+        .y = (point_a.x - point_b.y) / nb_intervals
+    };
+    sfVector2f cursor = {.x = point_b.x, .y = point_b.y};
+
+    if (sfFloatRect_contains(&rect, point_a.x, point_b.y) == sfTrue ||
+        sfFloatRect_contains(&rect, point_b.x, point_b.y) == sfTrue) {
+        return (true);
+    }
+    for (int i = 0; i < nb_intervals; i++) {
+        if (sfFloatRect_contains(&rect, cursor.x, cursor.y) == sfTrue) {
+            return (true);
+        }
+        cursor.x += delta_x.x;
+        cursor.y += delta_x.y;
+    }
+    return (false);
+}
