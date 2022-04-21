@@ -11,8 +11,10 @@ void knockback(object_t *obj, scene_t *scene, window_t *win,
     __attribute__((unused)) float time)
 {
     player_t *player = NULL;
+    sfFloatRect rect_f = sfSprite_getGlobalBounds(obj->drawable.sprite);
+    sfIntRect rect = {rect_f.left, rect_f.top, rect_f.width, rect_f.height};
 
-    if (is_player_on_square(win, obj) == false) {
+    if (is_player_on_square(win, rect) == false) {
         return;
     }
     player = dico_t_get_value(win->components, "player");

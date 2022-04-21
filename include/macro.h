@@ -19,4 +19,14 @@
     #define GO_LT "3"
     #define GO_DN "2"
 
+    #include <stdbool.h>
+    #include <SFML/Graphics/Rect.h>
+    #include <SFML/System/Vector2.h>
+
+bool rect_contains_segment(
+    sfFloatRect rect,
+    sfVector2f point_a,
+    sfVector2f point_b
+);
+
 #endif

@@ -5,6 +5,7 @@
 ** object check event
 */
 
+#include <stdbool.h>
 #include <stdlib.h>
 #include "my_bgs.h"
 #include "my_strings.h"
@@ -13,6 +14,9 @@
 
 static bool check_node(event_node_t *node, set_event_t *set_event)
 {
+    if (node == NULL || set_event == NULL) {
+        return (false);
+    }
     if (node->event_type == MOUSE) {
         if (sfMouse_isButtonPressed(node->event_code.mouse) == sfTrue) {
             set_event->input_key.event_type = MOUSE;
@@ -36,6 +40,9 @@ static bool check_event_nodes(set_event_t *set_event, object_t *object,
     event_node_t *node = NULL;
     list_t *elem = NULL;
 
+    if (set_event == NULL || object == NULL || win == NULL) {
+        return (false);
+    }
     if (set_event->hover == true) {
         check = check_hover(object, win);
     }
@@ -53,6 +60,9 @@ static bool check_event_nodes(set_event_t *set_event, object_t *object,
 void check_off_event(set_event_t *set_event, object_t *obj,
     window_t *win, scene_t *scene)
 {
+    if (set_event == NULL || obj == NULL || win == NULL || scene == NULL) {
+        return;
+    }
     if (set_event->prev_call == true && sfRenderWindow_isOpen(win->win)) {
         if (set_event->off != NULL) {
             set_event->off(obj, scene, win, set_event);
@@ -69,7 +79,7 @@ void check_event(set_event_t *set_event, object_t *object,
 {
     bool check = true;
 
-    if (set_event == NULL ||
+    if (set_event == NULL || object == NULL || win == NULL || scene == NULL ||
         (set_event->list_event == NULL && set_event->hover == false)) {
         return;
     }
@@ -89,8 +99,12 @@ void check_event(set_event_t *set_event, object_t *object,
 void object_check_event(object_t *object, scene_t *scene,
     window_t *win)
 {
-    dico_t *cursor = object->components;
+    dico_t *cursor = NULL;
 
+    if (object == NULL || scene == NULL || win == NULL) {
+        return;
+    }
+    cursor = object->components;
     if (cursor == NULL) {
         return;
     }

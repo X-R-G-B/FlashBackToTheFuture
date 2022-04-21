@@ -7,4 +7,4 @@ my_rpg
 *.swp
 butto.png
 vgcore*
-debug
+debug/

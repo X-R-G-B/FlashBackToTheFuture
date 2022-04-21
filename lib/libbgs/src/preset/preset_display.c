@@ -9,8 +9,12 @@
 
 void display_sprite(object_t *object,
     __attribute__((unused)) dico_t *scene_compoenents,
-    __attribute__((unused)) dico_t *win_components, sfRenderWindow *win)
+    __attribute__((unused)) dico_t *win_components,
+    sfRenderWindow *win)
 {
+    if (object == NULL) {
+        return;
+    }
     if (object->type != SPRITE ||
         object->is_visible == false) {
         return;
@@ -29,8 +33,12 @@ void display_sprite(object_t *object,
 
 void display_text(object_t *object,
     __attribute__((unused)) dico_t *scene_components,
-    __attribute__((unused)) dico_t *win_components, sfRenderWindow *win)
+    __attribute__((unused)) dico_t *win_components,
+    sfRenderWindow *win)
 {
+    if (object == NULL) {
+        return;
+    }
     if (object->type != TEXT ||
         object->is_visible == false) {
         return;
