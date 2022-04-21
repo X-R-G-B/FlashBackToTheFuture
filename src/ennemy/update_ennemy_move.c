@@ -12,6 +12,9 @@
 static int get_data(any_t **rect_speed, any_t **move_speed, any_t *data,
     any_t **rect_list)
 {
+    if (data == NULL) {
+        return RET_ERR_INPUT;
+    }
     *rect_speed = dico_t_get_any(data->value.dict,
         "rect actualisation");
     *move_speed = dico_t_get_any(data->value.dict, "speed");
@@ -57,11 +60,11 @@ static void set_new_dir(ennemy_t *ennemy, any_t *ennemy_data, scene_t *scene)
     }
 }
 
-static void cross_time(float dtime, any_t *rect_speed, int *rect_id,
+static void cross_time(float *dtime, any_t *rect_speed, int *rect_id,
     any_t *rect_list)
 {
-    for (; dtime >= rect_speed->value.f;
-        dtime -= rect_speed->value.f) {
+    for (; *dtime >= rect_speed->value.f;
+        *dtime -= rect_speed->value.f) {
         *rect_id += 1;
         if (*rect_id >= rect_list->value.array->len) {
             *rect_id = 0;
@@ -78,16 +81,16 @@ void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
     any_t *rect_speed = NULL;
     any_t *move_speed = NULL;
     any_t *rect_list = NULL;
-    int *rect = get_rect(ennemy, win, data, rect_id);
+    int *rect = NULL;
 
-    if (data == NULL ||
-        get_data(&rect_speed, &move_speed, data, &rect_list) != RET_OK) {
+    if (get_data(&rect_speed, &move_speed, data, &rect_list) != RET_OK) {
         return;
     }
     set_new_dir(ennemy, data, scene);
     dtime += time;
-    cross_time(dtime, rect_speed, &rect_id, rect_list);
-    set_new_data(ennemy, time * move_speed->value.f, rect_id);
+    cross_time(&dtime, rect_speed, &rect_id, rect_list);
+    rect = get_rect(ennemy, win, data, rect_id);
+    set_new_data(ennemy, time * move_speed->value.f, rect);
     if (is_player_in_range(ennemy, win) == false) {
         rect_id = 0;
         ennemy_set_stop(ennemy);
