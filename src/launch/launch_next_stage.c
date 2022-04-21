@@ -31,9 +31,9 @@ static int create_scene_objects(window_t *win, scene_t *prev_scene,
     int *spawn = NULL;
     player_t *player = dico_t_get_value(win->components, "player");
 
-    if (move_object_between_scene(win, prev_scene, scene) != RET_OK ||
-        create_map(scene) != RET_OK ||
-        add_collision_array_in_scene(scene) != RET_OK) {
+    if (move_object_between_scene(win, prev_scene, scene) != RET_OK
+        /*create_map(scene) != RET_OK ||
+        add_collision_array_in_scene(scene) != RET_OK*/) {
         return RET_ERR_MALLOC;
     }
     spawn = get_player_spawn(scene);

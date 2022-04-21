@@ -16,7 +16,7 @@ static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
     knockback, next_stage
 };
 
-static const char square_type_update[] = "p";
+static const char square_type_update[] = "pz";
 
 static void get_square_update(char current_char,
     void (**update)(object_t *, scene_t *, window_t *, float))
