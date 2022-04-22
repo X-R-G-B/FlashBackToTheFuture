@@ -40,7 +40,7 @@ static int set_default_energy(player_t *player, any_t *stats)
 
 int set_player_default_stats(player_t *player, any_t *stats)
 {
-    if (player == NULL || stats) {
+    if (player == NULL || stats == NULL) {
         return RET_ERR_INPUT;
     }
     if (set_default_life(player, stats) != RET_OK ||
