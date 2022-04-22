@@ -59,23 +59,6 @@ void update_energy_hud(object_t *object, scene_t *scene,
     update_hud_stats(object, player, "max_energy", player->energy);
 }
 
-static int set_default_energy(player_t *player)
-{
-    any_t *stats = NULL;
-    any_t *energy = NULL;
-
-    stats = dico_t_get_value(player->obj->components, "stats");
-    if (stats == NULL || stats->type != DICT) {
-        return RET_ERR_INPUT;
-    }
-    energy = dico_t_get_value(stats->value.dict, "max_energy");
-    if (energy == NULL || energy->type != FLOAT) {
-        return RET_ERR_INPUT;
-    }
-    player->energy = energy->value.f;
-    return RET_OK;
-}
-
 static int create_energy_hud(object_t **energy_hud, player_t **player,
     scene_t *scene, window_t *win)
 {
@@ -100,9 +83,6 @@ int init_energy_hud(window_t *win, scene_t *scene)
         return RET_ERR_INPUT;
     }
     if (create_energy_hud(&energy_hud, &player, scene, win) != RET_OK) {
-        return RET_ERR_INPUT;
-    }
-    if (set_default_energy(player) != RET_OK) {
         return RET_ERR_INPUT;
     }
     if (add_hud_to_uid_element(scene, energy_hud, player) != RET_OK) {

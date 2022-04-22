@@ -66,6 +66,9 @@ static player_t *add_components(player_t *player, const char *stats)
     if (player->obj->components == NULL) {
         return NULL;
     }
+    if (set_player_default_stats(player, stat) != RET_OK) {
+        return NULL;
+    }
     set_stop(player);
     return player;
 }
