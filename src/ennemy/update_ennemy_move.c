@@ -9,16 +9,20 @@
 #include "ennemies.h"
 #include "ennemy_pathfind.h"
 
+static const char rect_actualisation[] = "rect actualisation";
+static const char speed[] = "speed";
+static const char scale[] = "scale";
+static const char move_dict[] = "move";
+
 static int get_data(any_t **rect_speed, any_t **move_speed, any_t *data,
     any_t **rect_list)
 {
     if (data == NULL) {
         return RET_ERR_INPUT;
     }
-    *rect_speed = dico_t_get_any(data->value.dict,
-        "rect actualisation");
-    *move_speed = dico_t_get_any(data->value.dict, "speed");
-    *rect_list = get_from_any(data, "da", "move", 0);
+    *rect_speed = dico_t_get_any(data->value.dict, rect_actualisation);
+    *move_speed = dico_t_get_any(data->value.dict, speed);
+    *rect_list = get_from_any(data, "da", move_dict, 0);
     if (*rect_speed == NULL || (*rect_speed)->type != FLOAT ||
         *move_speed == NULL || (*move_speed)->type != FLOAT ||
         *rect_list == NULL || (*rect_list)->type != ARRAY) {
@@ -44,7 +48,7 @@ static void set_new_data(ennemy_t *ennemy, float move, int *rect)
 static void set_new_dir(ennemy_t *ennemy, any_t *ennemy_data, scene_t *scene)
 {
     dir_t prev_dir = ennemy->dir;
-    any_t *scale = dico_t_get_any(ennemy_data->value.dict, "scale");
+    any_t *scale = dico_t_get_any(ennemy_data->value.dict, scale);
     float scale_value = 1;
 
     ennemy->dir = get_path_find_dir(ennemy->obj, scene);
@@ -81,16 +85,16 @@ void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
     any_t *rect_speed = NULL;
     any_t *move_speed = NULL;
     any_t *rect_list = NULL;
-    int *rect = NULL;
 
-    if (get_data(&rect_speed, &move_speed, data, &rect_list) != RET_OK) {
+    if (get_data(&rect_speed, &move_speed, data, &rect_list) != RET_OK ||
+        ennemy == NULL || ennemy->obj == NULL || scene == NULL || win == NULL) {
         return;
     }
     set_new_dir(ennemy, data, scene);
     dtime += time;
     cross_time(&dtime, rect_speed, &rect_id, rect_list);
-    rect = get_rect(ennemy, win, data, rect_id);
-    set_new_data(ennemy, time * move_speed->value.f, rect);
+    set_new_data(ennemy, time * move_speed->value.f,
+        get_rect(ennemy, win, data, rect_id));
     if (is_player_in_range(ennemy, win) == false) {
         rect_id = 0;
         ennemy_set_stop(ennemy);

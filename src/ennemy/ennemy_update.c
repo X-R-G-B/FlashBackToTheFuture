@@ -32,7 +32,8 @@ static void update_ennemy_stop(ennemy_t *ennemy,
     __attribute__((unused)) scene_t *scene,
     window_t *win, __attribute__((unused)) float time)
 {
-    if (is_player_in_range(ennemy, win) == false) {
+    if (ennemy == NULL || ennemy->obj == NULL ||
+        is_player_in_range(ennemy, win) == false) {
         return;
     }
     ennemy->state = MOVING;
@@ -41,8 +42,12 @@ static void update_ennemy_stop(ennemy_t *ennemy,
 void update_ennemy(object_t *obj, scene_t *scene, window_t *win,
     float dtime)
 {
-    ennemy_t *ennemy = dico_t_get_value(obj->components, "struct");
+    ennemy_t *ennemy = NULL;
 
+    if (obj == NULL) {
+        return;
+    }
+    ennemy = dico_t_get_value(obj->components, "struct");
     if (ennemy == NULL) {
         return;
     }
