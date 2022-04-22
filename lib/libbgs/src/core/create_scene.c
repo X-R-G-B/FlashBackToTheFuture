@@ -22,6 +22,9 @@ static void check_destroy(object_t *object)
 int sprite_set_texture(object_t *object, sfVector2f pos, sfIntRect rect,
     const char *path)
 {
+    if (object == NULL || path == NULL) {
+        return BGS_ERR_INPUT;
+    }
     object->drawable.sprite = sfSprite_create();
     object->bigdata.sprite_bigdata.texture =
         sfTexture_createFromFile(path, NULL);

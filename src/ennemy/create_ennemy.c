@@ -5,7 +5,7 @@
 ** create ennemy
 */
 
-#include "stdlib.h"
+#include <stdlib.h>
 #include "my_json.h"
 #include "my_rpg.h"
 #include "macro.h"
@@ -31,7 +31,7 @@ int ennemy_set_stop(ennemy_t *ennemy)
     any_t *ennemy_data = NULL;
     any_t *stop_rect = NULL;
 
-    if (ennemy == NULL) {
+    if (ennemy == NULL || ennemy->obj == NULL) {
         return RET_ERR_INPUT;
     }
     ennemy_data = dico_t_get_value(ennemy->obj->components, ENNEMY_DATA);

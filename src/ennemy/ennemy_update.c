@@ -52,8 +52,12 @@ static void update_ennemy_stop(ennemy_t *ennemy,
 void update_ennemy(object_t *obj, scene_t *scene, window_t *win,
     float dtime)
 {
-    ennemy_t *ennemy = dico_t_get_value(obj->components, "struct");
+    ennemy_t *ennemy = NULL;
 
+    if (obj == NULL) {
+        return;
+    }
+    ennemy = dico_t_get_value(obj->components, "struct");
     if (ennemy == NULL) {
         return;
     }

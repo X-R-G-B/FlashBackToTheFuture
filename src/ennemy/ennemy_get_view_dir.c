@@ -52,6 +52,9 @@ int *get_rect(ennemy_t *ennemy, window_t *win, any_t *data, int rect_id)
     any_t *scale = dico_t_get_value(data->value.dict, "scale");
     float scale_value = 1;
 
+    if (ennemy == NULL || win == NULL || data == NULL) {
+        return NULL;
+    }
     if (scale != NULL && scale->type == FLOAT) {
         scale_value = scale->value.f;
     }
