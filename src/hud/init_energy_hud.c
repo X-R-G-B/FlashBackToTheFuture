@@ -25,7 +25,7 @@ static void retake_energy(float time_elapsed, player_t *player)
     if (stats == NULL || stats->type != DICT) {
         return;
     }
-    max_stat_data = dico_t_get_value(stats->value.dict, "max_energy");
+    max_stat_data = dico_t_get_value(stats->value.dict, energy_hud_name);
     if (max_stat_data == NULL || max_stat_data->type != FLOAT ||
             player->energy + 5 > max_stat_data->value.f) {
         return;
@@ -57,7 +57,7 @@ void update_energy_hud(object_t *object, scene_t *scene,
         return;
     }
     prev_stat_value = player->energy;
-    update_hud_stats(object, player, "max_energy", player->energy);
+    update_hud_stats(object, player, energy_hud_name, player->energy);
 }
 
 static int create_energy_hud(object_t **energy_hud, player_t **player,
