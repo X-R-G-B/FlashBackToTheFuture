@@ -1,0 +1,20 @@
+{
+    "sprite path": "./assets/image/npc/magician.png",
+    "scale": 2,
+    "rects": [],
+    "bg_color": "yellow",
+    "dialogues": [
+        {
+            "text": "coucou toi",
+            "seconds": -1
+        },
+        {
+            "text": "ceci va disparaitre dans 5seconds",
+            "seconds": 5
+        },
+        {
+            "text": "choose answer between:",
+            "options": ["ok gros", "ptdr"]
+        }
+    ]
+}
