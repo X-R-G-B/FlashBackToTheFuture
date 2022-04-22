@@ -34,9 +34,12 @@ SRC_METEO			:=	add_leaf.c								\
 SRC_METEO			:=	$(addprefix meteo/,$(SRC_METEO))
 # ----------------------------------------------------------------------------
 # --------- SRC_ENNEMY -------------------------------------------------------
-SRC_ENNEMY			:=	amongus.c								\
-						amongus_change_rect.c					\
-						follow_player.c
+SRC_ENNEMY			:=	create_ennemy.c			\
+						ennemy_get_view_dir.c	\
+						sprite_set_change.c		\
+						ennemy_update.c			\
+						update_ennemy_move.c	\
+						is_player_in_range.c
 SRC_ENNEMY			:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 # ----------------------------------------------------------------------------
 # -------- SRC_LAUNCH --------------------------------------------------------

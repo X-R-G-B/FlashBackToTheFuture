@@ -31,6 +31,8 @@ int set_event(object_t *object, dico_t *dico);
 
 list_ptr_t *fill_obj_list(list_t *elem, scene_t *scene);
 
+void destroy_pos_array(float *text, float *pos);
+
 int set_color(object_t *object, dico_t *dico);
 
 /**

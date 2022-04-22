@@ -7,8 +7,8 @@
 
 #include "my_rpg.h"
 
-void knockback(object_t *obj, scene_t *scene, window_t *win,
-    __attribute__((unused)) float time)
+void knockback(object_t *obj, __attribute__((unused)) scene_t *scene,
+    window_t *win, __attribute__((unused)) float time)
 {
     player_t *player = NULL;
     sfFloatRect rect_f = sfSprite_getGlobalBounds(obj->drawable.sprite);

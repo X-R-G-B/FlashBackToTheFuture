@@ -12,6 +12,7 @@
 #include "my_strings.h"
 #include "meteo.h"
 #include "my_bgs_button_generator.h"
+#include "ennemy_pathfind.h"
 
 static const int back_color[] = {51, 136, 238};
 

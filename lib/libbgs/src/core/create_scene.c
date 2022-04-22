@@ -9,14 +9,28 @@
 #include "my_bgs.h"
 #include "libbgs_private.h"
 
+static void check_destroy(object_t *object)
+{
+    if (object->drawable.sprite != NULL) {
+        sfSprite_destroy(object->drawable.sprite);
+    }
+    if (object->bigdata.sprite_bigdata.texture != NULL) {
+        sfTexture_destroy(object->bigdata.sprite_bigdata.texture);
+    }
+}
+
 int sprite_set_texture(object_t *object, sfVector2f pos, sfIntRect rect,
     const char *path)
 {
+    if (object == NULL || path == NULL) {
+        return BGS_ERR_INPUT;
+    }
     object->drawable.sprite = sfSprite_create();
     object->bigdata.sprite_bigdata.texture =
         sfTexture_createFromFile(path, NULL);
     if (object->drawable.sprite == NULL ||
         object->bigdata.sprite_bigdata.texture == NULL) {
+        check_destroy(object);
         return BGS_ERR_MALLOC;
     }
     sfSprite_setTexture(object->drawable.sprite,
