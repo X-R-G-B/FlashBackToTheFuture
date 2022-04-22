@@ -4,7 +4,5 @@
     "pos": [10, 10],
     "current": 0,
     "time": 0.0,
-    "scale": 1.0,
-    "texts": ["salut", "coucou"],
-    "current texts": 0
+    "scale": 1.0
 }
