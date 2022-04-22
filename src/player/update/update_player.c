@@ -17,6 +17,7 @@ static void (*update_ptr[])(player_t *, scene_t *, window_t *, float) = {
     update_attack,
     update_movements,
     update_stop,
+    update_dead,
     update_dead
 };
 

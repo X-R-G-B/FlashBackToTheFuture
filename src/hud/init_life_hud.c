@@ -27,7 +27,8 @@ void update_life_hud(object_t *object, scene_t *scene,
     if (player == NULL) {
         return;
     }
-    if (player->life == prev_stat_value || player->life < 0) {
+    if (player->life == prev_stat_value ||
+            (player->life < 0 && prev_stat_value < 0)) {
         return;
     }
     prev_stat_value = player->life;

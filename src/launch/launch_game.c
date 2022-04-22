@@ -11,8 +11,7 @@
 int launch_game(void)
 {
     sfVideoMode mode = {1920, 1080, 32};
-    window_t *win = create_window(mode, "My_Rpg", sfResize | sfClose |
-        sfFullscreen);
+    window_t *win = create_window(mode, "My_Rpg", sfResize | sfClose);
 
     if (win == NULL || init_menu(win) != RET_OK ||
         window_change_scene(win, "MAIN MENU") != BGS_OK ||

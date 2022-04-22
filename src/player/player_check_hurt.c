@@ -41,7 +41,7 @@ static void set_hurt(player_t *player)
     set_stop(player);
     player->obj->components = dico_t_add_data(player->obj->components, "hurt",
         ((void *) hurt), NULL);
-    player->life -= 20;
+    player->life -= 100;
 }
 
 void player_check_hurt(player_t *player, scene_t *scene)
