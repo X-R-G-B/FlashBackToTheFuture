@@ -99,6 +99,7 @@ int launch_stage(window_t *win, char *stage_path, int stage_id,
             scene) != RET_OK || init_dead_menu(win, scene) != RET_OK ||
             init_new_scene_components(win, scene) != RET_OK ||
             init_hud(win, scene) != RET_OK) {
+                printf("Salut\n");
         return RET_ERR_MALLOC;
     }
     if (window_change_scene(win, stage_name) != BGS_OK) {

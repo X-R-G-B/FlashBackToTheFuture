@@ -93,5 +93,6 @@ int init_energy_hud(window_t *win, scene_t *scene)
             player->energy) != RET_OK) {
         return RET_ERR_INPUT;
     }
+    printf("ENERGY HUD\n");
     return RET_OK;
 }

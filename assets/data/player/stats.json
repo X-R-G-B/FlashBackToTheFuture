@@ -1,6 +1,6 @@
 {
-    "health max": 100.0,
+    "max_life": 121.0,
     "level max": 10.0,
-    "energy max": 100.0,
+    "max_energy": 110.0,
     "xp max": 100.0
 }

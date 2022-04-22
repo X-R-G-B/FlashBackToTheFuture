@@ -90,6 +90,7 @@ static int init_head_with_border(window_t *win, scene_t *scene)
     if (add_hud_to_uid_element(scene, head_with_borders, player) != RET_OK) {
         return RET_ERR_INPUT;
     }
+    printf("HEADER BORDER OK\n");
     return RET_OK;
 }
 

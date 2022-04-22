@@ -8,9 +8,8 @@
 #include "my_rpg.h"
 #include "my_json.h"
 
-static const char health_max[] = "health max";
-
-static const char energy_max[] = "energy max";
+extern const char life_max_name[];
+extern const char energy_max_name[];
 
 static void upgrade(window_t *win, const char *stat_max_key)
 {
@@ -33,6 +32,7 @@ static void upgrade(window_t *win, const char *stat_max_key)
     if (write_json(stat, PLAYER_STATS) != JS_OK) {
         return;
     }
+    printf("UPGRADE HEALTH OR ENERGY BRO\n");
     return;
 }
 
@@ -42,7 +42,7 @@ void upgrade_energy(object_t *obj, scene_t *scene,
     if (win == NULL) {
         return;
     }
-    upgrade(win, energy_max);
+    upgrade(win, energy_max_name);
 }
 
 void upgrade_health(object_t *obj, scene_t *scene,
@@ -51,5 +51,5 @@ void upgrade_health(object_t *obj, scene_t *scene,
     if (win == NULL) {
         return;
     }
-    upgrade(win, health_max);
+    upgrade(win, life_max_name);
 }
