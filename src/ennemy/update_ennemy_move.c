@@ -87,7 +87,7 @@ void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
     any_t *rect_list = NULL;
 
     if (get_data(&rect_speed, &move_speed, data, &rect_list) != RET_OK ||
-        ennemy == NULL || ennemy->obj == NULL) {
+        ennemy == NULL || ennemy->obj == NULL || scene == NULL || win == NULL) {
         return;
     }
     set_new_dir(ennemy, data, scene);
