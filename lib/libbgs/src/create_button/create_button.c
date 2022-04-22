@@ -85,8 +85,7 @@ static int get_button_data(scene_t *scene, any_t *dico)
         arg[1] = text->value.str;
         ret = init_text(txt_pos, scene, arg, dico->value.dict);
     }
-    free(txt_pos);
-    free(pos);
+    destroy_pos_array(txt_pos, pos);
     return ret;
 }
 
@@ -107,6 +106,7 @@ list_ptr_t *create_button(scene_t *scene, const char *path)
         ret = get_button_data(scene, get_from_any(any, "da", "buttons", i));
     }
     if (ret != BGS_OK) {
+        destroy_any(any);
         return NULL;
     }
     destroy_any(any);

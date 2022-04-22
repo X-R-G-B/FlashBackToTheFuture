@@ -66,6 +66,7 @@ static void move_setting_menu_to_main_menu(window_t *win, scene_t *scene)
         return;
     }
     browse_list(setting_menu, buttons->value.array, scene, next_scene);
+    destroy_any(setting_menu_data);
 }
 
 static void destroy_stage_components(scene_t *scene)

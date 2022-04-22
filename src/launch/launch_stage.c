@@ -12,6 +12,7 @@
 #include "my_strings.h"
 #include "meteo.h"
 #include "my_bgs_button_generator.h"
+#include "ennemy_pathfind.h"
 
 static const int back_color[] = {51, 136, 238};
 
@@ -68,7 +69,7 @@ static int init_new_scene_components(window_t *win, scene_t *scene)
     list_ptr_t *uid_elements = list_create();
 
     if (win == NULL || uid_elements == NULL || create_map(scene) != RET_OK ||
-        create_player(win, scene, PLAYER_DATA) == NULL ||
+        create_player(win, scene, PLAYER_STATS) == NULL ||
         add_collision_array_in_scene(scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
@@ -94,8 +95,9 @@ int launch_stage(window_t *win, char *stage_path, int stage_id,
 
     scene = init_scene(stage_path, win, stage_name);
     if (scene == NULL || move_object_between_scene(win, prev_scene,
-        scene) != RET_OK || init_dead_menu(win, scene) != RET_OK ||
-            init_new_scene_components(win, scene) != RET_OK) {
+            scene) != RET_OK || init_dead_menu(win, scene) != RET_OK ||
+            init_new_scene_components(win, scene) != RET_OK ||
+            init_hud(win, scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     if (window_change_scene(win, stage_name) != BGS_OK) {
