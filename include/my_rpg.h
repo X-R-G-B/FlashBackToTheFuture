@@ -37,8 +37,8 @@ typedef enum state_e {
     ATTACKING,
     MOVING,
     STOP,
-    DIE,
     DYING,
+    DIE,
     STUNT
 } state_t;
 
