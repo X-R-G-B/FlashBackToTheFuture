@@ -22,37 +22,7 @@ RESET		=	'\033[0m'
 
 # ----------------------------------------------------------------------------
 # SRC
-<<<<<<< HEAD
-CFLAGS			=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
-SRC_METEO	:=	add_leaf.c				\
-				add_snow.c				\
-				add_sunshine.c			\
-				change_meteo.c			\
-				meteo_handler.c			\
-				meteo_handler_init.c
-SRC_METEO	:=	$(addprefix meteo/,$(SRC_METEO))
-
-SRC_ENNEMY	:=	amongus.c				\
-				amongus_change_rect.c	\
-				follow_player.c
-SRC_ENNEMY	:=	$(addprefix ennemy/,$(SRC_ENNEMY))
-
-SRC_LAUNCH	:=	launch_game.c							\
-				launch_stage.c							\
-				move_object_between_scene.c				\
-				launch_story_mode.c						\
-				launch_next_stage.c						\
-				add_main_menu_elements_to_uid_list.c	\
-				uid_apply_right_pos.c					\
-				scene_loading_basic.c					\
-				temp_file_temp_pause_button.c			\
-				stats_component.c
-SRC_LAUNCH	:=	$(addprefix launch/,$(SRC_LAUNCH))
-
-SRC_SQUARE_UPDATES	:=	is_player_on_square.c	\
-						next_stage.c			\
-=======
 CFLAGS				=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
 # -------- SRC_METEO ---------------------------------------------------------
@@ -83,13 +53,13 @@ SRC_LAUNCH			:=	launch_game.c							\
 						add_main_menu_elements_to_uid_list.c	\
 						uid_apply_right_pos.c					\
 						scene_loading_basic.c					\
-						temp_file_temp_pause_button.c
+						temp_file_temp_pause_button.c			\
+						stats_component.c
 SRC_LAUNCH			:=	$(addprefix launch/,$(SRC_LAUNCH))
 # ----------------------------------------------------------------------------
 # -------------- SRC_MAP -----------------------------------------------------
 SRC_SQUARE_UPDATES	:=	is_player_on_square.c					\
 						next_stage.c							\
->>>>>>> dev
 						knockback.c
 SRC_SQUARE_UPDATES	:=	$(addprefix square_updates/,$(SRC_SQUARE_UPDATES))
 
@@ -114,13 +84,17 @@ SRC_UPDATE			:=	update_player.c							\
 						update_attack.c
 SRC_UPDATE			:=	$(addprefix update/,$(SRC_UPDATE))
 
+SRC_STAT_UPGRADE	:=	upgrade_stat.c
+SRC_STAT_UPGRADE	:=	$(addprefix stat_upgrade/,$(SRC_STAT_UPGRADE))
+
 SRC_PLAYER			:=	set_stop.c								\
 						create_player.c							\
 						player_check_hurt_during_attack.c		\
 						player_check_hurt.c						\
 						destroy_player.c						\
 						$(SRC_EVENT)							\
-						$(SRC_UPDATE)
+						$(SRC_UPDATE)							\
+						$(SRC_STAT_UPGRADE)
 SRC_PLAYER			:=	$(addprefix player/,$(SRC_PLAYER))
 # ----------------------------------------------------------------------------
 # -------- SRC_HUD ----------------------------------------------------------

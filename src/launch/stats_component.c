@@ -31,5 +31,6 @@ int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
         elem = elem->next;
     }
     scene_add_components(scene, stat_upgrade, STATS_UPGRADE_KEY, free_pop_up);
+    toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
     return RET_OK;
 }

@@ -188,12 +188,11 @@ void dead_event_input(object_t *object, scene_t *scene,
 
 void init_dead_screen_pos(list_ptr_t *uid_elements, window_t *win);
 
-<<<<<<< HEAD
 void free_pop_up(void *list);
 
 int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
     window_t *win);
-=======
+
 int init_life_hud(window_t *win, scene_t *scene);
 
 int init_energy_hud(window_t *win, scene_t *scene);
@@ -204,9 +203,17 @@ int update_hud_stats(object_t *obj, player_t *player, const char stat_name[],
 int add_hud_to_uid_element(scene_t *scene, object_t *hud_data,
     player_t *player);
 
+int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
+    window_t *win);
+
 int init_hud(window_t *win, scene_t *scene);
 
 void go_to_home(scene_t *scene, window_t *win);
->>>>>>> dev
+
+void upgrade_health(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+
+void upgrade_energy(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
 
 #endif /* !RPG_H_ */
