@@ -48,7 +48,7 @@ static dir_t ennemy_get_view_dir(object_t *obj, window_t *win)
 
 int *get_rect(ennemy_t *ennemy, window_t *win, any_t *data, int rect_id)
 {
-    dir_t dir = NULL;
+    dir_t dir = UNKNOWN_STATE;
     any_t *scale = NULL;
     float scale_value = 1;
 
