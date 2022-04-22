@@ -40,6 +40,7 @@ typedef enum state_e {
     STOP,
     DYING,
     DIE,
+    IN_POP_UP,
     STUNT
 } state_t;
 
@@ -199,5 +200,7 @@ int add_hud_to_uid_element(scene_t *scene, object_t *hud_data,
 int init_hud(window_t *win, scene_t *scene);
 
 int set_player_default_stats(player_t *player, any_t *stats);
+
+void go_to_home(scene_t *scene, window_t *win);
 
 #endif /* !RPG_H_ */
