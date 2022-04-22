@@ -87,5 +87,6 @@ int init_life_hud(window_t *win, scene_t *scene)
     if (add_hud_to_uid_element(scene, life_hud, player) != RET_OK) {
         return RET_ERR_INPUT;
     }
+    update_hud_stats(life_hud, player, "max_life", player->life);
     return RET_OK;
 }

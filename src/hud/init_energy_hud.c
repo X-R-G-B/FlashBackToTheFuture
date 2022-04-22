@@ -108,5 +108,6 @@ int init_energy_hud(window_t *win, scene_t *scene)
     if (add_hud_to_uid_element(scene, energy_hud, player) != RET_OK) {
         return RET_ERR_INPUT;
     }
+    update_hud_stats(energy_hud, player, "max_energy", player->energy);
     return RET_OK;
 }
