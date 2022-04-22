@@ -11,7 +11,7 @@
 
 static void consume_energy(player_t *player)
 {
-    if (player->energy < 0) {
+    if (player->energy <= 0) {
         return;
     }
     player->energy -= 30;
