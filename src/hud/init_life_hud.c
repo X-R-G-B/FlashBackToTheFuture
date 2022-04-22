@@ -28,8 +28,11 @@ void update_life_hud(object_t *object, scene_t *scene,
         return;
     }
     if (player->life == prev_stat_value ||
-            (player->life < 0 && prev_stat_value < 0)) {
+            (player->life <= 0 && prev_stat_value <= 0)) {
         return;
+    }
+    if (player->life <= 0) {
+        player->life = 0;
     }
     prev_stat_value = player->life;
     update_hud_stats(object, player, "max_life", player->life);
