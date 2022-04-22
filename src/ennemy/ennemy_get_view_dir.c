@@ -48,23 +48,24 @@ static dir_t ennemy_get_view_dir(object_t *obj, window_t *win)
 
 int *get_rect(ennemy_t *ennemy, window_t *win, any_t *data, int rect_id)
 {
-    dir_t view_dir = ennemy_get_view_dir(ennemy->obj, win);
-    any_t *scale = dico_t_get_value(data->value.dict, "scale");
+    dir_t dir = UNKNOWN_STATE;
+    any_t *scale = NULL;
     float scale_value = 1;
 
-    if (ennemy == NULL || win == NULL || data == NULL) {
+    if (ennemy == NULL || ennemy->obj == NULL || data == NULL) {
         return NULL;
     }
+    dir = ennemy_get_view_dir(ennemy->obj, win);
+    scale = dico_t_get_value(data->value.dict, "scale");
     if (scale != NULL && scale->type == FLOAT) {
         scale_value = scale->value.f;
     }
-    if (view_dir == RIGHT && ennemy->dir != RIGHT) {
+    if (dir == RIGHT && ennemy->dir != RIGHT) {
         sfSprite_setScale(ennemy->obj->drawable.sprite,
             (sfVector2f) {scale_value * -1, scale_value});
-    } else if (view_dir != RIGHT && ennemy->dir == RIGHT) {
+    } else if (dir != RIGHT && ennemy->dir == RIGHT) {
         sfSprite_setScale(ennemy->obj->drawable.sprite,
             (sfVector2f) {scale_value, scale_value});
     }
-    return get_any_int_array(get_from_any(data, "daa", "move", view_dir,
-        rect_id));
+    return get_any_int_array(get_from_any(data, "daa", "move", dir, rect_id));
 }

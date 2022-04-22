@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include "my_json.h"
 #include "my_rpg.h"
+#include "main_menu.h"
 #include "macro.h"
 #include "ennemies.h"
 
@@ -51,7 +52,6 @@ static ennemy_t *add_new_ennemy_struct(scene_t *scene, object_t *obj,
 {
     ennemy_t *ennemy = malloc(sizeof(ennemy_t));
     any_t *life = dico_t_get_any(ennemy_data->value.dict, "life");
-    list_ptr_t *ennemy_list = dico_t_get_value(scene->components, ENNEMY_LIST);
 
     if (ennemy == NULL || life == NULL || life->type != FLOAT) {
         return NULL;
@@ -60,8 +60,8 @@ static ennemy_t *add_new_ennemy_struct(scene_t *scene, object_t *obj,
     ennemy->life = life->value.f;
     ennemy->obj = obj;
     ennemy->state = STOP;
-    if (ennemy_list != NULL) {
-        list_add_to_end(ennemy_list, ennemy);
+    if (add_to_ennemy_list(ennemy, scene) != RET_OK) {
+        return NULL;
     }
     obj->components = dico_t_add_data(obj->components, "struct", ennemy, free);
     return (obj->components == NULL) ? NULL : ennemy;

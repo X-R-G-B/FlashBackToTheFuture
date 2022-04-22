@@ -36,9 +36,9 @@ static const char STAGE_DATA[] = "stage_data";
 typedef enum state_e {
     ATTACKING,
     MOVING,
-    DYING,
     STOP,
     DIE,
+    DYING,
     STUNT
 } state_t;
 
@@ -89,6 +89,8 @@ void uid_apply_right_pos(object_t *obj, object_t *player);
 int create_map(scene_t *scene);
 
 void update_player(object_t *obj, scene_t *scene, window_t *win, float dtime);
+
+void update_hurt(player_t *obj, scene_t *scene, window_t *win, float dtime);
 
 int *get_player_spawn(scene_t *scene);
 
