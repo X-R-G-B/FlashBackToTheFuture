@@ -19,6 +19,7 @@
 
     #include <SFML/System/Vector2.h>
     #include "my_bgs.h"
+    #include "my_json.h"
 
 static const char PLAYER_DATA[] = "./assets/data/player/data.json";
 static const char PLAYER_STATS[] = "./assets/data/player/stats.json";
@@ -197,6 +198,8 @@ int add_hud_to_uid_element(scene_t *scene, object_t *hud_data,
     player_t *player);
 
 int init_hud(window_t *win, scene_t *scene);
+
+int set_player_default_stats(player_t *player, any_t *stats);
 
 void go_to_home(scene_t *scene, window_t *win);
 
