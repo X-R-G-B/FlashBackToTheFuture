@@ -11,12 +11,16 @@
 
 sfColor get_color(any_t *color_arr)
 {
-    int *color = get_any_int_array(color_arr);
+    int *color_array = get_any_int_array(color_arr);
+    sfColor color = {0};
 
-    if (color == NULL) {
+    if (color_array == NULL) {
         return sfWhite;
     }
-    return sfColor_fromRGBA(color[0], color[1], color[2], color[3]);
+    color = (sfColor) {color_array[0], color_array[1],
+        color_array[2], color_array[3]};
+    free(color_array);
+    return color;
 }
 
 int set_color(object_t *object, dico_t *dico)

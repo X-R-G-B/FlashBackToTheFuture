@@ -79,7 +79,6 @@ int launch_next_stage(window_t *win)
     if (win == NULL) {
         return RET_ERR_INPUT;
     }
-    launch_scene_loading(win, "SCENE_LOADING_BASIC");
     save = dico_t_get_any(win->components, SAVE);
     current_scene = dico_t_get_value(win->scenes, win->current_scene);
     if (current_scene == NULL || save == NULL) {

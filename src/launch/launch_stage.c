@@ -47,7 +47,6 @@ scene_t *init_scene(char *stage_path, window_t *win, char *stage_name)
     any_t *data = NULL;
     scene_t *scene = NULL;
 
-    launch_scene_loading(win, "SCENE_LOADING_BASIC");
     data = parse_json_file(stage_path);
     scene = create_scene(win, sfColor_fromRGB(back_color[0], back_color[1],
         back_color[2]), stage_name);

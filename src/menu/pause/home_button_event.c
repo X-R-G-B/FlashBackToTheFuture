@@ -20,12 +20,14 @@ static void check_type(dico_t *dico, list_t *elem, list_t **button_elem)
             return;
         }
         obj->bigdata.sprite_bigdata.pos = (sfVector2f) {pos[1], pos[0]};
+        free(pos);
     } else if (obj->type == TEXT) {
         pos = get_any_float_array(dico_t_get_any(dico, "text pos"));
         if (pos == NULL) {
             return;
         }
         obj->bigdata.text_bigdata.pos = (sfVector2f) {pos[1], pos[0]};
+        free(pos);
     }
     if (elem->next != NULL && ((object_t *) elem->next->var)->type == SPRITE) {
         *button_elem = (*button_elem)->next;

@@ -30,7 +30,7 @@ void destroy_framebuffer(framebuffer_t *buf)
     if (buf == NULL) {
         return;
     }
-    if (buf->pixels == NULL) {
+    if (buf->pixels != NULL) {
         free(buf->pixels);
     }
     for (struct element_s *tmp = buf->elements; tmp != NULL; tmp = tmp_tmp) {

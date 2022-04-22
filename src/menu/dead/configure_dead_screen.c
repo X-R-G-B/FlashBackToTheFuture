@@ -90,5 +90,6 @@ int init_dead_menu(window_t *win, scene_t *scene)
         }
     }
     config_input_and_components(win, dead_screens[0], dead_screens[1], scene);
+    free_list(dead_objects);
     return RET_OK;
 }
