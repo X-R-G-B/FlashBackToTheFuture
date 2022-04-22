@@ -53,6 +53,7 @@ static sfFloatRect calculate_righ_rect(sfFloatRect player_rect, any_t *hitbox)
     player_rect.top += ((float) rect[1]);
     player_rect.width = ((float) rect[2]);
     player_rect.height = ((float) rect[3]);
+    free(rect);
     return player_rect;
 }
 
