@@ -56,6 +56,7 @@ typedef struct player_s {
     object_t *obj;
     sfView *view;
     float life;
+    float energy;
 } player_t;
 
 void next_stage(object_t *obj, scene_t *scene, window_t *win, float time);
@@ -121,7 +122,7 @@ void set_stop(player_t *player);
 
 void knockback(object_t *obj, scene_t *scene, window_t *win, float time);
 
-bool is_player_on_square(window_t *win, object_t *square);
+bool is_player_on_square(window_t *win, sfIntRect rect);
 
 player_t *create_player(window_t *win, scene_t *scene, const char *stats);
 
@@ -183,5 +184,17 @@ void dead_event_input(object_t *object, scene_t *scene,
     window_t *window, set_event_t *event);
 
 void init_dead_screen_pos(list_ptr_t *uid_elements, window_t *win);
+
+int init_life_hud(window_t *win, scene_t *scene);
+
+int init_energy_hud(window_t *win, scene_t *scene);
+
+int update_hud_stats(object_t *obj, player_t *player, const char stat_name[],
+    float stat_value);
+
+int add_hud_to_uid_element(scene_t *scene, object_t *hud_data,
+    player_t *player);
+
+int init_hud(window_t *win, scene_t *scene);
 
 #endif /* !RPG_H_ */

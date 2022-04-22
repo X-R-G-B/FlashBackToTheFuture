@@ -44,4 +44,7 @@ void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
     } else {
         player_check_hurt(player, scene);
     }
+    if (player->life <= 0 && player->state != DIE) {
+        player->state = DYING;
+    }
 }
