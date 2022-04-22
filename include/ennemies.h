@@ -9,6 +9,7 @@
     #define ENNEMY_H_
 
     #include "my_json.h"
+    #include "my_bgs.h"
     #include "my_rpg.h"
 
 typedef struct ennemy_s {

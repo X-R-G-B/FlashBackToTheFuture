@@ -37,8 +37,7 @@ void move_on(object_t *object, scene_t *scene, window_t *win,
         return;
     }
     player = dico_t_get_value(win->components, "player");
-    if (player == NULL || (player->state != MOVING && player->state != STOP &&
-        player->state != HURT)) {
+    if (player == NULL || (player->state != MOVING && player->state != STOP)) {
         return;
     }
     player->state = MOVING;
