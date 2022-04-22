@@ -13,6 +13,7 @@
 static const char energy_hud_path[] = "./assets/image/hud/energy_bar.png";
 static const sfIntRect energy_hud_rect = {0, 0, 60, 188};
 static const sfVector2f energy_hud_pos = {113, 50};
+static const char energy_hud_name[] = "max_energy";
 
 static void retake_energy(float time_elapsed, player_t *player)
 {
@@ -88,7 +89,7 @@ int init_energy_hud(window_t *win, scene_t *scene)
     if (add_hud_to_uid_element(scene, energy_hud, player) != RET_OK) {
         return RET_ERR_INPUT;
     }
-    if (update_hud_stats(energy_hud, player, "max_energy",
+    if (update_hud_stats(energy_hud, player, energy_hud_name,
             player->energy) != RET_OK) {
         return RET_ERR_INPUT;
     }
