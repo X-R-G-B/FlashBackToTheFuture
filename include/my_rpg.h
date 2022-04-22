@@ -21,6 +21,7 @@
 
     #include <SFML/System/Vector2.h>
     #include "my_bgs.h"
+    #include "my_json.h"
 
 static const char PLAYER_DATA[] = "./assets/data/player/data.json";
 static const char PLAYER_STATS[] = "./assets/data/player/stats.json";
@@ -125,7 +126,7 @@ void set_stop(player_t *player);
 
 void knockback(object_t *obj, scene_t *scene, window_t *win, float time);
 
-bool is_player_on_square(window_t *win, sfIntRect rect);
+bool is_player_on_square(window_t *win, sfFloatRect rect);
 
 player_t *create_player(window_t *win, scene_t *scene, const char *stats);
 
@@ -207,6 +208,8 @@ int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
     window_t *win);
 
 int init_hud(window_t *win, scene_t *scene);
+
+int set_player_default_stats(player_t *player, any_t *stats);
 
 void go_to_home(scene_t *scene, window_t *win);
 

@@ -13,6 +13,7 @@
 static const char energy_hud_path[] = "./assets/image/hud/energy_bar.png";
 static const sfIntRect energy_hud_rect = {0, 0, 60, 188};
 static const sfVector2f energy_hud_pos = {113, 50};
+extern const char energy_max_name[];
 
 static void retake_energy(float time_elapsed, player_t *player)
 {
@@ -24,7 +25,7 @@ static void retake_energy(float time_elapsed, player_t *player)
     if (stats == NULL || stats->type != DICT) {
         return;
     }
-    max_stat_data = dico_t_get_value(stats->value.dict, "max_energy");
+    max_stat_data = dico_t_get_value(stats->value.dict, energy_max_name);
     if (max_stat_data == NULL || max_stat_data->type != FLOAT ||
             player->energy + 5 > max_stat_data->value.f) {
         return;
@@ -56,24 +57,7 @@ void update_energy_hud(object_t *object, scene_t *scene,
         return;
     }
     prev_stat_value = player->energy;
-    update_hud_stats(object, player, "max_energy", player->energy);
-}
-
-static int set_default_energy(player_t *player)
-{
-    any_t *stats = NULL;
-    any_t *energy = NULL;
-
-    stats = dico_t_get_value(player->obj->components, "stats");
-    if (stats == NULL || stats->type != DICT) {
-        return RET_ERR_INPUT;
-    }
-    energy = dico_t_get_value(stats->value.dict, "max_energy");
-    if (energy == NULL || energy->type != FLOAT) {
-        return RET_ERR_INPUT;
-    }
-    player->energy = energy->value.f;
-    return RET_OK;
+    update_hud_stats(object, player, energy_max_name, player->energy);
 }
 
 static int create_energy_hud(object_t **energy_hud, player_t **player,
@@ -102,10 +86,11 @@ int init_energy_hud(window_t *win, scene_t *scene)
     if (create_energy_hud(&energy_hud, &player, scene, win) != RET_OK) {
         return RET_ERR_INPUT;
     }
-    if (set_default_energy(player) != RET_OK) {
+    if (add_hud_to_uid_element(scene, energy_hud, player) != RET_OK) {
         return RET_ERR_INPUT;
     }
-    if (add_hud_to_uid_element(scene, energy_hud, player) != RET_OK) {
+    if (update_hud_stats(energy_hud, player, energy_max_name,
+            player->energy) != RET_OK) {
         return RET_ERR_INPUT;
     }
     return RET_OK;

@@ -13,6 +13,7 @@
 static const char life_hud_path[] = "./assets/image/hud/life_bar.png";
 static const sfIntRect life_hud_rec = {0, 0, 60, 188};
 static const sfVector2f life_hud_pos = {285, 50};
+extern const char life_max_name[];
 
 void update_life_hud(object_t *object, scene_t *scene,
     window_t *win, __attribute__((unused)) float time)
@@ -35,24 +36,7 @@ void update_life_hud(object_t *object, scene_t *scene,
         player->life = 0;
     }
     prev_stat_value = player->life;
-    update_hud_stats(object, player, "max_life", player->life);
-}
-
-static int set_default_life(player_t *player)
-{
-    any_t *stats = NULL;
-    any_t *life = NULL;
-
-    stats = dico_t_get_value(player->obj->components, "stats");
-    if (stats == NULL || stats->type != DICT) {
-        return RET_ERR_INPUT;
-    }
-    life = dico_t_get_value(stats->value.dict, "max_life");
-    if (life == NULL || life->type != FLOAT) {
-        return RET_ERR_INPUT;
-    }
-    player->life = life->value.f;
-    return RET_OK;
+    update_hud_stats(object, player, life_max_name, player->life);
 }
 
 static int create_life_hud(object_t **life_hud, player_t **player,
@@ -81,10 +65,11 @@ int init_life_hud(window_t *win, scene_t *scene)
     if (create_life_hud(&life_hud, &player, scene, win) != RET_OK) {
         return RET_ERR_INPUT;
     }
-    if (set_default_life(player) != RET_OK) {
+    if (add_hud_to_uid_element(scene, life_hud, player) != RET_OK) {
         return RET_ERR_INPUT;
     }
-    if (add_hud_to_uid_element(scene, life_hud, player) != RET_OK) {
+    if (update_hud_stats(life_hud, player, life_max_name,
+            player->life) != RET_OK) {
         return RET_ERR_INPUT;
     }
     return RET_OK;
