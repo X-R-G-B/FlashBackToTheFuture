@@ -57,8 +57,13 @@ int add_hud_to_uid_element(scene_t *scene, object_t *hud_data, player_t *player)
 {
     list_ptr_t *uid_elements = NULL;
 
+    if (scene == NULL || scene->components == NULL ||
+        hud_data == NULL || player == NULL) {
+            return RET_ERR_INPUT;
+        }
     uid_elements = dico_t_get_value(scene->components, UID_ELEMENTS);
     if (uid_elements == NULL) {
+        printf("ok\n");
         return RET_ERR_INPUT;
     }
     uid_apply_right_pos(hud_data, player->obj);
