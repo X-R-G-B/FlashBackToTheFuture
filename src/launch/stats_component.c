@@ -24,7 +24,7 @@ int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
     if (stat_upgrade == NULL) {
         return BGS_ERR_MALLOC;
     }
-    elem = uid_elements->start;
+    elem = stat_upgrade->start;
     for (int i = 0; i != stat_upgrade->len; i++) {
         uid_apply_right_pos(elem->var, player->obj);
         list_add_to_end(uid_elements, elem->var);
