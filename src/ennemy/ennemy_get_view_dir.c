@@ -6,9 +6,12 @@
 */
 
 #include "math.h"
+#include "my_macro.h"
 #include "my_rpg.h"
 #include "ennemies.h"
 #include "my_json.h"
+#include <SFML/Graphics/Sprite.h>
+#include <SFML/System/Vector2.h>
 
 static const double pi = 3.1415926535;
 
@@ -49,23 +52,22 @@ static dir_t ennemy_get_view_dir(object_t *obj, window_t *win)
 int *get_rect(ennemy_t *ennemy, window_t *win, any_t *data, int rect_id)
 {
     dir_t dir = UNKNOWN_STATE;
-    any_t *scale = NULL;
-    float scale_value = 1;
+    sfVector2f scale = {0};
+    int *arr = NULL;
 
     if (ennemy == NULL || ennemy->obj == NULL || data == NULL) {
         return NULL;
     }
     dir = ennemy_get_view_dir(ennemy->obj, win);
-    scale = dico_t_get_value(data->value.dict, "scale");
-    if (scale != NULL && scale->type == FLOAT) {
-        scale_value = scale->value.f;
+    dir = (dir == UNKNOWN_STATE) ? DOWN : dir;
+    scale = sfSprite_getScale(ennemy->obj->drawable.sprite);
+    if (dir == RIGHT) {
+        scale.x = MIN(scale.x, scale.x * -1);
+        sfSprite_setScale(ennemy->obj->drawable.sprite, scale);
+    } else {
+        scale.x = MAX(scale.x, scale.x * -1);
+        sfSprite_setScale(ennemy->obj->drawable.sprite, scale);
     }
-    if (dir == RIGHT && ennemy->dir != RIGHT) {
-        sfSprite_setScale(ennemy->obj->drawable.sprite,
-            (sfVector2f) {scale_value * -1, scale_value});
-    } else if (dir != RIGHT && ennemy->dir == RIGHT) {
-        sfSprite_setScale(ennemy->obj->drawable.sprite,
-            (sfVector2f) {scale_value, scale_value});
-    }
-    return get_any_int_array(get_from_any(data, "daa", "move", dir, rect_id));
+    arr = get_any_int_array(get_from_any(data, "daa", "move", dir, rect_id));
+    return arr;
 }

@@ -8,10 +8,10 @@
 #include <stdlib.h>
 #include "ennemies.h"
 #include "ennemy_pathfind.h"
+#include "my_rpg.h"
 
 static const char rect_actualisation[] = "rect actualisation";
 static const char speed[] = "speed";
-static const char scale_data[] = "scale";
 static const char move_dict[] = "move";
 
 static int get_data(any_t **rect_speed, any_t **move_speed, any_t *data,
@@ -45,22 +45,11 @@ static void set_new_data(ennemy_t *ennemy, float move, int *rect)
     free(rect);
 }
 
-static void set_new_dir(ennemy_t *ennemy, any_t *ennemy_data, scene_t *scene)
+static void set_new_dir(ennemy_t *ennemy, scene_t *scene)
 {
-    dir_t prev_dir = ennemy->dir;
-    any_t *scale = dico_t_get_any(ennemy_data->value.dict, scale_data);
-    float scale_value = 1;
-
     ennemy->dir = get_path_find_dir(ennemy->obj, scene);
-    if (scale != NULL && scale->type == FLOAT) {
-        scale_value = scale->value.f;
-    }
-    if (prev_dir != RIGHT && ennemy->dir == RIGHT) {
-        sfSprite_setScale(ennemy->obj->drawable.sprite,
-            (sfVector2f) {scale_value * -1, scale_value});
-    } else if (prev_dir == RIGHT && ennemy->dir != RIGHT) {
-        sfSprite_setScale(ennemy->obj->drawable.sprite,
-            (sfVector2f) {scale_value, scale_value});
+    if (ennemy->dir == UNKNOWN_STATE) {
+        ennemy->dir = UP;
     }
 }
 
@@ -90,7 +79,7 @@ void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
         ennemy == NULL || ennemy->obj == NULL || scene == NULL || win == NULL) {
         return;
     }
-    set_new_dir(ennemy, data, scene);
+    set_new_dir(ennemy, scene);
     dtime += time;
     cross_time(&dtime, rect_speed, &rect_id, rect_list);
     set_new_data(ennemy, time * move_speed->value.f,
