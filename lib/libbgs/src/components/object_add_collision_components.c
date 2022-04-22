@@ -6,12 +6,16 @@
 */
 
 #include <stdlib.h>
+#include "list.h"
 #include "my_bgs.h"
 #include "my_bgs_components.h"
 #include "libbgs_private.h"
 
 static void free_list_abstract(void *list_ptr)
 {
+    if (list_ptr == NULL) {
+        return;
+    }
     free_list((list_ptr_t *) list_ptr);
 }
 
@@ -19,6 +23,9 @@ int scene_add_solid_list(scene_t *scene)
 {
     void *value = NULL;
 
+    if (scene == NULL) {
+        return (BGS_ERR_INPUT);
+    }
     value = dico_t_get_value(scene->components, ON_COLLISION);
     if (value == NULL) {
         scene->components = dico_t_add_data(scene->components, ON_COLLISION,

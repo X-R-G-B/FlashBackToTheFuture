@@ -17,6 +17,9 @@ void window_toglle_vsync(window_t *win)
 {
     static sfBool is_vsynced = sfFalse;
 
+    if (win == NULL) {
+        return;
+    }
     if (is_vsynced == sfFalse) {
         sfRenderWindow_setVerticalSyncEnabled(win->win, sfTrue);
         is_vsynced = sfTrue;
@@ -28,6 +31,9 @@ void window_toglle_vsync(window_t *win)
 
 void window_set_framerate_limit(window_t *win, unsigned int limit)
 {
+    if (win == NULL) {
+        return;
+    }
     sfRenderWindow_setFramerateLimit(win->win, limit);
 }
 

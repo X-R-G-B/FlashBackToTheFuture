@@ -66,6 +66,7 @@ static void move_setting_menu_to_main_menu(window_t *win, scene_t *scene)
         return;
     }
     browse_list(setting_menu, buttons->value.array, scene, next_scene);
+    destroy_any(setting_menu_data);
 }
 
 static void destroy_stage_components(scene_t *scene)
@@ -77,13 +78,11 @@ static void destroy_stage_components(scene_t *scene)
     }
 }
 
-void home_button_off(object_t *obj, scene_t *scene, window_t *win,
-    set_event_t *evt)
+void go_to_home(scene_t *scene, window_t *win)
 {
     player_t *player = dico_t_get_value(win->components, "player");
 
-    if (scene->pause == false || player == NULL) {
-        pressed_button_off(obj, scene, win, evt);
+    if (player == NULL) {
         return;
     }
     destroy_stage_components(scene);
@@ -96,6 +95,7 @@ void home_button_off(object_t *obj, scene_t *scene, window_t *win,
     win->components = dico_t_rem(win->components, "player");
     win->components = dico_t_rem(win->components, "pause");
     win->components = dico_t_rem(win->components, SAVE);
-    pressed_button_off(obj, scene, win, evt);
+    win->components = dico_t_rem(win->components, "dead_message");
+    win->components = dico_t_rem(win->components, "dead_screen");
     list_add_to_end(win->to_remove, scene);
 }

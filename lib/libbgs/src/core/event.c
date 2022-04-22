@@ -34,6 +34,9 @@ int event_handling(sfRenderWindow *win)
 {
     sfEvent event;
 
+    if (win == NULL) {
+        return (BGS_ERR_INPUT);
+    }
     while (sfRenderWindow_pollEvent(win, &event)) {
         if (event.type == sfEvtClosed) {
             sfRenderWindow_close(win);

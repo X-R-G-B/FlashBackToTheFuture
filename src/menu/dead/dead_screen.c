@@ -53,7 +53,7 @@ void update_dead_screen(object_t *object, scene_t *scene,
     window_t *window, float delta_time)
 {
     static float time_elapsed = 0;
-    sfColor opacity = sfBlue;
+    sfColor opacity = sfRed;
     player_t *player = NULL;
 
     if (object == NULL || object->is_visible == false || window == NULL ||
@@ -62,7 +62,7 @@ void update_dead_screen(object_t *object, scene_t *scene,
     }
     player = (player_t *) dico_t_get_value(window->components, "player");
     opacity = sfSprite_getColor(object->drawable.sprite);
-    if (player == NULL || opacity.a == 255) {
+    if (player == NULL || player->state == DIE || opacity.a == 255) {
         return;
     }
     time_elapsed += delta_time;
@@ -83,7 +83,7 @@ void update_dead_message(object_t *object, scene_t *scene,
         return;
     }
     can_play = (bool *) dico_t_get_value(scene->components, "can_play");
-    if (can_play == NULL) {
+    if (can_play == NULL || *can_play == true) {
         return;
     }
     time_elapsed += delta_time;

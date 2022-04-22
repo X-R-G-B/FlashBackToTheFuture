@@ -11,6 +11,9 @@ scene_t *get_scene_i(list_ptr_t *list, int i)
 {
     list_t *elem = NULL;
 
+    if (list == NULL) {
+        return (NULL);
+    }
     if (i >= list->len) {
         return NULL;
     }

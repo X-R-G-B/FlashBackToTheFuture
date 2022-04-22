@@ -13,7 +13,7 @@ void object_check_health(object_t *object, scene_t *scene,
 {
     sprite_health_t *health = NULL;
 
-    if (object == NULL || win == NULL) {
+    if (object == NULL || win == NULL || scene == NULL) {
         return;
     }
     health = dico_t_get_value(object->components, COMP_HEALTH);

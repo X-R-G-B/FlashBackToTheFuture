@@ -1,7 +1,13 @@
 {
+<<<<<<< HEAD
     
     "health max": 100,
     "level max": 10,
     "energy max": 100,
     "xp max": 100
+=======
+    "oui": "oui",
+    "max_life": 260.0,
+    "max_energy": 1000.0
+>>>>>>> dev
 }

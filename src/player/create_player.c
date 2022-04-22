@@ -80,6 +80,7 @@ static int add_event(player_t *player, int *spawn, scene_t *scene)
         free(spawn);
         return RET_ERR_INPUT;
     }
+    free(spawn);
     for (int i = 0; i < event_nb && ret == RET_OK; i++) {
         if (i == 0) {
             ret = event_add_node(create_event(event_on[0], false, obj,
@@ -89,7 +90,6 @@ static int add_event(player_t *player, int *spawn, scene_t *scene)
                 event_off[1]), node[i]);
         }
     }
-    free(spawn);
     pathfind_add_to_scene(scene);
     return ret;
 }
