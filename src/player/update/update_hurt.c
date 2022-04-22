@@ -8,7 +8,7 @@
 #include "my_rpg.h"
 #include "my_json.h"
 
-void check_blink_time_end(float *since_start, float dtime, any_t *data,
+static void check_blink_time_end(float *since_start, float dtime, any_t *data,
     player_t *player)
 {
     any_t *blink_time = dico_t_get_any(data->value.dict, "blink time");

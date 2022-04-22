@@ -11,7 +11,7 @@
 
 static const char rect_actualisation[] = "rect actualisation";
 static const char speed[] = "speed";
-static const char scale[] = "scale";
+static const char scale_data[] = "scale";
 static const char move_dict[] = "move";
 
 static int get_data(any_t **rect_speed, any_t **move_speed, any_t *data,
@@ -48,7 +48,7 @@ static void set_new_data(ennemy_t *ennemy, float move, int *rect)
 static void set_new_dir(ennemy_t *ennemy, any_t *ennemy_data, scene_t *scene)
 {
     dir_t prev_dir = ennemy->dir;
-    any_t *scale = dico_t_get_any(ennemy_data->value.dict, scale);
+    any_t *scale = dico_t_get_any(ennemy_data->value.dict, scale_data);
     float scale_value = 1;
 
     ennemy->dir = get_path_find_dir(ennemy->obj, scene);
