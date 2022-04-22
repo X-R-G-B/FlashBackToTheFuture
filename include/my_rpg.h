@@ -39,6 +39,7 @@ typedef enum state_e {
     STOP,
     DYING,
     DIE,
+    IN_POP_UP,
     STUNT
 } state_t;
 
