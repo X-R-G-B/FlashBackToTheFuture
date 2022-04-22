@@ -5,6 +5,7 @@
 ** home button event
 */
 
+#include <stdlib.h>
 #include "my_rpg.h"
 #include "main_menu.h"
 
@@ -71,15 +72,6 @@ static void move_setting_menu_to_main_menu(window_t *win, scene_t *scene)
     destroy_any(setting_menu_data);
 }
 
-static void destroy_stage_components(scene_t *scene)
-{
-    list_ptr_t *uid_list = dico_t_get_value(scene->components, UID_ELEMENTS);
-
-    if (uid_list != NULL) {
-        free_list(uid_list);
-    }
-}
-
 void go_to_home(scene_t *scene, window_t *win)
 {
     player_t *player = dico_t_get_value(win->components, "player");
@@ -87,7 +79,6 @@ void go_to_home(scene_t *scene, window_t *win)
     if (player == NULL) {
         return;
     }
-    destroy_stage_components(scene);
     move_setting_menu_to_main_menu(win, scene);
     window_change_scene(win, "MAIN MENU");
     list_add_to_end(win->to_remove, scene);

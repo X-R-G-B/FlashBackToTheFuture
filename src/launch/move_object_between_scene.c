@@ -53,7 +53,7 @@ int move_object_between_scene(window_t *win, scene_t *fst_scene,
         return RET_ERR_INPUT;
     } else if (move_list_element(fst_scene->components, SETTINGS_MENU,
         fst_scene, scd_scene) != RET_OK ||
-        move_list_element(fst_scene->components, ((char *) UID_ELEMENTS),
+        move_list_element(fst_scene->components, ((char *) hud_elements),
         fst_scene, scd_scene) != RET_OK ||
         move_player(win->components, fst_scene, scd_scene) != RET_OK) {
         return RET_ERR_MALLOC;

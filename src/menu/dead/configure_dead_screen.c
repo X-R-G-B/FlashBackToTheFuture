@@ -14,22 +14,21 @@ static const char dead_screen_path[] = "./assets/data/menu/dead_screen.json";
 static void (*dead_screen_update[2])(object_t *, scene_t *,
     window_t *, float) = {update_dead_message, update_dead_screen};
 
-//variables' values aren't checked because they have been already checked
-void init_dead_screen_pos(list_ptr_t *uid_elements, window_t *win)
+static void init_dead_screen_pos(window_t *win)
 {
-    player_t *player = NULL;
+    player_t *player = dico_t_get_value(win->components, "player");
+    list_ptr_t *hud_elements = dico_t_get_value(win->components, HUD_ELEMENTS);
 
-    player = dico_t_get_value(win->components, "player");
-    if (player == NULL) {
+    if (player == NULL || hud_elements == NULL) {
         return;
     }
-    list_add_to_end(uid_elements,
+    list_add_to_end(hud_elements,
         dico_t_get_value(win->components, "dead_message"));
-    list_add_to_end(uid_elements,
+    list_add_to_end(hud_elements,
         dico_t_get_value(win->components, "dead_screen"));
-    uid_apply_right_pos(dico_t_get_value(win->components,
+    hud_apply_right_pos(dico_t_get_value(win->components,
         "dead_message"), player->obj);
-    uid_apply_right_pos(dico_t_get_value(win->components,
+    hud_apply_right_pos(dico_t_get_value(win->components,
         "dead_screen"), player->obj);
 }
 
@@ -91,5 +90,6 @@ int init_dead_menu(window_t *win, scene_t *scene)
     }
     config_input_and_components(win, dead_screens[0], dead_screens[1], scene);
     free_list(dead_objects);
+    init_dead_screen_pos(win);
     return RET_OK;
 }
