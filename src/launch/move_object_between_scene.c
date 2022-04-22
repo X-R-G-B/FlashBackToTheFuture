@@ -43,6 +43,7 @@ static int move_player(dico_t *dico, scene_t *fst_scene, scene_t *scd_scene)
     if (player == NULL) {
         return RET_OK;
     }
+    printf("move player\n");
     return object_change_scene(player->obj, fst_scene, scd_scene);
 }
 

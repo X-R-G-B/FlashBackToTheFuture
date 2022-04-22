@@ -38,23 +38,6 @@ void update_life_hud(object_t *object, scene_t *scene,
     update_hud_stats(object, player, "max_life", player->life);
 }
 
-static int set_default_life(player_t *player)
-{
-    any_t *stats = NULL;
-    any_t *life = NULL;
-
-    stats = dico_t_get_value(player->obj->components, "stats");
-    if (stats == NULL || stats->type != DICT) {
-        return RET_ERR_INPUT;
-    }
-    life = dico_t_get_value(stats->value.dict, "max_life");
-    if (life == NULL || life->type != FLOAT) {
-        return RET_ERR_INPUT;
-    }
-    player->life = life->value.f;
-    return RET_OK;
-}
-
 static int create_life_hud(object_t **life_hud, player_t **player,
     scene_t *scene, window_t *win)
 {
@@ -79,9 +62,6 @@ int init_life_hud(window_t *win, scene_t *scene)
         return RET_ERR_INPUT;
     }
     if (create_life_hud(&life_hud, &player, scene, win) != RET_OK) {
-        return RET_ERR_INPUT;
-    }
-    if (set_default_life(player) != RET_OK) {
         return RET_ERR_INPUT;
     }
     if (add_hud_to_uid_element(scene, life_hud, player) != RET_OK) {

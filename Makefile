@@ -87,6 +87,7 @@ SRC_PLAYER			:=	set_stop.c								\
 						player_check_hurt_during_attack.c		\
 						player_check_hurt.c						\
 						destroy_player.c						\
+						set_player_default_stats.c				\
 						$(SRC_EVENT)							\
 						$(SRC_UPDATE)
 SRC_PLAYER			:=	$(addprefix player/,$(SRC_PLAYER))

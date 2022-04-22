@@ -10,7 +10,8 @@
 void next_stage(object_t *obj,
     __attribute__((unused)) scene_t *scene, window_t *win, float time)
 {
-    if (is_player_on_square(win, obj->bigdata.sprite_bigdata.rect) == false) {
+    if (is_player_on_square(win,
+        sfSprite_getGlobalBounds(obj->drawable.sprite)) == false) {
         return;
     }
     launch_next_stage(win);
