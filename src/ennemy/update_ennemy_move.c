@@ -85,16 +85,16 @@ void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
     any_t *rect_speed = NULL;
     any_t *move_speed = NULL;
     any_t *rect_list = NULL;
-    int *rect = NULL;
 
-    if (get_data(&rect_speed, &move_speed, data, &rect_list) != RET_OK) {
+    if (get_data(&rect_speed, &move_speed, data, &rect_list) != RET_OK ||
+        ennemy == NULL) {
         return;
     }
     set_new_dir(ennemy, data, scene);
     dtime += time;
     cross_time(&dtime, rect_speed, &rect_id, rect_list);
-    rect = get_rect(ennemy, win, data, rect_id);
-    set_new_data(ennemy, time * move_speed->value.f, rect);
+    set_new_data(ennemy, time * move_speed->value.f,
+        get_rect(ennemy, win, data, rect_id));
     if (is_player_in_range(ennemy, win) == false) {
         rect_id = 0;
         ennemy_set_stop(ennemy);
