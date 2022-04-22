@@ -27,8 +27,12 @@ void update_hurt(player_t *player, __attribute__((unused)) scene_t *scene,
     __attribute__((unused)) window_t *win, float dtime)
 {
     static float since_start = 0;
-    any_t *data = dico_t_get_value(player->obj->components, "data");
+    any_t *data = NULL;
 
+    if (player == NULL || player->obj == NULL) {
+        return;
+    }
+    data = dico_t_get_value(player->obj->components, "data");
     if (data == NULL) {
         return;
     }

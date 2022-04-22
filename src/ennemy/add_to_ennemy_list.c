@@ -10,8 +10,12 @@
 
 int add_to_ennemy_list(ennemy_t *ennemy, scene_t *scene)
 {
-    list_ptr_t *ennemy_list = dico_t_get_value(scene->components, ENNEMY_LIST);
+    list_ptr_t *ennemy_list = NULL;
 
+    if (ennemy == NULL || scene == NULL) {
+        return RET_ERR_INPUT;
+    }
+    ennemy_list = dico_t_get_value(scene->components, ENNEMY_LIST);
     if (ennemy_list == NULL) {
         ennemy_list = list_create();
         if (ennemy_list == NULL || scene_add_components(scene, ennemy_list,

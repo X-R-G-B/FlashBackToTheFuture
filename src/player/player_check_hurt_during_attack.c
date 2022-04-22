@@ -60,9 +60,13 @@ static sfFloatRect calculate_righ_rect(sfFloatRect player_rect, any_t *hitbox)
 sfFloatRect get_attack_hitbox_rect(sfFloatRect player_rect, player_t *player)
 {
     int rect_id = 0;
-    any_t *data = dico_t_get_value(player->obj->components, "data");
+    any_t *data = NULL;
     any_t *hitbox_rect = NULL;
 
+    if (player == NULL || player->obj == NULL) {
+        return player_rect;
+    }
+    data = dico_t_get_value(player->obj->components, "data");
     if (data == NULL) {
         return player_rect;
     }

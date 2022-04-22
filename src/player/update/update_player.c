@@ -33,7 +33,7 @@ void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
     player_t *player = dico_t_get_value(win->components, "player");
     bool hurt = false;
 
-    if (player == NULL) {
+    if (player == NULL || player->obj == NULL) {
         return;
     } else if (player->state >= 0 && player->state <= 4) {
         update_ptr[player->state](player, scene, win, dtime);
