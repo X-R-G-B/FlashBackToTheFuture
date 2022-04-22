@@ -8,6 +8,9 @@
 #include "my_json.h"
 #include "my_rpg.h"
 
+static const char life_hud_name[] = "max_life";
+static const char energy_hud_name[] = "max_energy";
+
 static int set_default_life(player_t *player, any_t *stats)
 {
     any_t *life = NULL;
@@ -15,7 +18,7 @@ static int set_default_life(player_t *player, any_t *stats)
     if (stats == NULL || stats->type != DICT) {
         return RET_ERR_INPUT;
     }
-    life = dico_t_get_value(stats->value.dict, "max_life");
+    life = dico_t_get_value(stats->value.dict, life_hud_name);
     if (life == NULL || life->type != FLOAT) {
         return RET_ERR_INPUT;
     }
@@ -30,7 +33,7 @@ static int set_default_energy(player_t *player, any_t *stats)
     if (stats == NULL || stats->type != DICT) {
         return RET_ERR_INPUT;
     }
-    energy = dico_t_get_value(stats->value.dict, "max_energy");
+    energy = dico_t_get_value(stats->value.dict, energy_hud_name);
     if (energy == NULL || energy->type != FLOAT) {
         return RET_ERR_INPUT;
     }
