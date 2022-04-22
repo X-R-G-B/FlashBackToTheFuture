@@ -7,7 +7,7 @@
             "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
             "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffZfffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
@@ -83,6 +83,9 @@
                 "rotation": 90.0,
                 "col": 1
             },
+            "Z": {
+                "path": "./assets/image/map/squares/dirt.png"
+            }
             "c": {
                 "path": "./assets/image/map/squares/corner.png",
                 "col": 1

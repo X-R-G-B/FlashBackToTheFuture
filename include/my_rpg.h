@@ -124,7 +124,7 @@ void set_stop(player_t *player);
 
 void knockback(object_t *obj, scene_t *scene, window_t *win, float time);
 
-bool is_player_on_square(window_t *win, sfIntRect rect);
+bool is_player_on_square(window_t *win, sfFloatRect rect);
 
 player_t *create_player(window_t *win, scene_t *scene, const char *stats);
 
