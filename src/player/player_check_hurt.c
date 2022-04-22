@@ -34,6 +34,15 @@ static sfFloatRect get_player_rect(player_t *player)
     return rect;
 }
 
+static void set_hurt(player_t *player)
+{
+    bool hurt = true;
+
+    set_stop(player);
+    player->obj->components = dico_t_add_data(player->obj->components, "hurt",
+        ((void *) hurt), NULL);
+}
+
 void player_check_hurt(player_t *player, scene_t *scene)
 {
     list_ptr_t *ennemy_list = NULL;
@@ -51,8 +60,7 @@ void player_check_hurt(player_t *player, scene_t *scene)
     elem = ennemy_list->start;
     for (int i = 0; i < ennemy_list->len; i++, elem = elem->next) {
         if (check_ennemy_col(elem->var, rect) == true) {
-            set_stop(player);
-            player->state = HURT;
+            set_hurt(player);
             return;
         }
     }

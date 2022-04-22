@@ -8,7 +8,7 @@
 #include "my_rpg.h"
 #include "my_json.h"
 
-void check_blink_time_end(float since_start, float dtime, any_t *data,
+void check_blink_time_end(float *since_start, float dtime, any_t *data,
     player_t *player)
 {
     any_t *blink_time = dico_t_get_any(data->value.dict, "blink time");
@@ -16,12 +16,10 @@ void check_blink_time_end(float since_start, float dtime, any_t *data,
     if (blink_time == NULL || blink_time->type != FLOAT) {
         return;
     }
-    since_start += dtime;
-    printf("%f %f\n", since_start, blink_time->value.f);
-    if (since_start >= blink_time->value.f) {
-        since_start = 0;
-        player->state = STOP;
-        printf("past\n");
+    *since_start += dtime;
+    if (*since_start >= blink_time->value.f) {
+        *since_start = 0;
+        player->obj->components = dico_t_rem(player->obj->components, "hurt");
     }
 }
 
@@ -34,5 +32,5 @@ void update_hurt(player_t *player, __attribute__((unused)) scene_t *scene,
     if (data == NULL) {
         return;
     }
-    check_blink_time_end(since_start, dtime, data, player);
+    check_blink_time_end(&since_start, dtime, data, player);
 }
