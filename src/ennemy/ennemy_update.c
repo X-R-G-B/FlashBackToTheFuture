@@ -43,7 +43,8 @@ static void update_ennemy_stop(ennemy_t *ennemy,
     __attribute__((unused)) scene_t *scene,
     window_t *win, __attribute__((unused)) float time)
 {
-    if (is_player_in_range(ennemy, win) == false) {
+    if (ennemy == NULL || ennemy->obj == NULL ||
+        is_player_in_range(ennemy, win) == false) {
         return;
     }
     ennemy->state = MOVING;
