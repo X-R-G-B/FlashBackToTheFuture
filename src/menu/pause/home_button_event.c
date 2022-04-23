@@ -20,16 +20,10 @@ static void check_type(dico_t *dico, list_t *elem, list_t **button_elem)
     obj->is_visible = false;
     if (obj->type == SPRITE) {
         pos = get_any_float_array(dico_t_get_any(dico, "pos"));
-        if (pos == NULL) {
-            return;
-        }
-        obj->bigdata.sprite_bigdata.pos = (sfVector2f) {pos[1], pos[0]};
-        free(pos);
     } else if (obj->type == TEXT) {
         pos = get_any_float_array(dico_t_get_any(dico, "text pos"));
-        if (pos == NULL) {
-            return;
-        }
+    }
+    if (pos != NULL) {
         obj->bigdata.text_bigdata.pos = (sfVector2f) {pos[1], pos[0]};
         free(pos);
     }
