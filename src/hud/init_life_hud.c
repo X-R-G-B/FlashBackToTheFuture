@@ -24,7 +24,7 @@ void update_life_hud(object_t *object, scene_t *scene,
     if (object == NULL || win == NULL || scene == NULL) {
         return;
     }
-    player = dico_t_get_value(win->components, "player");
+    player = dico_t_get_value(win->components, PLAYER);
     if (player == NULL) {
         return;
     }
@@ -43,7 +43,7 @@ static int create_life_hud(object_t **life_hud, player_t **player,
     scene_t *scene, window_t *win)
 {
     *life_hud = create_object(update_life_hud, NULL, scene, -2);
-    *player = dico_t_get_value(win->components, "player");
+    *player = dico_t_get_value(win->components, PLAYER);
     if (*life_hud == NULL || *player == NULL) {
         return RET_ERR_MALLOC;
     }
@@ -65,7 +65,7 @@ int init_life_hud(window_t *win, scene_t *scene)
     if (create_life_hud(&life_hud, &player, scene, win) != RET_OK) {
         return RET_ERR_INPUT;
     }
-    if (add_hud_to_uid_element(scene, life_hud, player) != RET_OK) {
+    if (add_hud_to_hud_element(win, life_hud, player) != RET_OK) {
         return RET_ERR_INPUT;
     }
     if (update_hud_stats(life_hud, player, life_max_name,

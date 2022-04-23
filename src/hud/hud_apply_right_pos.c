@@ -2,12 +2,12 @@
 ** EPITECH PROJECT, 2022
 ** my_rpg
 ** File description:
-** uid apply right pos
+** hud apply right pos
 */
 
 #include "my_rpg.h"
 
-void uid_apply_right_pos(object_t *obj, object_t *player)
+void hud_apply_right_pos(object_t *obj, object_t *player)
 {
     sfVector2f screen_pos = {0};
 

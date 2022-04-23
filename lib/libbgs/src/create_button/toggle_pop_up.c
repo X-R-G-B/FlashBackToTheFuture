@@ -7,7 +7,7 @@
 
 #include "my_bgs_button_generator.h"
 
-void toggle_pop_up(dico_t *dico, char *key)
+void toggle_pop_up(dico_t *dico, const char *key)
 {
     list_t *elem = NULL;
     list_ptr_t *list = dico_t_get_value(dico, key);

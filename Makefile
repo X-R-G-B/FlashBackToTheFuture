@@ -34,12 +34,12 @@ SRC_METEO			:=	add_leaf.c								\
 SRC_METEO			:=	$(addprefix meteo/,$(SRC_METEO))
 # ----------------------------------------------------------------------------
 # --------- SRC_ENNEMY -------------------------------------------------------
-SRC_ENNEMY			:=	create_ennemy.c			\
-						ennemy_get_view_dir.c	\
-						sprite_set_change.c		\
-						ennemy_update.c			\
-						add_to_ennemy_list.c	\
-						update_ennemy_move.c	\
+SRC_ENNEMY			:=	create_ennemy.c							\
+						ennemy_get_view_dir.c					\
+						sprite_set_change.c						\
+						ennemy_update.c							\
+						add_to_ennemy_list.c					\
+						update_ennemy_move.c					\
 						is_player_in_range.c
 SRC_ENNEMY			:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 # ----------------------------------------------------------------------------
@@ -49,8 +49,6 @@ SRC_LAUNCH			:=	launch_game.c							\
 						move_object_between_scene.c				\
 						launch_story_mode.c						\
 						launch_next_stage.c						\
-						add_main_menu_elements_to_uid_list.c	\
-						uid_apply_right_pos.c					\
 						scene_loading_basic.c					\
 						temp_file_temp_pause_button.c
 SRC_LAUNCH			:=	$(addprefix launch/,$(SRC_LAUNCH))
@@ -76,7 +74,6 @@ SRC_EVENT			:=	attack.c								\
 SRC_EVENT			:=	$(addprefix event/,$(SRC_EVENT))
 
 SRC_UPDATE			:=	update_player.c							\
-						increment_uid_pos.c						\
 						update_hurt.c							\
 						update_movement.c						\
 						update_attack.c
@@ -93,10 +90,14 @@ SRC_PLAYER			:=	set_stop.c								\
 SRC_PLAYER			:=	$(addprefix player/,$(SRC_PLAYER))
 # ----------------------------------------------------------------------------
 # -------- SRC_HUD ----------------------------------------------------------
-SRC_HUD		:=	manage_hud.c									\
-				init_life_hud.c									\
-				init_energy_hud.c
-SRC_HUD		:= $(addprefix hud/,$(SRC_HUD))
+SRC_HUD				:=	manage_hud.c							\
+						add_main_menu_elements_to_hud_list.c	\
+						hud_apply_right_pos.c					\
+						init_hud_elements.c						\
+						increment_hud_pos.c						\
+						init_life_hud.c							\
+						init_energy_hud.c
+SRC_HUD				:=	$(addprefix hud/,$(SRC_HUD))
 # ----------------------------------------------------------------------------
 # -------- SRC_MENU ----------------------------------------------------------
 SRC_MAIN			:=	event_menu.c							\
