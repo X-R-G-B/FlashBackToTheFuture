@@ -27,7 +27,7 @@ static list_ptr_t *create_hud_list(window_t *win, scene_t *scene)
 static int create_hud_elements(window_t *win, scene_t *scene,
     list_ptr_t *hud_elements)
 {
-    list_ptr_t *pause_menu = create_pause_menu(scene);
+    list_ptr_t *pause_menu = create_pause_menu(scene, win);
 
     if (pause_menu == NULL ||
         temp_pause_button(win, pause_menu, scene, hud_elements) != RET_OK ||
@@ -36,6 +36,7 @@ static int create_hud_elements(window_t *win, scene_t *scene,
         return RET_ERR_MALLOC;
     }
     add_main_menu_elements_to_hud_list(win, scene, hud_elements);
+    return RET_OK;
 }
 
 int init_hud_elements(window_t *win, scene_t *scene)

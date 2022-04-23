@@ -50,7 +50,7 @@ void resume_event_off(object_t *obj, scene_t *scene, window_t *win,
     }
     pressed_button_off(obj, scene, win, evt);
     set_is_visible_false(dico_t_get_value(scene->components, SETTINGS_MENU));
-    toggle_pop_up(win->components, "pause");
+    toggle_pop_up(win->components, PAUSE_MENU);
     scene->pause = false;
 }
 

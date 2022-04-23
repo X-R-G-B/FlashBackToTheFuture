@@ -48,7 +48,7 @@ void update_energy_hud(object_t *object, scene_t *scene,
     if (object == NULL || win == NULL || scene == NULL) {
         return;
     }
-    player = dico_t_get_value(win->components, "player");
+    player = dico_t_get_value(win->components, PLAYER);
     if (player == NULL) {
         return;
     }
@@ -64,7 +64,7 @@ static int create_energy_hud(object_t **energy_hud, player_t **player,
     scene_t *scene, window_t *win)
 {
     *energy_hud = create_object(update_energy_hud, NULL, scene, -2);
-    *player = dico_t_get_value(win->components, "player");
+    *player = dico_t_get_value(win->components, PLAYER);
     if (*energy_hud == NULL || *player == NULL) {
         return RET_ERR_MALLOC;
     }
@@ -86,7 +86,7 @@ int init_energy_hud(window_t *win, scene_t *scene)
     if (create_energy_hud(&energy_hud, &player, scene, win) != RET_OK) {
         return RET_ERR_INPUT;
     }
-    if (add_hud_to_hud_element(scene, energy_hud, player) != RET_OK) {
+    if (add_hud_to_hud_element(win, energy_hud, player) != RET_OK) {
         return RET_ERR_INPUT;
     }
     if (update_hud_stats(energy_hud, player, energy_max_name,

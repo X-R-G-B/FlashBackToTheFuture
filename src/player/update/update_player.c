@@ -30,7 +30,7 @@ static void update_stop(__attribute__((unused)) player_t *player,
 void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
     window_t *win, float dtime)
 {
-    player_t *player = dico_t_get_value(win->components, "player");
+    player_t *player = dico_t_get_value(win->components, PLAYER);
     bool hurt = false;
 
     if (player == NULL || player->obj == NULL) {

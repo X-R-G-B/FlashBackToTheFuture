@@ -32,7 +32,7 @@ void add_main_menu_elements_to_hud_list(window_t *win, scene_t *scene,
     if (win == NULL || scene == NULL || hud_list == NULL) {
         return;
     }
-    player = dico_t_get_value(win->components, "player");
+    player = dico_t_get_value(win->components, PLAYER);
     setting_menu = dico_t_get_value(scene->components, SETTINGS_MENU);
     if (player == NULL || setting_menu == NULL) {
         return;

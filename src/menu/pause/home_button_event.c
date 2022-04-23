@@ -9,6 +9,9 @@
 #include "my_rpg.h"
 #include "main_menu.h"
 
+static const char *TO_REMOVE[] = {PLAYER, PAUSE_MENU, SAVE, DEAD_MESSAGE,
+    DEAD_SCREEN, HUD_ELEMENTS};
+
 static void check_type(dico_t *dico, list_t *elem, list_t **button_elem)
 {
     float *pos = NULL;
@@ -72,9 +75,19 @@ static void move_setting_menu_to_main_menu(window_t *win, scene_t *scene)
     destroy_any(setting_menu_data);
 }
 
+void remove_components(window_t *win)
+{
+    for (int i = 0; TO_REMOVE[i] != NULL; i++) {
+        win->components = dico_t_rem(win->components, TO_REMOVE[i]);
+        if (win->components == NULL) {
+            return;
+        }
+    }
+}
+
 void go_to_home(scene_t *scene, window_t *win)
 {
-    player_t *player = dico_t_get_value(win->components, "player");
+    player_t *player = dico_t_get_value(win->components, PLAYER);
 
     if (player == NULL) {
         return;
@@ -85,10 +98,6 @@ void go_to_home(scene_t *scene, window_t *win)
     sfView_setCenter(player->view,
         (sfVector2f) {WIN_SIZE_X / 2, WIN_SIZE_Y / 2});
     sfRenderWindow_setView(win->win, player->view);
-    win->components = dico_t_rem(win->components, "player");
-    win->components = dico_t_rem(win->components, "pause");
-    win->components = dico_t_rem(win->components, SAVE);
-    win->components = dico_t_rem(win->components, "dead_message");
-    win->components = dico_t_rem(win->components, "dead_screen");
+    remove_components(win);
     list_add_to_end(win->to_remove, scene);
 }

@@ -23,13 +23,13 @@ static void init_dead_screen_pos(window_t *win)
         return;
     }
     list_add_to_end(hud_elements,
-        dico_t_get_value(win->components, "dead_message"));
+        dico_t_get_value(win->components, DEAD_MESSAGE));
     list_add_to_end(hud_elements,
-        dico_t_get_value(win->components, "dead_screen"));
+        dico_t_get_value(win->components, DEAD_SCREEN));
     hud_apply_right_pos(dico_t_get_value(win->components,
-        "dead_message"), player->obj);
+        DEAD_MESSAGE), player->obj);
     hud_apply_right_pos(dico_t_get_value(win->components,
-        "dead_screen"), player->obj);
+        DEAD_SCREEN), player->obj);
 }
 
 static void config_input_and_components(window_t *win,
@@ -48,9 +48,9 @@ static void config_input_and_components(window_t *win,
     dead_screen->is_visible = false;
     if (scene_add_components(scene, can_play, "can_play", free) != BGS_OK ||
         window_add_component(win, dead_message,
-            "dead_message", NULL) != BGS_OK ||
+            DEAD_MESSAGE, NULL) != BGS_OK ||
         window_add_component(win, dead_screen,
-            "dead_screen", NULL) != BGS_OK) {
+            DEAD_SCREEN, NULL) != BGS_OK) {
         return;
     }
 }

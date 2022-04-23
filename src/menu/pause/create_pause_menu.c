@@ -16,7 +16,7 @@ static const char data_path[] = "./assets/data/menu/pressed.json";
 static list_ptr_t *apply_right_pos(list_ptr_t *list, window_t *win)
 {
     list_ptr_t *hud_elements = dico_t_get_value(win->components, HUD_ELEMENTS);
-    player_t *player = dico_t_get_value(win->components, "player");
+    player_t *player = dico_t_get_value(win->components, PLAYER);
 
     if (list == NULL || hud_elements == NULL || player == NULL) {
         return NULL;

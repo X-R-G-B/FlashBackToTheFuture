@@ -16,7 +16,7 @@ void knockback(object_t *obj, __attribute__((unused)) scene_t *scene,
         sfSprite_getGlobalBounds(obj->drawable.sprite)) == false) {
         return;
     }
-    player = dico_t_get_value(win->components, "player");
+    player = dico_t_get_value(win->components, PLAYER);
     if (player == NULL) {
         return;
     }

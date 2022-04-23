@@ -119,7 +119,7 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats)
     if (player == NULL) {
         return NULL;
     }
-    if (window_add_component(win, player, "player", destroy_player) != BGS_OK) {
+    if (window_add_component(win, player, PLAYER, destroy_player) != BGS_OK) {
         return NULL;
     }
     player->dir = DOWN;
