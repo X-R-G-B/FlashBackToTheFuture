@@ -12,7 +12,7 @@ void knockback(object_t *obj, __attribute__((unused)) scene_t *scene,
 {
     player_t *player = NULL;
 
-    if (is_player_on_square(win,
+    if (obj == NULL || win == NULL || is_player_on_square(win,
         sfSprite_getGlobalBounds(obj->drawable.sprite)) == false) {
         return;
     }
