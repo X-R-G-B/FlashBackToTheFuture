@@ -41,7 +41,7 @@ bool is_player_in_range(ennemy_t *ennemy, window_t *win)
         return false;
     }
     data = dico_t_get_value(ennemy->obj->components, ENNEMY_DATA);
-    player = dico_t_get_value(win->components, "player");
+    player = dico_t_get_value(win->components, PLAYER);
     if (player == NULL || data == NULL) {
         return false;
     }

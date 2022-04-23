@@ -53,20 +53,20 @@ int update_hud_stats(object_t *obj, player_t *player, const char stat_name[],
     return RET_OK;
 }
 
-int add_hud_to_uid_element(scene_t *scene, object_t *hud_data, player_t *player)
+int add_hud_to_hud_element(window_t *win, object_t *hud_data, player_t *player)
 {
-    list_ptr_t *uid_elements = NULL;
+    list_ptr_t *hud_elements = NULL;
 
-    if (scene == NULL || scene->components == NULL ||
+    if (win == NULL || win->components == NULL ||
         hud_data == NULL || player == NULL) {
-            return RET_ERR_INPUT;
-        }
-    uid_elements = dico_t_get_value(scene->components, UID_ELEMENTS);
-    if (uid_elements == NULL) {
         return RET_ERR_INPUT;
     }
-    uid_apply_right_pos(hud_data, player->obj);
-    list_add_to_end(uid_elements, hud_data);
+    hud_elements = dico_t_get_value(win->components, HUD_ELEMENTS);
+    if (hud_elements == NULL) {
+        return RET_ERR_INPUT;
+    }
+    hud_apply_right_pos(hud_data, player->obj);
+    list_add_to_end(hud_elements, hud_data);
     return RET_OK;
 }
 
@@ -79,7 +79,7 @@ static int init_head_with_border(window_t *win, scene_t *scene)
     if (head_with_borders == NULL) {
         return RET_ERR_MALLOC;
     }
-    player = dico_t_get_value(win->components, "player");
+    player = dico_t_get_value(win->components, PLAYER);
     if (player == NULL) {
         return RET_ERR_INPUT;
     }
@@ -87,7 +87,7 @@ static int init_head_with_border(window_t *win, scene_t *scene)
         head_with_borders_rect, head_with_borders_pos) != BGS_OK) {
         return RET_ERR_INPUT;
     }
-    if (add_hud_to_uid_element(scene, head_with_borders, player) != RET_OK) {
+    if (add_hud_to_hud_element(win, head_with_borders, player) != RET_OK) {
         return RET_ERR_INPUT;
     }
     return RET_OK;

@@ -12,10 +12,11 @@ void update_dead(__attribute__((unused)) player_t *player,
     __attribute__((unused)) scene_t *screen,
     window_t *win, __attribute__((unused)) float delta_time)
 {
-    object_t *dead_message = dico_t_get_value(win->components, "dead_message");
-    object_t *dead_screen = dico_t_get_value(win->components, "dead_screen");
+    object_t *dead_message = dico_t_get_value(win->components, DEAD_MESSAGE);
+    object_t *dead_screen = dico_t_get_value(win->components, DEAD_SCREEN);
 
-    if (dead_message == NULL || dead_message->is_visible == true) {
+    if (dead_message == NULL || dead_message->is_visible == true ||
+        dead_screen == NULL || dead_screen->is_visible == true) {
         return;
     }
     dead_message->is_visible = true;

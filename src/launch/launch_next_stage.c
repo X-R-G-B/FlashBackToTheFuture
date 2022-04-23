@@ -29,7 +29,7 @@ static int create_scene_objects(window_t *win, scene_t *prev_scene,
     scene_t *scene)
 {
     int *spawn = NULL;
-    player_t *player = dico_t_get_value(win->components, "player");
+    player_t *player = dico_t_get_value(win->components, PLAYER);
 
     if (move_object_between_scene(win, prev_scene, scene) != RET_OK
         /*create_map(scene) != RET_OK ||
@@ -79,7 +79,6 @@ int launch_next_stage(window_t *win)
     if (win == NULL) {
         return RET_ERR_INPUT;
     }
-    launch_scene_loading(win, "SCENE_LOADING_BASIC");
     save = dico_t_get_any(win->components, SAVE);
     current_scene = dico_t_get_value(win->scenes, win->current_scene);
     if (current_scene == NULL || save == NULL) {

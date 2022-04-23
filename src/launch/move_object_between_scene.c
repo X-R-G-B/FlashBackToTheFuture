@@ -39,7 +39,7 @@ static int move_player(dico_t *dico, scene_t *fst_scene, scene_t *scd_scene)
     if (dico == NULL || fst_scene == NULL || scd_scene == NULL) {
         return RET_ERR_MALLOC;
     }
-    player = dico_t_get_value(dico, "player");
+    player = dico_t_get_value(dico, PLAYER);
     if (player == NULL) {
         return RET_OK;
     }
@@ -54,7 +54,7 @@ int move_object_between_scene(window_t *win, scene_t *fst_scene,
         return RET_ERR_INPUT;
     } else if (move_list_element(fst_scene->components, SETTINGS_MENU,
         fst_scene, scd_scene) != RET_OK ||
-        move_list_element(fst_scene->components, ((char *) UID_ELEMENTS),
+        move_list_element(fst_scene->components, ((char *) HUD_ELEMENTS),
         fst_scene, scd_scene) != RET_OK ||
         move_player(win->components, fst_scene, scd_scene) != RET_OK) {
         return RET_ERR_MALLOC;

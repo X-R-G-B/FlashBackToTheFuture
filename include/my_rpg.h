@@ -26,7 +26,12 @@ static const char PLAYER_STATS[] = "./assets/data/player/stats.json";
 
 static const char COLLISION_ARRAY[] = "collision array";
 
-static const char UID_ELEMENTS[] = "uid_elements";
+static const char HUD_ELEMENTS[] = "hud_elements";
+static const char PAUSE_MENU[] = "pause";
+static const char DEAD_MESSAGE[] = "dead message";
+static const char DEAD_SCREEN[] = "dead screen";
+
+static const char PLAYER[] = "player";
 
 static const char STORY_DATA_PATH[] =
     "./assets/data/story_mode/save.json";
@@ -69,9 +74,9 @@ int move_list_element(dico_t *dico, char *elem_key, scene_t *fst_scene,
     scene_t *scd_scene);
 
 void change_player_pos(player_t *player, float move,
-    scene_t *scene);
+    window_t *win);
 
-void add_list_obj_to_uid_list(list_ptr_t *uid_elements,
+void add_list_obj_to_hud_list(list_ptr_t *hud_elements,
     list_ptr_t *to_cpy, player_t *player);
 
 char *get_stage_path(int current_stage);
@@ -84,9 +89,9 @@ bool check_collision(player_t *player, scene_t *scene);
 int move_object_between_scene(window_t *win, scene_t *fst_scene,
     scene_t *scd_scene);
 
-void increment_uid_pos(scene_t *scene, sfVector2f to_add);
+void increment_hud_pos(window_t *win, sfVector2f to_add);
 
-void uid_apply_right_pos(object_t *obj, object_t *player);
+void hud_apply_right_pos(object_t *obj, object_t *player);
 
 int create_map(scene_t *scene);
 
@@ -107,8 +112,8 @@ bool check_down_collision(object_t *player, char **map, sfVector2i pos);
 void update_attack(player_t *player, scene_t *scene, window_t *win,
     float dtime);
 
-void add_main_menu_elements_to_uid_list(window_t *win, scene_t *scene,
-    list_ptr_t *uid_list);
+void add_main_menu_elements_to_hud_list(window_t *win, scene_t *scene,
+    list_ptr_t *hud_list);
 
 int launch_story_mode(window_t *win, const char save_path[], scene_t *scene);
 
@@ -137,7 +142,9 @@ int launch_stage(window_t *win, char *stage_path, int stage_id, scene_t *scene);
 void attack_event(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *set_event);
 
-list_ptr_t *create_pause_menu(scene_t *scene);
+list_ptr_t *create_pause_menu(scene_t *scene, window_t *win);
+
+int init_hud_elements(window_t *win, scene_t *scene);
 
 void home_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
@@ -185,8 +192,6 @@ void destroy_player(void *player_void);
 void dead_event_input(object_t *object, scene_t *scene,
     window_t *window, set_event_t *event);
 
-void init_dead_screen_pos(list_ptr_t *uid_elements, window_t *win);
-
 int init_life_hud(window_t *win, scene_t *scene);
 
 int init_energy_hud(window_t *win, scene_t *scene);
@@ -194,7 +199,7 @@ int init_energy_hud(window_t *win, scene_t *scene);
 int update_hud_stats(object_t *obj, player_t *player, const char stat_name[],
     float stat_value);
 
-int add_hud_to_uid_element(scene_t *scene, object_t *hud_data,
+int add_hud_to_hud_element(window_t *win, object_t *hud_data,
     player_t *player);
 
 int init_hud(window_t *win, scene_t *scene);

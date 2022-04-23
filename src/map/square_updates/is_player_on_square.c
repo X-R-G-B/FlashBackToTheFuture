@@ -31,7 +31,7 @@ bool is_player_on_square(window_t *win, sfFloatRect rect)
     if (win == NULL) {
         return false;
     }
-    player = dico_t_get_value(win->components, "player");
+    player = dico_t_get_value(win->components, PLAYER);
     if (player == NULL) {
         return false;
     }
