@@ -12,20 +12,6 @@
 
 static const int back_color[] = {51, 136, 238};
 
-static void replace_objects(window_t *win, player_t *player)
-{
-    list_ptr_t *hud_elements = dico_t_get_value(win->components, HUD_ELEMENTS);
-    list_t *elem = NULL;
-
-    if (hud_elements == NULL) {
-        return;
-    }
-    elem = hud_elements->start;
-    for (int i = 0; i < hud_elements->len; i++, elem = elem->next) {
-        hud_apply_right_pos(elem->var, player->obj);
-    }
-}
-
 static int increment_current_stage_data(any_t *save)
 {
     any_t *current_stage = dico_t_get_any(save->value.dict, "current stage");
@@ -43,23 +29,12 @@ static int increment_current_stage_data(any_t *save)
 static int create_scene_objects(window_t *win, scene_t *prev_scene,
     scene_t *scene)
 {
-    int *spawn = NULL;
-    player_t *player = dico_t_get_value(win->components, PLAYER);
-
     if (move_object_between_scene(win, prev_scene, scene) != RET_OK
         /*create_map(scene) != RET_OK ||
         add_collision_array_in_scene(scene) != RET_OK*/) {
         return RET_ERR_MALLOC;
     }
-    spawn = get_player_spawn(scene);
-    if (player == NULL || spawn == NULL) {
-        return RET_ERR_INPUT;
-    }
-    player->obj->bigdata.sprite_bigdata.pos = (sfVector2f) {spawn[0], spawn[1]};
-    sfView_setCenter(player->view, (sfVector2f) {spawn[0], spawn[1]});
-    sfRenderWindow_setView(win->win, player->view);
-    free(spawn);
-    replace_objects(win, player);
+    replace_objects(win, scene);
     create_meteo_handler(win, scene);
     return RET_OK;
 }

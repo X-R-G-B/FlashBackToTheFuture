@@ -88,6 +88,8 @@ int move_object_between_scene(window_t *win, scene_t *fst_scene,
 
 void increment_hud_pos(window_t *win, sfVector2f to_add);
 
+void replace_objects(window_t *win, scene_t *scene);
+
 void hud_apply_right_pos(object_t *obj, object_t *player);
 
 int create_map(scene_t *scene);

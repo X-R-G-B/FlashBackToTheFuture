@@ -13,6 +13,7 @@
 #include "my_rpg.h"
 #include "my_json.h"
 #include "ennemy_pathfind.h"
+#include "macro.h"
 
 static void (*event_on[])(object_t *, scene_t *, window_t *,
     set_event_t *) = {
@@ -123,7 +124,7 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats)
         return NULL;
     }
     player->dir = DOWN;
-    player->obj = create_object(update_player, NULL, scene, 0);
+    player->obj = create_object(update_player, NULL, scene, LAYER_PLAYER);
     if (player->obj == NULL) {
         return NULL;
     }
