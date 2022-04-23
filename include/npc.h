@@ -8,12 +8,41 @@
 #ifndef NPC_RPG_H_
     #define NPC_RPG_H_
 
+    #include <stdbool.h>
+    #include "list.h"
     #include "my_bgs.h"
     #include "my_json.h"
+
+typedef struct dialog_manager_s dialog_manager_t;
+typedef struct text_dialog_s text_dialog_t;
+
+struct dialog_manager_s {
+    list_ptr_t *dialogues;
+    char *text;
+};
+
+struct text_dialog_s {
+    char *str;
+    bool need_pause;
+    void (*callback)(const char *str, scene_t *scene, window_t *win);
+};
+
+int init_dialog(scene_t *scene);
+
+int add_npc(scene_t *scene, const char *path);
 
 void update_npc(object_t *obj, scene_t *scene, window_t *win,
     float dtime);
 
+void update_text_dialog(object_t *obj, scene_t *scene, window_t *win,
+    float dtime);
+
+void update_dialog(object_t *obj, scene_t *scene, window_t *win,
+    float dtime);
+
 int aplly_rect_npc(any_t *jsonrect, any_t *current, object_t *npc);
+
+int add_text_dialog(scene_t *scene, const char *text, bool need_pause,
+    void (*callback)(const char *str, scene_t *scene, window_t *win));
 
 #endif
