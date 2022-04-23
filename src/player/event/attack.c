@@ -17,5 +17,6 @@ void attack_event(__attribute__((unused)) object_t *obj, __attribute__((unused))
         (player->state != STOP && player->state != MOVING)) {
         return;
     }
+    launch_next_stage(win);
     player->state = ATTACKING;
 }

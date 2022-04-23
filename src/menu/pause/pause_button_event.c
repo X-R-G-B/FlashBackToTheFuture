@@ -16,7 +16,7 @@ void settings_button_off(object_t *obj, scene_t *scene, window_t *win,
         pressed_button_off(obj, scene, win, evt);
         return;
     }
-    toggle_pop_up(scene->components, SETTINGS_MENU);
+    toggle_pop_up(win->components, SETTINGS_MENU);
     pressed_button_off(obj, scene, win, evt);
 }
 
@@ -49,7 +49,7 @@ void resume_event_off(object_t *obj, scene_t *scene, window_t *win,
         return;
     }
     pressed_button_off(obj, scene, win, evt);
-    set_is_visible_false(dico_t_get_value(scene->components, SETTINGS_MENU));
+    set_is_visible_false(dico_t_get_value(win->components, SETTINGS_MENU));
     toggle_pop_up(win->components, PAUSE_MENU);
     scene->pause = false;
 }

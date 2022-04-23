@@ -64,7 +64,7 @@ scene_t *init_scene(char *stage_path, window_t *win, char *stage_name)
 
 static int init_new_scene_objects(window_t *win, scene_t *scene)
 {
-    if (win == NULL || create_map(scene) != RET_OK ||
+    if (create_map(scene) != RET_OK ||
         create_player(win, scene, PLAYER_STATS) == NULL ||
         init_hud_elements(win, scene) != RET_OK ||
         add_collision_array_in_scene(scene) != RET_OK) {
@@ -80,14 +80,15 @@ int launch_stage(window_t *win, char *stage_path, int stage_id,
     char *stage_name = get_stage_name(stage_id);
 
     scene = init_scene(stage_path, win, stage_name);
+    free(stage_path);
     if (scene == NULL || move_object_between_scene(win, prev_scene,
         scene) != RET_OK || init_new_scene_objects(win, scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     if (window_change_scene(win, stage_name) != BGS_OK) {
+        free(stage_name);
         return RET_ERR_INPUT;
     }
-    free(stage_path);
     free(stage_name);
     return RET_OK;
 }

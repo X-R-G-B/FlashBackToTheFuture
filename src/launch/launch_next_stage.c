@@ -7,9 +7,24 @@
 
 #include <stdlib.h>
 #include "my_rpg.h"
+#include "meteo.h"
 #include "my_json.h"
 
 static const int back_color[] = {51, 136, 238};
+
+static void replace_objects(window_t *win, player_t *player)
+{
+    list_ptr_t *hud_elements = dico_t_get_value(win->components, HUD_ELEMENTS);
+    list_t *elem = NULL;
+
+    if (hud_elements == NULL) {
+        return;
+    }
+    elem = hud_elements->start;
+    for (int i = 0; i < hud_elements->len; i++, elem = elem->next) {
+        hud_apply_right_pos(elem->var, player->obj);
+    }
+}
 
 static int increment_current_stage_data(any_t *save)
 {
@@ -41,7 +56,11 @@ static int create_scene_objects(window_t *win, scene_t *prev_scene,
         return RET_ERR_INPUT;
     }
     player->obj->bigdata.sprite_bigdata.pos = (sfVector2f) {spawn[0], spawn[1]};
+    sfView_setCenter(player->view, (sfVector2f) {spawn[0], spawn[1]});
+    sfRenderWindow_setView(win->win, player->view);
     free(spawn);
+    replace_objects(win, player);
+    create_meteo_handler(win, scene);
     return RET_OK;
 }
 

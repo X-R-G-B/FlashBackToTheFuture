@@ -43,7 +43,7 @@ static void set_button_rectangle(list_ptr_t *buttons)
     obj->bigdata.sprite_bigdata.rect = (sfIntRect) {13, 5, 217, 75};
 }
 
-static int init_main_menu_buttons(scene_t *scene)
+static int init_main_menu_buttons(scene_t *scene, window_t *win)
 {
     list_ptr_t *main_menu = NULL;
     list_ptr_t *load_game = NULL;
@@ -54,7 +54,7 @@ static int init_main_menu_buttons(scene_t *scene)
         return (RET_ERR_MALLOC);
     }
     set_button_rectangle(main_menu);
-    scene_add_components(scene, settings, SETTINGS_MENU, free_pop_up);
+    window_add_component(win, settings, SETTINGS_MENU, free_pop_up);
     scene_add_components(scene, load_game, PLAY, free_pop_up);
     scene_add_components(scene, main_menu, MENU, free_pop_up);
     if (scene->components == NULL) {
@@ -76,7 +76,7 @@ int init_menu(window_t *win)
         return (RET_ERR_MALLOC);
     }
     obj = create_object(NULL, NULL, scene, 0);
-    if (init_main_menu_buttons(scene) == RET_ERR_MALLOC || obj == NULL) {
+    if (init_main_menu_buttons(scene, win) == RET_ERR_MALLOC || obj == NULL) {
         return (RET_ERR_MALLOC);
     }
     add_escape_event(obj);

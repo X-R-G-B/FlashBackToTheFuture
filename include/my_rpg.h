@@ -70,9 +70,6 @@ void next_stage(object_t *obj, scene_t *scene, window_t *win, float time);
 
 int launch_next_stage(window_t *win);
 
-int move_list_element(dico_t *dico, char *elem_key, scene_t *fst_scene,
-    scene_t *scd_scene);
-
 void change_player_pos(player_t *player, float move,
     window_t *win);
 
