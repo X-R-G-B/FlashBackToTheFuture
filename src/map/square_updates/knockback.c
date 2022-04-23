@@ -20,6 +20,6 @@ void knockback(object_t *obj, __attribute__((unused)) scene_t *scene,
     if (player == NULL) {
         return;
     }
-    change_player_pos(player, 10, scene);
+    change_player_pos(player, 10, win);
     sfRenderWindow_setView(win->win, player->view);
 }
