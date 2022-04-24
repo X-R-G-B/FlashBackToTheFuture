@@ -29,9 +29,9 @@ static int increment_current_stage_data(any_t *save)
 static int create_scene_objects(window_t *win, scene_t *prev_scene,
     scene_t *scene)
 {
-    if (move_object_between_scene(win, prev_scene, scene) != RET_OK
-        /*create_map(scene) != RET_OK ||
-        add_collision_array_in_scene(scene) != RET_OK*/) {
+    if (move_object_between_scene(win, prev_scene, scene) != RET_OK ||
+        create_map(scene) != RET_OK ||
+        add_collision_array_in_scene(scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     replace_objects(win, scene);
