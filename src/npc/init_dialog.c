@@ -16,10 +16,10 @@
 
 static const char path_dialog_img[] = "./assets/image/npc/dialog_box.png";
 static const sfIntRect rect_dialog = {-1, -1, -1, -1};
-static const sfVector2f pos_dialog = {540, 540};
+const sfVector2f pos_dialog = {0, 470};
 
 static const char path_font_dialog[] = "./assets/fonts/Menlo-Regular.ttf";
-static const sfVector2f pos_text = {540, 540};
+const sfVector2f pos_text = {0, 470};
 
 const char compo_dialog[] = "componente dialog";
 
@@ -43,14 +43,19 @@ static dialog_manager_t *create_dialog_manager_t(void)
 static void destroy_dialog_manager_t(void *dialog_void)
 {
     dialog_manager_t *dialog = dialog_void;
+    list_t *list = NULL;
 
     if (dialog_void == NULL) {
         return;
     }
-    free_list(dialog->dialogues);
-    if (dialog->text != NULL) {
-        free(dialog->text);
+    list = (dialog->dialogues != NULL) ? dialog->dialogues->start : NULL;
+    for (int i = 0; dialog->dialogues != NULL && i < dialog->dialogues->len;
+            i++) {
+        free(((text_dialog_t *) list->var)->str);
+        free(list->var);
+        list = list->next;
     }
+    free_list(dialog->dialogues);
     free(dialog);
 }
 

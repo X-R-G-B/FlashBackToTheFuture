@@ -41,6 +41,9 @@ extern const char npc_data_callback[];
 
 extern const char json_magician[];
 
+extern const sfVector2f pos_dialog;
+extern const sfVector2f pos_text;
+
 void callback_magician(__attribute__((unused)) object_t *npc,
     scene_t *scene,
     __attribute__((unused)) window_t *win);
