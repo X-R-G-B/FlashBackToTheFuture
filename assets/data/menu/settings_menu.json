@@ -1,10 +1,9 @@
 {
     "buttons": [
         {
-            "text": "Settings back",
             "sprite path": "./assets/image/menu/main_menu/settings/Parchemin.png",
             "pos": [540.0, 1150.0],
-            "plan": -1
+            "plan": 1
         },
         {
             "text": "Retour",
@@ -51,7 +50,6 @@
             "plan": -2
         },
         {
-            "text": "Audio",
             "sprite path": "./assets/image/menu/main_menu/settings/Audio.png",
             "pos": [380.0, 1150.0],
             "plan": -2

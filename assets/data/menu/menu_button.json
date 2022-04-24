@@ -22,7 +22,7 @@
             "text": "Retour",
             "sprite path": "./assets/image/menu/main_menu/default_screen/background.jpg",
             "pos": [540.0, 960.0],
-            "plan": 1
+            "plan": 2
         },
         {
             "text": "Overlay",

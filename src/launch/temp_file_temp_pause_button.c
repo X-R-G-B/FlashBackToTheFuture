@@ -20,7 +20,6 @@ static void click_pause(__attribute__((unused)) object_t *obj, scene_t *scene,
     scene->pause = (scene->pause == true) ? false : true;
     set_stop(player);
     if (check_if_pop_up_true(win->components, SETTINGS_MENU) == 0) {
-        scene->pause = false;
         toggle_pop_up(win->components, PAUSE_MENU);
     }
 }

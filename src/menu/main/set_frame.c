@@ -9,11 +9,12 @@
 
 static const int circle_i = 7;
 
-static list_ptr_t *get_settings_components(window_t *win)
+static list_ptr_t *get_settings_components(window_t *win, object_t *obj)
 {
     list_ptr_t *list = NULL;
 
-    if (win == NULL) {
+    if (win == NULL || obj == NULL || obj->is_visible == false) {
+        win->click = NULL;
         return (NULL);
     }
     list = dico_t_get_value(win->components, SETTINGS_MENU);
@@ -26,7 +27,7 @@ void set_60_fps(object_t *obj, __attribute__((unused)) scene_t *scene,
     list_ptr_t *list = NULL;
     object_t *circle = NULL;
 
-    list = get_settings_components(win);
+    list = get_settings_components(win, obj);
     if (list == NULL) {
         return;
     }
@@ -44,7 +45,7 @@ void set_120_fps(object_t *obj, __attribute__((unused)) scene_t *scene,
     list_ptr_t *list = NULL;
     object_t *circle = NULL;
 
-    list = get_settings_components(win);
+    list = get_settings_components(win, obj);
     if (list == NULL) {
         return;
     }
@@ -62,7 +63,7 @@ void set_144_fps(object_t *obj, __attribute__((unused)) scene_t *scene,
     list_ptr_t *list = NULL;
     object_t *circle = NULL;
 
-    list = get_settings_components(win);
+    list = get_settings_components(win, obj);
     if (list == NULL) {
         return;
     }
@@ -80,7 +81,7 @@ void set_165_fps(object_t *obj, __attribute__((unused)) scene_t *scene,
     list_ptr_t *list = NULL;
     object_t *circle = NULL;
 
-    list = get_settings_components(win);
+    list = get_settings_components(win, obj);
     if (list == NULL) {
         return;
     }
