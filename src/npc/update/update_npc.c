@@ -18,11 +18,6 @@ extern const char npc_json[];
 
 static float refresh_rate = 1.0 / 10;
 
-static void update_dialog(player_t *player, object_t *npc)
-{
-
-}
-
 static bool check_collid_player(object_t *npc, player_t *player)
 {
     sfVector2i pos[2] = {0};
@@ -39,7 +34,6 @@ static bool check_collid_player(object_t *npc, player_t *player)
         .y = (int) (npc->bigdata.sprite_bigdata.pos.y) / SQUARE_SIZE,
     };
     if (pos[0].x == pos[1].x && pos[0].y == pos[1].y) {
-        update_dialog(player, npc);
         return (true);
     }
     return (false);
@@ -67,7 +61,8 @@ static bool update_rect(object_t *npc, any_t *npcjson, float dtime)
     return (true);
 }
 
-void update_npc(object_t *obj, scene_t *scene, window_t *win,
+void update_npc(object_t *obj,
+    __attribute__((unused)) scene_t *scene, window_t *win,
     float dtime)
 {
     player_t *player = NULL;

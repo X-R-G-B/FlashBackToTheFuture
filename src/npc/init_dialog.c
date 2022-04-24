@@ -21,7 +21,7 @@ static const sfVector2f pos_dialog = {540, 540};
 static const char path_font_dialog[] = "";
 static const sfVector2f pos_text = {540, 540};
 
-static const char compo_dialog[] = "componente dialog";
+const char compo_dialog[] = "componente dialog";
 
 static dialog_manager_t *create_dialog_manager_t(void)
 {

@@ -127,7 +127,7 @@ SRC_MENU			:=	$(SRC_PAUSE)							\
 						button_event_array.c
 SRC_MENU			:=	$(addprefix menu/,$(SRC_MENU))
 # ----------------------------------------------------------------------------
-# ------- SRC_PATH -----------------------------------------------------------
+# ------- SRC_PATHFIND -------------------------------------------------------
 SRC_PATH			:=	init_find.c								\
 						init_path.c								\
 						get_new_pos.c							\
@@ -139,6 +139,24 @@ SRC_PATH			:=	$(addprefix pathfind/,$(SRC_PATH))
 SRC_MATH			:=	rect_contains_segment.c
 SRC_MATH			:=	$(addprefix math/,$(SRC_MATH))
 # ----------------------------------------------------------------------------
+# --------- SRC_NPC ----------------------------------------------------------
+SRC_NPC_EVENT		:=	press_to_continue.c						\
+						press_to_quit_dialogues.c
+SRC_NPC_EVENT		:=	$(addprefix event/,$(SRC_NPC_EVENT))
+
+SRC_NPC_UPDATE		:=	update_dialog_text.c					\
+						update_dialogue_box.c					\
+						update_npc.c
+SRC_NPC_UPDATE		:=	$(addprefix update/,$(SRC_NPC_UPDATE))
+
+SRC_NPC				:=	add_text_dialog.c						\
+						aplly_rect_npc.c						\
+						create_npc.c							\
+						init_dialog.c							\
+						$(SRC_NPC_EVENT)						\
+						$(SRC_NPC_UPDATE)
+SRC_NPC				:=	$(addprefix npc/,$(SRC_NPC))
+# ----------------------------------------------------------------------------
 # ------ SRC -----------------------------------------------------------------
 SRC					:=	main.c									\
 						$(SRC_LAUNCH)							\
@@ -149,7 +167,8 @@ SRC					:=	main.c									\
 						$(SRC_ENNEMY)							\
 						$(SRC_METEO)							\
 						$(SRC_MATH)								\
-						$(SRC_HUD)
+						$(SRC_HUD)								\
+						$(SRC_NPC)
 SRC					:= 	$(addprefix src/,$(SRC))
 # ----------------------------------------------------------------------------
 # ----- OBJ ------------------------------------------------------------------

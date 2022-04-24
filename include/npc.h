@@ -27,6 +27,15 @@ struct text_dialog_s {
     void (*callback)(const char *str, scene_t *scene, window_t *win);
 };
 
+extern const char compo_dialog[];
+
+int destroy_text_dialog(void *dialog_void, scene_t *scene, window_t *win,
+    bool force_quit);
+
+int add_event_continue_to_dialog(object_t *dialog);
+
+int add_event_quit_to_dialog(object_t *dialog);
+
 int init_dialog(scene_t *scene);
 
 int add_npc(scene_t *scene, const char *path);
