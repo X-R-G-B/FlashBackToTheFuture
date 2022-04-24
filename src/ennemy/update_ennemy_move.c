@@ -12,7 +12,6 @@
 
 static const char rect_actualisation[] = "rect actualisation";
 static const char speed[] = "speed";
-static const char scale_key[] = "scale";
 static const char move_dict[] = "move";
 
 static int get_data(any_t **rect_speed, any_t **move_speed, any_t *data,
