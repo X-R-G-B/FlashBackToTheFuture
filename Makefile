@@ -149,12 +149,16 @@ SRC_NPC_UPDATE		:=	update_dialog_text.c					\
 						update_npc.c
 SRC_NPC_UPDATE		:=	$(addprefix update/,$(SRC_NPC_UPDATE))
 
+SRC_NPC_NPC			:=	tests.c
+SRC_NPC_NPC			:=	$(addprefix npc/,$(SRC_NPC_NPC))
+
 SRC_NPC				:=	add_text_dialog.c						\
 						aplly_rect_npc.c						\
 						create_npc.c							\
 						init_dialog.c							\
 						$(SRC_NPC_EVENT)						\
-						$(SRC_NPC_UPDATE)
+						$(SRC_NPC_UPDATE)						\
+						$(SRC_NPC_NPC)
 SRC_NPC				:=	$(addprefix npc/,$(SRC_NPC))
 # ----------------------------------------------------------------------------
 # ------ SRC -----------------------------------------------------------------
