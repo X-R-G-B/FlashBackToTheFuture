@@ -5,6 +5,8 @@
 ** update dialog box
 */
 
+#include <SFML/Graphics/View.h>
+#include <SFML/System/Vector2.h>
 #include <stdbool.h>
 #include <stdlib.h>
 #include "my_bgs.h"
@@ -30,6 +32,23 @@ static void set_new_text(dialog_manager_t *dialog, text_dialog_t *text,
     }
 }
 
+static void update_position(object_t *obj, window_t *win)
+{
+    const sfView *view = NULL;
+    sfVector2f center = {0};
+
+    if (win == NULL) {
+        return;
+    }
+    view = sfRenderWindow_getView(win->win);
+    if (view == NULL) {
+        return;
+    }
+    center = sfView_getCenter(view);
+    obj->bigdata.sprite_bigdata.pos.x = center.x + pos_dialog.x;
+    obj->bigdata.sprite_bigdata.pos.y = center.y + pos_dialog.y;
+}
+
 void update_dialog(object_t *obj, scene_t *scene,
     window_t *win,
     __attribute__((unused)) float dtime)
@@ -40,6 +59,7 @@ void update_dialog(object_t *obj, scene_t *scene,
     if (scene == NULL || obj == NULL || scene->pause == true) {
         return;
     }
+    update_position(obj, win);
     dialog = dico_t_get_value(scene->components, compo_dialog);
     if (dialog == NULL || dialog->dialogues == NULL ||
             dialog->dialogues->len <= 0) {
