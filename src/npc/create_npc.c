@@ -36,7 +36,9 @@ static int fill_pos_rect(any_t *json, sfIntRect *rect, sfVector2f *pos)
     } else {
         *rect = (sfIntRect) {rects[0], rects[1], rects[2], rects[3]};
     }
+    free(rects);
     *pos = (sfVector2f) {poss[0], poss[1]};
+    free(poss);
     return (RET_OK);
 }
 

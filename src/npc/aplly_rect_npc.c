@@ -8,6 +8,7 @@
 #include <SFML/Graphics/Rect.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/System/Vector2.h>
+#include <stdlib.h>
 #include "my_bgs.h"
 #include "my_json.h"
 #include "my_puts.h"
@@ -20,6 +21,9 @@ static int aplly_intrect_npc(any_t *true_rect, object_t *npc)
     arr = get_any_int_array(true_rect);
     if (arr == NULL || npc == NULL) {
         my_putstr(1, "need array of int inside 'rect' array\n");
+        if (arr != NULL) {
+            free(arr);
+        }
         return (RET_ERR_INPUT);
     }
     npc->bigdata.sprite_bigdata.rect = (sfIntRect) {
@@ -27,6 +31,7 @@ static int aplly_intrect_npc(any_t *true_rect, object_t *npc)
     };
     sfSprite_setOrigin(npc->drawable.sprite, (sfVector2f) {
         arr[2] / 2.0, arr[3] / 2.0});
+    free(arr);
     return (RET_OK);
 }
 
