@@ -6,6 +6,7 @@
 */
 
 #include <SFML/System/Vector2.h>
+#include <stdlib.h>
 #include "macro.h"
 #include "my_bgs.h"
 #include "my_dico.h"
@@ -14,6 +15,8 @@
 #include "npc.h"
 
 const char npc_json[] = "NPC JSON";
+
+const char npc_data_callback[] = "NPC DATA";
 
 static int fill_pos_rect(any_t *json, sfIntRect *rect, sfVector2f *pos)
 {
@@ -37,13 +40,24 @@ static int fill_pos_rect(any_t *json, sfIntRect *rect, sfVector2f *pos)
     return (RET_OK);
 }
 
-static int add_components(any_t *json, object_t *npc)
+static int add_components(any_t *json, object_t *npc,
+    void (*callback)(object_t *npc, scene_t *scene, window_t *win))
 {
+    npc_data_func_t *data = NULL;
+
     if (npc == NULL || json == NULL) {
         return (RET_ERR_INPUT);
     }
     if (object_add_components(npc, json, npc_json, &destroy_any) != BGS_OK) {
         destroy_any(json);
+    }
+    data = malloc(sizeof(npc_data_func_t));
+    if (data == NULL) {
+        return (RET_ERR_MALLOC);
+    }
+    data->callback = callback;
+    if (object_add_components(npc, data, npc_data_callback, free) != BGS_OK) {
+        free(data);
     }
     return (RET_OK);
 }
@@ -73,7 +87,8 @@ static object_t *create_object_npc(sfIntRect rect, sfVector2f pos, any_t *json,
     return (npc);
 }
 
-int add_npc(scene_t *scene, const char *path)
+int add_npc(scene_t *scene, const char *path,
+    void (*callback)(object_t *npc, scene_t *scene, window_t *win))
 {
     sfIntRect rect = {0};
     sfVector2f pos = {0};
@@ -89,7 +104,7 @@ int add_npc(scene_t *scene, const char *path)
         return (RET_ERR_INPUT);
     }
     npc = create_object_npc(rect, pos, json, scene);
-    if (add_components(json, npc) != RET_OK) {
+    if (add_components(json, npc, callback) != RET_OK) {
         return (RET_ERR_MALLOC);
     }
     return (RET_OK);

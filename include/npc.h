@@ -15,6 +15,7 @@
 
 typedef struct dialog_manager_s dialog_manager_t;
 typedef struct text_dialog_s text_dialog_t;
+typedef struct npc_data_func_s npc_data_func_t;
 
 struct dialog_manager_s {
     list_ptr_t *dialogues;
@@ -27,7 +28,15 @@ struct text_dialog_s {
     void (*callback)(const char *str, scene_t *scene, window_t *win);
 };
 
+struct npc_data_func_s {
+    void (*callback)(object_t *npc, scene_t *scene, window_t *win);
+};
+
 extern const char compo_dialog[];
+
+extern const char npc_json[];
+
+extern const char npc_data_callback[];
 
 int destroy_text_dialog(void *dialog_void, scene_t *scene, window_t *win,
     bool force_quit);
@@ -38,7 +47,8 @@ int add_event_quit_to_dialog(object_t *dialog);
 
 int init_dialog(scene_t *scene);
 
-int add_npc(scene_t *scene, const char *path);
+int add_npc(scene_t *scene, const char *path,
+    void (*callback)(object_t *npc, scene_t *scene, window_t *win));
 
 void update_npc(object_t *obj, scene_t *scene, window_t *win,
     float dtime);

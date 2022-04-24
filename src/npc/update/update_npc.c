@@ -5,8 +5,10 @@
 ** updat npc
 */
 
+#include <SFML/Window/Keyboard.h>
 #include <stdbool.h>
 #include <SFML/System/Vector2.h>
+#include <SFML/Window/Export.h>
 #include "my_bgs.h"
 #include "my_dico.h"
 #include "my_json.h"
@@ -14,11 +16,23 @@
 #include "my_rpg.h"
 #include "npc.h"
 
-extern const char npc_json[];
+static const sfKeyCode key_interract = sfKeyA;
 
 static float refresh_rate = 1.0 / 10;
 
-static bool check_collid_player(object_t *npc, player_t *player)
+static void call_callback_npc(object_t *npc, scene_t *scene, window_t *win)
+{
+    npc_data_func_t *callback = NULL;
+
+    callback = dico_t_get_value(npc->components, npc_data_callback);
+    if (callback == NULL) {
+        return;
+    }
+    callback->callback(npc, scene, win);
+}
+
+static bool check_collid_player(object_t *npc, player_t *player,
+    scene_t *scene, window_t *win)
 {
     sfVector2i pos[2] = {0};
 
@@ -33,7 +47,9 @@ static bool check_collid_player(object_t *npc, player_t *player)
         .x = (int) (npc->bigdata.sprite_bigdata.pos.x) / SQUARE_SIZE,
         .y = (int) (npc->bigdata.sprite_bigdata.pos.y) / SQUARE_SIZE,
     };
-    if (pos[0].x == pos[1].x && pos[0].y == pos[1].y) {
+    if (pos[0].x == pos[1].x && pos[0].y == pos[1].y &&
+            sfKeyboard_isKeyPressed(key_interract) == sfTrue) {
+        call_callback_npc(npc, scene, win);
         return (true);
     }
     return (false);
@@ -61,8 +77,7 @@ static bool update_rect(object_t *npc, any_t *npcjson, float dtime)
     return (true);
 }
 
-void update_npc(object_t *obj,
-    __attribute__((unused)) scene_t *scene, window_t *win,
+void update_npc(object_t *obj, scene_t *scene, window_t *win,
     float dtime)
 {
     player_t *player = NULL;
@@ -79,6 +94,6 @@ void update_npc(object_t *obj,
         return;
     }
     player = dico_t_get_value(win->components, "player");
-    check_collid_player(obj, player);
+    check_collid_player(obj, player, scene, win);
     update_rect(obj, time, dtime);
 }
