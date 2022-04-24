@@ -20,17 +20,17 @@ const char npc_data_callback[] = "NPC DATA";
 
 static int fill_pos_rect(any_t *json, sfIntRect *rect, sfVector2f *pos)
 {
-    float *rects = NULL;
+    int *rects = NULL;
     float *poss = NULL;
 
     if (json == NULL) {
         return (RET_ERR_INPUT);
     }
-    poss = get_any_float_array(get_from_any(json, "da", "pos", 0));
+    poss = get_any_float_array(get_from_any(json, "d", "pos", 0));
     if (poss == NULL || get_from_any(json, "da", "pos", 1) == NULL) {
         return (RET_ERR_INPUT);
     }
-    rects = get_any_float_array(get_from_any(json, "da", "rects", 0));
+    rects = get_any_int_array(get_from_any(json, "da", "rects", 0));
     if (rects == NULL || get_from_any(json, "daa", "rects", 0, 3) == NULL) {
         *rect = (sfIntRect) {-1, -1, -1, -1};
     } else {
@@ -81,8 +81,8 @@ static object_t *create_object_npc(sfIntRect rect, sfVector2f pos, any_t *json,
     }
     path = get_from_any(json, "d", "scale");
     if (path != NULL && path->type == FLOAT) {
-        sfSprite_setScale(npc->drawable.sprite, (sfVector2f) {path->value.i,
-            path->value.i});
+        sfSprite_setScale(npc->drawable.sprite, (sfVector2f) {path->value.f,
+            path->value.f});
     }
     return (npc);
 }
