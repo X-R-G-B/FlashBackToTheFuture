@@ -19,7 +19,7 @@ int destroy_text_dialog(void *dialog_void, scene_t *scene, window_t *win,
     text_dialog_t *dialog = dialog_void;
     player_t *player = NULL;
 
-    if (dialog_void == NULL || dialog->time < 0.5) {
+    if (dialog_void == NULL || (dialog->time < 0.5 && force_quit == false)) {
         return (false);
     }
     player = dico_t_get_value(win->components, PLAYER);
