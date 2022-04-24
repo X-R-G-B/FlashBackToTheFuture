@@ -149,7 +149,7 @@ SRC_NPC_UPDATE		:=	update_dialog_text.c					\
 						update_npc.c
 SRC_NPC_UPDATE		:=	$(addprefix update/,$(SRC_NPC_UPDATE))
 
-SRC_NPC_NPC			:=	tests.c
+SRC_NPC_NPC			:=	magician.c
 SRC_NPC_NPC			:=	$(addprefix npc/,$(SRC_NPC_NPC))
 
 SRC_NPC				:=	add_text_dialog.c						\

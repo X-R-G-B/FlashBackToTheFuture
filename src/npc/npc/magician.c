@@ -9,7 +9,7 @@
 #include "my_bgs.h"
 #include "npc.h"
 
-const char json_magician[] = "./assets/data/npc/test.json";
+const char json_magician[] = "./assets/data/npc/magician.json";
 
 void callback_magician(__attribute__((unused)) object_t *npc,
     scene_t *scene,
