@@ -8,6 +8,29 @@
 #include "my_bgs.h"
 #include "my_dico.h"
 #include "npc.h"
+#include <SFML/Graphics/Text.h>
+#include <SFML/System/Vector2.h>
+
+static void update_text_display(object_t *obj, const char *string)
+{
+    sfFloatRect bound = {0};
+    sfVector2f center = {0};
+
+    obj->is_visible = true;
+    sfText_setString(obj->drawable.text, string);
+    bound = sfText_getGlobalBounds(obj->drawable.text);
+    center.x = bound.width / 2;
+    center.y = bound.height / 2;
+    sfText_setOrigin(obj->drawable.text, center);
+}
+
+static void update_delta_time(text_dialog_t *text, float dtime)
+{
+    if (text == NULL) {
+        return;
+    }
+    text->time += dtime;
+}
 
 void update_text_dialog(object_t *obj, scene_t *scene,
     __attribute((unused)) window_t *win,
@@ -25,10 +48,10 @@ void update_text_dialog(object_t *obj, scene_t *scene,
         obj->is_visible = false;
         return;
     }
-    if (tmp == dialog->text || tmp == NULL) {
+    if (tmp == dialog->text || dialog->text == NULL) {
+        update_delta_time(dialog->dialogues->start->var, dtime);
         return;
     }
-    obj->is_visible = true;
     tmp = dialog->text;
-    sfText_setString(obj->drawable.text, tmp);
+    update_text_display(obj, tmp);
 }

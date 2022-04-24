@@ -16,21 +16,14 @@
 static void set_new_text(dialog_manager_t *dialog, text_dialog_t *text,
     window_t *win)
 {
-    int is_updating = false;
     player_t *player = NULL;
 
     if (win == NULL) {
         return;
     }
     player = dico_t_get_value(win->components, PLAYER);
-    if (dialog->text == NULL) {
-        is_updating = true;
-    } else if (my_strcmp(dialog->text, text->str) != 0) {
-        is_updating = true;
-        free(dialog->text);
-    }
-    if (is_updating == true) {
-        dialog->text = my_strdup(text->str);
+    if (dialog->text == NULL || my_strcmp(dialog->text, text->str) != 0) {
+        dialog->text = text->str;
     }
     if (player != NULL && text->need_pause == true) {
         player->state = IN_POP_UP;

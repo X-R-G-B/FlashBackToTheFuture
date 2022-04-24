@@ -31,7 +31,7 @@ void event_next_dialog_off(__attribute__((unused)) object_t *obj,
             dialog->dialogues->len <= 0 || dialog->dialogues->start == NULL) {
         return;
     }
-    if (destroy_text_dialog(dialog->dialogues->start, scene, win,
+    if (destroy_text_dialog(dialog->dialogues->start->var, scene, win,
             false) == true) {
         rm_fst_elem(dialog->dialogues);
     }

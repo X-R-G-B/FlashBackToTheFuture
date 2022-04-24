@@ -26,6 +26,7 @@ struct text_dialog_s {
     char *str;
     bool need_pause;
     void (*callback)(const char *str, scene_t *scene, window_t *win);
+    float time;
 };
 
 struct npc_data_func_s {
@@ -37,6 +38,12 @@ extern const char compo_dialog[];
 extern const char npc_json[];
 
 extern const char npc_data_callback[];
+
+extern const char json_magician[];
+
+void callback_magician(__attribute__((unused)) object_t *npc,
+    scene_t *scene,
+    __attribute__((unused)) window_t *win);
 
 int destroy_text_dialog(void *dialog_void, scene_t *scene, window_t *win,
     bool force_quit);

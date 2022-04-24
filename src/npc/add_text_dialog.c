@@ -19,7 +19,7 @@ int destroy_text_dialog(void *dialog_void, scene_t *scene, window_t *win,
     text_dialog_t *dialog = dialog_void;
     player_t *player = NULL;
 
-    if (dialog_void == NULL) {
+    if (dialog_void == NULL || dialog->time < 0.5) {
         return (false);
     }
     player = dico_t_get_value(win->components, PLAYER);
@@ -36,6 +36,16 @@ int destroy_text_dialog(void *dialog_void, scene_t *scene, window_t *win,
     free(dialog->str);
     free(dialog);
     return (true);
+}
+
+static void fill_dialog_text(text_dialog_t *text_d, const char *str,
+    bool need_pause,
+    void (*callback)(const char *str, scene_t *scene, window_t *win))
+{
+    text_d->callback = callback;
+    text_d->need_pause = need_pause;
+    text_d->str = my_strdup(str);
+    text_d->time = 0;
 }
 
 int add_text_dialog(scene_t *scene, const char *text, bool need_pause,
@@ -55,8 +65,6 @@ int add_text_dialog(scene_t *scene, const char *text, bool need_pause,
     if (text_d == NULL) {
         return (RET_ERR_MALLOC);
     }
-    ((text_dialog_t *) text_d->var)->str = my_strdup(text);
-    ((text_dialog_t *) text_d->var)->need_pause = need_pause;
-    ((text_dialog_t *) text_d->var)->callback = callback;
+    fill_dialog_text(text_d->var, text, need_pause, callback);
     return (RET_OK);
 }

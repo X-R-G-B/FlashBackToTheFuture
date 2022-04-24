@@ -14,11 +14,11 @@
 #include "my_rpg.h"
 #include "npc.h"
 
-static const char path_dialog_img[] = "";
+static const char path_dialog_img[] = "./assets/image/npc/dialog_box.png";
 static const sfIntRect rect_dialog = {-1, -1, -1, -1};
 static const sfVector2f pos_dialog = {540, 540};
 
-static const char path_font_dialog[] = "";
+static const char path_font_dialog[] = "./assets/fonts/Menlo-Regular.ttf";
 static const sfVector2f pos_text = {540, 540};
 
 const char compo_dialog[] = "componente dialog";
@@ -76,13 +76,19 @@ static object_t *create_dialog_obj(scene_t *scene)
     return (dialog);
 }
 
-static int add_component(scene_t *scene, dialog_manager_t *comp)
+static int add_component(scene_t *scene, dialog_manager_t *comp,
+    object_t *dialog)
 {
+    if (dialog == NULL) {
+        return (RET_ERR_INPUT);
+    }
     if (scene_add_components(scene, comp, compo_dialog,
         &destroy_dialog_manager_t) != BGS_OK) {
         destroy_dialog_manager_t(comp);
         return (RET_OK);
     }
+    add_event_continue_to_dialog(dialog);
+    add_event_quit_to_dialog(dialog);
     return (RET_OK);
 }
 
@@ -97,8 +103,7 @@ int init_dialog(scene_t *scene)
     if (comp == NULL) {
         return (RET_ERR_MALLOC);
     }
-    if (create_dialog_obj(scene) == NULL ||
-        add_component(scene, comp) != RET_OK) {
+    if (add_component(scene, comp, create_dialog_obj(scene)) != RET_OK) {
         return (RET_ERR_MALLOC);
     }
     return (RET_OK);
