@@ -27,7 +27,7 @@ static sfVector2f get_position_player(window_t *win)
     return (pos);
 }
 
-static dir_t ennemy_get_view_dir(object_t *obj, window_t *win)
+dir_t ennemy_get_view_dir(object_t *obj, window_t *win)
 {
     sfVector2f dir = get_position_player(win);
     sfVector2f cur = sfSprite_getPosition(obj->drawable.sprite);

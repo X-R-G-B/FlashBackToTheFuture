@@ -50,8 +50,8 @@ void update_ennemy(object_t *obj, scene_t *scene, window_t *win,
     ennemy = dico_t_get_value(obj->components, "struct");
     if (ennemy == NULL) {
         return;
-    }
-    if (ennemy->state >= 0 && ennemy->state <= 2) {
+    } else if (ennemy->state >= 0 && ennemy->state <= 2 &&
+        ennemy_check_hurt(ennemy, scene, win, dtime) == false) {
         update_state[ennemy->state](ennemy, scene, win, dtime);
     }
 }
