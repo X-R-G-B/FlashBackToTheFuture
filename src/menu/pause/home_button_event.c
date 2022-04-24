@@ -49,7 +49,7 @@ static void browse_list(list_ptr_t *setting_menu, list_ptr_t *buttons,
 static void move_setting_menu_to_main_menu(window_t *win, scene_t *scene)
 {
     scene_t *next_scene = dico_t_get_value(win->scenes, "MAIN MENU");
-    list_ptr_t *setting_menu = dico_t_get_value(scene->components,
+    list_ptr_t *setting_menu = dico_t_get_value(win->components,
         SETTINGS_MENU);
     any_t *buttons = NULL;
     any_t *setting_menu_data = parse_json_file(settings_data_path);

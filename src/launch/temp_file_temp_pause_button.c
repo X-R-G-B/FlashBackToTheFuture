@@ -13,12 +13,13 @@ static void click_pause(__attribute__((unused)) object_t *obj, scene_t *scene,
 {
     player_t *player = dico_t_get_value(win->components, PLAYER);
 
-    if (player == NULL || player->state == DYING || player->state == DIE) {
+    if (player == NULL || player->state == DYING || player->state == DIE ||
+        player->state == IN_POP_UP) {
         return;
     }
     scene->pause = (scene->pause == true) ? false : true;
     set_stop(player);
-    if (check_if_pop_up_true(scene->components, SETTINGS_MENU) == 0) {
+    if (check_if_pop_up_true(win->components, SETTINGS_MENU) == 0) {
         toggle_pop_up(win->components, PAUSE_MENU);
     }
 }

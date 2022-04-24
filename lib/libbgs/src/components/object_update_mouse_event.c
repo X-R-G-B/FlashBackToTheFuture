@@ -27,8 +27,9 @@ static sfVector2i get_mouse_pos(window_t *win)
     }
     pos = sfView_getCenter(view);
     size = sfView_getSize(view);
-    return (sfVector2i) {vector.x + (pos.x - (size.x / 2)),
-        vector.y + (pos.y - (size.y / 2))};
+    vector.x += (int) pos.x - (size.x / 2);
+    vector.y += (int) pos.y - (size.y / 2);
+    return vector;
 }
 
 int check_hover(object_t *object, window_t *win)

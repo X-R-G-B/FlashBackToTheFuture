@@ -70,9 +70,6 @@ void next_stage(object_t *obj, scene_t *scene, window_t *win, float time);
 
 int launch_next_stage(window_t *win);
 
-int move_list_element(dico_t *dico, char *elem_key, scene_t *fst_scene,
-    scene_t *scd_scene);
-
 void change_player_pos(player_t *player, float move,
     window_t *win);
 
@@ -90,6 +87,8 @@ int move_object_between_scene(window_t *win, scene_t *fst_scene,
     scene_t *scd_scene);
 
 void increment_hud_pos(window_t *win, sfVector2f to_add);
+
+void replace_objects(window_t *win, scene_t *scene);
 
 void hud_apply_right_pos(object_t *obj, object_t *player);
 
