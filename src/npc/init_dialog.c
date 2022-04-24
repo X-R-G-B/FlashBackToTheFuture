@@ -59,7 +59,7 @@ static object_t *create_dialog_obj(scene_t *scene)
     object_t *dialog = NULL;
     object_t *text = NULL;
 
-    dialog = create_object(&update_dialog, NULL, scene, PLAN_MENUS);
+    dialog = create_object(&update_dialog, NULL, scene, LAYER_MENUS);
     if (dialog == NULL) {
         return (NULL);
     }
@@ -68,7 +68,7 @@ static object_t *create_dialog_obj(scene_t *scene)
         return (NULL);
     }
     dialog->is_visible = false;
-    text = create_object(update_text_dialog, NULL, scene, PLAN_BUTTON);
+    text = create_object(update_text_dialog, NULL, scene, LAYER_BUTTON);
     if (object_set_text(text, path_font_dialog, "", pos_text) != BGS_OK) {
         return (NULL);
     }

@@ -58,7 +58,7 @@ static object_t *create_object_npc(sfIntRect rect, sfVector2f pos, any_t *json,
     if (path == NULL || path->type != STR) {
         return (NULL);
     }
-    npc = create_object(&update_npc, NULL, scene, PLAN_ENNEMY);
+    npc = create_object(&update_npc, NULL, scene, LAYER_ENNEMY);
     if (npc == NULL) {
         return (NULL);
     }
