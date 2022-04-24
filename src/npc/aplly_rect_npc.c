@@ -37,7 +37,7 @@ int aplly_rect_npc(any_t *jsonrect, any_t *current, object_t *npc)
     if (jsonrect == NULL || jsonrect->type != ARRAY || current == NULL ||
         current->type != INT || jsonrect->value.array == NULL) {
         my_putstr(1, "need 'rect' array of [left,top,width,height]\n");
-        my_putstr(1, "need 'current' int set to 0");
+        my_putstr(1, "need 'current' int set to 0\n");
         return (RET_ERR_INPUT);
     }
     current->value.i = (current->value.i + 1) % jsonrect->value.array->len;
