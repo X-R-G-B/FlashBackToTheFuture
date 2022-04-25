@@ -54,6 +54,7 @@ SRC_LAUNCH			:=	launch_game.c							\
 						launch_stage.c							\
 						move_object_between_scene.c				\
 						launch_story_mode.c						\
+						replace_objects_in_next_stage.c			\
 						launch_next_stage.c						\
 						scene_loading_basic.c					\
 						temp_file_temp_pause_button.c

@@ -13,6 +13,7 @@
 #include "my_rpg.h"
 #include "my_json.h"
 #include "ennemy_pathfind.h"
+#include "macro.h"
 
 static void (*event_on[])(object_t *, scene_t *, window_t *,
     set_event_t *) = {
@@ -36,13 +37,19 @@ static const char player_path[] = "./assets/image/player/link_with_weapon.png";
 
 int *get_player_spawn(scene_t *scene)
 {
-    any_t *data = dico_t_get_value(scene->components, STAGE_DATA);
+    any_t *data = NULL;
     int *spawn = NULL;
+    any_t *any = NULL;
 
-    if (data == NULL) {
-        return NULL;
+    if (scene == NULL) {
+        return (NULL);
     }
-    spawn = get_any_int_array(dico_t_get_any(data->value.dict, "spawn"));
+    data = dico_t_get_value(scene->components, STAGE_DATA);
+    any = get_from_any(data, "d", "spawn");
+    if (any == NULL || any->type != ARRAY || any->value.array->len != 2) {
+        return (NULL);
+    }
+    spawn = get_any_int_array(any);
     if (spawn == NULL) {
         return NULL;
     }
@@ -123,7 +130,7 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats)
         return NULL;
     }
     player->dir = DOWN;
-    player->obj = create_object(update_player, NULL, scene, 0);
+    player->obj = create_object(update_player, NULL, scene, LAYER_PLAYER);
     if (player->obj == NULL) {
         return NULL;
     }

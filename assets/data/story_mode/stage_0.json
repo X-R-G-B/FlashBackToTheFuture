@@ -7,10 +7,10 @@
             "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
             "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffZfffffffffffffd.p.dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dffffffffffzzzzfffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dffffffffffzzzzfffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dffffffffffzzzzfffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
@@ -83,9 +83,6 @@
                 "rotation": 90.0,
                 "col": 1
             },
-            "Z": {
-                "path": "./assets/image/map/squares/dirt.png"
-            }
             "c": {
                 "path": "./assets/image/map/squares/corner.png",
                 "col": 1
@@ -94,6 +91,9 @@
                 "path": "./assets/image/map/squares/fall.png",
                 "rotation": 90.0,
                 "col": 1
+            },
+            "z": {
+                "path": "./assets/image/map/squares/dirt.png"
             },
             "B": {
                 "rotation": 270.0,
