@@ -35,6 +35,21 @@ static void upgrade(window_t *win, const char *stat_max_key)
     return;
 }
 
+void level_up(__attribute__((unused)) object_t *obj,
+    scene_t *scene,
+    window_t *win,
+    __attribute__((unused)) set_event_t *event)
+{
+    player_t *player = NULL;
+
+    if (win == NULL || scene == NULL) {
+        return;
+    }
+    player = dico_t_get_value(win->components, "player");
+    player->state = IN_POP_UP;
+    toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
+}
+
 void upgrade_energy(__attribute__((unused)) object_t *obj,
     __attribute__((unused)) scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *event)

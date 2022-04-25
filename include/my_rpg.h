@@ -223,4 +223,6 @@ void upgrade_health(object_t *obj, scene_t *scene,
 void upgrade_energy(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 
+void toggle_pop_up(dico_t *dico, const char *key);
+
 #endif /* !RPG_H_ */
