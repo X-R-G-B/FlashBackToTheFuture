@@ -13,6 +13,7 @@
 #include "meteo.h"
 #include "my_bgs_button_generator.h"
 #include "ennemy_pathfind.h"
+#include "npc.h"
 
 static const int back_color[] = {51, 136, 238};
 
@@ -67,7 +68,11 @@ static int init_new_scene_objects(window_t *win, scene_t *scene)
     if (create_map(scene) != RET_OK ||
         create_player(win, scene, PLAYER_STATS) == NULL ||
         init_hud_elements(win, scene) != RET_OK ||
-        add_collision_array_in_scene(scene) != RET_OK) {
+        add_collision_array_in_scene(scene) != RET_OK ||
+        init_dialog(scene) != RET_OK ||
+        add_npc(scene, json_magician, &callback_magician) != RET_OK ||
+        init_stat_upgrade_pop_up(scene,
+        dico_t_get_value(win->components, HUD_ELEMENTS), win) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     return (scene->components == NULL) ? RET_ERR_MALLOC : RET_OK;

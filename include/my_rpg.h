@@ -17,6 +17,8 @@
     #define WIN_SIZE_Y 1080
     #define WIN_SIZE_X 1920
 
+    #define STATS_UPGRADE_KEY "stats_update_pop_up"
+
     #include <SFML/System/Vector2.h>
     #include "my_bgs.h"
     #include "my_json.h"
@@ -191,6 +193,11 @@ void destroy_player(void *player_void);
 void dead_event_input(object_t *object, scene_t *scene,
     window_t *window, set_event_t *event);
 
+void free_pop_up(void *list);
+
+int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
+    window_t *win);
+
 int init_life_hud(window_t *win, scene_t *scene);
 
 int init_energy_hud(window_t *win, scene_t *scene);
@@ -201,6 +208,9 @@ int update_hud_stats(object_t *obj, player_t *player, const char stat_name[],
 int add_hud_to_hud_element(window_t *win, object_t *hud_data,
     player_t *player);
 
+int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
+    window_t *win);
+
 int init_hud(window_t *win, scene_t *scene);
 
 int set_player_default_stats(player_t *player, any_t *stats);
@@ -209,5 +219,13 @@ void go_to_home(scene_t *scene, window_t *win);
 
 bool check_evolution_stat(player_t *player, float *prev_max_stat,
     const char stat_name[]);
+
+void upgrade_health(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+
+void upgrade_energy(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+
+void toggle_pop_up(dico_t *dico, const char *key);
 
 #endif /* !RPG_H_ */
