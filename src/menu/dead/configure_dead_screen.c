@@ -14,6 +14,18 @@ static const char dead_screen_path[] = "./assets/data/menu/dead_screen.json";
 static void (*dead_screen_update[2])(object_t *, scene_t *,
     window_t *, float) = {update_dead_message, update_dead_screen};
 
+static void set_opacity(object_t *dead_message, object_t *dead_screen)
+{
+    if (dead_message == NULL || dead_screen == NULL) {
+        return;
+    }
+    sfSprite_setColor(dead_message->drawable.sprite,
+        (sfColor) {255, 255, 255, 0});
+    sfSprite_setColor(dead_screen->drawable.sprite,
+        (sfColor) {255, 255, 255, 0});
+    return;
+}
+
 static void init_dead_screen_pos(window_t *win)
 {
     player_t *player = dico_t_get_value(win->components, "player");
@@ -53,6 +65,7 @@ static void config_input_and_components(window_t *win,
             DEAD_SCREEN, NULL) != BGS_OK) {
         return;
     }
+    set_opacity(dead_message, dead_screen);
 }
 
 static int add_object_to_update_list(scene_t *scene, object_t *dead_screens)
