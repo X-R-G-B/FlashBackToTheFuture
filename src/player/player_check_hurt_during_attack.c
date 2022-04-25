@@ -28,13 +28,13 @@ static int browse_rect_list(list_t *elem, list_ptr_t *rect_list,
     return -1;
 }
 
-static int get_rect_id(any_t *data, player_t *player)
+int get_rect_id(any_t *data, player_t *player)
 {
     any_t *rect_list = get_from_any(data, "ddda", "attack", "sword",
         "rect", player->dir);
     list_t *elem = NULL;
 
-    if (rect_list == NULL || rect_list->type != ARRAY) {
+    if (rect_list == NULL || player == NULL || rect_list->type != ARRAY) {
         return -1;
     }
     elem = rect_list->value.array->start;
