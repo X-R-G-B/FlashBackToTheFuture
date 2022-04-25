@@ -53,6 +53,17 @@
             "sprite path": "./assets/image/menu/main_menu/settings/Audio.png",
             "pos": [380.0, 1150.0],
             "plan": -2
+        },
+        {
+            "sprite path": "./assets/image/menu/main_menu/settings/sound_drag_back.png",
+            "pos": [380.0, 1150.0],
+            "plan": -2
+        },
+        {
+            "sprite path": "./assets/image/menu/main_menu/settings/sound_drag_back.png",
+            "pos": [380.0, 1150.0],
+            "color": [255, 255, 255, 255],
+            "plan": -2
         }
     ]
 }
