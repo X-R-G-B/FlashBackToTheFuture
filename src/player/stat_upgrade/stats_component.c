@@ -26,10 +26,11 @@ int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
     }
     elem = stat_upgrade->start;
     for (int i = 0; i != stat_upgrade->len; i++) {
-        uid_apply_right_pos(elem->var, player->obj);
+        hud_apply_right_pos(elem->var, player->obj);
         list_add_to_end(uid_elements, elem->var);
         elem = elem->next;
     }
     scene_add_components(scene, stat_upgrade, STATS_UPGRADE_KEY, free_pop_up);
+    toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
     return RET_OK;
 }

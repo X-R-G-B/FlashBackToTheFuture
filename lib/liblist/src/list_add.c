@@ -13,6 +13,9 @@ list_t *list_add_to_end(list_ptr_t *list_ptr, void *content)
     list_t *newelem = malloc(sizeof(list_t));
 
     if (newelem == NULL || content == NULL || list_ptr == NULL) {
+        if (newelem != NULL) {
+            free(newelem);
+        }
         return NULL;
     }
     newelem->var = content;

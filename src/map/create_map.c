@@ -16,7 +16,7 @@ static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
     knockback, next_stage
 };
 
-static const char square_type_update[] = "p";
+static const char square_type_update[] = "pz";
 
 static void get_square_update(char current_char,
     void (**update)(object_t *, scene_t *, window_t *, float))
@@ -37,6 +37,7 @@ static int init_sprite(object_t *square, any_t *path, sfVector2f current_pos,
 
     if (square == NULL || object_set_sprite(square, path->value.str,
         (sfIntRect) {-1, -1, -1, -1}, current_pos) != BGS_OK) {
+        my_putstr("wrong square sprite path\n");
         return RET_ERR_MALLOC;
     }
     if (rotation != NULL && rotation->type == FLOAT) {
@@ -60,7 +61,7 @@ static int init_square(scene_t *scene, char current_char, dico_t *char_type,
     path = dico_t_get_any(square_data->value.dict, "path");
     get_square_update(current_char, &update);
     if ((path != NULL && path->type == STR) || update != NULL) {
-        square = create_object(update, NULL, scene, PLAN_MAP);
+        square = create_object(update, NULL, scene, LAYER_MAP);
         if (square == NULL) {
             return RET_ERR_MALLOC;
         }

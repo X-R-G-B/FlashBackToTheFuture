@@ -9,24 +9,25 @@
 
 static const int circle_i = 7;
 
-static list_ptr_t *get_settings_components(scene_t *scene)
+static list_ptr_t *get_settings_components(window_t *win, object_t *obj)
 {
     list_ptr_t *list = NULL;
 
-    if (scene == NULL) {
+    if (win == NULL || obj == NULL || obj->is_visible == false) {
+        win->click = NULL;
         return (NULL);
     }
-    list = dico_t_get_value(scene->components, SETTINGS_MENU);
+    list = dico_t_get_value(win->components, SETTINGS_MENU);
     return (list);
 }
 
-void set_60_fps(object_t *obj, scene_t *scene,
+void set_60_fps(object_t *obj, __attribute__((unused)) scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *event)
 {
     list_ptr_t *list = NULL;
     object_t *circle = NULL;
 
-    list = get_settings_components(scene);
+    list = get_settings_components(win, obj);
     if (list == NULL) {
         return;
     }
@@ -38,14 +39,13 @@ void set_60_fps(object_t *obj, scene_t *scene,
     circle->bigdata.sprite_bigdata.pos = obj->bigdata.sprite_bigdata.pos;
 }
 
-void set_120_fps(object_t *obj,
-    scene_t *scene, window_t *win,
-    __attribute__((unused)) set_event_t *event)
+void set_120_fps(object_t *obj, __attribute__((unused)) scene_t *scene,
+    window_t *win, __attribute__((unused)) set_event_t *event)
 {
     list_ptr_t *list = NULL;
     object_t *circle = NULL;
 
-    list = get_settings_components(scene);
+    list = get_settings_components(win, obj);
     if (list == NULL) {
         return;
     }
@@ -57,15 +57,13 @@ void set_120_fps(object_t *obj,
     circle->bigdata.sprite_bigdata.pos = obj->bigdata.sprite_bigdata.pos;
 }
 
-void set_144_fps(object_t *obj,
-    scene_t *scene,
-    window_t *win,
-    __attribute__((unused)) set_event_t *event)
+void set_144_fps(object_t *obj, __attribute__((unused)) scene_t *scene,
+    window_t *win, __attribute__((unused)) set_event_t *event)
 {
     list_ptr_t *list = NULL;
     object_t *circle = NULL;
 
-    list = get_settings_components(scene);
+    list = get_settings_components(win, obj);
     if (list == NULL) {
         return;
     }
@@ -77,14 +75,13 @@ void set_144_fps(object_t *obj,
     circle->bigdata.sprite_bigdata.pos = obj->bigdata.sprite_bigdata.pos;
 }
 
-void set_165_fps(object_t *obj,
-    scene_t *scene, window_t *win,
-    __attribute__((unused)) set_event_t *event)
+void set_165_fps(object_t *obj, __attribute__((unused)) scene_t *scene,
+    window_t *win, __attribute__((unused)) set_event_t *event)
 {
     list_ptr_t *list = NULL;
     object_t *circle = NULL;
 
-    list = get_settings_components(scene);
+    list = get_settings_components(win, obj);
     if (list == NULL) {
         return;
     }

@@ -8,11 +8,11 @@
 #ifndef MACROS_H_
     #define MACROS_H_
 
-    #define PLAN_MAP 20
-    #define PLAN_ENNEMY 5
-    #define PLAN_PLAYER 3
-    #define PLAN_MENUS 2
-    #define PLAN_BUTTON 1
+    #define LAYER_MAP 20
+    #define LAYER_ENNEMY 5
+    #define LAYER_PLAYER 3
+    #define LAYER_MENUS 2
+    #define LAYER_BUTTON 1
 
     #define GO_RT "0"
     #define GO_UP "1"

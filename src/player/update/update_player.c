@@ -5,6 +5,7 @@
 ** update player
 */
 
+#include "main_menu.h"
 #include "my_rpg.h"
 #include "ennemies.h"
 #include "my_json.h"
@@ -27,15 +28,27 @@ static void update_stop(__attribute__((unused)) player_t *player,
 
 }
 
+static void player_check_life(player_t *player, window_t *win)
+{
+    if (player->life > 0 || player->state == DIE) {
+        return;
+    }
+    player->state = DYING;
+    set_is_visible_false(dico_t_get_value(win->components, PAUSE_MENU));
+    set_is_visible_false(dico_t_get_value(win->components, SETTINGS_MENU));
+}
+
 void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
     window_t *win, float dtime)
 {
-    player_t *player = dico_t_get_value(win->components, "player");
+    player_t *player = dico_t_get_value(win->components, PLAYER);
     bool hurt = false;
 
     if (player == NULL || player->obj == NULL) {
         return;
-    } else if (player->state >= 0 && player->state <= 3) {
+    }
+    sfRenderWindow_setView(win->win, player->view);
+    if (player->state >= 0 && player->state <= 3) {
         update_ptr[player->state](player, scene, win, dtime);
     }
     hurt = (bool) dico_t_get_value(player->obj->components, "hurt");
@@ -44,7 +57,5 @@ void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
     } else if (player->state != DYING && player->state != DIE) {
         player_check_hurt(player, scene);
     }
-    if (player->life <= 0 && player->state != DIE) {
-        player->state = DYING;
-    }
+    player_check_life(player, win);
 }

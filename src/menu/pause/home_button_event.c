@@ -5,8 +5,12 @@
 ** home button event
 */
 
+#include <stdlib.h>
 #include "my_rpg.h"
 #include "main_menu.h"
+
+static const char *TO_REMOVE[] = {PLAYER, PAUSE_MENU, SAVE, DEAD_MESSAGE,
+    DEAD_SCREEN, HUD_ELEMENTS};
 
 static void check_type(dico_t *dico, list_t *elem, list_t **button_elem)
 {
@@ -16,16 +20,12 @@ static void check_type(dico_t *dico, list_t *elem, list_t **button_elem)
     obj->is_visible = false;
     if (obj->type == SPRITE) {
         pos = get_any_float_array(dico_t_get_any(dico, "pos"));
-        if (pos == NULL) {
-            return;
-        }
-        obj->bigdata.sprite_bigdata.pos = (sfVector2f) {pos[1], pos[0]};
     } else if (obj->type == TEXT) {
         pos = get_any_float_array(dico_t_get_any(dico, "text pos"));
-        if (pos == NULL) {
-            return;
-        }
+    }
+    if (pos != NULL) {
         obj->bigdata.text_bigdata.pos = (sfVector2f) {pos[1], pos[0]};
+        free(pos);
     }
     if (elem->next != NULL && ((object_t *) elem->next->var)->type == SPRITE) {
         *button_elem = (*button_elem)->next;
@@ -49,7 +49,7 @@ static void browse_list(list_ptr_t *setting_menu, list_ptr_t *buttons,
 static void move_setting_menu_to_main_menu(window_t *win, scene_t *scene)
 {
     scene_t *next_scene = dico_t_get_value(win->scenes, "MAIN MENU");
-    list_ptr_t *setting_menu = dico_t_get_value(scene->components,
+    list_ptr_t *setting_menu = dico_t_get_value(win->components,
         SETTINGS_MENU);
     any_t *buttons = NULL;
     any_t *setting_menu_data = parse_json_file(settings_data_path);
@@ -69,33 +69,29 @@ static void move_setting_menu_to_main_menu(window_t *win, scene_t *scene)
     destroy_any(setting_menu_data);
 }
 
-static void destroy_stage_components(scene_t *scene)
+void remove_components(window_t *win)
 {
-    list_ptr_t *uid_list = dico_t_get_value(scene->components, UID_ELEMENTS);
-
-    if (uid_list != NULL) {
-        free_list(uid_list);
+    for (int i = 0; TO_REMOVE[i] != NULL; i++) {
+        win->components = dico_t_rem(win->components, TO_REMOVE[i]);
+        if (win->components == NULL) {
+            return;
+        }
     }
 }
 
 void go_to_home(scene_t *scene, window_t *win)
 {
-    player_t *player = dico_t_get_value(win->components, "player");
+    player_t *player = dico_t_get_value(win->components, PLAYER);
 
     if (player == NULL) {
         return;
     }
-    destroy_stage_components(scene);
     move_setting_menu_to_main_menu(win, scene);
     window_change_scene(win, "MAIN MENU");
     list_add_to_end(win->to_remove, scene);
     sfView_setCenter(player->view,
         (sfVector2f) {WIN_SIZE_X / 2, WIN_SIZE_Y / 2});
     sfRenderWindow_setView(win->win, player->view);
-    win->components = dico_t_rem(win->components, "player");
-    win->components = dico_t_rem(win->components, "pause");
-    win->components = dico_t_rem(win->components, SAVE);
-    win->components = dico_t_rem(win->components, "dead_message");
-    win->components = dico_t_rem(win->components, "dead_screen");
+    remove_components(win);
     list_add_to_end(win->to_remove, scene);
 }

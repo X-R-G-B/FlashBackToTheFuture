@@ -14,23 +14,34 @@ static const char dead_screen_path[] = "./assets/data/menu/dead_screen.json";
 static void (*dead_screen_update[2])(object_t *, scene_t *,
     window_t *, float) = {update_dead_message, update_dead_screen};
 
-//variables' values aren't checked because they have been already checked
-void init_dead_screen_pos(list_ptr_t *uid_elements, window_t *win)
+static void set_opacity(object_t *dead_message, object_t *dead_screen)
 {
-    player_t *player = NULL;
-
-    player = dico_t_get_value(win->components, "player");
-    if (player == NULL) {
+    if (dead_message == NULL || dead_screen == NULL) {
         return;
     }
-    list_add_to_end(uid_elements,
-        dico_t_get_value(win->components, "dead_message"));
-    list_add_to_end(uid_elements,
-        dico_t_get_value(win->components, "dead_screen"));
-    uid_apply_right_pos(dico_t_get_value(win->components,
-        "dead_message"), player->obj);
-    uid_apply_right_pos(dico_t_get_value(win->components,
-        "dead_screen"), player->obj);
+    sfSprite_setColor(dead_message->drawable.sprite,
+        (sfColor) {255, 255, 255, 0});
+    sfSprite_setColor(dead_screen->drawable.sprite,
+        (sfColor) {255, 255, 255, 0});
+    return;
+}
+
+static void init_dead_screen_pos(window_t *win)
+{
+    player_t *player = dico_t_get_value(win->components, "player");
+    list_ptr_t *hud_elements = dico_t_get_value(win->components, HUD_ELEMENTS);
+
+    if (player == NULL || hud_elements == NULL) {
+        return;
+    }
+    list_add_to_end(hud_elements,
+        dico_t_get_value(win->components, DEAD_MESSAGE));
+    list_add_to_end(hud_elements,
+        dico_t_get_value(win->components, DEAD_SCREEN));
+    hud_apply_right_pos(dico_t_get_value(win->components,
+        DEAD_MESSAGE), player->obj);
+    hud_apply_right_pos(dico_t_get_value(win->components,
+        DEAD_SCREEN), player->obj);
 }
 
 static void config_input_and_components(window_t *win,
@@ -49,11 +60,12 @@ static void config_input_and_components(window_t *win,
     dead_screen->is_visible = false;
     if (scene_add_components(scene, can_play, "can_play", free) != BGS_OK ||
         window_add_component(win, dead_message,
-            "dead_message", NULL) != BGS_OK ||
+            DEAD_MESSAGE, NULL) != BGS_OK ||
         window_add_component(win, dead_screen,
-            "dead_screen", NULL) != BGS_OK) {
+            DEAD_SCREEN, NULL) != BGS_OK) {
         return;
     }
+    set_opacity(dead_message, dead_screen);
 }
 
 static int add_object_to_update_list(scene_t *scene, object_t *dead_screens)
@@ -90,5 +102,7 @@ int init_dead_menu(window_t *win, scene_t *scene)
         }
     }
     config_input_and_components(win, dead_screens[0], dead_screens[1], scene);
+    free_list(dead_objects);
+    init_dead_screen_pos(win);
     return RET_OK;
 }

@@ -4,20 +4,20 @@
             "text": "First save",
             "sprite path": "./assets/image/menu/main_menu/default_screen/New_game.png",
             "pos": [280.0, 1150.0],
-            "plan": -1
+            "plan": -2
         },
         {
             "text": "Background",
             "sprite path": "./assets/image/menu/main_menu/settings/Parchemin_play.png",
             "pos": [540.0, 1150.0],
-            "plan": 0
+            "plan": -1
         },
         {
             "text": "Retour",
             "sprite path": "./assets/image/menu/main_menu/default_screen/Retour_button.png",
             "size": 2.0,
             "pos": [137.0, 1435.0],
-            "plan": -1
+            "plan": -2
         }
     ]
 }

@@ -44,7 +44,7 @@ static void pathfind_update_path(__attribute__((unused)) object_t *obj_cust,
     if (collision_array == NULL) {
         return;
     }
-    vect = get_player_pos_in_map(dico_t_get_value(win->components, "player"));
+    vect = get_player_pos_in_map(dico_t_get_value(win->components, PLAYER));
     tmp = collision_array[vect.y][vect.x];
     collision_array[vect.y][vect.x] = 'P';
     init_pathfind(collision_array, 'P', '#', scene);

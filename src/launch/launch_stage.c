@@ -13,6 +13,7 @@
 #include "meteo.h"
 #include "my_bgs_button_generator.h"
 #include "ennemy_pathfind.h"
+#include "npc.h"
 
 static const int back_color[] = {51, 136, 238};
 
@@ -47,7 +48,6 @@ scene_t *init_scene(char *stage_path, window_t *win, char *stage_name)
     any_t *data = NULL;
     scene_t *scene = NULL;
 
-    launch_scene_loading(win, "SCENE_LOADING_BASIC");
     data = parse_json_file(stage_path);
     scene = create_scene(win, sfColor_fromRGB(back_color[0], back_color[1],
         back_color[2]), stage_name);
@@ -63,28 +63,18 @@ scene_t *init_scene(char *stage_path, window_t *win, char *stage_name)
     return scene;
 }
 
-static int init_new_scene_components(window_t *win, scene_t *scene)
+static int init_new_scene_objects(window_t *win, scene_t *scene)
 {
-    list_ptr_t *pause_menu = NULL;
-    list_ptr_t *uid_elements = list_create();
-
-    if (win == NULL || uid_elements == NULL || create_map(scene) != RET_OK ||
+    if (create_map(scene) != RET_OK ||
         create_player(win, scene, PLAYER_STATS) == NULL ||
-        add_collision_array_in_scene(scene) != RET_OK) {
+        init_hud_elements(win, scene) != RET_OK ||
+        add_collision_array_in_scene(scene) != RET_OK ||
+        init_dialog(scene) != RET_OK ||
+        add_npc(scene, json_magician, &callback_magician) != RET_OK ||
+        init_stat_upgrade_pop_up(scene,
+        dico_t_get_value(win->components, HUD_ELEMENTS), win) != RET_OK) {
         return RET_ERR_MALLOC;
     }
-    pause_menu = create_pause_menu(scene);
-    if (pause_menu == NULL ||
-        temp_pause_button(win, pause_menu, scene, uid_elements) != RET_OK ||
-        init_stat_upgrade_pop_up(scene, uid_elements, win) != RET_OK) {
-        return RET_ERR_MALLOC;
-    }
-    add_main_menu_elements_to_uid_list(win, scene, uid_elements);
-    init_dead_screen_pos(uid_elements, win);
-    add_list_obj_to_uid_list(uid_elements, pause_menu,
-        dico_t_get_value(win->components, "player"));
-    scene->components = dico_t_add_data(scene->components, UID_ELEMENTS,
-        uid_elements, NULL);
     return (scene->components == NULL) ? RET_ERR_MALLOC : RET_OK;
 }
 
@@ -95,16 +85,15 @@ int launch_stage(window_t *win, char *stage_path, int stage_id,
     char *stage_name = get_stage_name(stage_id);
 
     scene = init_scene(stage_path, win, stage_name);
+    free(stage_path);
     if (scene == NULL || move_object_between_scene(win, prev_scene,
-            scene) != RET_OK || init_dead_menu(win, scene) != RET_OK ||
-            init_new_scene_components(win, scene) != RET_OK ||
-            init_hud(win, scene) != RET_OK) {
+        scene) != RET_OK || init_new_scene_objects(win, scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     if (window_change_scene(win, stage_name) != BGS_OK) {
+        free(stage_name);
         return RET_ERR_INPUT;
     }
-    free(stage_path);
     free(stage_name);
     return RET_OK;
 }

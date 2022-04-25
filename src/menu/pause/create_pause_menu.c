@@ -13,6 +13,18 @@
 static const char button_path[] = "./assets/data/menu/pause.json";
 static const char data_path[] = "./assets/data/menu/pressed.json";
 
+static list_ptr_t *apply_right_pos(list_ptr_t *list, window_t *win)
+{
+    list_ptr_t *hud_elements = dico_t_get_value(win->components, HUD_ELEMENTS);
+    player_t *player = dico_t_get_value(win->components, PLAYER);
+
+    if (list == NULL || hud_elements == NULL || player == NULL) {
+        return NULL;
+    }
+    add_list_obj_to_hud_list(hud_elements, list, player);
+    return list;
+}
+
 static int button_set_rect(object_t *obj, any_t *file, int *rect, int *origin)
 {
     obj->components = dico_t_add_data(obj->components, "data", file,
@@ -48,7 +60,7 @@ static list_ptr_t *browse_list(list_ptr_t *list, int *rect, int *origin,
     return list;
 }
 
-list_ptr_t *create_pause_menu(scene_t *scene)
+list_ptr_t *create_pause_menu(scene_t *scene, window_t *win)
 {
     list_ptr_t *list = NULL;
     any_t *file = parse_json_file(data_path);
@@ -69,5 +81,5 @@ list_ptr_t *create_pause_menu(scene_t *scene)
     if (rect == NULL || origin == NULL) {
         return NULL;
     }
-    return browse_list(list, rect, origin, file);
+    return apply_right_pos(browse_list(list, rect, origin, file), win);
 }

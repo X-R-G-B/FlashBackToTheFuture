@@ -35,12 +35,12 @@ SRC_METEO			:=	add_leaf.c								\
 SRC_METEO			:=	$(addprefix meteo/,$(SRC_METEO))
 # ----------------------------------------------------------------------------
 # --------- SRC_ENNEMY -------------------------------------------------------
-SRC_ENNEMY			:=	create_ennemy.c			\
-						ennemy_get_view_dir.c	\
-						sprite_set_change.c		\
-						ennemy_update.c			\
-						add_to_ennemy_list.c	\
-						update_ennemy_move.c	\
+SRC_ENNEMY			:=	create_ennemy.c							\
+						ennemy_get_view_dir.c					\
+						sprite_set_change.c						\
+						ennemy_update.c							\
+						add_to_ennemy_list.c					\
+						update_ennemy_move.c					\
 						is_player_in_range.c
 SRC_ENNEMY			:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 # ----------------------------------------------------------------------------
@@ -49,12 +49,10 @@ SRC_LAUNCH			:=	launch_game.c							\
 						launch_stage.c							\
 						move_object_between_scene.c				\
 						launch_story_mode.c						\
+						replace_objects_in_next_stage.c			\
 						launch_next_stage.c						\
-						add_main_menu_elements_to_uid_list.c	\
-						uid_apply_right_pos.c					\
 						scene_loading_basic.c					\
-						temp_file_temp_pause_button.c			\
-						stats_component.c
+						temp_file_temp_pause_button.c
 SRC_LAUNCH			:=	$(addprefix launch/,$(SRC_LAUNCH))
 # ----------------------------------------------------------------------------
 # -------------- SRC_MAP -----------------------------------------------------
@@ -78,13 +76,13 @@ SRC_EVENT			:=	attack.c								\
 SRC_EVENT			:=	$(addprefix event/,$(SRC_EVENT))
 
 SRC_UPDATE			:=	update_player.c							\
-						increment_uid_pos.c						\
 						update_hurt.c							\
 						update_movement.c						\
 						update_attack.c
 SRC_UPDATE			:=	$(addprefix update/,$(SRC_UPDATE))
 
-SRC_STAT_UPGRADE	:=	upgrade_stat.c
+SRC_STAT_UPGRADE	:=	upgrade_stat.c							\
+						stats_component.c
 SRC_STAT_UPGRADE	:=	$(addprefix stat_upgrade/,$(SRC_STAT_UPGRADE))
 
 SRC_PLAYER			:=	set_stop.c								\
@@ -99,10 +97,14 @@ SRC_PLAYER			:=	set_stop.c								\
 SRC_PLAYER			:=	$(addprefix player/,$(SRC_PLAYER))
 # ----------------------------------------------------------------------------
 # -------- SRC_HUD ----------------------------------------------------------
-SRC_HUD		:=	manage_hud.c									\
-				init_life_hud.c									\
-				init_energy_hud.c
-SRC_HUD		:= $(addprefix hud/,$(SRC_HUD))
+SRC_HUD				:=	manage_hud.c							\
+						add_main_menu_elements_to_hud_list.c	\
+						hud_apply_right_pos.c					\
+						init_hud_elements.c						\
+						increment_hud_pos.c						\
+						init_life_hud.c							\
+						init_energy_hud.c
+SRC_HUD				:=	$(addprefix hud/,$(SRC_HUD))
 # ----------------------------------------------------------------------------
 # -------- SRC_MENU ----------------------------------------------------------
 SRC_MAIN			:=	event_menu.c							\
@@ -131,7 +133,7 @@ SRC_MENU			:=	$(SRC_PAUSE)							\
 						button_event_array.c
 SRC_MENU			:=	$(addprefix menu/,$(SRC_MENU))
 # ----------------------------------------------------------------------------
-# ------- SRC_PATH -----------------------------------------------------------
+# ------- SRC_PATHFIND -------------------------------------------------------
 SRC_PATH			:=	init_find.c								\
 						init_path.c								\
 						get_new_pos.c							\
@@ -143,6 +145,28 @@ SRC_PATH			:=	$(addprefix pathfind/,$(SRC_PATH))
 SRC_MATH			:=	rect_contains_segment.c
 SRC_MATH			:=	$(addprefix math/,$(SRC_MATH))
 # ----------------------------------------------------------------------------
+# --------- SRC_NPC ----------------------------------------------------------
+SRC_NPC_EVENT		:=	press_to_continue.c						\
+						press_to_quit_dialogues.c
+SRC_NPC_EVENT		:=	$(addprefix event/,$(SRC_NPC_EVENT))
+
+SRC_NPC_UPDATE		:=	update_dialog_text.c					\
+						update_dialogue_box.c					\
+						update_npc.c
+SRC_NPC_UPDATE		:=	$(addprefix update/,$(SRC_NPC_UPDATE))
+
+SRC_NPC_NPC			:=	magician.c
+SRC_NPC_NPC			:=	$(addprefix npc/,$(SRC_NPC_NPC))
+
+SRC_NPC				:=	add_text_dialog.c						\
+						aplly_rect_npc.c						\
+						create_npc.c							\
+						init_dialog.c							\
+						$(SRC_NPC_EVENT)						\
+						$(SRC_NPC_UPDATE)						\
+						$(SRC_NPC_NPC)
+SRC_NPC				:=	$(addprefix npc/,$(SRC_NPC))
+# ----------------------------------------------------------------------------
 # ------ SRC -----------------------------------------------------------------
 SRC					:=	main.c									\
 						$(SRC_LAUNCH)							\
@@ -153,7 +177,8 @@ SRC					:=	main.c									\
 						$(SRC_ENNEMY)							\
 						$(SRC_METEO)							\
 						$(SRC_MATH)								\
-						$(SRC_HUD)
+						$(SRC_HUD)								\
+						$(SRC_NPC)
 SRC					:= 	$(addprefix src/,$(SRC))
 # ----------------------------------------------------------------------------
 # ----- OBJ ------------------------------------------------------------------

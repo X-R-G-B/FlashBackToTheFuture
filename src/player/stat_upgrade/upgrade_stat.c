@@ -35,8 +35,9 @@ static void upgrade(window_t *win, const char *stat_max_key)
     return;
 }
 
-void upgrade_energy(object_t *obj, scene_t *scene,
-    window_t *win, set_event_t *event)
+void upgrade_energy(__attribute__((unused)) object_t *obj,
+    __attribute__((unused)) scene_t *scene,
+    window_t *win, __attribute__((unused)) set_event_t *event)
 {
     if (win == NULL) {
         return;
@@ -44,8 +45,9 @@ void upgrade_energy(object_t *obj, scene_t *scene,
     upgrade(win, energy_max_name);
 }
 
-void upgrade_health(object_t *obj, scene_t *scene,
-    window_t *win, set_event_t *event)
+void upgrade_health(__attribute__((unused)) object_t *obj,
+    __attribute__((unused)) scene_t *scene,
+    window_t *win, __attribute__((unused)) set_event_t *event)
 {
     if (win == NULL) {
         return;
