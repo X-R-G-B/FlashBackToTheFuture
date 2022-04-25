@@ -93,10 +93,15 @@ SRC_PLAYER			:=	set_stop.c								\
 SRC_PLAYER			:=	$(addprefix player/,$(SRC_PLAYER))
 # ----------------------------------------------------------------------------
 # -------- SRC_HUD ----------------------------------------------------------
-SRC_HUD		:=	manage_hud.c									\
-				init_life_hud.c									\
-				init_energy_hud.c
-SRC_HUD		:= $(addprefix hud/,$(SRC_HUD))
+SRC_HUD				:=	manage_hud.c							\
+						add_main_menu_elements_to_hud_list.c	\
+						hud_apply_right_pos.c					\
+						init_hud_elements.c						\
+						increment_hud_pos.c						\
+						init_life_hud.c							\
+						init_energy_hud.c						\
+						check_evolution_stat.c
+SRC_HUD				:=	$(addprefix hud/,$(SRC_HUD))
 # ----------------------------------------------------------------------------
 # -------- SRC_MENU ----------------------------------------------------------
 SRC_MAIN			:=	event_menu.c							\

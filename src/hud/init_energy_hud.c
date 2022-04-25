@@ -43,6 +43,7 @@ void update_energy_hud(object_t *object, scene_t *scene,
 {
     player_t *player = NULL;
     static float prev_stat_value = -1;
+    static float prev_max_stat_value = -1;
 
     if (object == NULL || win == NULL || scene == NULL) {
         return;
@@ -52,7 +53,9 @@ void update_energy_hud(object_t *object, scene_t *scene,
         return;
     }
     retake_energy(time, player);
-    if (player->energy == prev_stat_value || player->energy < 0) {
+    if ((player->energy == prev_stat_value && check_evolution_stat(player,
+            &prev_max_stat_value, energy_max_name) == false) ||
+            player->energy < 0) {
         return;
     }
     prev_stat_value = player->energy;

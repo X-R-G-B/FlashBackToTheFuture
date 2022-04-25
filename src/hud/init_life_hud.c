@@ -19,15 +19,15 @@ void update_life_hud(object_t *object, scene_t *scene,
 {
     player_t *player = NULL;
     static float prev_stat_value = -1;
+    static float prev_max_stat_value = -1;
 
     if (object == NULL || win == NULL || scene == NULL) {
         return;
     }
-    player = dico_t_get_value(win->components, "player");
-    if (player == NULL) {
-        return;
-    }
-    if (player->life == prev_stat_value ||
+    player = dico_t_get_value(win->components, PLAYER);
+    if (player == NULL || (player->life == prev_stat_value &&
+            check_evolution_stat(player, &prev_max_stat_value,
+            life_max_name) == false) ||
             (player->life <= 0 && prev_stat_value <= 0)) {
         return;
     }
