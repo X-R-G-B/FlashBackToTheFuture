@@ -7,6 +7,7 @@
 
 #include "ennemies.h"
 #include "my_rpg.h"
+#include "my_strings.h"
 #include "my_wordarray.h"
 #include "my_json.h"
 #include "macro.h"
@@ -37,7 +38,7 @@ static int init_sprite(object_t *square, any_t *path, sfVector2f current_pos,
 
     if (square == NULL || object_set_sprite(square, path->value.str,
         (sfIntRect) {-1, -1, -1, -1}, current_pos) != BGS_OK) {
-        my_putstr("wrong square sprite path\n");
+        my_putstr(1, "wrong square sprite path\n");
         return RET_ERR_MALLOC;
     }
     if (rotation != NULL && rotation->type == FLOAT) {
