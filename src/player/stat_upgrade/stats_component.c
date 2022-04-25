@@ -43,9 +43,11 @@ int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
     if (stat_upgrade == NULL || player == NULL) {
         return BGS_ERR_MALLOC;
     }
-    if (scene_add_components(scene, stat_upgrade, STATS_UPGRADE_KEY, free_pop_up) != RET_OK ||
-        set_hud_list(elem, stat_upgrade, uid_elements, player) != RET_OK) {
-        return RET_ERR_INPUT; 
+    if (scene_add_components(scene, stat_upgrade,
+        STATS_UPGRADE_KEY, free_pop_up)
+        != RET_OK || set_hud_list(elem, stat_upgrade,
+        uid_elements, player) != RET_OK) {
+        return RET_ERR_INPUT;
     }
     toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
     return RET_OK;
