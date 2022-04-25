@@ -12,7 +12,7 @@ void destroy_ennemy(ennemy_t *ennemy, scene_t *scene)
 {
     list_ptr_t *ennemy_list = NULL;
 
-    if (ennemy == NULL  || ennemy->obj == NULL || scene == NULL) {
+    if (ennemy == NULL || ennemy->obj == NULL || scene == NULL) {
         return;
     }
     ennemy_list = dico_t_get_value(scene->components, ENNEMY_LIST);
