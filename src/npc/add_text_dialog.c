@@ -13,18 +13,33 @@
 #include "my_rpg.h"
 #include "npc.h"
 
+static float time_until_destroy = 0.2;
+
+static player_t *check_if_legit(text_dialog_t *dialog, bool force_quit,
+    window_t *win)
+{
+    player_t *player = NULL;
+
+    if (dialog == NULL || (dialog->time < time_until_destroy &&
+            force_quit == false)) {
+        return (NULL);
+    }
+    player = dico_t_get_value(win->components, PLAYER);
+    if (player == NULL || (player->state == IN_POP_UP &&
+            dialog->need_pause == false && force_quit == false)) {
+        return (NULL);
+    }
+    return (player);
+}
+
 int destroy_text_dialog(void *dialog_void, scene_t *scene, window_t *win,
     bool force_quit)
 {
     text_dialog_t *dialog = dialog_void;
     player_t *player = NULL;
 
-    if (dialog_void == NULL || (dialog->time < 0.5 && force_quit == false)) {
-        return (false);
-    }
-    player = dico_t_get_value(win->components, PLAYER);
-    if (player == NULL || (player->state == IN_POP_UP &&
-            dialog->need_pause == false && force_quit == false)) {
+    player = check_if_legit(dialog, force_quit, win);
+    if (player == NULL) {
         return (false);
     }
     if (player->state == IN_POP_UP && dialog->need_pause == true) {
