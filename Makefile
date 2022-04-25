@@ -22,6 +22,7 @@ RESET		=	'\033[0m'
 
 # ----------------------------------------------------------------------------
 # SRC
+
 CFLAGS				=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
 # -------- SRC_METEO ---------------------------------------------------------
@@ -87,6 +88,10 @@ SRC_UPDATE			:=	update_player.c							\
 						update_attack.c
 SRC_UPDATE			:=	$(addprefix update/,$(SRC_UPDATE))
 
+SRC_STAT_UPGRADE	:=	upgrade_stat.c							\
+						stats_component.c
+SRC_STAT_UPGRADE	:=	$(addprefix stat_upgrade/,$(SRC_STAT_UPGRADE))
+
 SRC_PLAYER			:=	set_stop.c								\
 						create_player.c							\
 						player_check_hurt_during_attack.c		\
@@ -94,7 +99,8 @@ SRC_PLAYER			:=	set_stop.c								\
 						destroy_player.c						\
 						set_player_default_stats.c				\
 						$(SRC_EVENT)							\
-						$(SRC_UPDATE)
+						$(SRC_UPDATE)							\
+						$(SRC_STAT_UPGRADE)
 SRC_PLAYER			:=	$(addprefix player/,$(SRC_PLAYER))
 # ----------------------------------------------------------------------------
 # -------- SRC_HUD ----------------------------------------------------------
