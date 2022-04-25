@@ -50,7 +50,7 @@ static void move_ennemy(ennemy_t *ennemy, float move, window_t *win)
     sfVector2f news[4] = {{0, 0 - move}, {0 - move, 0}, {0, move}, {move, 0}};
     dir_t dir = ennemy_get_view_dir(ennemy->obj, win);
 
-    if (check_wall(ennemy, news[dir], win) == true) {
+    if (dir == UNKNOWN_STATE || check_wall(ennemy, news[dir], win) == true) {
         return;
     }
     ennemy->obj->bigdata.sprite_bigdata.pos.x -= news[dir].x;
