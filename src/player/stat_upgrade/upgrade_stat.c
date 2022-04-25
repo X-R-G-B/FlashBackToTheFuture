@@ -15,7 +15,7 @@ static void upgrade(window_t *win, const char *stat_max_key)
 {
     player_t *player = dico_t_get_value(win->components, "player");
     any_t *stat = NULL;
-    any_t *health = NULL;
+    any_t *elem = NULL;
 
     if (player == NULL) {
         return;
@@ -24,11 +24,11 @@ static void upgrade(window_t *win, const char *stat_max_key)
     if (stat == NULL) {
         return;
     }
-    health = dico_t_get_any(stat->value.dict, stat_max_key);
-    if (health == NULL || health->type != FLOAT) {
+    elem = dico_t_get_any(stat->value.dict, stat_max_key);
+    if (elem == NULL || elem->type != FLOAT) {
         return;
     }
-    health->value.f *= 1.10;
+    elem->value.f *= 1.10;
     if (write_json(stat, PLAYER_STATS) != JS_OK) {
         return;
     }
