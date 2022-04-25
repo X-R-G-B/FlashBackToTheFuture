@@ -75,9 +75,6 @@ static object_t *create_object_npc(sfIntRect rect, sfVector2f pos, any_t *json,
         return (NULL);
     }
     npc = create_object(&update_npc, NULL, scene, LAYER_ENNEMY);
-    if (npc == NULL) {
-        return (NULL);
-    }
     if (object_set_sprite(npc, path->value.str, rect, pos) != BGS_OK) {
         return (NULL);
     }
