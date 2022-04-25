@@ -22,6 +22,7 @@ RESET		=	'\033[0m'
 
 # ----------------------------------------------------------------------------
 # SRC
+
 CFLAGS				=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
 
 # -------- SRC_METEO ---------------------------------------------------------
@@ -34,12 +35,19 @@ SRC_METEO			:=	add_leaf.c								\
 SRC_METEO			:=	$(addprefix meteo/,$(SRC_METEO))
 # ----------------------------------------------------------------------------
 # --------- SRC_ENNEMY -------------------------------------------------------
+
+SRC_ENNEMY_UPDATE	:=	ennemy_update.c							\
+						hurt.c									\
+						update_ennemy_move.c
+SRC_ENNEMY_UPDATE	:=	$(addprefix update/,$(SRC_ENNEMY_UPDATE))
+
 SRC_ENNEMY			:=	create_ennemy.c							\
 						ennemy_get_view_dir.c					\
 						sprite_set_change.c						\
-						ennemy_update.c							\
 						add_to_ennemy_list.c					\
-						update_ennemy_move.c					\
+						ennemy_check_hurt.c						\
+						destroy_ennemy.c						\
+						$(SRC_ENNEMY_UPDATE)					\
 						is_player_in_range.c
 SRC_ENNEMY			:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 # ----------------------------------------------------------------------------
@@ -80,6 +88,10 @@ SRC_UPDATE			:=	update_player.c							\
 						update_attack.c
 SRC_UPDATE			:=	$(addprefix update/,$(SRC_UPDATE))
 
+SRC_STAT_UPGRADE	:=	upgrade_stat.c							\
+						stats_component.c
+SRC_STAT_UPGRADE	:=	$(addprefix stat_upgrade/,$(SRC_STAT_UPGRADE))
+
 SRC_PLAYER			:=	set_stop.c								\
 						create_player.c							\
 						player_check_hurt_during_attack.c		\
@@ -87,7 +99,8 @@ SRC_PLAYER			:=	set_stop.c								\
 						destroy_player.c						\
 						set_player_default_stats.c				\
 						$(SRC_EVENT)							\
-						$(SRC_UPDATE)
+						$(SRC_UPDATE)							\
+						$(SRC_STAT_UPGRADE)
 SRC_PLAYER			:=	$(addprefix player/,$(SRC_PLAYER))
 # ----------------------------------------------------------------------------
 # -------- SRC_HUD ----------------------------------------------------------
