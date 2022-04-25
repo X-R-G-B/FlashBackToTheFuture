@@ -65,9 +65,6 @@ static object_t *create_dialog_obj(scene_t *scene)
     object_t *text = NULL;
 
     dialog = create_object(&update_dialog, NULL, scene, LAYER_MENUS);
-    if (dialog == NULL) {
-        return (NULL);
-    }
     if (object_set_sprite(dialog, path_dialog_img, rect_dialog,
             pos_dialog) != BGS_OK) {
         return (NULL);
