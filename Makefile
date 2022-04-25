@@ -112,6 +112,7 @@ SRC_MAIN			:=	$(addprefix main/,$(SRC_MAIN))
 
 SRC_PAUSE			:=	create_pause_menu.c						\
 						home_button_event.c						\
+						restart_button.c						\
 						pressed_button_event.c					\
 						pause_button_event.c
 SRC_PAUSE			:=	$(addprefix pause/,$(SRC_PAUSE))
