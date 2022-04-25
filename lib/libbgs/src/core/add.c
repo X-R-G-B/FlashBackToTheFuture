@@ -71,9 +71,6 @@ static int add_to_layer(scene_t *scene, object_t *object, int layer)
         return (BGS_ERR_INPUT);
     }
     elem = scene->layer->start;
-    if (scene->layer->len == 0) {
-        return create_layer(scene, object, layer, 0);
-    }
     for (int i = 0; i < scene->layer->len; i++, elem = elem->next) {
         ptr = elem->var;
         if (layer < ptr->id) {

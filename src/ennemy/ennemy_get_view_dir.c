@@ -18,7 +18,7 @@ static const double pi = 3.1415926535;
 static sfVector2f get_position_player(window_t *win)
 {
     sfVector2f pos = {500, 500};
-    player_t *player = dico_t_get_value(win->components, "player");
+    player_t *player = dico_t_get_value(win->components, PLAYER);
 
     if (player == NULL) {
         return (pos);

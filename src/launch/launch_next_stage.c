@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include "my_rpg.h"
+#include "meteo.h"
 #include "my_json.h"
 
 static const int back_color[] = {51, 136, 238};
@@ -28,20 +29,13 @@ static int increment_current_stage_data(any_t *save)
 static int create_scene_objects(window_t *win, scene_t *prev_scene,
     scene_t *scene)
 {
-    int *spawn = NULL;
-    player_t *player = dico_t_get_value(win->components, "player");
-
     if (move_object_between_scene(win, prev_scene, scene) != RET_OK ||
         create_map(scene) != RET_OK ||
         add_collision_array_in_scene(scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
-    spawn = get_player_spawn(scene);
-    if (player == NULL || spawn == NULL) {
-        return RET_ERR_INPUT;
-    }
-    player->obj->bigdata.sprite_bigdata.pos = (sfVector2f) {spawn[0], spawn[1]};
-    free(spawn);
+    replace_objects(win, scene);
+    create_meteo_handler(win, scene);
     return RET_OK;
 }
 
@@ -79,7 +73,6 @@ int launch_next_stage(window_t *win)
     if (win == NULL) {
         return RET_ERR_INPUT;
     }
-    launch_scene_loading(win, "SCENE_LOADING_BASIC");
     save = dico_t_get_any(win->components, SAVE);
     current_scene = dico_t_get_value(win->scenes, win->current_scene);
     if (current_scene == NULL || save == NULL) {

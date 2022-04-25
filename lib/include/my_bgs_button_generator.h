@@ -41,6 +41,6 @@ int set_color(object_t *object, dico_t *dico);
 ** @param dico components of the list of pop up
 ** @param key string that will catch the pop up list
 **/
-void toggle_pop_up(dico_t *dico, char *key);
+void toggle_pop_up(dico_t *dico, const char *key);
 
 #endif /* !BUTTON_H_ */

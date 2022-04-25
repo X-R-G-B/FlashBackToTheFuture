@@ -8,9 +8,9 @@
             "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dffffffffffzzzzfffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dffffffffffzzzzfffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dffffffffffzzzzfffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
@@ -91,6 +91,9 @@
                 "path": "./assets/image/map/squares/fall.png",
                 "rotation": 90.0,
                 "col": 1
+            },
+            "z": {
+                "path": "./assets/image/map/squares/dirt.png"
             },
             "B": {
                 "rotation": 270.0,

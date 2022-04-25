@@ -99,7 +99,7 @@ int create_ennemy(scene_t *scene, const char *path, sfVector2f pos)
     if (scene == NULL || path == NULL) {
         return RET_ERR_INPUT;
     }
-    ennemy = create_object(update_ennemy, NULL, scene, PLAN_ENNEMY);
+    ennemy = create_object(update_ennemy, NULL, scene, LAYER_ENNEMY);
     ennemy_data = parse_json_file(path);
     if (ennemy == NULL || ennemy_data == NULL) {
         return RET_ERR_MALLOC;
