@@ -19,8 +19,6 @@ void destroy_ennemy(ennemy_t *ennemy, scene_t *scene)
     if (ennemy_list == NULL) {
         return;
     }
-    printf("oui\n");
-    //list_add_to_end(scene->to_remove, ennemy->obj);
+    list_add_to_end(scene->to_remove, ennemy->obj);
     check_list(ennemy_list, ennemy);
-    free(ennemy);
 }

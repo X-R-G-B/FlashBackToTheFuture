@@ -9,14 +9,6 @@
 #include "my_rpg.h"
 #include "my_json.h"
 
-static void consume_energy(player_t *player)
-{
-    if (player->energy <= 0) {
-        return;
-    }
-    player->energy -= 30;
-}
-
 static void increment_index(int *index, player_t *player, float *time)
 {
     any_t *data = dico_t_get_any(player->obj->components, "data");
@@ -35,7 +27,6 @@ static void increment_index(int *index, player_t *player, float *time)
         } else {
             index[0] = index[0] + 1;
         }
-        consume_energy(player);
     }
 }
 
@@ -67,7 +58,7 @@ void update_attack(player_t *player, __attribute__((unused)) scene_t *scene,
     any_t *current_data = NULL;
 
     time += dtime;
-    if (attack == NULL || player == NULL || player->energy < 50) {
+    if (attack == NULL || player == NULL) {
         return;
     }
     data = get_from_any(attack, "ddda", "attack", "sword", "rect", player->dir);

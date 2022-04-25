@@ -28,6 +28,10 @@ int create_ennemy(scene_t *scene, const char *path, sfVector2f pos);
 bool ennemy_check_hurt(ennemy_t *ennemy, scene_t *scene, window_t *win,
     float dtime);
 
+void destroy_ennemy(ennemy_t *ennemy, scene_t *scene);
+
+dir_t ennemy_get_view_dir(object_t *obj, window_t *win);
+
 sfFloatRect get_attack_hitbox_rect(sfFloatRect player_rect, player_t *player);
 
 bool is_player_in_range(ennemy_t *ennemy, window_t *win);
