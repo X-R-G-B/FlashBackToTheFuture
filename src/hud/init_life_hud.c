@@ -72,6 +72,5 @@ int init_life_hud(window_t *win, scene_t *scene)
             player->life) != RET_OK) {
         return RET_ERR_INPUT;
     }
-    printf("life_Hud OK\n");
     return RET_OK;
 }

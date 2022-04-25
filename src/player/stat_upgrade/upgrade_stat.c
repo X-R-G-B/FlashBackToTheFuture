@@ -32,7 +32,6 @@ static void upgrade(window_t *win, const char *stat_max_key)
     if (write_json(stat, PLAYER_STATS) != JS_OK) {
         return;
     }
-    printf("UPGRADE HEALTH OR ENERGY BRO\n");
     return;
 }
 
