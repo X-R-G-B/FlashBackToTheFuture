@@ -21,13 +21,13 @@ const char npc_data_callback[] = "NPC DATA";
 static int fill_pos_rect(any_t *json, sfIntRect *rect, sfVector2f *pos)
 {
     int *rects = NULL;
-    float *poss = NULL;
+    float *pos_arr = NULL;
 
     if (json == NULL) {
         return (RET_ERR_INPUT);
     }
-    poss = get_any_float_array(get_from_any(json, "d", "pos", 0));
-    if (poss == NULL || get_from_any(json, "da", "pos", 1) == NULL) {
+    pos_arr = get_any_float_array(get_from_any(json, "d", "pos", 0));
+    if (pos_arr == NULL || get_from_any(json, "da", "pos", 1) == NULL) {
         return (RET_ERR_INPUT);
     }
     rects = get_any_int_array(get_from_any(json, "da", "rects", 0));
@@ -37,8 +37,8 @@ static int fill_pos_rect(any_t *json, sfIntRect *rect, sfVector2f *pos)
         *rect = (sfIntRect) {rects[0], rects[1], rects[2], rects[3]};
     }
     free(rects);
-    *pos = (sfVector2f) {poss[0], poss[1]};
-    free(poss);
+    *pos = (sfVector2f) {pos_arr[0], pos_arr[1]};
+    free(pos_arr);
     return (RET_OK);
 }
 
