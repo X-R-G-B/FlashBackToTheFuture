@@ -40,7 +40,9 @@ SRC_ENNEMY			:=	create_ennemy.c							\
 						sprite_set_change.c						\
 						ennemy_update.c							\
 						add_to_ennemy_list.c					\
-						update_ennemy_move.c					\
+						ennemy_check_hurt.c						\
+						destroy_ennemy.c						\
+						$(SRC_ENNEMY_UPDATE)					\
 						is_player_in_range.c
 SRC_ENNEMY			:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 # ----------------------------------------------------------------------------

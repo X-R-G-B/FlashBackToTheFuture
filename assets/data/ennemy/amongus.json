@@ -19,6 +19,11 @@
     "rect actualisation": 0.09,
     "speed": 150.0,
     "range": 800.0,
+<<<<<<< Updated upstream
     "life": 10.0,
+=======
+    "life": 15.0,
+    "blink time": 0.7,
+>>>>>>> Stashed changes
     "sprite path": "./assets/image/ennemy/amongus.png"
 }
