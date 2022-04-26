@@ -9,7 +9,7 @@
 #include "my_rpg.h"
 #include "my_macro.h"
 
-static const char xp_level_name[] = "xp level";
+static const char xp_level_name[] = "actual xp";
 static const char xp_max_name[] = "xp max";
 extern const char xp_max_width_key[];
 
