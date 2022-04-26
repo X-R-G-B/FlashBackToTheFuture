@@ -76,7 +76,8 @@ int init_menu(window_t *win)
         return (RET_ERR_MALLOC);
     }
     obj = create_object(NULL, NULL, scene, 0);
-    if (init_main_menu_buttons(scene, win) == RET_ERR_MALLOC || obj == NULL) {
+    if (init_main_menu_buttons(scene, win) == RET_ERR_MALLOC || obj == NULL ||
+        init_audio_list(win) != RET_OK) {
         return (RET_ERR_MALLOC);
     }
     add_escape_event(obj);

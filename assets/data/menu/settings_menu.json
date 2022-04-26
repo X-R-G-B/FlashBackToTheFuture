@@ -51,18 +51,29 @@
         },
         {
             "sprite path": "./assets/image/menu/main_menu/settings/Audio.png",
-            "pos": [380.0, 1150.0],
+            "pos": [310.0, 1150.0],
             "plan": -2
         },
         {
+            "text": "music_fill_bar",
             "sprite path": "./assets/image/menu/main_menu/settings/sound_drag_back.png",
-            "pos": [380.0, 1150.0],
+            "pos": [500.0, 944.0],
             "plan": -2
         },
         {
+            "text": "sound_fill_bar",
             "sprite path": "./assets/image/menu/main_menu/settings/sound_drag_back.png",
-            "pos": [380.0, 1150.0],
-            "color": [255, 255, 255, 255],
+            "pos": [500.0, 1361.0],
+            "plan": -2
+        },
+        {
+            "sprite path": "./assets/image/menu/main_menu/settings/sound_circle_drag.png",
+            "pos": [500.0, 1094.0],
+            "plan": -2
+        },
+        {
+            "sprite path": "./assets/image/menu/main_menu/settings/sound_circle_drag.png",
+            "pos": [500.0, 1511.0],
             "plan": -2
         }
     ]
