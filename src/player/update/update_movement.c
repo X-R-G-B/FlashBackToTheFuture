@@ -83,7 +83,7 @@ static void handle_move_player(player_t *player, float delta_time,
     any_t *move = NULL;
     any_t *data = NULL;
 
-    data = dico_t_get_any(player->obj->components, "data");
+    data = dico_t_get_any(player->obj->components, PLAYER_DATA);
     if (data == NULL) {
         return;
     }

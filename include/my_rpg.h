@@ -24,8 +24,8 @@
     #include "my_bgs.h"
     #include "my_json.h"
 
-static const char PLAYER_DATA[] = "./assets/data/player/data.json";
-static const char PLAYER_STATS[] = "./assets/data/player/stats.json";
+static const char PLAYER_DATA_PATH[] = "./assets/data/player/data.json";
+static const char PLAYER_STATS_PATH[] = "./assets/data/player/stats.json";
 
 static const char COLLISION_ARRAY[] = "collision array";
 
@@ -35,6 +35,8 @@ static const char DEAD_MESSAGE[] = "dead message";
 static const char DEAD_SCREEN[] = "dead screen";
 
 static const char PLAYER[] = "player";
+static const char PLAYER_STATS[] = "stats";
+static const char PLAYER_DATA[] = "data";
 
 static const char STORY_DATA_PATH[] =
     "./assets/data/story_mode/save.json";
