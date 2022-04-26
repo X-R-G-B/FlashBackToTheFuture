@@ -11,6 +11,7 @@
     #define RET_OK 0
     #define RET_ERR_MALLOC 1
     #define RET_ERR_INPUT 2
+    #define LVL_UP 3
 
     #define SQUARE_SIZE 40
 
@@ -66,6 +67,7 @@ typedef struct player_s {
     sfView *view;
     float life;
     float energy;
+    float xp;
 } player_t;
 
 void next_stage(object_t *obj, scene_t *scene, window_t *win, float time);

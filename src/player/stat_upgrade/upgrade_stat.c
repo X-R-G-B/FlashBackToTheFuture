@@ -32,7 +32,6 @@ static void upgrade(window_t *win, const char *stat_max_key)
     if (write_json(stat, PLAYER_STATS) != JS_OK) {
         return;
     }
-    return;
 }
 
 void level_up(__attribute__((unused)) object_t *obj,

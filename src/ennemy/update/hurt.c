@@ -71,6 +71,7 @@ void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win)
         time = 0;
         ennemy->obj->components = dico_t_rem(ennemy->obj->components, "hurt");
         if (ennemy->life <= 0) {
+            update_xp(ennemy, win);
             ennemy->state = DYING;
         }
     }

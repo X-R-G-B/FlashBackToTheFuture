@@ -56,6 +56,8 @@ int get_rect_id(any_t *data, player_t *player);
 
 int sprite_set_change(object_t *ennemy, any_t *ennemy_data);
 
+void update_xp(ennemy_t *ennemy, window_t *win);
+
 int ennemy_set_stop(ennemy_t *ennemy);
 
 /**

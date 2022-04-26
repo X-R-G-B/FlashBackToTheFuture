@@ -89,7 +89,8 @@ SRC_UPDATE			:=	update_player.c							\
 SRC_UPDATE			:=	$(addprefix update/,$(SRC_UPDATE))
 
 SRC_STAT_UPGRADE	:=	upgrade_stat.c							\
-						stats_component.c
+						stats_component.c						\
+						gain_xp.c
 SRC_STAT_UPGRADE	:=	$(addprefix stat_upgrade/,$(SRC_STAT_UPGRADE))
 
 SRC_PLAYER			:=	set_stop.c								\
