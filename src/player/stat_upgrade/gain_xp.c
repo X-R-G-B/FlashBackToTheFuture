@@ -72,7 +72,6 @@ static int update_stats(any_t *player_stats, any_t *xp, any_t *xp_max,
 static int gain_xp(any_t *player_stats, any_t *ennemy_stats, any_t *xp )
 {
     any_t *xp_max = NULL;
-    any_t *lvl = NULL;
     int lvl_gained = 0;
 
     if (player_stats == NULL || ennemy_stats == NULL) {
@@ -93,7 +92,6 @@ static int gain_xp(any_t *player_stats, any_t *ennemy_stats, any_t *xp )
 
 void update_xp(ennemy_t *ennemy, window_t *win, scene_t *scene)
 {
-    player_t *player = NULL;
     any_t *player_stats = NULL;
     any_t *ennemy_stats = NULL;
     any_t *xp = NULL;
@@ -103,13 +101,8 @@ void update_xp(ennemy_t *ennemy, window_t *win, scene_t *scene)
         init_any_xp(&xp, &loot_xp, ennemy_stats, player_stats) != RET_OK) {
         return;
     }
-    player = dico_t_get_value(win->components, PLAYER);
-    if (player == NULL) {
-        return;
-    }
     xp->value.f += loot_xp->value.f;
     if (gain_xp(player_stats, ennemy_stats, xp) == LVL_UP) {
         level_up(scene, win);
     }
-    player->xp = xp->value.f;
 }

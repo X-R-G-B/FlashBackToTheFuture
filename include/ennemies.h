@@ -8,6 +8,8 @@
 #ifndef ENNEMY_H_
     #define ENNEMY_H_
 
+    #define LVL_UP 3
+
     #include "my_json.h"
     #include "my_bgs.h"
     #include "my_rpg.h"

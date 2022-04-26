@@ -67,7 +67,6 @@ typedef struct player_s {
     sfView *view;
     float life;
     float energy;
-    float xp;
 } player_t;
 
 void next_stage(object_t *obj, scene_t *scene, window_t *win, float time);
