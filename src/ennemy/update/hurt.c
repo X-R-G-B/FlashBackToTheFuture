@@ -59,7 +59,8 @@ static void move_ennemy(ennemy_t *ennemy, float move, window_t *win)
     ennemy->obj->bigdata.sprite_bigdata.pos.y -= news[dir].y;
 }
 
-static void update_when_ennemy_die(ennemy_t *ennemy, window_t *win, scene_t *scene)
+static void update_when_ennemy_die(ennemy_t *ennemy, window_t *win,
+    scene_t *scene)
 {
     ennemy->obj->components = dico_t_rem(ennemy->obj->components, "hurt");
     if (ennemy->life <= 0) {
