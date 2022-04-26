@@ -29,7 +29,7 @@ static void upgrade(window_t *win, const char *stat_max_key)
         return;
     }
     elem->value.f *= 1.10;
-    if (write_json(stat, PLAYER_STATS) != JS_OK) {
+    if (write_json(stat, PLAYER_STATS_PATH) != JS_OK) {
         return;
     }
 }
