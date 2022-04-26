@@ -20,7 +20,7 @@ static void upgrade(window_t *win, const char *stat_max_key)
     if (player == NULL) {
         return;
     }
-    stat = dico_t_get_any(player->obj->components, "stats");
+    stat = dico_t_get_any(player->obj->components, PLAYER_STATS);
     if (stat == NULL) {
         return;
     }

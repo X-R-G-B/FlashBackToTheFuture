@@ -16,7 +16,7 @@ static any_t *get_current_sword_pos(player_t *player)
     if (player == NULL) {
         return NULL;
     }
-    data = dico_t_get_value(player->obj->components, "data");
+    data = dico_t_get_value(player->obj->components, PLAYER_DATA);
     if (data == NULL) {
         return NULL;
     }
@@ -46,7 +46,7 @@ static sfVector2f get_pos(any_t *current_sword_pos, int id,
 static void set_hurt(ennemy_t *ennemy, player_t *player)
 {
     bool hurt = true;
-    any_t *data = dico_t_get_value(player->obj->components, "data");
+    any_t *data = dico_t_get_value(player->obj->components, PLAYER_DATA);
     any_t *dammage = NULL;
 
     dammage = get_from_any(data, "ddd", "attack", "sword", "dammage");

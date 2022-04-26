@@ -15,12 +15,12 @@ static void restart_player_state(window_t *win)
     any_t *life = NULL;
     any_t *energy = NULL;
 
-    if (player == NULL) {
+    if (player == NULL || player->obj == NULL) {
         return;
     }
     player->dir = DOWN;
     set_stop(player);
-    stats = dico_t_get_value(player->obj->components, "stats");
+    stats = dico_t_get_value(player->obj->components, PLAYER_STATS);
     life = get_from_any(stats, "d", "max_life");
     energy = get_from_any(stats, "d", "max_energy");
     if (life != NULL && life->type == FLOAT) {

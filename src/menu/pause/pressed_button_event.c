@@ -23,7 +23,7 @@ void pressed_button_on(object_t *obj, scene_t *scene,
     __attribute__((unused)) window_t *win,
     __attribute__((unused)) set_event_t *evt)
 {
-    any_t *data = dico_t_get_any(obj->components, "data");
+    any_t *data = dico_t_get_any(obj->components, PLAYER_DATA);
     int *rect = NULL;
     int *origin = NULL;
 
