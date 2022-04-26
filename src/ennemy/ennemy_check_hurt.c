@@ -96,7 +96,7 @@ bool ennemy_check_hurt(ennemy_t *ennemy, scene_t *scene, window_t *win,
     player = dico_t_get_value(win->components, PLAYER);
     hurt = (bool) dico_t_get_value(ennemy->obj->components, "hurt");
     if (hurt == true) {
-        ennemy_update_hurt(ennemy, dtime, win);
+        ennemy_update_hurt(ennemy, dtime, win, scene);
     } else if (player != NULL && player->state == ATTACKING) {
         ennemy_check_collision(ennemy, win);
     }
