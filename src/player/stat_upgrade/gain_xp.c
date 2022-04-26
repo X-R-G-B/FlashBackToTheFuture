@@ -47,6 +47,28 @@ static int init_any_xp(any_t **xp, any_t **loot_xp,
     return RET_OK;
 }
 
+static int update_stats(any_t *player_stats, any_t *xp, any_t *xp_max,
+    int *lvl_gained)
+{
+    any_t *lvl = NULL;
+
+    if (player_stats == NULL || xp == NULL || xp_max == NULL) {
+        return RET_ERR_INPUT;
+    }
+    lvl = dico_t_get_any(player_stats->value.dict, ACTUAL_LVL);
+    if (lvl == NULL) {
+        return RET_ERR_MALLOC;
+    }
+    for (; xp_max->value.f <= xp->value.f; (*lvl_gained)++) {
+        xp->value.f -= xp_max->value.f;
+        lvl->value.f += 1.0;
+    }
+    if (write_json(player_stats, PLAYER_STATS) != JS_OK) {
+        return JS_ERR_INPUT;
+    }
+    return RET_OK;
+}
+
 static int gain_xp(any_t *player_stats, any_t *ennemy_stats, any_t *xp )
 {
     any_t *xp_max = NULL;
@@ -57,16 +79,11 @@ static int gain_xp(any_t *player_stats, any_t *ennemy_stats, any_t *xp )
         return RET_ERR_INPUT;
     }
     xp_max = dico_t_get_any(player_stats->value.dict, MAX_XP);
-    lvl = dico_t_get_any(player_stats->value.dict, ACTUAL_LVL);
-    if (xp_max == NULL || lvl == NULL) {
+    if (xp_max == NULL) {
         return RET_ERR_MALLOC;
     }
-    for (; xp_max->value.f <= xp->value.f; lvl_gained++) {
-        xp->value.f -= xp_max->value.f;
-        lvl->value.f += 1.0;
-    }
-    if (write_json(player_stats, PLAYER_STATS) != JS_OK) {
-        return JS_ERR_INPUT;
+    if (update_stats(player_stats, xp, xp_max, &lvl_gained) != RET_OK) {
+        return RET_ERR_MALLOC;
     }
     if (lvl_gained != 0) {
         return LVL_UP;
@@ -86,13 +103,13 @@ void update_xp(ennemy_t *ennemy, window_t *win, scene_t *scene)
         init_any_xp(&xp, &loot_xp, ennemy_stats, player_stats) != RET_OK) {
         return;
     }
-    xp->value.f += loot_xp->value.f;
-    if (gain_xp(player_stats, ennemy_stats, xp) == LVL_UP) {
-        level_up(scene, win);
-    }
     player = dico_t_get_value(win->components, PLAYER);
     if (player == NULL) {
         return;
+    }
+    xp->value.f += loot_xp->value.f;
+    if (gain_xp(player_stats, ennemy_stats, xp) == LVL_UP) {
+        level_up(scene, win);
     }
     player->xp = xp->value.f;
 }
