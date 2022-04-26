@@ -67,11 +67,13 @@
             "plan": -2
         },
         {
+            "text": "music button",
             "sprite path": "./assets/image/menu/main_menu/settings/sound_circle_drag.png",
             "pos": [500.0, 1094.0],
             "plan": -2
         },
         {
+            "text": "sound button",
             "sprite path": "./assets/image/menu/main_menu/settings/sound_circle_drag.png",
             "pos": [500.0, 1511.0],
             "plan": -2

@@ -9,7 +9,7 @@
 #include "audio.h"
 #include "main_menu.h"
 
-void bar_update(object_t *button, object_t *fill_bar)
+static void bar_update(object_t *button, object_t *fill_bar)
 {
     sfFloatRect fill_bar_rect = {0};
     float bar_end_pos_x = -1;

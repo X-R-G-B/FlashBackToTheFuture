@@ -117,11 +117,19 @@ SRC_HUD				:=	$(addprefix hud/,$(SRC_HUD))
 SRC_MAIN			:=	event_menu.c							\
 						init_menu.c								\
 						pop_up_management.c 					\
-						set_frame.c								\
 						on_click_event.c						\
 						exit.c									\
 						set_overlay.c
 SRC_MAIN			:=	$(addprefix main/,$(SRC_MAIN))
+
+SRC_SETTINGS_MENU	:=	add_new_audio.c							\
+						set_drag_objects.c						\
+						set_frame.c								\
+						bar_update.c							\
+						button_hover_event.c					\
+						drag_button.c							\
+						init_audio_list.c
+SRC_SETTINGS_MENU	:=	$(addprefix settings_menu/,$(SRC_SETTINGS_MENU))
 
 SRC_PAUSE			:=	create_pause_menu.c						\
 						home_button_event.c						\
@@ -136,6 +144,7 @@ SRC_DEAD			:=	$(addprefix dead/,$(SRC_DEAD))
 
 SRC_MENU			:=	$(SRC_PAUSE)							\
 						$(SRC_MAIN)								\
+						$(SRC_SETTINGS_MENU)					\
 						$(SRC_DEAD)								\
 						button_event_array.c
 SRC_MENU			:=	$(addprefix menu/,$(SRC_MENU))
