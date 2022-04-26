@@ -8,7 +8,7 @@
 #include "my_bgs.h"
 #include "my_json.h"
 #include "my_rpg.h"
-#include "my_macro.h"
+#include "macro.h"
 
 static const char energy_hud_path[] = "./assets/image/hud/energy_bar.png";
 static const sfIntRect energy_hud_rect = {0, 0, 60, 188};
@@ -66,7 +66,7 @@ void update_energy_hud(object_t *object, scene_t *scene,
 static int create_energy_hud(object_t **energy_hud, player_t **player,
     scene_t *scene, window_t *win)
 {
-    *energy_hud = create_object(update_energy_hud, NULL, scene, -2);
+    *energy_hud = create_object(update_energy_hud, NULL, scene, LAYER_HUD);
     *player = dico_t_get_value(win->components, PLAYER);
     if (*energy_hud == NULL || *player == NULL) {
         return RET_ERR_MALLOC;

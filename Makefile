@@ -111,7 +111,8 @@ SRC_HUD				:=	manage_hud.c							\
 						increment_hud_pos.c						\
 						init_life_hud.c							\
 						init_energy_hud.c						\
-						check_evolution_stat.c
+						check_evolution_stat.c					\
+						init_xp_hud.c
 SRC_HUD				:=	$(addprefix hud/,$(SRC_HUD))
 # ----------------------------------------------------------------------------
 # -------- SRC_MENU ----------------------------------------------------------

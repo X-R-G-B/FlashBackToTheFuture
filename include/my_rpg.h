@@ -228,4 +228,6 @@ void upgrade_energy(object_t *obj, scene_t *scene,
 
 void toggle_pop_up(dico_t *dico, const char *key);
 
+int init_xp_hud(window_t *win, scene_t *scene);
+
 #endif /* !RPG_H_ */
