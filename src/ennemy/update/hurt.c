@@ -6,6 +6,7 @@
 */
 
 #include "ennemies.h"
+#include "my_bgs.h"
 #include "my_json.h"
 
 static const char blink_time_key[] = "blink time";
@@ -58,6 +59,15 @@ static void move_ennemy(ennemy_t *ennemy, float move, window_t *win)
     ennemy->obj->bigdata.sprite_bigdata.pos.y -= news[dir].y;
 }
 
+static void update_when_ennemy_die(ennemy_t *ennemy, window_t *win, scene_t *scene)
+{
+    ennemy->obj->components = dico_t_rem(ennemy->obj->components, "hurt");
+    if (ennemy->life <= 0) {
+        update_xp(ennemy, win, scene);
+        ennemy->state = DYING;
+    }
+}
+
 void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win,
     scene_t *scene)
 {
@@ -76,10 +86,6 @@ void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win,
     move_ennemy(ennemy, (dtime * speed / (time * speed)) * 20, win);
     if (time >= blink_time) {
         time = 0;
-        ennemy->obj->components = dico_t_rem(ennemy->obj->components, "hurt");
-        if (ennemy->life <= 0) {
-            update_xp(ennemy, win, scene);
-            ennemy->state = DYING;
-        }
+        update_when_ennemy_die(ennemy, win, scene);
     }
 }
