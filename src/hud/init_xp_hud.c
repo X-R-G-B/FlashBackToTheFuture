@@ -36,15 +36,6 @@ static int init_xp_borders_hud(window_t *win, scene_t *scene, player_t *player)
     return RET_OK;
 }
 
-void update_xp_bar(object_t *object, scene_t *scene,
-    window_t *window, float time)
-{
-    if (object == NULL || scene == NULL || window == NULL) {
-        return RET_ERR_INPUT;
-    }
-    
-}
-
 static int init_xp_bar_hud(window_t *win, scene_t *scene, player_t *player)
 {
     object_t *xp_hud_bar = NULL;
