@@ -7,7 +7,7 @@
 
 #include "ennemies.h"
 #include "my_rpg.h"
-#include "my_strings.h"
+#include "my_puts.h"
 #include "my_wordarray.h"
 #include "my_json.h"
 #include "macro.h"

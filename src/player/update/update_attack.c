@@ -11,7 +11,7 @@
 
 static void increment_index(int *index, player_t *player, float *time)
 {
-    any_t *data = dico_t_get_any(player->obj->components, "data");
+    any_t *data = dico_t_get_any(player->obj->components, PLAYER_DATA);
     any_t *weapon = get_from_any(data, "ddd", "attack", "sword", "rect");
     any_t *time_actualisation = NULL;
 
@@ -53,7 +53,7 @@ void update_attack(player_t *player, __attribute__((unused)) scene_t *scene,
 {
     static int index[2] = {0, 0};
     static float time = 0;
-    any_t *attack = dico_t_get_any(player->obj->components, "data");
+    any_t *attack = dico_t_get_any(player->obj->components, PLAYER_DATA);
     any_t *data = NULL;
     any_t *current_data = NULL;
 
