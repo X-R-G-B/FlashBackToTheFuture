@@ -34,7 +34,7 @@ int main(void)
     sfVideoMode mode = {1920, 1080, 32};
     window_t *win = create_window(mode, "tests", sfResize | sfClose);
     scene_t *scene = create_scene(win, sfBlack, "START");
-    player_t *player = create_player(win, scene, PLAYER_STATS);
+    player_t *player = create_player(win, scene, PLAYER_STATS_PATH);
 
     window_change_scene(win, "START");
     loop(win);

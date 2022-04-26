@@ -21,7 +21,7 @@ static void retake_energy(float time_elapsed, player_t *player)
     any_t *stats = NULL;
     static float time = 0;
 
-    stats = dico_t_get_value(player->obj->components, "stats");
+    stats = dico_t_get_value(player->obj->components, PLAYER_STATS);
     if (stats == NULL || stats->type != DICT) {
         return;
     }

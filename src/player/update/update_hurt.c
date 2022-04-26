@@ -32,7 +32,7 @@ void update_hurt(player_t *player, __attribute__((unused)) scene_t *scene,
     if (player == NULL || player->obj == NULL) {
         return;
     }
-    data = dico_t_get_value(player->obj->components, "data");
+    data = dico_t_get_value(player->obj->components, PLAYER_DATA);
     if (data == NULL) {
         return;
     }

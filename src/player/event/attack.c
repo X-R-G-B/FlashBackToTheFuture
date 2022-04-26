@@ -14,7 +14,7 @@ static int check_energy(player_t *player)
     any_t *data = NULL;
     any_t *energy_cost = NULL;
 
-    data = dico_t_get_value(player->obj->components, "data");
+    data = dico_t_get_value(player->obj->components, PLAYER_DATA);
     energy_cost = get_from_any(data, "ddd", "attack", "sword",
         energy_cost_key);
     if (energy_cost == NULL || energy_cost->type != FLOAT) {

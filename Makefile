@@ -89,7 +89,8 @@ SRC_UPDATE			:=	update_player.c							\
 SRC_UPDATE			:=	$(addprefix update/,$(SRC_UPDATE))
 
 SRC_STAT_UPGRADE	:=	upgrade_stat.c							\
-						stats_component.c
+						stats_component.c						\
+						gain_xp.c
 SRC_STAT_UPGRADE	:=	$(addprefix stat_upgrade/,$(SRC_STAT_UPGRADE))
 
 SRC_PLAYER			:=	set_stop.c								\
@@ -128,6 +129,7 @@ SRC_MAIN			:=	$(addprefix main/,$(SRC_MAIN))
 
 SRC_PAUSE			:=	create_pause_menu.c						\
 						home_button_event.c						\
+						restart_button.c						\
 						pressed_button_event.c					\
 						pause_button_event.c
 SRC_PAUSE			:=	$(addprefix pause/,$(SRC_PAUSE))
@@ -152,7 +154,8 @@ SRC_PATH			:=	init_find.c								\
 SRC_PATH			:=	$(addprefix pathfind/,$(SRC_PATH))
 # ----------------------------------------------------------------------------
 # -------- SRC_MATH ----------------------------------------------------------
-SRC_MATH			:=	rect_contains_segment.c
+SRC_MATH			:=	rect_contains_segment.c					\
+						gore_effect.c
 SRC_MATH			:=	$(addprefix math/,$(SRC_MATH))
 # ----------------------------------------------------------------------------
 # --------- SRC_NPC ----------------------------------------------------------

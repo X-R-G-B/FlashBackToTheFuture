@@ -60,16 +60,16 @@ int *get_player_spawn(scene_t *scene)
 
 static player_t *add_components(player_t *player, const char *stats)
 {
-    any_t *data = parse_json_file("./assets/data/player/data.json");
+    any_t *data = parse_json_file(PLAYER_DATA_PATH);
     any_t *stat = parse_json_file(stats);
 
     if (data == NULL || stat == NULL) {
         return NULL;
     }
-    player->obj->components = dico_t_add_data(player->obj->components, "data",
-        data, destroy_any);
-    player->obj->components = dico_t_add_data(player->obj->components, "stats",
-        stat, destroy_any);
+    player->obj->components = dico_t_add_data(player->obj->components,
+        PLAYER_DATA, data, destroy_any);
+    player->obj->components = dico_t_add_data(player->obj->components,
+        PLAYER_STATS, stat, destroy_any);
     if (player->obj->components == NULL) {
         return NULL;
     }

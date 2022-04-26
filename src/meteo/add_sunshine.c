@@ -16,15 +16,19 @@
 #include "my_rpg.h"
 
 static void update_sun(struct element_s *elem,
-    __attribute__((unused)) framebuffer_t *buf,
+    framebuffer_t *buf,
     float dtime)
 {
     float y = 0;
-    sfVector2f vect = {
+    sfVector2f vect = {0};
+
+    if (elem == NULL || buf == NULL) {
+        return;
+    }
+    vect = (sfVector2f) {
         .x = elem->data.line.point_b.x - elem->data.line.point_a.x,
         .y = elem->data.line.point_b.y - elem->data.line.point_a.y
     };
-
     elem->data.line.point_b.y += (int) MAX(((vect.y) * (dtime * 100)) / 3, 1);
     elem->data.line.point_b.x += (int) MAX(((vect.x) * (dtime * 100)) / 3, 1);
     elem->data.line.point_a.y += (int) MAX(((vect.y) * (dtime * 100)) / 3, 1);

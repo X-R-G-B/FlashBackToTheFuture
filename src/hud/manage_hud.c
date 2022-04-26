@@ -41,7 +41,7 @@ int update_hud_stats(object_t *obj, player_t *player, const char stat_name[],
     any_t *max_stat_data = NULL;
     any_t *stats = NULL;
 
-    stats = dico_t_get_value(player->obj->components, "stats");
+    stats = dico_t_get_value(player->obj->components, PLAYER_STATS);
     if (stats == NULL || stats->type != DICT) {
         return RET_ERR_INPUT;
     }
