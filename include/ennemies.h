@@ -36,7 +36,8 @@ sfFloatRect get_attack_hitbox_rect(sfFloatRect player_rect, player_t *player);
 
 bool is_player_in_range(ennemy_t *ennemy, window_t *win);
 
-void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win, scene_t *scene);
+void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win,
+    scene_t *scene);
 
 void player_check_hurt(player_t *player, scene_t *scene);
 
