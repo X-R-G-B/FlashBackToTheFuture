@@ -66,7 +66,7 @@ sfFloatRect get_attack_hitbox_rect(sfFloatRect player_rect, player_t *player)
     if (player == NULL || player->obj == NULL) {
         return player_rect;
     }
-    data = dico_t_get_value(player->obj->components, "data");
+    data = dico_t_get_value(player->obj->components, PLAYER_DATA);
     if (data == NULL) {
         return player_rect;
     }

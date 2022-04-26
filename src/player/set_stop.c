@@ -52,7 +52,7 @@ void set_stop(player_t *player)
     if (player == NULL) {
         return;
     }
-    data = dico_t_get_value(player->obj->components, "data");
+    data = dico_t_get_value(player->obj->components, PLAYER_DATA);
     if (data == NULL) {
         return;
     }
