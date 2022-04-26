@@ -230,4 +230,7 @@ void toggle_pop_up(dico_t *dico, const char *key);
 
 int init_xp_hud(window_t *win, scene_t *scene);
 
+void update_xp_bar(object_t *object, scene_t *scene,
+    window_t *window, float time);
+
 #endif /* !RPG_H_ */
