@@ -57,7 +57,8 @@ static void move_ennemy(ennemy_t *ennemy, float move, window_t *win)
     ennemy->obj->bigdata.sprite_bigdata.pos.y -= news[dir].y;
 }
 
-void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win)
+void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win,
+    scene_t *scene)
 {
     static float time = 0;
     float blink_time = get_blink_time(ennemy);
@@ -71,7 +72,7 @@ void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win)
         time = 0;
         ennemy->obj->components = dico_t_rem(ennemy->obj->components, "hurt");
         if (ennemy->life <= 0) {
-            update_xp(ennemy, win);
+            update_xp(ennemy, win, scene);
             ennemy->state = DYING;
         }
     }

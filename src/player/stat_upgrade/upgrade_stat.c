@@ -34,10 +34,7 @@ static void upgrade(window_t *win, const char *stat_max_key)
     }
 }
 
-void level_up(__attribute__((unused)) object_t *obj,
-    scene_t *scene,
-    window_t *win,
-    __attribute__((unused)) set_event_t *event)
+void level_up(scene_t *scene, window_t *win)
 {
     player_t *player = NULL;
 
@@ -45,6 +42,9 @@ void level_up(__attribute__((unused)) object_t *obj,
         return;
     }
     player = dico_t_get_value(win->components, "player");
+    if (player == NULL) {
+        return;
+    }
     player->state = IN_POP_UP;
     toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
 }
@@ -53,18 +53,34 @@ void upgrade_energy(__attribute__((unused)) object_t *obj,
     __attribute__((unused)) scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *event)
 {
+    player_t *player = NULL;
+
     if (win == NULL) {
         return;
     }
+    player = dico_t_get_value(win->components, "player");
+    if (player == NULL) {
+        return;
+    }
+    player->state = STOP;
     upgrade(win, energy_max_name);
+    toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
 }
 
 void upgrade_health(__attribute__((unused)) object_t *obj,
     __attribute__((unused)) scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *event)
 {
+    player_t *player = NULL;
+
     if (win == NULL) {
         return;
     }
+    player = dico_t_get_value(win->components, "player");
+    if (player == NULL) {
+        return;
+    }
+    player->state = STOP;
     upgrade(win, life_max_name);
+    toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
 }

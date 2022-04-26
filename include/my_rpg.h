@@ -227,4 +227,6 @@ void upgrade_energy(object_t *obj, scene_t *scene,
 
 void toggle_pop_up(dico_t *dico, const char *key);
 
+void level_up(scene_t *scene, window_t *win);
+
 #endif /* !RPG_H_ */

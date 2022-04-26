@@ -47,10 +47,11 @@ static int init_any_xp(any_t **xp, any_t **loot_xp,
     return RET_OK;
 }
 
-static int level_up(any_t *player_stats, any_t *ennemy_stats, any_t *xp)
+static int gain_xp(any_t *player_stats, any_t *ennemy_stats, any_t *xp )
 {
     any_t *xp_max = NULL;
     any_t *lvl = NULL;
+    int lvl_gained = 0;
 
     if (player_stats == NULL || ennemy_stats == NULL) {
         return RET_ERR_INPUT;
@@ -60,17 +61,20 @@ static int level_up(any_t *player_stats, any_t *ennemy_stats, any_t *xp)
     if (xp_max == NULL || lvl == NULL) {
         return RET_ERR_MALLOC;
     }
-    for (; xp_max->value.f <= xp->value.f;) {
+    for (; xp_max->value.f <= xp->value.f; lvl_gained++) {
         xp->value.f -= xp_max->value.f;
         lvl->value.f += 1.0;
     }
     if (write_json(player_stats, PLAYER_STATS) != JS_OK) {
         return JS_ERR_INPUT;
     }
+    if (lvl_gained != 0) {
+        return LVL_UP;
+    }
     return RET_OK;
 }
 
-void update_xp(ennemy_t *ennemy, window_t *win)
+void update_xp(ennemy_t *ennemy, window_t *win, scene_t *scene)
 {
     player_t *player = NULL;
     any_t *player_stats = NULL;
@@ -83,7 +87,9 @@ void update_xp(ennemy_t *ennemy, window_t *win)
         return;
     }
     xp->value.f += loot_xp->value.f;
-    level_up(player_stats, ennemy_stats, xp);
+    if (gain_xp(player_stats, ennemy_stats, xp) == LVL_UP) {
+        level_up(scene, win);
+    }
     player = dico_t_get_value(win->components, PLAYER);
     if (player == NULL) {
         return;
