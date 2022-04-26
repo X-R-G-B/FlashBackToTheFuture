@@ -25,14 +25,10 @@ static int init_xp_borders_hud(window_t *win, scene_t *scene, player_t *player)
     object_t *xp_hud_borders = NULL;
 
     xp_hud_borders = create_object(NULL, NULL, scene, LAYER_HUD);
-    if (xp_hud_borders == NULL) {
-        return RET_ERR_INPUT;
-    }
-    if (object_set_sprite(xp_hud_borders, xp_hud_borders_sprite_path,
-            xp_hud_borders_rect, xp_hud_borders_pos) != BGS_OK) {
-        return RET_ERR_INPUT;
-    }
-    if (add_hud_to_hud_element(win, xp_hud_borders, player) != RET_OK) {
+    if (xp_hud_borders == NULL ||
+            object_set_sprite(xp_hud_borders, xp_hud_borders_sprite_path,
+            xp_hud_borders_rect, xp_hud_borders_pos) != BGS_OK ||
+            add_hud_to_hud_element(win, xp_hud_borders, player) != RET_OK) {
         return RET_ERR_INPUT;
     }
     return RET_OK;
@@ -40,12 +36,8 @@ static int init_xp_borders_hud(window_t *win, scene_t *scene, player_t *player)
 
 static int add_max_width_in_components(scene_t *scene)
 {
-    int *max_width = NULL;
-
-    max_width = malloc(sizeof(int));
-    *max_width = xp_hud_bar_rect.width;
-    if (scene_add_components(scene, max_width,
-            xp_max_width_key, free) != BGS_OK) {
+    if (scene_add_components(scene, (void *) &xp_hud_bar_rect.width,
+            xp_max_width_key, NULL) != BGS_OK) {
         return RET_ERR_INPUT;
     }
     return RET_OK;
@@ -56,14 +48,10 @@ static int init_xp_bar_hud(window_t *win, scene_t *scene, player_t *player)
     object_t *xp_hud_bar = NULL;
 
     xp_hud_bar = create_object(update_xp_bar, NULL, scene, LAYER_HUD);
-    if (xp_hud_bar == NULL) {
-        return RET_ERR_INPUT;
-    }
-    if (object_set_sprite(xp_hud_bar, xp_hud_bar_sprite_path,
-            xp_hud_bar_rect, xp_hud_bar_pos) != BGS_OK) {
-        return RET_ERR_INPUT;
-    }
-    if (add_hud_to_hud_element(win, xp_hud_bar, player) != RET_OK) {
+    if (xp_hud_bar == NULL ||
+            object_set_sprite(xp_hud_bar, xp_hud_bar_sprite_path,
+            xp_hud_bar_rect, xp_hud_bar_pos) != BGS_OK ||
+            add_hud_to_hud_element(win, xp_hud_bar, player) != RET_OK) {
         return RET_ERR_INPUT;
     }
     add_max_width_in_components(scene);
@@ -78,13 +66,8 @@ int init_xp_hud(window_t *win, scene_t *scene)
         return RET_ERR_INPUT;
     }
     player = dico_t_get_value(win->components, PLAYER);
-    if (player == NULL) {
-        return RET_ERR_INPUT;
-    }
-    if (init_xp_borders_hud(win, scene, player) != RET_OK) {
-        return RET_ERR_INPUT;
-    }
-    if (init_xp_bar_hud(win, scene, player) != RET_OK) {
+    if (player == NULL || init_xp_borders_hud(win, scene, player) != RET_OK ||
+            init_xp_bar_hud(win, scene, player) != RET_OK) {
         return RET_ERR_INPUT;
     }
     return RET_OK;

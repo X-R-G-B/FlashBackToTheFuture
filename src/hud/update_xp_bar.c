@@ -18,7 +18,7 @@ static any_t *get_xp_data(player_t *player, const char data_name[])
     any_t *stats = NULL;
     any_t *max_xp_data = NULL;
 
-    stats = dico_t_get_value(player->obj->components, "stats");
+    stats = dico_t_get_value(player->obj->components, PLAYER_STATS);
     if (stats == NULL || stats->type != DICT) {
         return NULL;
     }
@@ -74,7 +74,7 @@ static int change_xp_bar_stats(any_t *max_xp_data, any_t *actual_xp_data,
 }
 
 void update_xp_bar(object_t *object, scene_t *scene,
-    window_t *window, float time)
+    window_t *window, __attribute__((unused)) float time)
 {
     player_t *player = NULL;
     any_t *max_xp = NULL;
