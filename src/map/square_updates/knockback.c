@@ -17,7 +17,7 @@ void knockback(object_t *obj, __attribute__((unused)) scene_t *scene,
         return;
     }
     player = dico_t_get_value(win->components, PLAYER);
-    if (player == NULL) {
+    if (player == NULL || player->view == NULL) {
         return;
     }
     change_player_pos(player, 10, win);

@@ -36,7 +36,7 @@ int ennemy_set_stop(ennemy_t *ennemy)
         return RET_ERR_INPUT;
     }
     ennemy_data = dico_t_get_value(ennemy->obj->components, ENNEMY_DATA);
-    if (ennemy_data == NULL) {
+    if (ennemy_data == NULL || ennemy_data->type != DICT) {
         return RET_ERR_INPUT;
     }
     stop_rect = dico_t_get_any(ennemy_data->value.dict, "stop");

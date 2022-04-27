@@ -44,7 +44,8 @@ void replace_objects(window_t *win, scene_t *scene)
     }
     spawn = get_player_spawn(scene);
     player = dico_t_get_value(win->components, PLAYER);
-    if (player == NULL || spawn == NULL) {
+    if (player == NULL || player->obj == NULL || player->view == NULL ||
+        spawn == NULL) {
         return;
     }
     replace_hud(win, player, spawn);
