@@ -1,0 +1,34 @@
+{
+    "buttons": [
+        {
+            "text": "Background up",
+            "sprite path": "./assets/image/menu/stats/Parchemin.png",
+            "pos": [500.0, 960.0],
+            "plan": 1
+        },
+        {
+            "text": "Up energy",
+            "sprite path": "./assets/image/menu/stats/Upgrade.png",
+            "pos": [600.0, 1120.0],
+            "plan": 0
+        },
+        {
+            "text": "Up health",
+            "sprite path": "./assets/image/menu/stats/Upgrade.png",
+            "pos": [400.0, 1120.0],
+            "plan": 0
+        },
+        {
+            "sprite path": "./assets/image/menu/stats/Upgrade_health.png",
+            "pos": [400.0, 900.0]
+        },
+        {
+            "sprite path": "./assets/image/menu/stats/Upgrade_energy.png",
+            "pos": [600.0, 900.0]
+        },
+        {
+            "sprite path": "./assets/image/menu/stats/Choose.png",
+            "pos": [500.0, 1000.0]
+        }
+    ]
+}

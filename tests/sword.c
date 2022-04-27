@@ -12,7 +12,7 @@
 
 void att(object_t *obj, scene_t *scene, window_t *win, set_event_t *evt)
 {
-    player_t *player = dico_t_get_value(win->components, "player");
+    player_t *player = dico_t_get_value(win->components, PLAYER);
 
     update_attack(player, scene, win, 0);
 }

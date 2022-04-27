@@ -31,6 +31,8 @@ int set_event(object_t *object, dico_t *dico);
 
 list_ptr_t *fill_obj_list(list_t *elem, scene_t *scene);
 
+void destroy_pos_array(float *text, float *pos);
+
 int set_color(object_t *object, dico_t *dico);
 
 /**
@@ -39,6 +41,6 @@ int set_color(object_t *object, dico_t *dico);
 ** @param dico components of the list of pop up
 ** @param key string that will catch the pop up list
 **/
-void toggle_pop_up(dico_t *dico, char *key);
+void toggle_pop_up(dico_t *dico, const char *key);
 
 #endif /* !BUTTON_H_ */

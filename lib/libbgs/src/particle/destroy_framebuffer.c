@@ -10,6 +10,19 @@
 #include <stdlib.h>
 #include "my_bgs_framebuffer.h"
 
+static void free_rest_of_buf(framebuffer_t *buf)
+{
+    if (buf->to_remove != NULL) {
+        free_list(buf->to_remove);
+    }
+    if (buf->sprite != NULL) {
+        sfSprite_destroy(buf->sprite);
+    }
+    if (buf->texture != NULL) {
+        sfTexture_destroy(buf->texture);
+    }
+}
+
 void destroy_framebuffer(framebuffer_t *buf)
 {
     struct element_s *tmp_tmp = NULL;
@@ -17,13 +30,13 @@ void destroy_framebuffer(framebuffer_t *buf)
     if (buf == NULL) {
         return;
     }
-    free(buf->pixels);
+    if (buf->pixels != NULL) {
+        free(buf->pixels);
+    }
     for (struct element_s *tmp = buf->elements; tmp != NULL; tmp = tmp_tmp) {
         tmp_tmp = tmp->next;
         free(tmp);
     }
-    free_list(buf->to_remove);
-    sfSprite_destroy(buf->sprite);
-    sfTexture_destroy(buf->texture);
+    free_rest_of_buf(buf);
     free(buf);
 }

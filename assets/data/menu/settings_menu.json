@@ -1,54 +1,58 @@
 {
     "buttons": [
         {
-            "text": "Settings back",
             "sprite path": "./assets/image/menu/main_menu/settings/Parchemin.png",
             "pos": [540.0, 1150.0],
-            "plan": 0
+            "plan": 1
         },
         {
             "text": "Retour",
             "sprite path": "./assets/image/menu/main_menu/default_screen/Retour_button.png",
             "size": 2.0,
             "pos": [265.0, 750.0],
-            "plan": -1
+            "plan": -2
         },
         {
             "text": "Frame Rate",
             "sprite path": "./assets/image/menu/main_menu/settings/Frame_Rate.png",
             "size": 1.2,
             "pos": [630.0, 1150.0],
-            "plan": -1
+            "plan": -2
         },
         {
             "text": "60",
             "sprite path": "./assets/image/menu/main_menu/settings/60.png",
             "pos": [740.0, 860.0],
-            "plan": -1
+            "plan": -2
         },
         {
             "text": "120",
             "sprite path": "./assets/image/menu/main_menu/settings/120.png",
             "pos": [740.0, 1020.0],
-            "plan": -1
+            "plan": -2
         },
         {
             "text": "144",
             "sprite path": "./assets/image/menu/main_menu/settings/144.png",
             "pos": [740.0, 1220.0],
-            "plan": -1
+            "plan": -2
         },
         {
             "text": "165",
             "sprite path": "./assets/image/menu/main_menu/settings/165.png",
             "pos": [740.0, 1430.0],
-            "plan": -1
+            "plan": -2
         },
         {
-            "text": "Audio",
+            "text": "Circle",
+            "sprite path": "./assets/image/menu/main_menu/settings/circle.png",
+            "pos": [740.0, 860.0],
+            "plan": -2
+        },
+        {
             "sprite path": "./assets/image/menu/main_menu/settings/Audio.png",
             "pos": [380.0, 1150.0],
-            "plan": 0
+            "plan": -2
         }
     ]
 }

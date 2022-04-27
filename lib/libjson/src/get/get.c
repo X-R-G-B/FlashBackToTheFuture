@@ -38,7 +38,7 @@ any_t *get_from_any(any_t *any, char const *format, ...)
     va_list ap;
     int format_len = 0;
 
-    if (format == NULL) {
+    if (any == NULL || format == NULL) {
         return NULL;
     }
     va_start(ap, format);

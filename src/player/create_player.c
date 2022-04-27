@@ -12,6 +12,8 @@
 #include "my_bgs_components.h"
 #include "my_rpg.h"
 #include "my_json.h"
+#include "ennemy_pathfind.h"
+#include "macro.h"
 
 static void (*event_on[])(object_t *, scene_t *, window_t *,
     set_event_t *) = {
@@ -33,15 +35,21 @@ static const int event_nb = 5;
 
 static const char player_path[] = "./assets/image/player/link_with_weapon.png";
 
-static int *get_player_spawn(scene_t *scene)
+int *get_player_spawn(scene_t *scene)
 {
-    any_t *data = dico_t_get_value(scene->components, SAVE);
+    any_t *data = NULL;
     int *spawn = NULL;
+    any_t *any = NULL;
 
-    if (data == NULL) {
-        return NULL;
+    if (scene == NULL) {
+        return (NULL);
     }
-    spawn = get_any_int_array(dico_t_get_any(data->value.dict, "spawn"));
+    data = dico_t_get_value(scene->components, STAGE_DATA);
+    any = get_from_any(data, "d", "spawn");
+    if (any == NULL || any->type != ARRAY || any->value.array->len != 2) {
+        return (NULL);
+    }
+    spawn = get_any_int_array(any);
     if (spawn == NULL) {
         return NULL;
     }
@@ -52,32 +60,37 @@ static int *get_player_spawn(scene_t *scene)
 
 static player_t *add_components(player_t *player, const char *stats)
 {
-    any_t *data = parse_json_file("./assets/data/player/data.json");
+    any_t *data = parse_json_file(PLAYER_DATA_PATH);
     any_t *stat = parse_json_file(stats);
 
     if (data == NULL || stat == NULL) {
         return NULL;
     }
-    player->obj->components = dico_t_add_data(player->obj->components, "data",
-        data, destroy_any);
-    player->obj->components = dico_t_add_data(player->obj->components, "stats",
-        stat, destroy_any);
+    player->obj->components = dico_t_add_data(player->obj->components,
+        PLAYER_DATA, data, destroy_any);
+    player->obj->components = dico_t_add_data(player->obj->components,
+        PLAYER_STATS, stat, destroy_any);
     if (player->obj->components == NULL) {
+        return NULL;
+    }
+    if (set_player_default_stats(player, stat) != RET_OK) {
         return NULL;
     }
     set_stop(player);
     return player;
 }
 
-static int add_event(player_t *player, int *spawn)
+static int add_event(player_t *player, int *spawn, scene_t *scene)
 {
     int ret = RET_OK;
     object_t *obj = player->obj;
 
     if (object_set_sprite(player->obj, player_path, (sfIntRect)
         {12, 210, 57, 69}, (sfVector2f) {spawn[0], spawn[1]}) != BGS_OK) {
+        free(spawn);
         return RET_ERR_INPUT;
     }
+    free(spawn);
     for (int i = 0; i < event_nb && ret == RET_OK; i++) {
         if (i == 0) {
             ret = event_add_node(create_event(event_on[0], false, obj,
@@ -87,10 +100,11 @@ static int add_event(player_t *player, int *spawn)
                 event_off[1]), node[i]);
         }
     }
+    pathfind_add_to_scene(scene);
     return ret;
 }
 
-sfView *create_view(window_t *win, player_t *player, int *spawn)
+static sfView *create_view(window_t *win, player_t *player, int *spawn)
 {
     sfView *view = sfView_create();
 
@@ -112,11 +126,11 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats)
     if (player == NULL) {
         return NULL;
     }
-    if (window_add_component(win, player, "player", destroy_player) != BGS_OK) {
+    if (window_add_component(win, player, PLAYER, destroy_player) != BGS_OK) {
         return NULL;
     }
     player->dir = DOWN;
-    player->obj = create_object(update_player, NULL, scene, 0);
+    player->obj = create_object(update_player, NULL, scene, LAYER_PLAYER);
     if (player->obj == NULL) {
         return NULL;
     }
@@ -124,6 +138,6 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats)
     if (spawn == NULL || create_view(win, player, spawn) == NULL) {
         return (NULL);
     }
-    return (add_event(player, spawn) == RET_OK) ?
+    return (add_event(player, spawn, scene) == RET_OK) ?
         add_components(player, stats) : NULL;
 }

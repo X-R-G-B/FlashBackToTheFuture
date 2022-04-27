@@ -30,8 +30,6 @@ struct square_s {
     int size;
 };
 
-layer_t *get_layer(scene_t *scene, int layer);
-
 int event_handling(sfRenderWindow *win);
 
 scene_t *get_scene_i(list_ptr_t *list, int i);

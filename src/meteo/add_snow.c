@@ -21,6 +21,9 @@ static void update_snow(struct element_s *elem,
 {
     float y = 0;
 
+    if (elem == NULL || buf == NULL) {
+        return;
+    }
     y = 1 + rand() % 5;
     elem->data.circle.center.y += (int) MAX(dtime * 150 * y, 1);
     elem->data.circle.center.x += y;

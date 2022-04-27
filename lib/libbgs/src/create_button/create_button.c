@@ -7,11 +7,15 @@
 
 #include <SFML/Graphics.h>
 #include <stdlib.h>
+#include "my_bgs.h"
 #include "my_strings.h"
 #include "my_bgs_button_generator.h"
 
 static int set_sprite(object_t *sprite, dico_t *dico)
 {
+    if (sprite == NULL || dico == NULL) {
+        return (BGS_ERR_INPUT);
+    }
     if (set_event(sprite, dico) != BGS_OK ||
         set_color(sprite, dico) != BGS_OK) {
         return BGS_ERR_MALLOC;
@@ -66,12 +70,11 @@ static int init_text(float *pos, scene_t *scene, char *arg[2], dico_t *dico)
 static int get_button_data(scene_t *scene, any_t *dico)
 {
     int ret = BGS_OK;
-    float *txt_pos = get_any_float_array(dico_t_get_any(dico->value.dict,
-        "text pos"));
-    float *pos = get_any_float_array(dico_t_get_any(dico->value.dict, "pos"));
-    any_t *text = dico_t_get_any(dico->value.dict, "text");
-    any_t *sprite_path = dico_t_get_any(dico->value.dict, "sprite path");
-    any_t *font_path = dico_t_get_any(dico->value.dict, "font path");
+    float *txt_pos = get_any_float_array(get_from_any(dico, "d", "text pos"));
+    float *pos = get_any_float_array(get_from_any(dico, "d", "pos"));
+    any_t *text = get_from_any(dico, "d", "text");
+    any_t *sprite_path = get_from_any(dico, "d", "sprite path");
+    any_t *font_path = get_from_any(dico, "d", "font path");
     char *arg[2] = {NULL, NULL};
 
     if (sprite_path != NULL && pos != NULL) {
@@ -82,8 +85,7 @@ static int get_button_data(scene_t *scene, any_t *dico)
         arg[1] = text->value.str;
         ret = init_text(txt_pos, scene, arg, dico->value.dict);
     }
-    free(txt_pos);
-    free(pos);
+    destroy_pos_array(txt_pos, pos);
     return ret;
 }
 
@@ -104,6 +106,7 @@ list_ptr_t *create_button(scene_t *scene, const char *path)
         ret = get_button_data(scene, get_from_any(any, "da", "buttons", i));
     }
     if (ret != BGS_OK) {
+        destroy_any(any);
         return NULL;
     }
     destroy_any(any);

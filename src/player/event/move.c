@@ -36,9 +36,8 @@ void move_on(object_t *object, scene_t *scene, window_t *win,
         win == NULL || event == NULL) {
         return;
     }
-    player = dico_t_get_value(win->components, "player");
-    if (player == NULL ||
-        player->state == ATTACKING || player->state == DYING) {
+    player = dico_t_get_value(win->components, PLAYER);
+    if (player == NULL || (player->state != MOVING && player->state != STOP)) {
         return;
     }
     player->state = MOVING;
@@ -57,11 +56,9 @@ void move_off(object_t *obj, scene_t *scene, window_t *win, set_event_t *event)
         event == NULL) {
         return;
     }
-    player = dico_t_get_value(win->components, "player");
-    if (player == NULL) {
+    player = dico_t_get_value(win->components, PLAYER);
+    if (player == NULL || player->state != MOVING) {
         return;
     }
-    if (player->state != DYING) {
-        set_stop(player);
-    }
+    set_stop(player);
 }

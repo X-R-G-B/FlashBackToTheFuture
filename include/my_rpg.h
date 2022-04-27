@@ -17,26 +17,39 @@
     #define WIN_SIZE_Y 1080
     #define WIN_SIZE_X 1920
 
+    #define STATS_UPGRADE_KEY "stats_update_pop_up"
+
     #include <SFML/System/Vector2.h>
     #include "my_bgs.h"
+    #include "my_json.h"
 
-static const char PLAYER_DATA[] = "./assets/data/player/data.json";
-static const char PLAYER_STATS[] = "./assets/data/player/stats.json";
+static const char PLAYER_DATA_PATH[] = "./assets/data/player/data.json";
+static const char PLAYER_STATS_PATH[] = "./assets/data/player/stats.json";
 
 static const char COLLISION_ARRAY[] = "collision array";
 
-static const char UID_ELEMENTS[] = "uid_elements";
+static const char HUD_ELEMENTS[] = "hud_elements";
+static const char PAUSE_MENU[] = "pause";
+static const char DEAD_MESSAGE[] = "dead message";
+static const char DEAD_SCREEN[] = "dead screen";
+
+static const char PLAYER[] = "player";
+static const char PLAYER_STATS[] = "stats";
+static const char PLAYER_DATA[] = "data";
 
 static const char STORY_DATA_PATH[] =
     "./assets/data/story_mode/save.json";
 static const char SAVE[] = "story_mode_data";
 
+static const char STAGE_DATA[] = "stage_data";
+
 typedef enum state_e {
     ATTACKING,
     MOVING,
-    DYING,
     STOP,
+    DYING,
     DIE,
+    IN_POP_UP,
     STUNT
 } state_t;
 
@@ -53,20 +66,43 @@ typedef struct player_s {
     dir_t dir;
     object_t *obj;
     sfView *view;
+    float life;
+    float energy;
 } player_t;
+
+void next_stage(object_t *obj, scene_t *scene, window_t *win, float time);
+
+int launch_next_stage(window_t *win);
+
+void change_player_pos(player_t *player, float move,
+    window_t *win);
+
+void add_list_obj_to_hud_list(list_ptr_t *hud_elements,
+    list_ptr_t *to_cpy, player_t *player);
+
+char *get_stage_path(int current_stage);
 
 void click_save(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *event);
 
 bool check_collision(player_t *player, scene_t *scene);
 
-void increment_uid_pos(scene_t *scene, sfVector2f to_add);
+int move_object_between_scene(window_t *win, scene_t *fst_scene,
+    scene_t *scd_scene);
 
-void uid_apply_right_pos(object_t *obj, sfVector2f screen_pos);
+void increment_hud_pos(window_t *win, sfVector2f to_add);
+
+void replace_objects(window_t *win, scene_t *scene);
+
+void hud_apply_right_pos(object_t *obj, object_t *player);
 
 int create_map(scene_t *scene);
 
 void update_player(object_t *obj, scene_t *scene, window_t *win, float dtime);
+
+void update_hurt(player_t *obj, scene_t *scene, window_t *win, float dtime);
+
+int *get_player_spawn(scene_t *scene);
 
 bool check_up_collision(object_t *player, char **map, sfVector2i pos);
 
@@ -79,11 +115,16 @@ bool check_down_collision(object_t *player, char **map, sfVector2i pos);
 void update_attack(player_t *player, scene_t *scene, window_t *win,
     float dtime);
 
-int launch_story_mode(window_t *win, const char save_path[]);
+void add_main_menu_elements_to_hud_list(window_t *win, scene_t *scene,
+    list_ptr_t *hud_list);
+
+int launch_story_mode(window_t *win, const char save_path[], scene_t *scene);
 
 int add_collision_array_in_scene(scene_t *scene);
 
 void wordarray_free_ptr(void *data);
+
+char *get_stage_name(int stage_id);
 
 int launch_game(void);
 
@@ -91,7 +132,7 @@ void set_stop(player_t *player);
 
 void knockback(object_t *obj, scene_t *scene, window_t *win, float time);
 
-bool is_player_on_square(window_t *win, object_t *square);
+bool is_player_on_square(window_t *win, sfFloatRect rect);
 
 player_t *create_player(window_t *win, scene_t *scene, const char *stats);
 
@@ -99,12 +140,14 @@ char **create_new_map(char **map);
 
 char **stage_map_to_collision_array(scene_t *scene);
 
-int launch_stage(window_t *win, char *stage_path, int stage_id);
+int launch_stage(window_t *win, char *stage_path, int stage_id, scene_t *scene);
 
 void attack_event(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *set_event);
 
-list_ptr_t *create_pause_menu(scene_t *scene);
+list_ptr_t *create_pause_menu(scene_t *scene, window_t *win);
+
+int init_hud_elements(window_t *win, scene_t *scene);
 
 void home_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
@@ -148,5 +191,50 @@ void update_dead(player_t *player, scene_t *screen,
 int init_dead_menu(window_t *win, scene_t *scene);
 
 void destroy_player(void *player_void);
+
+void dead_event_input(object_t *object, scene_t *scene,
+    window_t *window, set_event_t *event);
+
+void free_pop_up(void *list);
+
+int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
+    window_t *win);
+
+int init_life_hud(window_t *win, scene_t *scene);
+
+int init_energy_hud(window_t *win, scene_t *scene);
+
+int update_hud_stats(object_t *obj, player_t *player, const char stat_name[],
+    float stat_value);
+
+int add_hud_to_hud_element(window_t *win, object_t *hud_data,
+    player_t *player);
+
+int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
+    window_t *win);
+
+int init_hud(window_t *win, scene_t *scene);
+
+int set_player_default_stats(player_t *player, any_t *stats);
+
+void go_to_home(scene_t *scene, window_t *win);
+
+bool check_evolution_stat(player_t *player, float *prev_max_stat,
+    const char stat_name[]);
+
+void upgrade_health(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+
+void upgrade_energy(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+
+void toggle_pop_up(dico_t *dico, const char *key);
+
+int init_xp_hud(window_t *win, scene_t *scene);
+
+void update_xp_bar(object_t *object, scene_t *scene,
+    window_t *window, float time);
+
+void level_up(scene_t *scene, window_t *win);
 
 #endif /* !RPG_H_ */

@@ -33,23 +33,28 @@ static int apply_player_positions(player_t *player, int state,
     return RET_OK;
 }
 
-static int change_player_pos(player_t *player, float move,
-    scene_t *scene)
+void change_player_pos(player_t *player, float move,
+    window_t *win)
 {
     sfVector2f news[4] = {{0, 0 - move}, {0 - move, 0}, {0, move}, {move, 0}};
+    scene_t *scene = NULL;
 
-    if (check_collision(player, scene) == true) {
-        return 0;
+    if (player == NULL || win == NULL) {
+        return;
+    }
+    scene = dico_t_get_value(win->scenes, win->current_scene);
+    if (scene == NULL || check_collision(player, scene) == true) {
+        return;
     }
     player->obj->bigdata.sprite_bigdata.pos.x += news[player->dir].x;
     player->obj->bigdata.sprite_bigdata.pos.y += news[player->dir].y;
     sfView_move(player->view, news[player->dir]);
-    increment_uid_pos(scene, news[player->dir]);
-    return 0;
+    increment_hud_pos(win, news[player->dir]);
+    return;
 }
 
 static int move_player(player_t *player, float delta_time,
-    any_t *movements_rect, scene_t *scene)
+    any_t *movements_rect, window_t *win)
 {
     static int state = 1;
     static float timer = 0;
@@ -67,18 +72,18 @@ static int move_player(player_t *player, float delta_time,
     if (speed == NULL || speed->type != INT) {
         return RET_ERR_INPUT;
     }
-    change_player_pos(player, delta_time * speed->value.i, scene);
+    change_player_pos(player, delta_time * speed->value.i, win);
     ret = apply_player_positions(player, state, movements_rect);
     return ret;
 }
 
 static void handle_move_player(player_t *player, float delta_time,
-    scene_t *scene)
+    window_t *win)
 {
     any_t *move = NULL;
     any_t *data = NULL;
 
-    data = dico_t_get_any(player->obj->components, "data");
+    data = dico_t_get_any(player->obj->components, PLAYER_DATA);
     if (data == NULL) {
         return;
     }
@@ -86,7 +91,7 @@ static void handle_move_player(player_t *player, float delta_time,
     if (move == NULL || move->type != DICT) {
         return;
     }
-    move_player(player, delta_time, move, scene);
+    move_player(player, delta_time, move, win);
 }
 
 void update_movements(player_t *player, scene_t *scene, window_t *win,
@@ -96,6 +101,6 @@ void update_movements(player_t *player, scene_t *scene, window_t *win,
         win == NULL) {
         return;
     }
-    handle_move_player(player, delta_time, scene);
+    handle_move_player(player, delta_time, win);
     sfRenderWindow_setView(win->win, player->view);
 }

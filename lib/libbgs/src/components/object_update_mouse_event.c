@@ -5,6 +5,7 @@
 ** object update
 */
 
+#include <SFML/System/Vector2.h>
 #include <stdbool.h>
 #include "my_bgs_components.h"
 #include "my_bgs.h"
@@ -16,6 +17,9 @@ static sfVector2i get_mouse_pos(window_t *win)
     sfVector2f pos;
     sfVector2f size;
 
+    if (win == NULL) {
+        return ((sfVector2i) {0, 0});
+    }
     vector = sfMouse_getPositionRenderWindow(win->win);
     view = sfRenderWindow_getView(win->win);
     if (view == NULL) {
@@ -23,8 +27,9 @@ static sfVector2i get_mouse_pos(window_t *win)
     }
     pos = sfView_getCenter(view);
     size = sfView_getSize(view);
-    return (sfVector2i) {vector.x + (pos.x - (size.x / 2)),
-        vector.y + (pos.y - (size.y / 2))};
+    vector.x += (int) pos.x - (size.x / 2);
+    vector.y += (int) pos.y - (size.y / 2);
+    return vector;
 }
 
 int check_hover(object_t *object, window_t *win)
@@ -32,6 +37,9 @@ int check_hover(object_t *object, window_t *win)
     sfFloatRect rect;
     sfVector2i vector;
 
+    if (object == NULL || win == NULL) {
+        return (false);
+    }
     if (object->type == SPRITE) {
         rect = sfSprite_getGlobalBounds(object->drawable.sprite);
     } else if (object->type == TEXT) {
@@ -40,6 +48,7 @@ int check_hover(object_t *object, window_t *win)
         return false;
     }
     vector = get_mouse_pos(win);
+    vector.y += 15;
     if (sfFloatRect_contains(&rect, vector.x, vector.y) == sfTrue) {
         return true;
     } else {
@@ -51,6 +60,9 @@ static int check_right_click(object_t *object, window_t *win)
 {
     on_right_click_t *right = NULL;
 
+    if (object == NULL || win == NULL) {
+        return (false);
+    }
     right = dico_t_get_value(object->components, ON_RIGHT_KEY);
     if (check_hover(object, win) == 0) {
         return false;
@@ -66,6 +78,9 @@ static int check_left_click(object_t *object, window_t *win)
 {
     on_left_click_t *left = NULL;
 
+    if (object == NULL || win == NULL) {
+        return (false);
+    }
     left = dico_t_get_value(object->components, ON_LEFT_KEY);
     if (left == NULL || check_hover(object, win) == false) {
         return false;
@@ -82,6 +97,9 @@ void object_update_mouse_event(object_t *object, scene_t *scene,
 {
     void *data = NULL;
 
+    if (object == NULL || scene == NULL || win == NULL) {
+        return;
+    }
     data = dico_t_get_value(object->components, ON_HOVER_KEY);
     if (data != NULL && check_hover(object, win) == 1) {
         ((on_hover_t *) data)->hover(object, scene, win);

@@ -11,8 +11,8 @@
 
 static void increment_index(int *index, player_t *player, float *time)
 {
-    any_t *data = dico_t_get_any(player->obj->components, "data");
-    any_t *weapon = get_from_any(data, "dd", "attack", "sword");
+    any_t *data = dico_t_get_any(player->obj->components, PLAYER_DATA);
+    any_t *weapon = get_from_any(data, "ddd", "attack", "sword", "rect");
     any_t *time_actualisation = NULL;
 
     if (weapon == NULL || weapon->type != ARRAY) {
@@ -53,19 +53,17 @@ void update_attack(player_t *player, __attribute__((unused)) scene_t *scene,
 {
     static int index[2] = {0, 0};
     static float time = 0;
-    any_t *attack = dico_t_get_any(player->obj->components, "data");
+    any_t *attack = NULL;
     any_t *data = NULL;
     any_t *current_data = NULL;
 
+    if (player == NULL || player->obj == NULL) {
+        return;
+    }
     time += dtime;
-    if (attack == NULL) {
-        return;
-    }
-    data = get_from_any(attack, "dda", "attack", "sword", player->dir);
-    if (data == NULL) {
-        return;
-    }
-    current_data = get_element_i_var(data->value.array, index[0]);
+    attack = dico_t_get_any(player->obj->components, PLAYER_DATA);
+    data = get_from_any(attack, "ddda", "attack", "sword", "rect", player->dir);
+    current_data = get_from_any(data, "a", index[0]);
     if (current_data == NULL || current_data->type != ARRAY) {
         return;
     }

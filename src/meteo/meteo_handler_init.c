@@ -53,6 +53,9 @@ int create_meteo_handler(window_t *win, scene_t *scene)
     if (win == NULL || scene == NULL) {
         return (RET_ERR_INPUT);
     }
+    if (dico_t_get_value(win->components, METEO_HANDLER_COMP) != NULL) {
+        return RET_OK;
+    }
     meteo = create_meteo();
     if (meteo == NULL) {
         return (RET_ERR_MALLOC);

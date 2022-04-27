@@ -21,6 +21,7 @@ struct meteo_rpg_s {
     } type_now;
 };
 
+    #define NB_VECTORS_SUN 26
     #define DEFAULT_METEO SUN
 
 void update_meteo_handler(
@@ -62,5 +63,7 @@ int create_meteo_handler(window_t *win, scene_t *scene);
 ** }
 **/
 int change_meteo(window_t *win, enum meteo_type_e type);
+
+int add_gore_sword(window_t *win, sfVector2f pos);
 
 #endif

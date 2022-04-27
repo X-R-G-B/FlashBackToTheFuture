@@ -33,8 +33,12 @@ void destroy_event(void *data)
 
 static bool check_elem_in_list(list_ptr_t *list, void *data)
 {
-    list_t *elem = list->start;
+    list_t *elem = NULL;
 
+    if (list == NULL) {
+        return (false);
+    }
+    elem = list->start;
     for (int i = 0; i < list->len; i++, elem = elem->next) {
         if (elem->var == data) {
             return true;
@@ -45,9 +49,13 @@ static bool check_elem_in_list(list_ptr_t *list, void *data)
 
 layer_t *get_layer(scene_t *scene, int layer)
 {
-    list_t *elem = scene->layer->start;
+    list_t *elem = NULL;
     layer_t *layer_elem = NULL;
 
+    if (scene == NULL || scene->layer == NULL || scene->layer->start == NULL) {
+        return (NULL);
+    }
+    elem = scene->layer->start;
     for (int i = 0; i < scene->layer->len; i++, elem = elem->next) {
         layer_elem = elem->var;
         if (layer_elem->id == layer) {
@@ -59,9 +67,13 @@ layer_t *get_layer(scene_t *scene, int layer)
 
 static void check_obj_in_update_list(object_t *obj)
 {
-    scene_t *scene = dico_t_get_value(obj->components, "scene");
+    scene_t *scene = NULL;
     layer_t *layer = NULL;
 
+    if (obj == NULL) {
+        return;
+    }
+    scene = dico_t_get_value(obj->components, "scene");
     if (scene == NULL) {
         return;
     }
@@ -78,10 +90,10 @@ int object_set_event(object_t *object, set_event_t *event)
 {
     char key[255] = {0};
 
-    my_strcpy(key, SET_EVENT);
     if (object == NULL || event == NULL) {
         return BGS_ERR_INPUT;
     }
+    my_strcpy(key, SET_EVENT);
     if (event == NULL) {
         return BGS_ERR_MALLOC;
     }

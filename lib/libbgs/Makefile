@@ -61,6 +61,7 @@ SRC_CORE		:=	$(addprefix core/,$(SRC_CORE))
 SRC_BUTTON		:= 	check_set_color.c	\
 					create_button.c		\
 					check_layer.c		\
+					destroy_pos_array.c	\
 					set_event.c			\
 	 				fill_obj_list.c		\
 					toggle_pop_up.c
