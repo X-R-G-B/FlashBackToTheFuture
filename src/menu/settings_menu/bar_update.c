@@ -24,7 +24,8 @@ static void bar_update(object_t *button, object_t *fill_bar)
     if (dif == 0) {
         return;
     }
-    fill_bar->bigdata.sprite_bigdata.rect.width += (int) dif;
+    printf("%f\n", dif);
+    fill_bar->bigdata.sprite_bigdata.rect.width += dif;
     fill_bar->bigdata.sprite_bigdata.pos.x += (int) (dif / 2);
 }
 

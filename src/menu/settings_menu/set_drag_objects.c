@@ -49,7 +49,12 @@ static void bar_set_update(object_t *music_bar, object_t *sound_bar,
     scene_t *scene)
 {
     layer_t *layer = get_layer(scene, music_bar->layer);
+    sfFloatRect float_rect =
+        sfSprite_getGlobalBounds(music_bar->drawable.sprite);
+    sfIntRect rect = {0, 0, float_rect.width, float_rect.height};
 
+    music_bar->bigdata.sprite_bigdata.rect = rect;
+    sound_bar->bigdata.sprite_bigdata.rect = rect;
     if (layer == NULL) {
         return;
     }
