@@ -19,7 +19,7 @@
 #include "my_rpg.h"
 #include "npc.h"
 
-static const sfKeyCode key_interract = sfKeyA;
+static const sfKeyCode key_interract = sfKeyE;
 
 static float refresh_rate = 1.0 / 10;
 

@@ -219,6 +219,9 @@ int set_player_default_stats(player_t *player, any_t *stats);
 
 void go_to_home(scene_t *scene, window_t *win);
 
+bool check_evolution_stat(player_t *player, float *prev_max_stat,
+    const char stat_name[]);
+
 void upgrade_health(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 
@@ -226,6 +229,11 @@ void upgrade_energy(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 
 void toggle_pop_up(dico_t *dico, const char *key);
+
+int init_xp_hud(window_t *win, scene_t *scene);
+
+void update_xp_bar(object_t *object, scene_t *scene,
+    window_t *window, float time);
 
 void level_up(scene_t *scene, window_t *win);
 

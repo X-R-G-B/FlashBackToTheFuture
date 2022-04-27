@@ -13,6 +13,7 @@
     #define LAYER_PLAYER 3
     #define LAYER_MENUS 2
     #define LAYER_BUTTON 1
+    #define LAYER_HUD 0
 
     #define GO_RT "0"
     #define GO_UP "1"
