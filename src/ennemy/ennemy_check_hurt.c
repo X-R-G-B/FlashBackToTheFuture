@@ -14,7 +14,7 @@ static any_t *get_current_sword_pos(player_t *player)
 {
     any_t *data = NULL;
 
-    if (player == NULL) {
+    if (player == NULL || player->obj == NULL) {
         return NULL;
     }
     data = dico_t_get_value(player->obj->components, PLAYER_DATA);
@@ -90,7 +90,7 @@ bool ennemy_check_hurt(ennemy_t *ennemy, scene_t *scene, window_t *win,
     bool hurt = false;
     player_t *player = NULL;
 
-    if (ennemy == NULL || scene == NULL || win == NULL) {
+    if (ennemy == NULL || ennemy->obj == NULL || scene == NULL || win == NULL) {
         return false;
     }
     player = dico_t_get_value(win->components, PLAYER);

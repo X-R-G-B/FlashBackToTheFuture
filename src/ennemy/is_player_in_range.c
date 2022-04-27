@@ -37,12 +37,12 @@ bool is_player_in_range(ennemy_t *ennemy, window_t *win)
     sfFloatRect rect = {0};
     any_t *range = NULL;
 
-    if (ennemy == NULL || win == NULL) {
+    if (ennemy == NULL || ennemy->obj == NULL || win == NULL) {
         return false;
     }
     data = dico_t_get_value(ennemy->obj->components, ENNEMY_DATA);
     player = dico_t_get_value(win->components, PLAYER);
-    if (player == NULL || data == NULL) {
+    if (player == NULL || data == NULL || data->type != DICT) {
         return false;
     }
     range = dico_t_get_any(data->value.dict, "range");

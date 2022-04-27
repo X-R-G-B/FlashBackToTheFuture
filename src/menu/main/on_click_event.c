@@ -23,6 +23,9 @@ void click_play(__attribute__((unused)) object_t *obj,
         return;
     }
     play = get_element_i_var(buttons, 1);
+    if (play == NULL) {
+        return;
+    }
     play->bigdata.sprite_bigdata.rect.left = 8;
 }
 

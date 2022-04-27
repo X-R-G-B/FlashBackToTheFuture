@@ -54,7 +54,7 @@ void update_ennemy(object_t *obj, scene_t *scene, window_t *win,
 {
     ennemy_t *ennemy = NULL;
 
-    if (scene->pause == true && obj == NULL) {
+    if (scene == NULL || scene->pause == true || obj == NULL) {
         return;
     }
     ennemy = dico_t_get_value(obj->components, "struct");

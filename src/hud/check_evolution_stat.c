@@ -12,7 +12,7 @@ static any_t *get_stats_of_player(player_t *player, float *prev_max_stat)
 {
     any_t *stats = NULL;
 
-    if (player == NULL || prev_max_stat == NULL) {
+    if (player == NULL || player->obj == NULL || prev_max_stat == NULL) {
         return NULL;
     }
     stats = dico_t_get_value(player->obj->components, PLAYER_STATS);
