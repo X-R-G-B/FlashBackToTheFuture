@@ -42,6 +42,9 @@ void click_settings(__attribute__((unused)) object_t *obj,
         return;
     }
     settings = get_element_i_var(buttons, 2);
+    if (settings == NULL) {
+        return;
+    }
     settings->bigdata.sprite_bigdata.rect.left = 486;
 }
 
@@ -61,5 +64,8 @@ void click_exit(__attribute__((unused)) object_t *obj,
         return;
     }
     exit = get_element_i_var(buttons, 0);
+    if (exit == NULL) {
+        return;
+    }
     exit->bigdata.sprite_bigdata.rect.left = 243;
 }

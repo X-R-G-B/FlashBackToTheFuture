@@ -6,6 +6,7 @@
 */
 
 #include "main_menu.h"
+#include "my_bgs.h"
 
 static const int circle_i = 7;
 
@@ -35,7 +36,7 @@ void set_60_fps(object_t *obj, __attribute__((unused)) scene_t *scene,
     if (circle == NULL) {
         return;
     }
-    sfRenderWindow_setFramerateLimit(win->win, 60);
+    window_set_framerate_limit(win, 60);
     circle->bigdata.sprite_bigdata.pos = obj->bigdata.sprite_bigdata.pos;
 }
 
@@ -53,7 +54,7 @@ void set_120_fps(object_t *obj, __attribute__((unused)) scene_t *scene,
     if (circle == NULL) {
         return;
     }
-    sfRenderWindow_setFramerateLimit(win->win, 120);
+    window_set_framerate_limit(win, 120);
     circle->bigdata.sprite_bigdata.pos = obj->bigdata.sprite_bigdata.pos;
 }
 
@@ -71,7 +72,7 @@ void set_144_fps(object_t *obj, __attribute__((unused)) scene_t *scene,
     if (circle == NULL) {
         return;
     }
-    sfRenderWindow_setFramerateLimit(win->win, 144);
+    window_set_framerate_limit(win, 144);
     circle->bigdata.sprite_bigdata.pos = obj->bigdata.sprite_bigdata.pos;
 }
 
@@ -89,6 +90,6 @@ void set_165_fps(object_t *obj, __attribute__((unused)) scene_t *scene,
     if (circle == NULL) {
         return;
     }
-    sfRenderWindow_setFramerateLimit(win->win, 165);
+    window_set_framerate_limit(win, 165);
     circle->bigdata.sprite_bigdata.pos = obj->bigdata.sprite_bigdata.pos;
 }

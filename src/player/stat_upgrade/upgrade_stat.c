@@ -55,7 +55,7 @@ void upgrade_energy(__attribute__((unused)) object_t *obj,
 {
     player_t *player = NULL;
 
-    if (win == NULL) {
+    if (win == NULL || scene == NULL) {
         return;
     }
     player = dico_t_get_value(win->components, "player");
@@ -73,7 +73,7 @@ void upgrade_health(__attribute__((unused)) object_t *obj,
 {
     player_t *player = NULL;
 
-    if (win == NULL) {
+    if (win == NULL || scene == NULL) {
         return;
     }
     player = dico_t_get_value(win->components, "player");

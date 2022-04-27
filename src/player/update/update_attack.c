@@ -53,19 +53,17 @@ void update_attack(player_t *player, __attribute__((unused)) scene_t *scene,
 {
     static int index[2] = {0, 0};
     static float time = 0;
-    any_t *attack = dico_t_get_any(player->obj->components, PLAYER_DATA);
+    any_t *attack = NULL;
     any_t *data = NULL;
     any_t *current_data = NULL;
 
+    if (player == NULL || player->obj == NULL) {
+        return;
+    }
     time += dtime;
-    if (attack == NULL || player == NULL) {
-        return;
-    }
+    attack = dico_t_get_any(player->obj->components, PLAYER_DATA);
     data = get_from_any(attack, "ddda", "attack", "sword", "rect", player->dir);
-    if (data == NULL) {
-        return;
-    }
-    current_data = get_element_i_var(data->value.array, index[0]);
+    current_data = get_from_any(data, "a", index[0]);
     if (current_data == NULL || current_data->type != ARRAY) {
         return;
     }

@@ -23,6 +23,9 @@ void set_play_overlay(__attribute__((unused)) object_t *obj,
         return;
     }
     overlay = get_element_i_var(list, 4);
+    if (overlay == NULL) {
+        return;
+    }
     overlay->bigdata.sprite_bigdata.pos = (sfVector2f) {340.0, 390.0};
 }
 
@@ -42,6 +45,9 @@ void set_settings_overlay(__attribute__((unused)) object_t *obj,
         return;
     }
     overlay = get_element_i_var(list, 4);
+    if (overlay == NULL) {
+        return;
+    }
     overlay->bigdata.sprite_bigdata.pos = (sfVector2f) {340.0, 535.0};
 }
 
@@ -61,5 +67,8 @@ void set_exit_overlay(__attribute__((unused)) object_t *obj,
         return;
     }
     overlay = get_element_i_var(list, 4);
+    if (overlay == NULL) {
+        return;
+    }
     overlay->bigdata.sprite_bigdata.pos = (sfVector2f) {325.0, 695.0};
 }
