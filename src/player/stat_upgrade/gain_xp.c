@@ -25,7 +25,7 @@ static int init_any_stats(any_t **player_stats, any_t **ennemy_stats,
     if (player == NULL) {
         return RET_ERR_MALLOC;
     }
-    *player_stats = dico_t_get_any(player->obj->components, "stats");
+    *player_stats = dico_t_get_any(player->obj->components, PLAYER_STATS);
     *ennemy_stats = dico_t_get_any(ennemy->obj->components, ENNEMY_DATA);
     if (*player_stats == NULL || *ennemy_stats == NULL) {
         return RET_ERR_INPUT;
@@ -63,7 +63,7 @@ static int update_stats(any_t *player_stats, any_t *xp, any_t *xp_max,
         xp->value.f -= xp_max->value.f;
         lvl->value.f += 1.0;
     }
-    if (write_json(player_stats, PLAYER_STATS) != JS_OK) {
+    if (write_json(player_stats, PLAYER_STATS_PATH) != JS_OK) {
         return JS_ERR_INPUT;
     }
     return RET_OK;
