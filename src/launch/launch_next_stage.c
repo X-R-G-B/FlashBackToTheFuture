@@ -20,7 +20,7 @@ static int increment_current_stage_data(any_t *save)
         return -1;
     }
     current_stage->value.i += 1;
-    if (write_json(save, STORY_DATA_PATH) != JS_OK) {
+    if (write_json(save, SAVE_PATH) != JS_OK) {
         return -1;
     }
     return current_stage->value.i;

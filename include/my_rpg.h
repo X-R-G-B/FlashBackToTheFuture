@@ -35,7 +35,7 @@ static const char DEAD_SCREEN[] = "dead screen";
 
 static const char PLAYER[] = "player";
 
-static const char STORY_DATA_PATH[] =
+static const char SAVE_PATH[] =
     "./assets/data/story_mode/save.json";
 static const char SAVE[] = "story_mode_data";
 
@@ -116,7 +116,7 @@ void update_attack(player_t *player, scene_t *scene, window_t *win,
 void add_main_menu_elements_to_hud_list(window_t *win, scene_t *scene,
     list_ptr_t *hud_list);
 
-int launch_story_mode(window_t *win, const char save_path[], scene_t *scene);
+int launch_story_mode(window_t *win, scene_t *scene);
 
 int add_collision_array_in_scene(scene_t *scene);
 

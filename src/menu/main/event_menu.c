@@ -16,7 +16,7 @@ void click_save(object_t *obj, scene_t *scene, window_t *win,
         win->click = NULL;
         return;
     }
-    launch_story_mode(win, STORY_DATA_PATH, scene);
+    launch_story_mode(win, scene);
 }
 
 void close_window(__attribute__((unused)) object_t *obj,

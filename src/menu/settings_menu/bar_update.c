@@ -25,15 +25,15 @@ static void bar_update(object_t *button, object_t *fill_bar)
         return;
     }
     fill_bar->bigdata.sprite_bigdata.rect.width += (int) dif;
-    fill_bar->bigdata.sprite_bigdata.pos.x += (int) dif / 2;
+    fill_bar->bigdata.sprite_bigdata.pos.x += (int) (dif / 2);
 }
 
 void music_bar_update(object_t *obj, scene_t *scene, window_t *win,
-    set_event_t *evt)
+    __attribute__((unused)) float dtime)
 {
     list_ptr_t *setting_list = NULL;
 
-    if (obj == NULL || scene == NULL || win == NULL || evt == NULL) {
+    if (obj == NULL || scene == NULL || win == NULL) {
         return;
     }
     setting_list = dico_t_get_value(win->components, SETTINGS_MENU);
@@ -44,11 +44,11 @@ void music_bar_update(object_t *obj, scene_t *scene, window_t *win,
 }
 
 void sound_bar_update(object_t *obj, scene_t *scene, window_t *win,
-    set_event_t *evt)
+    __attribute__((unused)) float dtime)
 {
     list_ptr_t *setting_list = NULL;
 
-    if (obj == NULL || scene == NULL || win == NULL || evt == NULL) {
+    if (obj == NULL || scene == NULL || win == NULL) {
         return;
     }
     setting_list = dico_t_get_value(win->components, SETTINGS_MENU);

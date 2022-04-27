@@ -49,14 +49,10 @@ char *get_stage_path(int current_stage)
     return res;
 }
 
-static int init_stage(window_t *win, any_t **save,
-    any_t **current_stage, char **stage_path)
+static int init_stage(any_t *save, any_t **current_stage, char **stage_path)
 {
-    (*current_stage) = dico_t_get_any((*save)->value.dict, "current stage");
-    win->components = dico_t_add_data(win->components, SAVE, *save,
-        destroy_any);
-    if (win->components == NULL || *current_stage == NULL ||
-        (*current_stage)->type != INT) {
+    (*current_stage) = dico_t_get_any(save->value.dict, "current stage");
+    if (*current_stage == NULL || (*current_stage)->type != INT) {
         return RET_ERR_INPUT;
     }
     (*stage_path) = get_stage_path((*current_stage)->value.i);
@@ -66,15 +62,16 @@ static int init_stage(window_t *win, any_t **save,
     return RET_OK;
 }
 
-int launch_story_mode(window_t *win, const char save_path[], scene_t *scene)
+int launch_story_mode(window_t *win, scene_t *scene)
 {
-    any_t *save = parse_json_file(save_path);
+    any_t *save = NULL;
     any_t *current_stage = NULL;
     char *stage_path = NULL;
 
-    if (save == NULL) {
+    if (win == NULL || scene == NULL) {
         return RET_ERR_INPUT;
     }
-    init_stage(win, &save, &current_stage, &stage_path);
+    save = dico_t_get_any(win->components, SAVE);
+    init_stage(save, &current_stage, &stage_path);
     return launch_stage(win, stage_path, current_stage->value.i, scene);
 }
