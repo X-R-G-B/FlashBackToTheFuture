@@ -74,12 +74,11 @@ int init_menu(window_t *win)
 
     create_scene_loading_basic(win);
     scene = create_scene(win, sfBlack, "MAIN MENU");
-    if (scene == NULL) {
+    if (scene == NULL || init_music(win, scene) != RET_OK) {
         return (RET_ERR_MALLOC);
     }
     obj = create_object(NULL, NULL, scene, 0);
-    if (init_main_menu_buttons(scene, win) == RET_ERR_MALLOC || obj == NULL ||
-        init_audio_list(win) != RET_OK) {
+    if (init_main_menu_buttons(scene, win) == RET_ERR_MALLOC || obj == NULL) {
         return (RET_ERR_MALLOC);
     }
     add_escape_event(obj);

@@ -116,6 +116,7 @@ SRC_HUD				:=	$(addprefix hud/,$(SRC_HUD))
 # -------- SRC_MENU ----------------------------------------------------------
 SRC_MAIN			:=	event_menu.c							\
 						init_menu.c								\
+						init_music.c							\
 						pop_up_management.c 					\
 						on_click_event.c						\
 						exit.c									\
@@ -127,7 +128,8 @@ SRC_SETTINGS_MENU	:=	add_new_audio.c							\
 						set_frame.c								\
 						bar_update.c							\
 						button_hover_event.c					\
-						drag_button.c							\
+						drag_button_on.c						\
+						drag_button_off.c						\
 						init_audio_list.c
 SRC_SETTINGS_MENU	:=	$(addprefix settings_menu/,$(SRC_SETTINGS_MENU))
 

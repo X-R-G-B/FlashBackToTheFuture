@@ -6,6 +6,7 @@
 */
 
 #include "my_rpg.h"
+#include "audio.h"
 #include "main_menu.h"
 
 static int get_save(window_t *win)
@@ -28,7 +29,8 @@ int launch_game(void)
     sfVideoMode mode = {1920, 1080, 32};
     window_t *win = create_window(mode, "My_Rpg", sfResize | sfClose);
 
-    if (get_save(win) != RET_OK || init_menu(win) != RET_OK ||
+    if (get_save(win) != RET_OK || init_audio_list(win) ||
+        init_menu(win) != RET_OK ||
         window_change_scene(win, "MAIN MENU") != BGS_OK ||
         loop(win) != BGS_OK) {
         return 84;

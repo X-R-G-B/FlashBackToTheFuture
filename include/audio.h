@@ -30,6 +30,8 @@ void music_drag_button_off(object_t *obj, scene_t *scene, window_t *win,
 void sound_bar_update(object_t *obj, scene_t *scene, window_t *win,
     float dtime);
 
+int add_new_audio(object_t *object, window_t *win);
+
 void set_drag_objects(list_ptr_t *settings, window_t *win, scene_t *scene);
 
 void music_bar_update(object_t *obj, scene_t *scene, window_t *win,
