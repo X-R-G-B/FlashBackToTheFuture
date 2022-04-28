@@ -23,6 +23,10 @@
     #include "my_bgs.h"
     #include "my_json.h"
 
+static const char INV_CONTENT_PATH[] =
+                                "./assets/image/inventory/86_infinity.jpg";
+static const char INV_SCENE[] = "INVENTORY";
+
 static const char PLAYER_DATA_PATH[] = "./assets/data/player/data.json";
 static const char PLAYER_STATS_PATH[] = "./assets/data/player/stats.json";
 
@@ -236,5 +240,13 @@ void update_xp_bar(object_t *object, scene_t *scene,
     window_t *window, float time);
 
 void level_up(scene_t *scene, window_t *win);
+
+int create_inventory(window_t *win);
+
+void open_inventory(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+
+void close_inventory(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
 
 #endif /* !RPG_H_ */
