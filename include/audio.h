@@ -17,6 +17,7 @@ static const char SOUND_VOLUME[] = "sound volume";
 
 static const char DELIM_START[] = "delim_start";
 static const char DELIM_END[] = "delim_end";
+static const char BAR[] = "bar";
 static const char BUTTON[] = "button";
 
 int init_audio_list(window_t *win);

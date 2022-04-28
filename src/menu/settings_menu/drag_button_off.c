@@ -39,20 +39,25 @@ static void browse_list(float res, list_ptr_t *list)
     }
 }
 
-void set_new_volume(object_t *obj, bool music, window_t *win)
+static void set_new_volume(object_t *obj, bool music, window_t *win)
 {
     float delim_start = (int) dico_t_get_value(obj->components, DELIM_START);
     float delim_end = (int) dico_t_get_value(obj->components, DELIM_END);
-    float end_dif_to_start = delim_end - delim_start;
-    float obj_dif_to_start = obj->bigdata.sprite_bigdata.pos.x - delim_start;
-    float res = (obj_dif_to_start * 100) / end_dif_to_start;
+    float width = delim_end - delim_start;
+    object_t *bar = dico_t_get_value(obj->components, BAR);
+    sfFloatRect rect = (bar != NULL) ? sfSprite_getGlobalBounds(
+        bar->drawable.sprite) : (sfFloatRect) {0, 0, 0, 0};
+    float obj_dif_to_start = obj->bigdata.sprite_bigdata.pos.x - rect.left;
+    float res = (obj_dif_to_start * 100) / width;
     list_ptr_t *list = dico_t_get_value(win->components,
         (music == true) ? AUDIO_LIST : SOUND_LIST);
 
     if (delim_start <= 0 || delim_end <= 0 || delim_end < delim_start ||
-        list == NULL) {
-        return;
+        list == NULL || bar == NULL) {
+        return; 
     }
+    res = (res <= 4.0) ? 0.0 : res;
+    res = (res >= 96.0) ? 100.0 : res;
     browse_list(res, list);
     save_new_data(win, res, music);
 }

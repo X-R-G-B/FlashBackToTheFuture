@@ -42,6 +42,7 @@ static void set_delimitation(object_t *button, object_t *bar)
         (void *) delim_start, NULL);
     button->components = dico_t_add_data(button->components, DELIM_END,
         (void *) delim_end, NULL);
+    button->components = dico_t_add_data(button->components, BAR, bar, NULL);
     bar->components = dico_t_add_data(bar->components, BUTTON, button, NULL);
 }
 
