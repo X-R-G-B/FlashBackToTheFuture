@@ -10,7 +10,8 @@
 void drag_button_on_hover(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt)
 {
-    if (obj == NULL || scene == NULL || win == NULL || evt == NULL) {
+    if (obj == NULL || scene == NULL || win == NULL || evt == NULL ||
+        sfMouse_isButtonPressed(sfMouseLeft) == sfTrue) {
         return;
     }
     sfSprite_setScale(obj->drawable.sprite, (sfVector2f) {1.3, 1.3});
