@@ -5,6 +5,7 @@
 ** update ennemy move
 */
 
+#include <stdbool.h>
 #include <stdlib.h>
 #include "ennemies.h"
 #include "ennemy_pathfind.h"
@@ -14,14 +15,14 @@ static const char rect_actualisation[] = "rect actualisation";
 static const char speed[] = "speed";
 static const char move_dict[] = "move";
 
-static int get_data(any_t **rect_speed, any_t **move_speed, any_t *data,
+int get_data(any_t **rect_speed, any_t **move_speed, any_t *data,
     any_t **rect_list)
 {
     if (data == NULL) {
         return RET_ERR_INPUT;
     }
-    *rect_speed = dico_t_get_any(data->value.dict, rect_actualisation);
-    *move_speed = dico_t_get_any(data->value.dict, speed);
+    *rect_speed = get_from_any(data, "d", rect_actualisation);
+    *move_speed = get_from_any(data, "d", speed);
     *rect_list = get_from_any(data, "da", move_dict, 0);
     if (*rect_speed == NULL || (*rect_speed)->type != FLOAT ||
         *move_speed == NULL || (*move_speed)->type != FLOAT ||
@@ -31,7 +32,7 @@ static int get_data(any_t **rect_speed, any_t **move_speed, any_t *data,
     return RET_OK;
 }
 
-static void set_new_data(ennemy_t *ennemy, float move, int *rect)
+void set_new_data(ennemy_t *ennemy, float move, int *rect)
 {
     sfVector2f news[4] = {{0, 0 - move}, {0 - move, 0}, {0, move}, {move, 0}};
 
@@ -45,11 +46,14 @@ static void set_new_data(ennemy_t *ennemy, float move, int *rect)
     free(rect);
 }
 
-static void set_new_dir(ennemy_t *ennemy, scene_t *scene)
+static void set_new_dir(ennemy_t *ennemy, scene_t *scene, window_t *win)
 {
     ennemy->dir = get_path_find_dir(ennemy->obj, scene);
     if (ennemy->dir == UNKNOWN_STATE) {
         ennemy->dir = UP;
+    }
+    if (check_is_dashing(ennemy, win) == true) {
+        ennemy->state = ATTACKING;
     }
 }
 
@@ -79,7 +83,7 @@ void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
         ennemy == NULL || ennemy->obj == NULL || scene == NULL || win == NULL) {
         return;
     }
-    set_new_dir(ennemy, scene);
+    set_new_dir(ennemy, scene, win);
     dtime += time;
     cross_time(&dtime, rect_speed, &rect_id, rect_list);
     set_new_data(ennemy, time * move_speed->value.f,
