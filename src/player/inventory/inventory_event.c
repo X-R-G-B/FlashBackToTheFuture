@@ -23,7 +23,7 @@ void open_inventory(object_t *obj, scene_t *scene,
 {
     char *actual_scene = NULL;
 
-    if (win->current_scene == NULL) {
+    if (win == NULL || win->current_scene == NULL) {
         return;
     }
     actual_scene = my_strdup(win->current_scene);
@@ -39,8 +39,15 @@ void open_inventory(object_t *obj, scene_t *scene,
 void close_inventory(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event)
 {
-    char *actual_scene = dico_t_get_value(win->components, ACTUAL_SCENE);
+    char *actual_scene = NULL;
 
+    if (win == NULL || win->components == NULL) {
+        return;
+    }
+    actual_scene = dico_t_get_value(win->components, ACTUAL_SCENE);
+    if (actual_scene == NULL) {
+        return;
+    }
     window_change_scene(win, actual_scene);
     win->components = dico_t_rem(win->components, ACTUAL_SCENE);
 }

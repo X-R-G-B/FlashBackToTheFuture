@@ -15,14 +15,11 @@ static void used_potion(window_t *win)
     if (win == NULL) {
         return;
     }
-    inv_data = parse_json_file(DATA_INV);
+    inv_data = parse_json_file(DATA_INV_JSON);
     if (inv_data == NULL) {
         return;
     }
-    potions = dico_t_get_any(inv_data->value.dict, "86 heal");
-    if (potions == NULL) {
-        return;
-    }
+    inv_data = get_from_any(inv_data, "d", POTIONS);
     potions->value.i -= 1;
 }
 

@@ -93,12 +93,12 @@ int create_inventory(window_t *win)
     if (win == NULL) {
         return RET_ERR_INPUT;
     }
-    scene = create_scene(win, sfWhite, INV_SCENE);
     player = dico_t_get_value(win->components, PLAYER);
-    if (scene == NULL || player == NULL) {
+    if (player == NULL) {
         return RET_ERR_MALLOC;
     }
-    if (create_inventory_key(player, scene) != RET_OK ||
+    scene = create_scene(win, sfWhite, INV_SCENE);
+    if (scene == NULL || create_inventory_key(player, scene) != RET_OK ||
         create_buttons(scene) != RET_OK) {
         return RET_ERR_INPUT;
     }

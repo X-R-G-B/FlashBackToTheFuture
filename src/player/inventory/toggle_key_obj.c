@@ -14,7 +14,7 @@ static int get_nbr_keyobj(window_t *win)
     if (win == NULL) {
         return -1;
     }
-    key_objdata = parse_json_file(DATA_INV);
+    key_objdata = parse_json_file(DATA_INV_JSON);
     if (key_objdata == NULL) {
         return -1;
     }

@@ -23,10 +23,11 @@
     #include "my_bgs.h"
     #include "my_json.h"
 
-static const char DATA_INV[] = "assets/data/player/inventory_data.json";
+static const char DATA_INV_JSON[] = "assets/data/player/inventory_data.json";
 static const char INV_SCENE[] = "INVENTORY";
 static const char INV_BUTTONS_COMP[] = "INVENTOR_BUTTONS";
 static const char KEY_OBJ[] = "MYTHICAL 86";
+static const char POTIONS[] =  "86 heal";
 
 static const char PLAYER_DATA_PATH[] = "./assets/data/player/data.json";
 static const char PLAYER_STATS_PATH[] = "./assets/data/player/stats.json";
