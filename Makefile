@@ -36,8 +36,10 @@ SRC_METEO			:=	$(addprefix meteo/,$(SRC_METEO))
 # ----------------------------------------------------------------------------
 # --------- SRC_ENNEMY -------------------------------------------------------
 
-SRC_ENNEMY_UPDATE	:=	ennemy_update.c							\
+SRC_ENNEMY_UPDATE	:=	ennemy_check_is_dashing.c				\
+						ennemy_update.c							\
 						hurt.c									\
+						update_ennemy_attack.c					\
 						update_ennemy_move.c
 SRC_ENNEMY_UPDATE	:=	$(addprefix update/,$(SRC_ENNEMY_UPDATE))
 
@@ -154,7 +156,8 @@ SRC_PATH			:=	init_find.c								\
 SRC_PATH			:=	$(addprefix pathfind/,$(SRC_PATH))
 # ----------------------------------------------------------------------------
 # -------- SRC_MATH ----------------------------------------------------------
-SRC_MATH			:=	rect_contains_segment.c					\
+SRC_MATH			:=	check_circle_col.c						\
+						rect_contains_segment.c					\
 						gore_effect.c
 SRC_MATH			:=	$(addprefix math/,$(SRC_MATH))
 # ----------------------------------------------------------------------------

@@ -64,6 +64,4 @@ int create_meteo_handler(window_t *win, scene_t *scene);
 **/
 int change_meteo(window_t *win, enum meteo_type_e type);
 
-int add_gore_sword(window_t *win, sfVector2f pos);
-
 #endif
