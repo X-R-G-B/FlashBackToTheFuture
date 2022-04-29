@@ -22,6 +22,10 @@ static const char BUTTON[] = "button";
 
 int init_audio_list(window_t *win);
 
+int toggle_music_in_scene(scene_t *scene);
+
+int init_music(window_t *win, scene_t *scene);
+
 void sound_drag_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
 

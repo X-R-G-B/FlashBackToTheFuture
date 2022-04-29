@@ -32,6 +32,8 @@ void close_window(object_t *, scene_t *, window_t *, set_event_t *);
 
 void free_pop_up(void *list);
 
+void replace_button(object_t *obj, dico_t *dico);
+
 int check_if_pop_up_true(dico_t *dico, char *key);
 
 void add_scene_pop_up_component(scene_t *scene, list_ptr_t *buttons,

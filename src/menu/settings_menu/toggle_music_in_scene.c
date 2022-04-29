@@ -35,6 +35,7 @@ static int toggle_audio_list(scene_t *scene, list_ptr_t *audio_list)
     for (int i = 0; i < audio_list->len && elem->var != NULL; i++,
         elem = elem->var) {
         obj_ptr = elem->var;
+        //seg here
         scene_ptr = dico_t_get_value(obj_ptr->components, SCENE);
         if (scene_ptr != NULL && scene_ptr == scene &&
                 toggle_audio(obj_ptr) != RET_OK) {

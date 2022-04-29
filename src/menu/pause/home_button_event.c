@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include "my_rpg.h"
+#include "audio.h"
 #include "main_menu.h"
 
 static const char *TO_REMOVE[] = {PLAYER, PAUSE_MENU, DEAD_MESSAGE,
@@ -49,7 +50,7 @@ static void browse_list(list_ptr_t *setting_menu, list_ptr_t *buttons,
         if (i < setting_menu->len - 2) {
             check_type(dico->value.dict, elem, &button_elem);
         } else {
-            replace_button(elem->var, dico->value.dict, win);
+            replace_button(elem->var, dico->value.dict);
         }
     }
 }

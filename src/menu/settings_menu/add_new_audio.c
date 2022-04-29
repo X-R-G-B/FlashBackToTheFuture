@@ -67,8 +67,13 @@ static void set_volume(object_t *obj, window_t *win)
 
 int add_new_audio(object_t *object, window_t *win)
 {
-    list_ptr_t *list = get_list(win, object);
+    list_ptr_t *list = NULL;
 
+    if (object == NULL || win == NULL) {
+        printf("%p %p\n", object, win);
+        return RET_ERR_INPUT;
+    }
+    list = get_list(win, object);
     if (list == NULL) {
         return RET_ERR_INPUT;
     }

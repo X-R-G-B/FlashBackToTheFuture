@@ -9,6 +9,7 @@
 #include "my_rpg.h"
 #include "my_json.h"
 #include "my_conversions.h"
+#include "audio.h"
 #include "my_strings.h"
 
 static const char stage_path_start[] = "./assets/data/story_mode/stage_";
