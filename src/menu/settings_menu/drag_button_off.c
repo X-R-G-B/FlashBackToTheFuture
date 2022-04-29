@@ -30,6 +30,7 @@ static void browse_list(float res, list_ptr_t *list)
     for (int i = 0; i < list->len; i++, elem = elem->next) {
         obj = elem->var;
         if (obj->type == AUDIO) {
+            printf("%p %p\n", obj, obj->components);
             sfMusic_setVolume(obj->drawable.music, res);
         } else if (obj->type == SOUND) {
             sfSound_setVolume(obj->drawable.sound, res);
