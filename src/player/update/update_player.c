@@ -20,6 +20,7 @@ static void (*update_ptr[])(player_t *, scene_t *, window_t *, float) = {
     update_movements,
     update_stop,
     update_dead,
+    update_roulade
 };
 
 static void update_stop(__attribute__((unused)) player_t *player,
