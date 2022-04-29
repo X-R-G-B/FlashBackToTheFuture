@@ -16,10 +16,10 @@ static void used_potion(window_t *win)
         return;
     }
     inv_data = parse_json_file(DATA_INV_JSON);
-    if (inv_data == NULL) {
+    potions = get_from_any(inv_data, "d", POTIONS);
+    if (potions == NULL) {
         return;
     }
-    inv_data = get_from_any(inv_data, "d", POTIONS);
     potions->value.i -= 1;
 }
 
