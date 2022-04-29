@@ -9,7 +9,7 @@
 #include "my_rpg.h"
 #include "main_menu.h"
 
-static float get_pos(sfFloatRect rect, window_t *win, bool music)
+float get_pos(sfFloatRect rect, window_t *win, bool music)
 {
     any_t *save = NULL;
     any_t *percentage = NULL;

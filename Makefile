@@ -23,8 +23,8 @@ RESET		=	'\033[0m'
 # ----------------------------------------------------------------------------
 # SRC
 
-CFLAGS				=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
-
+CFLAGS				=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic	\
+						-Wno-pointer-to-int-cast -Wno-int-to-pointer-cast
 # -------- SRC_METEO ---------------------------------------------------------
 SRC_METEO			:=	add_leaf.c								\
 						add_snow.c								\
@@ -126,7 +126,9 @@ SRC_MAIN			:=	$(addprefix main/,$(SRC_MAIN))
 SRC_SETTINGS_MENU	:=	add_new_audio.c							\
 						set_drag_objects.c						\
 						set_frame.c								\
+						toggle_music_in_scene.c					\
 						bar_update.c							\
+						replace_button.c						\
 						button_hover_event.c					\
 						drag_button_on.c						\
 						drag_button_off.c						\

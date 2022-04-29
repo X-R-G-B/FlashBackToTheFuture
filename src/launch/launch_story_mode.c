@@ -51,11 +51,11 @@ char *get_stage_path(int current_stage)
 
 static int init_stage(any_t *save, any_t **current_stage, char **stage_path)
 {
-    (*current_stage) = dico_t_get_any(save->value.dict, "current stage");
+    *current_stage = dico_t_get_any(save->value.dict, "current stage");
     if (*current_stage == NULL || (*current_stage)->type != INT) {
         return RET_ERR_INPUT;
     }
-    (*stage_path) = get_stage_path((*current_stage)->value.i);
+    *stage_path = get_stage_path((*current_stage)->value.i);
     if ((*stage_path) == NULL) {
         return RET_ERR_INPUT;
     }
@@ -71,7 +71,11 @@ int launch_story_mode(window_t *win, scene_t *scene)
     if (win == NULL || scene == NULL) {
         return RET_ERR_INPUT;
     }
+    toggle_music_in_scene(scene);
     save = dico_t_get_any(win->components, SAVE);
+    if (save == NULL) {
+        return RET_ERR_INPUT;
+    }
     init_stage(save, &current_stage, &stage_path);
     return launch_stage(win, stage_path, current_stage->value.i, scene);
 }
