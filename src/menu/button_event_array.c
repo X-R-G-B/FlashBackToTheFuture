@@ -35,11 +35,12 @@ void (*on_click[])(object_t *, scene_t *, window_t *win, set_event_t *) = {
 
 const char *str_off_click[] = {
     "QUIT", "PLAY", "Retour", "First save", "resume", "home", "exit",
-    "settings", "restart", "SETTINGS menu", "Up energy", "Up health", NULL
+    "settings", "restart", "SETTINGS menu", "Up energy", "Up health", "potion",
+    NULL
 };
 
 void (*off_click[])(object_t *, scene_t *, window_t *, set_event_t *) = {
     exit_game, play_pop_up, go_back, click_save, resume_event_off,
     home_button_off, exit_button_off, settings_button_off, restart_button_off,
-    settings_pop_up, upgrade_energy, upgrade_health
+    settings_pop_up, upgrade_energy, upgrade_health, use_heal_potion
 };

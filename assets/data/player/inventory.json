@@ -1,4 +1,16 @@
 {
-    "86 infinity": 0,
-    "86 heal": 5
+    "buttons": [
+        {
+            "text": "background",
+            "sprite path": "./assets/image/inventory/inventory_background.png",
+            "pos": [540.0, 960.0],
+            "plan": 1
+        },
+        {
+            "text": "potion",
+            "sprite path": "./assets/image/inventory/classic_86.png",
+            "pos": [680.0, 1600.0],
+            "plan": 0
+        }
+    ]
 }

@@ -94,7 +94,10 @@ SRC_STAT_UPGRADE	:=	upgrade_stat.c							\
 SRC_STAT_UPGRADE	:=	$(addprefix stat_upgrade/,$(SRC_STAT_UPGRADE))
 
 SRC_INVENTORY		:=	create_inventory.c						\
-						inventory_event.c
+						inventory_event.c						\
+						update_data_json_inv.c					\
+						toggle_key_obj.c						\
+						heal.c
 SRC_INVENTORY		:=	$(addprefix inventory/, $(SRC_INVENTORY))
 
 SRC_PLAYER			:=	set_stop.c								\

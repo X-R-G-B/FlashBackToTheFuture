@@ -23,9 +23,10 @@
     #include "my_bgs.h"
     #include "my_json.h"
 
-static const char INV_CONTENT_PATH[] =
-                                "./assets/image/inventory/86_infinity.jpg";
+static const char DATA_INV[] = "assets/data/player/inventory_data.json";
 static const char INV_SCENE[] = "INVENTORY";
+static const char INV_BUTTONS_COMP[] = "INVENTOR_BUTTONS";
+static const char KEY_OBJ[] = "MYTHICAL 86";
 
 static const char PLAYER_DATA_PATH[] = "./assets/data/player/data.json";
 static const char PLAYER_STATS_PATH[] = "./assets/data/player/stats.json";
@@ -247,6 +248,15 @@ void open_inventory(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 
 void close_inventory(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+
+int get_infinity_86(window_t *win);
+
+int toggle_key_obj(window_t *win);
+
+void heal(window_t *win);
+
+void use_heal_potion(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 
 #endif /* !RPG_H_ */
