@@ -12,6 +12,12 @@
 
 const char ACTUAL_SCENE[] = "actual scene";
 
+void use_heal_potion(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event)
+{
+    heal(win);
+}
+
 void open_inventory(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event)
 {
@@ -26,6 +32,8 @@ void open_inventory(object_t *obj, scene_t *scene,
     }
     window_add_component(win, actual_scene, ACTUAL_SCENE, free);
     window_change_scene(win, INV_SCENE);
+    toggle_key_obj(win);
+    sfRenderWindow_setView(win->win, sfRenderWindow_getDefaultView(win->win));
 }
 
 void close_inventory(object_t *obj, scene_t *scene,
