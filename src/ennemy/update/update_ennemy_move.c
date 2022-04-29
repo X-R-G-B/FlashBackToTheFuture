@@ -46,8 +46,11 @@ void set_new_data(ennemy_t *ennemy, float move, int *rect)
     free(rect);
 }
 
-static void set_new_dir(ennemy_t *ennemy, scene_t *scene, window_t *win)
+static bool set_new_dir(ennemy_t *ennemy, scene_t *scene, window_t *win)
 {
+    if (ennemy == NULL || scene == NULL || win == NULL || ennemy->obj == NULL) {
+        return (false);
+    }
     ennemy->dir = get_path_find_dir(ennemy->obj, scene);
     if (ennemy->dir == UNKNOWN_STATE) {
         ennemy->dir = UP;
@@ -55,6 +58,7 @@ static void set_new_dir(ennemy_t *ennemy, scene_t *scene, window_t *win)
     if (check_is_dashing(ennemy, win) == true) {
         ennemy->state = ATTACKING;
     }
+    return (true);
 }
 
 static void cross_time(float *dtime, any_t *rect_speed, int *rect_id,
@@ -74,16 +78,16 @@ void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
 {
     static int rect_id = 0;
     static float dtime = 0;
-    any_t *data = dico_t_get_any(ennemy->obj->components, ENNEMY_DATA);
     any_t *rect_speed = NULL;
     any_t *move_speed = NULL;
     any_t *rect_list = NULL;
+    any_t *data = dico_t_get_any((ennemy == NULL || ennemy->obj == NULL) ?
+        NULL : ennemy->obj->components, ENNEMY_DATA);
 
     if (get_data(&rect_speed, &move_speed, data, &rect_list) != RET_OK ||
-        ennemy == NULL || ennemy->obj == NULL || scene == NULL || win == NULL) {
+        set_new_dir(ennemy, scene, win) == false) {
         return;
     }
-    set_new_dir(ennemy, scene, win);
     dtime += time;
     cross_time(&dtime, rect_speed, &rect_id, rect_list);
     set_new_data(ennemy, time * move_speed->value.f,
