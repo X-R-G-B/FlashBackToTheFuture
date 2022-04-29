@@ -11,13 +11,19 @@
 
 static const char blink_time_key[] = "blink time";
 
-static bool check_wall(ennemy_t *ennemy, sfVector2f new, window_t *win)
+bool check_wall(ennemy_t *ennemy, sfVector2f new, window_t *win)
 {
-    scene_t *scene = dico_t_get_value(win->scenes, win->current_scene);
-    int x = ennemy->obj->bigdata.sprite_bigdata.pos.x - new.x;
-    int y = ennemy->obj->bigdata.sprite_bigdata.pos.y - new.y;
+    int x = 0;
+    int y = 0;
+    scene_t *scene = NULL;
     char **map = NULL;
 
+    if (win == NULL || ennemy == NULL || ennemy->obj == NULL) {
+        return (true);
+    }
+    scene = dico_t_get_value(win->scenes, win->current_scene);
+    x = ennemy->obj->bigdata.sprite_bigdata.pos.x - new.x;
+    y = ennemy->obj->bigdata.sprite_bigdata.pos.y - new.y;
     if (scene == NULL) {
         return true;
     }

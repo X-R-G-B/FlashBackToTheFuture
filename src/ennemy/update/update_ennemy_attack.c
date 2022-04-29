@@ -17,8 +17,8 @@ static const float time_dash = 1.5;
 int get_data(any_t **rect_speed, any_t **move_speed, any_t *data,
     any_t **rect_list);
 
-static void update_move(ennemy_t *ennemy, float inverse, float speed,
-    float dtime)
+static void update_move(ennemy_t *ennemy, float speed, float coef,
+    window_t *win)
 {
     sfVector2f news[4] = {
         {0, 0 - speed},
@@ -28,16 +28,19 @@ static void update_move(ennemy_t *ennemy, float inverse, float speed,
     sfVector2f vect = {0};
 
     vect = news[ennemy->dir];
-    vect.y *= inverse * dtime * 2;
-    vect.x *= inverse * dtime * 2;
+    vect.y *= coef * 2;
+    vect.x *= coef * 2;
+    if (check_wall(ennemy, (sfVector2f) {vect.x * -1, vect.y * -1},
+            win) == true) {
+        return;
+    }
     ennemy->obj->bigdata.sprite_bigdata.pos.x += vect.x;
     ennemy->obj->bigdata.sprite_bigdata.pos.y += vect.y;
 }
 
-void update_ennemy_attack(__attribute__((unused)) ennemy_t *ennemy,
+void update_ennemy_attack(ennemy_t *ennemy,
     __attribute__((unused)) scene_t *scene,
-    __attribute__((unused)) window_t *win,
-    __attribute__((unused)) float dtime)
+    window_t *win, float dtime)
 {
     any_t *rect_speed = NULL;
     any_t *move_speed = NULL;
@@ -54,8 +57,8 @@ void update_ennemy_attack(__attribute__((unused)) ennemy_t *ennemy,
         ennemy_set_stop(ennemy);
         ennemy->delta_time = 0;
     } else if (ennemy->delta_time > time_charging_dash) {
-        update_move(ennemy, 1, move_speed->value.f, dtime);
+        update_move(ennemy, move_speed->value.f, dtime * 1, win);
     } else {
-        update_move(ennemy, -0.2, move_speed->value.f, dtime);
+        update_move(ennemy, move_speed->value.f, dtime * -0.2, win);
     }
 }

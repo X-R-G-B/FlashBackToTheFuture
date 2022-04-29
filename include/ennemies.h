@@ -67,6 +67,8 @@ int ennemy_set_stop(ennemy_t *ennemy);
 
 bool check_is_dashing(ennemy_t *ennemy, window_t *win);
 
+bool check_wall(ennemy_t *ennemy, sfVector2f new, window_t *win);
+
 /**
 ** @brief update pos of the obj sprite to follow the ennemy
 **
