@@ -53,7 +53,7 @@ void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
         return;
     }
     sfRenderWindow_setView(win->win, player->view);
-    if (player->state >= 0 && player->state <= 3) {
+    if (player->state >= 0 && player->state <= 4) {
         update_ptr[player->state](player, scene, win, dtime);
     }
     if (dico_t_get_value(player->obj->components, "hurt") != NULL) {
