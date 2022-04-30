@@ -34,7 +34,8 @@ void roulade_event(object_t *obj, scene_t *scene, window_t *win,
         return;
     }
     player = dico_t_get_value(win->components, PLAYER);
-    if (player == NULL || (player->state != STOP && player->state != MOVING) ||
+    if (player == NULL || player->obj == NULL ||
+        (player->state != STOP && player->state != MOVING) ||
         spend_energy(player) != RET_OK) {
         return;
     }

@@ -78,7 +78,7 @@ void update_roulade(player_t *player, scene_t *scene, window_t *win,
     static float time = 0;
     static int current_id = 0;
 
-    if (player == NULL || scene == NULL || win == NULL) {
+    if (player == NULL || player->obj == NULL || scene == NULL || win == NULL) {
         return;
     }
     apply_rect(player, current_id);
