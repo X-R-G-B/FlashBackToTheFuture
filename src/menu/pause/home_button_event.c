@@ -27,7 +27,7 @@ static void check_type(dico_t *dico, list_t *elem, list_t **button_elem)
     if (pos != NULL) {
         obj->bigdata.text_bigdata.pos = (sfVector2f) {pos[1], pos[0]};
         free(pos);
-    } 
+    }
     if (elem->next != NULL && ((object_t *) elem->next->var)->type == SPRITE) {
         *button_elem = (*button_elem)->next;
     }
@@ -101,13 +101,11 @@ void go_to_home(scene_t *scene, window_t *win)
     }
     move_setting_menu_to_main_menu(win, scene);
     window_change_scene(win, "MAIN MENU");
-    //seg here
     toggle_music_in_scene(dico_t_get_value(win->scenes, "MAIN MENU"));
     list_add_to_end(win->to_remove, scene);
     sfView_setCenter(player->view,
         (sfVector2f) {WIN_SIZE_X / 2, WIN_SIZE_Y / 2});
     sfRenderWindow_setView(win->win, player->view);
     remove_components(win);
-    //object destroy here
     list_add_to_end(win->to_remove, scene);
 }

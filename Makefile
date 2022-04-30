@@ -23,8 +23,9 @@ RESET		=	'\033[0m'
 # ----------------------------------------------------------------------------
 # SRC
 
-CFLAGS				=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic	\
-						-Wno-pointer-to-int-cast -Wno-int-to-pointer-cast
+CFLAGS				=	-Iinclude/ -Ilib/include/ -Wall -Wextra	\
+						-Wpedantic -Wno-pointer-to-int-cast	\
+						-Wno-int-to-pointer-cast
 # -------- SRC_METEO ---------------------------------------------------------
 SRC_METEO			:=	add_leaf.c								\
 						add_snow.c								\

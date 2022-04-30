@@ -54,7 +54,7 @@ static void set_new_volume(object_t *obj, bool music, window_t *win)
 
     if (delim_start <= 0 || delim_end <= 0 || delim_end < delim_start ||
         list == NULL || bar == NULL) {
-        return; 
+        return;
     }
     res = (res <= 4.0) ? 0.0 : res;
     res = (res >= 96.0) ? 100.0 : res;
