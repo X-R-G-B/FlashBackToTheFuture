@@ -82,10 +82,12 @@ SRC_MAP				:=	$(addprefix map/,$(SRC_MAP))
 # ----------------------------------------------------------------------------
 # ------- SRC_PLAYER ---------------------------------------------------------
 SRC_EVENT			:=	attack.c								\
+						roulade.c								\
 						move.c
 SRC_EVENT			:=	$(addprefix event/,$(SRC_EVENT))
 
 SRC_UPDATE			:=	update_player.c							\
+						update_roulade.c						\
 						update_hurt.c							\
 						update_movement.c						\
 						update_attack.c

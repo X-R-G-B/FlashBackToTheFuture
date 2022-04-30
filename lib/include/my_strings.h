@@ -85,11 +85,11 @@ int my_strlen(char const *str);
 int my_strstartswith(char const *str, char const *substr);
 
 /**
- * @brief replace *str with strdup(dest) (free *str if not null)
- * @param str ptr to the str to replace
- * @param dest text to dup
- * @return 0 if error; 1 else
- */
+** @brief replace *str with strdup(dest) (free *str if not null)
+** @param str ptr to the str to replace
+** @param dest text to dup
+** @return 0 if error; 1 else
+**/
 int my_strealloc(char **str, const char *dest);
 
 #endif
