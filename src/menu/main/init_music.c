@@ -8,7 +8,7 @@
 #include "my_rpg.h"
 #include "audio.h"
 
-static const char music_path[] = "./assets/music/music.ogg";
+static const char music_path[] = "./assets/music/main_menu.ogg";
 
 int init_music(window_t *win, scene_t *scene)
 {

@@ -35,9 +35,6 @@ int dico_t_destroy(dico_t *dico)
     cursor = dico->next;
     for (; cursor != NULL && cursor != dico; nb++) {
         tmp = cursor->next;
-        if (my_strcmp(cursor->key, "remove_from_list") == 0) {
-            printf("AHAHAHA\n");
-        }
         if (cursor->destroy != NULL) {
             cursor->destroy(cursor->value);
         }

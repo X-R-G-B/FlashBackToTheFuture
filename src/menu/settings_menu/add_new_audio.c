@@ -27,7 +27,6 @@ static void remove_object_from_audio_list(void *data)
     scene_t *scene = NULL;
     window_t *win = NULL;
 
-    printf("BAISE TA MERE\n");
     if (data == NULL) {
         return;
     }
@@ -66,12 +65,6 @@ static void set_volume(object_t *obj, window_t *win)
     }
 }
 
-static void bienoukoimonsuisse(void *data)
-{
-    my_putstr("POURQUOI\n");
-    printf("WOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO\nENCULE\n");
-}
-
 int add_new_audio(object_t *object, window_t *win)
 {
     list_ptr_t *list = NULL;
@@ -87,10 +80,6 @@ int add_new_audio(object_t *object, window_t *win)
     set_volume(object, win);
     if (object_add_components(object, object, "remove_from_list",
         remove_object_from_audio_list) != RET_OK) {
-        return RET_ERR_MALLOC;
-    }
-    if (object_add_components(object, object, "ta mere", bienoukoimonsuisse) != RET_OK) {
-        printf("MERDE\n");
         return RET_ERR_MALLOC;
     }
     return RET_OK;

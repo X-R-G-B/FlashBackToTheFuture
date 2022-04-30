@@ -91,7 +91,6 @@ int launch_stage(window_t *win, char *stage_path, int stage_id,
         scene) != RET_OK || init_new_scene_objects(win, scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
-    init_music(win, scene);
     if (window_change_scene(win, stage_name) != BGS_OK) {
         free(stage_name);
         return RET_ERR_INPUT;

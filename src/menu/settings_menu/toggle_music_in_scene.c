@@ -17,10 +17,8 @@ static int toggle_audio(object_t *obj)
     }
     status = sfMusic_getStatus(obj->drawable.music);
     if (status != sfPlaying) {
-        printf("play\n");
         sfMusic_play(obj->drawable.music);
     } else {
-        printf("stop\n");
         sfMusic_stop(obj->drawable.music);
     }
     return RET_OK;
@@ -33,9 +31,8 @@ static int toggle_audio_list(scene_t *scene, list_ptr_t *audio_list)
     scene_t *scene_ptr = NULL;
 
     for (int i = 0; i < audio_list->len && elem->var != NULL; i++,
-        elem = elem->var) {
+        elem = elem->next) {
         obj_ptr = elem->var;
-        printf("obj_ptr %p\n", obj_ptr);
         scene_ptr = dico_t_get_value(obj_ptr->components, SCENE);
         if (scene_ptr != NULL && scene_ptr == scene &&
                 toggle_audio(obj_ptr) != RET_OK) {
