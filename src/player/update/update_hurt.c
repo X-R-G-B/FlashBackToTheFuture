@@ -13,7 +13,8 @@ static void check_blink_time_end(float *since_start, float dtime, any_t *data,
 {
     any_t *blink_time = dico_t_get_any(data->value.dict, "blink time");
 
-    if (blink_time == NULL || blink_time->type != FLOAT) {
+    if (blink_time == NULL || blink_time->type != FLOAT || player == NULL ||
+            player->obj == NULL) {
         return;
     }
     *since_start += dtime;
@@ -32,7 +33,7 @@ void update_hurt(player_t *player, __attribute__((unused)) scene_t *scene,
     if (player == NULL || player->obj == NULL) {
         return;
     }
-    data = dico_t_get_value(player->obj->components, "data");
+    data = dico_t_get_value(player->obj->components, PLAYER_DATA);
     if (data == NULL) {
         return;
     }

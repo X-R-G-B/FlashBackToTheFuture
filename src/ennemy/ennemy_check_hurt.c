@@ -7,16 +7,17 @@
 
 #include <stdlib.h>
 #include "macro.h"
+#include "meteo.h"
 #include "ennemies.h"
 
 static any_t *get_current_sword_pos(player_t *player)
 {
     any_t *data = NULL;
 
-    if (player == NULL) {
+    if (player == NULL || player->obj == NULL) {
         return NULL;
     }
-    data = dico_t_get_value(player->obj->components, "data");
+    data = dico_t_get_value(player->obj->components, PLAYER_DATA);
     if (data == NULL) {
         return NULL;
     }
@@ -43,13 +44,15 @@ static sfVector2f get_pos(any_t *current_sword_pos, int id,
     return vect;
 }
 
-static void set_hurt(ennemy_t *ennemy, player_t *player)
+static void set_hurt(ennemy_t *ennemy, player_t *player, sfVector2f impact,
+    window_t *win)
 {
     bool hurt = true;
-    any_t *data = dico_t_get_value(player->obj->components, "data");
+    any_t *data = dico_t_get_value(player->obj->components, PLAYER_DATA);
     any_t *dammage = NULL;
 
     dammage = get_from_any(data, "ddd", "attack", "sword", "dammage");
+    add_gore_sword(win, impact);
     if (dammage == NULL || dammage->type != FLOAT) {
         return;
     }
@@ -77,7 +80,7 @@ static void ennemy_check_collision(ennemy_t *ennemy, window_t *win)
         return;
     } else if (rect_contains_segment(sfSprite_getGlobalBounds(
         ennemy->obj->drawable.sprite), fst_pos, scd_pos) == true) {
-        set_hurt(ennemy, player);
+        set_hurt(ennemy, player, scd_pos, win);
     }
 }
 
@@ -87,13 +90,13 @@ bool ennemy_check_hurt(ennemy_t *ennemy, scene_t *scene, window_t *win,
     bool hurt = false;
     player_t *player = NULL;
 
-    if (ennemy == NULL || scene == NULL || win == NULL) {
+    if (ennemy == NULL || ennemy->obj == NULL || scene == NULL || win == NULL) {
         return false;
     }
     player = dico_t_get_value(win->components, PLAYER);
     hurt = (bool) dico_t_get_value(ennemy->obj->components, "hurt");
     if (hurt == true) {
-        ennemy_update_hurt(ennemy, dtime, win);
+        ennemy_update_hurt(ennemy, dtime, win, scene);
     } else if (player != NULL && player->state == ATTACKING) {
         ennemy_check_collision(ennemy, win);
     }

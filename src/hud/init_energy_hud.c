@@ -8,7 +8,7 @@
 #include "my_bgs.h"
 #include "my_json.h"
 #include "my_rpg.h"
-#include "my_macro.h"
+#include "macro.h"
 
 static const char energy_hud_path[] = "./assets/image/hud/energy_bar.png";
 static const sfIntRect energy_hud_rect = {0, 0, 60, 188};
@@ -21,7 +21,7 @@ static void retake_energy(float time_elapsed, player_t *player)
     any_t *stats = NULL;
     static float time = 0;
 
-    stats = dico_t_get_value(player->obj->components, "stats");
+    stats = dico_t_get_value(player->obj->components, PLAYER_STATS);
     if (stats == NULL || stats->type != DICT) {
         return;
     }
@@ -44,6 +44,7 @@ void update_energy_hud(object_t *object, scene_t *scene,
 {
     player_t *player = NULL;
     static float prev_stat_value = -1;
+    static float prev_max_stat_value = -1;
 
     if (object == NULL || win == NULL || scene == NULL) {
         return;
@@ -53,7 +54,9 @@ void update_energy_hud(object_t *object, scene_t *scene,
         return;
     }
     retake_energy(time, player);
-    if (player->energy == prev_stat_value || player->energy < 0) {
+    if ((player->energy == prev_stat_value && check_evolution_stat(player,
+            &prev_max_stat_value, energy_max_name) == false) ||
+            player->energy < 0) {
         return;
     }
     prev_stat_value = player->energy;
@@ -63,7 +66,7 @@ void update_energy_hud(object_t *object, scene_t *scene,
 static int create_energy_hud(object_t **energy_hud, player_t **player,
     scene_t *scene, window_t *win)
 {
-    *energy_hud = create_object(update_energy_hud, NULL, scene, -2);
+    *energy_hud = create_object(update_energy_hud, NULL, scene, LAYER_HUD);
     *player = dico_t_get_value(win->components, PLAYER);
     if (*energy_hud == NULL || *player == NULL) {
         return RET_ERR_MALLOC;

@@ -16,8 +16,12 @@ static const char *TO_REMOVE[] = {PLAYER, PAUSE_MENU, DEAD_MESSAGE,
 static void check_type(dico_t *dico, list_t *elem, list_t **button_elem)
 {
     float *pos = NULL;
-    object_t *obj = elem->var;
+    object_t *obj = NULL;
 
+    if (elem == NULL || elem->var == NULL) {
+        return;
+    }
+    obj = elem->var;
     obj->is_visible = false;
     if (obj->type == SPRITE) {
         pos = get_any_float_array(dico_t_get_any(dico, "pos"));
@@ -104,7 +108,7 @@ void go_to_home(scene_t *scene, window_t *win)
     toggle_music_in_scene(dico_t_get_value(win->scenes, "MAIN MENU"));
     list_add_to_end(win->to_remove, scene);
     sfView_setCenter(player->view,
-        (sfVector2f) {WIN_SIZE_X / 2, WIN_SIZE_Y / 2});
+        (sfVector2f) {WIN_SIZE_X / 2.0, WIN_SIZE_Y / 2.0});
     sfRenderWindow_setView(win->win, player->view);
     remove_components(win);
     list_add_to_end(win->to_remove, scene);

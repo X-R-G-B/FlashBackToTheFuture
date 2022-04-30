@@ -7,6 +7,8 @@
 
 #include "ennemies.h"
 
+static const char DAMMAGE_KEY[] = "dammage";
+
 static bool check_ennemy_col(ennemy_t *ennemy, sfFloatRect player_rect)
 {
     sfFloatRect ennemy_rect = {0};
@@ -34,14 +36,20 @@ static sfFloatRect get_player_rect(player_t *player)
     return rect;
 }
 
-static void set_hurt(player_t *player)
+static void set_hurt(player_t *player, ennemy_t *ennemy)
 {
     bool hurt = true;
+    any_t *ennemy_data = dico_t_get_value(ennemy->obj->components, ENNEMY_DATA);
+    any_t *dammage = NULL;
 
     set_stop(player);
     player->obj->components = dico_t_add_data(player->obj->components, "hurt",
         ((void *) hurt), NULL);
-    player->life -= 10;
+    dammage = get_from_any(ennemy_data, "d", DAMMAGE_KEY);
+    if (dammage == NULL || dammage->type != FLOAT) {
+        return;
+    }
+    player->life -= dammage->value.f;
 }
 
 void player_check_hurt(player_t *player, scene_t *scene)
@@ -61,7 +69,7 @@ void player_check_hurt(player_t *player, scene_t *scene)
     elem = ennemy_list->start;
     for (int i = 0; i < ennemy_list->len; i++, elem = elem->next) {
         if (check_ennemy_col(elem->var, rect) == true) {
-            set_hurt(player);
+            set_hurt(player, elem->var);
             return;
         }
     }

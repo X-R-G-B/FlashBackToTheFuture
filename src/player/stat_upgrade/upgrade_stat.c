@@ -20,7 +20,7 @@ static void upgrade(window_t *win, const char *stat_max_key)
     if (player == NULL) {
         return;
     }
-    stat = dico_t_get_any(player->obj->components, "stats");
+    stat = dico_t_get_any(player->obj->components, PLAYER_STATS);
     if (stat == NULL) {
         return;
     }
@@ -29,16 +29,12 @@ static void upgrade(window_t *win, const char *stat_max_key)
         return;
     }
     elem->value.f *= 1.10;
-    if (write_json(stat, PLAYER_STATS) != JS_OK) {
+    if (write_json(stat, PLAYER_STATS_PATH) != JS_OK) {
         return;
     }
-    return;
 }
 
-void level_up(__attribute__((unused)) object_t *obj,
-    scene_t *scene,
-    window_t *win,
-    __attribute__((unused)) set_event_t *event)
+void level_up(scene_t *scene, window_t *win)
 {
     player_t *player = NULL;
 
@@ -46,6 +42,9 @@ void level_up(__attribute__((unused)) object_t *obj,
         return;
     }
     player = dico_t_get_value(win->components, "player");
+    if (player == NULL) {
+        return;
+    }
     player->state = IN_POP_UP;
     toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
 }
@@ -54,18 +53,34 @@ void upgrade_energy(__attribute__((unused)) object_t *obj,
     __attribute__((unused)) scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *event)
 {
-    if (win == NULL) {
+    player_t *player = NULL;
+
+    if (win == NULL || scene == NULL) {
         return;
     }
+    player = dico_t_get_value(win->components, "player");
+    if (player == NULL) {
+        return;
+    }
+    player->state = STOP;
     upgrade(win, energy_max_name);
+    toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
 }
 
 void upgrade_health(__attribute__((unused)) object_t *obj,
     __attribute__((unused)) scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *event)
 {
-    if (win == NULL) {
+    player_t *player = NULL;
+
+    if (win == NULL || scene == NULL) {
         return;
     }
+    player = dico_t_get_value(win->components, "player");
+    if (player == NULL) {
+        return;
+    }
+    player->state = STOP;
     upgrade(win, life_max_name);
+    toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
 }

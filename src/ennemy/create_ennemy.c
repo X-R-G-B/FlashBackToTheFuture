@@ -36,7 +36,7 @@ int ennemy_set_stop(ennemy_t *ennemy)
         return RET_ERR_INPUT;
     }
     ennemy_data = dico_t_get_value(ennemy->obj->components, ENNEMY_DATA);
-    if (ennemy_data == NULL) {
+    if (ennemy_data == NULL || ennemy_data->type != DICT) {
         return RET_ERR_INPUT;
     }
     stop_rect = dico_t_get_any(ennemy_data->value.dict, "stop");
@@ -60,6 +60,7 @@ static ennemy_t *add_new_ennemy_struct(scene_t *scene, object_t *obj,
     ennemy->life = life->value.f;
     ennemy->obj = obj;
     ennemy->state = STOP;
+    ennemy->delta_time = 0;
     if (add_to_ennemy_list(ennemy, scene) != RET_OK) {
         return NULL;
     }

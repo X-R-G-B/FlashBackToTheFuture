@@ -23,8 +23,8 @@
     #include "my_bgs.h"
     #include "my_json.h"
 
-static const char PLAYER_DATA[] = "./assets/data/player/data.json";
-static const char PLAYER_STATS[] = "./assets/data/player/stats.json";
+static const char PLAYER_DATA_PATH[] = "./assets/data/player/data.json";
+static const char PLAYER_STATS_PATH[] = "./assets/data/player/stats.json";
 
 static const char COLLISION_ARRAY[] = "collision array";
 
@@ -34,6 +34,8 @@ static const char DEAD_MESSAGE[] = "dead message";
 static const char DEAD_SCREEN[] = "dead screen";
 
 static const char PLAYER[] = "player";
+static const char PLAYER_STATS[] = "stats";
+static const char PLAYER_DATA[] = "data";
 
 static const char SAVE_PATH[] =
     "./assets/data/story_mode/save.json";
@@ -217,6 +219,9 @@ int set_player_default_stats(player_t *player, any_t *stats);
 
 void go_to_home(scene_t *scene, window_t *win);
 
+bool check_evolution_stat(player_t *player, float *prev_max_stat,
+    const char stat_name[]);
+
 void upgrade_health(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 
@@ -224,5 +229,12 @@ void upgrade_energy(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 
 void toggle_pop_up(dico_t *dico, const char *key);
+
+int init_xp_hud(window_t *win, scene_t *scene);
+
+void update_xp_bar(object_t *object, scene_t *scene,
+    window_t *window, float time);
+
+void level_up(scene_t *scene, window_t *win);
 
 #endif /* !RPG_H_ */

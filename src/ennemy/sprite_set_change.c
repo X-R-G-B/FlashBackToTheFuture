@@ -12,7 +12,7 @@ int sprite_set_change(object_t *ennemy, any_t *ennemy_data)
 {
     any_t *scale = NULL;
 
-    if (ennemy == NULL || ennemy_data == NULL) {
+    if (ennemy == NULL || ennemy_data == NULL || ennemy_data->type != DICT) {
         return RET_ERR_INPUT;
     }
     scale = dico_t_get_any(ennemy_data->value.dict, "scale");

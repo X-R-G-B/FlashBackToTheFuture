@@ -37,8 +37,10 @@ SRC_METEO			:=	$(addprefix meteo/,$(SRC_METEO))
 # ----------------------------------------------------------------------------
 # --------- SRC_ENNEMY -------------------------------------------------------
 
-SRC_ENNEMY_UPDATE	:=	ennemy_update.c							\
+SRC_ENNEMY_UPDATE	:=	ennemy_check_is_dashing.c				\
+						ennemy_update.c							\
 						hurt.c									\
+						update_ennemy_attack.c					\
 						update_ennemy_move.c
 SRC_ENNEMY_UPDATE	:=	$(addprefix update/,$(SRC_ENNEMY_UPDATE))
 
@@ -90,7 +92,8 @@ SRC_UPDATE			:=	update_player.c							\
 SRC_UPDATE			:=	$(addprefix update/,$(SRC_UPDATE))
 
 SRC_STAT_UPGRADE	:=	upgrade_stat.c							\
-						stats_component.c
+						stats_component.c						\
+						gain_xp.c
 SRC_STAT_UPGRADE	:=	$(addprefix stat_upgrade/,$(SRC_STAT_UPGRADE))
 
 SRC_PLAYER			:=	set_stop.c								\
@@ -111,7 +114,10 @@ SRC_HUD				:=	manage_hud.c							\
 						init_hud_elements.c						\
 						increment_hud_pos.c						\
 						init_life_hud.c							\
-						init_energy_hud.c
+						init_energy_hud.c						\
+						check_evolution_stat.c					\
+						init_xp_hud.c							\
+						update_xp_bar.c
 SRC_HUD				:=	$(addprefix hud/,$(SRC_HUD))
 # ----------------------------------------------------------------------------
 # -------- SRC_MENU ----------------------------------------------------------
@@ -138,6 +144,7 @@ SRC_SETTINGS_MENU	:=	$(addprefix settings_menu/,$(SRC_SETTINGS_MENU))
 
 SRC_PAUSE			:=	create_pause_menu.c						\
 						home_button_event.c						\
+						restart_button.c						\
 						pressed_button_event.c					\
 						pause_button_event.c
 SRC_PAUSE			:=	$(addprefix pause/,$(SRC_PAUSE))
@@ -163,7 +170,9 @@ SRC_PATH			:=	init_find.c								\
 SRC_PATH			:=	$(addprefix pathfind/,$(SRC_PATH))
 # ----------------------------------------------------------------------------
 # -------- SRC_MATH ----------------------------------------------------------
-SRC_MATH			:=	rect_contains_segment.c
+SRC_MATH			:=	check_circle_col.c						\
+						rect_contains_segment.c					\
+						gore_effect.c
 SRC_MATH			:=	$(addprefix math/,$(SRC_MATH))
 # ----------------------------------------------------------------------------
 # --------- SRC_NPC ----------------------------------------------------------

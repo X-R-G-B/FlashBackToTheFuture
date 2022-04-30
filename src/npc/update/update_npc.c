@@ -19,7 +19,7 @@
 #include "my_rpg.h"
 #include "npc.h"
 
-static const sfKeyCode key_interract = sfKeyA;
+static const sfKeyCode key_interract = sfKeyE;
 
 static float refresh_rate = 1.0 / 10;
 
@@ -87,7 +87,7 @@ void update_npc(object_t *obj, scene_t *scene, window_t *win,
     if (npcjson == NULL) {
         return;
     }
-    player = dico_t_get_value(win->components, "player");
+    player = dico_t_get_value(win->components, PLAYER);
     check_collid_player(obj, player, scene, win);
     update_rect(obj, npcjson, dtime);
 }

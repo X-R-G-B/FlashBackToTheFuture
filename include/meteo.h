@@ -21,6 +21,7 @@ struct meteo_rpg_s {
     } type_now;
 };
 
+    #define NB_VECTORS_SUN 26
     #define DEFAULT_METEO SUN
 
 void update_meteo_handler(

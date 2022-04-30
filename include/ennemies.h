@@ -8,6 +8,8 @@
 #ifndef ENNEMY_H_
     #define ENNEMY_H_
 
+    #define LVL_UP 3
+
     #include "my_json.h"
     #include "my_bgs.h"
     #include "my_rpg.h"
@@ -17,6 +19,8 @@ typedef struct ennemy_s {
     dir_t dir;
     float life;
     object_t *obj;
+    float delta_time;
+    int rect_id;
 } ennemy_t;
 
 static const char ENNEMY_DATA[] = "ennemy_data";
@@ -36,7 +40,8 @@ sfFloatRect get_attack_hitbox_rect(sfFloatRect player_rect, player_t *player);
 
 bool is_player_in_range(ennemy_t *ennemy, window_t *win);
 
-void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win);
+void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win,
+    scene_t *scene);
 
 void player_check_hurt(player_t *player, scene_t *scene);
 
@@ -56,7 +61,13 @@ int get_rect_id(any_t *data, player_t *player);
 
 int sprite_set_change(object_t *ennemy, any_t *ennemy_data);
 
+void update_xp(ennemy_t *ennemy, window_t *win, scene_t *scene);
+
 int ennemy_set_stop(ennemy_t *ennemy);
+
+bool check_is_dashing(ennemy_t *ennemy, window_t *win);
+
+bool check_wall(ennemy_t *ennemy, sfVector2f new, window_t *win);
 
 /**
 ** @brief update pos of the obj sprite to follow the ennemy
