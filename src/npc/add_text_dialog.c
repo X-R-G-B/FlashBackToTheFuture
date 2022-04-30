@@ -9,7 +9,9 @@
 #include <stdlib.h>
 #include "my_bgs.h"
 #include "my_dico.h"
+#include "my_json.h"
 #include "my_strings.h"
+#include "my_wordarray.h"
 #include "my_rpg.h"
 #include "npc.h"
 
@@ -81,5 +83,29 @@ int add_text_dialog(scene_t *scene, const char *text, bool need_pause,
         return (RET_ERR_MALLOC);
     }
     fill_dialog_text(text_d->var, text, need_pause, callback);
+    return (RET_OK);
+}
+
+int add_text_dialog_json(scene_t *scene, const char *path)
+{
+    any_t *json = NULL;
+    char **arr_text = NULL;
+
+    if (scene == NULL || path == NULL) {
+        return (RET_ERR_INPUT);
+    }
+    json = parse_json_file(path);
+    if (json == NULL) {
+        return (RET_ERR_MALLOC);
+    }
+    arr_text = get_any_string_array(get_from_any(json, "d", "dialogus"));
+    if (arr_text == NULL) {
+        return (RET_ERR_INPUT);
+    }
+    for (int i = 0; arr_text[i] != NULL; i++) {
+        add_text_dialog(scene, arr_text[i], false, NULL);
+    }
+    my_wordarray_free(arr_text);
+    destroy_any(json);
     return (RET_OK);
 }

@@ -74,4 +74,6 @@ int aplly_rect_npc(any_t *jsonrect, any_t *current, object_t *npc);
 int add_text_dialog(scene_t *scene, const char *text, bool need_pause,
     void (*callback)(const char *str, scene_t *scene, window_t *win));
 
+int add_text_dialog_json(scene_t *scene, const char *path);
+
 #endif
