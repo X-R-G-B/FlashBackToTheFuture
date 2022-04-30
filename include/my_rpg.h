@@ -37,6 +37,8 @@ static const char PLAYER[] = "player";
 static const char PLAYER_STATS[] = "stats";
 static const char PLAYER_DATA[] = "data";
 
+static const char roulade_key[] = "roulade";
+
 static const char STORY_DATA_PATH[] =
     "./assets/data/story_mode/save.json";
 static const char SAVE[] = "story_mode_data";
@@ -48,6 +50,7 @@ typedef enum state_e {
     MOVING,
     STOP,
     DYING,
+    ROULADE,
     DIE,
     IN_POP_UP,
     STUNT
@@ -87,6 +90,9 @@ void click_save(object_t *obj, scene_t *scene, window_t *win,
 
 bool check_collision(player_t *player, scene_t *scene);
 
+void roulade_event(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
+
 int move_object_between_scene(window_t *win, scene_t *fst_scene,
     scene_t *scd_scene);
 
@@ -105,6 +111,8 @@ void update_hurt(player_t *obj, scene_t *scene, window_t *win, float dtime);
 int *get_player_spawn(scene_t *scene);
 
 bool check_up_collision(object_t *player, char **map, sfVector2i pos);
+
+void update_roulade(player_t *obj, scene_t *scene, window_t *win, float dtime);
 
 bool check_right_collision(object_t *player, char **map, sfVector2i pos);
 

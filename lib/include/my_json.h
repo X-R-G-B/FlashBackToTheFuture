@@ -146,10 +146,10 @@ char *rm_space(char const *str);
 int write_json(any_t *any, char const *path);
 
 /**
- * @brief destroy any
- *
- * @param data any_t to destroy
- */
+** @brief destroy any
+**
+** @param data any_t to destroy
+**/
 void destroy_any(void *data);
 
 void destroy_pile(list_ptr_t *pile);
