@@ -87,6 +87,9 @@ void click_save(object_t *obj, scene_t *scene, window_t *win,
 
 bool check_collision(player_t *player, scene_t *scene);
 
+void update_spawner(object_t *obj, scene_t *scene, window_t *win,
+    float time);
+
 int move_object_between_scene(window_t *win, scene_t *fst_scene,
     scene_t *scd_scene);
 

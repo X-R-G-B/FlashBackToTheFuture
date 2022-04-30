@@ -67,12 +67,14 @@ SRC_LAUNCH			:=	$(addprefix launch/,$(SRC_LAUNCH))
 # -------------- SRC_MAP -----------------------------------------------------
 SRC_SQUARE_UPDATES	:=	is_player_on_square.c					\
 						next_stage.c							\
+						spawner.c								\
 						knockback.c
 SRC_SQUARE_UPDATES	:=	$(addprefix square_updates/,$(SRC_SQUARE_UPDATES))
 
 SRC_MAP				:=	stage_map_to_collision_array.c			\
 						wordarray_free_cast.c					\
 						check_player_pos_in_map.c				\
+						square_set_components.c					\
 						check_collision.c						\
 						create_map.c							\
 						create_collision_map.c					\
