@@ -37,7 +37,9 @@ static const char PLAYER[] = "player";
 static const char PLAYER_STATS[] = "stats";
 static const char PLAYER_DATA[] = "data";
 
-static const char STORY_DATA_PATH[] =
+static const char roulade_key[] = "roulade";
+
+static const char SAVE_PATH[] =
     "./assets/data/story_mode/save.json";
 static const char SAVE[] = "story_mode_data";
 
@@ -48,6 +50,7 @@ typedef enum state_e {
     MOVING,
     STOP,
     DYING,
+    ROULADE,
     DIE,
     IN_POP_UP,
     STUNT
@@ -90,6 +93,9 @@ bool check_collision(player_t *player, scene_t *scene);
 void update_spawner(object_t *obj, scene_t *scene, window_t *win,
     float time);
 
+void roulade_event(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
+
 int move_object_between_scene(window_t *win, scene_t *fst_scene,
     scene_t *scd_scene);
 
@@ -109,6 +115,8 @@ int *get_player_spawn(scene_t *scene);
 
 bool check_up_collision(object_t *player, char **map, sfVector2i pos);
 
+void update_roulade(player_t *obj, scene_t *scene, window_t *win, float dtime);
+
 bool check_right_collision(object_t *player, char **map, sfVector2i pos);
 
 bool check_left_collision(object_t *player, char **map, sfVector2i pos);
@@ -121,7 +129,7 @@ void update_attack(player_t *player, scene_t *scene, window_t *win,
 void add_main_menu_elements_to_hud_list(window_t *win, scene_t *scene,
     list_ptr_t *hud_list);
 
-int launch_story_mode(window_t *win, const char save_path[], scene_t *scene);
+int launch_story_mode(window_t *win, scene_t *scene);
 
 int add_collision_array_in_scene(scene_t *scene);
 
