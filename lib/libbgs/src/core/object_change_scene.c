@@ -14,8 +14,8 @@ static int change_scene_in_obj_components(object_t *obj, scene_t *dest)
     if (obj == NULL || dest == NULL) {
         return (BGS_ERR_INPUT);
     }
-    obj->components = dico_t_rem(obj->components, "scene");
-    obj->components = dico_t_add_data(obj->components, "scene", dest, NULL);
+    obj->components = dico_t_rem(obj->components, SCENE);
+    obj->components = dico_t_add_data(obj->components, SCENE, dest, NULL);
     if (obj->components == NULL) {
         return BGS_ERR_MALLOC;
     }
