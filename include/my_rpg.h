@@ -119,6 +119,8 @@ void update_roulade(player_t *obj, scene_t *scene, window_t *win, float dtime);
 
 bool check_right_collision(object_t *player, char **map, sfVector2i pos);
 
+void square_set_components(object_t *square, dico_t *char_type);
+
 bool check_left_collision(object_t *player, char **map, sfVector2i pos);
 
 bool check_down_collision(object_t *player, char **map, sfVector2i pos);

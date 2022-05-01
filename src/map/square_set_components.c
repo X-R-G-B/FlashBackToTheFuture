@@ -18,7 +18,6 @@ static void add_data_to_square(char key[255], any_t *value, object_t *square)
         return;
     }
     if (value->type == STR) {
-        printf("oui\n");
         square->components = dico_t_add_data(square->components, key,
             my_strdup(value->value.str), free);
     } else if (value->type == INT) {
@@ -48,6 +47,5 @@ void square_set_components(object_t *square, dico_t *char_type)
     if (components_dict == NULL || components_dict->type != DICT) {
         return;
     }
-    printf("??\n");
     add_components_to_square(square, components_dict->value.dict);
 }
