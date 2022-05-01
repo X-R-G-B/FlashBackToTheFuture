@@ -12,15 +12,13 @@ static const char INV_BUTTONS[] =
     "./assets/data/player/inventory.json";
 static const char THE_86[] =
     "assets/data/player/key_obj.json";
+static const int OBJ_LAYER = 0;
 
 static int create_open_inv_event(player_t *player)
 {
     set_event_t *invopen = NULL;
     object_t *obj = NULL;
 
-    if (player == NULL) {
-        return RET_ERR_INPUT;
-    }
     obj = player->obj;
     if (obj == NULL) {
         return RET_ERR_INPUT;
@@ -35,17 +33,15 @@ static int create_open_inv_event(player_t *player)
 
 static int create_close_inv_event(scene_t *scene)
 {
-    set_event_t *invclose = NULL;
     object_t *obj = NULL;
 
-    obj = create_object(NULL, NULL, scene, 0);
+    obj = create_object(NULL, NULL, scene, OBJ_LAYER);
     if (object_set_custom(obj) != BGS_OK) {
         return RET_ERR_MALLOC;
     }
-    invclose = create_event(NULL, NULL, obj,
-        close_inventory);
-    if (invclose == NULL || event_add_node(invclose,
-        (node_params_t) {sfMouseLeft, sfKeyEscape, KEY}) != BGS_OK) {
+    if (event_add_node(create_event(NULL, false, obj,
+        close_inventory), (node_params_t) {sfMouseLeft, sfKeyEscape, KEY})
+        != BGS_OK) {
         return RET_ERR_MALLOC;
     }
     return RET_OK;

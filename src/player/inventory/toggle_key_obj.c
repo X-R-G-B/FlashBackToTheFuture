@@ -9,16 +9,20 @@
 
 static int get_nbr_keyobj(window_t *win)
 {
+    any_t *acutal_data = NULL;
     any_t *key_objdata = NULL;
 
     if (win == NULL) {
         return -1;
     }
-    key_objdata = parse_json_file(DATA_INV_JSON);
+    acutal_data = dico_t_get_value(win->components, SAVE);
+    if (acutal_data == NULL) {
+        return -1;
+    }
+    key_objdata = dico_t_get_value(acutal_data->value.dict, INFINITY_86);
     if (key_objdata == NULL) {
         return -1;
     }
-    key_objdata = dico_t_get_any(key_objdata->value.dict, "86 infinity");
     return key_objdata->value.i;
 }
 
