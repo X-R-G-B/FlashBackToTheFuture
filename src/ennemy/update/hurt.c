@@ -71,6 +71,7 @@ static void update_when_ennemy_die(ennemy_t *ennemy, window_t *win,
     ennemy->obj->components = dico_t_rem(ennemy->obj->components, "hurt");
     if (ennemy->life <= 0) {
         update_xp(ennemy, win, scene);
+        check_drop(ennemy);
         ennemy->state = DYING;
     }
 }

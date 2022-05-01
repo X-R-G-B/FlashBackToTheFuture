@@ -21,6 +21,8 @@ bool rect_contains_segment(
     sfVector2f point_b
 );
 
+int randomise(int min, int max);
+
 int add_gore_sword(window_t *win, sfVector2f pos);
 
 #endif
