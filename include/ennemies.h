@@ -19,6 +19,8 @@ typedef struct ennemy_s {
     dir_t dir;
     float life;
     object_t *obj;
+    float delta_time;
+    int rect_id;
 } ennemy_t;
 
 static const char ENNEMY_DATA[] = "ennemy_data";
@@ -62,6 +64,10 @@ int sprite_set_change(object_t *ennemy, any_t *ennemy_data);
 void update_xp(ennemy_t *ennemy, window_t *win, scene_t *scene);
 
 int ennemy_set_stop(ennemy_t *ennemy);
+
+bool check_is_dashing(ennemy_t *ennemy, window_t *win);
+
+bool check_wall(ennemy_t *ennemy, sfVector2f new, window_t *win);
 
 /**
 ** @brief update pos of the obj sprite to follow the ennemy

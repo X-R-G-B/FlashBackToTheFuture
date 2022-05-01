@@ -23,5 +23,6 @@
     "dammage": 10.0,
     "blink time": 0.7,
     "sprite path": "./assets/image/ennemy/amongus.png",
-    "xp loot": 20.0
+    "xp loot": 20.0,
+    "range dash": 30.0
 }

@@ -7,9 +7,10 @@
 
 #include <stdlib.h>
 #include "my_rpg.h"
+#include "audio.h"
 #include "main_menu.h"
 
-static const char *TO_REMOVE[] = {PLAYER, PAUSE_MENU, SAVE, DEAD_MESSAGE,
+static const char *TO_REMOVE[] = {PLAYER, PAUSE_MENU, DEAD_MESSAGE,
     DEAD_SCREEN, HUD_ELEMENTS};
 
 static void check_type(dico_t *dico, list_t *elem, list_t **button_elem)
@@ -41,12 +42,20 @@ static void browse_list(list_ptr_t *setting_menu, list_ptr_t *buttons,
 {
     list_t *elem = setting_menu->start;
     list_t *button_elem = buttons->start;
+    window_t *win = dico_t_get_value(scene->components, WINDOW);
     any_t *dico = NULL;
 
+    if (win == NULL) {
+        return;
+    }
     for (int i = 0; i < setting_menu->len; i++, elem = elem->next) {
         dico = button_elem->var;
         object_change_scene(elem->var, scene, next_scene);
-        check_type(dico->value.dict, elem, &button_elem);
+        if (i < setting_menu->len - 2) {
+            check_type(dico->value.dict, elem, &button_elem);
+        } else {
+            replace_button(elem->var, dico->value.dict);
+        }
     }
 }
 
@@ -87,7 +96,7 @@ void go_to_home(scene_t *scene, window_t *win)
 {
     player_t *player = NULL;
 
-    if (win == NULL|| scene == NULL) {
+    if (scene == NULL || win == NULL) {
         return;
     }
     player = dico_t_get_value(win->components, PLAYER);
@@ -96,6 +105,7 @@ void go_to_home(scene_t *scene, window_t *win)
     }
     move_setting_menu_to_main_menu(win, scene);
     window_change_scene(win, "MAIN MENU");
+    toggle_music_in_scene(dico_t_get_value(win->scenes, "MAIN MENU"));
     list_add_to_end(win->to_remove, scene);
     sfView_setCenter(player->view,
         (sfVector2f) {WIN_SIZE_X / 2.0, WIN_SIZE_Y / 2.0});

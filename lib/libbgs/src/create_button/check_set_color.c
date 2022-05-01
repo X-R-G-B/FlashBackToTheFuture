@@ -35,8 +35,8 @@ int set_color(object_t *object, dico_t *dico)
     } else {
         color = dico_t_get_any(dico, "text color");
     }
-    if (color == NULL || color->type != ARRAY ||
-        color->value.array->len != 4) {
+    if (color != NULL && color->type == ARRAY &&
+        color->value.array->len == 4) {
         sfSprite_setColor(object->drawable.sprite, get_color(color));
     }
     return BGS_OK;

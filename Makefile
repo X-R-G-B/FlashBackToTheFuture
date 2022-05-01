@@ -23,8 +23,9 @@ RESET		=	'\033[0m'
 # ----------------------------------------------------------------------------
 # SRC
 
-CFLAGS				=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
-
+CFLAGS				=	-Iinclude/ -Ilib/include/ -Wall -Wextra	\
+						-Wpedantic -Wno-pointer-to-int-cast	\
+						-Wno-int-to-pointer-cast
 # -------- SRC_METEO ---------------------------------------------------------
 SRC_METEO			:=	add_leaf.c								\
 						add_snow.c								\
@@ -36,8 +37,10 @@ SRC_METEO			:=	$(addprefix meteo/,$(SRC_METEO))
 # ----------------------------------------------------------------------------
 # --------- SRC_ENNEMY -------------------------------------------------------
 
-SRC_ENNEMY_UPDATE	:=	ennemy_update.c							\
+SRC_ENNEMY_UPDATE	:=	ennemy_check_is_dashing.c				\
+						ennemy_update.c							\
 						hurt.c									\
+						update_ennemy_attack.c					\
 						update_ennemy_move.c
 SRC_ENNEMY_UPDATE	:=	$(addprefix update/,$(SRC_ENNEMY_UPDATE))
 
@@ -79,10 +82,12 @@ SRC_MAP				:=	$(addprefix map/,$(SRC_MAP))
 # ----------------------------------------------------------------------------
 # ------- SRC_PLAYER ---------------------------------------------------------
 SRC_EVENT			:=	attack.c								\
+						roulade.c								\
 						move.c
 SRC_EVENT			:=	$(addprefix event/,$(SRC_EVENT))
 
 SRC_UPDATE			:=	update_player.c							\
+						update_roulade.c						\
 						update_hurt.c							\
 						update_movement.c						\
 						update_attack.c
@@ -128,12 +133,24 @@ SRC_HUD				:=	$(addprefix hud/,$(SRC_HUD))
 # -------- SRC_MENU ----------------------------------------------------------
 SRC_MAIN			:=	event_menu.c							\
 						init_menu.c								\
+						init_music.c							\
 						pop_up_management.c 					\
-						set_frame.c								\
 						on_click_event.c						\
 						exit.c									\
 						set_overlay.c
 SRC_MAIN			:=	$(addprefix main/,$(SRC_MAIN))
+
+SRC_SETTINGS_MENU	:=	add_new_audio.c							\
+						set_drag_objects.c						\
+						set_frame.c								\
+						toggle_music_in_scene.c					\
+						bar_update.c							\
+						replace_button.c						\
+						button_hover_event.c					\
+						drag_button_on.c						\
+						drag_button_off.c						\
+						init_audio_list.c
+SRC_SETTINGS_MENU	:=	$(addprefix settings_menu/,$(SRC_SETTINGS_MENU))
 
 SRC_PAUSE			:=	create_pause_menu.c						\
 						home_button_event.c						\
@@ -149,6 +166,7 @@ SRC_DEAD			:=	$(addprefix dead/,$(SRC_DEAD))
 
 SRC_MENU			:=	$(SRC_PAUSE)							\
 						$(SRC_MAIN)								\
+						$(SRC_SETTINGS_MENU)					\
 						$(SRC_DEAD)								\
 						button_event_array.c
 SRC_MENU			:=	$(addprefix menu/,$(SRC_MENU))
@@ -162,7 +180,8 @@ SRC_PATH			:=	init_find.c								\
 SRC_PATH			:=	$(addprefix pathfind/,$(SRC_PATH))
 # ----------------------------------------------------------------------------
 # -------- SRC_MATH ----------------------------------------------------------
-SRC_MATH			:=	rect_contains_segment.c					\
+SRC_MATH			:=	check_circle_col.c						\
+						rect_contains_segment.c					\
 						gore_effect.c
 SRC_MATH			:=	$(addprefix math/,$(SRC_MATH))
 # ----------------------------------------------------------------------------
