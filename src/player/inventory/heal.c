@@ -6,21 +6,41 @@
 */
 
 #include "my_rpg.h"
+#include "my_conversions.h"
+#include <stdlib.h>
+
+void modif_potion_value(window_t *win, int nbr_potions)
+{
+    scene_t *scene = dico_t_get_value(win->scenes, INV_SCENE);
+    object_t *obj = NULL;
+    char *text = NULL;
+
+    if (scene == NULL) {
+        return;
+    }
+    obj = dico_t_get_value(scene->components, POTIONS_TEXT);
+    if (obj == NULL) {
+        return;
+    }
+    text = my_itoa(nbr_potions);
+    sfText_setString(obj->drawable.text, text);
+    free(text);
+}
 
 static void used_potion(window_t *win)
 {
     any_t *inv_data = NULL;
     any_t *potions = NULL;
 
-    if (win == NULL) {
-        return;
-    }
     inv_data = dico_t_get_value(win->components, SAVE);
     potions = get_from_any(inv_data, "d", POTIONS);
     if (potions == NULL) {
         return;
     }
-    potions->value.i -= 1;
+    if (potions->value.i > 0) {
+        potions->value.i -= 1;
+        modif_potion_value(win, potions->value.i);
+    }
     write_json(inv_data, SAVE_PATH);
 }
 

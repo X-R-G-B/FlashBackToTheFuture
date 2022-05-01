@@ -7,12 +7,15 @@
 
 #include "my_rpg.h"
 #include "my_bgs_components.h"
+#include "my_conversions.h"
 
-static const char INV_BUTTONS[] =
+static const char inv_buttons[] =
     "./assets/data/player/inventory.json";
-static const char THE_86[] =
+
+static const char the_86[] =
     "assets/data/player/key_obj.json";
-static const int OBJ_LAYER = 0;
+
+const int obj_layer = 0;
 
 static int create_open_inv_event(player_t *player)
 {
@@ -35,7 +38,7 @@ static int create_close_inv_event(scene_t *scene)
 {
     object_t *obj = NULL;
 
-    obj = create_object(NULL, NULL, scene, OBJ_LAYER);
+    obj = create_object(NULL, NULL, scene, obj_layer);
     if (object_set_custom(obj) != BGS_OK) {
         return RET_ERR_MALLOC;
     }
@@ -55,8 +58,8 @@ static int create_buttons(scene_t *scene)
     if (scene == NULL) {
         return RET_ERR_INPUT;
     }
-    buttons = create_button(scene, INV_BUTTONS);
-    key_obj = create_button(scene, THE_86);
+    buttons = create_button(scene, inv_buttons);
+    key_obj = create_button(scene, the_86);
     if (buttons == NULL || key_obj == NULL) {
         return RET_ERR_MALLOC;
     }
@@ -95,7 +98,8 @@ int create_inventory(window_t *win)
     }
     scene = create_scene(win, sfWhite, INV_SCENE);
     if (scene == NULL || create_inventory_key(player, scene) != RET_OK ||
-        create_buttons(scene) != RET_OK) {
+        create_buttons(scene) != RET_OK ||
+        create_number_of_potions(scene, win) != RET_OK) {
         return RET_ERR_INPUT;
     }
     return RET_OK;

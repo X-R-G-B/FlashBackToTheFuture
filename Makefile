@@ -102,7 +102,8 @@ SRC_INVENTORY		:=	create_inventory.c						\
 						inventory_event.c						\
 						update_data_json_inv.c					\
 						toggle_key_obj.c						\
-						heal.c
+						heal.c									\
+						create_nbr_potions_text.c
 SRC_INVENTORY		:=	$(addprefix inventory/, $(SRC_INVENTORY))
 
 SRC_PLAYER			:=	set_stop.c								\
