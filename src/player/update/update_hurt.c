@@ -16,6 +16,8 @@
 
 static const float time_nulll = 1;
 
+static const float coef = 1000;
+
 const char data_directions[] = "dirrections player hurt";
 
 static void update_move_player(player_t *player, window_t *win, sfVector2f new)
@@ -63,7 +65,7 @@ static void check_blink_time_end(float *since_start, float dtime, window_t *win,
     }
     *since_start += dtime;
     if (*since_start < time_nulll) {
-        update_player_rollback(player, *since_start * (dtime * 1000), win);
+        update_player_rollback(player, *since_start * (dtime * coef), win);
     } else if (*since_start >= blink_time->value.f) {
         *since_start = 0;
         player->obj->components = dico_t_rem(player->obj->components, "hurt");
