@@ -23,4 +23,8 @@ bool rect_contains_segment(
 
 int add_gore_sword(window_t *win, sfVector2f pos);
 
+sfVector2f get_distance(sfVector2f point_a, sfVector2f point_b);
+
+int fill_get_distance(sfVector2f point_a, sfVector2f point_b, sfVector2f *fill);
+
 #endif
