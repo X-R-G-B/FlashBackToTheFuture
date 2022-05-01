@@ -40,7 +40,7 @@ static scene_t *get_scene(window_t *win)
     return scene;
 }
 
-int toggle_key_obj(window_t *win)
+void toggle_key_obj(window_t *win)
 {
     scene_t *scene = get_scene(win);
     list_ptr_t *list = NULL;
@@ -50,11 +50,11 @@ int toggle_key_obj(window_t *win)
 
     nbr_keyobj = get_nbr_keyobj(win);
     if (scene == NULL || nbr_keyobj <= -1) {
-        return RET_ERR_MALLOC;
+        return;
     }
     list = dico_t_get_value(scene->components, KEY_OBJ);
     if (list == NULL || list->len < nbr_keyobj) {
-        return RET_ERR_MALLOC;
+        return;
     }
     elem = list->start;
     for (int i = 0; i < nbr_keyobj; i++) {

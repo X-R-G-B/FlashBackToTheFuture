@@ -12,14 +12,18 @@
 
 const char ACTUAL_SCENE[] = "actual scene";
 
-void use_heal_potion(object_t *obj, scene_t *scene,
-    window_t *win, set_event_t *event)
+void use_heal_potion(__attribute__((unused)) object_t *obj,
+    __attribute__((unused)) scene_t *scene,
+    window_t *win,
+    __attribute__((unused)) set_event_t *event)
 {
     heal(win);
 }
 
-void open_inventory(object_t *obj, scene_t *scene,
-    window_t *win, set_event_t *event)
+void open_inventory(__attribute__((unused)) object_t *obj,
+    __attribute__((unused)) scene_t *scene,
+    window_t *win,
+    __attribute__((unused)) set_event_t *event)
 {
     char *actual_scene = NULL;
 
@@ -36,8 +40,9 @@ void open_inventory(object_t *obj, scene_t *scene,
     sfRenderWindow_setView(win->win, sfRenderWindow_getDefaultView(win->win));
 }
 
-void close_inventory(object_t *obj, scene_t *scene,
-    window_t *win, set_event_t *event)
+void close_inventory(__attribute__((unused)) object_t *obj,
+    __attribute__((unused)) scene_t *scene,
+    window_t *win, __attribute__((unused)) set_event_t *event)
 {
     char *actual_scene = NULL;
 

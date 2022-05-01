@@ -261,9 +261,9 @@ void open_inventory(object_t *obj, scene_t *scene,
 void close_inventory(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 
-int get_infinity_86(window_t *win);
+void get_infinity_86(window_t *win);
 
-int toggle_key_obj(window_t *win);
+void toggle_key_obj(window_t *win);
 
 void heal(window_t *win);
 

@@ -21,7 +21,7 @@ static void used_potion(window_t *win)
         return;
     }
     potions->value.i -= 1;
-    write_json(inv_data, STORY_DATA_PATH);
+    write_json(inv_data, SAVE_PATH);
 }
 
 static float get_max_life(player_t *player)
