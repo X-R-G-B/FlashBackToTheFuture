@@ -49,11 +49,16 @@ static void set_delimitation(object_t *button, object_t *bar)
 static void bar_set_update(object_t *music_bar, object_t *sound_bar,
     scene_t *scene)
 {
-    layer_t *layer = get_layer(scene, music_bar->layer);
-    sfFloatRect float_rect =
-        sfSprite_getGlobalBounds(music_bar->drawable.sprite);
-    sfIntRect rect = {0, 0, float_rect.width, float_rect.height};
+    layer_t *layer = NULL;
+    sfFloatRect float_rect = {0};
+    sfIntRect rect = {0};
 
+    if (music_bar == NULL || sound_bar == NULL) {
+        return;
+    }
+    float_rect = sfSprite_getGlobalBounds(music_bar->drawable.sprite);
+    layer = get_layer(scene, music_bar->layer);
+    rect = (sfIntRect) {0, 0, float_rect.width, float_rect.height};
     music_bar->bigdata.sprite_bigdata.rect = rect;
     sound_bar->bigdata.sprite_bigdata.rect = rect;
     if (layer == NULL) {
