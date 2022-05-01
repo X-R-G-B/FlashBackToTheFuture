@@ -15,12 +15,14 @@ void replace_button(object_t *obj, dico_t *dico)
     float *pos = NULL;
     object_t *bar = NULL;
     sfFloatRect rect = {0};
+    any_t *pos_list = dico_t_get_any(dico, "pos");
 
-    if (obj == NULL || dico == NULL) {
+    if (obj == NULL || pos_list == NULL || pos_list->type != ARRAY ||
+        pos_list->value.array->len != 2) {
         return;
     }
     bar = dico_t_get_value(obj->components, BAR);
-    pos = get_any_float_array(dico_t_get_any(dico, "pos"));
+    pos = get_any_float_array(pos_list);
     if (pos == NULL || bar == NULL) {
         return;
     }
