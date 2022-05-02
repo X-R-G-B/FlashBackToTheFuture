@@ -14,16 +14,16 @@ extern const char can_player_up_scale[];
 
 static void stop_scaling(object_t *obj)
 {
-    bool *can_move_scale = false;
+    dico_t *can_move_scale = NULL;
 
     if (obj == NULL || obj->components == NULL) {
         return;
     }
-    can_move_scale = dico_t_get_value(obj->components, can_player_up_scale);
+    can_move_scale = dico_t_get_elem(obj->components, can_player_up_scale);
     if (can_move_scale == NULL) {
         return;
     }
-    *can_move_scale = false;
+    can_move_scale->value = (void *) false;
 }
 
 static void update_up_scale(float time_elapsed, sfVector2f *current_scale)

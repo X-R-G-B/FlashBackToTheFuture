@@ -14,41 +14,42 @@ const char can_player_down_scale[] = "can_down_scale";
 
 static int init_player_up_scale(object_t *obj)
 {
-    bool *can_up_scale = NULL;
+    bool can_up_scale = true;
+    dico_t *data = NULL;
 
     if (obj == NULL || obj->components == NULL) {
         return RET_ERR_INPUT;
     }
-    can_up_scale = malloc(sizeof(bool));
-    if (can_up_scale == NULL) {
+    if (object_add_components(obj, (void *) can_up_scale,
+            can_player_up_scale, NULL) != BGS_OK) {
+        printf("ok\n");
         return RET_ERR_INPUT;
     }
-    *can_up_scale = false;
-    if (object_add_components(obj, can_up_scale,
-            can_player_up_scale, free) != BGS_OK) {
-        free(can_up_scale);
+    data = dico_t_get_elem(obj->components, can_player_up_scale);
+    if (data == NULL) {
         return RET_ERR_INPUT;
     }
+    data->value = (void *) false;
     return RET_OK;
 }
 
 static int init_player_down_scale(object_t *obj)
 {
-    bool *can_down_scale = NULL;
+    bool can_down_scale = true;
+    dico_t *data = NULL;
 
     if (obj == NULL || obj->components == NULL) {
         return RET_ERR_INPUT;
     }
-    can_down_scale = malloc(sizeof(bool));
-    if (can_down_scale == NULL) {
+    if (object_add_components(obj, (void *) can_down_scale,
+            can_player_down_scale, NULL) != BGS_OK) {
         return RET_ERR_INPUT;
     }
-    *can_down_scale = false;
-    if (object_add_components(obj, can_down_scale,
-            can_player_down_scale, free) != BGS_OK) {
-        free(can_down_scale);
+    data = dico_t_get_elem(obj->components, can_player_up_scale);
+    if (data == NULL) {
         return RET_ERR_INPUT;
     }
+    data->value = (void *) false;
     return RET_OK;
 }
 

@@ -8,23 +8,21 @@
 #include "my_bgs.h"
 #include "my_rpg.h"
 
-static const float scale_time_factor = 0.01;
-static const float max_scale = 1.5;
 extern const char can_player_up_scale[];
 extern const char can_player_down_scale[];
 
-static bool can_move_scale(object_t *obj, char key[])
+static bool can_move_scale(object_t *obj, const char key[])
 {
-    bool *can_move_scale = false;
+    dico_t *can_move_scale = NULL;
 
     if (obj == NULL || obj->components == NULL) {
         return false;
     }
-    can_move_scale = dico_t_get_value(obj->components, key);
+    can_move_scale = dico_t_get_elem(obj->components, key);
     if (can_move_scale == NULL) {
         return false;
     }
-    return *can_move_scale;
+    return (bool) can_move_scale->value;
 }
 
 int update_player_view(object_t *obj, window_t *win, float time)
