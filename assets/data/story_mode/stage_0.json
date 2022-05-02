@@ -9,7 +9,7 @@
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dffffffffffSffffffffffffd.b##",
+            "##B.dffffffffLffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
@@ -39,7 +39,7 @@
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dffffffffffSffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
@@ -86,6 +86,12 @@
             "c": {
                 "path": "./assets/image/map/squares/corner.png",
                 "col": 1
+            },
+            "L": {
+                "path": "./assets/image/map/squares/flower.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/warrior.json"
+                }
             },
             "S": {
                 "path": "./assets/image/map/squares/flower.png",
