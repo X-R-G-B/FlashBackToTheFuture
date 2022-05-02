@@ -63,8 +63,9 @@ void upgrade_energy(__attribute__((unused)) object_t *obj,
         return;
     }
     player->state = STOP;
-    upgrade(win, energy_max_name);
-    toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
+    if (check_if_pop_up_true(scene->components, STATS_UPGRADE_KEY)) {
+        upgrade(win, energy_max_name);
+    }
 }
 
 void upgrade_health(__attribute__((unused)) object_t *obj,
@@ -81,6 +82,7 @@ void upgrade_health(__attribute__((unused)) object_t *obj,
         return;
     }
     player->state = STOP;
-    upgrade(win, life_max_name);
-    toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
+    if (check_if_pop_up_true(scene->components, STATS_UPGRADE_KEY)) {
+        upgrade(win, life_max_name);
+    }
 }

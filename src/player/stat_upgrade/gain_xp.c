@@ -62,6 +62,7 @@ static int update_stats(any_t *player_stats, any_t *xp, any_t *xp_max,
     for (; xp_max->value.f <= xp->value.f; (*lvl_gained)++) {
         xp->value.f -= xp_max->value.f;
         lvl->value.f += 1.0;
+        xp_max->value.f *= 1.2;
     }
     if (write_json(player_stats, PLAYER_STATS_PATH) != JS_OK) {
         return JS_ERR_INPUT;
