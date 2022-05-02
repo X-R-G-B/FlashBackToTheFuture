@@ -76,4 +76,8 @@ int add_text_dialog(scene_t *scene, const char *text, bool need_pause,
 
 int add_text_dialog_json(scene_t *scene, const char *path);
 
+char *parseprety(const char *str);
+
+char *parseprety_free(char *str);
+
 #endif
