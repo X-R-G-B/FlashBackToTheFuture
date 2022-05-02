@@ -9,8 +9,7 @@
 #include <stdlib.h>
 #include "ennemies.h"
 #include "my_bgs.h"
-#include "math.h"
-#include "maths.h"
+#include "maths_function.h"
 
 static const char DAMMAGE_KEY[] = "dammage";
 

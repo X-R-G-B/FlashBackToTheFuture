@@ -5,6 +5,7 @@
 ** init game
 */
 
+#include <stdlib.h>
 #include "my_rpg.h"
 #include "audio.h"
 #include "main_menu.h"
