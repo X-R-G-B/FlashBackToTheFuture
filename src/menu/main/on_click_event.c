@@ -7,6 +7,28 @@
 
 #include "main_menu.h"
 
+void click_sandbox(__attribute__((unused)) object_t *obj,
+    scene_t *scene,
+    __attribute__((unused)) window_t *win,
+    __attribute__((unused)) set_event_t *event)
+{
+    list_ptr_t *buttons = NULL;
+    object_t *play = NULL;
+
+    if (scene == NULL) {
+        return;
+    }
+    buttons = dico_t_get_value(scene->components, MENU);
+    if (buttons == NULL) {
+        return;
+    }
+    play = get_element_i_var(buttons, 2);
+    if (play == NULL) {
+        return;
+    }
+    //play->bigdata.sprite_bigdata.rect.left = 8;
+}
+
 void click_play(__attribute__((unused)) object_t *obj,
     scene_t *scene,
     __attribute__((unused)) window_t *win,
@@ -44,7 +66,7 @@ void click_settings(__attribute__((unused)) object_t *obj,
     if (buttons == NULL) {
         return;
     }
-    settings = get_element_i_var(buttons, 2);
+    settings = get_element_i_var(buttons, 3);
     if (settings == NULL) {
         return;
     }
