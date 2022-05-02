@@ -6,10 +6,13 @@
 */
 
 #include <stdlib.h>
+#include "macro.h"
 #include "ennemies.h"
 #include "math.h"
 
 static const char drop_rate_key[] = "drop rate";
+
+static const char item_sprite_path[] = "./assets/image/hud/energy_bar.png";
 
 static bool check_drop_chance(ennemy_t *ennemy)
 {
@@ -33,26 +36,29 @@ static bool check_drop_chance(ennemy_t *ennemy)
 static void update_86(object_t *obj, scene_t *scene, window_t *win, float dtime)
 {
     player_t *player = NULL;
+    sfFloatRect player_rect = {0};
+    sfFloatRect obj_rect = {0};
 
-    if (obj == NULL || scene == NULL || win == NULL) {
+    if (obj == NULL || obj->type != SPRITE || scene == NULL || win == NULL) {
         return;
     }
     player = dico_t_get_value(win->components, PLAYER);
     if (player == NULL) {
         return;
     }
-    
+    player_rect = sfSprite_getGlobalBounds(player->obj->drawable.sprite);
+    obj_rect = sfSprite_getGlobalBounds(obj->drawable.sprite);
+    if (sfFloatRect_intersects(&player_rect, &obj_rect, NULL) == sfTrue) {
+        list_add_to_end(scene->to_remove, obj);
+    }
 }
 
-static void create_86(ennemy_t *ennemy)
-{
-    object_t *obj = create_object()
-}
-
-void check_drop(ennemy_t *ennemy)
+void check_drop(ennemy_t *ennemy, scene_t *scene)
 {
     if (check_drop_chance(ennemy) == false) {
         return;
     }
-    create_86(ennemy);
+    object_set_sprite(create_object(update_86, NULL, scene, LAYER_ENNEMY),
+        item_sprite_path, (sfIntRect) {-1, -1, -1, -1},
+        ennemy->obj->bigdata.sprite_bigdata.pos);
 }
