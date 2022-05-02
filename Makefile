@@ -46,6 +46,7 @@ SRC_ENNEMY_UPDATE	:=	$(addprefix update/,$(SRC_ENNEMY_UPDATE))
 
 SRC_ENNEMY			:=	create_ennemy.c							\
 						ennemy_get_view_dir.c					\
+						check_drop.c							\
 						sprite_set_change.c						\
 						add_to_ennemy_list.c					\
 						ennemy_check_hurt.c						\
@@ -186,6 +187,7 @@ SRC_PATH			:=	$(addprefix pathfind/,$(SRC_PATH))
 SRC_MATH			:=	check_circle_col.c						\
 						get_distance.c							\
 						rect_contains_segment.c					\
+						get_rand_number.c						\
 						gore_effect.c
 SRC_MATH			:=	$(addprefix math/,$(SRC_MATH))
 # ----------------------------------------------------------------------------

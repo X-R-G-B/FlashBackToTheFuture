@@ -8,7 +8,7 @@
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/System/Vector2.h>
 #include <math.h>
-#include "maths.h"
+#include "maths_function.h"
 #include "my_macro.h"
 #include "my_rpg.h"
 #include "ennemies.h"

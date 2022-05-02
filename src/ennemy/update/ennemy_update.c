@@ -12,6 +12,8 @@
 #include "ennemy_pathfind.h"
 #include "ennemies.h"
 
+static const char struct_key[] = "struct";
+
 void update_ennemy_attack(ennemy_t *ennemy, scene_t *scene,
     window_t *win, float time);
 
@@ -53,8 +55,9 @@ void update_ennemy(object_t *obj, scene_t *scene, window_t *win,
     if (scene == NULL || scene->pause == true || obj == NULL) {
         return;
     }
-    ennemy = dico_t_get_value(obj->components, "struct");
-    if (ennemy == NULL) {
+    ennemy = dico_t_get_value(obj->components, struct_key);
+    if (ennemy == NULL || ennemy->obj == NULL ||
+        ennemy->obj->is_visible == false) {
         return;
     } else if (ennemy->state >= 0 && ennemy->state <= 3 &&
         ennemy_check_hurt(ennemy, scene, win, dtime) == false) {
