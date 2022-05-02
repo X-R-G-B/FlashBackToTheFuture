@@ -32,7 +32,7 @@ static void update_move_player(player_t *player, window_t *win, sfVector2f new)
 
     enn = (ennemy_t) {player->state, player->dir, 1, player->obj, 0, 1};
     for (int i = 0; i < nb_intervals; i++) {
-        if (check_wall(&enn, new, win) == true) {
+        if (check_wall(&enn, new, win) == true || player->view == NULL) {
             break;
         }
         player->obj->bigdata.sprite_bigdata.pos.x += delta_x.x;
