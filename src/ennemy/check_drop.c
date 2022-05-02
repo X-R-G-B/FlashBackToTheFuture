@@ -51,6 +51,7 @@ static void update_86(object_t *obj, scene_t *scene, window_t *win,
     obj_rect = sfSprite_getGlobalBounds(obj->drawable.sprite);
     if (sfFloatRect_intersects(&player_rect, &obj_rect, NULL) == sfTrue) {
         list_add_to_end(scene->to_remove, obj);
+        get_potions(win);
     }
 }
 
