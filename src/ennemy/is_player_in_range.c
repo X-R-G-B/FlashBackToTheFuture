@@ -6,7 +6,7 @@
 */
 
 #include "ennemies.h"
-#include "math.h"
+#include "maths.h"
 
 bool is_player_in_range(ennemy_t *ennemy, window_t *win)
 {
