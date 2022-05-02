@@ -27,14 +27,14 @@ void (*off_hover[])(object_t *, scene_t *, window_t *win, set_event_t *) = {
 const char *str_on_click[] = {
     "resume", "home", "exit", "settings", "restart","60", "120", "144",
     "165", "PLAY", "BACK", "SETTINGS menu", "QUIT", "music button",
-    "sound button", NULL
+    "sound button", "SANDBOX", NULL
 };
 
 void (*on_click[])(object_t *, scene_t *, window_t *win, set_event_t *) = {
     pressed_button_on, pressed_button_on, pressed_button_on, pressed_button_on,
     pressed_button_on, set_60_fps, set_120_fps, set_144_fps, set_165_fps,
     click_play, go_back, click_settings, click_exit, drag_button_on,
-    drag_button_on
+    drag_button_on, click_sandbox
 };
 
 const char *str_off_click[] = {

@@ -60,6 +60,10 @@ void play_pop_up(object_t *obj, scene_t *scene,
 void settings_pop_up( object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 
+void click_sandbox(object_t *obj, __attribute__((unused)) scene_t *scene,
+    __attribute__((unused)) window_t *win,
+    __attribute__((unused)) set_event_t *event);
+
 int create_scene_loading_basic(window_t *win);
 
 void set_60_fps(object_t *obj, scene_t *scene, window_t *win,

@@ -13,7 +13,8 @@ static bool check_ennemy_col(ennemy_t *ennemy, sfFloatRect player_rect)
 {
     sfFloatRect ennemy_rect = {0};
 
-    if (ennemy == NULL) {
+    if (ennemy == NULL || ennemy->obj == NULL ||
+        ennemy->obj->is_visible == false) {
         return false;
     }
     ennemy_rect = sfSprite_getGlobalBounds(ennemy->obj->drawable.sprite);

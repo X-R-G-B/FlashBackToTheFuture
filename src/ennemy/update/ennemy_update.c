@@ -54,7 +54,7 @@ void update_ennemy(object_t *obj, scene_t *scene, window_t *win,
         return;
     }
     ennemy = dico_t_get_value(obj->components, "struct");
-    if (ennemy == NULL) {
+    if (ennemy == NULL || ennemy->obj->is_visible == false) {
         return;
     } else if (ennemy->state >= 0 && ennemy->state <= 3 &&
         ennemy_check_hurt(ennemy, scene, win, dtime) == false) {

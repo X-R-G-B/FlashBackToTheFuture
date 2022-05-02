@@ -7,26 +7,14 @@
 
 #include "main_menu.h"
 
-void click_sandbox(__attribute__((unused)) object_t *obj,
-    scene_t *scene,
+void click_sandbox(object_t *obj, __attribute__((unused)) scene_t *scene,
     __attribute__((unused)) window_t *win,
     __attribute__((unused)) set_event_t *event)
 {
-    list_ptr_t *buttons = NULL;
-    object_t *play = NULL;
-
-    if (scene == NULL) {
+    if (obj == NULL) {
         return;
     }
-    buttons = dico_t_get_value(scene->components, MENU);
-    if (buttons == NULL) {
-        return;
-    }
-    play = get_element_i_var(buttons, 2);
-    if (play == NULL) {
-        return;
-    }
-    //play->bigdata.sprite_bigdata.rect.left = 8;
+    obj->bigdata.sprite_bigdata.rect.left = 425;
 }
 
 void click_play(__attribute__((unused)) object_t *obj,
