@@ -9,11 +9,11 @@
 #include "my_rpg.h"
 #include "my_macro.h"
 
-static const char xp_level_name[] = "actual xp";
-static const char xp_max_name[] = "xp max";
+const char xp_level_name[] = "actual xp";
+const char xp_max_name[] = "xp max";
 extern const char xp_max_width_key[];
 
-static any_t *get_xp_data(player_t *player, const char data_name[])
+any_t *get_xp_data(player_t *player, const char data_name[])
 {
     any_t *stats = NULL;
     any_t *max_xp_data = NULL;
@@ -55,7 +55,7 @@ static bool is_xp_max_upgraded(any_t *xp_max_data)
     return false;
 }
 
-static int change_xp_bar_stats(any_t *max_xp_data, any_t *actual_xp_data,
+int change_xp_bar_stats(any_t *max_xp_data, any_t *actual_xp_data,
     object_t *object, scene_t *scene)
 {
     float actual_xp = 0;
