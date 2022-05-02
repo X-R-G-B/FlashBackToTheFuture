@@ -13,6 +13,7 @@
 #include "my_rpg.h"
 #include "my_json.h"
 #include "math.h"
+#include "maths.h"
 
 static const float time_nulll = 1;
 
