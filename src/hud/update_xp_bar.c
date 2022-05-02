@@ -18,6 +18,9 @@ any_t *get_xp_data(player_t *player, const char data_name[])
     any_t *stats = NULL;
     any_t *max_xp_data = NULL;
 
+    if (player == NULL || player->obj == NULL) {
+        return NULL;
+    }
     stats = dico_t_get_value(player->obj->components, PLAYER_STATS);
     if (stats == NULL || stats->type != DICT) {
         return NULL;
