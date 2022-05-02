@@ -46,11 +46,12 @@ void level_up(scene_t *scene, window_t *win)
         return;
     }
     player->state = IN_POP_UP;
+    scene->pause = true;
     toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
 }
 
 void upgrade_energy(__attribute__((unused)) object_t *obj,
-    __attribute__((unused)) scene_t *scene,
+    scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *event)
 {
     player_t *player = NULL;
@@ -63,6 +64,7 @@ void upgrade_energy(__attribute__((unused)) object_t *obj,
         return;
     }
     player->state = STOP;
+    scene->pause = false;
     if (check_if_pop_up_true(scene->components, STATS_UPGRADE_KEY)) {
         upgrade(win, energy_max_name);
     }
@@ -82,6 +84,7 @@ void upgrade_health(__attribute__((unused)) object_t *obj,
         return;
     }
     player->state = STOP;
+    scene->pause = false;
     if (check_if_pop_up_true(scene->components, STATS_UPGRADE_KEY)) {
         upgrade(win, life_max_name);
     }
