@@ -61,5 +61,6 @@ void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
     } else if (player->state != DYING && player->state != DIE) {
         player_check_hurt(player, scene);
     }
+    update_player_view(obj, win, dtime);
     player_check_life(player, win);
 }

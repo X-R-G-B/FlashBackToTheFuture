@@ -27,11 +27,11 @@
             "##B.fGfgxGfGfgGGgGgGgffggffffGgGffGfGGfggGGfGGfggggfGffgGfGgGggfGGGGGgggGfGgfGGggffffGgxgfgGf.b##",
             "##B.fGgfxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxgGggg.b##",
             "##B.GggffGGGggfgfgfgggggffffGGffGgGGGfGfGfgGGGfGfGfffGffgfffGggGgGGffGfGffGggGffggGGGfGGffffg.b##",
-            "##B.fGfgfgfGGggggGGfggGggGgfgGGfgffgffGgGggGfggGfgfGgffgGGgfggfgGgfggGfggfGfffgGgfgGgGGgGggfg.b##",
+            "##B.fGfgfgfGGggggGGfggGggGgfgGGfgfQgffGgGggGfggGfgfGgffgGGgfggfgGgfggGfggfGfffgGgfgGgGGgGggfg.b##",
             "##B.uuuuuuuuuuuuuuuuuuuuuuuuuuuuu#.#uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu.b##",
             "##B.gggfggfffgfffffgfgffggggfgfgf#s#ggfggffgfggffffgggggffffgfffggggggffgfggggfggfggggfggffgg.b##",
             "##B.ggggffgfffgffggffggfggffggggf#.#fgfggfggfgfgffgfgfffgggfggggfggfgfffgfffffggff.##.fggffff.b##",
-            "##B.fffgffffgfggf.##.gffgfgfgfffgffggfggffggffffgfffffgffgfgfffffgfffffffgggggffgg####gffggfg.b##",
+            "##B.fffgffffgfggf.##.gffgfgfgfffgfqggfggffggffffgfffffgffgfgfffffgfffffffgggggffgg####gffggfg.b##",
             "##B.ffgffgfggffgg####fgffggffffgffggggfgffgffffggffffffgfgffgggfgggfgggfgffffgffff##T#fgfggfg.b##",
             "##B.gffgffgggffgf##T#fggfgggfgggfgffggfgffgfffggfggfggggggfgggfgfj####jfgfggffgffg###.ffgfffg.b##",
             "##B.gffgfffffffgg###.gffgffggffggffgfgfggggfgfgggfffffgggfffffgff######ffggfffggff.#..ggggffg.b##",
@@ -145,6 +145,12 @@
             "j": {
                 "path": "./assets/image/map/squares/grass.png",
                 "col": 1
+            },
+            "Q": {
+                "path": "./assets/image/map/squares/dark_flower.png"
+            },
+            "q": {
+                "path": "./assets/image/map/squares/dark_flower.png"
             },
             ".": {
                 "col": 0

@@ -68,7 +68,8 @@ SRC_LAUNCH			:=	$(addprefix launch/,$(SRC_LAUNCH))
 # -------------- SRC_MAP -----------------------------------------------------
 SRC_SQUARE_UPDATES	:=	is_player_on_square.c					\
 						next_stage.c							\
-						knockback.c
+						knockback.c								\
+						activate_player_scale_with_height.c
 SRC_SQUARE_UPDATES	:=	$(addprefix square_updates/,$(SRC_SQUARE_UPDATES))
 
 SRC_MAP				:=	stage_map_to_collision_array.c			\
@@ -90,7 +91,8 @@ SRC_UPDATE			:=	update_player.c							\
 						update_roulade.c						\
 						update_hurt.c							\
 						update_movement.c						\
-						update_attack.c
+						update_attack.c							\
+						update_scale_with_height.c
 SRC_UPDATE			:=	$(addprefix update/,$(SRC_UPDATE))
 
 SRC_STAT_UPGRADE	:=	upgrade_stat.c							\
@@ -104,6 +106,7 @@ SRC_PLAYER			:=	set_stop.c								\
 						player_check_hurt.c						\
 						destroy_player.c						\
 						set_player_default_stats.c				\
+						init_player_scale_handling.c			\
 						$(SRC_EVENT)							\
 						$(SRC_UPDATE)							\
 						$(SRC_STAT_UPGRADE)
