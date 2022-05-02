@@ -16,8 +16,8 @@ void activate_down_scale(object_t *obj, scene_t *scene,
     player_t *player = NULL;
     dico_t *can_move_scale = NULL;
 
-    if (obj == NULL || win == NULL || win->components == NULL ||
-            scene == NULL || is_player_on_square(win,
+    if (obj == NULL || obj->type != SPRITE || win == NULL ||
+            win->components == NULL || scene == NULL || is_player_on_square(win,
             sfSprite_getGlobalBounds(obj->drawable.sprite)) == false) {
         return;
     }
