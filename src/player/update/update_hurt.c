@@ -23,6 +23,8 @@ const char data_directions[] = "dirrections player hurt";
 
 static int nb_intervals = 20;
 
+static const char hurt_c[] = "hurt";
+
 static void update_move_player(player_t *player, window_t *win, sfVector2f new)
 {
     ennemy_t enn = {0};
@@ -71,7 +73,7 @@ static void check_blink_time_end(float *since_start, float dtime, window_t *win,
         update_player_rollback(player, *since_start * (dtime * coef), win);
     } else if (*since_start >= blink_time->value.f) {
         *since_start = 0;
-        player->obj->components = dico_t_rem(player->obj->components, "hurt");
+        player->obj->components = dico_t_rem(player->obj->components, hurt_c);
         player->obj->components = dico_t_rem(player->obj->components,
             data_directions);
     }
