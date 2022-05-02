@@ -23,11 +23,15 @@ typedef struct ennemy_s {
     int rect_id;
 } ennemy_t;
 
+static const char SPAWNER_LIST[] = "spawner list";
+
 static const char ENNEMY_DATA[] = "ennemy_data";
 
 static const char ENNEMY_LIST[] = "ennemy_list";
 
-int create_ennemy(scene_t *scene, const char *path, sfVector2f pos);
+static const char ENNEMY_KEY[] = "ennemy";
+
+ennemy_t *create_ennemy(scene_t *scene, const char *path, sfVector2f pos);
 
 bool ennemy_check_hurt(ennemy_t *ennemy, scene_t *scene, window_t *win,
     float dtime);

@@ -5,13 +5,14 @@
 ** ennemy get new dir
 */
 
-#include "math.h"
+#include <SFML/Graphics/Sprite.h>
+#include <SFML/System/Vector2.h>
+#include <math.h>
+#include "maths.h"
 #include "my_macro.h"
 #include "my_rpg.h"
 #include "ennemies.h"
 #include "my_json.h"
-#include <SFML/Graphics/Sprite.h>
-#include <SFML/System/Vector2.h>
 
 static const double pi = 3.1415926535;
 

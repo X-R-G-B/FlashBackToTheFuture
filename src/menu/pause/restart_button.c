@@ -6,6 +6,7 @@
 */
 
 #include "my_rpg.h"
+#include "ennemies.h"
 #include "main_menu.h"
 
 static void restart_player_state(window_t *win)
@@ -31,6 +32,24 @@ static void restart_player_state(window_t *win)
     }
 }
 
+static void restart_spawner(scene_t *scene)
+{
+    list_t *elem = NULL;
+    list_ptr_t *spawner_list = dico_t_get_value(scene->components,
+        SPAWNER_LIST);
+    object_t *obj = NULL;
+
+    if (spawner_list == NULL) {
+        return;
+    }
+    elem = spawner_list->start;
+    for (int i = 0; i < spawner_list->len && elem->var != NULL; i++,
+        elem = elem->next) {
+        obj = elem->var;
+        obj->components = dico_t_rem(obj->components, ENNEMY_KEY);
+    }
+}
+
 void restart_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt)
 {
@@ -40,6 +59,7 @@ void restart_button_off(object_t *obj, scene_t *scene, window_t *win,
         pressed_button_off(obj, scene, win, evt);
         return;
     }
+    restart_spawner(scene);
     replace_objects(win, scene);
     restart_player_state(win);
     scene->pause = false;

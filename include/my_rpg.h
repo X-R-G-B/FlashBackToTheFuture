@@ -23,6 +23,15 @@
     #include "my_bgs.h"
     #include "my_json.h"
 
+static const char DATA_INV_JSON[] = "assets/data/player/inventory_data.json";
+static const char INV_SCENE[] = "INVENTORY";
+static const char INV_BUTTONS_COMP[] = "INVENTOR_BUTTONS";
+static const char KEY_OBJ[] = "MYTHICAL 86";
+static const char POTIONS[] =  "86 heal";
+static const char INFINITY_86[] = "86 infinity";
+static const char MAX_LIFE[] = "max_life";
+static const char POTIONS_TEXT[] = "potions text pos";
+
 static const char PLAYER_DATA_PATH[] = "./assets/data/player/data.json";
 static const char PLAYER_STATS_PATH[] = "./assets/data/player/stats.json";
 
@@ -90,6 +99,9 @@ void click_save(object_t *obj, scene_t *scene, window_t *win,
 
 bool check_collision(player_t *player, scene_t *scene);
 
+void update_spawner(object_t *obj, scene_t *scene, window_t *win,
+    float time);
+
 void roulade_event(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
 
@@ -115,6 +127,8 @@ bool check_up_collision(object_t *player, char **map, sfVector2i pos);
 void update_roulade(player_t *obj, scene_t *scene, window_t *win, float dtime);
 
 bool check_right_collision(object_t *player, char **map, sfVector2i pos);
+
+void square_set_components(object_t *square, dico_t *char_type);
 
 bool check_left_collision(object_t *player, char **map, sfVector2i pos);
 
@@ -245,9 +259,6 @@ void update_xp_bar(object_t *object, scene_t *scene,
 
 void level_up(scene_t *scene, window_t *win);
 
-void activate_scale_with_height(object_t *obj, scene_t *scene,
-    window_t *win, float time);
-
 int init_player_scale_handling(object_t *obj);
 
 int update_player_view(object_t *obj, window_t *win, float time);
@@ -264,5 +275,34 @@ void activate_down_scale(object_t *obj, scene_t *scene,
 
 void activate_dash(object_t *obj, scene_t *scene,
     window_t *win, __attribute__((unused)) float time);
+int create_inventory(window_t *win);
+
+void open_inventory(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+
+void close_inventory(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+
+void get_infinity_86(window_t *win);
+
+void get_potions(window_t *win);
+
+void toggle_key_obj(window_t *win);
+
+void heal(window_t *win);
+
+void use_heal_potion(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+
+int create_number_of_potions(scene_t *scene, window_t *win);
+
+void modif_potion_value(window_t *win, int nbr_potions);
+
+int check_if_pop_up_true(dico_t *dico, char *key);
+
+int change_xp_bar_stats(any_t *max_xp_data, any_t *actual_xp_data,
+    object_t *object, scene_t *scene);
+
+any_t *get_xp_data(player_t *player, const char data_name[]);
 
 #endif /* !RPG_H_ */

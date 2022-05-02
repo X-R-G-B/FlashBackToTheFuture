@@ -71,12 +71,14 @@ SRC_SQUARE_UPDATES	:=	is_player_on_square.c					\
 						knockback.c								\
 						activate_player_down_scale.c			\
 						activate_player_up_scale.c				\
-						activate_dash.c
+						activate_dash.c							\
+						spawner.c
 SRC_SQUARE_UPDATES	:=	$(addprefix square_updates/,$(SRC_SQUARE_UPDATES))
 
 SRC_MAP				:=	stage_map_to_collision_array.c			\
 						wordarray_free_cast.c					\
 						check_player_pos_in_map.c				\
+						square_set_components.c					\
 						check_collision.c						\
 						create_map.c							\
 						create_collision_map.c					\
@@ -104,6 +106,14 @@ SRC_STAT_UPGRADE	:=	upgrade_stat.c							\
 						gain_xp.c
 SRC_STAT_UPGRADE	:=	$(addprefix stat_upgrade/,$(SRC_STAT_UPGRADE))
 
+SRC_INVENTORY		:=	create_inventory.c						\
+						inventory_event.c						\
+						update_data_json_inv.c					\
+						toggle_key_obj.c						\
+						heal.c									\
+						create_nbr_potions_text.c
+SRC_INVENTORY		:=	$(addprefix inventory/, $(SRC_INVENTORY))
+
 SRC_PLAYER			:=	set_stop.c								\
 						create_player.c							\
 						player_check_hurt_during_attack.c		\
@@ -113,7 +123,8 @@ SRC_PLAYER			:=	set_stop.c								\
 						init_player_scale_handling.c			\
 						$(SRC_EVENT)							\
 						$(SRC_UPDATE)							\
-						$(SRC_STAT_UPGRADE)
+						$(SRC_STAT_UPGRADE)						\
+						$(SRC_INVENTORY)
 SRC_PLAYER			:=	$(addprefix player/,$(SRC_PLAYER))
 # ----------------------------------------------------------------------------
 # -------- SRC_HUD ----------------------------------------------------------
