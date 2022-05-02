@@ -19,7 +19,7 @@ static bool check_drop_chance(ennemy_t *ennemy)
     any_t *ennemy_data = NULL;
     any_t *drop_rate = NULL;
 
-    if (ennemy == NULL) {
+    if (ennemy == NULL || ennemy->obj == NULL) {
         return false;
     }
     ennemy_data = dico_t_get_value(ennemy->obj->components, ENNEMY_DATA);
