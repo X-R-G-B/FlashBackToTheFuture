@@ -141,8 +141,7 @@
                 "path": "./assets/image/map/squares/boss_stairs.png"
             },
             "S": {
-                "path": "./assets/image/map/squares/big_boss_stairs.png",
-                "rotation": 180.0
+                "path": "./assets/image/map/squares/big_boss_stairs.png"
             },
             "g": {
                 "path": "./assets/image/map/squares/boss_grass.png"
