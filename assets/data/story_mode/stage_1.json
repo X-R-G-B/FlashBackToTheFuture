@@ -27,12 +27,12 @@
             "##B.fGfgxGfGfgGGgGgGgffggffffGgGffGfGGfggGGfGGfggggfGffgGfGgGggfGGGGGgggGfGgfGGggffffGgxgfgGf.b##",
             "##B.fGgfxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxgGggg.b##",
             "##B.GggffGGGggfgfgfgggggffffGGffGgGGGfGfGfgGGGfGfGfffGffgfffGggGgGGffGfGffGggGffggGGGfGGffffg.b##",
-            "##B.fGfgfgfGGggggGGfggGggGgfgGGfgfQgffGgGggGfggGfgfGgffgGGgfggfgGgfggGfggfGfffgGgfgGgGGgGggfg.b##",
-            "##B.uuuuuuuuuuuuuuuuuuuuuuuuuuuuu#.#uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu.b##",
-            "##B.gggfggfffgfffffgfgffggggfgfgf#s#ggfggffgfggffffgggggffffgfffggggggffgfggggfggfggggfggffgg.b##",
-            "##B.ggggffgfffgffggffggfggffggggf#.#fgfggfggfgfgffgfgfffgggfggggfggfgfffgfffffggff.##.fggffff.b##",
-            "##B.fffgffffgfggf.##.gffgfgfgfffgfqggfggffggffffgfffffgffgfgfffffgfffffffgggggffgg####gffggfg.b##",
-            "##B.ffgffgfggffgg####fgffggffffgffggggfgffgffffggffffffgfgffgggfgggfgggfgffffgffff##T#fgfggfg.b##",
+            "##B.fGfgfgfGGggggGGfggGggGgfgGGfgQQQffGgGggGfggGfgfGgffgGGgfggfgGgfggGfggfGfffgGgfgGgGGgGggfg.b##",
+            "##B.uuuuuuuuuuuuuuuuuuuuuuuuuuuuu...uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu.b##",
+            "##B.gggfggfffgfffffgfgffggggfgfgxRsRxgfggffgfggffffgggggffffgfffggggggffgfggggfggfggggfggffgg.b##",
+            "##B.ggggffgfffgffggffggfggffggggx:::xgfggfggfgfgffgfgfffgggfggggfggfgfffgfffffggff.##.fggffff.b##",
+            "##B.fffgffffgfggf.##.gffgfgfgfffgqqqffggffggffffgfffffgffgfgfffffgfffffffgggggffgg####gffggfg.b##",
+            "##B.ffgffgfggffgg####fgffggffffgfgfgggfgffgffffggffffffgfgffgggfgggfgggfgffffgffff##T#fgfggfg.b##",
             "##B.gffgffgggffgf##T#fggfgggfgggfgffggfgffgfffggfggfggggggfgggfgfj####jfgfggffgffg###.ffgfffg.b##",
             "##B.gffgfffffffgg###.gffgffggffggffgfgfggggfgfgggfffffgggfffffgff######ffggfffggff.#..ggggffg.b##",
             "##B.gffggfggfgggf.#..fffggfffgfffggffgfggggggggfffffffgg.##.fgggf######gffgggfgffggfffgfffffg.b##",
@@ -147,10 +147,20 @@
                 "col": 1
             },
             "Q": {
-                "path": "./assets/image/map/squares/dark_flower.png"
+                "path": "./assets/image/map/squares/grass.png",
+                "col": 0
             },
             "q": {
-                "path": "./assets/image/map/squares/dark_flower.png"
+                "path": "./assets/image/map/squares/dark_flower.png",
+                "col": 0
+            },
+            ":": {
+                "path": "./assets/image/map/squares/void.png",
+                "col": 0
+            },
+            "R": {
+                "path": "./assets/image/map/squares/void.png",
+                "col": 0
             },
             ".": {
                 "col": 0

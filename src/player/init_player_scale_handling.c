@@ -29,6 +29,7 @@ static int init_player_up_scale(object_t *obj)
         free(can_up_scale);
         return RET_ERR_INPUT;
     }
+    return RET_OK;
 }
 
 static int init_player_down_scale(object_t *obj)
@@ -48,6 +49,7 @@ static int init_player_down_scale(object_t *obj)
         free(can_down_scale);
         return RET_ERR_INPUT;
     }
+    return RET_OK;
 }
 
 int init_player_scale_handling(object_t *obj)
@@ -56,6 +58,5 @@ int init_player_scale_handling(object_t *obj)
             init_player_down_scale(obj) != RET_OK) {
         return RET_ERR_INPUT;
     }
-    printf("ca init\n");
     return RET_OK;
 }

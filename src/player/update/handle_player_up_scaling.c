@@ -9,7 +9,7 @@
 #include "my_bgs.h"
 
 static const float scale_time_factor = 0.01;
-static const float max_scale = 1.5;
+static const float max_scale = 1.35;
 extern const char can_player_up_scale[];
 
 static void stop_scaling(object_t *obj)
@@ -46,20 +46,17 @@ static void update_up_scale(float time_elapsed, sfVector2f *current_scale)
     }
 }
 
-void set_up_scale(object_t *obj, window_t *win, float time)
+void set_up_scale(object_t *obj, float time)
 {
-    static bool view_can_move = false;
     static float time_elapsed = 0;
     sfVector2f current_scale = {0};
 
     time_elapsed += time;
     current_scale = sfSprite_getScale(obj->drawable.sprite);
-    printf("current scale = %f,%f\n", current_scale.x, current_scale.y);
     if (current_scale.x >= max_scale) {
         stop_scaling(obj);
-        return RET_OK;
+        return;
     }
-    printf("ok ca passe dans update\n");
-    update_scale(time_elapsed, &current_scale);
+    update_up_scale(time_elapsed, &current_scale);
     sfSprite_setScale(obj->drawable.sprite, current_scale);
 }

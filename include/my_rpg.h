@@ -252,6 +252,17 @@ int init_player_scale_handling(object_t *obj);
 
 int update_player_view(object_t *obj, window_t *win, float time);
 
-void set_up_scale(object_t *obj, window_t *win, float time);
+void set_up_scale(object_t *obj, float time);
+
+void set_down_scale(object_t *obj, float time);
+
+void activate_up_scale(object_t *obj, scene_t *scene,
+    window_t *win, float time);
+
+void activate_down_scale(object_t *obj, scene_t *scene,
+    window_t *win, float time);
+
+void activate_dash(object_t *obj, scene_t *scene,
+    window_t *win, __attribute__((unused)) float time);
 
 #endif /* !RPG_H_ */

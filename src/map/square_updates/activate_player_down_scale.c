@@ -10,8 +10,8 @@
 
 extern const char can_player_down_scale[];
 
-void activate_up_scale(object_t *obj, scene_t *scene,
-    window_t *win, float time)
+void activate_down_scale(object_t *obj, scene_t *scene,
+    window_t *win, __attribute__((unused)) float time)
 {
     player_t *player = NULL;
     bool *can_move_scale = NULL;
@@ -32,5 +32,4 @@ void activate_up_scale(object_t *obj, scene_t *scene,
         return;
     }
     *can_move_scale = true;
-    printf("ok ca passe\n");
 }

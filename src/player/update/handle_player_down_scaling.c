@@ -5,13 +5,6 @@
 ** handle_player_down_scale
 */
 
-/*
-** EPITECH PROJECT, 2022
-** FlashBackToTheFuture
-** File description:
-** handle_player_up_scaling
-*/
-
 #include "my_rpg.h"
 #include "my_bgs.h"
 
@@ -33,7 +26,7 @@ static void stop_scaling(object_t *obj)
     *can_move_scale = false;
 }
 
-static void update_up_scale(float time_elapsed, sfVector2f *current_scale)
+static void update_down_scale(float time_elapsed, sfVector2f *current_scale)
 {
     while (time_elapsed >= scale_time_factor) {
         if (current_scale->x < 0) {
@@ -53,20 +46,17 @@ static void update_up_scale(float time_elapsed, sfVector2f *current_scale)
     }
 }
 
-void set_down_scale(object_t *obj, window_t *win, float time)
+void set_down_scale(object_t *obj, float time)
 {
-    static bool view_can_move = false;
     static float time_elapsed = 0;
     sfVector2f current_scale = {0};
 
     time_elapsed += time;
     current_scale = sfSprite_getScale(obj->drawable.sprite);
-    printf("current scale = %f,%f\n", current_scale.x, current_scale.y);
     if (current_scale.x <= min_scale) {
         stop_scaling(obj);
-        return RET_OK;
+        return;
     }
-    printf("ok ca passe dans update\n");
     update_down_scale(time_elapsed, &current_scale);
     sfSprite_setScale(obj->drawable.sprite, current_scale);
 }

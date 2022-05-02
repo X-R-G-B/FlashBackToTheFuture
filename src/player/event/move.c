@@ -24,7 +24,6 @@ static int handle_changings_movements(player_t *player, int dir)
     } else if (player->dir != RIGHT && prev_dir == RIGHT) {
         scale.x = (scale.x < 0) ? scale.x * -1 : scale.x;
     }
-    printf("scale = %f, %f\n", scale.x, scale.y);
     sfSprite_setScale(player->obj->drawable.sprite, scale);
     return RET_OK;
 }

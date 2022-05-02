@@ -14,10 +14,11 @@
 #include "my_bgs_components.h"
 
 static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
-    knockback, next_stage, activate_scale_with_height
+    knockback, next_stage, activate_up_scale, activate_down_scale,
+    activate_dash, activate_dash, activate_dash
 };
 
-static const char square_type_update[] = "pzQ";
+static const char square_type_update[] = "pzQqR:s";
 
 static void get_square_update(char current_char,
     void (**update)(object_t *, scene_t *, window_t *, float))
