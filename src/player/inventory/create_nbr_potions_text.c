@@ -35,6 +35,7 @@ static int get_potions_nbr(window_t *win)
     }
     return potions->value.i;
 }
+
 static void set_text(object_t *obj)
 {
     sfText_setCharacterSize(obj->drawable.text, size_text);

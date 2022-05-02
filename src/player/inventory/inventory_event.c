@@ -21,7 +21,7 @@ static void set_potion_text(window_t *win)
     }
     text_potion = dico_t_get_value(win->components, SAVE);
     text_potion = get_from_any(text_potion, "d", POTIONS);
-    if (text_potion == NULL) {
+    if (text_potion == NULL || text_potion->type != INT) {
         return;
     }
     modif_potion_value(win, text_potion->value.i);
@@ -40,7 +40,7 @@ void use_heal_potion(__attribute__((unused)) object_t *obj,
     }
     save_data = dico_t_get_value(win->components, SAVE);
     potions = get_from_any(save_data, "d", POTIONS);
-    if (potions == NULL) {
+    if (potions == NULL || potions->type != INT) {
         return;
     }
     if (potions->value.i != 0) {
@@ -65,7 +65,6 @@ void open_inventory(__attribute__((unused)) object_t *obj,
     window_add_component(win, actual_scene, ACTUAL_SCENE, free);
     window_change_scene(win, INV_SCENE);
     toggle_key_obj(win);
-    get_potions(win);
     set_potion_text(win);
     sfRenderWindow_setView(win->win, sfRenderWindow_getDefaultView(win->win));
 }

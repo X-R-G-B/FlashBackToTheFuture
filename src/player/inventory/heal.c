@@ -11,10 +11,14 @@
 
 void modif_potion_value(window_t *win, int nbr_potions)
 {
-    scene_t *scene = dico_t_get_value(win->scenes, INV_SCENE);
+    scene_t *scene = NULL;
     object_t *obj = NULL;
     char *text = NULL;
 
+    if (win == NULL) {
+        return;
+    }
+    scene = dico_t_get_value(win->scenes, INV_SCENE);
     if (scene == NULL) {
         return;
     }
@@ -49,8 +53,7 @@ static float get_max_life(player_t *player)
     any_t *player_stats = NULL;
     any_t *max_life = NULL;
 
-    if (player == NULL || player->obj == NULL
-        || player->obj->components == NULL) {
+    if (player == NULL || player->obj->components == NULL) {
         return RET_ERR_INPUT;
     }
     player_stats = dico_t_get_any(player->obj->components, PLAYER_STATS);
