@@ -1,8 +1,8 @@
 {
-    "max_life": 121.0,
+    "max_life": 100.0,
     "level max": 10.0,
     "max_energy": 1000.0,
     "xp max": 100.0,
-    "actual xp": 20.0,
-    "actual lvl": 4.0
+    "actual xp": 0.0,
+    "actual lvl": 0.0
 }

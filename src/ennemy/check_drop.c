@@ -8,11 +8,11 @@
 #include <stdlib.h>
 #include "macro.h"
 #include "ennemies.h"
-#include "math.h"
+#include "maths_function.h"
 
 static const char drop_rate_key[] = "drop rate";
 
-static const char item_sprite_path[] = "./assets/image/hud/energy_bar.png";
+static const char item_sprite_path[] = "./assets/image/item/86.png";
 
 static bool check_drop_chance(ennemy_t *ennemy)
 {
@@ -33,7 +33,8 @@ static bool check_drop_chance(ennemy_t *ennemy)
     return false;
 }
 
-static void update_86(object_t *obj, scene_t *scene, window_t *win, float dtime)
+static void update_86(object_t *obj, scene_t *scene, window_t *win,
+    __attribute__((unused)) float dtime)
 {
     player_t *player = NULL;
     sfFloatRect player_rect = {0};

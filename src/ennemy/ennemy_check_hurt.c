@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "macro.h"
 #include "ennemies.h"
-#include "maths.h"
+#include "maths_function.h"
 
 static any_t *get_current_sword_pos(player_t *player)
 {
@@ -64,7 +64,7 @@ static void set_hurt(ennemy_t *ennemy, player_t *player, sfVector2f impact,
 static void ennemy_check_collision(ennemy_t *ennemy, window_t *win)
 {
     player_t *player = dico_t_get_value(win->components, PLAYER);
-    /*any_t *current_sword_pos = get_current_sword_pos(player);
+    any_t *current_sword_pos = get_current_sword_pos(player);
     sfVector2f fst_pos = {-1, -1};
     sfVector2f scd_pos = {-1, -1};
     sfFloatRect player_rect = {0};
@@ -81,8 +81,7 @@ static void ennemy_check_collision(ennemy_t *ennemy, window_t *win)
     } else if (rect_contains_segment(sfSprite_getGlobalBounds(
         ennemy->obj->drawable.sprite), fst_pos, scd_pos) == true) {
         set_hurt(ennemy, player, scd_pos, win);
-    }*/
-    set_hurt(ennemy, player, (sfVector2f) {500, 500}, win);
+    }
 }
 
 bool ennemy_check_hurt(ennemy_t *ennemy, scene_t *scene, window_t *win,
