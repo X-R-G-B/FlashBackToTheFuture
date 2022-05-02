@@ -21,9 +21,9 @@
             "##B.xxggxxxxxggxxgggxgxggxggggxgxxxgxggggxxgggggxgxxgxxxx.b##",
             "##B.ggxxxxgxgggggxgxxgxxggxxggxgxggxgggxxgggxxxxxgxgxggxg.b##",
             "##B.ggxgxgxgxxggggxxgggxxxggxggxggxgxgxxxxgxggxxggxxgxxxg.b##",
-            "##B.########gxgxxxggg####################################.b##",
+            "##B.########gQQQQQQQg####################################.b##",
             "##B.mmmmmmmm#.......#mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm.b##",
-            "##B.gxxxgxxx#.......#ggxxgxggxxggxgxgxxgxggggxxggxgxxgxgx.b##",
+            "##B.gxxxgxxx#:::::::#ggxxgxggxxggxgxgxxgxggggxxggxgxxgxgx.b##",
             "##B.xggggxxx#.......#xgxxxxggxxxxxxxxgxxxxgxgxxxgxxxgggxx.b##",
             "##B.ggxxxxxg#.......#ggxxgxxgxgxxgggxgxxxggxgggggxggxgxxg.b##",
             "##B.gxgxggxg#.......#ggggggxggxxggggggxgxgxxggxxggxxgxggx.b##",
@@ -31,9 +31,9 @@
             "##B.xgggxxxg#.......#ggxxggggxgxgxxxxxgxggxxxggggxgxggggx.b##",
             "##B.xxxxxggg#.......#xxgggxxgxgxxgxxgxgxxggggxggxgxxxgxxg.b##",
             "##B.gxggxggg#.......#gxgxgxgxxgggxxggggxgxggggxgxggxxggxg.b##",
-            "##B.gxgxgxgg#.......#xxgggxggggggggxggxxgggxxgxxggggggxgx.b##",
+            "##B.gxgxgxgg#:::::::#xxgggxggggggggxggxxgggxxgxxggggggxgx.b##",
             "##B.gggxxxgg#.......#xxgxgxxxxgxgggxxxxggxgxgxxxggxxgxgxx.b##",
-            "##B.xgxgxggxxggxxggggxxggxggxggxgggxgxgxggxgxxxxgxggxgxgg.b##",
+            "##B.xgxgxggxxqqqqqqqgxxggxggxggxgggxgxgxggxgxxxxgxggxgxgg.b##",
             "##B.gxggggxggxxxxxxgxxxxggxgggxgxggggxxxxgxgggggxgxgggggx.b##",
             "##B.gxgggxxxxgxxxxxxgxggggggxggggxxgxxxxxgggxxxggxxxgggxx.b##",
             "##B.gggxxxgxxxggggxggxgggxxxgxxxgxxgxxxgxxgggggxxxggggxgg.b##",
@@ -48,7 +48,7 @@
             "##B.gxggxgggggggxxgxggxgxgxxxgggxxxgxggxggxgggxgggggxxxgx.b##",
             "##B.ggxgxgggxxgxggxgxggxggggggxxxxgxggxgxxgxgggxgxgxxgxgg.b##",
             "##B.gxxgxxxxggxgggggggxxxgggxgxgxxgxgggxgggxggggxxgxxxxxx.b##",
-            "##B.#######################################xxgxggx#######.b##",
+            "##B.#######################################xqqqqqx#######.b##",
             "##B.mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm#.....#mmmmmmm.b##",
             "##B.xxxxxgxxxggxxgggggxxxxgxxgxgxxxxgggggxx#.....#xxxxxxg.b##",
             "##B.gggxxxgxggggxgggggxgggxxxgxggxgxxxxgggg#.....#gggggxx.b##",
@@ -60,7 +60,7 @@
             "##B.xggggxgxxxggggxxxgxgxxxxxxgggxgxxggxxgx#.....#gggxgxx.b##",
             "##B.xggxxggxgggggxgxxxgxgxgxxxgxgxxgxxggxxg#.....#gxgxgxg.b##",
             "##B.gxggxgggxxxggxxxxxggggggggggxxxxgggxgxg#.....#xgxxxgx.b##",
-            "##B.gxgxgggxxxgxggxxgggxxxggxgxgxgxxxxgxgxgxggxggggxgxggx.b##",
+            "##B.gxgxgggxxxgxggxxgggxxxggxgxgxgxxxxgxgxgxQQQQQxggxgggx.b##",
             "##B.gxgggxggggxxxxggxgggxxxxxxgxgxggxxxgxggggxxgxgxgxxgxx.b##",
             "##B.gxxgxxgxggggxggxxxxxggxggxgggggxgxxxxxxgxgxxgxxxxxgxg.b##",
             "##B.ggxggggxxxgxxxgxgxxxxxxxxggggggxxgxgggxxgggxgggxgxxgx.b##",
@@ -74,23 +74,23 @@
             "##B.xxgxgxggxggxxgxxxggxxxxxgxgggxxxggggxgxxgxxgxgggxgxgg.b##",
             "##B.xggxgggxxxgxxxxgggxgggxxxxggxxgggxxgxgggxgggxgggxgxgg.b##",
             "##B.gxgggxxggggxxxxgggxxgxgxgxggggxxggxxgggggxgggxxgxgxgx.b##",
-            "##B.################xgx##################################.b##",
+            "##B.################xQx##################################.b##",
             "##B.mmmmmmmmmmmmmmmm#.#mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm.b##",
-            "##B.xxxgxgxggxgxxxgg#.#gggxxggggxgggxxxxgxxxxxxxggxgxxggx.b##",
+            "##B.xxxgxgxggxgxxxgg#:#gggxxggggxgggxxxxgxxxxxxxggxgxxggx.b##",
             "##B.xggxxggggxgxxggg#.#xggxgxxxxgggxgxxggxxxxxxxgxxxggxxg.b##",
             "##B.ggxggxgxggggggxg#E#gggxggggxxgxgxgxxxgxggxgggxggxggxx.b##",
             "##B.ggxxxxxgxxxgggxg#.#gxxggxxxxgggxxxxxxxgggggxgggxxxgxx.b##",
-            "##B.xxxxxxxxxggggxxg#.#xxgxxgxxxgxxgxgxxgxggxxxxxgxggxxxx.b##",
+            "##B.xxxxxxxxxggggxxg#:#xxgxxgxxxgxxgxgxxgxggxxxxxgxggxxxx.b##",
             "##B.ggxxxxgxgggxgxgx#.#ggxxggggggxgxxxxxggxxxgggggggggggg.b##",
-            "##B.gQQgQgxQgQgxgQQggxgQgQgxxQQggQgQxgxxgQxQxQgQgxgQQgxgg.b##",
-            "##B.QggxQxQgQgggxxQQQQQxxgxQQxxQgQgQgxggxQgQgxxQgQQxQgQxQ.b##",
-            "##B.QxxQxgQQQgxQxgggQQQgQQxxxxxQgQQxgggxQgggxggxxxggxgQgx.b##",
-            "##B.QQQgQxggxxxQgQQQQQQgQxxgggQxxgQQgxggxgxQgxxgQxggQQgxg.b##",
-            "##B.QxQgQQQxQQgxQxggQQxQgggxQgQQgxgQxxxxgxxggQgQxxQgxQQgg.b##",
-            "##B.QQgQgQxgxxQQxxgxgxxQQgggQgQxQxQQQQgxgQgQgQgggxgQQxgQQ.b##",
-            "##B.xgxQxgQQggxQxxgxQxQQQgggxxxxgQxxQQQQxxgggxxxQggxgQxgx.b##",
-            "##B.xxggQQQxggQxxQQxgQQQxgxgxQxxgxQgxgxQQggQQgQQxQQQQggQx.b##",
-            "##B.gxxxxgQxQgggQxgQxxxQQxgggxxQxxggxxQxggQxxggQQQggxxggg.b##",
+            "##B.gOOgOgxOgOgxgOOggqgOgOgxxOOggOgOxgxxgOxOxOgOgxgOOgxgg.b##",
+            "##B.OggxOxOgOgggxxOOOOOxxgxOOxxOgOgOgxggxOgOgxxOgOOxOgOxO.b##",
+            "##B.OxxOxgOOOgxOxgggOOOgOOxxxxxOgOOxgggxOgggxggxxxggxgOgx.b##",
+            "##B.OOOgOxggxxxOgOOOOOOgOxxgggOxxgOOgxggxgxOgxxgOxggOOgxg.b##",
+            "##B.OxOgOOOxOOgxOxggOOxOgggxOgOOgxgOxxxxgxxggOgOxxOgxOOgg.b##",
+            "##B.OOgOgOxgxxOOxxgxgxxOOgggOgOxOxOOOOgxgOgOgOgggxgOOxgOO.b##",
+            "##B.xgxOxgOOggxOxxgxOxOOOgggxxxxgOxxOOOOxxgggxxxOggxgOxgx.b##",
+            "##B.xxggOOOxggOxxOOxgOOOxgxgxOxxgxOgxgxOOggOOgOOxOOOOggOx.b##",
+            "##B.gxxxxgOxOgggOxgOxxxOOxgggxxOxxggxxOxggOxxggOOOggxxggg.b##",
             "###.......................................................###",
             "####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####",
             "#v#########################################################V#"
@@ -141,7 +141,8 @@
                 "path": "./assets/image/map/squares/boss_stairs.png"
             },
             "S": {
-                "path": "./assets/image/map/squares/big_boss_stairs.png"
+                "path": "./assets/image/map/squares/big_boss_stairs.png",
+                "rotation": 180.0
             },
             "g": {
                 "path": "./assets/image/map/squares/boss_grass.png"
@@ -176,8 +177,20 @@
                 "path": "./assets/image/map/squares/begin_ladder.png",
                 "rotation": 90.0
             },
-            "Q": {
+            "O": {
                 "path": "./assets/image/map/squares/bones.png"
+            },
+            "Q": {
+                "path": "./assets/image/map/squares/broken_boss_grass.png",
+                "col": 0
+            },
+            "q": {
+                "path": "./assets/image/map/squares/boss_grass.png",
+                "col": 0
+            },
+            ":": {
+                "path": "./assets/image/map/squares/void.png",
+                "col": 0
             },
             ".": {
                 "col": 0
