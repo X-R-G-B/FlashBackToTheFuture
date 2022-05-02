@@ -59,6 +59,8 @@ void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
 
 int change_amongus_rect(any_t *dico, object_t *obj, window_t *win);
 
+void check_drop(ennemy_t *ennemy, scene_t *scene);
+
 int *get_rect(ennemy_t *ennemy, window_t *win, any_t *data, int rect_id);
 
 int get_rect_id(any_t *data, player_t *player);
