@@ -12,7 +12,7 @@ int randomise(int min, int max)
 {
     int number = 0;
 
-    srand(time(0));
+    time(0);
     number = (rand() % (max - min + 1)) + min;
     return (number);
 }

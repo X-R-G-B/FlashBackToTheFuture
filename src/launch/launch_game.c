@@ -30,6 +30,7 @@ int launch_game(void)
     window_t *win = create_window(mode, "My_Rpg", sfResize | sfClose |
         sfFullscreen);
 
+    srand(0);
     if (get_save(win) != RET_OK || init_audio_list(win) ||
         init_menu(win) != RET_OK ||
         window_change_scene(win, "MAIN MENU") != BGS_OK ||
