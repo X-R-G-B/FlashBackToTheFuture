@@ -29,7 +29,6 @@ static int init_ennemy(object_t *obj, char *ennemy_path, scene_t *scene)
 {
     ennemy_t *ennemy = create_ennemy(scene, ennemy_path,
         obj->bigdata.sprite_bigdata.pos);
-    printf("create ennemy %s\n", ennemy_path);
 
     if (ennemy == NULL) {
         return RET_ERR_MALLOC;
