@@ -25,8 +25,8 @@ bool check_wall(ennemy_t *ennemy, sfVector2f new, window_t *win)
         return (true);
     }
     scene = dico_t_get_value(win->scenes, win->current_scene);
-    x = ennemy->obj->bigdata.sprite_bigdata.pos.x - new.x / SQUARE_SIZE;
-    y = ennemy->obj->bigdata.sprite_bigdata.pos.y - new.y / SQUARE_SIZE;
+    x = (ennemy->obj->bigdata.sprite_bigdata.pos.x - new.x) / SQUARE_SIZE;
+    y = (ennemy->obj->bigdata.sprite_bigdata.pos.y - new.y) / SQUARE_SIZE;
     if (scene == NULL || y < 0 || x < 0) {
         return true;
     }
