@@ -20,14 +20,20 @@ static const float coef = 1000;
 
 const char data_directions[] = "dirrections player hurt";
 
+static int nb_intervals = 20;
+
 static void update_move_player(player_t *player, window_t *win, sfVector2f new)
 {
     ennemy_t enn = {0};
+    sfVector2f delta_x = {new.x / nb_intervals, new.y / nb_intervals};
 
     enn = (ennemy_t) {player->state, player->dir, 1, player->obj, 0, 1};
-    if (check_wall(&enn, new, win) == false) {
-        player->obj->bigdata.sprite_bigdata.pos.x += new.x;
-        player->obj->bigdata.sprite_bigdata.pos.y += new.x;
+    for (int i = 0; i < nb_intervals; i++) {
+        if (check_wall(&enn, new, win) == true) {
+            break;
+        }
+        player->obj->bigdata.sprite_bigdata.pos.x += delta_x.x;
+        player->obj->bigdata.sprite_bigdata.pos.y += delta_x.x;
         increment_hud_pos(win, get_distance(
             player->obj->bigdata.sprite_bigdata.pos,
             sfView_getCenter(player->view)));
