@@ -19,7 +19,7 @@
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.ddddddddddddddddddddddddd...ddddddddddddddddddddddddd.b##",
-            "##B.ddddddddddddddddddddddddd.p.ddddddddddddddddddddddddd.b##",
+            "##B.ddddddddddddddddddddddddd.p.ddddddddddddddPdddddddddd.b##",
             "##B.ddddddddddddddddddddddddd...ddddddddddddddddddddddddd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
@@ -98,6 +98,12 @@
                 "components": {
                     "ennemy path": "./assets/data/ennemy/amongus.json"
                 }
+            },
+            "P": {
+                    "path": "./assets/image/map/squares/flower.png",
+                    "components": {
+                        "ennemy path": "./assets/data/ennemy/pinguin_killer.json"
+                    }
             },
             "b": {
                 "path": "./assets/image/map/squares/fall.png",
