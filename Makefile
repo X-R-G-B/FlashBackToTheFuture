@@ -100,6 +100,14 @@ SRC_STAT_UPGRADE	:=	upgrade_stat.c							\
 						gain_xp.c
 SRC_STAT_UPGRADE	:=	$(addprefix stat_upgrade/,$(SRC_STAT_UPGRADE))
 
+SRC_INVENTORY		:=	create_inventory.c						\
+						inventory_event.c						\
+						update_data_json_inv.c					\
+						toggle_key_obj.c						\
+						heal.c									\
+						create_nbr_potions_text.c
+SRC_INVENTORY		:=	$(addprefix inventory/, $(SRC_INVENTORY))
+
 SRC_PLAYER			:=	set_stop.c								\
 						create_player.c							\
 						player_check_hurt_during_attack.c		\
@@ -108,7 +116,8 @@ SRC_PLAYER			:=	set_stop.c								\
 						set_player_default_stats.c				\
 						$(SRC_EVENT)							\
 						$(SRC_UPDATE)							\
-						$(SRC_STAT_UPGRADE)
+						$(SRC_STAT_UPGRADE)						\
+						$(SRC_INVENTORY)
 SRC_PLAYER			:=	$(addprefix player/,$(SRC_PLAYER))
 # ----------------------------------------------------------------------------
 # -------- SRC_HUD ----------------------------------------------------------

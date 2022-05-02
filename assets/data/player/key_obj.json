@@ -1,0 +1,19 @@
+{
+    "buttons": [
+        {
+            "text": "infinity 86/3",
+            "sprite path": "./assets/image/inventory/86_infinity.png",
+            "pos": [640.0, 920.0]
+        },
+        {
+            "text": "infinity 86/2",
+            "sprite path": "./assets/image/inventory/86_infinity.png",
+            "pos": [680.0, 810.0]
+        },
+        {
+            "text": "infinity 86/1",
+            "sprite path": "./assets/image/inventory/86_infinity.png",
+            "pos": [720.0, 700.0]
+        }
+    ]
+}
