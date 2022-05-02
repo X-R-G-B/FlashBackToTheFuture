@@ -7,7 +7,10 @@
 
 #include "ennemies.h"
 #include "my_bgs.h"
+#include "my_rpg.h"
+#include "my_wordarray.h"
 #include "my_json.h"
+#include "my_strings.h"
 
 static const char blink_time_key[] = "blink time";
 
@@ -22,13 +25,14 @@ bool check_wall(ennemy_t *ennemy, sfVector2f new, window_t *win)
         return (true);
     }
     scene = dico_t_get_value(win->scenes, win->current_scene);
-    x = ennemy->obj->bigdata.sprite_bigdata.pos.x - new.x;
-    y = ennemy->obj->bigdata.sprite_bigdata.pos.y - new.y;
-    if (scene == NULL) {
+    x = (ennemy->obj->bigdata.sprite_bigdata.pos.x - new.x) / SQUARE_SIZE;
+    y = (ennemy->obj->bigdata.sprite_bigdata.pos.y - new.y) / SQUARE_SIZE;
+    if (scene == NULL || y < 0 || x < 0) {
         return true;
     }
     map = dico_t_get_value(scene->components, COLLISION_ARRAY);
-    if (map == NULL || map[y / SQUARE_SIZE][x / SQUARE_SIZE] == '#') {
+    if (map == NULL || y >= my_wordarray_len(map) || x >= my_strlen(map[y]) ||
+            map[y][x] == '#') {
         return true;
     }
     return false;
