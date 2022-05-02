@@ -14,8 +14,8 @@
 #include "my_bgs_components.h"
 
 static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
-    knockback, next_stage, update_spawner, activate_up_scale, activate_down_scale,
-    activate_dash, activate_dash, activate_dash
+    knockback, next_stage, update_spawner, activate_up_scale,
+    activate_down_scale, activate_dash, activate_dash, activate_dash
 };
 
 static const char square_type_update[] = "pzSQqR:s";

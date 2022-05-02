@@ -22,7 +22,6 @@ static int init_player_up_scale(object_t *obj)
     }
     if (object_add_components(obj, (void *) can_up_scale,
             can_player_up_scale, NULL) != BGS_OK) {
-        printf("ok\n");
         return RET_ERR_INPUT;
     }
     data = dico_t_get_elem(obj->components, can_player_up_scale);
