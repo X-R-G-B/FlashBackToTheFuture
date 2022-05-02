@@ -12,6 +12,14 @@
 
 const char ACTUAL_SCENE[] = "actual scene";
 
+static void free_dup(void *to_free)
+{
+    if (to_free == NULL) {
+        return;
+    }
+    free(to_free);
+}
+
 static void set_potion_text(window_t *win)
 {
     any_t *text_potion = NULL;
@@ -62,7 +70,7 @@ void open_inventory(__attribute__((unused)) object_t *obj,
     if (actual_scene == NULL) {
         return;
     }
-    window_add_component(win, actual_scene, ACTUAL_SCENE, free);
+    window_add_component(win, actual_scene, ACTUAL_SCENE, free_dup);
     window_change_scene(win, INV_SCENE);
     toggle_key_obj(win);
     set_potion_text(win);
