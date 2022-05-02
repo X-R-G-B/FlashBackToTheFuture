@@ -5,9 +5,16 @@
 ** player check hurt
 */
 
+#include <SFML/System/Vector2.h>
+#include <stdlib.h>
 #include "ennemies.h"
+#include "my_bgs.h"
+#include "math.h"
+#include "maths.h"
 
 static const char DAMMAGE_KEY[] = "dammage";
+
+extern const char data_directions[];
 
 static bool check_ennemy_col(ennemy_t *ennemy, sfFloatRect player_rect)
 {
@@ -41,6 +48,7 @@ static void set_hurt(player_t *player, ennemy_t *ennemy)
     bool hurt = true;
     any_t *ennemy_data = dico_t_get_value(ennemy->obj->components, ENNEMY_DATA);
     any_t *dammage = NULL;
+    sfVector2f *dirrections = NULL;
 
     set_stop(player);
     player->obj->components = dico_t_add_data(player->obj->components, "hurt",
@@ -50,6 +58,13 @@ static void set_hurt(player_t *player, ennemy_t *ennemy)
         return;
     }
     player->life -= dammage->value.f;
+    dirrections = malloc(sizeof(sfVector2f));
+    if (dirrections == NULL) {
+        return;
+    }
+    fill_get_distance(player->obj->bigdata.sprite_bigdata.pos,
+        ennemy->obj->bigdata.sprite_bigdata.pos, dirrections);
+    object_add_components(player->obj, dirrections, data_directions, &free);
 }
 
 void player_check_hurt(player_t *player, scene_t *scene)

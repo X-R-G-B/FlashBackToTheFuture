@@ -185,6 +185,7 @@ SRC_PATH			:=	$(addprefix pathfind/,$(SRC_PATH))
 # ----------------------------------------------------------------------------
 # -------- SRC_MATH ----------------------------------------------------------
 SRC_MATH			:=	check_circle_col.c						\
+						get_distance.c							\
 						rect_contains_segment.c					\
 						get_rand_number.c						\
 						gore_effect.c
