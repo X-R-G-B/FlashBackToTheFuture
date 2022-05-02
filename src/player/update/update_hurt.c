@@ -48,9 +48,6 @@ static void update_player_rollback(player_t *player, float since_start,
     sfVector2f *dirrection = NULL;
     sfVector2f new = {0};
 
-    if (player == NULL || player->obj == NULL) {
-        return;
-    }
     dirrection = dico_t_get_value(player->obj->components, data_directions);
     if (dirrection == NULL) {
         return;
