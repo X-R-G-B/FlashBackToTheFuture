@@ -68,7 +68,7 @@ static ennemy_t *add_new_ennemy_struct(scene_t *scene, object_t *obj,
     return (obj->components == NULL) ? NULL : ennemy;
 }
 
-static int ennemy_set_sprite(object_t *ennemy, any_t *ennemy_data,
+static ennemy_t *ennemy_set_sprite(object_t *ennemy, any_t *ennemy_data,
     scene_t *scene, sfVector2f pos)
 {
     any_t *sprite = dico_t_get_any(ennemy_data->value.dict, "sprite path");
@@ -76,39 +76,39 @@ static int ennemy_set_sprite(object_t *ennemy, any_t *ennemy_data,
 
     if (sprite == NULL || sprite->type != STR) {
         list_add_to_end(scene->to_remove, ennemy);
-        return RET_ERR_INPUT;
+        return NULL;
     }
     if (object_set_sprite(ennemy, sprite->value.str,
         (sfIntRect) {-1, -1, -1, -1}, pos) != BGS_OK ||
         sprite_set_change(ennemy, ennemy_data) != RET_OK) {
         list_add_to_end(scene->to_remove, ennemy);
-        return RET_ERR_MALLOC;
+        return NULL;
     }
     ennemy_struct = add_new_ennemy_struct(scene, ennemy, ennemy_data);
     if (ennemy_struct == NULL || ennemy_set_stop(ennemy_struct) != RET_OK) {
-        return RET_ERR_MALLOC;
+        return NULL;
     }
     ennemy_struct->obj->bigdata.sprite_bigdata.pos = pos;
-    return RET_OK;
+    return ennemy_struct;
 }
 
-int create_ennemy(scene_t *scene, const char *path, sfVector2f pos)
+ennemy_t *create_ennemy(scene_t *scene, const char *path, sfVector2f pos)
 {
     object_t *ennemy = NULL;
     any_t *ennemy_data = NULL;
 
     if (scene == NULL || path == NULL) {
-        return RET_ERR_INPUT;
+        return NULL;
     }
     ennemy = create_object(update_ennemy, NULL, scene, LAYER_ENNEMY);
     ennemy_data = parse_json_file(path);
     if (ennemy == NULL || ennemy_data == NULL) {
-        return RET_ERR_MALLOC;
+        return NULL;
     }
     ennemy->components = dico_t_add_data(ennemy->components, ENNEMY_DATA,
         ennemy_data, destroy_any);
     if (ennemy->components == NULL) {
-        return RET_ERR_MALLOC;
+        return NULL;
     }
     return ennemy_set_sprite(ennemy, ennemy_data, scene, pos);
 }

@@ -27,10 +27,11 @@ static void (*update_state[])(ennemy_t *ennemy, scene_t *scene, window_t *win,
         update_ennemy_dying
 };
 
-static void update_ennemy_dying(ennemy_t *ennemy, scene_t *scene,
+static void update_ennemy_dying(ennemy_t *ennemy,
+    __attribute__((unused)) scene_t *scene,
     __attribute__((unused)) window_t *win, __attribute__((unused)) float time)
 {
-    destroy_ennemy(ennemy, scene);
+    ennemy->obj->is_visible = false;
 }
 
 static void update_ennemy_stop(ennemy_t *ennemy,

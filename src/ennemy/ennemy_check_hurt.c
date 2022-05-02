@@ -7,8 +7,8 @@
 
 #include <stdlib.h>
 #include "macro.h"
-#include "meteo.h"
 #include "ennemies.h"
+#include "maths.h"
 
 static any_t *get_current_sword_pos(player_t *player)
 {

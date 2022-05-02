@@ -8,9 +8,9 @@
             "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dffffffffffzzzzfffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dffffffffffzzzzfffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd.p.dffffffffffzzzzfffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dffffffffffSffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
@@ -86,6 +86,12 @@
             "c": {
                 "path": "./assets/image/map/squares/corner.png",
                 "col": 1
+            },
+            "S": {
+                "path": "./assets/image/map/squares/flower.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/amongus.json"
+                }
             },
             "b": {
                 "path": "./assets/image/map/squares/fall.png",
