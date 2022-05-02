@@ -63,8 +63,7 @@ static void check_blink_time_end(float *since_start, float dtime, window_t *win,
     any_t *data = dico_t_get_value(player->obj->components, PLAYER_DATA);
     any_t *blink_time = get_from_any(data, "d", "blink time");
 
-    if (blink_time == NULL || blink_time->type != FLOAT || player == NULL ||
-            player->obj == NULL) {
+    if (blink_time == NULL || blink_time->type != FLOAT) {
         return;
     }
     *since_start += dtime;
