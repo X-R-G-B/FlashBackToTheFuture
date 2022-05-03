@@ -11,7 +11,7 @@ static const char sandbox_world_path[] =
     "./assets/data/story_mode/sandbox.json";
 
 void sandbox_button_off(object_t *obj, scene_t *scene, window_t *win,
-    set_event_t *evt)
+    __attribute__((unused)) set_event_t *evt)
 {
     if (obj == NULL) {
         return;
