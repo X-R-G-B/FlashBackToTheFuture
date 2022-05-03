@@ -26,7 +26,6 @@ void callback_npc(__attribute__((unused)) object_t *npc,
     if (path == NULL) {
         return;
     }
-    printf("path = %s\n", path);
     add_text_dialog_json(scene, path);
     countor++;
 }
