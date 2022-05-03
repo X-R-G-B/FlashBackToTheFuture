@@ -9,7 +9,7 @@
 #include "my_bgs.h"
 
 static const float scale_time_factor = 0.01;
-static const float max_scale = 1.35;
+static const float max_scale = 1.2;
 extern const char can_player_up_scale[];
 
 static void stop_scaling(object_t *obj)
