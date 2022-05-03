@@ -48,6 +48,8 @@ static const char PLAYER_DATA[] = "data";
 
 static const char roulade_key[] = "roulade";
 
+static const char hurt_key[] = "hurt";
+
 static const char SAVE_PATH[] =
     "./assets/data/story_mode/save.json";
 static const char SAVE[] = "story_mode_data";

@@ -50,7 +50,7 @@ static void set_hurt(player_t *player, ennemy_t *ennemy)
     sfVector2f *dirrections = NULL;
 
     set_stop(player);
-    player->obj->components = dico_t_add_data(player->obj->components, "hurt",
+    player->obj->components = dico_t_add_data(player->obj->components, hurt_key,
         ((void *) hurt), NULL);
     dammage = get_from_any(ennemy_data, "d", DAMMAGE_KEY);
     if (dammage == NULL || dammage->type != FLOAT) {
