@@ -164,7 +164,8 @@ char **create_new_map(char **map);
 
 char **stage_map_to_collision_array(scene_t *scene);
 
-int launch_stage(window_t *win, char *stage_path, int stage_id, scene_t *scene);
+int launch_stage(window_t *win, const char *stage_path, int stage_id,
+    scene_t *scene);
 
 void attack_event(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *set_event);

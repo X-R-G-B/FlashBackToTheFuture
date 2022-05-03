@@ -146,6 +146,7 @@ SRC_HUD				:=	$(addprefix hud/,$(SRC_HUD))
 SRC_MAIN			:=	event_menu.c							\
 						init_menu.c								\
 						init_music.c							\
+						sandbox_button.c						\
 						pop_up_management.c 					\
 						on_click_event.c						\
 						exit.c									\

@@ -84,7 +84,7 @@ void settings_pop_up(__attribute__((unused)) object_t *obj, scene_t *scene,
         win->click = NULL;
         set_is_visible_false(dico_t_get_value(scene->components, PLAY));
     }
-    obj = get_element_i_var(buttons, 2);
+    obj = get_element_i_var(buttons, 3);
     toggle_pop_up(win->components, SETTINGS_MENU);
     obj->bigdata.sprite_bigdata.rect.left = 17;
 }
