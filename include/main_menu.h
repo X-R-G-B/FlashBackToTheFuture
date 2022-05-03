@@ -30,9 +30,8 @@ int init_menu(window_t *);
 
 void close_window(object_t *, scene_t *, window_t *, set_event_t *);
 
-void set_sandbox_overlay(__attribute__((unused)) object_t *obj,
-    scene_t *scene, __attribute__((unused)) window_t *win,
-    __attribute__((unused)) set_event_t *event);
+void set_sandbox_overlay(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *event);
 
 void free_pop_up(void *list);
 
