@@ -5,8 +5,8 @@
 ** get the vector between two point
 */
 
-#include <SFML/System/Vector2.h>
 #include <stdlib.h>
+#include <SFML/System/Vector2.h>
 
 sfVector2f get_vector_dir(sfVector2f point_a, sfVector2f point_b, float coef)
 {
