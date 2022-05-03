@@ -71,7 +71,6 @@ static int init_new_scene_objects(window_t *win, scene_t *scene)
         init_hud_elements(win, scene) != RET_OK ||
         add_collision_array_in_scene(scene) != RET_OK ||
         init_dialog(scene) != RET_OK ||
-        add_npc(scene, json_magician, &callback_magician) != RET_OK ||
         init_stat_upgrade_pop_up(scene,
         dico_t_get_value(win->components, HUD_ELEMENTS), win) != RET_OK ||
         create_inventory(win) != RET_OK) {
