@@ -24,7 +24,7 @@ RESET		=	'\033[0m'
 # SRC
 
 CFLAGS				=	-Iinclude/ -Ilib/include/ -Wall -Wextra	\
-						-Wpedantic -Wno-pointer-to-int-cast	\
+						-Wpedantic -Wno-pointer-to-int-cast		\
 						-Wno-int-to-pointer-cast
 # -------- SRC_METEO ---------------------------------------------------------
 SRC_METEO			:=	add_leaf.c								\
@@ -205,9 +205,11 @@ SRC_NPC_NPC			:=	magician.c
 SRC_NPC_NPC			:=	$(addprefix npc/,$(SRC_NPC_NPC))
 
 SRC_NPC				:=	add_text_dialog.c						\
+						add_text_dialog_json.c					\
 						aplly_rect_npc.c						\
 						create_npc.c							\
 						init_dialog.c							\
+						pretyprint.c							\
 						$(SRC_NPC_EVENT)						\
 						$(SRC_NPC_UPDATE)						\
 						$(SRC_NPC_NPC)
