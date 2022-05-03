@@ -90,7 +90,7 @@
             "L": {
                 "path": "./assets/image/map/squares/flower.png",
                 "components": {
-                    "ennemy path": "./assets/data/ennemy/warrior.json"
+                    "ennemy path": "./assets/data/ennemy/ninho.json"
                 }
             },
             "S": {
