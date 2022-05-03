@@ -19,7 +19,7 @@
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.ddddddddddddddddddddddddd...ddddddddddddddddddddddddd.b##",
-            "##B.ddddddddddddddddddddddddd.p.ddddddddddddddPdddddddddd.b##",
+            "##B.dddddddddddDddddddddddddd.p.ddddddddddddddPdddddddddd.b##",
             "##B.ddddddddddddddddddddddddd...ddddddddddddddddddddddddd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
@@ -86,6 +86,12 @@
             "c": {
                 "path": "./assets/image/map/squares/corner.png",
                 "col": 1
+            },
+            "D": {
+                "path": "./assets/image/map/squares/flower.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/dark_ennemy.json"
+                }
             },
             "L": {
                 "path": "./assets/image/map/squares/flower.png",
