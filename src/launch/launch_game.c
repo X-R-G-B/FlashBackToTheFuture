@@ -18,7 +18,7 @@ static int get_save(window_t *win)
         return RET_ERR_MALLOC;
     }
     save = parse_json_file(SAVE_PATH);
-    if (save == NULL) {
+    if (save == NULL || save->type != DICT) {
         return RET_ERR_INPUT;
     }
     win->components = dico_t_add_data(win->components, SAVE, save, destroy_any);
