@@ -10,6 +10,11 @@
 #include "ennemies.h"
 #include "maths_function.h"
 
+static const char attack_key[] = "attack";
+static const char sword_key[] = "sword";
+static const char dammage_key[] = "dammage";
+static const char dammage_hitbox_key[] = "dammage hitbox";
+
 static any_t *get_current_sword_pos(player_t *player)
 {
     any_t *data = NULL;
@@ -21,8 +26,8 @@ static any_t *get_current_sword_pos(player_t *player)
     if (data == NULL) {
         return NULL;
     }
-    return get_from_any(data, "dddaa", "attack", "sword",
-        "damage hitbox", player->dir, get_rect_id(data, player));
+    return get_from_any(data, "dddaa", attack_key, sword_key,
+        dammage_hitbox_key, player->dir, get_rect_id(data, player));
 }
 
 static sfVector2f get_pos(any_t *current_sword_pos, int id,
@@ -51,13 +56,16 @@ static void set_hurt(ennemy_t *ennemy, player_t *player, sfVector2f impact,
     any_t *data = dico_t_get_value(player->obj->components, PLAYER_DATA);
     any_t *dammage = NULL;
 
-    dammage = get_from_any(data, "ddd", "attack", "sword", "dammage");
+    dammage = get_from_any(data, "ddd", attack_key, sword_key, dammage_key);
     add_gore_sword(win, impact);
     if (dammage == NULL || dammage->type != FLOAT) {
         return;
     }
+    if (ennemy->state == ATTACKING) {
+        ennemy->state = STOP;
+    }
     ennemy->life -= dammage->value.f;
-    ennemy->obj->components = dico_t_add_data(ennemy->obj->components, "hurt",
+    ennemy->obj->components = dico_t_add_data(ennemy->obj->components, hurt_key,
         (void *) hurt, NULL);
 }
 
@@ -94,7 +102,7 @@ bool ennemy_check_hurt(ennemy_t *ennemy, scene_t *scene, window_t *win,
         return false;
     }
     player = dico_t_get_value(win->components, PLAYER);
-    hurt = (bool) dico_t_get_value(ennemy->obj->components, "hurt");
+    hurt = (bool) dico_t_get_value(ennemy->obj->components, hurt_key);
     if (hurt == true) {
         ennemy_update_hurt(ennemy, dtime, win, scene);
     } else if (player != NULL && player->state == ATTACKING) {
