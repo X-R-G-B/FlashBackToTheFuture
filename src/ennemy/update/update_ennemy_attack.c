@@ -5,29 +5,44 @@
 ** update ennemy attack
 */
 
+#include <SFML/System/Vector2.h>
 #include "my_bgs.h"
+#include "my_dico.h"
 #include "my_json.h"
 #include "ennemies.h"
 #include "my_rpg.h"
-#include <SFML/System/Vector2.h>
 
 static const char dash_time_key[] = "dash time";
 static const char charge_time_key[] = "charge time";
+extern const char components_direction[];
 
 int get_data(any_t **rect_speed, any_t **move_speed, any_t *data,
     any_t **rect_list);
 
-static void update_move(ennemy_t *ennemy, float speed, float coef,
-    window_t *win)
+static sfVector2f get_vector_use(ennemy_t *ennemy, float speed)
 {
+    sfVector2f *dir = dico_t_get_value(ennemy->obj->components,
+        components_direction);
     sfVector2f news[4] = {
         {0, 0 - speed},
         {0 - speed, 0},
         {0, speed},
         {speed, 0}};
+
+    if (dir == NULL) {
+        return (news[ennemy->dir]);
+    }
+    news[0].x = dir->x * speed;
+    news[0].y = dir->y * speed;
+    return (news[0]);
+}
+
+static void update_move(ennemy_t *ennemy, float speed, float coef,
+    window_t *win)
+{
     sfVector2f vect = {0};
 
-    vect = news[ennemy->dir];
+    vect = get_vector_use(ennemy, speed);
     vect.y *= coef * 2;
     vect.x *= coef * 2;
     if (check_wall(ennemy, (sfVector2f) {vect.x * -1, vect.y * -1},

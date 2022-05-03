@@ -197,6 +197,7 @@ SRC_MATH			:=	check_circle_col.c						\
 						get_distance.c							\
 						rect_contains_segment.c					\
 						get_rand_number.c						\
+						get_vector_dir.c						\
 						gore_effect.c
 SRC_MATH			:=	$(addprefix math/,$(SRC_MATH))
 # ----------------------------------------------------------------------------
