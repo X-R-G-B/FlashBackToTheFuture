@@ -6,12 +6,12 @@
             "###.......................................................###",
             "##B.gxxxxxgxggggggxgggxgggggxxgxxggxggxxgxxgxggxgxxgxgxgg.b##",
             "##B.xggxxxgxgxgxxxxggxxxxxgxxgxxggxgxxxxgggxgxxgxxg######.b##",
-            "##B.xxggxxxggxggggg.........gggxggggxxgxgxxxgxgxggx######.b##",
-            "##B.gxgggxxxgxxxxgg.........wwwwwwwwwwwwwwwwwwwwwww###H##.b##",
-            "##B.ggxxgxggxxxxggx......################################.b##",
+            "##B.xxggxxxggxggggg.........xxgxxgxgxggxggggxgxxggg######.b##",
+            "##B.gxgggxxxgxxxxgg.........rrrrrrrrrrrrrrrrrrrrrrr###H##.b##",
+            "##B.ggxxgxggxxxxggx......###wwwwwwwwwwwwwwwwwwwwwww######.b##",
             "##B.xgggxxggxxxgxgx...#P..............................n#..b##",
             "##B.xgxxgxxgggxggxg...#.Lllllllllllllllllllllllllllll.n##.b##",
-            "##B.gxgxggxxgggxgxg...###################################.b##",
+            "##B.gxgxggxxgggxgxg....##################################.b##",
             "##B.xxggggxxxxxxxgx.........mmmmmmmmmmmmmmmmmmmmmmmmmmmmm.b##",
             "##B.gxxxgxxxgxgxxgxgxxxxxxxxggxxxxgxgxgggxggxxxxgxgxxxxgx.b##",
             "##B.ggxxxgxxxxggxxxgggxxgxggxggxxxxgxgxxxgggxggggxggxggxg.b##",
@@ -48,8 +48,8 @@
             "##B.gxggxgggggggxxgxggxgxgxxxgggxxxgxggxggxgggxgggggxxxgx.b##",
             "##B.ggxgxgggxxgxggxgxggxggggggxxxxgxggxgxxgxgggxgxgxxgxgg.b##",
             "##B.gxxgxxxxggxgggggggxxxgggxgxgxxgxgggxgggxggggxxgxxxxxx.b##",
-            "##B.#######################################xqqqqqx#######.b##",
-            "##B.mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm#.....#mmmmmmm.b##",
+            "##B.rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrxxgxggxrrrrrrr.b##",
+            "##B.wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#.....#wwwwwww.b##",
             "##B.xxxxxgxxxggxxgggggxxxxgxxgxgxxxxgggggxx#.....#xxxxxxg.b##",
             "##B.gggxxxgxggggxgggggxgggxxxgxggxgxxxxgggg#.....#gggggxx.b##",
             "##B.xgggggxxgxxxgxgxgggxgxxggxxxggxgxggxggg#.....#xxxgxxg.b##",
@@ -158,9 +158,13 @@
                 "col": 1
             },
             "w": {
-                "path": "./assets/image/map/squares/barrier.png",
-                "rotation": 180.0,
+                "path": "./assets/image/map/squares/mono_barrier.png",
                 "col": 1
+            },
+            "r": {
+                "path": "./assets/image/map/squares/boss_grass_shadow.png",
+                "rotation": 180.0,
+                "col": 0
             },
             "P": {
                 "path": "./assets/image/map/squares/plateau.png"

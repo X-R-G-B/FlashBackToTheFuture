@@ -73,7 +73,8 @@ SRC_SQUARE_UPDATES	:=	is_player_on_square.c					\
 						activate_player_down_scale.c			\
 						activate_player_up_scale.c				\
 						activate_dash.c							\
-						spawner.c
+						spawner.c								\
+						npc_spawner.c
 SRC_SQUARE_UPDATES	:=	$(addprefix square_updates/,$(SRC_SQUARE_UPDATES))
 
 SRC_MAP				:=	stage_map_to_collision_array.c			\
@@ -208,7 +209,7 @@ SRC_NPC_UPDATE		:=	update_dialog_text.c					\
 						update_npc.c
 SRC_NPC_UPDATE		:=	$(addprefix update/,$(SRC_NPC_UPDATE))
 
-SRC_NPC_NPC			:=	magician.c
+SRC_NPC_NPC			:=	callback_npc.c
 SRC_NPC_NPC			:=	$(addprefix npc/,$(SRC_NPC_NPC))
 
 SRC_NPC				:=	add_text_dialog.c						\
