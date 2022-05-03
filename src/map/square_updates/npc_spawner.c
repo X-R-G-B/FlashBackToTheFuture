@@ -16,7 +16,7 @@ void init_npc_spawner(object_t *obj, scene_t *scene, window_t *win,
 {
     char *npc_path = NULL;
 
-    if (obj ==  NULL || obj->components == NULL ||
+    if (obj == NULL || obj->components == NULL ||
             scene == NULL || win == NULL) {
         return;
     }
