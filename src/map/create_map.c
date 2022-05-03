@@ -12,13 +12,15 @@
 #include "my_json.h"
 #include "macro.h"
 #include "my_bgs_components.h"
+#include "npc.h"
 
 static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
     knockback, next_stage, update_spawner, update_spawner, update_spawner,
-    update_spawner
+    update_spawner, activate_up_scale, activate_down_scale, activate_dash,
+    activate_dash, activate_dash, init_npc_spawner
 };
 
-static const char square_type_update[] = "pzSLPD";
+static const char square_type_update[] = "pzSLPDQqR:s*";
 
 static void get_square_update(char current_char,
     void (**update)(object_t *, scene_t *, window_t *, float))

@@ -27,7 +27,7 @@
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffff*fffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
@@ -110,6 +110,12 @@
                     "components": {
                         "ennemy path": "./assets/data/ennemy/pinguin_killer.json"
                     }
+            },
+            "*": {
+                "path": "./assets/image/map/squares/flower.png",
+                "components": {
+                    "npc path": "./assets/data/npc/magician.json"
+                }
             },
             "b": {
                 "path": "./assets/image/map/squares/fall.png",
