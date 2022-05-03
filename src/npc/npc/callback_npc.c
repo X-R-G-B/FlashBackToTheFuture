@@ -16,16 +16,12 @@ void callback_npc(__attribute__((unused)) object_t *npc,
     scene_t *scene,
     __attribute__((unused)) window_t *win)
 {
-    static int countor = 0;
     char *path = NULL;
 
-    if (countor != 0) {
-        return;
-    }
     path = (char *) dico_t_get_value(npc->components, npc_path_key);
     if (path == NULL) {
         return;
     }
     add_text_dialog_json(scene, path);
-    countor++;
+    npc->components = dico_t_rem(npc->components, npc_path_key);
 }

@@ -11,7 +11,7 @@
 #include "main_menu.h"
 
 static const char *TO_REMOVE[] = {PLAYER, PAUSE_MENU, DEAD_MESSAGE,
-    DEAD_SCREEN, HUD_ELEMENTS};
+    DEAD_SCREEN, HUD_ELEMENTS, INV_SCENE};
 
 static void check_type(dico_t *dico, list_t *elem, list_t **button_elem)
 {
