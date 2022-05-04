@@ -1,0 +1,10 @@
+{
+    "sprite path": "./assets/image/npc/stage_0/grandpa.png",
+    "rect": [[0, 0, 42, 60]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 1.3,
+    "dialogus": [
+        "TG"
+    ]
+}

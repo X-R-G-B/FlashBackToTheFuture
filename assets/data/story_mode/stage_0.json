@@ -25,12 +25,12 @@
             "##B.###.###.###.###.###.###.###.ddddfffffffffffdddd######ddddfffffffffffdddd###.###.###.###.###.###.###..b##",
             "##B..#...#...#...#...#...#...#..ddddfffffffffffdddd###M##ddddfffffffffffdddd.#...#...#...#...#...#...#...b##",
             "##B..##..##..##..##..##..##..##.ddddfffffffffffdydd######dyddfffffffffffdddd.##..##..##..##..##..##..##..b##",
-            "##B.############################ddddfffffffffffdddd......ddddfffffffffffdddd############################.b##",
+            "##B.############################ddddfffffffffffdddd....$.ddddfffffffffffdddd############################.b##",
             "##B.##T###T###T###T###T###T###T#dddddddddddddddddddddddddddddddddddddddddddd##T###T###T###T###T###T###T#.b##",
             "##B.###.###.###.###.###.###.###.dddddddddddddddddddd....ddddddddd######ddddd###.###.###.###.###.###.###..b##",
             "##B..#...#...#...#...#...#...#..ddd######ddddddddddd..i.ddddffddd######ddddd.#...#...#...#...#...#...#...b##",
             "##B..##..##..##..##..##..##..##.ddd######dddyddddddd....ddddffddd##m###ddddd.##..##..##..##..##..##..##..b##",
-            "##B.############################ddd######ddddddddddd....ddddf*ddd######ddddd############################.b##",
+            "##B.############################ddd######ddddddddddd....ddddffddd######ddddd############################.b##",
             "##B.##T###T###T###T###T###T###T#ddd##F###ddddddddddd....ddddffddd######ddddd##T###T###T###T###T###T###T#.b##",
             "##B.###.###.###.###.###.###.###.ddd######dddyddddddd..i.ddddffddd......ddddd###.###.###.###.###.###.###..b##",
             "##B..#...#...#...#...#...#...#..ddd######ddddddddddd....ddddffdddddddddddddd.#...#...#...#...#...#...#...b##",
@@ -137,6 +137,12 @@
                     "ennemy path": "./assets/data/ennemy/amongus.json"
                 }
             },
+            "$": {
+                "path": "./assets/image/map/squares/void.png",
+                "components": {
+                    "npc path": "./assets/data/npc/stage_0/grandpa.json"
+                }
+            },
             "*": {
                 "path": "./assets/image/map/squares/flower.png",
                 "components": {
@@ -237,5 +243,5 @@
             }
         }
     },
-    "spawn": [54, 24]
+    "spawn": [53, 24]
 }
