@@ -63,7 +63,7 @@ SRC_LAUNCH			:=	launch_game.c							\
 						replace_objects_in_next_stage.c			\
 						launch_next_stage.c						\
 						scene_loading_basic.c					\
-						temp_file_temp_pause_button.c
+						init_pause_button.c
 SRC_LAUNCH			:=	$(addprefix launch/,$(SRC_LAUNCH))
 # ----------------------------------------------------------------------------
 # -------------- SRC_MAP -----------------------------------------------------
@@ -146,6 +146,7 @@ SRC_HUD				:=	$(addprefix hud/,$(SRC_HUD))
 SRC_MAIN			:=	event_menu.c							\
 						init_menu.c								\
 						init_music.c							\
+						sandbox_button.c						\
 						pop_up_management.c 					\
 						on_click_event.c						\
 						exit.c									\
@@ -196,6 +197,7 @@ SRC_MATH			:=	check_circle_col.c						\
 						get_distance.c							\
 						rect_contains_segment.c					\
 						get_rand_number.c						\
+						get_vector_dir.c						\
 						gore_effect.c
 SRC_MATH			:=	$(addprefix math/,$(SRC_MATH))
 # ----------------------------------------------------------------------------
@@ -223,9 +225,17 @@ SRC_NPC				:=	add_text_dialog.c						\
 						$(SRC_NPC_NPC)
 SRC_NPC				:=	$(addprefix npc/,$(SRC_NPC))
 # ----------------------------------------------------------------------------
+# ------ POP_TEXT_GENERATOR --------------------------------------------------
+SRC_POP_TEXT_GENERATOR	:=	create_pop_text.c		\
+							create_stat_pop_text.c	\
+							update_text.c
+SRC_POP_TEXT_GENERATOR	:=	\
+					$(addprefix pop_text_generator/,$(SRC_POP_TEXT_GENERATOR))
+# ----------------------------------------------------------------------------
 # ------ SRC -----------------------------------------------------------------
 SRC					:=	main.c									\
 						$(SRC_LAUNCH)							\
+						$(SRC_POP_TEXT_GENERATOR)				\
 						$(SRC_PATH)								\
 						$(SRC_MAP)								\
         				$(SRC_MENU)								\

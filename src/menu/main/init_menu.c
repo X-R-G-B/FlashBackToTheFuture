@@ -32,7 +32,7 @@ static void set_button_rectangle(list_ptr_t *buttons)
         return;
     }
     obj->bigdata.sprite_bigdata.rect = (sfIntRect) {273, 9, 231, 76};
-    obj = get_element_i_var(buttons, 2);
+    obj = get_element_i_var(buttons, 3);
     if (obj == NULL) {
         return;
     }
@@ -42,6 +42,10 @@ static void set_button_rectangle(list_ptr_t *buttons)
         return;
     }
     obj->bigdata.sprite_bigdata.rect = (sfIntRect) {13, 5, 217, 75};
+    obj = get_element_i_var(buttons, 2);
+    if (obj != NULL) {
+        obj->bigdata.sprite_bigdata.rect = (sfIntRect) {0, 0, 425, 59};
+    }
 }
 
 static int init_main_menu_buttons(scene_t *scene, window_t *win)

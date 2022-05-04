@@ -29,4 +29,9 @@ sfVector2f get_distance(sfVector2f point_a, sfVector2f point_b);
 
 int fill_get_distance(sfVector2f point_a, sfVector2f point_b, sfVector2f *fill);
 
+sfVector2f get_vector_dir(sfVector2f point_a, sfVector2f point_b, float coef);
+
+sfVector2f *get_vector_dir_malloc(sfVector2f point_a, sfVector2f point_b,
+    float coef);
+
 #endif

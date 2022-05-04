@@ -21,7 +21,7 @@ bool is_nb(char c)
 
 static void add_to_counter(int *ch_nb, char const *str, int i, bool is_in_str)
 {
-    if (is_nb(str[i]) == true && (is_nb(str[i - 1]) == false &&
+    if (is_nb(str[i]) == true && i > 0 && (is_nb(str[i - 1]) == false &&
         str[i - 1] != '.') && is_in_str == false) {
         *ch_nb = *ch_nb + 1;
     }
@@ -51,8 +51,8 @@ static void check_char(char const *str, int i[], bool is_in_str, char *new)
 {
     static int fill_new = 0;
 
-    if (is_nb(str[i[0]]) == true && (is_nb(str[i[0] - 1]) == false &&
-        str[i[0] - 1] != '.') && is_in_str == false) {
+    if (is_nb(str[i[0]]) == true && i[0] > 0 && (is_nb(str[i[0] - 1])
+        == false && str[i[0] - 1] != '.') && is_in_str == false) {
         fill_new += 1;
         new[i[1]] = 21;
         i[1] = i[1] + 1;
