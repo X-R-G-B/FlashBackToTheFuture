@@ -10,9 +10,16 @@
 #include "ennemies.h"
 #include "maths_function.h"
 
+static const char is_boss_key[] = "is boss";
+
 static const char drop_rate_key[] = "drop rate";
 
-static const char item_sprite_path[] = "./assets/image/item/86.png";
+static const float infinity_86_scale_value = 0.2;
+
+static const char heal_sprite_path[] = "./assets/image/item/86.png";
+
+static const char infinity_sprite_path[] =
+    "./assets/image/inventory/86_infinity.png";
 
 static bool check_drop_chance(ennemy_t *ennemy)
 {
@@ -51,16 +58,55 @@ static void update_86(object_t *obj, scene_t *scene, window_t *win,
     obj_rect = sfSprite_getGlobalBounds(obj->drawable.sprite);
     if (sfFloatRect_intersects(&player_rect, &obj_rect, NULL) == sfTrue) {
         list_add_to_end(scene->to_remove, obj);
-        get_potions(win);
+        if (dico_t_get_value(obj->components, is_boss_key) != NULL) {
+            get_infinity_86(win);
+        } else {
+            get_potions(win);
+        }
     }
+}
+
+static void create_infinity_86(scene_t *scene, ennemy_t *ennemy, any_t *is_boss)
+{
+    object_t *obj = NULL;
+
+    obj = create_object(update_86, NULL, scene, LAYER_ENNEMY);
+    if (object_set_sprite(obj, infinity_sprite_path,
+            (sfIntRect) {-1, -1, -1, -1},
+            ennemy->obj->bigdata.sprite_bigdata.pos) == BGS_OK) {
+        obj->components = dico_t_add_data(obj->components, is_boss_key, is_boss,
+            NULL);
+        sfSprite_setScale(obj->drawable.sprite,
+            (sfVector2f) {infinity_86_scale_value, infinity_86_scale_value});
+    }
+}
+
+static bool check_infinity_86_drop(ennemy_t *ennemy, scene_t *scene)
+{
+    any_t *ennemy_data = NULL;
+    any_t *is_boss = NULL;
+
+    if (ennemy == NULL || ennemy->obj == NULL) {
+        return true;
+    }
+    ennemy_data = dico_t_get_any(ennemy->obj->components, ENNEMY_DATA);
+    is_boss = get_from_any(ennemy_data, "d", is_boss_key);
+    if (is_boss == NULL) {
+        return false;
+    }
+    create_infinity_86(scene, ennemy, is_boss);
+    return true;
 }
 
 void check_drop(ennemy_t *ennemy, scene_t *scene)
 {
+    if (check_infinity_86_drop(ennemy, scene) == true) {
+        return;
+    }
     if (check_drop_chance(ennemy) == false) {
         return;
     }
     object_set_sprite(create_object(update_86, NULL, scene, LAYER_ENNEMY),
-        item_sprite_path, (sfIntRect) {-1, -1, -1, -1},
+        heal_sprite_path, (sfIntRect) {-1, -1, -1, -1},
         ennemy->obj->bigdata.sprite_bigdata.pos);
 }
