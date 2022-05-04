@@ -112,6 +112,15 @@ int move_object_between_scene(window_t *win, scene_t *fst_scene,
 
 void increment_hud_pos(window_t *win, sfVector2f to_add);
 
+int create_stat_pop_text_from_window(window_t *win, int stat, const char *path,
+    sfVector2f pos);
+
+int create_stat_pop_text(scene_t *scene, int stat, const char *path,
+    sfVector2f pos);
+
+int create_pop_text(scene_t *scene, const char *path, sfVector2f pos,
+    char *text);
+
 void replace_objects(window_t *win, scene_t *scene);
 
 void hud_apply_right_pos(object_t *obj, object_t *player);
@@ -152,6 +161,9 @@ int init_pause_button(window_t *win, list_ptr_t *pause_menu,
     scene_t *scene, list_ptr_t *hud_elements);
 
 char *get_stage_name(int stage_id);
+
+void update_text(object_t *obj, scene_t *scene, window_t *win,
+    float dtime);
 
 int launch_game(void);
 

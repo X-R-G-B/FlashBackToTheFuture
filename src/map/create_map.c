@@ -15,12 +15,12 @@
 #include "npc.h"
 
 static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
-    knockback, next_stage, update_spawner, activate_up_scale,
+    knockback, update_spawner, activate_up_scale,
     activate_down_scale, activate_dash, activate_dash, activate_dash,
     init_npc_spawner
 };
 
-static const char square_type_update[] = "pzSQqR:s*";
+static const char square_type_update[] = "pSQqR:s*";
 
 static void get_square_update(char current_char,
     void (**update)(object_t *, scene_t *, window_t *, float))
