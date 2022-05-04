@@ -83,7 +83,6 @@ static void update_when_ennemy_die(ennemy_t *ennemy, window_t *win,
 void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win,
     scene_t *scene)
 {
-    static float time = 0;
     float blink_time = get_blink_time(ennemy);
     any_t *json = NULL;
     float speed = 10;
@@ -93,11 +92,12 @@ void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win,
     }
     json = dico_t_get_value(ennemy->obj->components, ENNEMY_DATA);
     json = get_from_any(json, "d", "speed");
-    time += dtime;
+    ennemy->hurt_delta_time += dtime;
     speed = (json == NULL || json->type != FLOAT) ? speed : json->value.f;
-    move_ennemy(ennemy, (dtime * speed / (time * speed)) * 20, win);
-    if (time >= blink_time) {
-        time = 0;
+    move_ennemy(ennemy,
+        (dtime * speed / (ennemy->hurt_delta_time * speed)) * 20, win);
+    if (ennemy->hurt_delta_time >= blink_time) {
+        ennemy->hurt_delta_time = 0;
         update_when_ennemy_die(ennemy, win, scene);
     }
 }

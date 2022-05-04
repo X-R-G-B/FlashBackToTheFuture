@@ -61,14 +61,13 @@ static bool set_new_dir(ennemy_t *ennemy, scene_t *scene, window_t *win)
     return (true);
 }
 
-static void cross_time(float *dtime, any_t *rect_speed, int *rect_id,
-    any_t *rect_list)
+static void cross_time(any_t *rect_speed, ennemy_t *ennemy, any_t *rect_list)
 {
-    for (; *dtime >= rect_speed->value.f;
-        *dtime -= rect_speed->value.f) {
-        *rect_id += 1;
-        if (*rect_id >= rect_list->value.array->len) {
-            *rect_id = 0;
+    for (; ennemy->move_delta_time >= rect_speed->value.f;
+        ennemy->move_delta_time -= rect_speed->value.f) {
+        ennemy->rect_id += 1;
+        if (ennemy->rect_id >= rect_list->value.array->len) {
+            ennemy->rect_id = 0;
         }
     }
 }
@@ -76,8 +75,6 @@ static void cross_time(float *dtime, any_t *rect_speed, int *rect_id,
 void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
     float time)
 {
-    static int rect_id = 0;
-    static float dtime = 0;
     any_t *rect_speed = NULL;
     any_t *move_speed = NULL;
     any_t *rect_list = NULL;
@@ -88,12 +85,12 @@ void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
         set_new_dir(ennemy, scene, win) == false) {
         return;
     }
-    dtime += time;
-    cross_time(&dtime, rect_speed, &rect_id, rect_list);
+    ennemy->move_delta_time += time;
+    cross_time(rect_speed, ennemy, rect_list);
     set_new_data(ennemy, time * move_speed->value.f,
-        get_rect(ennemy, win, data, rect_id));
+        get_rect(ennemy, win, data));
     if (is_player_in_range(ennemy, win) == false) {
-        rect_id = 0;
+        ennemy->rect_id = 0;
         ennemy_set_stop(ennemy);
     }
 }
