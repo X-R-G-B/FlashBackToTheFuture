@@ -21,6 +21,7 @@
     "rect actualisation": 0.09,
     "speed": 150.0,
     "range": 800.0,
+    "is boss": 1,
     "life": 15.0,
     "dammage": 10.0,
     "blink time": 0.7,
