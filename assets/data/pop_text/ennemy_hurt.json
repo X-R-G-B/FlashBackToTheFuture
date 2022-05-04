@@ -1,9 +1,9 @@
 {
     "color": [226, 28, 28, 255],
     "font": "./assets/fonts/Menlo-Regular.ttf",
-    "char size": 50,
-    "char size add": 1,
-    "time": 5.0,
+    "char size": 30,
+    "char size add": -2,
+    "time": 2.0,
     "actualisation time": 0.1,
-    "move": 5
+    "move": 5.0
 }

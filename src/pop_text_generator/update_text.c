@@ -46,6 +46,7 @@ static void check_move(any_t *text_data, float *time, object_t *obj)
     while (*time >= actualisation_time->value.f) {
         *time -= actualisation_time->value.f;
         obj->bigdata.text_bigdata.pos.y -= move->value.f;
+        obj->bigdata.text_bigdata.pos.x -= char_size_add->value.i;
         sfText_setCharacterSize(obj->drawable.text,
             char_size + char_size_add->value.i);
     }

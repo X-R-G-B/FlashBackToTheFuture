@@ -43,6 +43,14 @@ static void object_check_change(object_t *obj, any_t *text_data)
     }
 }
 
+static void set_origin(object_t *obj)
+{
+    sfFloatRect rect = sfText_getGlobalBounds(obj->drawable.text);
+
+    sfText_setOrigin(obj->drawable.text, (sfVector2f) {rect.width / 2,
+        rect.height / 2});
+}
+
 static object_t *create_text(scene_t *scene, any_t *text_data, sfVector2f pos,
     char *text)
 {
@@ -63,6 +71,7 @@ static object_t *create_text(scene_t *scene, any_t *text_data, sfVector2f pos,
         return NULL;
     }
     object_check_change(obj, text_data);
+    set_origin(obj);
     return obj;
 }
 
