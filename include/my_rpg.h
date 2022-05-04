@@ -148,6 +148,9 @@ int add_collision_array_in_scene(scene_t *scene);
 
 void wordarray_free_ptr(void *data);
 
+int init_pause_button(window_t *win, list_ptr_t *pause_menu,
+    scene_t *scene, list_ptr_t *hud_elements);
+
 char *get_stage_name(int stage_id);
 
 int launch_game(void);
