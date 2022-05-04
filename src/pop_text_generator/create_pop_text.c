@@ -81,5 +81,6 @@ int create_pop_text(scene_t *scene, const char *path, sfVector2f pos,
     any_t *text_data = get_text_data(scene, path, text);
     object_t *text_obj = create_text(scene, text_data, pos, text);
 
+    printf("%p\n", text_obj);
     return (text_obj == NULL) ? RET_ERR_INPUT : RET_OK;
 }
