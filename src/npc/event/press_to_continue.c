@@ -16,6 +16,7 @@
 #include "npc.h"
 
 static const sfKeyCode key_next = sfKeyA;
+extern const char bool_check_key[];
 
 void event_next_dialog_off(__attribute__((unused)) object_t *obj,
     scene_t *scene, window_t *win,
@@ -29,6 +30,7 @@ void event_next_dialog_off(__attribute__((unused)) object_t *obj,
     dialog = dico_t_get_value(scene->components, compo_dialog);
     if (dialog == NULL || dialog->dialogues == NULL ||
             dialog->dialogues->len <= 0 || dialog->dialogues->start == NULL) {
+        obj->components = dico_t_rem(obj->components, bool_check_key);
         return;
     }
     if (destroy_text_dialog(dialog->dialogues->start->var, scene, win,
