@@ -15,13 +15,9 @@ const char bool_check_key[] = "bool check";
 
 void reaload_dialogs(const char *str, scene_t *scene, window_t *win, void *data)
 {
-    object_t *object = NULL;
+    object_t *object = data;
 
     if (str == NULL || scene == NULL || win == NULL || data == NULL) {
-        return;
-    }
-    object = data;
-    if (object->components == NULL) {
         return;
     }
     object->components = dico_t_rem(object->components, bool_check_key);
