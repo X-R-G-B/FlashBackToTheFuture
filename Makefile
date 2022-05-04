@@ -217,7 +217,8 @@ SRC_NPC				:=	$(addprefix npc/,$(SRC_NPC))
 SRC_POP_TEXT_GENERATOR	:=	create_pop_text.c		\
 							create_stat_pop_text.c	\
 							update_text.c
-SRC_POP_TEXT_GENERATOR	:=	$(addprefix pop_text_generator/,$(SRC_POP_TEXT_GENERATOR))
+SRC_POP_TEXT_GENERATOR	:=	\
+					$(addprefix pop_text_generator/,$(SRC_POP_TEXT_GENERATOR))
 # ----------------------------------------------------------------------------
 # ------ SRC -----------------------------------------------------------------
 SRC					:=	main.c									\
