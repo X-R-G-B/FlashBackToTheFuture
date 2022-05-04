@@ -37,7 +37,8 @@ SRC_METEO			:=	$(addprefix meteo/,$(SRC_METEO))
 # ----------------------------------------------------------------------------
 # --------- SRC_ENNEMY -------------------------------------------------------
 
-SRC_ENNEMY_UPDATE	:=	ennemy_check_is_dashing.c				\
+SRC_ENNEMY_UPDATE	:=	check_wall.c							\
+						ennemy_check_is_dashing.c				\
 						ennemy_update.c							\
 						hurt.c									\
 						update_ennemy_attack.c					\
