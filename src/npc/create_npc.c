@@ -79,6 +79,8 @@ static object_t *create_object_npc(sfIntRect rect, sfVector2f pos, any_t *json,
         sfSprite_setScale(npc->drawable.sprite, (sfVector2f) {path->value.f,
             path->value.f});
     }
+    sfSprite_setTextureRect(npc->drawable.sprite,
+        npc->bigdata.sprite_bigdata.rect);
     return (npc);
 }
 
