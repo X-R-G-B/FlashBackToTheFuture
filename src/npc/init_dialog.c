@@ -18,7 +18,7 @@ static const char path_dialog_img[] = "./assets/image/npc/dialog_box.png";
 static const sfIntRect rect_dialog = {-1, -1, -1, -1};
 const sfVector2f pos_dialog = {0, 470};
 
-static const char path_font_dialog[] = "./assets/fonts/Menlo-Regular.ttf";
+const char path_font[] = "./assets/fonts/Menlo-Regular.ttf";
 const sfVector2f pos_text = {0, 470};
 
 const char compo_dialog[] = "componente dialog";
@@ -71,7 +71,7 @@ static object_t *create_dialog_obj(scene_t *scene)
     }
     dialog->is_visible = false;
     text = create_object(update_text_dialog, NULL, scene, LAYER_BUTTON);
-    if (object_set_text(text, path_font_dialog, "", pos_text) != BGS_OK) {
+    if (object_set_text(text, path_font, "", pos_text) != BGS_OK) {
         return (NULL);
     }
     text->is_visible = false;

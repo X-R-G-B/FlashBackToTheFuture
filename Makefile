@@ -213,9 +213,16 @@ SRC_NPC				:=	add_text_dialog.c						\
 						$(SRC_NPC_NPC)
 SRC_NPC				:=	$(addprefix npc/,$(SRC_NPC))
 # ----------------------------------------------------------------------------
+# ------ POP_TEXT_GENERATOR --------------------------------------------------
+SRC_POP_TEXT_GENERATOR	:=	create_pop_text.c		\
+							create_stat_pop_text.c	\
+							update_text.c
+SRC_POP_TEXT_GENERATOR	:=	$(addprefix pop_text_generator/,$(SRC_POP_TEXT_GENERATOR))
+# ----------------------------------------------------------------------------
 # ------ SRC -----------------------------------------------------------------
 SRC					:=	main.c									\
 						$(SRC_LAUNCH)							\
+						$(SRC_POP_TEXT_GENERATOR)				\
 						$(SRC_PATH)								\
 						$(SRC_MAP)								\
         				$(SRC_MENU)								\

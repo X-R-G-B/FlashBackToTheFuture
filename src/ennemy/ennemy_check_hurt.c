@@ -10,6 +10,8 @@
 #include "ennemies.h"
 #include "maths_function.h"
 
+static const char pop_text_file[] = "./assets/data/pop_text/ennemy_hurt.json";
+
 static any_t *get_current_sword_pos(player_t *player)
 {
     any_t *data = NULL;
@@ -56,6 +58,8 @@ static void set_hurt(ennemy_t *ennemy, player_t *player, sfVector2f impact,
     if (dammage == NULL || dammage->type != FLOAT) {
         return;
     }
+    create_stat_pop_text_from_window(win, (int) (dammage->value.f * -1),
+        pop_text_file, impact);
     ennemy->life -= dammage->value.f;
     ennemy->obj->components = dico_t_add_data(ennemy->obj->components, "hurt",
         (void *) hurt, NULL);
