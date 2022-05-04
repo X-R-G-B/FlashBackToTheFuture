@@ -48,6 +48,8 @@ static const char PLAYER_DATA[] = "data";
 
 static const char roulade_key[] = "roulade";
 
+static const char hurt_key[] = "hurt";
+
 static const char SAVE_PATH[] =
     "./assets/data/story_mode/save.json";
 static const char SAVE[] = "story_mode_data";
@@ -174,7 +176,8 @@ char **create_new_map(char **map);
 
 char **stage_map_to_collision_array(scene_t *scene);
 
-int launch_stage(window_t *win, char *stage_path, int stage_id, scene_t *scene);
+int launch_stage(window_t *win, const char *stage_path, int stage_id,
+    scene_t *scene);
 
 void attack_event(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *set_event);
@@ -271,6 +274,22 @@ void update_xp_bar(object_t *object, scene_t *scene,
 
 void level_up(scene_t *scene, window_t *win);
 
+int init_player_scale_handling(object_t *obj);
+
+int update_player_view(object_t *obj, window_t *win, float time);
+
+void set_up_scale(object_t *obj, float time);
+
+void set_down_scale(object_t *obj, float time);
+
+void activate_up_scale(object_t *obj, scene_t *scene,
+    window_t *win, float time);
+
+void activate_down_scale(object_t *obj, scene_t *scene,
+    window_t *win, float time);
+
+void activate_dash(object_t *obj, scene_t *scene,
+    window_t *win, __attribute__((unused)) float time);
 int create_inventory(window_t *win);
 
 void open_inventory(object_t *obj, scene_t *scene,

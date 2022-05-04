@@ -137,6 +137,12 @@
                     "ennemy path": "./assets/data/ennemy/amongus.json"
                 }
             },
+            "*": {
+                "path": "./assets/image/map/squares/flower.png",
+                "components": {
+                    "npc path": "./assets/data/npc/magician.json"
+                }
+            },
             "b": {
                 "path": "./assets/image/map/squares/fall.png",
                 "rotation": 90.0,

@@ -24,7 +24,7 @@ RESET		=	'\033[0m'
 # SRC
 
 CFLAGS				=	-Iinclude/ -Ilib/include/ -Wall -Wextra	\
-						-Wpedantic -Wno-pointer-to-int-cast	\
+						-Wpedantic -Wno-pointer-to-int-cast		\
 						-Wno-int-to-pointer-cast
 # -------- SRC_METEO ---------------------------------------------------------
 SRC_METEO			:=	add_leaf.c								\
@@ -69,8 +69,12 @@ SRC_LAUNCH			:=	$(addprefix launch/,$(SRC_LAUNCH))
 # -------------- SRC_MAP -----------------------------------------------------
 SRC_SQUARE_UPDATES	:=	is_player_on_square.c					\
 						next_stage.c							\
+						knockback.c								\
+						activate_player_down_scale.c			\
+						activate_player_up_scale.c				\
+						activate_dash.c							\
 						spawner.c								\
-						knockback.c
+						npc_spawner.c
 SRC_SQUARE_UPDATES	:=	$(addprefix square_updates/,$(SRC_SQUARE_UPDATES))
 
 SRC_MAP				:=	stage_map_to_collision_array.c			\
@@ -93,7 +97,10 @@ SRC_UPDATE			:=	update_player.c							\
 						update_roulade.c						\
 						update_hurt.c							\
 						update_movement.c						\
-						update_attack.c
+						update_attack.c							\
+						update_scale_with_height.c				\
+						handle_player_down_scaling.c			\
+						handle_player_up_scaling.c
 SRC_UPDATE			:=	$(addprefix update/,$(SRC_UPDATE))
 
 SRC_STAT_UPGRADE	:=	upgrade_stat.c							\
@@ -115,6 +122,7 @@ SRC_PLAYER			:=	set_stop.c								\
 						player_check_hurt.c						\
 						destroy_player.c						\
 						set_player_default_stats.c				\
+						init_player_scale_handling.c			\
 						$(SRC_EVENT)							\
 						$(SRC_UPDATE)							\
 						$(SRC_STAT_UPGRADE)						\
@@ -138,6 +146,7 @@ SRC_HUD				:=	$(addprefix hud/,$(SRC_HUD))
 SRC_MAIN			:=	event_menu.c							\
 						init_menu.c								\
 						init_music.c							\
+						sandbox_button.c						\
 						pop_up_management.c 					\
 						on_click_event.c						\
 						exit.c									\
@@ -188,6 +197,7 @@ SRC_MATH			:=	check_circle_col.c						\
 						get_distance.c							\
 						rect_contains_segment.c					\
 						get_rand_number.c						\
+						get_vector_dir.c						\
 						gore_effect.c
 SRC_MATH			:=	$(addprefix math/,$(SRC_MATH))
 # ----------------------------------------------------------------------------
@@ -201,13 +211,15 @@ SRC_NPC_UPDATE		:=	update_dialog_text.c					\
 						update_npc.c
 SRC_NPC_UPDATE		:=	$(addprefix update/,$(SRC_NPC_UPDATE))
 
-SRC_NPC_NPC			:=	magician.c
+SRC_NPC_NPC			:=	callback_npc.c
 SRC_NPC_NPC			:=	$(addprefix npc/,$(SRC_NPC_NPC))
 
 SRC_NPC				:=	add_text_dialog.c						\
+						add_text_dialog_json.c					\
 						aplly_rect_npc.c						\
 						create_npc.c							\
 						init_dialog.c							\
+						pretyprint.c							\
 						$(SRC_NPC_EVENT)						\
 						$(SRC_NPC_UPDATE)						\
 						$(SRC_NPC_NPC)

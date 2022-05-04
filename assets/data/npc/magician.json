@@ -7,10 +7,10 @@
     "time": 0.0,
     "scale": 3.0,
     "dialogus": [
-        "(appui sur 'a' pour passer au dialogue suivant)",
+        "(appui sur 'a' pour passer\nau dialogue suivant)",
         "Bonjour jeune apprenti",
-        "Pour te déplacer, utilises 'z','q','s','d'",
+        "Pour te déplacer,\nutilises 'z','q','s','d'",
         "pour attacker, appui sur 'l'",
-        "fais attention aux ennémies,\nsi ils sont trop proche, ils sauteront sur toi!"
+        "fais attention aux ennémies,\nsi ils sont trop proche,\nils sauteront sur toi!"
     ]
 }

@@ -69,6 +69,7 @@ int launch_story_mode(window_t *win, scene_t *scene)
     any_t *save = NULL;
     any_t *current_stage = NULL;
     char *stage_path = NULL;
+    int ret = RET_OK;
 
     if (win == NULL || scene == NULL) {
         return RET_ERR_INPUT;
@@ -79,5 +80,7 @@ int launch_story_mode(window_t *win, scene_t *scene)
         return RET_ERR_INPUT;
     }
     init_stage(save, &current_stage, &stage_path);
-    return launch_stage(win, stage_path, current_stage->value.i, scene);
+    ret = launch_stage(win, stage_path, current_stage->value.i, scene);
+    free(stage_path);
+    return ret;
 }

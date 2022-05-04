@@ -19,7 +19,8 @@ static bool check_ennemy_col(ennemy_t *ennemy, sfFloatRect player_rect)
 {
     sfFloatRect ennemy_rect = {0};
 
-    if (ennemy == NULL) {
+    if (ennemy == NULL || ennemy->obj == NULL ||
+        ennemy->obj->is_visible == false) {
         return false;
     }
     ennemy_rect = sfSprite_getGlobalBounds(ennemy->obj->drawable.sprite);
@@ -50,7 +51,7 @@ static void set_hurt(player_t *player, ennemy_t *ennemy)
     sfVector2f *dirrections = NULL;
 
     set_stop(player);
-    player->obj->components = dico_t_add_data(player->obj->components, "hurt",
+    player->obj->components = dico_t_add_data(player->obj->components, hurt_key,
         ((void *) hurt), NULL);
     dammage = get_from_any(ennemy_data, "d", DAMMAGE_KEY);
     if (dammage == NULL || dammage->type != FLOAT) {

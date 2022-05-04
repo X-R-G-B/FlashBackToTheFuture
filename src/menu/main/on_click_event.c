@@ -7,6 +7,16 @@
 
 #include "main_menu.h"
 
+void click_sandbox(object_t *obj, __attribute__((unused)) scene_t *scene,
+    __attribute__((unused)) window_t *win,
+    __attribute__((unused)) set_event_t *event)
+{
+    if (obj == NULL) {
+        return;
+    }
+    obj->bigdata.sprite_bigdata.rect.left = 425;
+}
+
 void click_play(__attribute__((unused)) object_t *obj,
     scene_t *scene,
     __attribute__((unused)) window_t *win,
@@ -44,7 +54,7 @@ void click_settings(__attribute__((unused)) object_t *obj,
     if (buttons == NULL) {
         return;
     }
-    settings = get_element_i_var(buttons, 2);
+    settings = get_element_i_var(buttons, 3);
     if (settings == NULL) {
         return;
     }
