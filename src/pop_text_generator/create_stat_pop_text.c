@@ -25,6 +25,25 @@ int create_stat_pop_text_from_window(window_t *win, int stat, const char *path,
     return create_stat_pop_text(scene, stat, path, pos);
 }
 
+static char *add_pos_sign(char *text)
+{
+    int len = my_strlen(text);
+    char *new = NULL;
+
+    if (len < 0) {
+        return NULL;
+    }
+    new = malloc(sizeof(char) * len + 1);
+    if (new == NULL) {
+        return NULL;
+    }
+    new[0] = '+';
+    new[1] = '\0';
+    new = my_strcat(new, text);
+    free(text);
+    return new;
+}
+
 int create_stat_pop_text(scene_t *scene, int stat, const char *path,
     sfVector2f pos)
 {
@@ -37,6 +56,12 @@ int create_stat_pop_text(scene_t *scene, int stat, const char *path,
     text = my_itoa(stat);
     if (text == NULL) {
         return RET_ERR_MALLOC;
+    }
+    if (text[0] != '-') {
+        text = add_pos_sign(text);
+        if (text == NULL) {
+            return RET_ERR_MALLOC;
+        }
     }
     ret = create_pop_text(scene, path, pos, text);
     free(text);

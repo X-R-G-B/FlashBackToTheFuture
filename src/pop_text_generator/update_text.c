@@ -59,7 +59,7 @@ void update_text(object_t *obj, scene_t *scene, window_t *win,
     static float since_start = 0;
     static float time = 0;
 
-    if (obj == NULL || scene == NULL || win == NULL) {
+    if (obj == NULL || obj->type != TEXT || scene == NULL || win == NULL) {
         return;
     }
     text_data = dico_t_get_value(obj->components, text_data_key);
