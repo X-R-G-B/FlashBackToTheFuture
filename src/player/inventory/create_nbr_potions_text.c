@@ -55,6 +55,7 @@ int create_number_of_potions(scene_t *scene, window_t *win)
     obj = create_object(NULL, NULL, scene, obj_layer);
     if (obj == NULL || object_set_text(obj, path_font,
         potions, potions_text_pos) != BGS_OK) {
+        free(potions);
         return RET_ERR_MALLOC;
     }
     free(potions);

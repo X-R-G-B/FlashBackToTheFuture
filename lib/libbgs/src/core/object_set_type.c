@@ -74,6 +74,7 @@ int object_set_text(object_t *object, char const *path, char const *text,
     }
     object->drawable.text = sfText_create();
     if (object->drawable.text == NULL) {
+        sfFont_destroy(object->bigdata.text_bigdata.font);
         return BGS_ERR_MALLOC;
     }
     sfText_setFont(object->drawable.text, object->bigdata.text_bigdata.font);

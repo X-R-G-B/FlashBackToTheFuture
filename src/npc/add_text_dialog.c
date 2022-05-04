@@ -50,7 +50,9 @@ int destroy_text_dialog(void *dialog_void, scene_t *scene, window_t *win,
     if (dialog->callback != NULL && scene != NULL && win != NULL) {
         dialog->callback(dialog->str, scene, win);
     }
-    free(dialog->str);
+    if (dialog->str) {
+        free(dialog->str);
+    }
     free(dialog);
     return (true);
 }

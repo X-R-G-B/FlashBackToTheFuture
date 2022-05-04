@@ -26,11 +26,13 @@ static int add_text_dialog_itter(scene_t *scene, any_t *json)
     for (int i = 0; arr_text[i] != NULL; i++) {
         tmp = parseprety(arr_text[i]);
         if (tmp == NULL) {
+            my_wordarray_free(arr_text);
             return (RET_ERR_MALLOC);
         }
         add_text_dialog(scene, tmp, false, NULL);
         free(tmp);
     }
+    my_wordarray_free(arr_text);
     return (RET_OK);
 }
 
