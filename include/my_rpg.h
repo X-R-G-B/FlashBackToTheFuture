@@ -235,6 +235,8 @@ void destroy_player(void *player_void);
 void dead_event_input(object_t *object, scene_t *scene,
     window_t *window, set_event_t *event);
 
+void set_dead_opacity(object_t *dead_message, object_t *dead_screen);
+
 void free_pop_up(void *list);
 
 int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
@@ -258,6 +260,8 @@ int init_hud(window_t *win, scene_t *scene);
 int set_player_default_stats(player_t *player, any_t *stats);
 
 void go_to_home(scene_t *scene, window_t *win);
+
+void restart_game(scene_t *scene, window_t *win);
 
 bool check_evolution_stat(player_t *player, float *prev_max_stat,
     const char stat_name[]);
