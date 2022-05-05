@@ -23,6 +23,8 @@
     #include "my_bgs.h"
     #include "my_json.h"
 
+static const char ICON_PATH[] = "./assets/image/logo/FBTTF_logo.png";
+
 static const char DATA_INV_JSON[] = "assets/data/player/inventory_data.json";
 static const char INV_SCENE[] = "INVENTORY";
 static const char INV_BUTTONS_COMP[] = "INVENTOR_BUTTONS";
