@@ -48,7 +48,7 @@ static bool check_all_border(sfSprite *sprite, sfVector2f new,
         {bounds.left + bounds.width / 2.0, bounds.top + bounds.height / 2.0},
     };
 
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 9; i++) {
         if (check_point_x_y(positions[i], new, map) == true) {
             return (true);
         }
