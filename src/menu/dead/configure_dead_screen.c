@@ -15,6 +15,8 @@ static void (*dead_screen_update[2])(object_t *, scene_t *,
     window_t *, float) = {update_dead_message, update_dead_screen};
 const char can_play_dead_screen[] = "can_play";
 
+const char can_play_dead_screen[] = "can play";
+
 static void set_opacity(object_t *dead_message, object_t *dead_screen)
 {
     if (dead_message == NULL || dead_screen == NULL) {
@@ -59,8 +61,14 @@ static void config_input_and_components(window_t *win,
     }
     dead_message->is_visible = false;
     dead_screen->is_visible = false;
+<<<<<<< HEAD
     if (scene_add_components(scene, can_play, can_play_dead_screen,
             free) != BGS_OK || window_add_component(win, dead_message,
+=======
+    if (scene_add_components(scene, can_play,
+        can_play_dead_screen, free) != BGS_OK ||
+        window_add_component(win, dead_message,
+>>>>>>> dev
             DEAD_MESSAGE, NULL) != BGS_OK ||
             window_add_component(win, dead_screen,
             DEAD_SCREEN, NULL) != BGS_OK) {
