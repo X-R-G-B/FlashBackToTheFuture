@@ -17,7 +17,7 @@
 static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
     knockback, update_spawner, activate_up_scale,
     activate_down_scale, activate_dash, activate_dash, activate_dash,
-    init_npc_spawner, init_npc_spawner, init_npc_spawner, init_npc_spawner
+    init_npc_spawner, update_granda, init_npc_spawner, init_npc_spawner
 };
 
 static const char square_type_update[] = "pSQqR:s*$=+";
