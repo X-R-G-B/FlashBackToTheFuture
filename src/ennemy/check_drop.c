@@ -10,7 +10,7 @@
 #include "ennemies.h"
 #include "maths_function.h"
 
-static const char is_boss_key[] = "is boss";
+const char is_boss_key[] = "is boss";
 
 static const char drop_rate_key[] = "drop rate";
 
@@ -51,18 +51,14 @@ static void update_86(object_t *obj, scene_t *scene, window_t *win,
         return;
     }
     player = dico_t_get_value(win->components, PLAYER);
-    if (player == NULL) {
+    if (player == NULL || player->obj == NULL) {
         return;
     }
     player_rect = sfSprite_getGlobalBounds(player->obj->drawable.sprite);
     obj_rect = sfSprite_getGlobalBounds(obj->drawable.sprite);
     if (sfFloatRect_intersects(&player_rect, &obj_rect, NULL) == sfTrue) {
         list_add_to_end(scene->to_remove, obj);
-        if (dico_t_get_value(obj->components, is_boss_key) != NULL) {
-            get_infinity_86(win);
-        } else {
-            get_potions(win);
-        }
+        drop_right_item(obj, win);
     }
 }
 

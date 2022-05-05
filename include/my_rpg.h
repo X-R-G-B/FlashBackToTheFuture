@@ -323,4 +323,6 @@ int change_xp_bar_stats(any_t *max_xp_data, any_t *actual_xp_data,
 
 any_t *get_xp_data(player_t *player, const char data_name[]);
 
+void drop_right_item(object_t *obj, window_t *win);
+
 #endif /* !RPG_H_ */

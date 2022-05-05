@@ -41,6 +41,7 @@ SRC_ENNEMY_UPDATE	:=	check_wall.c							\
 						ennemy_check_is_dashing.c				\
 						ennemy_update.c							\
 						hurt.c									\
+						drop_right_item.c						\
 						update_ennemy_attack.c					\
 						update_ennemy_move.c
 SRC_ENNEMY_UPDATE	:=	$(addprefix update/,$(SRC_ENNEMY_UPDATE))
