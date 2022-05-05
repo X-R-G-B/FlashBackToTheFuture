@@ -11,6 +11,8 @@
 #include "my_bgs.h"
 #include "maths_function.h"
 
+extern pop_text_file[];
+
 static const char DAMMAGE_KEY[] = "dammage";
 
 extern const char data_directions[];
@@ -43,12 +45,24 @@ static sfFloatRect get_player_rect(player_t *player)
     return rect;
 }
 
-static void set_hurt(player_t *player, ennemy_t *ennemy)
+static void handle_go_back(ennemy_t *ennemy, player_t *player)
+{
+    sfVector2f *dirrections = NULL;
+
+    dirrections = malloc(sizeof(sfVector2f));
+    if (dirrections == NULL) {
+        return;
+    }
+    fill_get_distance(player->obj->bigdata.sprite_bigdata.pos,
+        ennemy->obj->bigdata.sprite_bigdata.pos, dirrections);
+    object_add_components(player->obj, dirrections, data_directions, &free);
+}
+
+static void set_hurt(player_t *player, ennemy_t *ennemy, scene_t *scene)
 {
     bool hurt = true;
     any_t *ennemy_data = dico_t_get_value(ennemy->obj->components, ENNEMY_DATA);
     any_t *dammage = NULL;
-    sfVector2f *dirrections = NULL;
 
     set_stop(player);
     player->obj->components = dico_t_add_data(player->obj->components, hurt_key,
@@ -58,13 +72,9 @@ static void set_hurt(player_t *player, ennemy_t *ennemy)
         return;
     }
     player->life -= dammage->value.f;
-    dirrections = malloc(sizeof(sfVector2f));
-    if (dirrections == NULL) {
-        return;
-    }
-    fill_get_distance(player->obj->bigdata.sprite_bigdata.pos,
-        ennemy->obj->bigdata.sprite_bigdata.pos, dirrections);
-    object_add_components(player->obj, dirrections, data_directions, &free);
+    create_stat_pop_text(scene, (dammage->value.f * -1),
+        pop_text_file, player->obj->bigdata.sprite_bigdata.pos);
+    handle_go_back(ennemy, player);
 }
 
 void player_check_hurt(player_t *player, scene_t *scene)
@@ -84,7 +94,7 @@ void player_check_hurt(player_t *player, scene_t *scene)
     elem = ennemy_list->start;
     for (int i = 0; i < ennemy_list->len; i++, elem = elem->next) {
         if (check_ennemy_col(elem->var, rect) == true) {
-            set_hurt(player, elem->var);
+            set_hurt(player, elem->var, scene);
             return;
         }
     }
