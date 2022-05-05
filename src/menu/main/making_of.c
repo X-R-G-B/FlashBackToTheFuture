@@ -9,6 +9,8 @@
 #include <SFML/System/Vector2.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include "main_menu.h"
+#include "my_wordarray.h"
 #include "my_bgs.h"
 #include "my_dico.h"
 #include "my_json.h"
@@ -21,6 +23,26 @@ static const char path_images_json[] =
 static const char elem_json_paths[] = "paths";
 
 static float time_update_frame = 1;
+
+static const sfVector2f pos_images = {
+    WIN_SIZE_X - (1 / 3.0 * WIN_SIZE_X),
+    WIN_SIZE_Y / 2.0
+};
+
+static bool check_pop_up_true(dico_t *dico, char *key)
+{
+    list_t *elem = NULL;
+    list_ptr_t *list = dico_t_get_value(dico, key);
+
+    if (list == NULL) {
+        return (false);
+    }
+    elem = list->start;
+    if (((object_t *) elem->var)->is_visible == true) {
+        return (true);
+    }
+    return (false);
+}
 
 static void update_manager_making(object_t *obj, scene_t *scene, window_t *win,
     float dtime)
@@ -58,7 +80,9 @@ static void update_images(object_t *obj, scene_t *scene, window_t *win,
     }
     index_our_image = (int) dico_t_get_value(obj->components,
         index_image_compo);
-    if (*index_curr_image != index_our_image) {
+    if (*index_curr_image != index_our_image ||
+            check_pop_up_true(win->components, SETTINGS_MENU) == true ||
+            check_pop_up_true(scene->components, PLAY) == true) {
         obj->is_visible = false;
     } else {
         obj->is_visible = true;
@@ -70,7 +94,6 @@ static int init_all_images(scene_t *scene)
     any_t *json = NULL;
     char **arr = NULL;
     sfIntRect rect = {-1, -1, -1, -1};
-    sfVector2f pos = {WIN_SIZE_X / 2.0, WIN_SIZE_Y / 2.0};
     object_t *obj = NULL;
 
     json = parse_json_file(path_images_json);
@@ -81,10 +104,11 @@ static int init_all_images(scene_t *scene)
     if (arr != NULL) {
         for (int i = 0; arr[i] != NULL; i++) {
             obj = create_object(update_images, NULL, scene, 2);
-            object_set_sprite(obj, arr[i], rect, pos);
+            object_set_sprite(obj, arr[i], rect, pos_images);
             object_add_components(obj, (void *) i, index_image_compo, NULL);
         }
     }
+    my_wordarray_free(arr);
     destroy_any(json);
     return (RET_OK);
 }
