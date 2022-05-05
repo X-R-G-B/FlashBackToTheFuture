@@ -18,8 +18,7 @@ int my_strcmp(char const *s1, char const *s2)
 {
     char a;
     char b;
-    int const lengths[2] = {my_strlen(s1),
-        my_strlen(s2)};
+    int const lengths[2] = {my_strlen(s1), my_strlen(s2)};
     int sub = 0;
     int const max = MAX(lengths[0], lengths[1]);
 
