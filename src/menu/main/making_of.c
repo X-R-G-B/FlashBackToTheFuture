@@ -18,6 +18,7 @@
 #include "macro.h"
 
 static const char index_image_compo[] = "index_image_compo";
+static const char compo_number_images[] = "compo_number images";
 static const char path_images_json[] =
     "./assets/data/menu/making_of_data.json";
 static const char elem_json_paths[] = "paths";
@@ -29,7 +30,7 @@ static const sfVector2f pos_images = {
     WIN_SIZE_Y / 2.0
 };
 
-static bool check_pop_up_true(dico_t *dico, char *key)
+static bool check_pop_up_true(dico_t *dico, const char *key)
 {
     list_t *elem = NULL;
     list_ptr_t *list = dico_t_get_value(dico, key);
@@ -38,6 +39,9 @@ static bool check_pop_up_true(dico_t *dico, char *key)
         return (false);
     }
     elem = list->start;
+    if (elem == NULL || elem->var == NULL) {
+        return (false);
+    }
     if (((object_t *) elem->var)->is_visible == true) {
         return (true);
     }
@@ -48,7 +52,7 @@ static void update_manager_making(object_t *obj, scene_t *scene, window_t *win,
     float dtime)
 {
     static float time_update = 0;
-    int *index_curr_image = NULL;
+    dico_t *curr = NULL;
 
     if (obj == NULL || scene == NULL || win == NULL) {
         return;
@@ -58,31 +62,31 @@ static void update_manager_making(object_t *obj, scene_t *scene, window_t *win,
         return;
     }
     time_update -= time_update_frame;
-    index_curr_image = dico_t_get_value(scene->components, index_image_compo);
-    if (index_curr_image == NULL) {
+    curr = dico_t_get_elem(scene->components, index_image_compo);
+    if (curr == NULL) {
         return;
     }
-    *index_curr_image = *index_curr_image + 1;
+    curr->value = (void *) ((int) curr->value + 1);
+    curr->value = (void *) ((int) curr->value % (int) dico_t_get_value(
+        scene->components, compo_number_images));
 }
 
 static void update_images(object_t *obj, scene_t *scene, window_t *win,
     __attribute__((unused)) float dtime)
 {
     int index_our_image = 0;
-    int *index_curr_image = NULL;
+    int index_curr_image = 0;
 
     if (obj == NULL || scene == NULL || win == NULL) {
         return;
     }
-    index_curr_image = dico_t_get_value(scene->components, index_image_compo);
-    if (index_curr_image == NULL) {
-        return;
-    }
+    index_curr_image = (int) dico_t_get_value(scene->components,
+        index_image_compo);
     index_our_image = (int) dico_t_get_value(obj->components,
         index_image_compo);
-    if (*index_curr_image != index_our_image ||
-            check_pop_up_true(win->components, SETTINGS_MENU) == true ||
-            check_pop_up_true(scene->components, PLAY) == true) {
+    if (index_curr_image != index_our_image) { //||
+            //check_pop_up_true(win->components, SETTINGS_MENU) == true) {// ||
+            //check_pop_up_true(scene->components, PLAY) == true) {
         obj->is_visible = false;
     } else {
         obj->is_visible = true;
@@ -101,13 +105,13 @@ static int init_all_images(scene_t *scene)
         return (RET_ERR_MALLOC);
     }
     arr = get_any_string_array(get_from_any(json, "d", elem_json_paths));
-    if (arr != NULL) {
-        for (int i = 0; arr[i] != NULL; i++) {
-            obj = create_object(update_images, NULL, scene, 2);
-            object_set_sprite(obj, arr[i], rect, pos_images);
-            object_add_components(obj, (void *) i, index_image_compo, NULL);
-        }
+    for (int i = 0; arr != NULL && arr[i] != NULL; i++) {
+        obj = create_object(update_images, NULL, scene, 2);
+        object_set_sprite(obj, arr[i], rect, pos_images);
+        object_add_components(obj, (void *) i, index_image_compo, NULL);
     }
+    scene_add_components(scene, (void *) my_wordarray_len(arr),
+        compo_number_images, NULL);
     my_wordarray_free(arr);
     destroy_any(json);
     return (RET_OK);
@@ -115,7 +119,7 @@ static int init_all_images(scene_t *scene)
 
 int init_making_of(scene_t *scene)
 {
-    int *index_image = NULL;
+    dico_t *dict = NULL;
 
     if (scene == NULL) {
         return (RET_ERR_INPUT);
@@ -124,14 +128,15 @@ int init_making_of(scene_t *scene)
             scene, LAYER_HUD)) != BGS_OK) {
         return (RET_ERR_MALLOC);
     }
-    index_image = malloc(sizeof(int));
-    if (index_image == NULL) {
+    if (scene_add_components(scene, (void *) 1, index_image_compo, NULL) !=
+            BGS_OK) {
         return (RET_ERR_MALLOC);
     }
-    *index_image = 0;
-    if (scene_add_components(scene, index_image, index_image_compo, free)) {
-        return (RET_ERR_MALLOC);
+    dict = dico_t_get_elem(scene->components, index_image_compo);
+    if (dict == NULL) {
+        return (RET_ERR_INPUT);
     }
+    dict->value = NULL;
     init_all_images(scene);
     return (RET_OK);
 }
