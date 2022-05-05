@@ -32,9 +32,9 @@
             "##B..##..##..##..##..##..##..##.ddd######dddyddddddd....ddddffddd##m###ddddd.##..##..##..##..##..##..##..b##",
             "##B.############################ddd######ddddddddddd....ddddffddd######ddddd############################.b##",
             "##B.##T###T###T###T###T###T###T#ddd##F###ddddddddddd....ddddffddd######ddddd##T###T###T###T###T###T###T#.b##",
-            "##B.###.###.###.###.###.###.###.ddd######dddyddddddd..i.ddddffddd......ddddd###.###.###.###.###.###.###..b##",
+            "##B.###.###.###.###.###.###.###.ddd######dddyddddddd..i.ddddffddd.=....ddddd###.###.###.###.###.###.###..b##",
             "##B..#...#...#...#...#...#...#..ddd######ddddddddddd....ddddffdddddddddddddd.#...#...#...#...#...#...#...b##",
-            "##B..##..##..##..##..##..##..##.ddd######ddddddddddd....ddddffdddddddddddddd.##..##..##..##..##..##..##..b##",
+            "##B..##..##..##..##..##..##..##.ddd####*#ddddddddddd....ddddffdddddddddddddd.##..##..##..##..##..##..##..b##",
             "##B.############################ddd......ddddddddddd....ddddffddddddi.dddddd############################.b##",
             "##B.##T###T###T###T###T###T###T#dddddddddddddddddddd..i.dddddddddd....dddddd##T###T###T###T###T###T###T#.b##",
             "##B.###.###.###.###.###.###.###.ddddKGGqdddddddddddd....dddddddddd....dddddd###.###.###.###.###.###.###..b##",
@@ -71,7 +71,7 @@
             "##B.#.#...#...#...#...#...#...#...#...#...#...#...#..GG.#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...b##",
             "##B.#.##..##..##..##..##..##..##..##..##..##..##..##.ghgghgghhhhDDDggDggghghgDhhhhghDgDgggDDgDhDghhhDhhhDghgggDDDhgh.##..##..##..##..##..##..b##",
             "##B.#################################################hhghgghgDhgDDghDDgDghghhhDghDhgDhDhghgghgDgDhhhghhgDhDhggDhhDhg########################.b##",
-            "##B.###T###T###T###T###T###T###T###T###T###T###T###T#DhDDyhhggghD*DDDDghDDhhhhghDhggthggDDhDghDgghDggDghhgghgShDDggh##T###T###T###T###T###T#.b##",
+            "##B.###T###T###T###T###T###T###T###T###T###T###T###T#DhDDyhhggghD+DDDDghDDhhhhghDhggthggDDhDghDgghDggDghhgghgShDDggh##T###T###T###T###T###T#.b##",
             "##B.####.###.###.###.###.###.###.###.###.###.###.###.ggghgDhgDgDhDDgDDghDhhDhDhhggDggDhDDgDDDhhhDghghDghDghgghgDghgD###.###.###.###.###.###..b##",
             "##B.#.#...#...#...#...#...#...#...#...#...#...#...#..gghDDhhDggDDDhDhgDhgDDhDghhDhhghgDDhDgDDDhgghghggggghghghghghhD.#...#...#...#...#...#...b##",
             "##B.#.##..##..##..##..##..##..##..##..##..##..##..##.hghghghhDDDghgDgghDhghDghhDDggDhgghgghDDDhDhDhDgDhhDghDgghgghgh.##..##..##..##..##..##..b##",
@@ -143,11 +143,24 @@
                     "npc path": "./assets/data/npc/stage_0/grandpa.json"
                 }
             },
-            "*": {
-                "path": "./assets/image/map/squares/flower.png",
+            "+": {
+                "path": "./assets/image/map/squares/dark_flower.png",
                 "components": {
-                    "npc path": "./assets/data/npc/magician.json"
+                    "npc path": "./assets/data/npc/stage_0/villager_3.json"
                 }
+            },
+            "=": {
+                "path": "./assets/image/map/squares/void.png",
+                "components": {
+                    "npc path": "./assets/data/npc/stage_0/villager_2.json"
+                }
+            },
+            "*": {
+                "path": "./assets/image/map/squares/void.png",
+                "components": {
+                    "npc path": "./assets/data/npc/stage_0/villager_1.json"
+                },
+                "col": 1
             },
             "b": {
                 "path": "./assets/image/map/squares/fall.png",
