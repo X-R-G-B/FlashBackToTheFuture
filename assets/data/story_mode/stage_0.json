@@ -134,7 +134,7 @@
             "S": {
                 "path": "./assets/image/map/squares/flower.png",
                 "components": {
-                    "ennemy path": "./assets/data/ennemy/amongus.json"
+                    "ennemy path": "./assets/data/ennemy/boss_spider.json"
                 }
             },
             "$": {
