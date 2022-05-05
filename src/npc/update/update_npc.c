@@ -37,14 +37,14 @@ static void call_callback_npc(object_t *npc, scene_t *scene, window_t *win)
 static bool check_collid_player(object_t *npc, player_t *player,
     scene_t *scene, window_t *win)
 {
-    sfFloatRect pos[3] = {0};
+    sfFloatRect pos[2] = {0};
 
     if (player == NULL || player->obj == NULL) {
         return (false);
     }
     pos[0] = sfSprite_getGlobalBounds(player->obj->drawable.sprite);
     pos[1] = sfSprite_getGlobalBounds(npc->drawable.sprite);
-    if (sfFloatRect_intersects(pos, pos + 1, pos + 2) &&
+    if (sfFloatRect_intersects(pos, pos + 1, NULL) &&
             sfKeyboard_isKeyPressed(key_interract) == sfTrue) {
         call_callback_npc(npc, scene, win);
         return (true);

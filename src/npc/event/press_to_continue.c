@@ -16,6 +16,7 @@
 #include "npc.h"
 
 static const sfKeyCode key_next = sfKeyA;
+extern const char bool_check_key[];
 
 void event_next_dialog_off(__attribute__((unused)) object_t *obj,
     scene_t *scene, window_t *win,

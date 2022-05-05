@@ -25,8 +25,10 @@ struct dialog_manager_s {
 struct text_dialog_s {
     char *str;
     bool need_pause;
-    void (*callback)(const char *str, scene_t *scene, window_t *win);
+    void (*callback)(const char *str, scene_t *scene,
+        window_t *win, void *data);
     float time;
+    void *data;
 };
 
 struct npc_data_func_s {
@@ -71,10 +73,13 @@ void update_dialog(object_t *obj, scene_t *scene, window_t *win,
 
 int aplly_rect_npc(any_t *jsonrect, any_t *current, object_t *npc);
 
-int add_text_dialog(scene_t *scene, const char *text, bool need_pause,
-    void (*callback)(const char *str, scene_t *scene, window_t *win));
+text_dialog_t *add_text_dialog(scene_t *scene, const char *text,
+    bool need_pause, void (*callback)(const char *str,
+    scene_t *scene, window_t *win, void *data));
 
-int add_text_dialog_json(scene_t *scene, const char *path);
+int add_text_dialog_json(scene_t *scene, const char *path,
+    void (*callback)(const char *str, scene_t *scene, window_t *win,
+        void *data), void *data);
 
 char *parseprety(const char *str);
 

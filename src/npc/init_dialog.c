@@ -16,7 +16,7 @@
 
 static const char path_dialog_img[] = "./assets/image/npc/dialog_box.png";
 static const sfIntRect rect_dialog = {-1, -1, -1, -1};
-const sfVector2f pos_dialog = {0, 470};
+const sfVector2f pos_dialog = {0, 300};
 
 const char path_font[] = "./assets/fonts/Menlo-Regular.ttf";
 const sfVector2f pos_text = {0, 470};

@@ -1,0 +1,12 @@
+{
+    "sprite path": "./assets/image/npc/stage_0/sanic.png",
+    "rect": [[-1, -1, -1, -1]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 0.3,
+    "dialogus": [
+        "SALUT",
+        "TU VEUX ALLER VITE COMME MOI ?",
+        "APPUIE SUR 'M'"
+    ]
+}

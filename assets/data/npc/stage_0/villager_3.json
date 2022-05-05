@@ -1,0 +1,12 @@
+{
+    "sprite path": "./assets/image/npc/stage_0/villager_3.png",
+    "rect": [[-1, -1, -1, -1]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 0.13,
+    "dialogus": [
+        "ATTENTION !",
+        "C tres dangeureux par ici",
+        "Utilise 'L' pour la castagne"
+    ]
+}

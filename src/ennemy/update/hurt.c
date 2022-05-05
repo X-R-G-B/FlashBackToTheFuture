@@ -14,30 +14,6 @@
 
 static const char blink_time_key[] = "blink time";
 
-bool check_wall(ennemy_t *ennemy, sfVector2f new, window_t *win)
-{
-    int x = 0;
-    int y = 0;
-    scene_t *scene = NULL;
-    char **map = NULL;
-
-    if (win == NULL || ennemy == NULL || ennemy->obj == NULL) {
-        return (true);
-    }
-    scene = dico_t_get_value(win->scenes, win->current_scene);
-    x = (ennemy->obj->bigdata.sprite_bigdata.pos.x - new.x) / SQUARE_SIZE;
-    y = (ennemy->obj->bigdata.sprite_bigdata.pos.y - new.y) / SQUARE_SIZE;
-    if (scene == NULL || y < 0 || x < 0) {
-        return true;
-    }
-    map = dico_t_get_value(scene->components, COLLISION_ARRAY);
-    if (map == NULL || y >= my_wordarray_len(map) || x >= my_strlen(map[y]) ||
-            map[y][x] == '#') {
-        return true;
-    }
-    return false;
-}
-
 static float get_blink_time(ennemy_t *ennemy)
 {
     any_t *ennemy_data = NULL;
