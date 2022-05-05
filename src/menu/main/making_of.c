@@ -18,12 +18,14 @@
 #include "macro.h"
 
 static const char index_image_compo[] = "index_image_compo";
+
 static const char compo_number_images[] = "compo_number images";
-static const char path_images_json[] =
-    "./assets/data/menu/making_of_data.json";
+
+static const char path_images_json[] = "./assets/data/menu/making_of_data.json";
+
 static const char elem_json_paths[] = "paths";
 
-static float time_update_frame = 1;
+static const float update_time_clock = 1.0;
 
 static const sfVector2f pos_images = {
     WIN_SIZE_X - (1 / 3.0 * WIN_SIZE_X),
@@ -58,10 +60,10 @@ static void update_manager_making(object_t *obj, scene_t *scene, window_t *win,
         return;
     }
     time_update += dtime;
-    if (time_update < time_update_frame) {
+    if (time_update < update_time_clock) {
         return;
     }
-    time_update -= time_update_frame;
+    time_update -= update_time_clock;
     curr = dico_t_get_elem(scene->components, index_image_compo);
     if (curr == NULL) {
         return;
@@ -84,9 +86,9 @@ static void update_images(object_t *obj, scene_t *scene, window_t *win,
         index_image_compo);
     index_our_image = (int) dico_t_get_value(obj->components,
         index_image_compo);
-    if (index_curr_image != index_our_image) { //||
-            //check_pop_up_true(win->components, SETTINGS_MENU) == true) {// ||
-            //check_pop_up_true(scene->components, PLAY) == true) {
+    if (index_curr_image != index_our_image ||
+            check_pop_up_true(win->components, SETTINGS_MENU) == true ||
+            check_pop_up_true(scene->components, PLAY) == true) {
         obj->is_visible = false;
     } else {
         obj->is_visible = true;
