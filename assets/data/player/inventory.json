@@ -4,13 +4,13 @@
             "text": "background",
             "sprite path": "./assets/image/inventory/inventory_background.png",
             "pos": [540.0, 960.0],
-            "plan": 1
+            "plan": 5
         },
         {
             "text": "potion",
             "sprite path": "./assets/image/inventory/classic_86.png",
             "pos": [680.0, 1600.0],
-            "plan": 0
+            "plan": 4
         }
     ]
 }
