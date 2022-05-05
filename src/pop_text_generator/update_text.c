@@ -19,7 +19,7 @@ extern const char text_data_key[];
 
 static bool check_end(any_t *text_data, float *since_start, float *time)
 {
-    any_t *total_time = dico_t_get_any(text_data->value.dict, time_key);
+    any_t *total_time = get_from_any(text_data, "d", time_key);
 
     if (total_time == NULL || total_time->type != FLOAT ||
         *since_start >= total_time->value.f) {
@@ -32,9 +32,9 @@ static bool check_end(any_t *text_data, float *since_start, float *time)
 
 static void check_move(any_t *text_data, float *time, object_t *obj)
 {
-    any_t *move = dico_t_get_any(text_data->value.dict, move_key);
-    any_t *char_size_add = dico_t_get_any(text_data->value.dict, char_size_key);
-    any_t *actualisation_time = dico_t_get_any(text_data->value.dict,
+    any_t *move = get_from_any(text_data, "d", move_key);
+    any_t *char_size_add = get_from_any(text_data, char_size_key);
+    any_t *actualisation_time = get_from_any(text_data, "d",
         move_actualisation_key);
     int char_size = sfText_getCharacterSize(obj->drawable.text);
 
