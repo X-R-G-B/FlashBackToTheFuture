@@ -83,7 +83,7 @@ void player_check_hurt(player_t *player, scene_t *scene)
     list_t *elem = NULL;
     sfFloatRect rect = {0};
 
-    if (player == NULL || scene == NULL) {
+    if (player == NULL || scene == NULL || player->obj == NULL) {
         return;
     }
     rect = get_player_rect(player);

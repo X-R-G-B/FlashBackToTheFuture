@@ -21,16 +21,11 @@ const char npc_data_callback[] = "NPC DATA";
 
 extern const char npc_path_key[];
 
-static int fill_pos_rect(any_t *json, sfIntRect *rect, sfVector2f *pos)
+static int fill_pos_rect(any_t *json, sfIntRect *rect)
 {
     int *rects = NULL;
-    float *pos_arr = NULL;
 
     if (json == NULL) {
-        return (RET_ERR_INPUT);
-    }
-    pos_arr = get_any_float_array(get_from_any(json, "d", "pos", 0));
-    if (pos_arr == NULL || get_from_any(json, "da", "pos", 1) == NULL) {
         return (RET_ERR_INPUT);
     }
     rects = get_any_int_array(get_from_any(json, "da", "rects", 0));
@@ -40,8 +35,6 @@ static int fill_pos_rect(any_t *json, sfIntRect *rect, sfVector2f *pos)
         *rect = (sfIntRect) {rects[0], rects[1], rects[2], rects[3]};
     }
     free(rects);
-    *pos = (sfVector2f) {pos_arr[0], pos_arr[1]};
-    free(pos_arr);
     return (RET_OK);
 }
 
@@ -86,6 +79,8 @@ static object_t *create_object_npc(sfIntRect rect, sfVector2f pos, any_t *json,
         sfSprite_setScale(npc->drawable.sprite, (sfVector2f) {path->value.f,
             path->value.f});
     }
+    sfSprite_setTextureRect(npc->drawable.sprite,
+        npc->bigdata.sprite_bigdata.rect);
     return (npc);
 }
 
@@ -100,7 +95,7 @@ int add_npc(scene_t *scene, const char *path, sfVector2f pos,
         return (RET_ERR_INPUT);
     }
     json = parse_json_file(path);
-    if (fill_pos_rect(json, &rect, &pos) != RET_OK) {
+    if (fill_pos_rect(json, &rect) != RET_OK) {
         destroy_any(json);
         return (RET_ERR_INPUT);
     }
@@ -108,7 +103,7 @@ int add_npc(scene_t *scene, const char *path, sfVector2f pos,
     if (add_components(json, npc, callback) != RET_OK) {
         return (RET_ERR_MALLOC);
     }
-    if (object_add_components(npc, (void *) my_strdup(path),
+    if (object_add_components(npc, my_strdup(path),
             npc_path_key, free) != RET_OK) {
         return (RET_ERR_MALLOC);
     }

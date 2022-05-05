@@ -52,6 +52,9 @@ void set_down_scale(object_t *obj, float time)
     sfVector2f current_scale = {0};
 
     time_elapsed += time;
+    if (obj == NULL) {
+        return;
+    }
     current_scale = sfSprite_getScale(obj->drawable.sprite);
     if (current_scale.x <= min_scale) {
         stop_scaling(obj);

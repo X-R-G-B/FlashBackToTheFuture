@@ -30,10 +30,10 @@ static char *add_pos_sign(char *text)
     int len = my_strlen(text);
     char *new = NULL;
 
-    if (len < 0) {
+    if (len <= 0) {
         return NULL;
     }
-    new = malloc(sizeof(char) * len + 1);
+    new = malloc(sizeof(char) * (len + 1 + 1));
     if (new == NULL) {
         return NULL;
     }

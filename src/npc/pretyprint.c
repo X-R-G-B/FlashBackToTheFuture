@@ -27,8 +27,9 @@ int count_token(const char *str, const char *token)
 static char *itter_to_str(const char *str, int nb_malloc, char *new)
 {
     int index = 0;
+    int i = 0;
 
-    for (int i = 0; i < my_strlen(str) && index < nb_malloc; i++) {
+    for (; i < my_strlen(str) && index < nb_malloc; i++) {
         if (my_strstartswith(str + i, "\\n") == 1) {
             new[index++] = '\n';
             i += 1;
@@ -48,12 +49,11 @@ char *parseprety(const char *str)
         return (NULL);
     }
     nb_malloc = my_strlen(str) - count_token(str, "\\n");
-    new = malloc(sizeof(char) * (nb_malloc + 1));
+    new = my_calloc(sizeof(char) * (nb_malloc + 2));
     if (new == NULL) {
         return (NULL);
     }
     itter_to_str(str, nb_malloc, new);
-    new[nb_malloc] = '\0';
     return (new);
 }
 

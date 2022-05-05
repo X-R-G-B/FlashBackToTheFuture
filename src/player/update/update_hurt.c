@@ -28,7 +28,7 @@ static void update_move_player(player_t *player, window_t *win, sfVector2f new)
     ennemy_t enn = {0};
     sfVector2f delta_x = {new.x / nb_intervals, new.y / nb_intervals};
 
-    enn = (ennemy_t) {player->state, player->dir, 1, player->obj, 0, 1};
+    enn = (ennemy_t) {player->state, player->dir, 1, player->obj, 0, 0, 0, 1};
     for (int i = 0; i < nb_intervals; i++) {
         if (check_wall(&enn, new, win) == true || player->view == NULL) {
             break;
