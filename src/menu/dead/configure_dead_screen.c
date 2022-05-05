@@ -14,6 +14,8 @@ static const char dead_screen_path[] = "./assets/data/menu/dead_screen.json";
 static void (*dead_screen_update[2])(object_t *, scene_t *,
     window_t *, float) = {update_dead_message, update_dead_screen};
 
+const char can_play_dead_screen[] = "can play";
+
 static void set_opacity(object_t *dead_message, object_t *dead_screen)
 {
     if (dead_message == NULL || dead_screen == NULL) {
@@ -28,7 +30,7 @@ static void set_opacity(object_t *dead_message, object_t *dead_screen)
 
 static void init_dead_screen_pos(window_t *win)
 {
-    player_t *player = dico_t_get_value(win->components, "player");
+    player_t *player = dico_t_get_value(win->components, PLAYER);
     list_ptr_t *hud_elements = dico_t_get_value(win->components, HUD_ELEMENTS);
 
     if (player == NULL || hud_elements == NULL) {
@@ -58,7 +60,8 @@ static void config_input_and_components(window_t *win,
     }
     dead_message->is_visible = false;
     dead_screen->is_visible = false;
-    if (scene_add_components(scene, can_play, "can_play", free) != BGS_OK ||
+    if (scene_add_components(scene, can_play,
+        can_play_dead_screen, free) != BGS_OK ||
         window_add_component(win, dead_message,
             DEAD_MESSAGE, NULL) != BGS_OK ||
         window_add_component(win, dead_screen,
