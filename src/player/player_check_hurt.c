@@ -11,7 +11,7 @@
 #include "my_bgs.h"
 #include "maths_function.h"
 
-extern pop_text_file[];
+extern const char pop_text_file[];
 
 static const char DAMMAGE_KEY[] = "dammage";
 
