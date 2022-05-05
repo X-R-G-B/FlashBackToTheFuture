@@ -10,7 +10,7 @@
 #include "ennemies.h"
 #include "maths_function.h"
 
-static const char pop_text_file[] = "./assets/data/pop_text/ennemy_hurt.json";
+const char pop_text_file[] = "./assets/data/pop_text/ennemy_hurt.json";
 static const char attack_key[] = "attack";
 static const char sword_key[] = "sword";
 static const char dammage_key[] = "dammage";
