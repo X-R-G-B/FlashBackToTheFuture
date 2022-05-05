@@ -21,7 +21,7 @@ static const float coef = 1000;
 
 const char data_directions[] = "dirrections player hurt";
 
-static int nb_intervals = 20;
+static int nb_intervals = 100;
 
 static void update_move_player(player_t *player, window_t *win, sfVector2f new)
 {
