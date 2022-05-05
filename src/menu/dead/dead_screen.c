@@ -8,6 +8,8 @@
 #include "my_bgs.h"
 #include "my_rpg.h"
 
+extern const char can_play_dead_screen[];
+
 void update_dead(__attribute__((unused)) player_t *player,
     __attribute__((unused)) scene_t *screen,
     window_t *win, __attribute__((unused)) float delta_time)
@@ -35,7 +37,7 @@ static bool can_wait_for_draw(scene_t *scene, float *time_elapsed)
     if (scene == NULL || time_elapsed == NULL) {
         return false;
     }
-    can_play = dico_t_get_value(scene->components, "can_play");
+    can_play = dico_t_get_value(scene->components, can_play_dead_screen);
     if (can_play == NULL || *can_play == false) {
         return false;
     }
@@ -66,7 +68,7 @@ void update_dead_screen(object_t *object, scene_t *scene,
             can_wait_for_draw(scene, &time_elapsed) == false) {
         return;
     }
-    player = (player_t *) dico_t_get_value(window->components, "player");
+    player = (player_t *) dico_t_get_value(window->components, PLAYER);
     opacity = sfSprite_getColor(object->drawable.sprite);
     if (player == NULL || player->state == DIE || opacity.a == 255) {
         return;
