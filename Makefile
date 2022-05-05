@@ -152,7 +152,8 @@ SRC_MAIN			:=	event_menu.c							\
 						pop_up_management.c 					\
 						on_click_event.c						\
 						exit.c									\
-						set_overlay.c
+						set_overlay.c							\
+						making_of.c
 SRC_MAIN			:=	$(addprefix main/,$(SRC_MAIN))
 
 SRC_SETTINGS_MENU	:=	add_new_audio.c							\
