@@ -23,10 +23,13 @@ static const sfKeyCode key_interract = sfKeyE;
 
 static float refresh_rate = 1.0 / 10;
 
-static void call_callback_npc(object_t *npc, scene_t *scene, window_t *win)
+void call_callback_npc(object_t *npc, scene_t *scene, window_t *win)
 {
     npc_data_func_t *callback = NULL;
 
+    if (npc == NULL || scene == NULL || win == NULL) {
+        return;
+    }
     callback = dico_t_get_value(npc->components, npc_data_callback);
     if (callback == NULL) {
         return;

@@ -208,6 +208,8 @@ SRC_NPC_EVENT		:=	press_to_continue.c						\
 SRC_NPC_EVENT		:=	$(addprefix event/,$(SRC_NPC_EVENT))
 
 SRC_NPC_UPDATE		:=	update_dialog_text.c					\
+						update_grandpa.c						\
+						update_magician.c						\
 						update_dialogue_box.c					\
 						update_npc.c
 SRC_NPC_UPDATE		:=	$(addprefix update/,$(SRC_NPC_UPDATE))
