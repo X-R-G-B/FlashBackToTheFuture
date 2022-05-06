@@ -1,0 +1,147 @@
+{
+    "map data": {
+        "map": [
+            "#c####################################################################C#....................................................................................................................................#############################",
+            "###.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.###....................................................................................................................................####aaaaaaaaaaaaaaaaaaaaa####",
+            "###..................................................................###..............................................................#c#########C#.........................................................###.......................###",
+            "##B.dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##..............................................................####aaaaa####.........................................................##B.ddddddddddddddddddddd.b##",
+            "##B.dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##..............................................................###.......###.........................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddddd..............................................ddddddddd.b##..............................................................##B.SSSSS.b##.........................................................##B.ddddddddddddddddddddd.b##",
+            "##B.dddddddddAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAddddddddd.b##..............................................................###.....d.###.........................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddddd##############################################B.ddddddd.b##..............................................................####AAAAd####.........................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##..................................?.......##B.ddddddd.b##..............................................................#v######H##V#.........................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##..........................................##B.ddddddd.b##.....................................................................#H#............................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##..........................................##B.ddddddd.b##.....................................................................#H#............................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##...?......................................##B.ddddddd.b##.....................................................................#H#............................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##..........................................##B.ddddddd.b##.....................................................................#H#............................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##..........................................##B.ddddddd.b##.....................................................................#H#............................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##..........................................##B.ddddddd.b##.....................................................................#H#............................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##..........................................##B.ddddddd.b##.....................................................................#H#............................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##.........................................?##B.ddddddd.b##.....................................................................#H#............................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##..........................................##B.ddddddd.b##.....................................................................#H#............................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##..........................................##B.ddddddd.b##.................................................#c###################H#####C#......................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##..........................................##B.ddddddd.b##.................................................####aaaaaaaaaaaaaaaaaHaaa####......................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##............................?.............##B.ddddddd.b##.................................................###..................d....###......................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##.?........................................##B.ddddddd.b##.................................................##B.ddddddddddddddddddddd.b##......................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##....#c######################################B.ddddddd.b##.................................................##B.ddddddddddddddddddddd.b##......................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##....####aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaddddddddd.b##.................................................##B.ddddddddddddddddddddd.b##......................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##....###.....................................ddddddddd.b##...................................?.............##B.ddddddddddddddddddddd.b##......................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##....##B.ddddddddddddddddddddddddddddddddddddddddddddd.b##.................................................##B.ddddddddddddddddddddd.b##......................................................##B.ddddddddddddddddddddd.b##",
+            "###.........###....##B.ddddddddddddddddddddddddddddddddddddddddddddd.b##.................................................##B.ddddddddddddddddddddd.b##.................................................?....##B.ddddddddddddddddddddd.b##",
+            "####AAAAAAA####....###......................................dddddddd.b##........?.............?......................?...##B.ddddddddddddddddddddd.b##......................................................##B.ddddddddddddddddddddd.b#O####################################################################C#",
+            "#v###########V#....####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdddddddd.b##.................................................##B.ddddddddddddddddddddd.b##......................................................##B.ddddddddddddddddddddd.b#Oaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa####",
+            "...................#v#######################################dddddddd.b##.................................................##B.ddddddddddddddddddddd.b##..............................?.......................##B.ddddddddddddddddddddddddd...................................................................###",
+            "#c##########################################################dddddddd.b#####################################################B.ddddddddddddddddddddd.b##########################################################B.ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
+            "####aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaddddddddddGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGdddddddddddddddddddddddDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
+            "###.........................................................dddddddd.b#####################################################B.ddddddddddddddddddddd.b##########################################################B.ddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
+            "##B.dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##.................................................##B.ddddddddddddddddddddd.b##......................................................##B.ddddddddddddddddddddddddd...................................................................###",
+            "##B.dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##...................................?.............##B.ddddddddddddddddddddd.b##....?.................................................##B.ddddddddddddddddddddd.b#OAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####",
+            "##B.ddddddddd...............................................dddddddd.b##........?......?.................................##B.ddddddddddddddddddddd.b##......................................................##B.ddddddddddddddddddddd.b#O####################################################################V#",
+            "##B.dddddddddAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAdddddddd.b##.................................................##B.ddddddddddddddddddddd.b##......................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b###############################################dddddddd.b##.................................................##B.ddddddddddddddddddddd.b##........................................?.............##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##............................................#dddddddd.b##.................................................##B.ddddddddddddddddddddd.b##......................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##......................?.....#c###############dddddddd.b##.................................................##B.ddddddddddddddddddddd.b##......................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##............................####aaaaaaaaaaaaadddddddd.b##.................................................##B.ddddddddddddddddddddd.b##..........................?...........................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##............................###..............dddddddd.b##.................................................##B.ddddddddddddddddddddd.b##......................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##.....?......................##B.ddddddddddddddddddddd.b##.................................................###.......d...............###......................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##............................##B.ddddddddddddddddddddd.b##.................................................####AAAAAAuAAAAAAAAAAAAAA####......................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##............................##B.ddddddddddddddddddddd.b##.................................................#v########u################V#..............?.......................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##............................##B.ddddddddddddddddddddd.b##..........................................................#u#.......................................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##............................##B.ddddddddddddddddddddd.b##..........................................................#u#.......................................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##............................###.......................###.........................................?................#u#.......................................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##............................####AAAAAAAAAAAAAAAAAAAAA####..........................................................#u#.......................................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##............................#v#########################V#..........................................................#u#.......................................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##.......?...........................................................................................................#u#.......................................................................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##.................................................?..........................................................#c######u##########################################C#............................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##....................?.......................................................................................####aaaadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa####............................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b##............................................................................................................###.....d.........................................###............................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddd.b#####################################################################################C#.......................##B.ddddddddddddddddddddddddddddddddddddddddddddd.b##............................##B.ddddddddddddddddddddd.b##",
+            "##B.dddddddddaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa###.......................##B.ddddddddddddddddddddddddddddddddddddddddddddd.b##............................##B.ddddddddddddddddddddd.b##",
+            "##B.ddddddddd....................................................................................d##......?......?.........##B.ddddddddddddddddddddddddddddddddddddddddddddd.b##............................##B.ddddddddddddddddddddd.b##",
+            "###..............................................................................................d##.......................###...............................................###............................###.......................###",
+            "####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####.......................####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####............................####AAAAAAAAAAAAAAAAAAAAA####",
+            "#v################################################################################################V#.......................#v#################################################V#............................#v#########################V#"
+        ],
+        "char type": {
+            "V": {
+                "path": "./assets/image/map/squares/corner.png",
+                "rotation": 180.0,
+                "col": 1
+            },
+            "v": {
+                "path": "./assets/image/map/squares/corner.png",
+                "rotation": 270.0,
+                "col": 1
+            },
+            "C": {
+                "path": "./assets/image/map/squares/corner.png",
+                "rotation": 90.0,
+                "col": 1
+            },
+            "c": {
+                "path": "./assets/image/map/squares/corner.png",
+                "col": 1
+            },
+            "b": {
+                "path": "./assets/image/map/squares/fall.png",
+                "rotation": 90.0,
+                "col": 1
+            },
+            "B": {
+                "rotation": 270.0,
+                "path": "./assets/image/map/squares/fall.png",
+                "col": 1
+            },
+            "A": {
+                "path": "./assets/image/map/squares/fall.png",
+                "rotation": 180.0,
+                "col": 1
+            },
+            "a": {
+                "path": "./assets/image/map/squares/fall.png",
+                "col": 1
+            },
+            "d": {
+                "path": "./assets/image/map/squares/dirt.png"
+            },
+            "H": {
+                "path": "./assets/image/map/squares/white_ladder.png"
+            },
+            "D": {
+                "path": "./assets/image/map/squares/white_ladder.png",
+                "rotation": 90.0
+            },
+            "u": {
+                "path": "./assets/image/map/squares/white_ladder.png",
+                "rotation": 180.0
+            },
+            "G": {
+                "path": "./assets/image/map/squares/white_ladder.png",
+                "rotation": 270.0
+            },
+            "O": {
+                "path": "./assets/image/map/squares/white_rock.png",
+                "col": 1
+            },
+            "?": {
+                "path": "./assets/image/map/squares/water.png",
+                "components": {
+                    "npc path": "./assets/data/npc/fish.json"
+                }
+            },
+            "S": {
+                "path": "./assets/image/map/squares/flower.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/amongus.json"
+                }
+            },
+            ".": {
+                "col": 0
+            },
+            "#": {
+                "col": 1
+            }
+        }
+    },
+    "spawn": [134, 30]
+}

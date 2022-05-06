@@ -1,0 +1,7 @@
+{
+    "sprite path": "./assets/image/npc/fish.png",
+    "rect": [[0, 0, 50, 50], [46, 36, 50, 50], [34, 78, 50, 50]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 1.0
+}
