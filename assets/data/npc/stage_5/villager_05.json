@@ -1,0 +1,10 @@
+{
+    "sprite path": "./assets/image/npc/stage_5/npc_stage_5.png",
+    "rect": [[288, 177, 23, 32]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 2.5,
+    "dialogus": [
+        "Hey, je crois que jsuis perdu."
+    ]
+}

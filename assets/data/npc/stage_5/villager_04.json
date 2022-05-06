@@ -1,0 +1,10 @@
+{
+    "sprite path": "./assets/image/npc/stage_5/npc_stage_5.png",
+    "rect": [[444, 322, 27, 45]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 2.5,
+    "dialogus": [
+        "dianhzfujiaezfbnapef\nJ'ai peur bordel."
+    ]
+}

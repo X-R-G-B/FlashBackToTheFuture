@@ -1,0 +1,17 @@
+{
+    "sprite path": "./assets/image/npc/stage_5/npc_stage_5.png",
+    "rect": [[603, 222, 24, 40]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 2.5,
+    "dialogus": [
+        "*Brrr*",
+        "J..J'ai peur...",
+        "Oh... Salut",
+        "T'as vu le doyen ?",
+        "Bon, le village va mal\ncomme t'as pu l'entendre.",
+        "Y'a un truc qui nous attaque et qui\nfait grave peur.",
+        "Il sort de la foret a chaque fois,\naide-nous...",
+        "Peut-etre que ca va te recompenser\nde tuer cette ... chose."
+    ]
+}

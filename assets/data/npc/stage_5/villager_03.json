@@ -1,0 +1,10 @@
+{
+    "sprite path": "./assets/image/npc/stage_5/npc_stage_5.png",
+    "rect": [[23, 222, 27, 40]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 2.5,
+    "dialogus": [
+        "PAS LA FOREEEEET NAAAAAN T_T"
+    ]
+}
