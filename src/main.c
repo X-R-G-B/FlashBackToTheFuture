@@ -5,9 +5,33 @@
 ** tests
 */
 
+#include <stdbool.h>
+#include "my_strings.h"
+#include "my_puts.h"
 #include "my_rpg.h"
 
-int main(void)
+int print_help(const char *exe)
 {
-    return launch_game();
+    my_printf(1, "USAGE: %s [-h] [-f]\n", exe);
+    my_putstr(1, "DESCRIPTION:\n\ta mini open world RPG\n");
+    my_putstr(1, "OPTIONS:\n\t-h\tprint this message\n");
+    my_putstr(1, "\t-f\trender the game in full screen\n");
+    return (0);
+}
+
+int main(int ac, char **av)
+{
+    bool is_full_screen = false;
+
+    if (ac == 1) {
+        return (launch_game(is_full_screen));
+    }
+    if (my_strcmp(av[1], "-h") == 0) {
+        return (print_help(av[0]));
+    } else if (my_strcmp(av[1], "-f") == 0) {
+        is_full_screen = true;
+    } else {
+        return (84);
+    }
+    return launch_game(is_full_screen);
 }
