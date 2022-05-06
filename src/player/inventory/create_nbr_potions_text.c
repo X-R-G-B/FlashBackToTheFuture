@@ -9,8 +9,7 @@
 #include "my_conversions.h"
 #include <stdlib.h>
 
-static const char potions_font_path[]=
-    "assets/fonts/Menlo-Regular.ttf";
+extern const char path_font[];
 
 static const float angle_text = -35.0;
 
@@ -54,8 +53,9 @@ int create_number_of_potions(scene_t *scene, window_t *win)
     }
     potions = my_itoa(potions_nbr);
     obj = create_object(NULL, NULL, scene, obj_layer);
-    if (obj == NULL || object_set_text(obj, potions_font_path,
+    if (obj == NULL || object_set_text(obj, path_font,
         potions, potions_text_pos) != BGS_OK) {
+        free(potions);
         return RET_ERR_MALLOC;
     }
     free(potions);

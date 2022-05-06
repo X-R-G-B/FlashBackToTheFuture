@@ -10,8 +10,10 @@
 #include "audio.h"
 #include "main_menu.h"
 
-static const char *TO_REMOVE[] = {PLAYER, PAUSE_MENU, DEAD_MESSAGE,
+static const char *TO_REMOVE_COMP_WIN[] = {PLAYER, PAUSE_MENU, DEAD_MESSAGE,
     DEAD_SCREEN, HUD_ELEMENTS};
+
+static const char *TO_REMOVE_SCENE[] = {INV_SCENE};
 
 static void check_type(dico_t *dico, list_t *elem, list_t **button_elem)
 {
@@ -84,10 +86,16 @@ static void move_setting_menu_to_main_menu(window_t *win, scene_t *scene)
 
 void remove_components(window_t *win)
 {
-    for (int i = 0; TO_REMOVE[i] != NULL; i++) {
-        win->components = dico_t_rem(win->components, TO_REMOVE[i]);
+    for (int i = 0; TO_REMOVE_COMP_WIN[i] != NULL; i++) {
+        win->components = dico_t_rem(win->components, TO_REMOVE_COMP_WIN[i]);
         if (win->components == NULL) {
-            return;
+            break;
+        }
+    }
+    for (int i = 0; TO_REMOVE_SCENE[i] != NULL; i++) {
+        win->scenes = dico_t_rem(win->scenes, TO_REMOVE_SCENE[i]);
+        if (win->scenes == NULL) {
+            break;
         }
     }
 }

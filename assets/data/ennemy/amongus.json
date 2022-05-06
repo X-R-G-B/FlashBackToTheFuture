@@ -15,6 +15,8 @@
         [1, 43, 11, 15],
         [1, 62, 12, 16]
     ],
+    "dash time": 1.5,
+    "charge time": 0.5,
     "scale": 2.0,
     "rect actualisation": 0.09,
     "speed": 150.0,
@@ -24,5 +26,6 @@
     "blink time": 0.7,
     "sprite path": "./assets/image/ennemy/amongus.png",
     "xp loot": 5.0,
-    "range dash": 30.0
+    "range dash": 60.0,
+    "drop rate": 20.0
 }

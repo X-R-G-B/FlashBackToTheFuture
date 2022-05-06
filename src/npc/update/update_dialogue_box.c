@@ -24,7 +24,7 @@ static void set_new_text(dialog_manager_t *dialog, text_dialog_t *text,
         return;
     }
     player = dico_t_get_value(win->components, PLAYER);
-    if (dialog->text == NULL || my_strcmp(dialog->text, text->str) != 0) {
+    if (dialog->text == NULL || dialog->text != text->str) {
         dialog->text = text->str;
     }
     if (player != NULL && text->need_pause == true) {

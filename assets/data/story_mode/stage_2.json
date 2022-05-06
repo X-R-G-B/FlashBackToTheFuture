@@ -6,12 +6,12 @@
             "###.......................................................###",
             "##B.gxxxxxgxggggggxgggxgggggxxgxxggxggxxgxxgxggxgxxgxgxgg.b##",
             "##B.xggxxxgxgxgxxxxggxxxxxgxxgxxggxgxxxxgggxgxxgxxg######.b##",
-            "##B.xxggxxxggxggggg.........gggxggggxxgxgxxxgxgxggx######.b##",
-            "##B.gxgggxxxgxxxxgg.........wwwwwwwwwwwwwwwwwwwwwww###H##.b##",
-            "##B.ggxxgxggxxxxggx......################################.b##",
+            "##B.xxggxxxggxggggg.........xxgxxgxgxggxggggxgxxggg######.b##",
+            "##B.gxgggxxxgxxxxgg.........rrrrrrrrrrrrrrrrrrrrrrr###H##.b##",
+            "##B.ggxxgxggxxxxggx......###wwwwwwwwwwwwwwwwwwwwwww######.b##",
             "##B.xgggxxggxxxgxgx...#P..............................n#..b##",
             "##B.xgxxgxxgggxggxg...#.Lllllllllllllllllllllllllllll.n##.b##",
-            "##B.gxgxggxxgggxgxg...###################################.b##",
+            "##B.gxgxggxxgggxgxg....##################################.b##",
             "##B.xxggggxxxxxxxgx.........mmmmmmmmmmmmmmmmmmmmmmmmmmmmm.b##",
             "##B.gxxxgxxxgxgxxgxgxxxxxxxxggxxxxgxgxgggxggxxxxgxgxxxxgx.b##",
             "##B.ggxxxgxxxxggxxxgggxxgxggxggxxxxgxgxxxgggxggggxggxggxg.b##",
@@ -21,9 +21,9 @@
             "##B.xxggxxxxxggxxgggxgxggxggggxgxxxgxggggxxgggggxgxxgxxxx.b##",
             "##B.ggxxxxgxgggggxgxxgxxggxxggxgxggxgggxxgggxxxxxgxgxggxg.b##",
             "##B.ggxgxgxgxxggggxxgggxxxggxggxggxgxgxxxxgxggxxggxxgxxxg.b##",
-            "##B.########gxgxxxggg####################################.b##",
+            "##B.########gQQQQQQQg####################################.b##",
             "##B.mmmmmmmm#.......#mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm.b##",
-            "##B.gxxxgxxx#.......#ggxxgxggxxggxgxgxxgxggggxxggxgxxgxgx.b##",
+            "##B.gxxxgxxx#:::::::#ggxxgxggxxggxgxgxxgxggggxxggxgxxgxgx.b##",
             "##B.xggggxxx#.......#xgxxxxggxxxxxxxxgxxxxgxgxxxgxxxgggxx.b##",
             "##B.ggxxxxxg#.......#ggxxgxxgxgxxgggxgxxxggxgggggxggxgxxg.b##",
             "##B.gxgxggxg#.......#ggggggxggxxggggggxgxgxxggxxggxxgxggx.b##",
@@ -31,9 +31,9 @@
             "##B.xgggxxxg#.......#ggxxggggxgxgxxxxxgxggxxxggggxgxggggx.b##",
             "##B.xxxxxggg#.......#xxgggxxgxgxxgxxgxgxxggggxggxgxxxgxxg.b##",
             "##B.gxggxggg#.......#gxgxgxgxxgggxxggggxgxggggxgxggxxggxg.b##",
-            "##B.gxgxgxgg#.......#xxgggxggggggggxggxxgggxxgxxggggggxgx.b##",
+            "##B.gxgxgxgg#:::::::#xxgggxggggggggxggxxgggxxgxxggggggxgx.b##",
             "##B.gggxxxgg#.......#xxgxgxxxxgxgggxxxxggxgxgxxxggxxgxgxx.b##",
-            "##B.xgxgxggxxggxxggggxxggxggxggxgggxgxgxggxgxxxxgxggxgxgg.b##",
+            "##B.xgxgxggxxqqqqqqqgxxggxggxggxgggxgxgxggxgxxxxgxggxgxgg.b##",
             "##B.gxggggxggxxxxxxgxxxxggxgggxgxggggxxxxgxgggggxgxgggggx.b##",
             "##B.gxgggxxxxgxxxxxxgxggggggxggggxxgxxxxxgggxxxggxxxgggxx.b##",
             "##B.gggxxxgxxxggggxggxgggxxxgxxxgxxgxxxgxxgggggxxxggggxgg.b##",
@@ -48,8 +48,8 @@
             "##B.gxggxgggggggxxgxggxgxgxxxgggxxxgxggxggxgggxgggggxxxgx.b##",
             "##B.ggxgxgggxxgxggxgxggxggggggxxxxgxggxgxxgxgggxgxgxxgxgg.b##",
             "##B.gxxgxxxxggxgggggggxxxgggxgxgxxgxgggxgggxggggxxgxxxxxx.b##",
-            "##B.#######################################xxgxggx#######.b##",
-            "##B.mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm#.....#mmmmmmm.b##",
+            "##B.rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrxxgxggxrrrrrrr.b##",
+            "##B.wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#.....#wwwwwww.b##",
             "##B.xxxxxgxxxggxxgggggxxxxgxxgxgxxxxgggggxx#.....#xxxxxxg.b##",
             "##B.gggxxxgxggggxgggggxgggxxxgxggxgxxxxgggg#.....#gggggxx.b##",
             "##B.xgggggxxgxxxgxgxgggxgxxggxxxggxgxggxggg#.....#xxxgxxg.b##",
@@ -60,7 +60,7 @@
             "##B.xggggxgxxxggggxxxgxgxxxxxxgggxgxxggxxgx#.....#gggxgxx.b##",
             "##B.xggxxggxgggggxgxxxgxgxgxxxgxgxxgxxggxxg#.....#gxgxgxg.b##",
             "##B.gxggxgggxxxggxxxxxggggggggggxxxxgggxgxg#.....#xgxxxgx.b##",
-            "##B.gxgxgggxxxgxggxxgggxxxggxgxgxgxxxxgxgxgxggxggggxgxggx.b##",
+            "##B.gxgxgggxxxgxggxxgggxxxggxgxgxgxxxxgxgxgxQQQQQxggxgggx.b##",
             "##B.gxgggxggggxxxxggxgggxxxxxxgxgxggxxxgxggggxxgxgxgxxgxx.b##",
             "##B.gxxgxxgxggggxggxxxxxggxggxgggggxgxxxxxxgxgxxgxxxxxgxg.b##",
             "##B.ggxggggxxxgxxxgxgxxxxxxxxggggggxxgxgggxxgggxgggxgxxgx.b##",
@@ -74,23 +74,23 @@
             "##B.xxgxgxggxggxxgxxxggxxxxxgxgggxxxggggxgxxgxxgxgggxgxgg.b##",
             "##B.xggxgggxxxgxxxxgggxgggxxxxggxxgggxxgxgggxgggxgggxgxgg.b##",
             "##B.gxgggxxggggxxxxgggxxgxgxgxggggxxggxxgggggxgggxxgxgxgx.b##",
-            "##B.################xgx##################################.b##",
+            "##B.################xQx##################################.b##",
             "##B.mmmmmmmmmmmmmmmm#.#mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm.b##",
-            "##B.xxxgxgxggxgxxxgg#.#gggxxggggxgggxxxxgxxxxxxxggxgxxggx.b##",
+            "##B.xxxgxgxggxgxxxgg#:#gggxxggggxgggxxxxgxxxxxxxggxgxxggx.b##",
             "##B.xggxxggggxgxxggg#.#xggxgxxxxgggxgxxggxxxxxxxgxxxggxxg.b##",
             "##B.ggxggxgxggggggxg#E#gggxggggxxgxgxgxxxgxggxgggxggxggxx.b##",
             "##B.ggxxxxxgxxxgggxg#.#gxxggxxxxgggxxxxxxxgggggxgggxxxgxx.b##",
-            "##B.xxxxxxxxxggggxxg#.#xxgxxgxxxgxxgxgxxgxggxxxxxgxggxxxx.b##",
+            "##B.xxxxxxxxxggggxxg#:#xxgxxgxxxgxxgxgxxgxggxxxxxgxggxxxx.b##",
             "##B.ggxxxxgxgggxgxgx#.#ggxxggggggxgxxxxxggxxxgggggggggggg.b##",
-            "##B.gQQgQgxQgQgxgQQggxgQgQgxxQQggQgQxgxxgQxQxQgQgxgQQgxgg.b##",
-            "##B.QggxQxQgQgggxxQQQQQxxgxQQxxQgQgQgxggxQgQgxxQgQQxQgQxQ.b##",
-            "##B.QxxQxgQQQgxQxgggQQQgQQxxxxxQgQQxgggxQgggxggxxxggxgQgx.b##",
-            "##B.QQQgQxggxxxQgQQQQQQgQxxgggQxxgQQgxggxgxQgxxgQxggQQgxg.b##",
-            "##B.QxQgQQQxQQgxQxggQQxQgggxQgQQgxgQxxxxgxxggQgQxxQgxQQgg.b##",
-            "##B.QQgQgQxgxxQQxxgxgxxQQgggQgQxQxQQQQgxgQgQgQgggxgQQxgQQ.b##",
-            "##B.xgxQxgQQggxQxxgxQxQQQgggxxxxgQxxQQQQxxgggxxxQggxgQxgx.b##",
-            "##B.xxggQQQxggQxxQQxgQQQxgxgxQxxgxQgxgxQQggQQgQQxQQQQggQx.b##",
-            "##B.gxxxxgQxQgggQxgQxxxQQxgggxxQxxggxxQxggQxxggQQQggxxggg.b##",
+            "##B.gOOgOgxOgOgxgOOggqgOgOgxxOOggOgOxgxxgOxOxOgOgxgOOgxgg.b##",
+            "##B.OggxOxOgOgggxxOOOOOxxgxOOxxOgOgOgxggxOgOgxxOgOOxOgOxO.b##",
+            "##B.OxxOxgOOOgxOxgggOOOgOOxxxxxOgOOxgggxOgggxggxxxggxgOgx.b##",
+            "##B.OOOgOxggxxxOgOOOOOOgOxxgggOxxgOOgxggxgxOgxxgOxggOOgxg.b##",
+            "##B.OxOgOOOxOOgxOxggOOxOgggxOgOOgxgOxxxxgxxggOgOxxOgxOOgg.b##",
+            "##B.OOgOgOxgxxOOxxgxgxxOOgggOgOxOxOOOOgxgOgOgOgggxgOOxgOO.b##",
+            "##B.xgxOxgOOggxOxxgxOxOOOgggxxxxgOxxOOOOxxgggxxxOggxgOxgx.b##",
+            "##B.xxggOOOxggOxxOOxgOOOxgxgxOxxgxOgxgxOOggOOgOOxOOOOggOx.b##",
+            "##B.gxxxxgOxOgggOxgOxxxOOxgggxxOxxggxxOxggOxxggOOOggxxggg.b##",
             "###.......................................................###",
             "####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####",
             "#v#########################################################V#"
@@ -158,9 +158,13 @@
                 "col": 1
             },
             "w": {
-                "path": "./assets/image/map/squares/barrier.png",
-                "rotation": 180.0,
+                "path": "./assets/image/map/squares/mono_barrier.png",
                 "col": 1
+            },
+            "r": {
+                "path": "./assets/image/map/squares/boss_grass_shadow.png",
+                "rotation": 180.0,
+                "col": 0
             },
             "P": {
                 "path": "./assets/image/map/squares/plateau.png"
@@ -176,8 +180,20 @@
                 "path": "./assets/image/map/squares/begin_ladder.png",
                 "rotation": 90.0
             },
-            "Q": {
+            "O": {
                 "path": "./assets/image/map/squares/bones.png"
+            },
+            "Q": {
+                "path": "./assets/image/map/squares/broken_boss_grass.png",
+                "col": 0
+            },
+            "q": {
+                "path": "./assets/image/map/squares/boss_grass.png",
+                "col": 0
+            },
+            ":": {
+                "path": "./assets/image/map/squares/void.png",
+                "col": 0
             },
             ".": {
                 "col": 0

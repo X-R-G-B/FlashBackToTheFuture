@@ -1,0 +1,12 @@
+{
+    "sprite path": "./assets/image/npc/stage_0/villager_1.png",
+    "rect": [[0, 0, 36, 58]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 1.3,
+    "dialogus": [
+        "Tu veux voir un truc 2 fou ?",
+        "Appuie sur 'I' pour ouvrir ton frigo",
+        "Et utilise 'ESC' pour revenir"
+    ]
+}

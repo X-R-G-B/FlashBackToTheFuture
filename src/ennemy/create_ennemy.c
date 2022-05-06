@@ -61,6 +61,9 @@ static ennemy_t *add_new_ennemy_struct(scene_t *scene, object_t *obj,
     ennemy->obj = obj;
     ennemy->state = STOP;
     ennemy->delta_time = 0;
+    ennemy->rect_id = 0;
+    ennemy->move_delta_time = 0;
+    ennemy->hurt_delta_time = 0;
     if (add_to_ennemy_list(ennemy, scene) != RET_OK) {
         return NULL;
     }

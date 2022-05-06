@@ -1,16 +1,15 @@
 {
     "sprite path": "./assets/image/npc/magician.png",
-    "rect": [[6, 56, 27, 39], [39, 56, 42, 39], [85, 56, 49, 38],
-        [144, 63, 43, 32], [195, 55, 34, 38], [236, 56, 25, 39]],
-    "pos": [500.0, 500.0],
+    "rect": [[6, 57, 26, 37], [40, 57, 42, 37], [85, 57, 50, 37],
+        [144, 65, 43, 29], [195, 58, 34, 34], [236, 57, 24, 37]],
     "current": 0,
     "time": 0.0,
     "scale": 3.0,
     "dialogus": [
-        "(appui sur 'a' pour passer au dialogue suivant)",
+        "(appui sur 'a' pour passer\nau dialogue suivant)",
         "Bonjour jeune apprenti",
-        "Pour te déplacer, utilises 'z','q','s','d'",
+        "Pour te déplacer,\nutilises 'z','q','s','d'",
         "pour attacker, appui sur 'l'",
-        "fais attention aux ennémies,\nsi ils sont trop proche, ils sauteront sur toi!"
+        "fais attention aux ennémies,\nsi ils sont trop proche,\nils sauteront sur toi!"
     ]
 }

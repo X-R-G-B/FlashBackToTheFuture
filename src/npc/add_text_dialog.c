@@ -48,64 +48,46 @@ int destroy_text_dialog(void *dialog_void, scene_t *scene, window_t *win,
         set_stop(player);
     }
     if (dialog->callback != NULL && scene != NULL && win != NULL) {
-        dialog->callback(dialog->str, scene, win);
+        dialog->callback(dialog->str, scene, win, dialog->data);
     }
-    free(dialog->str);
+    if (dialog->str) {
+        free(dialog->str);
+    }
     free(dialog);
     return (true);
 }
 
 static void fill_dialog_text(text_dialog_t *text_d, const char *str,
     bool need_pause,
-    void (*callback)(const char *str, scene_t *scene, window_t *win))
+    void (*callback)(const char *str, scene_t *scene,
+    window_t *win, void *data))
 {
     text_d->callback = callback;
     text_d->need_pause = need_pause;
-    text_d->str = my_strdup(str);
+    text_d->str = parseprety(str);
     text_d->time = 0;
+    text_d->data = NULL;
 }
 
-int add_text_dialog(scene_t *scene, const char *text, bool need_pause,
-    void (*callback)(const char *str, scene_t *scene, window_t *win))
+text_dialog_t *add_text_dialog(scene_t *scene, const char *text,
+    bool need_pause,
+    void (*callback)(const char *str, scene_t *scene,
+    window_t *win, void *data))
 {
     dialog_manager_t *dialog = NULL;
     list_t *text_d = NULL;
 
     if (scene == NULL || text == NULL) {
-        return (RET_ERR_INPUT);
+        return NULL;
     }
     dialog = dico_t_get_value(scene->components, compo_dialog);
     if (dialog == NULL) {
-        return (RET_ERR_INPUT);
+        return NULL;
     }
     text_d = list_add_to_end(dialog->dialogues, malloc(sizeof(text_dialog_t)));
     if (text_d == NULL) {
-        return (RET_ERR_MALLOC);
+        return NULL;
     }
     fill_dialog_text(text_d->var, text, need_pause, callback);
-    return (RET_OK);
-}
-
-int add_text_dialog_json(scene_t *scene, const char *path)
-{
-    any_t *json = NULL;
-    char **arr_text = NULL;
-
-    if (scene == NULL || path == NULL) {
-        return (RET_ERR_INPUT);
-    }
-    json = parse_json_file(path);
-    if (json == NULL) {
-        return (RET_ERR_MALLOC);
-    }
-    arr_text = get_any_string_array(get_from_any(json, "d", "dialogus"));
-    if (arr_text == NULL) {
-        return (RET_ERR_INPUT);
-    }
-    for (int i = 0; arr_text[i] != NULL; i++) {
-        add_text_dialog(scene, arr_text[i], false, NULL);
-    }
-    my_wordarray_free(arr_text);
-    destroy_any(json);
-    return (RET_OK);
+    return text_d->var;
 }

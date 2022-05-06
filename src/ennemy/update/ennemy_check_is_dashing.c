@@ -8,6 +8,7 @@
 #include <SFML/Graphics/Rect.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/System/Vector2.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include "my_bgs.h"
 #include "my_dico.h"
@@ -15,9 +16,11 @@
 #include "my_puts.h"
 #include "ennemies.h"
 #include "my_rpg.h"
-#include "maths.h"
+#include "maths_function.h"
 
 static const char range_dash[] = "range dash";
+
+const char components_direction[] = "compo dirr";
 
 static float get_readius_dash(dico_t *components)
 {
@@ -33,12 +36,34 @@ static float get_readius_dash(dico_t *components)
     return (float_val->value.f);
 }
 
+static bool check_add_component(bool is_ok, ennemy_t *ennemy, window_t *win)
+{
+    sfVector2f *dir = NULL;
+    player_t *player = NULL;
+
+    if (is_ok == false) {
+        return (false);
+    }
+    player = dico_t_get_value(win->components, PLAYER);
+    if (player == NULL || player->obj == NULL) {
+        return (true);
+    }
+    dir = get_vector_dir_malloc(player->obj->bigdata.sprite_bigdata.pos,
+        ennemy->obj->bigdata.sprite_bigdata.pos, 0.01);
+    if (dir == NULL) {
+        return (true);
+    }
+    object_add_components(ennemy->obj, dir, components_direction, &free);
+    return (true);
+}
+
 bool check_is_dashing(ennemy_t *ennemy, window_t *win)
 {
     player_t *player = NULL;
     sfFloatRect rect = {0};
     sfVector2f center = {0};
     float radius = 0;
+    bool status = 0;
 
     if (ennemy == NULL || win == NULL || ennemy->obj == NULL) {
         return (false);
@@ -50,5 +75,6 @@ bool check_is_dashing(ennemy_t *ennemy, window_t *win)
     rect = sfSprite_getGlobalBounds(player->obj->drawable.sprite);
     center = ennemy->obj->bigdata.sprite_bigdata.pos;
     radius = get_readius_dash(ennemy->obj->components);
-    return (check_circle_col(rect, center, radius));
+    status = check_circle_col(rect, center, radius);
+    return (check_add_component(status, ennemy, win));
 }

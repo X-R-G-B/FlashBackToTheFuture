@@ -56,10 +56,11 @@ void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
     if (player->state >= 0 && player->state <= 4) {
         update_ptr[player->state](player, scene, win, dtime);
     }
-    if (dico_t_get_value(player->obj->components, "hurt") != NULL) {
+    if (dico_t_get_value(player->obj->components, hurt_key) != NULL) {
         update_hurt(player, scene, win, dtime);
     } else if (player->state != DYING && player->state != DIE) {
         player_check_hurt(player, scene);
     }
+    update_player_view(obj, win, dtime);
     player_check_life(player, win);
 }

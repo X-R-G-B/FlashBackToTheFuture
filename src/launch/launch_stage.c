@@ -44,7 +44,7 @@ char *get_stage_name(int stage_id)
     return res;
 }
 
-scene_t *init_scene(char *stage_path, window_t *win, char *stage_name)
+scene_t *init_scene(const char *stage_path, window_t *win, char *stage_name)
 {
     any_t *data = NULL;
     scene_t *scene = NULL;
@@ -71,7 +71,6 @@ static int init_new_scene_objects(window_t *win, scene_t *scene)
         init_hud_elements(win, scene) != RET_OK ||
         add_collision_array_in_scene(scene) != RET_OK ||
         init_dialog(scene) != RET_OK ||
-        add_npc(scene, json_magician, &callback_magician) != RET_OK ||
         init_stat_upgrade_pop_up(scene,
         dico_t_get_value(win->components, HUD_ELEMENTS), win) != RET_OK ||
         create_inventory(win) != RET_OK) {
@@ -80,14 +79,13 @@ static int init_new_scene_objects(window_t *win, scene_t *scene)
     return (scene->components == NULL) ? RET_ERR_MALLOC : RET_OK;
 }
 
-int launch_stage(window_t *win, char *stage_path, int stage_id,
+int launch_stage(window_t *win, const char *stage_path, int stage_id,
     scene_t *prev_scene)
 {
     scene_t *scene = NULL;
     char *stage_name = get_stage_name(stage_id);
 
     scene = init_scene(stage_path, win, stage_name);
-    free(stage_path);
     if (scene == NULL || move_object_between_scene(win, prev_scene,
         scene) != RET_OK || init_new_scene_objects(win, scene) != RET_OK) {
         return RET_ERR_MALLOC;
