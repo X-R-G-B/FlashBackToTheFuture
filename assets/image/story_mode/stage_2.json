@@ -1,0 +1,191 @@
+{
+    "map data": {
+        "map": [
+            "#c#########################################################C#",
+            "####aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa####",
+            "###.......................................................###",
+            "##B.gxxxxxgxggggggxgggxgggggxxgxxggxggxxgxxgxggxgxxgxgxgg.b##",
+            "##B.xggxxxgxgxgxxxxggxxxxxgxxgxxggxgxxxxgggxgxxgxxg######.b##",
+            "##B.xxggxxxggxggggg.........gggxggggxxgxgxxxgxgxggx######.b##",
+            "##B.gxgggxxxgxxxxgg.........wwwwwwwwwwwwwwwwwwwwwww###H##.b##",
+            "##B.ggxxgxggxxxxggx......################################.b##",
+            "##B.xgggxxggxxxgxgx...#P..............................n#..b##",
+            "##B.xgxxgxxgggxggxg...#.Lllllllllllllllllllllllllllll.n##.b##",
+            "##B.gxgxggxxgggxgxg...###################################.b##",
+            "##B.xxggggxxxxxxxgx.........mmmmmmmmmmmmmmmmmmmmmmmmmmmmm.b##",
+            "##B.gxxxgxxxgxgxxgxgxxxxxxxxggxxxxgxgxgggxggxxxxgxgxxxxgx.b##",
+            "##B.ggxxxgxxxxggxxxgggxxgxggxggxxxxgxgxxxgggxggggxggxggxg.b##",
+            "##B.xxggggxxxgxxxxgggxxggxxxxxgxgxxxgggxxgxxggxggxgggggxg.b##",
+            "##B.ggggxgxxggggxxxxxgggxgxxxgxgxgxgxxxxgggggxgxxxgxxgxxx.b##",
+            "##B.xgxgxxgxxggxggxxxgxxxxgxxggxggxgxxxggxgxggggxxxggxggg.b##",
+            "##B.xxggxxxxxggxxgggxgxggxggggxgxxxgxggggxxgggggxgxxgxxxx.b##",
+            "##B.ggxxxxgxgggggxgxxgxxggxxggxgxggxgggxxgggxxxxxgxgxggxg.b##",
+            "##B.ggxgxgxgxxggggxxgggxxxggxggxggxgxgxxxxgxggxxggxxgxxxg.b##",
+            "##B.########gxgxxxggg####################################.b##",
+            "##B.mmmmmmmm#.......#mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm.b##",
+            "##B.gxxxgxxx#.......#ggxxgxggxxggxgxgxxgxggggxxggxgxxgxgx.b##",
+            "##B.xggggxxx#.......#xgxxxxggxxxxxxxxgxxxxgxgxxxgxxxgggxx.b##",
+            "##B.ggxxxxxg#.......#ggxxgxxgxgxxgggxgxxxggxgggggxggxgxxg.b##",
+            "##B.gxgxggxg#.......#ggggggxggxxggggggxgxgxxggxxggxxgxggx.b##",
+            "##B.xxxgxxgg#...S...#gggggxggxxggxgxgxgxxxgxxxggggggxxxgx.b##",
+            "##B.xgggxxxg#.......#ggxxggggxgxgxxxxxgxggxxxggggxgxggggx.b##",
+            "##B.xxxxxggg#.......#xxgggxxgxgxxgxxgxgxxggggxggxgxxxgxxg.b##",
+            "##B.gxggxggg#.......#gxgxgxgxxgggxxggggxgxggggxgxggxxggxg.b##",
+            "##B.gxgxgxgg#.......#xxgggxggggggggxggxxgggxxgxxggggggxgx.b##",
+            "##B.gggxxxgg#.......#xxgxgxxxxgxgggxxxxggxgxgxxxggxxgxgxx.b##",
+            "##B.xgxgxggxxggxxggggxxggxggxggxgggxgxgxggxgxxxxgxggxgxgg.b##",
+            "##B.gxggggxggxxxxxxgxxxxggxgggxgxggggxxxxgxgggggxgxgggggx.b##",
+            "##B.gxgggxxxxgxxxxxxgxggggggxggggxxgxxxxxgggxxxggxxxgggxx.b##",
+            "##B.gggxxxgxxxggggxggxgggxxxgxxxgxxgxxxgxxgggggxxxggggxgg.b##",
+            "##B.xgxxggxxgxxxggxgxxgxxgxgxxggxxxxxxggxxgxggxggxxxxgggx.b##",
+            "##B.ggggggggxxxgggxxxxxxxxxgxxxggxgxggggxgxxgggxxxggxgxxg.b##",
+            "##B.gxgggxxxxgxxxgxgxxgxgxxxgggxggggggxxgxgggxxggxggggxgx.b##",
+            "##B.gxggxgxxgxggxggxxgxggggggggxgggxgxgxgxggggxgggxxxggxg.b##",
+            "##B.xgxggxxxxgggxxgxxxgggxggxxxggxgxxgxxxgxgxxxxgxxxggxxx.b##",
+            "##B.xxxxgxxgxgxxxxgxggxggxgggxgxxgggggxgggxxxxgggggggxxxg.b##",
+            "##B.xgggxxxxxgggggxxgxxggxxgxgxggxxggxxxxxxxxxgggxxggxggg.b##",
+            "##B.xgxgxgggggxggxgxggggggxgxxxxgxxxgxxgxxgxgggxxgxgggggg.b##",
+            "##B.gxggxgggggggxxgxggxgxgxxxgggxxxgxggxggxgggxgggggxxxgx.b##",
+            "##B.ggxgxgggxxgxggxgxggxggggggxxxxgxggxgxxgxgggxgxgxxgxgg.b##",
+            "##B.gxxgxxxxggxgggggggxxxgggxgxgxxgxgggxgggxggggxxgxxxxxx.b##",
+            "##B.#######################################xxgxggx#######.b##",
+            "##B.mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm#.....#mmmmmmm.b##",
+            "##B.xxxxxgxxxggxxgggggxxxxgxxgxgxxxxgggggxx#.....#xxxxxxg.b##",
+            "##B.gggxxxgxggggxgggggxgggxxxgxggxgxxxxgggg#.....#gggggxx.b##",
+            "##B.xgggggxxgxxxgxgxgggxgxxggxxxggxgxggxggg#.....#xxxgxxg.b##",
+            "##B.xggxxgxxxxgxxxgxggxxxxxxgggxxxgxxxxgxxx#.....#ggxxgxg.b##",
+            "##B.xxgxgxgggxggxggxggxxxgxgxxggxgggxggxgxg#..s..#xxxxxgg.b##",
+            "##B.gxgxxgxxgggxggxxxxxgggxxxxxxxgxxxgxgggg#.....#xxggggx.b##",
+            "##B.gggggxggxxxxxxgxxxxxxgxxxggxgxxggxgxxgg#.....#xxgxxxx.b##",
+            "##B.xggggxgxxxggggxxxgxgxxxxxxgggxgxxggxxgx#.....#gggxgxx.b##",
+            "##B.xggxxggxgggggxgxxxgxgxgxxxgxgxxgxxggxxg#.....#gxgxgxg.b##",
+            "##B.gxggxgggxxxggxxxxxggggggggggxxxxgggxgxg#.....#xgxxxgx.b##",
+            "##B.gxgxgggxxxgxggxxgggxxxggxgxgxgxxxxgxgxgxggxggggxgxggx.b##",
+            "##B.gxgggxggggxxxxggxgggxxxxxxgxgxggxxxgxggggxxgxgxgxxgxx.b##",
+            "##B.gxxgxxgxggggxggxxxxxggxggxgggggxgxxxxxxgxgxxgxxxxxgxg.b##",
+            "##B.ggxggggxxxgxxxgxgxxxxxxxxggggggxxgxgggxxgggxgggxgxxgx.b##",
+            "##B.gxxxggxgxggxgggggggxxgggxxgxxxxxgxgxggggggxgxgggggxgg.b##",
+            "##B.xxggxxgxggxgggxgxgxxxxgxxgxggxxxxggxxxggggggggxxxgggx.b##",
+            "##B.xxggxxggggxgxgxgxxgxxxxgxxgxgxggxgxggggxgxgxgxxxgxxgx.b##",
+            "##B.xxxxgxxxxxggggggxgxgxxxgxxgxxggxgxggxggxxggxxxxgxxxgg.b##",
+            "##B.ggggxxgggxxxxxxgxxgxggxxgxxxxgxgxgggxgggxxxxggxgggggg.b##",
+            "##B.xxxggggxxgxxxgggggxxgxxxgggxxxggggxxggxgggxggggxggggg.b##",
+            "##B.gxgggxgxxxgxgxxgxgxxggxxgggxggxxggxggxgxxxgxxgxgxgxgg.b##",
+            "##B.xxgxgxggxggxxgxxxggxxxxxgxgggxxxggggxgxxgxxgxgggxgxgg.b##",
+            "##B.xggxgggxxxgxxxxgggxgggxxxxggxxgggxxgxgggxgggxgggxgxgg.b##",
+            "##B.gxgggxxggggxxxxgggxxgxgxgxggggxxggxxgggggxgggxxgxgxgx.b##",
+            "##B.################xgx##################################.b##",
+            "##B.mmmmmmmmmmmmmmmm#.#mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm.b##",
+            "##B.xxxgxgxggxgxxxgg#.#gggxxggggxgggxxxxgxxxxxxxggxgxxggx.b##",
+            "##B.xggxxggggxgxxggg#.#xggxgxxxxgggxgxxggxxxxxxxgxxxggxxg.b##",
+            "##B.ggxggxgxggggggxg#E#gggxggggxxgxgxgxxxgxggxgggxggxggxx.b##",
+            "##B.ggxxxxxgxxxgggxg#.#gxxggxxxxgggxxxxxxxgggggxgggxxxgxx.b##",
+            "##B.xxxxxxxxxggggxxg#.#xxgxxgxxxgxxgxgxxgxggxxxxxgxggxxxx.b##",
+            "##B.ggxxxxgxgggxgxgx#.#ggxxggggggxgxxxxxggxxxgggggggggggg.b##",
+            "##B.gQQgQgxQgQgxgQQggxgQgQgxxQQggQgQxgxxgQxQxQgQgxgQQgxgg.b##",
+            "##B.QggxQxQgQgggxxQQQQQxxgxQQxxQgQgQgxggxQgQgxxQgQQxQgQxQ.b##",
+            "##B.QxxQxgQQQgxQxgggQQQgQQxxxxxQgQQxgggxQgggxggxxxggxgQgx.b##",
+            "##B.QQQgQxggxxxQgQQQQQQgQxxgggQxxgQQgxggxgxQgxxgQxggQQgxg.b##",
+            "##B.QxQgQQQxQQgxQxggQQxQgggxQgQQgxgQxxxxgxxggQgQxxQgxQQgg.b##",
+            "##B.QQgQgQxgxxQQxxgxgxxQQgggQgQxQxQQQQgxgQgQgQgggxgQQxgQQ.b##",
+            "##B.xgxQxgQQggxQxxgxQxQQQgggxxxxgQxxQQQQxxgggxxxQggxgQxgx.b##",
+            "##B.xxggQQQxggQxxQQxgQQQxgxgxQxxgxQgxgxQQggQQgQQxQQQQggQx.b##",
+            "##B.gxxxxgQxQgggQxgQxxxQQxgggxxQxxggxxQxggQxxggQQQggxxggg.b##",
+            "###.......................................................###",
+            "####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####",
+            "#v#########################################################V#"
+        ],
+        "char type": {
+            "V": {
+                "path": "./assets/image/map/squares/boss_corner.png",
+                "rotation": 180.0,
+                "col": 1
+            },
+            "v": {
+                "path": "./assets/image/map/squares/boss_corner.png",
+                "rotation": 270.0,
+                "col": 1
+            },
+            "C": {
+                "path": "./assets/image/map/squares/boss_corner.png",
+                "rotation": 90.0,
+                "col": 1
+            },
+            "c": {
+                "path": "./assets/image/map/squares/boss_corner.png",
+                "col": 1
+            },
+            "b": {
+                "path": "./assets/image/map/squares/boss_fall.png",
+                "rotation": 90.0,
+                "col": 1
+            },
+            "B": {
+                "rotation": 270.0,
+                "path": "./assets/image/map/squares/boss_fall.png",
+                "col": 1
+            },
+            "A": {
+                "path": "./assets/image/map/squares/boss_fall.png",
+                "rotation": 180.0,
+                "col": 1
+            },
+            "a": {
+                "path": "./assets/image/map/squares/boss_fall.png",
+                "col": 1
+            },
+            "E": {
+                "path": "./assets/image/map/squares/stairs.png"
+            },
+            "s": {
+                "path": "./assets/image/map/squares/boss_stairs.png"
+            },
+            "S": {
+                "path": "./assets/image/map/squares/big_boss_stairs.png"
+            },
+            "g": {
+                "path": "./assets/image/map/squares/boss_grass.png"
+            },
+            "x": {
+                "path": "./assets/image/map/squares/broken_boss_grass.png"
+            },
+            "H": {
+                "path": "./assets/image/map/squares/boss_house.png",
+                "col": 1
+            },
+            "m": {
+                "path": "./assets/image/map/squares/barrier.png",
+                "col": 1
+            },
+            "w": {
+                "path": "./assets/image/map/squares/barrier.png",
+                "rotation": 180.0,
+                "col": 1
+            },
+            "P": {
+                "path": "./assets/image/map/squares/plateau.png"
+            },
+            "l": {
+                "path": "./assets/image/map/squares/ladder.png",
+                "rotation": 90.0
+            },
+            "n": {
+                "path": "./assets/image/map/squares/ladder.png"
+            },
+            "L": {
+                "path": "./assets/image/map/squares/begin_ladder.png",
+                "rotation": 90.0
+            },
+            "Q": {
+                "path": "./assets/image/map/squares/bones.png"
+            },
+            ".": {
+                "col": 0
+            },
+            "#": {
+                "col": 1
+            }
+        }
+    },
+    "spawn": [55, 88]
+}
