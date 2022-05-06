@@ -21,7 +21,7 @@
     "dammage": 40.0,
     "blink time": 0.7,
     "sprite path": "./assets/image/ennemy/dark_ennemy.png",
-    "xp loot": 30.0,
-    "range dash": 50.0,
+    "xp loot": 60.0,
+    "range dash": 120.0,
     "drop rate": 40.0
 }
