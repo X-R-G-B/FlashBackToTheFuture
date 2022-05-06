@@ -9,6 +9,7 @@
 #include <SFML/System/Vector2.h>
 #include <math.h>
 #include "maths_function.h"
+#include "my_bgs.h"
 #include "my_macro.h"
 #include "my_rpg.h"
 #include "ennemies.h"
@@ -28,13 +29,11 @@ static sfVector2f get_position_player(window_t *win)
     return (pos);
 }
 
-dir_t ennemy_get_view_dir(object_t *obj, window_t *win)
+dir_t get_view_dir(sfVector2f cur_pos, sfVector2f next_pos)
 {
-    sfVector2f dir = get_position_player(win);
-    sfVector2f cur = sfSprite_getPosition(obj->drawable.sprite);
     double angle = 0;
 
-    angle = atan2(cur.y - dir.y, cur.x - dir.x) * 180 / pi;
+    angle = atan2(cur_pos.y - next_pos.y, cur_pos.x - next_pos.x) * 180 / pi;
     if (45 <= angle && angle < 135) {
         return UP;
     }
@@ -48,6 +47,19 @@ dir_t ennemy_get_view_dir(object_t *obj, window_t *win)
         return LEFT;
     }
     return UNKNOWN_STATE;
+}
+
+dir_t ennemy_get_view_dir(object_t *obj, window_t *win)
+{
+    sfVector2f cur = {0};
+    sfVector2f dir = {0};
+
+    if (obj == NULL || win == NULL) {
+        return (UNKNOWN_STATE);
+    }
+    dir = get_position_player(win);
+    cur = sfSprite_getPosition(obj->drawable.sprite);
+    return (get_view_dir(cur, dir));
 }
 
 int *get_rect(ennemy_t *ennemy, window_t *win, any_t *data)

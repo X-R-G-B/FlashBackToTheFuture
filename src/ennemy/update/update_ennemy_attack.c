@@ -23,18 +23,19 @@ static sfVector2f get_vector_use(ennemy_t *ennemy, float speed)
 {
     sfVector2f *dir = dico_t_get_value(ennemy->obj->components,
         components_direction);
-    sfVector2f news[4] = {
+    sfVector2f news[5] = {{0, 0},
         {0, 0 - speed},
         {0 - speed, 0},
         {0, speed},
         {speed, 0}};
+    sfVector2f cur_pos = {0};
 
     if (dir == NULL) {
-        return (news[ennemy->dir]);
+        return (news[ennemy->dir + 1]);
     }
-    news[0].x = dir->x * speed;
-    news[0].y = dir->y * speed;
-    return (news[0]);
+    cur_pos = sfSprite_getPosition(ennemy->obj->drawable.sprite);
+    dir_t index = get_view_dir(cur_pos, *dir);
+    return (news[index + 1]);
 }
 
 static void update_move(ennemy_t *ennemy, float speed, float coef,

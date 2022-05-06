@@ -79,6 +79,8 @@ bool check_wall(ennemy_t *ennemy, sfVector2f new, window_t *win);
 
 bool check_wall(ennemy_t *ennemy, sfVector2f new, window_t *win);
 
+dir_t get_view_dir(sfVector2f cur_pos, sfVector2f next_pos);
+
 /**
 ** @brief update pos of the obj sprite to follow the ennemy
 **

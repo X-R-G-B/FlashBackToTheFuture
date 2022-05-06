@@ -49,10 +49,12 @@ static bool check_add_component(bool is_ok, ennemy_t *ennemy, window_t *win)
         return (true);
     }
     dir = get_vector_dir_malloc(player->obj->bigdata.sprite_bigdata.pos,
-        ennemy->obj->bigdata.sprite_bigdata.pos, 0.01);
+        ennemy->obj->bigdata.sprite_bigdata.pos, 1);
     if (dir == NULL) {
         return (true);
     }
+    dir->x += sfSprite_getPosition(player->obj->drawable.sprite).x;
+    dir->y += sfSprite_getPosition(player->obj->drawable.sprite).y;
     object_add_components(ennemy->obj, dir, components_direction, &free);
     return (true);
 }
