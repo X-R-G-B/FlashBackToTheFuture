@@ -7,12 +7,39 @@
             "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
             "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfSfffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dffffffffLffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffPfd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.ddddddddddddddddddddddddd...ddddddddddddddddddddddddd.b##",
+            "##B.dddddddddddDddddddddddddd.p.ddddddddddddddPdddddddddd.b##",
+            "##B.ddddddddddddddddddddddddd...ddddddddddddddddddddddddd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dffffffffffSffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
@@ -24,40 +51,13 @@
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffLfffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dffffffffffffffffff2ffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
-            "##B.dfff3fffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.ddddddddddddddddddddddddd...ddddddddddddddddddddddddd.b##",
-            "##B.ddddddddddddddddddddddddd.p.ddddddddddddddddddddddddd.b##",
-            "##B.ddddddddddddddddddddddddd...ddddddddddddddddddddddddd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffSfffffffffffffffd...dffffffffffSffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffSfffffffffffffffd...dffffffffffffffSffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
@@ -87,41 +87,29 @@
                 "path": "./assets/image/map/squares/corner.png",
                 "col": 1
             },
+            "D": {
+                "path": "./assets/image/map/squares/flower.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/dark_ennemy.json"
+                }
+            },
+            "L": {
+                "path": "./assets/image/map/squares/flower.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/ninho.json"
+                }
+            },
             "S": {
-                "path": "./assets/image/map/squares/dirt.png",
+                "path": "./assets/image/map/squares/flower.png",
                 "components": {
                     "ennemy path": "./assets/data/ennemy/amongus.json"
                 }
             },
             "P": {
-                "path": "./assets/image/map/squares/dirt.png",
-                "components": {
-                    "ennemy path": "./assets/data/ennemy/hobo.json"
-                }
-            },
-            "3": {
-                "path": "./assets/image/map/squares/dirt.png",
-                "components": {
-                    "ennemy path": "./assets/data/ennemy/dark_ennemy.json"
-                }
-            },
-            "4": {
-                "path": "./assets/image/map/squares/dirt.png",
-                "components": {
-                    "ennemy path": "./assets/data/ennemy/forest_people.json"
-                }
-            },
-            "2": {
-                "path": "./assets/image/map/squares/dirt.png",
-                "components": {
-                    "ennemy path": "./assets/data/ennemy/pinguin_killer.json"
-                }
-            },
-            "L": {
-                "path": "./assets/image/map/squares/dirt.png",
-                "components": {
-                    "ennemy path": "./assets/data/ennemy/warrior.json"
-                }
+                    "path": "./assets/image/map/squares/flower.png",
+                    "components": {
+                        "ennemy path": "./assets/data/ennemy/pinguin_killer.json"
+                    }
             },
             "b": {
                 "path": "./assets/image/map/squares/fall.png",
@@ -163,5 +151,5 @@
             }
         }
     },
-    "spawn": [30, 3]
+    "spawn": [34, 10]
 }

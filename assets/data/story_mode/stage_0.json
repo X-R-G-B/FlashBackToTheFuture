@@ -70,15 +70,15 @@
             "##B.####.###.###.###.###.###.###.###.###.###.###.###.GG###.###.###.###.###.###.###.###.###.###.###.###.###.###.###.hDhggghDgDhghDDhghghgghhhhghhDDhggD###.###.###.###.###.###.###.###.###.###.###.###.###.###.###.###.###.###.###.###.###.###.###.###..b##",
             "##B.#.#...#...#...#...#...#...#...#...#...#...#...#..GG.#...#...#...#...#...#...#...#...#...#...#...#...#...#...#..hgDghghDgDDgghggDgggDhhDggghhghhDDg.#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...b##",
             "##B.#.##..##..##..##..##..##..##..##..##..##..##..##.ghgghgghhhhDDDggDggghghgDhhhhghDgDgggDDgDhDghhhDhhhDghgggDDDhggDDhDghhgggDgghhgDhDhDhghtDggDhgygD.##..##..##..##..##..##..##..##.gDhh.##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..b##",
-            "##B.#################################################hhghgghgDhgDDghDDgDghghhhDghDhgDhDhghgghgDgDhhhghhgDhDhggDhhDhhhhDghgggDgDghhgghgDgDhhgDDhDDgDgDh################################hhDD############################################################.b##",
-            "##B.###T###T###T###T###T###T###T###T###T###T###T###T#DhDDyh+ggghDhDDDDghDDhhhhghDhggthggDDhDghDgghDggDghhgghgShDDggDhhDDghgDgDghhgghhDhDDhgDgDDhghDDhg##T###T###T###T###T###T###T###T#Dh1h##T###T###T###T###T###T###T###T###T###T###T###T###T###T###T#.b##",
+            "##B.#################################################hhghgghgDhgDDghDDgDghghhhDghDhgDhDhghgghgDgDhhhghhgDhDhggDhhDhhhhDghgggDgDghhggSgDgDhhgDDhDDgDgDh################################hhDD############################################################.b##",
+            "##B.###T###T###T###T###T###T###T###T###T###T###T###T#DhDDyh+ggghDhDDDDghDDhhhhghDhggthggDDhDghDgghDggDghhgghghhDDggDhhDDghgDgDghhgghhDhDDhgDgDDhghDDhg##T###T###T###T###T###T###T###T#Dh1h##T###T###T###T###T###T###T###T###T###T###T###T###T###T###T#.b##",
             "##B.####.###.###.###.###.###.###.###.###.###.###.###.ggghgDhgDgDhDDgDDghDhhDhDhhggDggDhDDgDDDhhhDghghDghDghgghgDghghggDDhghhhhDgDDhghhgthhhhgghhgDghgD###.###.###.###.###.###.###.###.gDgg###.###.###.###.###.###.###.###.###.###.###.###.###.###.###..b##",
             "##B.#.#...#...#...#...#...#...#...#...#...#...#...#..gghDDhhDggDDDhDhgDhgDDhDghhDhhghgDDhDgDDDhgghghggggghghghghghhhhhDDhgtgghDDgghDhgDDDhhyDhhhgDhhDg.#...#...#...#...#...#...#...#..hDhg.#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...b##",
             "##B.#.##..##..##..##..##..##..##..##..##..##..##..##.hghghghhDDDghgDgghDhghDghhDDggDhgghgghDDDhDhDhDgDhhDghDgghgghgghhDDDhhhghggggDghhghDhDDghhDhgggDgDhgDDghhDgDhDhgghgDhhDghgDgghDhghhDD.##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..b##",
             "##B.#################################################DhDhhghghhghghhhDhhDghDDggDDgDgDghyShDghhhghDhDgthhDhDgDDDDghgDhggDgggDhDhDghhhgDhDDhDgDgDghDhhDh.##..##..##..##..##..##..##..##..##.############################################################.b##",
-            "##B.###T###T###T###T###T###T###T###T###T###T###T###T#DhhhgDtDgggDDDDDDDhghgDgggDhgggDhghDhDhDDgDDhghhhhDgghggSDDDghgDhDggDgDDDDghhDgyghthhDDDgDgDhgghg######################################T###T###T###T###T###T###T###T###T###T###T###T###T###T###T#.b##",
+            "##B.###T###T###T###T###T###T###T###T###T###T###T###T#DhhhgDtDgggDDDDDDDhghgDgggDhgggDhghDhDhDDgDDhghhhhDgghgghDDDghgDhDggDgDDDDghhDgyghthhDDDgDgDhgghg######################################T###T###T###T###T###T###T###T###T###T###T###T###T###T###T#.b##",
             "##B.####.###.###.###.###.###.###.###.###.###.###.###.DDDgDDDDhDDDhgggDhhhggDyhgDghggDDhgDgghDDDgDggDhDDhDgggDgDghghDhDggyDDhhhDDhDhhDhgDDghgDhhggyDDDD##T###T###T###T###T###T###T###T###T####.###.###.###.###.###.###.###.###.###.###.###.###.###.###..b##",
-            "##B.#.#...#...#...#...#...#...#...#...#...#...#...#..hDDgghDgggghggDhhgDhhghghgghggDDhDhhghhDhgghghhDDgggDDhghDhhggDhhghhhDDgggDDhhDhghhgghhhgDggDDDgD###.###.###.###.###.###.###.###.###..#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...b##",
+            "##B.#.#...#...#...#...#...#...#...#...#...#...#...#..hDDgghDgggghggDhhgDhhghghgghggDDhDhhghhDhgghghhDDgggDDhghDhhggDhhghhhDDgggDDhhDSghhgghhhgDggDDDgD###.###.###.###.###.###.###.###.###..#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...b##",
             "##B.##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..##.DgDhghggDDDhgDgDgDgDgghtghghDDgghDh.#...#...#...#...#...#...#...#...#...##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..b##",
             "##B.###############################################################################################################gDgDgDDhhgghggghDDDDhhghDDggggghDhg.##..##..##..##..##..##..##..##..##.############################################################.b##",
             "##B.#T###T###T###T###T###T###T###T###T###T###T###T###T###T###T###T###T###T###T###T###T###T###T###T###T###T###T###T#DDhgDDghhghgthhDDhDDgghgDgDDDhDDggg######################################T###T###T###T###T###T###T###T###T###T###T###T###T###T###T#.b##",
@@ -134,11 +134,11 @@
             "L": {
                 "path": "./assets/image/map/squares/flower.png",
                 "components": {
-                    "ennemy path": "./assets/data/ennemy/warrior.json"
+                    "ennemy path": "./assets/data/ennemy/ninho.json"
                 }
             },
             "S": {
-                "path": "./assets/image/map/squares/flower.png",
+                "path": "./assets/image/map/squares/dark_flower.png",
                 "components": {
                     "ennemy path": "./assets/data/ennemy/amongus.json"
                 }
