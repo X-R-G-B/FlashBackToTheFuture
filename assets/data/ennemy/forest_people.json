@@ -11,6 +11,8 @@
         [53, 8, 43, 75],
         [50, 92, 39, 77]
     ],
+    "dash time": 1.7,
+    "charge time": 1.0,
     "scale": 1.4,
     "rect actualisation": 0.15,
     "speed": 60.0,
