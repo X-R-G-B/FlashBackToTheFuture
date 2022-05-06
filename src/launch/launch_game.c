@@ -5,6 +5,7 @@
 ** init game
 */
 
+#include <stdbool.h>
 #include <stdlib.h>
 #include "my_rpg.h"
 #include "audio.h"
@@ -25,11 +26,11 @@ static int get_save(window_t *win)
     return (win->components == NULL) ? RET_ERR_MALLOC : RET_OK;
 }
 
-int launch_game(void)
+int launch_game(bool is_full_screen)
 {
     sfVideoMode mode = {1920, 1080, 32};
     window_t *win = create_window(mode, "My_Rpg", sfResize | sfClose |
-        sfFullscreen);
+        ((is_full_screen == true) ? sfFullscreen : 0));
 
     window_set_icon(win, ICON_PATH);
     srand(0);
