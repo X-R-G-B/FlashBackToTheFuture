@@ -13,7 +13,7 @@
 int print_help(const char *exe)
 {
     my_printf(1, "USAGE: %s [-h] [-f]\n", exe);
-    my_putstr(1, "DESCRIPTION:\n\ta mini open world RPG\n");
+    my_putstr(1, "DESCRIPTION:\n\ta mini RPG\n");
     my_putstr(1, "OPTIONS:\n\t-h\tprint this message\n");
     my_putstr(1, "\t-f\trender the game in full screen\n");
     return (0);
