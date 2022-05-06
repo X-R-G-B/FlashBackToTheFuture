@@ -152,6 +152,7 @@ SRC_MAIN			:=	event_menu.c							\
 						pop_up_management.c 					\
 						on_click_event.c						\
 						exit.c									\
+						making_of.c								\
 						set_overlay.c
 SRC_MAIN			:=	$(addprefix main/,$(SRC_MAIN))
 
