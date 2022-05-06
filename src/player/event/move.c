@@ -8,6 +8,7 @@
 #include "my_bgs.h"
 #include "my_bgs_components.h"
 #include "my_rpg.h"
+#include "meteo.h"
 
 static const dir_t player_dir[] = {UP, LEFT, DOWN, RIGHT};
 static const sfKeyCode key[] = {sfKeyZ, sfKeyQ, sfKeyS, sfKeyD, -1};
@@ -42,6 +43,7 @@ void move_on(object_t *object, scene_t *scene, window_t *win,
         return;
     }
     player->state = MOVING;
+    add_dirt_player(win, player);
     for (int dir = 0; key[dir] != -1; dir++) {
         if (event->input_key.event_code.key == key[dir]) {
             handle_changings_movements(player, dir);

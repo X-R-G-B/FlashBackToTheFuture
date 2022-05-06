@@ -116,6 +116,7 @@ static sfView *create_view(window_t *win, player_t *player, int *spawn)
     sfView_setSize(view, (sfVector2f) {WIN_SIZE_X, WIN_SIZE_Y});
     sfRenderWindow_setView(win->win, view);
     player->view = view;
+    player->buf = NULL;
     return (view);
 }
 
