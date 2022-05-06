@@ -34,6 +34,12 @@
             "sprite path": "./assets/image/menu/main_menu/default_screen/selection_overlay.png",
             "pos": [375.0, 340.0],
             "plan": 1
+        },
+        {
+            "text": "CREDITS",
+            "sprite path": "./assets/image/menu/main_menu/default_screen/credits.png",
+            "pos": [840.0, 262.0],
+            "plan": 0
         }
     ]
 }

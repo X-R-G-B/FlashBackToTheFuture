@@ -11,7 +11,7 @@
 
 static const char use_potion_file[] = "./assets/data/pop_text/use_potion.json";
 
-void modif_potion_value(window_t *win, int nbr_potions)
+void modif_potion_value(window_t *win, int nbr_potions, bool click)
 {
     scene_t *scene = NULL;
     object_t *obj = NULL;
@@ -28,7 +28,7 @@ void modif_potion_value(window_t *win, int nbr_potions)
     if (obj == NULL) {
         return;
     }
-    create_pop_text(scene, use_potion_file,
+    create_pop_text((click == true) ? scene : NULL, use_potion_file,
         obj->bigdata.sprite_bigdata.pos, "-1");
     text = my_itoa(nbr_potions);
     sfText_setString(obj->drawable.text, text);
@@ -39,7 +39,11 @@ static void used_potion(window_t *win)
 {
     any_t *inv_data = NULL;
     any_t *potions = NULL;
+    scene_t *scene = dico_t_get_value(win->scenes, win->current_scene);
 
+    if (scene == NULL) {
+        return;
+    }
     inv_data = dico_t_get_value(win->components, SAVE);
     potions = get_from_any(inv_data, "d", POTIONS);
     if (potions == NULL) {
@@ -47,9 +51,9 @@ static void used_potion(window_t *win)
     }
     if (potions->value.i > 0) {
         potions->value.i -= 1;
-        modif_potion_value(win, potions->value.i);
+        modif_potion_value(win, potions->value.i, true);
+        write_json(inv_data, SAVE_PATH);
     }
-    write_json(inv_data, SAVE_PATH);
 }
 
 static float get_max_life(player_t *player)

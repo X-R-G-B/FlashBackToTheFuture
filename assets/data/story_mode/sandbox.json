@@ -15,8 +15,8 @@
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
-            "##B.dfffffffffffffffffffffffd...dfffffffffffffffSfffffffd.b##",
-            "##B.dfffffffffffSfffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffPfffffffd.b##",
+            "##B.dfffffffffffLfffffffffffd.p.dfffffffffffffffffffffffd.b##",
             "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
             "##B.ddddddddddddddddddddddddd...ddddddddddddddddddddddddd.b##",
             "##B.ddddddddddddddddddddddddd.p.ddddddddddddddddddddddddd.b##",
@@ -88,9 +88,20 @@
                 "col": 1
             },
             "S": {
-                "path": "./assets/image/map/squares/flower.png",
                 "components": {
                     "ennemy path": "./assets/data/ennemy/amongus.json"
+                }
+            },
+            "P": {
+                "path": "./assets/image/map/squares/dirt.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/pinguin_killer.json"
+                }
+            },
+            "L": {
+                "path": "./assets/image/map/squares/dirt.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/warrior.json"
                 }
             },
             "b": {

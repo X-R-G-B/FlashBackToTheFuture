@@ -11,6 +11,8 @@
         [224, 13, 68, 59],
         [523, 27, 69, 45]
     ],
+    "dash time": 1.5,
+    "charge time": 1.0,
     "scale": 1.5,
     "rect actualisation": 0.09,
     "speed": 250.0,
@@ -20,6 +22,12 @@
     "blink time": 0.7,
     "sprite path": "./assets/image/ennemy/pinguin_killer.png",
     "xp loot": 8.0,
+<<<<<<< HEAD
     "drop rate": 20.0,
     "range dash": 40.0
 }
+=======
+    "drop rate": 50.0,
+    "range dash": 100.0
+}
+>>>>>>> dev

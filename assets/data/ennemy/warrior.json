@@ -6,11 +6,13 @@
         [[237, 4, 32, 27], [172, 4, 29, 27], [206, 5, 29, 26]]
     ],
     "stop": [
-        [326, 1, 22, 33],
-        [172, 4, 29, 27],
-        [72, 6, 22, 27],
-        [172, 4, 29, 27]
+        [47, 0, 22, 33],
+        [237, 4, 32, 37],
+        [351, 0, 22, 35],
+        [237, 4, 32, 37]
     ],
+    "dash time": 2.0,
+    "charge time": 1.0,
     "scale": 3.0,
     "rect actualisation": 0.09,
     "speed": 110.0,
@@ -20,5 +22,6 @@
     "blink time": 0.35,
     "sprite path": "./assets/image/ennemy/warrior.png",
     "xp loot": 50.0,
-    "range dash": 40.0
+    "drop rate": 90.0,
+    "range dash": 200.0
 }
