@@ -46,6 +46,7 @@ SRC_ENNEMY_UPDATE	:=	check_wall.c							\
 SRC_ENNEMY_UPDATE	:=	$(addprefix update/,$(SRC_ENNEMY_UPDATE))
 
 SRC_ENNEMY			:=	create_ennemy.c							\
+						drop_right_item.c						\
 						ennemy_get_view_dir.c					\
 						check_drop.c							\
 						sprite_set_change.c						\
@@ -151,6 +152,7 @@ SRC_MAIN			:=	event_menu.c							\
 						pop_up_management.c 					\
 						on_click_event.c						\
 						exit.c									\
+						making_of.c								\
 						set_overlay.c
 SRC_MAIN			:=	$(addprefix main/,$(SRC_MAIN))
 
@@ -175,7 +177,8 @@ SRC_PAUSE			:=	$(addprefix pause/,$(SRC_PAUSE))
 
 SRC_DEAD			:=	configure_dead_screen.c					\
 						event_dead_screen.c						\
-						dead_screen.c
+						update_dead_screen.c					\
+						update_dead_message.c
 SRC_DEAD			:=	$(addprefix dead/,$(SRC_DEAD))
 
 SRC_MENU			:=	$(SRC_PAUSE)							\

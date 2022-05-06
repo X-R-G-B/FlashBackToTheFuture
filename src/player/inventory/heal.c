@@ -9,6 +9,8 @@
 #include "my_conversions.h"
 #include <stdlib.h>
 
+static const char use_potion_file[] = "./assets/data/pop_text/use_potion.json";
+
 void modif_potion_value(window_t *win, int nbr_potions)
 {
     scene_t *scene = NULL;
@@ -26,6 +28,8 @@ void modif_potion_value(window_t *win, int nbr_potions)
     if (obj == NULL) {
         return;
     }
+    create_pop_text(scene, use_potion_file,
+        obj->bigdata.sprite_bigdata.pos, "-1");
     text = my_itoa(nbr_potions);
     sfText_setString(obj->drawable.text, text);
     free(text);

@@ -23,6 +23,8 @@
     #include "my_bgs.h"
     #include "my_json.h"
 
+static const char ICON_PATH[] = "./assets/image/logo/FBTTF_logo.png";
+
 static const char DATA_INV_JSON[] = "assets/data/player/inventory_data.json";
 static const char INV_SCENE[] = "INVENTORY";
 static const char INV_BUTTONS_COMP[] = "INVENTOR_BUTTONS";
@@ -235,6 +237,8 @@ void destroy_player(void *player_void);
 void dead_event_input(object_t *object, scene_t *scene,
     window_t *window, set_event_t *event);
 
+void set_dead_opacity(object_t *dead_message, object_t *dead_screen);
+
 void free_pop_up(void *list);
 
 int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
@@ -258,6 +262,8 @@ int init_hud(window_t *win, scene_t *scene);
 int set_player_default_stats(player_t *player, any_t *stats);
 
 void go_to_home(scene_t *scene, window_t *win);
+
+void restart_game(scene_t *scene, window_t *win);
 
 bool check_evolution_stat(player_t *player, float *prev_max_stat,
     const char stat_name[]);
@@ -322,5 +328,7 @@ int change_xp_bar_stats(any_t *max_xp_data, any_t *actual_xp_data,
     object_t *object, scene_t *scene);
 
 any_t *get_xp_data(player_t *player, const char data_name[]);
+
+void drop_right_item(object_t *obj, window_t *win);
 
 #endif /* !RPG_H_ */

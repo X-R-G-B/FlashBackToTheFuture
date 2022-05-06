@@ -27,9 +27,9 @@ static any_t *get_text_data(scene_t *scene, const char *path, char *text)
 
 static void object_check_change(object_t *obj, any_t *text_data)
 {
-    any_t *color_array = dico_t_get_any(text_data->value.dict, color_key);
+    any_t *color_array = get_from_any(text_data, "d", color_key);
     int *color = get_any_int_array(color_array);
-    any_t *char_size = dico_t_get_any(text_data->value.dict, char_size_key);
+    any_t *char_size = get_from_any(text_data, "d", char_size_key);
 
     if (color != NULL && color_array->value.array->len > 3) {
         sfText_setColor(obj->drawable.text,

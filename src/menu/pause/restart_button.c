@@ -2,12 +2,14 @@
 ** EPITECH PROJECT, 2022
 ** rpg
 ** File description:
-** restart button 
+** restart button
 */
 
 #include "my_rpg.h"
 #include "ennemies.h"
 #include "main_menu.h"
+
+extern const char can_play_dead_screen[];
 
 static void restart_player_state(window_t *win)
 {
@@ -32,6 +34,28 @@ static void restart_player_state(window_t *win)
     }
 }
 
+static void restart_dead_screen(window_t *win, scene_t *scene)
+{
+    object_t *dead_message = NULL;
+    object_t *dead_screen = NULL;
+    bool *can_play = NULL;
+
+    if (win == NULL || win->components == NULL) {
+        return;
+    }
+    dead_message = dico_t_get_value(win->components, DEAD_MESSAGE);
+    dead_screen = dico_t_get_value(win->components, DEAD_SCREEN);
+    if (dead_message == NULL || dead_screen == NULL) {
+        return;
+    }
+    can_play = dico_t_get_value(scene->components, can_play_dead_screen);
+    if (can_play == NULL) {
+        return;
+    }
+    *can_play = false;
+    set_dead_opacity(dead_message, dead_screen);
+}
+
 static void restart_spawner(scene_t *scene)
 {
     list_t *elem = NULL;
@@ -50,6 +74,17 @@ static void restart_spawner(scene_t *scene)
     }
 }
 
+void restart_game(scene_t *scene, window_t *win)
+{
+    restart_spawner(scene);
+    replace_objects(win, scene);
+    restart_player_state(win);
+    restart_dead_screen(win, scene);
+    scene->pause = false;
+    set_is_visible_false(dico_t_get_value(win->components, PAUSE_MENU));
+    set_is_visible_false(dico_t_get_value(win->components, SETTINGS_MENU));
+}
+
 void restart_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt)
 {
@@ -59,11 +94,6 @@ void restart_button_off(object_t *obj, scene_t *scene, window_t *win,
         pressed_button_off(obj, scene, win, evt);
         return;
     }
-    restart_spawner(scene);
-    replace_objects(win, scene);
-    restart_player_state(win);
-    scene->pause = false;
-    set_is_visible_false(dico_t_get_value(win->components, PAUSE_MENU));
-    set_is_visible_false(dico_t_get_value(win->components, SETTINGS_MENU));
+    restart_game(scene, win);
     pressed_button_off(obj, scene, win, evt);
 }
