@@ -36,6 +36,7 @@ int launch_game(void)
     if (get_save(win) != RET_OK || init_audio_list(win) ||
         init_menu(win) != RET_OK ||
         window_change_scene(win, "MAIN MENU") != BGS_OK ||
+        init_credits(win) != RET_OK ||
         loop(win) != BGS_OK) {
         return 84;
     }

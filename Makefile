@@ -65,6 +65,7 @@ SRC_LAUNCH			:=	launch_game.c							\
 						replace_objects_in_next_stage.c			\
 						launch_next_stage.c						\
 						scene_loading_basic.c					\
+						init_credits.c							\
 						init_pause_button.c
 SRC_LAUNCH			:=	$(addprefix launch/,$(SRC_LAUNCH))
 # ----------------------------------------------------------------------------
