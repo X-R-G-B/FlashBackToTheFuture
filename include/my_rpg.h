@@ -9,7 +9,7 @@
     #define RPG_H_
 
     #include <stdbool.h>
-#define RET_OK 0
+    #define RET_OK 0
     #define RET_ERR_MALLOC 1
     #define RET_ERR_INPUT 2
 
