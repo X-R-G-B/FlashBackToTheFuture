@@ -320,7 +320,7 @@ void use_heal_potion(object_t *obj, scene_t *scene,
 
 int create_number_of_potions(scene_t *scene, window_t *win);
 
-void modif_potion_value(window_t *win, int nbr_potions);
+void modif_potion_value(window_t *win, int nbr_potions, bool click);
 
 int check_if_pop_up_true(dico_t *dico, char *key);
 

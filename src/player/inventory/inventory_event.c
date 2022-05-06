@@ -32,7 +32,7 @@ static void set_potion_text(window_t *win)
     if (text_potion == NULL || text_potion->type != INT) {
         return;
     }
-    modif_potion_value(win, text_potion->value.i);
+    modif_potion_value(win, text_potion->value.i, false);
 }
 
 void use_heal_potion(__attribute__((unused)) object_t *obj,
