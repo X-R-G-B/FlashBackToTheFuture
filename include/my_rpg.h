@@ -331,4 +331,12 @@ any_t *get_xp_data(player_t *player, const char data_name[]);
 
 void drop_right_item(object_t *obj, window_t *win);
 
+int init_credits(window_t *win);
+
+void go_to_credits(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
+
+void go_to_home_direct(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
+
 #endif /* !RPG_H_ */
