@@ -1,0 +1,34 @@
+{
+    "buttons": [
+        {
+            "text": "CREDITS",
+            "font path": "./assets/fonts/Menlo-Regular.ttf",
+            "text pos": [200.0, 960.0]
+        },
+        {
+            "text": "Guillaume - Mention Guy-Guy De Maupassant",
+            "font path": "./assets/fonts/Menlo-Regular.ttf",
+            "text pos": [300.0, 960.0]
+        },
+        {
+            "text": "Romain - Mention Fortinite o la Babaji",
+            "font path": "./assets/fonts/Menlo-Regular.ttf",
+            "text pos": [400.0, 960.0]
+        },
+        {
+            "text": "Brice - Mention xxx",
+            "font path": "./assets/fonts/Menlo-Regular.ttf",
+            "text pos": [500.0, 960.0]
+        },
+        {
+            "text": "Xavier - Mention merde",
+            "font path": "./assets/fonts/Menlo-Regular.ttf",
+            "text pos": [600.0, 960.0]
+        },
+        {
+            "text": "-> HOME",
+            "sprite path": "./assets/image/menu/main_menu/default_screen/home.png",
+            "pos": [1000.0, 140.0]
+        }
+    ]
+}
