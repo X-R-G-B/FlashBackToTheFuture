@@ -12,7 +12,7 @@ extern const char npc_path_key[];
 
 static const sfKeyCode key_interract = sfKeyN;
 
-static void check_next_stage_event(object_t *obj, window_t *win)
+static void check_next_stage_event(object_t *obj, window_t *win, scene_t *scene)
 {
     player_t *player = dico_t_get_value(win->components, PLAYER);
     sfFloatRect player_rect = {0};
@@ -24,14 +24,14 @@ static void check_next_stage_event(object_t *obj, window_t *win)
     player_rect = sfSprite_getGlobalBounds(player->obj->drawable.sprite);
     if (sfFloatRect_intersects(&player_rect, &npc_rect, NULL) == sfTrue &&
             sfKeyboard_isKeyPressed(key_interract) == sfTrue) {
-        launch_next_stage(win);
+        create_view_rotation(scene);
     }
 }
 
 static void magician_npc_update(object_t *obj, scene_t *scene, window_t *win,
     float dtime)
 {
-    check_next_stage_event(obj, win);
+    check_next_stage_event(obj, win, scene);
     update_npc(obj, scene, win, dtime);
 }
 

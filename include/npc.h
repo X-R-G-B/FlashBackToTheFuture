@@ -89,6 +89,8 @@ char *parseprety(const char *str);
 
 char *parseprety_free(char *str);
 
+void create_view_rotation(scene_t *scene);
+
 void update_magician(object_t *obj, scene_t *scene, window_t *win,
     __attribute__((unused)) float dtime);
 
