@@ -11,6 +11,8 @@
         [22, 372, 98, 121],
         [14, 210, 96, 118]
     ],
+    "dash time": 1.0,
+    "charge time": 1.0,
     "scale": 0.5,
     "rect actualisation": 0.09,
     "speed": 50.0,
