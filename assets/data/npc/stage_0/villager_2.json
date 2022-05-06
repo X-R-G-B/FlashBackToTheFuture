@@ -1,6 +1,6 @@
 {
     "sprite path": "./assets/image/npc/stage_0/sanic.png",
-    "rect": [[-1, -1, -1, -1]],
+    "rect": [[0, 0, 422, 391]],
     "current": 0,
     "time": 0.0,
     "scale": 0.3,
