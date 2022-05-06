@@ -81,6 +81,7 @@ static void check_ennemy_delta_time(ennemy_t *ennemy, float dtime,
             charge_time->type != FLOAT) {
         ennemy_set_stop(ennemy);
         ennemy->delta_time = 0;
+        dico_t_rem(ennemy->obj->components, components_direction);
     } else if (ennemy->delta_time > charge_time->value.f) {
         update_move(ennemy, move_speed->value.f, dtime * 1, win);
     } else {
