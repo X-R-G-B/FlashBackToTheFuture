@@ -1,0 +1,204 @@
+{
+    "map data": {
+        "map": [
+            "c###########################################################################################################################################C#",
+            "###aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa####",
+            "#..........................................................................................................................................###",
+            "#B.ddduugdgugddgudddddugguugdgguugddguddggguduguuddgdduuguuguuguuggdudgugugugdgguddg####udguudugdddudduguudgdgdgdguudgduuduududddgdugggguddb.#",
+            "#B.ddgddddggudugduddddguuuuguguuduuugggudggdddgdgggddddddgguguuuggugguddggddd####uuu####guuddddgdgddudduggguududdggguudugdudddguguudgduududb.#",
+            "#B.gdugdguggguduudggdududuuugggdggdugugdugddguddgddddudududuggdddduudgugdgudg####udg##T#dgudugugdudgggggdugdguddgududddugdddgddgduudgugdgdub.#",
+            "#B.gudduuugggududuuduggugdugdgududguggddddgudduugggggguggugduugddguggguuddgdu##T#dud####gggdgdduugugugdugdgdguuuggggudggggudgdgguugdududddub.#",
+            "#B.uuggdgugdggguuudgdudduududuudgudggduggddggddduggggugdgugggdduuududdugguddg####gud####guggddddudugudgdgduggguuduggdggugduug####uggdduududb.#",
+            "#B.ugggugdgugugduudduugggggguugudgddugugguuggududduuduuu####dugudggdudduguugd####dgdgggg####guguguudguududgduudgguddudgugdddd####guguududgdb.#",
+            "#B.ggdggdddggd####dgdddgdduddgddugddduuddggguguddddduggg####ggguugddgdddgugugdugdudggdgd####uddgudduug####uddgddgSSdgdgddddgd##T#uugddddgddb.#",
+            "#B.ggddgddguuu####gugdudgdguuudgdugdugg####guuuduggguugu##T#udguduguugg####gdggggdugguuu##T#ddggguugdu####gdudSSgggguuddgudud####duuuuguuddb.#",
+            "#B.duugdduuugg##T#udguuddgdgdgggugduuug####uugududdggduu####dgugdudddud####dddddddddgddd####duddddugud##T#gggdSSud####gddgddd####duugugdgudb.#",
+            "#B.dgguugdudgd####dduuuguugugudduguddud##T#uggggddduuudu####dgddduuuduu##T#gududduguuugg####guuududddu####dddggdgd####ggggugdgggduuddduuudgb.#",
+            "#B.gddddggdugd####guggdudduuudguguuddgd####uuguuduggdggddguuduuuudgdggg####uuggduudugududddddudugddgdd####uggggugg##T#ududgduguddugduuudgddb.#",
+            "#B.uduuggggududggdduugdugdguuddddugddug####ggugdddduuudgdduggdddgdguudg####ddguddugggudugdgdgguuuddgugudguudduuuud####gdgggudugddduugugddugb.#",
+            "#B.uggduuddduuggggugdgggdugduggdudgudggdgddgugggggddggugudgugguudgduuggugddddduddgudd####gggdddgdududuuudguuggguug####uguguuddddguududgdugdb.#",
+            "#B.ggguggududddgddduuuugdgdgddgduggdguguggugduuguduguuuduuudgugdguugudgduuuuuddugguud####dudSSuddgddgddddud####uggduugdugdgduddSSgdduugdgdgb.#",
+            "#B.ddduuuuugddguudgggggdggudddggugggugddgdguuuududguguududuugguguguuduudugdugugduddgd##T#gggddgdg####ugugdd####dugdggduguduggdudgdggggdggugb.#",
+            "#B.duduududguugguddddduuddgguddguuggdggggddgduduudddggduuduggduggdggugdugduggd####uuu####gugududd####gduudd##T#dgdguduggudugdduuguduuggguuub.#",
+            "#B.gdgdguudggddggggdgddgduddudgdgugguddugguddg####gdgguuuuugdguuguudugdddggudu####dug####dgdduddg##T#gdgdug####ugguguuduudugggggdugd####uudb.#",
+            "#B.gdgugguggggguuduugguguuuuugdduuggdgdudgugud####ggddguugggggugugdugdguggddud##T#gddguuuugd####u####dggggu####ggdSSdddduu####gudugd####uuub.#",
+            "#B.gdguddgududdugudggdg####uudgguudgguuddgdddu##T#gddguddgggdgdgggguududddugug####ududdgggdd####u####dgugdugduguguudgdgudg####gdggug##T#udub.#",
+            "#B.dgdudgdudgddguuugugg####dddddgggduddddduudd####gdgggdddgdgd####duugdduuggug####dddgddgggd##T#gguggguuggudduu####dggudug##T#uuudgd####uuub.#",
+            "#B.ddguggduduggggdguudu##T#dgggddddduugugguudg####gudduugddddg####dguuuddduguggdddguggudddug####gddggguggddggud####gdgguug####ddduuu####dgdb.#",
+            "#B.udgduudguggdgudguddd####guugduggugudugduuuuuuugggggddgdggug##T#dgudugguuugduuuugddddguddu####dddgdgSSdduuugg##T#guugggu####gugduddgdgudub.#",
+            "#B.duggugugudggguggdgdu####gudguddgggdudgddguuddugddduuguugddg####dugdgudddduudgdgugud####dgdggugudguugdguduuuu####gugdgduuuduugggduuugdduub.#",
+            "#B.ggudududgduuuuuugddugdudggddggugguuugduudduddudddduuggugduu####gudddudgguuguggudgdd####uggdgduduggddgguguugu####dgguuuduggdddguggdduuuudb.#",
+            "#B.duuguggduuuuud####ugdgguddgduug####gggdduddddgugugdddudgduddgguugduggududgddduuguug##T#duuuuduuudugddg####udduddggugdudddgugdddduddgdggdb.#",
+            "#B.uudggudguggudg####gggudduduuuug####uuduudugduggguddududgddggugggdgddgdugdgduguguugu####uduuudgdgudduuu####ddgddggduuguudgdddgggddggggggdb.#",
+            "#B.ugguguugduuggd##T#uudgddguudugg##T#ugggguuudugguggudgdugudduuuduuugduuddgdududgdduu####guugggddgdugugu##T#dduududuudgdu####dddguuggddggdb.#",
+            "#B.uuugudduuuggdu####ddguuudgduddd####ggdgdgududguguddduudugdudduuggguuudggguuugduggddugduduugdgddgdudugg####gduuuuddgdduu####gdguuuudggggdb.#",
+            "#B.ggudgudduudggu####uguguduugddgg####duudgdgdugddudg####dugduguguuddgddudugdgduuguugdddgggugdudguguugugg####guudguguugggd##T#gdgggd####ugdb.#",
+            "#B.gdgduuddugguuddguuguududdggugudgudguuuggdgggddduuu####duggddduguugduguugugguud####ugdgguuuudduggugggugddddguugududgdgdg####uuuugd####ddub.#",
+            "#B.dugududugugddggggddugggdgggduuuugddudgggguggudugug##T#guuuudugguggdudduuduuudg####ugdggdugddgguggdgugdduggduddgguguggug####guddgd##T#uddb.#",
+            "#B.gdgduuuudggudgddgduddguuuddgudgggdgdggggugdgdudgdg####ddguuudugduugddduugdddug##T#ddggdduggddudgdudduduuggudggg####dgdggdduuggdud####dugb.#",
+            "#B.ddgugudguuuduuuddduguugudgdduuddgggugduguduuguuduu####gdudguududd####gguudddud####uuuggudggg####guguddudguguugg####dddggguddugugu####dugb.#",
+            "#B.dddgugud####duddgguggdgggdggggd####ddgdgggduggguudugduududuguugdg####udgudduug####uggudgddgd####dgddugugudggggu##T#uuuddugduguudgddgggddb.#",
+            "#B.ududddgu####uuugddguddudgguudgu####gdudgdugguuddduuudgguduugggddg##T#gdduduudguugddugdguuggg##T#ggguddgdguuudgg####dguguuddgudggdguuuudub.#",
+            "#B.uuuuuguu##T#dgudgdduddggdgudddu##T#duugguddugddggduudggddddudgdug####uddduuduudugggdgdgggugg####duggguugdudugug####udududududuududduugudb.#",
+            "#B.guggddug####gddugdgdgduugdugggu####udgugududduggdugdgdudgdugguugu####gguggdgudggdddgduuuuguu####dgududdddugddduddgdgggguddugdggggdggguuub.#",
+            "#B.gddggddu####gdgdgddudduduggdduu####gudggudgguddggdgdgugudguudgudgddugugdduguuudddddddgguggduggdgddggggguuuddgugduddgudgddggdddgguddgdddub.#",
+            "#B.ggggddduduggdgdugg####dugugugduudggududugugddguuugdgggggugugugdduuggddgudgdddguuuuggugggggggduddgggugddgddgduuugdduuudguduguuuuuddugudgub.#",
+            "#B.dduguugddgggudgguu####dugduuggugddgugdgdguuudgudgduddddgdugguuuuuuududguuuugugguuugddgugduggdggdgggugdgguugugguuuudgggdudugdgugdgugdduddb.#",
+            "#B.ggugguuuduuuuugddd##T#uuguuduugugguu,,mm,mmm,,m,mm,,m,,m,,mmm,m,mm,mmmm,,m,mm,mm,,mmmm,,,mmmmm,m,,,,mmmmm,,m,mmmm,,,,,mmmmmmmm,m,,m,m,,mb.#",
+            "#B.uguududdgdgdudddud####uudgdgdguuguddmm,mm,mmmm,m,m,,,mm,,mm,mmm,mmmmm,mmm,m,,mm,mm,,mmmm,,m*m,m,,,mm,mm,,,mm,mm,m,,m,m,m,,mmm,m,,,,,mmm,b.#",
+            "#B.uguguuugdduugududd####duudgdgduuuddumm,m,,,,m,,mm,mm,,,m,,,mm,m,,,,m,,,mmm,mm,,mmm,mm,m,,mm*,m,,,m,m,m,,mm,,,,,m,mm,mm,,mmmmmmm,,mm,,,mmb.#",
+            "#B.gdddgdguudgdggggdguguuduudguuudguuuum,mm,,mmmmmm,mmm,,,,mm,,,mmmm,,mm,,mmmmmm,,,mmmm,,m,,,m*,,,,,m,,mmm,m,,mm,m,,mm,m,m,,mmm,,m,mmmm,,,,b.#",
+            "#B.gddggddduddgdgddduudgguguddddgugdudgmm,m,m,mm,mmmmm,,,mm,m,mm,,mm,m,,mm,mmmmmm,m,mmm,,m,,,m*,,,,,,,,m,,m,,,m,mm,mmm,mmm,mmmm,,m,m,,,,,,,b.#",
+            "#B.dgdggggddduugdgugdduugdggugugguuudud,m,,,,,,m,,,,,,mm,mmm,mmmmmmm,m,,m,,m,mmm,,,,m,mmm,,m,m*,mm,,,,,,m,m,,,,mmm,mmm,,mm,m,,,mmmmmm,m,,,,b.#",
+            "#B.ggguuggdgduuuuuug####gduuduudgggdgug,mmm,,m,mm,,,m,mmmmmmmm,,,,,m,,,mmm,m,mm,,mm,mm,,,,,,mm*mmmmmm,m,,m,mm,m,,m,,m,,,,,,,mmmm,mm,,m,m,,,b.#",
+            "#B.ggdggduguudugggdg####uudgguuggdudgugmm,m,m,m,,mmmm,m,,,mm,m,m######,mmmmm,,m,,,,,mm,,,mmm,,*,,,mmmmmm,,,mm,,m,,mm,m,mm,,m,,mmm,,mm,m,m,mb.#",
+            "#B.gdgdguguggggdddgu##T#guddugdgddgudgdmmm,,m,,,mm,,mm,,,,m,,mmm######,m,,mm,mm,,mmm,,,,m,,,mm*,m,m,,,,mmm,,mmmm,mm,mmmmm,,,,,,m,m,,,,,,,,,b.#",
+            "#B.ugddduuguguggddud####ddgugdgudgggugumm,,mmm,,mmmm,,m,,,,,,mm,######m,m,,mm,mmmm,,mmmmm,m,,,*mm,,m,mm,,mm,m,,,m,m,,,m,m,,mmmmmm,mm,,m,,m,b.#",
+            "#B.uugdgdudguguddugg####ugdgddgguuddddu,,m,,mmmmmm,m,,m,,,,,,m,m######,mm,m,,,m,,,,,mmm,m,mmm,*mmmmm,m,,mm,m,,,m,m,mm,,,m,,,,,,,,mm,,,mm,mmb.#",
+            "#B.ggggdd####gggudggudddgdgguguuudggdudmmmm,,,,,,,mmmm,,,,,,,mmm##H###m,,m,,m,m,m,,,,m,,,m,,m,*m,m,,,,m,mm,,mmm,,mmmm,mmm,m,,mm,mmm,,,m,,,,b.#",
+            "#B.gudggu####dudgudguddugududguugdduudu,mm,m,,,m,m,mmm,,,,mm,,m,######,mm,mm,,,,m,m,,,mm,,mmm,*m,,m,,,m,,,,mm,,m,,,m,,m,######m,,,mm,,,mmmmb.#",
+            "#B.guuudd##T#ddduuuugdgugugugd####dddudmmm,m,,m,mmmm,m,m,,mmmm,m######m,mmm,,mm,m,,,,,mm,,rrrr*,mm,,m,,mm,,,,m,,m,m,,,m,######mm,m,,mmm,,mmb.#",
+            "#B.duugdg####dduugguduguddgugu####ddddum,,,mmm,,,mm,mmmmm,m,m,m,######,,,mm,mm,rr,,,rr,rrrmrrr*mm,,,,mm,,m,mm,mm,,,,mmm,######mm,mm,mm,m,mmb.#",
+            "#B.gggduu####ududdudggdggduduu##T#udgugm,m,m,,,mmm,m,,,,,,mmmmm,......,m,,m,,rr,rrrr,rrm,mrrm,*,,mmmm,,,m,,,mmmm,,,mmm,m######,,,m,,,mmmmm,b.#",
+            "#B.uuuugguggdduggdgudgdgdggudg####uugdg,mm,,mmmm,,m,,,m,mmm,mmmmmmmrrrrrrrrrrrrrrrrrrrrrrrrrrr*m,mm,,,m,,m,,,,mmm,mm,m,,##H###m,mmm,,,m,,,,b.#",
+            "#B.uuggguuugdugguudgugudgududu####uguug,,,mm,m,mm,m,mmm,,,,mm,mmmm,mmm,,mmmrrrr,mrrr,,rrrrmrmm*m,mmmmm,m,,,,mm,mmm,mm,m,######,mm,,,,,mm,mmb.#",
+            "#B.dugu####dddduuguggdguuuguuguddgduddu,mm,,mmmmmm,m,mm,,,,mm,mm,,,,mm,mm,,mmmmrr,,,rrmrrr,rrm*mm,mm,,,,m,,,m,,m,,,mmmmm######mm,,m,mmm,,mmb.#",
+            "#B.gugu####uuduguuggguguduguguuuuddudug,,m,,,mmmmm,,m,mmm,,,,,,,m,,m,mmmm,mmm,mmrrr,m,mmm,rrr,*mm,m,mm,,,mm,,m,mm,,mm,mm######,m,mmm,mm,,,,b.#",
+            "#B.uudd##T#ddduduudduug####gddgududugdu,m,mm,mmm,,m,mmmm,mmm,,m,m,m,,mmm,m,m,,mmm,rrm,mmrr,m,m*mm,m,,mm,m,,mm,,mmmm,,,m,......,mm,,,,,,mm,,b.#",
+            "#B.gggg####dudggddggdud####ddgudgduuggum,,m,mmm,,mm,,mmmm,mm,,m,mm,,,,,mmm,,,m,,,mmmrrm,,r,,r###,mmmmm,m,mmmm,m,m,mrmm,mmrrr,rr,,mmmm,mm,mmb.#",
+            "#B.duug####gugdgduguguu##T#uggduggggdddm,mm,,,mm,,mmm,m,,mm,mm,mm,mmm,,,,m,,mmmmmmmmmrrm,mrmm###m,mm,,m,,,mm,m,,mmrrm,,,,r,rm,mmm,,,,mmm,,,b.#",
+            "#B.uuddgudugggguguugudu####ugggugduuuudm,m,,mm,m,,mm,,,m,m,m,m,,,mm,m,,,mmmmm,,,,,,,mmrrmrm,#####,m,,mmmmm,,,mm,rmm,m,m,r,rrr,,mm,m,m,mm,,mb.#",
+            "#B.duuuugdgdudggdgdudgg####uugdguuudggd,,,,,mm,m,m,,,mmm,m,,,mmmm,mm,,,,m,,mm,,,m,m,m,mmrrmm##F##,,m,m,m,m,,,,mm,rm,,r,,rmrr,rrm,,,,m,mm,,,b.#",
+            "#B.dggudgddugdddduuddgggddgdggddudgdddgmm,,,mm,,,,,m,m,,,mm,m,,m,mmmm,m,,m,,,,,,mmm,mm,,rr,#######mmmmm,r,,,,mrm,rmr,rrmrrmrrr,m,mmm,mmmm,mb.#",
+            "#B.dudddgugggddggdguddguddugugugguggdug,m,m,m,,m,m,m,m,,mmmm,m,mm,m,,mmm,mm,,,,m,m,,mmmm,,,#######m,mmmr,rmr,r,rmr,m,m,r,mmr,rrmm,mm,,,mmm,b.#",
+            "#B.gdddduuggguddggguuguu####dgdugddgggg^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^.,#########rrrrrrrrrrrrrrrrrrrrrrrrrrr,,rrrm,,m,m,mb.#",
+            "#B.gggggugdguuuggggdgudu####ugddggdudgu..................................................,#########,mmmrrm,rrr,rrmmrrrr,rrrr,mrrm,,,mm,mm,,b.#",
+            "#B.dggudgugugugudgdguugd##T#dggggdgddugmmm,m,,,,mmm,,mm,mm,,,,m,m,mm,,,,,mm,,,m,m,rrmrm,m,mmmm,,m,m,mrmrmrrmrrrr,,rr,mrmmr,rrrmm,mm,,mmm,,mb.#",
+            "#B.uddudddugddguudgddgdd########dgggdgdmmm,,mm,,,m,m,mm,mmm,mm,m,,,,,,mm,mm,m,m,,,rrmmr,m,,,m,,,,,mm,,,mm,rmmrrrmrrmmmrrm,rr,,,mmmm,,,,,mmmb.#",
+            "#B.udududgdududdduuu############uuuuugd,mmmmmm,,m,m,mmm,m,,m,,mmm,,m,,m,mm,mm,rmm,rr,,,mr,,rm,,,mmm,mmmmm,,rrrr,,mm,mm,,mmm,,,,m,,,,,,,,mmmb.#",
+            "#B.gdgdgudduudguudgd####ugdd##T#ugdgdudmm,m,mmmmmm,,,m,,,,mmmm######,mmmm,,,mm,mm,rrmm,,mmmm,,mmm,,,m,m,,,m,rrmm,mm######mmmm,,,m,,m,,,m,,mb.#",
+            "#B.uuguduggugududddd##T#udug####ugddddum,,,mmm,mm,,,,m,,,,,m,m######m,,m,,,,,m,mrrrr,m,,mm,mm,,,mm,mm,,,mm,r,rmm,mm######,,mmmm,,mmmmm,mmm,b.#",
+            "#B.gggudggddgdudgddd####uugg####uuuuggu,m,mmm,mmm,,,mm,mmmm,,m######,,mmm,,,m,m,,mrrrr,,mm,mm,,mmmmmmm,,,mm,rr,m,mm######,,m,m,,,,,mm,mmm,,b.#",
+            "#B.dudgguggugdgguggu####dduugggdugugugdmmmm,,,,mm,,,,m,mm,m,mm######m,,,m,,,mm,,m,rrrmm,mmm,,m,mm,,mm,m,,m,rmr,m,mm######mmmmmmmm,mm,,,m,m,b.#",
+            "#B.dudduguuguudggdddgggugggddugdduddgddm,mm,,m,m,,,,,,mm,,mm,m##H###mm,,m,,,,m,,rmrr,m,,,mm,,mm,,,,mm,mmm,m,rrm,,,m##H###,,,mmm,m,,mmmm,,,mb.#",
+            "#B.uuuuuduuugugudggudgddgududggudgddudg,,m,,mmm,,mm,m,mm,,,mmm######mmmmmm,,,mmr,rrrm,mm,,,mmmm,######mmm,rrmrm,,mm######mmm,,mmmmm,,,,,,,,b.#",
+            "#B.uuudgdgggdugguugugdddguddggdgdgddddg,,,m,,mmmmm,,,,m,mmm,mm######mmmm,,mm,mrmrmrrmrr,m,m,mmm,######,m,,,rrr,mmmm######,,m,m,,mm,,m,,mm,,b.#",
+            "#B.dudgduuud####uugguduggguuddguduugdddm,m,mmm,,mm,m,mm,,,mmmm######m,,mm,,mrrrr,rrrrr,,,m,,mmm,######m,,,,,rrmm,mm######,,,,,m,m,,mm,mmm,mb.#",
+            "#B.uguuguuug####ddduuguguguudggddgddgdg,mm,m,,,m,,mm,,m,mm,mmm....rrrrrrrrrrrrrrrrrrmmm,,m,mmmmm######mm,,,rrrrrrrrr.....,,,,,m,,m,,,mmm,,,b.#",
+            "#B.dududdggd##T#gdudgguddgduggguuguduudm,m,,mm,,,,,,,,,m,m,,,m,,m,mmm,mrr,,r,rm,r,rr,,mm,,,mmmm,##H###m,,,m,mrrr,,,,rm,m,mmmmm,,m,m,m,mmmm,b.#",
+            "#B.dgudddggu####uuguuudddugduuduuduugud,,,,,,mm,mmmmmmmmm,,,,m,,m,mm,,,mrrmm,,,m,r,rmmm,rr,mrrm,######mmmmm,rr,rrm,,,r,,,mmm,,,mm,,m,mmmmmmb.#",
+            "#B.ddguuuddd####ggudduugduddudduuddudggm,,mm,mmmm,,,m,,,m,,m,mm,,m,mmmmmmmmm,mm,,mrrm,,,mrr,m,rr######,,,mm,rrmmrmrmrrmm,,,mmm,,,,mm,mmm,m,b.#",
+            "#B.duddgudduggguuudgdudgdgdgggdddduudgd,,,m,mmm,,,mmmm,mm,m,,,,mm,,m,m,,m,m,mm,,mrrrmmmrrmmm,m,m######,m,,,,mrr,rrmmrr,r,,,,,m,mmmm,,m,m,,,b.#",
+            "#B.ududuudggdgdudugdggguugdudddgugduuddm,,,m,m,mm,m,,m,,mm,,m,m,mmmm,m,,,mmm,,,,,mrrrrrrrrrrrrrrrr....rrrrrrrrrrrrrrrrr,m,mm,m,,,,,,,m,mm,mb.#",
+            "#B.uudgguugddddgddduug####dgdddudugddugm,,m,,m,m,,,,,m,,,m,,mmm,,,,m,,m,,m,,,,,,,,mrr,mmrrm,rrmmrrmrrrr,mrrrrrmr,m,mmrrr,m,,m,,mmmm,,m,,,m,b.#",
+            "#B.dudduggguugguduudug####uduuugugdugdu,m,m,,,m,mm,mmm,mmm,,m,m,mmmm,,m,,,,,mm,,mmm,,rrm,,rr,,rr,,r,r,,m,,,rr,rmrrm,,,rmmm,,,mmm,m,,mm,,,mmb.#",
+            "#B.gggugu####guugudugg##T#uuuugdggduuddmmm,,m,,m,,,mmmmm,,,,,m,m,m,,,mmm,mmm,m,,,mmm,mmm,rr,m,,mm,,,,,m,m,m,,rr,,mr,m,m,mm,,mm,m,,m,m,m,,,mb.#",
+            "#B.uguggd####ddgdggddu####guddugggduuggm,,,mm,,,mmmmm,,,mmm,,,m,m,mm,,mmm,mm,,mm,mm,,,mm,,mmmmm,m,mm,,,,m,,mm,m,,,,m,,m,,,,m,mm,,,m,,mm,mm,b.#",
+            "#B.guduug##T#dugugggug####duuuggguuddug,m,m,,mm,m,mmmmm,mmm,m,mm,m,mmmmmmmmmmm,,,,mmm,mmmm,m,m,,mmmm,m,,,mm,mmm,,m,,m,mmmm,mm,m,,,,,m,,,mmmb.#",
+            "#B.gdgdud####gdddgdudguuuduguuugugdudugm,m,,mmmm,,,m,mm,mmm,,mmm,,mm,mmm,,,m,,,,m,,,,,mm,mmmm,,mm,,m,mmmmmmmmmm,m,,mm,,,mm,,,mm,,m,,,m,m,mmb.#",
+            "#B.gdgdud####udugudgduuuuuggudugugduuudm,m,m,mmmm,,mmm,mm,,mm,mmm,m,m,mmm,,m,,,,,m,m,m,,mmmm,m,mmm,m,,m,mm,,mm,mm,m,,mm,,mm,,,mmmmm,,,m,,,mb.#",
+            "#B.uudgugugguuddgddgddggggddgudgddduuuu,mmm,mm,mmmm,,mmm,m,,,,mmmm,m,m,,mm,,mm,mmm,,,m,mmmmm,,mmmmm,m,,,,mm,,mm,,,m,,,,,mm,m,mmm,,m,,mm,,,mb.#",
+            "##.duddudduuguggdddgdugduudddggduuddguguggggugdduguduuududgduuguuuugdgudgudduddgggguddgggduggdggdgguudugdgduudguddgduuudduguudduuuguudgduudb.#",
+            "###AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA...",
+            "v##########################################################################################################################################.V."
+        ],
+        "char type": {
+            "T": {
+                "path": "./assets/image/map/squares/green_tree.png"  
+            },
+            "F": {
+                "path": "./assets/image/map/squares/fontain.png"
+            },
+            "#": {
+                "col": 1
+            },
+            ".": {
+            },
+            "Q": {
+                "path": "./assets/image/map/squares/dirt.png"
+            },
+            "P": {
+                "path": "./assets/image/map/squares/grass.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/amongus.json"
+                }
+            },
+            "S": {
+                "path": "./assets/image/map/squares/grass.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/amongus.json"
+                }
+            },
+            "V": {
+                "path": "./assets/image/map/squares/corner.png",
+                "rotation": 180.0,
+                "col": 1
+            },
+            "v": {
+                "path": "./assets/image/map/squares/corner.png",
+                "rotation": 270.0,
+                "col": 1
+            },
+            "C": {
+                "path": "./assets/image/map/squares/corner.png",
+                "rotation": 90.0,
+                "col": 1
+            },
+            "c": {
+                "path": "./assets/image/map/squares/corner.png",
+                "col": 1
+            },
+            "b": {
+                "path": "./assets/image/map/squares/fall.png",
+                "rotation": 90.0,
+                "col": 1
+            },
+            "a": {
+                "path": "./assets/image/map/squares/fall.png",
+                "col": 1
+            },
+            "B": {
+                "rotation": 270.0,
+                "path": "./assets/image/map/squares/fall.png",
+                "col": 1
+            },
+            "A": {
+                "path": "./assets/image/map/squares/fall.png",
+                "rotation": 180.0,
+                "col": 1
+            },
+            "d": {
+                "path": "./assets/image/map/squares/dead_tree.png"
+            },
+            "g": {
+                "path": "./assets/image/map/squares/grass.png"
+            },
+            "u": {
+                "path": "./assets/image/map/squares/grass_bush.png"
+            },
+            ",": {
+                "path": "./assets/image/map/squares/dirt.png"
+            },
+            "H": {
+                "path": "./assets/image/map/squares/long_house_clear.png"
+            },
+            "^": {
+                "path": "./assets/image/map/squares/way.png"
+            },
+            "*": {
+                "path": "./assets/image/map/squares/way.png",
+                "rotation": 90.0
+            },
+            "m": {
+                "path": "./assets/image/map/squares/flower.png"
+            },
+            "M": {
+                "path": "./assets/image/map/squares/dead_tree.png"
+            },
+            "r": {
+                "path": "./assets/image/map/squares/dirt_rock.png"
+            }
+        }
+    },
+    "spawn": [95, 75]
+}
