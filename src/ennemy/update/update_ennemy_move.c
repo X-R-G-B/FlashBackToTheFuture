@@ -81,6 +81,7 @@ void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
     any_t *data = dico_t_get_any((ennemy == NULL || ennemy->obj == NULL) ?
         NULL : ennemy->obj->components, ENNEMY_DATA);
 
+    return;
     if (get_data(&rect_speed, &move_speed, data, &rect_list) != RET_OK ||
         set_new_dir(ennemy, scene, win) == false) {
         return;
