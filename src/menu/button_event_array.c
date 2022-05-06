@@ -10,12 +10,14 @@
 #include "audio.h"
 
 const char *str_on_hover[] = {
-    "QUIT", "PLAY", "SETTINGS menu", "SANDBOX", "music button", "sound button"
+    "QUIT", "PLAY", "SETTINGS menu", "SANDBOX", "music button", "sound button",
+    "CREDITS"
 };
 
 void (*on_hover[])(object_t *, scene_t *, window_t *win, set_event_t *) = {
     set_exit_overlay, set_play_overlay, set_settings_overlay,
-        set_sandbox_overlay, drag_button_on_hover, drag_button_on_hover
+    set_sandbox_overlay, drag_button_on_hover, drag_button_on_hover,
+    set_credits_overlay
 };
 
 const char *str_off_hover[] = {"music button", "sound button", NULL};
