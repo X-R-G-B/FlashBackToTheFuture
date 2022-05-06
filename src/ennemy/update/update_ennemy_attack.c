@@ -37,14 +37,11 @@ static sfVector2f get_vector_use(ennemy_t *ennemy, float speed)
     return (news[0]);
 }
 
-static void update_move(ennemy_t *ennemy, float speed, float coef,
-    window_t *win)
+static void update_move(ennemy_t *ennemy, float speed, window_t *win)
 {
     sfVector2f vect = {0};
 
     vect = get_vector_use(ennemy, speed);
-    vect.y *= coef * 2;
-    vect.x *= coef * 2;
     if (check_wall(ennemy, (sfVector2f) {vect.x * -1, vect.y * -1},
             win) == true) {
         return;
