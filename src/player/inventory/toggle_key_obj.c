@@ -7,6 +7,26 @@
 
 #include "my_rpg.h"
 
+static const int max_key_obj = 5;
+
+static void toggle_nbr_keyobj(scene_t *scene, int nbr_keyobj)
+{
+    list_ptr_t *list = NULL;
+    list_t *elem = NULL;
+    object_t *obj = NULL;
+
+    list = dico_t_get_value(scene->components, KEY_OBJ);
+    if (list == NULL || list->len < nbr_keyobj) {
+        return;
+    }
+    elem = list->start;
+    for (int i = 0; i < nbr_keyobj; i++) {
+        obj = elem->var;
+        obj->is_visible = true;
+        elem = elem->next;
+    }
+}
+
 static int get_nbr_keyobj(window_t *win)
 {
     any_t *acutal_data = NULL;
@@ -43,23 +63,14 @@ static scene_t *get_scene(window_t *win)
 void toggle_key_obj(window_t *win)
 {
     scene_t *scene = get_scene(win);
-    list_ptr_t *list = NULL;
-    list_t *elem = NULL;
-    object_t *obj = NULL;
     int nbr_keyobj = 0;
 
     nbr_keyobj = get_nbr_keyobj(win);
     if (scene == NULL || nbr_keyobj <= -1) {
         return;
     }
-    list = dico_t_get_value(scene->components, KEY_OBJ);
-    if (list == NULL || list->len < nbr_keyobj) {
-        return;
+    if (nbr_keyobj >= max_key_obj) {
+        nbr_keyobj = max_key_obj;
     }
-    elem = list->start;
-    for (int i = 0; i < nbr_keyobj; i++) {
-        obj = elem->var;
-        obj->is_visible = true;
-        elem = elem->next;
-    }
+    toggle_nbr_keyobj(scene, nbr_keyobj);
 }
