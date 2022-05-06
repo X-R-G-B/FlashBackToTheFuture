@@ -56,6 +56,7 @@ void update_ennemy(object_t *obj, scene_t *scene, window_t *win,
         return;
     }
     ennemy = dico_t_get_value(obj->components, struct_key);
+    printf("ennemy %f %f\n", ennemy->obj->bigdata.sprite_bigdata.pos.x, ennemy->obj->bigdata.sprite_bigdata.pos.y);
     if (ennemy == NULL || ennemy->obj == NULL ||
         ennemy->obj->is_visible == false) {
         return;
