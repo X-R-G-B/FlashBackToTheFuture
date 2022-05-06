@@ -103,4 +103,3 @@ void create_view_rotation(scene_t *scene)
     obj->components = dico_t_add_data(obj->components, rotation_data_key,
         rotation_data, destroy_any);
 }
- 
