@@ -23,8 +23,6 @@ sfVector2f *get_vector_dir_malloc(sfVector2f point_a, sfVector2f point_b,
     sfVector2f *new = NULL;
     sfVector2f dir = {0};
 
-    printf("in calc player: %f %f ennemy: %f %f\n", point_a.x, point_a.y, point_b.x, point_b.y);
-    //here we calculate the vector with GOOD value in input
     new = malloc(sizeof(sfVector2f));
     if (new == NULL) {
         return (NULL);

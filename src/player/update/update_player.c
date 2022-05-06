@@ -52,7 +52,6 @@ void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
     if (player == NULL || player->obj == NULL) {
         return;
     }
-    printf("player %f %f\n", player->obj->bigdata.sprite_bigdata.pos.x, player->obj->bigdata.sprite_bigdata.pos.y);
     sfRenderWindow_setView(win->win, player->view);
     if (player->state >= 0 && player->state <= 4) {
         update_ptr[player->state](player, scene, win, dtime);
