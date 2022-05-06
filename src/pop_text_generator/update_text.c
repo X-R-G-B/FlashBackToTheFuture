@@ -33,7 +33,7 @@ static bool check_end(any_t *text_data, float *since_start, float *time)
 static void check_move(any_t *text_data, float *time, object_t *obj)
 {
     any_t *move = get_from_any(text_data, "d", move_key);
-    any_t *char_size_add = get_from_any(text_data, char_size_key);
+    any_t *char_size_add = get_from_any(text_data, "d", char_size_key);
     any_t *actualisation_time = get_from_any(text_data, "d",
         move_actualisation_key);
     int char_size = sfText_getCharacterSize(obj->drawable.text);
