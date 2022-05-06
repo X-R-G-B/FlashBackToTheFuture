@@ -8,6 +8,7 @@
 #ifndef RPG_H_
     #define RPG_H_
 
+    #include <stdbool.h>
     #define RET_OK 0
     #define RET_ERR_MALLOC 1
     #define RET_ERR_INPUT 2
@@ -167,7 +168,7 @@ char *get_stage_name(int stage_id);
 void update_text(object_t *obj, scene_t *scene, window_t *win,
     float dtime);
 
-int launch_game(void);
+int launch_game(bool is_full_screen);
 
 void set_stop(player_t *player);
 
@@ -320,7 +321,7 @@ void use_heal_potion(object_t *obj, scene_t *scene,
 
 int create_number_of_potions(scene_t *scene, window_t *win);
 
-void modif_potion_value(window_t *win, int nbr_potions);
+void modif_potion_value(window_t *win, int nbr_potions, bool click);
 
 int check_if_pop_up_true(dico_t *dico, char *key);
 

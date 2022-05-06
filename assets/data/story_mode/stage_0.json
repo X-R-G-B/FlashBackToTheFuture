@@ -131,6 +131,12 @@
                 "path": "./assets/image/map/squares/corner.png",
                 "col": 1
             },
+            "L": {
+                "path": "./assets/image/map/squares/flower.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/ninho.json"
+                }
+            },
             "S": {
                 "path": "./assets/image/map/squares/flower.png",
                 "components": {
