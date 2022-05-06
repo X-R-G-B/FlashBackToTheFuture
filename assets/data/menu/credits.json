@@ -3,32 +3,50 @@
         {
             "text": "CREDITS",
             "font path": "./assets/fonts/LEMONMILK-Bold.otf",
-            "text pos": [200.0, 960.0]
+            "text pos": [200.0, 960.0],
+            "char size": 30.0
         },
         {
+            "sprite path": "./assets/image/logo/guillaume.jpg",
+            "pos": [330.84, 320.0],
             "text": "Guillaume - Mention Guy-Guy De Maupassant",
-            "font path": "./assets/fonts/lattoblack.ttf",
-            "text pos": [300.0, 960.0]
+            "font path": "./assets/fonts/latoblack.ttf",
+            "text pos": [382.84, 320.0]
         },
         {
+            "sprite path": "./assets/image/logo/romain.jpg",
+            "pos": [320.25, 1644.95],
             "text": "Romain - Mention Fortinite o la Babaji",
-            "font path": "./assets/fonts/lattoblack.ttf",
-            "text pos": [400.0, 960.0]
+            "font path": "./assets/fonts/latoblack.ttf",
+            "text pos": [371.25, 1644.95]
         },
         {
-            "text": "Brice - Mention xxx",
-            "font path": "./assets/fonts/lattoblack.ttf",
-            "text pos": [500.0, 960.0]
+            "sprite path": "./assets/image/logo/brice.jpg",
+            "pos": [870.29, 602.24],
+            "text": "Brice - Mention Can Someone Give Me a HAAAANNN YEAAAAAH",
+            "font path": "./assets/fonts/latoblack.ttf",
+            "text pos": [918.29, 602.24]
         },
         {
-            "text": "Xavier - Mention merde",
-            "font path": "./assets/fonts/lattoblack.ttf",
-            "text pos": [600.0, 960.0]
+            "sprite path": "./assets/image/logo/xavier.jpg",
+            "pos": [909.15, 1250.43],
+            "text": "Xavier - Mention Velo",
+            "font path": "./assets/fonts/latoblack.ttf",
+            "text pos": [949.15, 1250.43]
         },
         {
             "text": "-> HOME",
             "sprite path": "./assets/image/menu/main_menu/default_screen/home.png",
-            "pos": [1000.0, 140.0]
+            "pos": [1008.3, 200.0]
+        },
+        {
+            "sprite path": "./assets/image/menu/main_menu/default_screen/background.jpg",
+            "pos": [540.0, 960.0],
+            "plan": 2
+        },
+        {
+            "sprite path": "./assets/image/logo/FBTTF_logo.png",
+            "pos": [540.0, 960.0]
         }
     ]
 }
