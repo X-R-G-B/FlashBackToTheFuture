@@ -23,6 +23,8 @@
     #include "my_bgs.h"
     #include "my_json.h"
 
+static const char ICON_PATH[] = "./assets/image/logo/FBTTF_logo.png";
+
 static const char DATA_INV_JSON[] = "assets/data/player/inventory_data.json";
 static const char INV_SCENE[] = "INVENTORY";
 static const char INV_BUTTONS_COMP[] = "INVENTOR_BUTTONS";
@@ -112,6 +114,15 @@ int move_object_between_scene(window_t *win, scene_t *fst_scene,
 
 void increment_hud_pos(window_t *win, sfVector2f to_add);
 
+int create_stat_pop_text_from_window(window_t *win, int stat, const char *path,
+    sfVector2f pos);
+
+int create_stat_pop_text(scene_t *scene, int stat, const char *path,
+    sfVector2f pos);
+
+int create_pop_text(scene_t *scene, const char *path, sfVector2f pos,
+    char *text);
+
 void replace_objects(window_t *win, scene_t *scene);
 
 void hud_apply_right_pos(object_t *obj, object_t *player);
@@ -148,7 +159,13 @@ int add_collision_array_in_scene(scene_t *scene);
 
 void wordarray_free_ptr(void *data);
 
+int init_pause_button(window_t *win, list_ptr_t *pause_menu,
+    scene_t *scene, list_ptr_t *hud_elements);
+
 char *get_stage_name(int stage_id);
+
+void update_text(object_t *obj, scene_t *scene, window_t *win,
+    float dtime);
 
 int launch_game(void);
 
@@ -164,7 +181,8 @@ char **create_new_map(char **map);
 
 char **stage_map_to_collision_array(scene_t *scene);
 
-int launch_stage(window_t *win, char *stage_path, int stage_id, scene_t *scene);
+int launch_stage(window_t *win, const char *stage_path, int stage_id,
+    scene_t *scene);
 
 void attack_event(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *set_event);
@@ -219,6 +237,8 @@ void destroy_player(void *player_void);
 void dead_event_input(object_t *object, scene_t *scene,
     window_t *window, set_event_t *event);
 
+void set_dead_opacity(object_t *dead_message, object_t *dead_screen);
+
 void free_pop_up(void *list);
 
 int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
@@ -242,6 +262,8 @@ int init_hud(window_t *win, scene_t *scene);
 int set_player_default_stats(player_t *player, any_t *stats);
 
 void go_to_home(scene_t *scene, window_t *win);
+
+void restart_game(scene_t *scene, window_t *win);
 
 bool check_evolution_stat(player_t *player, float *prev_max_stat,
     const char stat_name[]);
@@ -306,5 +328,7 @@ int change_xp_bar_stats(any_t *max_xp_data, any_t *actual_xp_data,
     object_t *object, scene_t *scene);
 
 any_t *get_xp_data(player_t *player, const char data_name[]);
+
+void drop_right_item(object_t *obj, window_t *win);
 
 #endif /* !RPG_H_ */

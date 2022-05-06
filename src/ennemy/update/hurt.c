@@ -14,30 +14,6 @@
 
 static const char blink_time_key[] = "blink time";
 
-bool check_wall(ennemy_t *ennemy, sfVector2f new, window_t *win)
-{
-    int x = 0;
-    int y = 0;
-    scene_t *scene = NULL;
-    char **map = NULL;
-
-    if (win == NULL || ennemy == NULL || ennemy->obj == NULL) {
-        return (true);
-    }
-    scene = dico_t_get_value(win->scenes, win->current_scene);
-    x = (ennemy->obj->bigdata.sprite_bigdata.pos.x - new.x) / SQUARE_SIZE;
-    y = (ennemy->obj->bigdata.sprite_bigdata.pos.y - new.y) / SQUARE_SIZE;
-    if (scene == NULL || y < 0 || x < 0) {
-        return true;
-    }
-    map = dico_t_get_value(scene->components, COLLISION_ARRAY);
-    if (map == NULL || y >= my_wordarray_len(map) || x >= my_strlen(map[y]) ||
-            map[y][x] == '#') {
-        return true;
-    }
-    return false;
-}
-
 static float get_blink_time(ennemy_t *ennemy)
 {
     any_t *ennemy_data = NULL;
@@ -83,7 +59,6 @@ static void update_when_ennemy_die(ennemy_t *ennemy, window_t *win,
 void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win,
     scene_t *scene)
 {
-    static float time = 0;
     float blink_time = get_blink_time(ennemy);
     any_t *json = NULL;
     float speed = 10;
@@ -93,11 +68,12 @@ void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win,
     }
     json = dico_t_get_value(ennemy->obj->components, ENNEMY_DATA);
     json = get_from_any(json, "d", "speed");
-    time += dtime;
+    ennemy->hurt_delta_time += dtime;
     speed = (json == NULL || json->type != FLOAT) ? speed : json->value.f;
-    move_ennemy(ennemy, (dtime * speed / (time * speed)) * 20, win);
-    if (time >= blink_time) {
-        time = 0;
+    move_ennemy(ennemy,
+        (dtime * speed / (ennemy->hurt_delta_time * speed)) * 20, win);
+    if (ennemy->hurt_delta_time >= blink_time) {
+        ennemy->hurt_delta_time = 0;
         update_when_ennemy_die(ennemy, win, scene);
     }
 }

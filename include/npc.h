@@ -25,8 +25,10 @@ struct dialog_manager_s {
 struct text_dialog_s {
     char *str;
     bool need_pause;
-    void (*callback)(const char *str, scene_t *scene, window_t *win);
+    void (*callback)(const char *str, scene_t *scene,
+        window_t *win, void *data);
     float time;
+    void *data;
 };
 
 struct npc_data_func_s {
@@ -57,7 +59,7 @@ int add_event_quit_to_dialog(object_t *dialog);
 
 int init_dialog(scene_t *scene);
 
-int add_npc(scene_t *scene, const char *path, sfVector2f pos,
+object_t *add_npc(scene_t *scene, const char *path, sfVector2f pos,
     void (*callback)(object_t *npc, scene_t *scene, window_t *win));
 
 void update_npc(object_t *obj, scene_t *scene, window_t *win,
@@ -69,16 +71,28 @@ void update_text_dialog(object_t *obj, scene_t *scene, window_t *win,
 void update_dialog(object_t *obj, scene_t *scene, window_t *win,
     float dtime);
 
+void update_grandpa(object_t *obj, scene_t *scene, window_t *win, float dtime);
+
 int aplly_rect_npc(any_t *jsonrect, any_t *current, object_t *npc);
 
-int add_text_dialog(scene_t *scene, const char *text, bool need_pause,
-    void (*callback)(const char *str, scene_t *scene, window_t *win));
+text_dialog_t *add_text_dialog(scene_t *scene, const char *text,
+    bool need_pause, void (*callback)(const char *str,
+    scene_t *scene, window_t *win, void *data));
 
-int add_text_dialog_json(scene_t *scene, const char *path);
+void call_callback_npc(object_t *npc, scene_t *scene, window_t *win);
+
+int add_text_dialog_json(scene_t *scene, const char *path,
+    void (*callback)(const char *str, scene_t *scene, window_t *win,
+        void *data), void *data);
 
 char *parseprety(const char *str);
 
 char *parseprety_free(char *str);
+
+void create_view_rotation(scene_t *scene);
+
+void update_magician(object_t *obj, scene_t *scene, window_t *win,
+    __attribute__((unused)) float dtime);
 
 void init_npc_spawner(object_t *obj, scene_t *scene, window_t *win,
     __attribute__((unused)) float time);

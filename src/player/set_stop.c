@@ -19,7 +19,7 @@ static void apply_rect(player_t *player, const char *key, dico_t *dico)
     player->obj->bigdata.sprite_bigdata.rect = (sfIntRect) {rect[0], rect[1],
         rect[2], rect[3]};
     sfSprite_setOrigin(player->obj->drawable.sprite, (sfVector2f)
-        {rect[2] / 2, rect[3] / 2});
+        {rect[2] / 2.0, rect[3] / 2.0});
     player->state = STOP;
     free(rect);
 }

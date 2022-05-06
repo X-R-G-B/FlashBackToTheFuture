@@ -13,8 +13,9 @@
 static const char dead_screen_path[] = "./assets/data/menu/dead_screen.json";
 static void (*dead_screen_update[2])(object_t *, scene_t *,
     window_t *, float) = {update_dead_message, update_dead_screen};
+const char can_play_dead_screen[] = "can_play";
 
-static void set_opacity(object_t *dead_message, object_t *dead_screen)
+void set_dead_opacity(object_t *dead_message, object_t *dead_screen)
 {
     if (dead_message == NULL || dead_screen == NULL) {
         return;
@@ -23,12 +24,14 @@ static void set_opacity(object_t *dead_message, object_t *dead_screen)
         (sfColor) {255, 255, 255, 0});
     sfSprite_setColor(dead_screen->drawable.sprite,
         (sfColor) {255, 255, 255, 0});
+    dead_message->is_visible = false;
+    dead_screen->is_visible = false;
     return;
 }
 
 static void init_dead_screen_pos(window_t *win)
 {
-    player_t *player = dico_t_get_value(win->components, "player");
+    player_t *player = dico_t_get_value(win->components, PLAYER);
     list_ptr_t *hud_elements = dico_t_get_value(win->components, HUD_ELEMENTS);
 
     if (player == NULL || hud_elements == NULL) {
@@ -53,19 +56,20 @@ static void config_input_and_components(window_t *win,
     if (event_add_node(create_event(dead_event_input, false, dead_message,
             NULL), (node_params_t) {sfMouseLeft, sfKeyQ, KEY}) != BGS_OK ||
         event_add_node(create_event(dead_event_input, false, dead_message,
-            NULL), (node_params_t) {sfMouseLeft, sfKeyH, KEY}) != BGS_OK) {
+            NULL), (node_params_t) {sfMouseLeft, sfKeyH, KEY}) != BGS_OK ||
+        event_add_node(create_event(dead_event_input, false, dead_message,
+            NULL), (node_params_t) {sfMouseLeft, sfKeySpace, KEY}) != BGS_OK) {
         return;
     }
-    dead_message->is_visible = false;
-    dead_screen->is_visible = false;
-    if (scene_add_components(scene, can_play, "can_play", free) != BGS_OK ||
+    if (scene_add_components(scene, can_play,
+        can_play_dead_screen, free) != BGS_OK ||
         window_add_component(win, dead_message,
             DEAD_MESSAGE, NULL) != BGS_OK ||
-        window_add_component(win, dead_screen,
+            window_add_component(win, dead_screen,
             DEAD_SCREEN, NULL) != BGS_OK) {
         return;
     }
-    set_opacity(dead_message, dead_screen);
+    set_dead_opacity(dead_message, dead_screen);
 }
 
 static int add_object_to_update_list(scene_t *scene, object_t *dead_screens)

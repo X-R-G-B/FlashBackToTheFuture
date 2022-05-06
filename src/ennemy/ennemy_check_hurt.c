@@ -10,6 +10,7 @@
 #include "ennemies.h"
 #include "maths_function.h"
 
+const char pop_text_file[] = "./assets/data/pop_text/ennemy_hurt.json";
 static const char attack_key[] = "attack";
 static const char sword_key[] = "sword";
 static const char dammage_key[] = "dammage";
@@ -61,6 +62,8 @@ static void set_hurt(ennemy_t *ennemy, player_t *player, sfVector2f impact,
     if (dammage == NULL || dammage->type != FLOAT) {
         return;
     }
+    create_stat_pop_text_from_window(win, (int) (dammage->value.f * -1),
+        pop_text_file, impact);
     if (ennemy->state == ATTACKING) {
         ennemy->state = STOP;
         ennemy->delta_time = 0;

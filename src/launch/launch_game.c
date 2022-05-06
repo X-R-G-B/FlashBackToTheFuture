@@ -18,7 +18,7 @@ static int get_save(window_t *win)
         return RET_ERR_MALLOC;
     }
     save = parse_json_file(SAVE_PATH);
-    if (save == NULL) {
+    if (save == NULL || save->type != DICT) {
         return RET_ERR_INPUT;
     }
     win->components = dico_t_add_data(win->components, SAVE, save, destroy_any);
@@ -31,6 +31,7 @@ int launch_game(void)
     window_t *win = create_window(mode, "My_Rpg", sfResize | sfClose |
         sfFullscreen);
 
+    window_set_icon(win, ICON_PATH);
     srand(0);
     if (get_save(win) != RET_OK || init_audio_list(win) ||
         init_menu(win) != RET_OK ||
