@@ -11,11 +11,11 @@
         [424, 40, 94, 122],
         [14, 295, 70, 122]
     ],
-    "dash time": 0.5,
+    "dash time": 2.0,
     "charge time": 0.5,
     "scale": 1.0,
     "rect actualisation": 0.09,
-    "speed": 470.0,
+    "speed": 440.0,
     "range": 200.0,
     "life": 300.0,
     "dammage": 10.0,
