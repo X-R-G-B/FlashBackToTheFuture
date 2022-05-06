@@ -16,7 +16,11 @@ int print_help(const char *exe)
     my_putstr(1, "DESCRIPTION:\n\ta mini RPG\n");
     my_putstr(1, "OPTIONS:\n\t-h\tprint this message\n");
     my_putstr(1, "\t-f\trender the game in full screen\n\t\t");
-    my_putstr(1, "(the default is in 1920x1080)");
+    my_putstr(1, "(the default is in 1920x1080)\n");
+    my_putstr(1, "\nmore explanation in game\n");
+    my_putstr(1, "web site: https://x-r-g-b.github.io/");
+    my_putstr(1, "source code : " \
+        "https://github.com/X-R-G-B/FlashBackToTheFuture\n");
     return (0);
 }
 
