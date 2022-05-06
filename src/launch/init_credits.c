@@ -51,6 +51,5 @@ void go_to_home_direct(__attribute__((unused)) object_t *obj,
     if (win == NULL) {
         return;
     }
-    printf("ok gros\n");
     window_change_scene(win, "MAIN MENU");
 }
