@@ -11,7 +11,7 @@
 static const char sound_hited_path[] = "./assets/music/sound/roblox.ogg";
 static const char sound_hit_path[] = "./assets/music/sound/hit-marker.ogg";
 static const char sound_open_fridge[] = "./assets/music/sound/open_fridge.ogg";
-static const char sound_close_fridge[] = 
+static const char sound_close_fridge[] =
     "./assets/music/sound/close_fridge.ogg";
 static const char sound_consum_86[] = "./assets/music/sound/cannette_use.ogg";
 static const char sound_infinity_86[] =
