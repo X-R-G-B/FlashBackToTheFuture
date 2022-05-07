@@ -1,103 +1,13 @@
 {
     "map data": {
         "map": [
-            "##########################################################################################################################################################################################################################################",
-            "#c####################################################################C######################################################################################################################################c#########################C##",
-            "###.aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.###########################################################################################################################################aaaaaaaaaaaaaaaaaaaaa#####",
-            "###..................................................................##################################################################c#########C#############################################################.......................####",
-            "##B.dffdfdfdddfdffddffddfddffdfdfddfffffffdfffffffdfddfddffdfffddfdf.b####################################################################aaaaa###############################################################B.dfddffddddddfffdffdfd.b###",
-            "##B.fddffddffddfdfffdfffddddffdffdddddddffdfddfddfdffffffdffdfdfdfdd.b###################################################################.......##############################################################B.ffffdffdfddffffdfdffd.b###",
-            "##B.dffdffffdffffffdfdfddffdfddddffdfdddfffffffdfdfddfdfdfdfdfdddfdf.b##################################################################B.SSSSS.b#############################################################B.dfddddddddddf222222dd.b###",
-            "##B.fffffddfdfd...........................................dfdffffdff.b###################################################################.....d.##############################################################B.ddfffdffdddffdfdfdfdf.b###",
-            "##B.fdddffddJ..AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.W.ddddffd.b####################################################################AAAAf###############################################################B.dffddfffddfffdfdfffff.b###",
-            "##B.ddddfdd....#.#########################################...fddffff.b#################################################################v######H##V############################################################B.dfdfddddfdfffdfffffdd.b###",
-            "##B.fdfdddd...#############################################..dfdddfd.b########################################################################H###############################################################B.ffdfffffdddfddfdfdfdf.b###",
-            "##B.ddddddd.b##############################################B.dddfdfd.b########################################################################H###############################################################B.fdddddfdfdddddfdfffff.b###",
-            "##B.dddffdf.b##############################################B.fffffdf.b########################################################################H###############################################################B.fdfddfddffdffdfddfffd.b###",
-            "##B.fdfddff.b##############################################B.ddfdfdf.b########################################################################H###############################################################B.dfffddfddfddffdffddff.b###",
-            "##B.dfdfdff.b##############################################B.dfddfdd.b########################################################################H###############################################################B.fdffddffffdfdddffddfd.b###",
-            "##B.dSfdfdd.b##############################################B.ffdddfd.b########################################################################H###############################################################B.dfddddddfdfffddffddff.b###",
-            "##B.fffdffd.b##############################################B.fddddff.b########################################################################H#####?#########################################################B.fdfffdfdfdfdffdddfdfd.b###",
-            "##B.dffdfSf.b##############################################B.dfdddfd.b########################################################################H###############################################################B.dfffffdfffdddddfdfdfd.b###",
-            "##B.ddSdddf.b##############################################B.dfffdff.b########################################################################H###############################################################B.dffdddfdfdddfffdffddf.b###",
-            "##B.dfdddff.b##############################################B.dddfddf.b####################################################c###################H#####C#########################################################B.dfffddfddfffffddffffd.b###",
-            "##B.ffdfSdf.b##############################################B.dffdddf.b#######################################################aaaaaaaaaaaaaaaaaHaaa############################################################B.ddfdffdddffdddddfdfdf.b###",
-            "##B.dfddfdd.b##############################################B.fdfffdd.b######################################################..................f....###########################################################B.dffdfdfffdffffdfdddfd.b###",
-            "##B.ddfSfSf.b##############################################dddffddff.b#####################################################B.fffddddfdffffddffdfff.b##########################################################B.ffdffddfffdffdddddfff.b###",
-            "##B.ddfdfSf.b#######c#####################################...ffdffdd.b#####################################################B.fdfdffffffdddddfffffd.b##########################################################B.ddfdddddfddffffffdffd.b###",
-            "##B.dSdffdd.b##########aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa..Kddfffddd.b#####################################################B.dfddfddddfdfffddfdfff.b##########################################################B.fdfffdfdffffdfdfdffff.b###",
-            "##B.ddfddSf.b#########.....................................ddfffdfff.b#####################################################B.fdfdffdffdfffdfdffddf.b##########################################################B.dffffdddddddfddfdfdfd.b###",
-            "##B.fffdfdf.b########B.3dddddddddddddddddddddddddddddddddddddfddd0ff.b#####################################################B.ddddddffddfdddffffffd.b##########################################################B.fffdffdffddfddddddfdf.b###",
-            "###.........##########......................................ddffdfdf.b#####################################################B.fddfffffdddfffdffffdf.b##########################################################B.ffdfddfdfdddfdffdfffd...##",
-            "####AAAAAAA############AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA..Wdfdffddf.b##############################################?######B.dffd*ffdddfffdddffffd.b######################################################?###B.dfffddddddffffdddffdd....####################################################################C#",
-            "#v###########V######v#####################################..dfdddfdd.b##############?######################################B.fddffddfdffdfdfdfdffd.b##########################################################B.ffddffffddfdffdfdfdfd.Y..aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa####",
-            "###########################################################..ffddddf.b############################?########################B.fffddfdfdfdfffddfdfdf.b########?##################################?##############B.ffffddddfffffddffdfffddd....................................................................###",
-            "###########################################################..ffdfddd.b#####################################################B.dddffddffdffffddddddd.b##########################################################B.dfddddddfddddfffdfddfdfddfdfffffdfddfffffdfdffddffddddffdfdfddddddddfdddddfddfffddddffddddf.b##",
-            "#c########################################################..dffffddfdfGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGfdffddfdddfdfffdfdddffdDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDffdf=ddfffdfddffdfdfddfdffdfffdfffffdfdffdffdfdfddffdddffddddfdddfdfdddfffddddfdfdfdddfPddff.b##",
-            "####aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa..Kdfdfdddf.b#####################################################B.dfddddfffdddffddfdddd.b##########################################################B.dfffffffddfdfffdffddffdddffddffffffffdfffdffffdfffddfdffdffddfddfddfdfddfdddfddffddddffffff.b##",
-            "###.........................................................dfffddfd.b#####################################################B.dddfdddfffdffdfdfddfd.b##########################################################B.dfddddddfdfffdfdddddddddd...................................................................###",
-            "##B.dddfdfffdffdfdfffdfdddfffddffdfdfdSdfdfffdfdfffdfdfdfdfdffffdfdf.b#########?###########################################B.fffddfddffdfdddddddff.b############?#############################################B.ddfdfffdfdfddffdfddfddJ..AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####",
-            "##B.fdffdfddd...............................................dddfdddd.b################################################?####B.ddfffdddddfdddfddffdd.b##################################################?#######B.ddffffffddfdfdfdddddf....####################################################################V#",
-            "##B.fdfdfdfdJ..AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.dWddffdffd.b#####################################################B.dffdfddffdfdfffdfffff.b##########################################################B.fdddddddfdddddfdfffff...#######################################################################",
-            "##B.fdddddf....###########################################..dfddfdff.b#####################################################B.ffddffdfffdfdddddddfd.b##########################################################B.ffffdfffddddffffddfdd.b##",
-            "##B.fdfddfd...#############################################..ddfdfff.b#####################################################B.fdfdddfddffffddffdddf.b##########################################################B.dddffddfdfffdfdffdffd.b##",
-            "##B.fddfdfd.b##############################################..fddddfd.b#####################################################B.fdffffdddfdffffffffdd.b##########################################################B.dfdddfddddffdddfddddf.b##",
-            "##B.ddddfdf.b###############################c#############..ddfdddff.b#####################################################B.ddffddddfffdffdffffdf.b##########################################################B.dddfffdddddddffdffdfd.b##",
-            "##B.dfffffd.b##################################aaaaaaaaaa..Kdffdfdfd.b#####################################################B.dddfdffddfdfdfdfdffdf.b##########################################################B.ffdffffddfdddddddddff.b##",
-            "##B.dfffdff.b#################################..............dfddfdfd.b######################################################.......f...............###########################################################B.fffdfdfddfffdfddddddf.b##",
-            "##B.fdddddd.b################################B.SSddddddddddddffffddd.b#######################################################AAAAAAuAAAAAAAAAAAAAA############################################################B.ddfffddffdfdffddfdfdd.b##",
-            "##B.dffffff.b################################B.SSdddfdddfdddddddffdf.b####################################################v########u################V################?########################################B.ddddfffdfdfddfdffdfdd.b##",
-            "##B.ddfdfff.b################################B.SSdfddddfddddfffffdff.b#############################################################u##########################################################################B.dfffffffdfdfddfffdffd.b##",
-            "##B.fdddfdd.b################################B.SSdddfdddfdddddddffdd.b#############################################################u##########################################################################B.fdfddddddffdffddfffff.b##",
-            "##B.dddf2df.b################################B.SSddfddddddddfdfdfffd.b#############################################################u#################################################################?########B.fffddfffdfffdfffddfdf.b##",
-            "##B.ffdffdd.b#################################.......................##################################################?###########u##########################################################################B.fddfdffdfdfddddffddff.b##",
-            "##B.fffffdd.b##################################AAAAAAAAAAAAAAAAAAAAA###############################################################u##########################################################################B.fdfffffffdfdfffdfdfdd.b##",
-            "##B.fdfdddd.b###############################v#########################V############################################################u##########################################################################B.fddddfdffffddddddfddd.b##",
-            "##B.dfdffdd.b###############################################################################################################c######u##########################################C###############################B.ddfdddfd4ffdfdfdfdffd.b##",
-            "##B.fddfdff.b##################################################################################################################aaaadaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa##################################B.fdddfdfddffdfdfffdfdf.b##",
-            "##B.fffddff..#################################################################################################################.....f.........................................#################################B.fddfddfdddfdf4fdfdfff.b##",
-            "##B.fdfffddf..####################################################################################C##########################B.ffddfdfddffddfffffddddfddfdffffdfffddddf2ddff.b################################B.fddffdfddffdfdfffdfff.b##",
-            "##B.dfddddffY..aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa#############################B.ddfffdfddfffdfffdfdfdffdfdfddffddfddffdf2dfff.b######?#########################B.ffdddddddffdfdfffdfff.b##",
-            "##B.fdffffddd....................................................................................############################B.ddddfdffdfdfdddfdffdffddddfdfffddfffdfffdd2df.b################################B.dfdddfdfffffdddfdfddd.b##",
-            "##B.fddffdfffdfddfdfddddfffddffddddddfffdddfdfffdfddfffddfddffdfddffddddfdfffffdfffffddfdfddfddf.b############################...............................................##################################.......................###",
-            "###......................................................................................fdd+ddf.b#############################AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####################################AAAAAAAAAAAAAAAAAAAAA####",
-            "####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.dWdfddfdfd.b##########################v#################################################V##############################v#########################V#",
-            "#v####################################################################################..dffdfffd.b#######################################################################################################################################",
-            "#######################################################################################..fddfffd.b##",
-            "#######################################################################################B.dddddfd.b##",
-            "#######################################################################################.dfdfdddf.b##",
-            "#c###################################################################################..fddddddff.b##",
-            "####aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.fKdffdffdf.b##",
-            "###..................................................................................fdffdddfffd.b##",
-            "##B.dffdfdffdfdddfdffdfdfdffdfddffdfdfffddfdfffdfddfdfdfdddfdfdfdffdfdfdffddfdfdffdfdfffdfdfffdf.b##",
-            "##B.fddfffdddfdddddddff.....................................................ffdddddfdfffdffddddf.b##",
-            "##B.ffffdfdfdffddfdfdfddJ..AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA.dW.fdddfdfddddffdfdfdff.b##",
-            "##B.ddfffdfddfdfffdfdddf...##############################################...dddfddddfddddfdfddfd.b##",
-            "##B.ddddddfdfddffdfdffd...################################################..fdfddfdffdfddffddddf.b##",
-            "##B.fdfdffffffdfddffddd.b##.............................................##B.ffdffddddfdfdfddfddd.b##",
-            "##B.fdfddfddddfddddfddd.b##.............................................##B.fffdddfddfddfdfffddd.b##",
-            "##B.ffdddd3dfff3dffddfd.b##.............................................##B.dddfddfdffddddfddfff.b##",
-            "##B.ffdfdfddddfdffddddf.b##............#c##################C#...........##B.dfdfdddf2fffffdfddff.b##",
-            "##B.dfdffdffddddddffddf.b##............####aaaaaaaaaaaaaa####...........##B.ddfffffdfffdddffffff.b##",
-            "##B.fffddfffdddddfdfddd.b##################...............###...........##B.ddffddfffddddffdffdf.b##",
-            "##B.dddffdffffdfdfffffd!DDDDDDDDDDDDDDDDDDfddfffffdfd1fdf.b##...........##B.dddfdddddfddffddfffd.b##",
-            "##B.fddfdfddfdfdfffffdd.b##################...............###...........##B.ffdddddfdfdfdffffdff.b##",
-            "##B.fdffdfddffdffdffdff.b##............####AAAAAAAAAAAAAA####...........##B.dffdffdfdfdfdddfdfff.b##",
-            "##B.dddfdddfddfffdfddfd.b##............#v##################V#...........##B.ffffdddddffdffd2fdff.b##",
-            "##B.ffdfdfffdfffddfdfff.b##.............................................##B.dddfdfddffdfddfddddd.b##",
-            "##B.ddddfddddfffffdffdf.b##.............................................##B.fdddddfdddddffdfffff.b##",
-            "##B.fddddfddfdfdddfffdd.b##.............................................##B.dffffdddfddffddddffd.b##",
-            "##B.dddddfddfdfdffffdfd.b##.............................................##B.fdddfdfdddddffffdddf.b##",
-            "##B.dfddffddfdfdfdfffff...################################################..dfdddfdfdf2ffddfffdf.b##",
-            "##B.ffdfddSddfdddfdfdfff...##############################################..fdfdfffdddffdfdfdffdf.b##",
-            "##B.fddfdfdfddfdffSdddd.Y..aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa.K.fdfffdfdfdddffdfdfdd.b##",
-            "##B.fdffffdfdff2fffddddff.................................................f.fddddfddffddffdfdfdf.b##",
-            "##B.fddffddfdfffddffffff2fffdfdfffdddfffdfddfddddfdffffdfdffddfdfffffffdfddfdfdfffffddfffffdfddf.b##",
-            "##B.fffdffddfddfdfffdfffddfdfffffdddfdffdffdfdddfddffffddddfffddffdfdffffdddfdddddffffddfffddffd.b##",
-            "###..............................................................................................###",
-            "####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####",
-            "#v################################################################################################V#",
-            "####################################################################################################"
+            "#c#####C#",
+            "####a####",
+            "###...###",
+            "##B.1.b##",
+            "###...###",
+            "####A####",
+            "#v#####V#"
         ],
         "char type": {
             "V": {
@@ -138,120 +48,10 @@
                 "path": "./assets/image/map/squares/fall.png",
                 "col": 1
             },
-            "d": {
-                "path": "./assets/image/map/squares/dirt.png"
-            },
-            "f": {
-                "path": "./assets/image/map/squares/flower.png"
-            },
-            "H": {
-                "path": "./assets/image/map/squares/white_ladder.png"
-            },
-            "D": {
-                "path": "./assets/image/map/squares/white_ladder.png",
-                "rotation": 90.0
-            },
-            "u": {
-                "path": "./assets/image/map/squares/white_ladder.png",
-                "rotation": 180.0
-            },
-            "G": {
-                "path": "./assets/image/map/squares/white_ladder.png",
-                "rotation": 270.0
-            },
-            "O": {
-                "path": "./assets/image/map/squares/white_rock.png",
-                "col": 1
-            },
-            "J": {
-                "path": "./assets/image/map/squares/invert_corner.png",
-                "col": 0
-            },
-            "W": {
-                "path": "./assets/image/map/squares/invert_corner.png",
-                "rotation": 90.0,
-                "col": 0
-            },
-            "K": {
-                "path": "./assets/image/map/squares/invert_corner.png",
-                "rotation": 180.0,
-                "col": 0
-            },
-            "Y": {
-                "path": "./assets/image/map/squares/invert_corner.png",
-                "rotation": 270.0,
-                "col": 0
-            },
-            "?": {
-                "path": "./assets/image/map/squares/water.png",
-                "components": {
-                    "npc path": "./assets/data/npc/stage_4/fish.json"
-                }
-            },
-            "S": {
-                "path": "./assets/image/map/squares/flower.png",
-                "components": {
-                    "ennemy path": "./assets/data/ennemy/amongus.json"
-                }
-            },
-            "2": {
-                "path": "./assets/image/map/squares/flower.png",
-                "components": {
-                    "ennemy path": "./assets/data/ennemy/hobo.json"
-                }
-            },
-            "3": {
-                "path": "./assets/image/map/squares/dirt.png",
-                "components": {
-                    "ennemy path": "./assets/data/ennemy/warrior.json"
-                }
-            },
-            "4": {
-                "path": "./assets/image/map/squares/flower.png",
-                "components": {
-                    "ennemy path": "./assets/data/ennemy/pinguin_killer.json"
-                }
-            },
-            "P": {
-                "path": "./assets/image/map/squares/dirt.png",
-                "components": {
-                    "ennemy path": "./assets/data/ennemy/forest_people.json"
-                }
-            },
-            "!": {
-                "path": "./assets/image/map/squares/flower.png",
-                "components": {
-                    "ennemy path": "./assets/data/ennemy/boss_nico.json"
-                }
-            },
             "1": {
-                "path": "./assets/image/map/squares/dark_flower.png",
+                "path": "./assets/image/map/squares/flower.png",
                 "components": {
                     "npc path": "./assets/data/npc/stage_0/magician.json"
-                }
-            },
-            "*": {
-                "path": "./assets/image/map/squares/flower.png",
-                "components": {
-                    "npc path": "./assets/data/npc/stage_4/morpheus.json"
-                }
-            },
-            "=": {
-                "path": "./assets/image/map/squares/dirt.png",
-                "components": {
-                    "npc path": "./assets/data/npc/stage_4/hobo.json"
-                }
-            },
-            "+": {
-                "path": "./assets/image/map/squares/dirt.png",
-                "components": {
-                    "npc path": "./assets/data/npc/stage_4/nico.json"
-                }
-            },
-            "0": {
-                "path": "./assets/image/map/squares/flower.png",
-                "components": {
-                    "npc path": "./assets/data/npc/stage_4/old_hobo.json"
                 }
             },
             ".": {
@@ -262,5 +62,5 @@
             }
         }
     },
-    "spawn": [134, 30]
+    "spawn": [4, 3]
 }
