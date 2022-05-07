@@ -27,7 +27,7 @@ static void set_potion_text(window_t *win)
     if (win == NULL) {
         return;
     }
-    text_potion = dico_t_get_value(win->components, SAVE);
+    text_potion = get_player_stats(win);
     text_potion = get_from_any(text_potion, "d", POTIONS);
     if (text_potion == NULL || text_potion->type != INT) {
         return;
@@ -46,7 +46,7 @@ void use_heal_potion(__attribute__((unused)) object_t *obj,
     if (win == NULL) {
         return;
     }
-    save_data = dico_t_get_value(win->components, SAVE);
+    save_data = get_player_stats(win);
     potions = get_from_any(save_data, "d", POTIONS);
     if (potions == NULL || potions->type != INT) {
         return;

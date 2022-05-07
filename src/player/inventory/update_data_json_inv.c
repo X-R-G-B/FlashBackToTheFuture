@@ -8,21 +8,43 @@
 #include "my_json.h"
 #include "my_rpg.h"
 
+extern const char stats_path_key[];
+
+any_t *get_player_stats(window_t *win)
+{
+    player_t *player = NULL;
+
+    if (win == NULL) {
+        return NULL;
+    }
+    player = dico_t_get_value(win->components, PLAYER);
+    if (player == NULL) {
+        return NULL;
+    }
+    return dico_t_get_any(player->obj->components, PLAYER_STATS);
+}
+
 void get_potions(window_t *win)
 {
     any_t *json = NULL;
     any_t *potions = NULL;
+    player_t *player = NULL;
 
     if (win == NULL) {
         return;
     }
-    json = dico_t_get_value(win->components, SAVE);
+    player = dico_t_get_value(win->components, PLAYER);
+    if (player == NULL) {
+        return;
+    }
+    json = dico_t_get_value(player->obj->components, PLAYER_STATS);
     potions = get_from_any(json, "d", POTIONS);
     if (potions == NULL || potions->type != INT) {
         return;
     }
     potions->value.i += 1;
-    if (write_json(json, SAVE_PATH) != BGS_OK) {
+    if (write_json(json, dico_t_get_value(player->obj->components,
+            stats_path_key)) != BGS_OK) {
         return;
     }
 }
@@ -31,17 +53,20 @@ void get_infinity_86(window_t *win)
 {
     any_t *json = NULL;
     any_t *key_obj = NULL;
+    player_t *player = (win != NULL) ?
+        dico_t_get_value(win->components, PLAYER) : NULL;
 
-    if (win == NULL) {
+    if (player == NULL || player->obj == NULL) {
         return;
     }
-    json = dico_t_get_value(win->components, SAVE);
+    json = dico_t_get_value(player->obj->components, PLAYER_STATS);
     key_obj = get_from_any(json, "d", INFINITY_86);
     if (key_obj == NULL || key_obj->type != INT) {
         return;
     }
     key_obj->value.i += 1;
-    if (write_json(json, SAVE_PATH) != BGS_OK) {
+    if (write_json(json, dico_t_get_value(player->obj->components,
+        stats_path_key)) != BGS_OK) {
         return;
     }
 }

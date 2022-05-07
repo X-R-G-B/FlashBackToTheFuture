@@ -11,6 +11,8 @@
 
 static const char use_potion_file[] = "./assets/data/pop_text/use_potion.json";
 
+extern const char stats_path_key[];
+
 void modif_potion_value(window_t *win, int nbr_potions, bool click)
 {
     scene_t *scene = NULL;
@@ -39,12 +41,13 @@ static void used_potion(window_t *win)
 {
     any_t *inv_data = NULL;
     any_t *potions = NULL;
+    player_t *player = dico_t_get_value(win->components, PLAYER);
     scene_t *scene = dico_t_get_value(win->scenes, win->current_scene);
 
-    if (scene == NULL) {
+    if (scene == NULL || player == NULL || player->obj == NULL) {
         return;
     }
-    inv_data = dico_t_get_value(win->components, SAVE);
+    inv_data = dico_t_get_any(player->obj->components, PLAYER_STATS);
     potions = get_from_any(inv_data, "d", POTIONS);
     if (potions == NULL) {
         return;
@@ -52,7 +55,8 @@ static void used_potion(window_t *win)
     if (potions->value.i > 0) {
         potions->value.i -= 1;
         modif_potion_value(win, potions->value.i, true);
-        write_json(inv_data, SAVE_PATH);
+        write_json(inv_data, dico_t_get_value(player->obj->components,
+            stats_path_key));
     }
 }
 
