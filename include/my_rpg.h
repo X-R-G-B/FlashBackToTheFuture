@@ -98,6 +98,8 @@ typedef struct player_s {
 
 void next_stage(object_t *obj, scene_t *scene, window_t *win, float time);
 
+any_t *get_player_stats(window_t *win);
+
 int launch_next_stage(window_t *win);
 
 void change_player_pos(player_t *player, float move,
@@ -115,6 +117,8 @@ bool check_collision(player_t *player, scene_t *scene);
 
 void update_spawner(object_t *obj, scene_t *scene, window_t *win,
     float time);
+
+scene_t *init_scene(const char *stage_path, window_t *win, char *stage_name);
 
 void roulade_event(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
@@ -353,8 +357,13 @@ void upgrade_dammage(any_t *player_data);
 
 int init_movement(player_t *player, window_t *win, scene_t *scene);
 
+<<<<<<< HEAD
 void update_elder(object_t *obj, scene_t *scene, window_t *win,
     __attribute__((unused)) float dtime);
+=======
+void update_intro_magician(object_t *obj, scene_t *scene, window_t *win,
+    float dtime);
+>>>>>>> dev
 
 int init_sounds(scene_t *scene, window_t *win);
 

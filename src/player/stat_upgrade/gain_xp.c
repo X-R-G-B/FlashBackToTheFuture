@@ -12,6 +12,7 @@ const char XP[] = "actual xp";
 const char LOOT_XP[] = "xp loot";
 const char MAX_XP[] = "xp max";
 const char ACTUAL_LVL[] = "actual lvl";
+extern const char stats_path_key[];
 
 static int init_any_stats(any_t **player_stats, any_t **ennemy_stats,
     ennemy_t *ennemy, window_t *win)
@@ -64,25 +65,26 @@ static int update_stats(any_t *player_stats, any_t *xp, any_t *xp_max,
         lvl->value.f += 1.0;
         xp_max->value.f *= 1.2;
     }
-    if (write_json(player_stats, PLAYER_STATS_PATH) != JS_OK) {
-        return JS_ERR_INPUT;
-    }
     return RET_OK;
 }
 
-static int gain_xp(any_t *player_stats, any_t *ennemy_stats, any_t *xp )
+static int gain_xp(any_t *player_stats, any_t *ennemy_stats, any_t *xp,
+    player_t *player)
 {
     any_t *xp_max = NULL;
     int lvl_gained = 0;
 
-    if (player_stats == NULL || ennemy_stats == NULL) {
+    if (player_stats == NULL || ennemy_stats == NULL || player == NULL ||
+            player->obj == NULL) {
         return RET_ERR_INPUT;
     }
     xp_max = dico_t_get_any(player_stats->value.dict, MAX_XP);
     if (xp_max == NULL) {
         return RET_ERR_MALLOC;
     }
-    if (update_stats(player_stats, xp, xp_max, &lvl_gained) != RET_OK) {
+    if (update_stats(player_stats, xp, xp_max, &lvl_gained) != RET_OK ||
+            write_json(player_stats, dico_t_get_value(player->obj->components,
+            stats_path_key)) != JS_OK) {
         return RET_ERR_MALLOC;
     }
     if (lvl_gained != 0) {
@@ -98,12 +100,16 @@ void update_xp(ennemy_t *ennemy, window_t *win, scene_t *scene)
     any_t *xp = NULL;
     any_t *loot_xp = NULL;
 
+    if (ennemy == NULL || win == NULL || scene == NULL) {
+        return;
+    }
     if (init_any_stats(&player_stats, &ennemy_stats, ennemy, win) != RET_OK ||
         init_any_xp(&xp, &loot_xp, ennemy_stats, player_stats) != RET_OK) {
         return;
     }
     xp->value.f += loot_xp->value.f;
-    if (gain_xp(player_stats, ennemy_stats, xp) == LVL_UP) {
+    if (gain_xp(player_stats, ennemy_stats, xp,
+            dico_t_get_value(win->components, PLAYER)) == LVL_UP) {
         level_up(scene, win);
     }
 }

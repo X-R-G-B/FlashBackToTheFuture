@@ -50,17 +50,16 @@ static void update_position(object_t *obj, window_t *win)
 }
 
 void update_text_dialog(object_t *obj, scene_t *scene,
-    __attribute((unused)) window_t *win,
-    __attribute((unused)) float dtime)
+    window_t *win, __attribute((unused)) float dtime)
 {
     static char *tmp = NULL;
     dialog_manager_t *dialog = NULL;
 
-    if (scene == NULL || obj == NULL || scene->pause == true) {
+    if (scene == NULL || obj == NULL || scene->pause == true || win == NULL) {
         return;
     }
     update_position(obj, win);
-    dialog = dico_t_get_value(scene->components, compo_dialog);
+    dialog = dico_t_get_value(win->components, compo_dialog);
     if (dialog == NULL || dialog->dialogues == NULL ||
             dialog->dialogues->len <= 0) {
         obj->is_visible = false;

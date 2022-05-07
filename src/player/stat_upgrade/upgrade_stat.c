@@ -11,6 +11,7 @@
 
 extern const char life_max_name[];
 extern const char energy_max_name[];
+extern const char stats_path_key[];
 
 static void set_stat_max(player_t *player, const char *stat_max_key)
 {
@@ -38,7 +39,7 @@ static void upgrade(window_t *win, const char *stat_max_key)
     any_t *stat = NULL;
     any_t *elem = NULL;
 
-    if (player == NULL) {
+    if (player == NULL || player->obj == NULL) {
         return;
     }
     stat = dico_t_get_any(player->obj->components, PLAYER_STATS);
@@ -51,9 +52,7 @@ static void upgrade(window_t *win, const char *stat_max_key)
     }
     elem->value.f *= 1.10;
     upgrade_dammage(stat);
-    if (write_json(stat, PLAYER_STATS_PATH) != JS_OK) {
-        return;
-    }
+    write_json(stat, dico_t_get_value(player->obj->components, stats_path_key));
 }
 
 void level_up(scene_t *scene, window_t *win)
