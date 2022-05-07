@@ -23,6 +23,7 @@
     "sprite path": "./assets/image/ennemy/dark_ennemy.png",
     "xp loot": 60.0,
     "range dash": 120.0,
+    "knock back coef": 50.0,
     "is boss": "oui",
     "drop rate": 40.0
 }
