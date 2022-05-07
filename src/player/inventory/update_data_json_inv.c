@@ -41,6 +41,7 @@ void get_infinity_86(window_t *win)
         return;
     }
     key_obj->value.i += 1;
+    play_sound(win, INFINITY_86_SOUND);
     if (write_json(json, SAVE_PATH) != BGS_OK) {
         return;
     }

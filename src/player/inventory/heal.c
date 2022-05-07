@@ -51,6 +51,7 @@ static void used_potion(window_t *win)
     }
     if (potions->value.i > 0) {
         potions->value.i -= 1;
+        play_sound(win, CONSUM_CAN_SOUND);
         modif_potion_value(win, potions->value.i, true);
         write_json(inv_data, SAVE_PATH);
     }
