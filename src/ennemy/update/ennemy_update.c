@@ -26,23 +26,10 @@ static void update_ennemy_stop(ennemy_t *ennemy, scene_t *scene, window_t *win,
 static void (*update_state[])(ennemy_t *ennemy, scene_t *scene, window_t *win,
     float time) = {
         update_ennemy_attack, update_ennemy_move, update_ennemy_stop,
-<<<<<<< HEAD:src/ennemy/ennemy_update.c
-            update_ennemy_dying
-};
-
-static void update_ennemy_dying(ennemy_t *ennemy, scene_t *scene,
-    __attribute__((unused)) window_t *win, __attribute__((unused)) float time)
-{
-    destroy_ennemy(ennemy, scene);
-}
-
-static void update_ennemy_attack(__attribute__((unused)) ennemy_t *ennemy,
-=======
         update_ennemy_dying
 };
 
 static void update_ennemy_dying(ennemy_t *ennemy,
->>>>>>> dev:src/ennemy/update/ennemy_update.c
     __attribute__((unused)) scene_t *scene,
     __attribute__((unused)) window_t *win, __attribute__((unused)) float time)
 {
