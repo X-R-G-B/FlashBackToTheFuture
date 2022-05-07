@@ -22,6 +22,8 @@ static const char stage_name_start[] = "stage_";
 
 static const int start_len = 6;
 
+extern const char MUSIC_GAME[];
+
 char *get_stage_name(int stage_id)
 {
     char *number = my_itoa(stage_id);
@@ -94,6 +96,7 @@ int launch_stage(window_t *win, const char *stage_path, int stage_id,
         free(stage_name);
         return RET_ERR_INPUT;
     }
+    play_music(win, MUSIC_GAME);
     free(stage_name);
     return RET_OK;
 }
