@@ -68,6 +68,7 @@ static void set_hurt(ennemy_t *ennemy, player_t *player, sfVector2f impact,
         ennemy->state = STOP;
         ennemy->delta_time = 0;
     }
+    play_sound(win, HURT_SOUNG);
     ennemy->life -= dammage->value.f;
     ennemy->obj->components = dico_t_add_data(ennemy->obj->components, hurt_key,
         (void *) hurt, NULL);

@@ -13,29 +13,6 @@
 #include "libbgs_private.h"
 #include "my_dico.h"
 
-void remove_object(object_t *object)
-{
-    switch (object->type) {
-        case SPRITE:
-            sfSprite_destroy(object->drawable.sprite);
-            sfTexture_destroy(object->bigdata.sprite_bigdata.texture);
-            break;
-        case TEXT:
-            sfText_destroy(object->drawable.text);
-            sfFont_destroy(object->bigdata.text_bigdata.font);
-            break;
-        case AUDIO:
-            sfMusic_setLoop(object->drawable.music, sfFalse);
-            sfMusic_stop(object->drawable.music);
-            sfMusic_destroy(object->drawable.music);
-            break;
-        default:
-            break;
-    }
-    dico_t_destroy(object->components);
-    free(object);
-}
-
 static void destroy_layer(list_ptr_t *list)
 {
     list_t *elem = NULL;

@@ -237,6 +237,11 @@ SRC_NPC				:=	add_text_dialog.c						\
 						$(SRC_NPC_NPC)
 SRC_NPC				:=	$(addprefix npc/,$(SRC_NPC))
 # ----------------------------------------------------------------------------
+# --------- SRC_AUDIO ----------------------------------------------------------
+SRC_AUDIO			:=	init_sound.c						\
+						play_sound.c
+SRC_AUDIO			:=	$(addprefix audio/,$(SRC_AUDIO))
+# ----------------------------------------------------------------------------
 # ------ POP_TEXT_GENERATOR --------------------------------------------------
 SRC_POP_TEXT_GENERATOR	:=	create_pop_text.c		\
 							create_stat_pop_text.c	\
@@ -256,7 +261,8 @@ SRC					:=	main.c									\
 						$(SRC_METEO)							\
 						$(SRC_MATH)								\
 						$(SRC_HUD)								\
-						$(SRC_NPC)
+						$(SRC_NPC)								\
+						$(SRC_AUDIO)
 SRC					:= 	$(addprefix src/,$(SRC))
 # ----------------------------------------------------------------------------
 # ----- OBJ ------------------------------------------------------------------
