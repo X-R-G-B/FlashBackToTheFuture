@@ -18,10 +18,12 @@ static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
     knockback, update_spawner, activate_up_scale,
     activate_down_scale, activate_dash, activate_dash, activate_dash,
     init_npc_spawner, update_grandpa, init_npc_spawner, init_npc_spawner,
-    update_magician, init_npc_spawner, init_npc_spawner
+    update_magician, init_npc_spawner, init_npc_spawner, update_spawner,
+    update_spawner, init_npc_spawner, init_npc_spawner, init_npc_spawner,
+    init_npc_spawner, update_spawner
 };
 
-static const char square_type_update[] = "pSQqR:s*$=+1]?";
+static const char square_type_update[] = "pSQqR:s*$=+1]?LP2304D";
 
 static void get_square_update(char current_char,
     void (**update)(object_t *, scene_t *, window_t *, float))
