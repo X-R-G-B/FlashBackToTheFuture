@@ -342,6 +342,8 @@ void go_to_credits(object_t *obj, scene_t *scene, window_t *win,
 void go_to_home_direct(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
 
+void upgrade_dammage(any_t *player_data);
+
 int init_movement(player_t *player, window_t *win, scene_t *scene);
 
 #endif /* !RPG_H_ */

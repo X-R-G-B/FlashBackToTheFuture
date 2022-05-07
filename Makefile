@@ -110,7 +110,8 @@ SRC_UPDATE			:=	$(addprefix update/,$(SRC_UPDATE))
 
 SRC_STAT_UPGRADE	:=	upgrade_stat.c							\
 						stats_component.c						\
-						gain_xp.c
+						gain_xp.c								\
+						upgrade_dammage.c
 SRC_STAT_UPGRADE	:=	$(addprefix stat_upgrade/,$(SRC_STAT_UPGRADE))
 
 SRC_INVENTORY		:=	create_inventory.c						\
