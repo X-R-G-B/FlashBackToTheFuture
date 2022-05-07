@@ -8,6 +8,7 @@
 #ifndef RPG_H_
     #define RPG_H_
 
+    #include "my_bgs_framebuffer.h"
     #include <stdbool.h>
     #define RET_OK 0
     #define RET_ERR_MALLOC 1
@@ -85,6 +86,7 @@ typedef struct player_s {
     sfView *view;
     float life;
     float energy;
+    framebuffer_t *buf;
 } player_t;
 
 void next_stage(object_t *obj, scene_t *scene, window_t *win, float time);
@@ -339,5 +341,7 @@ void go_to_credits(object_t *obj, scene_t *scene, window_t *win,
 
 void go_to_home_direct(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
+
+int init_movement(player_t *player, window_t *win, scene_t *scene);
 
 #endif /* !RPG_H_ */
