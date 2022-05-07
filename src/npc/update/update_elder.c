@@ -38,7 +38,7 @@ static void check_next_stage_event(object_t *obj, window_t *win, scene_t *scene)
     }
     player_rect = sfSprite_getGlobalBounds(player->obj->drawable.sprite);
     if (sfFloatRect_intersects(&player_rect, &npc_rect, NULL) == sfTrue &&
-        sfKeyboard_isKeyPressed(key_interract) == sfTrue) {      
+        sfKeyboard_isKeyPressed(key_interract) == sfTrue) {
         if (good_infinity_86_nbr(win) != RET_OK) {
             return;
         }

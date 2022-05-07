@@ -15,7 +15,7 @@
 #include "npc.h"
 
 static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
-    knockback, 
+    knockback,
     update_spawner,
     activate_up_scale,
     activate_down_scale,
