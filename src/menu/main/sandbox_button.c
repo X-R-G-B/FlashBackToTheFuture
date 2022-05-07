@@ -13,7 +13,8 @@
 static const char sandbox_world_path[] =
     "./assets/data/story_mode/sandbox.json";
 
-static const char sandbox_player_stats[] = "./assets/data/player/sandbox_stats.json";
+static const char sandbox_player_stats[] =
+    "./assets/data/player/sandbox_stats.json";
 
 static int init_new_scene_objects(window_t *win, scene_t *scene)
 {

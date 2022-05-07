@@ -16,7 +16,6 @@
 #include "macro.h"
 #include "my_strings.h"
 
-
 static void (*event_on[])(object_t *, scene_t *, window_t *,
     set_event_t *) = {
     attack_event, roulade_event, move_on

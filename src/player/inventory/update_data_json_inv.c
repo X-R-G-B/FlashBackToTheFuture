@@ -43,10 +43,7 @@ void get_potions(window_t *win)
         return;
     }
     potions->value.i += 1;
-    if (write_json(json, dico_t_get_value(player->obj->components,
-            stats_path_key)) != BGS_OK) {
-        return;
-    }
+    write_json(json, dico_t_get_value(player->obj->components, stats_path_key));
 }
 
 void get_infinity_86(window_t *win)
