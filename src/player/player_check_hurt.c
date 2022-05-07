@@ -10,10 +10,14 @@
 #include "ennemies.h"
 #include "my_bgs.h"
 #include "maths_function.h"
+#include "my_dico.h"
+#include "my_json.h"
 
 extern const char pop_text_file[];
 
 static const char DAMMAGE_KEY[] = "dammage";
+
+static const char COEF_KNOK_BACK[] = "knock back coef";
 
 extern const char data_directions[];
 
@@ -45,16 +49,25 @@ static sfFloatRect get_player_rect(player_t *player)
     return rect;
 }
 
-static void handle_go_back(ennemy_t *ennemy, player_t *player)
+static void handle_go_back(ennemy_t *ennemy, player_t *player, any_t *data)
 {
     sfVector2f *dirrections = NULL;
+    any_t *coef_knock = NULL;
+    float coef = 2;
 
-    dirrections = malloc(sizeof(sfVector2f));
+    if (ennemy == NULL || player == NULL || ennemy->obj == NULL ||
+            player->obj == NULL) {
+        return;
+    }
+    coef_knock = get_from_any(data, "d", COEF_KNOK_BACK);
+    if (coef_knock != NULL && coef_knock->type == FLOAT) {
+        coef = coef_knock->value.f;
+    }
+    dirrections = get_vector_dir_malloc(player->obj->bigdata.sprite_bigdata.pos,
+        ennemy->obj->bigdata.sprite_bigdata.pos, coef);
     if (dirrections == NULL) {
         return;
     }
-    fill_get_distance(player->obj->bigdata.sprite_bigdata.pos,
-        ennemy->obj->bigdata.sprite_bigdata.pos, dirrections);
     object_add_components(player->obj, dirrections, data_directions, &free);
 }
 
@@ -74,7 +87,7 @@ static void set_hurt(player_t *player, ennemy_t *ennemy, scene_t *scene)
     player->life -= dammage->value.f;
     create_stat_pop_text(scene, (dammage->value.f * -1),
         pop_text_file, player->obj->bigdata.sprite_bigdata.pos);
-    handle_go_back(ennemy, player);
+    handle_go_back(ennemy, player, ennemy_data);
 }
 
 void player_check_hurt(player_t *player, scene_t *scene)

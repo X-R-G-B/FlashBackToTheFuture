@@ -11,9 +11,9 @@
 #include "main_menu.h"
 
 static const char *TO_REMOVE_COMP_WIN[] = {PLAYER, PAUSE_MENU, DEAD_MESSAGE,
-    DEAD_SCREEN, HUD_ELEMENTS};
+    DEAD_SCREEN, HUD_ELEMENTS, NULL};
 
-static const char *TO_REMOVE_SCENE[] = {INV_SCENE};
+static const char *TO_REMOVE_SCENE[] = {INV_SCENE, NULL};
 
 static void check_type(dico_t *dico, list_t *elem, list_t **button_elem)
 {

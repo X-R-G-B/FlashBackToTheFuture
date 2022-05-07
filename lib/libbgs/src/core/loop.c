@@ -19,6 +19,9 @@ int window_change_scene(window_t *window, const char *scene_name)
     if (window == NULL || scene_name == NULL) {
         return (BGS_ERR_INPUT);
     }
+    if (dico_t_get_elem(window->scenes, scene_name) == NULL) {
+        return (BGS_ERR_INPUT);
+    }
     if (window->current_scene != NULL) {
         free(window->current_scene);
     }

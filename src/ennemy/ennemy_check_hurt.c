@@ -13,8 +13,8 @@
 const char pop_text_file[] = "./assets/data/pop_text/ennemy_hurt.json";
 static const char attack_key[] = "attack";
 static const char sword_key[] = "sword";
-static const char dammage_key[] = "dammage";
 static const char dammage_hitbox_key[] = "dammage hitbox";
+extern const char dammages_key[];
 
 static any_t *get_current_sword_pos(player_t *player)
 {
@@ -54,10 +54,10 @@ static void set_hurt(ennemy_t *ennemy, player_t *player, sfVector2f impact,
     window_t *win)
 {
     bool hurt = true;
-    any_t *data = dico_t_get_value(player->obj->components, PLAYER_DATA);
+    any_t *data = dico_t_get_value(player->obj->components, PLAYER_STATS);
     any_t *dammage = NULL;
 
-    dammage = get_from_any(data, "ddd", attack_key, sword_key, dammage_key);
+    dammage = get_from_any(data, "d", dammages_key);
     add_gore_sword(win, impact);
     if (dammage == NULL || dammage->type != FLOAT) {
         return;

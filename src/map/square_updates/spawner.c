@@ -9,22 +9,6 @@
 
 static const char ennemy_path_key[] = "ennemy path";
 
-static void destroy_ennemy_cast(void *data)
-{
-    scene_t *scene = NULL;
-    ennemy_t *ennemy = NULL;
-
-    if (data == NULL) {
-        return;
-    }
-    ennemy = data;
-    if (ennemy->obj == NULL) {
-        return;
-    }
-    scene = dico_t_get_value(ennemy->obj->components, SCENE);
-    destroy_ennemy(ennemy, scene);
-}
-
 static int init_ennemy(object_t *obj, char *ennemy_path, scene_t *scene)
 {
     ennemy_t *ennemy = create_ennemy(scene, ennemy_path,

@@ -30,9 +30,11 @@ CFLAGS				=	-Iinclude/ -Ilib/include/ -Wall -Wextra	\
 SRC_METEO			:=	add_leaf.c								\
 						add_snow.c								\
 						add_sunshine.c							\
+						add_movement.c							\
 						change_meteo.c							\
 						meteo_handler.c							\
-						meteo_handler_init.c
+						meteo_handler_init.c					\
+						init_movement.c
 SRC_METEO			:=	$(addprefix meteo/,$(SRC_METEO))
 # ----------------------------------------------------------------------------
 # --------- SRC_ENNEMY -------------------------------------------------------
@@ -108,7 +110,8 @@ SRC_UPDATE			:=	$(addprefix update/,$(SRC_UPDATE))
 
 SRC_STAT_UPGRADE	:=	upgrade_stat.c							\
 						stats_component.c						\
-						gain_xp.c
+						gain_xp.c								\
+						upgrade_dammage.c
 SRC_STAT_UPGRADE	:=	$(addprefix stat_upgrade/,$(SRC_STAT_UPGRADE))
 
 SRC_INVENTORY		:=	create_inventory.c						\

@@ -34,7 +34,7 @@ static void set_stat_max(player_t *player, const char *stat_max_key)
 
 static void upgrade(window_t *win, const char *stat_max_key)
 {
-    player_t *player = dico_t_get_value(win->components, "player");
+    player_t *player = dico_t_get_value(win->components, PLAYER);
     any_t *stat = NULL;
     any_t *elem = NULL;
 
@@ -50,6 +50,7 @@ static void upgrade(window_t *win, const char *stat_max_key)
         return;
     }
     elem->value.f *= 1.10;
+    upgrade_dammage(stat);
     if (write_json(stat, PLAYER_STATS_PATH) != JS_OK) {
         return;
     }
@@ -62,7 +63,7 @@ void level_up(scene_t *scene, window_t *win)
     if (win == NULL || scene == NULL) {
         return;
     }
-    player = dico_t_get_value(win->components, "player");
+    player = dico_t_get_value(win->components, PLAYER);
     if (player == NULL) {
         return;
     }

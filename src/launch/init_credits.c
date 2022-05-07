@@ -8,11 +8,12 @@
 #include "list.h"
 #include "my_bgs.h"
 #include "my_bgs_button_generator.h"
+#include "my_puts.h"
 #include "my_rpg.h"
 
-const char credits_scene_name[] = "CREDITS";
+static const char credits_scene_name[] = "CREDITS";
 
-const char path_credits_button[] = "./assets/data/menu/credits.json";
+static const char path_credits_button[] = "./assets/data/menu/credits.json";
 
 int init_credits(window_t *win)
 {
@@ -38,10 +39,13 @@ void go_to_credits(__attribute__((unused)) object_t *obj,
     __attribute__((unused)) scene_t *scene, window_t *win,
     __attribute__((unused)) set_event_t *evt)
 {
+    my_putstr(1, "\n");
     if (win == NULL) {
         return;
     }
-    window_change_scene(win, credits_scene_name);
+    if (window_change_scene(win, credits_scene_name) != BGS_OK) {
+        my_putstr(2, "scene is not found, error\n");
+    }
 }
 
 void go_to_home_direct(__attribute__((unused)) object_t *obj,
@@ -51,5 +55,7 @@ void go_to_home_direct(__attribute__((unused)) object_t *obj,
     if (win == NULL) {
         return;
     }
-    window_change_scene(win, "MAIN MENU");
+    if (window_change_scene(win, "MAIN MENU") != BGS_OK) {
+        my_putstr(2, "scene is not found, error\n");
+    }
 }
