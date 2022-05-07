@@ -140,7 +140,7 @@
             "S": {
                 "path": "./assets/image/map/squares/dark_flower.png",
                 "components": {
-                    "ennemy path": "./assets/data/ennemy/hobo.json"
+                    "ennemy path": "./assets/data/ennemy/amongus.json"
                 }
             },
             "$": {
