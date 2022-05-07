@@ -59,6 +59,7 @@ void play_pop_up(__attribute__((unused)) object_t *obj, scene_t *scene,
         set_is_visible_false(dico_t_get_value(win->components,
             SETTINGS_MENU));
     }
+    play_sound(win, PARCHEMIN_SOUND);
     toggle_pop_up(scene->components, PLAY);
     if (buttons == NULL) {
         return;
@@ -85,6 +86,7 @@ void settings_pop_up(__attribute__((unused)) object_t *obj, scene_t *scene,
         set_is_visible_false(dico_t_get_value(scene->components, PLAY));
     }
     obj = get_element_i_var(buttons, 3);
+    play_sound(win, PARCHEMIN_SOUND);
     toggle_pop_up(win->components, SETTINGS_MENU);
     obj->bigdata.sprite_bigdata.rect.left = 17;
 }

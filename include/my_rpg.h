@@ -31,6 +31,8 @@ static const char OPEN_INV_SOUND[] = "openinv";
 static const char CLOSE_INV_SOUND[] = "closeinv";
 static const char CONSUM_CAN_SOUND[] = "usepotion";
 static const char INFINITY_86_SOUND[] = "86infsound";
+static const char PARCHEMIN_SOUND[] = "parcheminsound";
+static const char LEVEL_UP_SOUND[] = "level_up_sound";
 
 static const char ICON_PATH[] = "./assets/image/logo/FBTTF_logo.png";
 

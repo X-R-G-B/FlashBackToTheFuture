@@ -16,6 +16,10 @@ static const char sound_close_fridge[] =
 static const char sound_consum_86[] = "./assets/music/sound/cannette_use.ogg";
 static const char sound_infinity_86[] =
     "./assets/music/sound/infinity_86_sound.ogg";
+static const char sound_open_parchemin[] =
+    "./assets/music/sound/paper.ogg";
+static const char sound_level_up[] =
+    "./assets/music/sound/level_up_sound.ogg";
 static const int layer = 0;
 
 static int init_win_component(window_t *win, scene_t *scene,
@@ -43,5 +47,7 @@ int init_sounds(scene_t *scene, window_t *win)
     init_win_component(win, scene, CLOSE_INV_SOUND, sound_close_fridge);
     init_win_component(win, scene, CONSUM_CAN_SOUND, sound_consum_86);
     init_win_component(win, scene, INFINITY_86_SOUND, sound_infinity_86);
+    init_win_component(win, scene, PARCHEMIN_SOUND, sound_open_parchemin);
+    init_win_component(win, scene, LEVEL_UP_SOUND, sound_level_up);
     return RET_OK;
 }
