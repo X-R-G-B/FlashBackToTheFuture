@@ -35,7 +35,7 @@ static int get_nbr_keyobj(window_t *win)
     if (win == NULL) {
         return -1;
     }
-    acutal_data = dico_t_get_value(win->components, SAVE);
+    acutal_data = get_player_stats(win);
     if (acutal_data == NULL) {
         return -1;
     }
