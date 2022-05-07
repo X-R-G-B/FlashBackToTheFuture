@@ -19,14 +19,17 @@
 #include "my_rpg.h"
 #include "npc.h"
 
-static const sfKeyCode key_interract = sfKeyA;
+static const sfKeyCode key_interract = sfKeyE;
 
 static float refresh_rate = 1.0 / 10;
 
-static void call_callback_npc(object_t *npc, scene_t *scene, window_t *win)
+void call_callback_npc(object_t *npc, scene_t *scene, window_t *win)
 {
     npc_data_func_t *callback = NULL;
 
+    if (npc == NULL || scene == NULL || win == NULL) {
+        return;
+    }
     callback = dico_t_get_value(npc->components, npc_data_callback);
     if (callback == NULL) {
         return;
@@ -37,14 +40,14 @@ static void call_callback_npc(object_t *npc, scene_t *scene, window_t *win)
 static bool check_collid_player(object_t *npc, player_t *player,
     scene_t *scene, window_t *win)
 {
-    sfFloatRect pos[3] = {0};
+    sfFloatRect pos[2] = {0};
 
     if (player == NULL || player->obj == NULL) {
         return (false);
     }
     pos[0] = sfSprite_getGlobalBounds(player->obj->drawable.sprite);
     pos[1] = sfSprite_getGlobalBounds(npc->drawable.sprite);
-    if (sfFloatRect_intersects(pos, pos + 1, pos + 2) &&
+    if (sfFloatRect_intersects(pos, pos + 1, NULL) &&
             sfKeyboard_isKeyPressed(key_interract) == sfTrue) {
         call_callback_npc(npc, scene, win);
         return (true);
@@ -87,7 +90,7 @@ void update_npc(object_t *obj, scene_t *scene, window_t *win,
     if (npcjson == NULL) {
         return;
     }
-    player = dico_t_get_value(win->components, "player");
+    player = dico_t_get_value(win->components, PLAYER);
     check_collid_player(obj, player, scene, win);
     update_rect(obj, npcjson, dtime);
 }

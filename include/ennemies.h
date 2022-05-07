@@ -8,6 +8,8 @@
 #ifndef ENNEMY_H_
     #define ENNEMY_H_
 
+    #define LVL_UP 3
+
     #include "my_json.h"
     #include "my_bgs.h"
     #include "my_rpg.h"
@@ -17,13 +19,28 @@ typedef struct ennemy_s {
     dir_t dir;
     float life;
     object_t *obj;
+    float delta_time;
+    float move_delta_time;
+    float hurt_delta_time;
+    int rect_id;
 } ennemy_t;
+
+static const char SPAWNER_LIST[] = "spawner list";
 
 static const char ENNEMY_DATA[] = "ennemy_data";
 
 static const char ENNEMY_LIST[] = "ennemy_list";
 
-int create_ennemy(scene_t *scene, const char *path, sfVector2f pos);
+static const char ENNEMY_KEY[] = "ennemy";
+
+ennemy_t *create_ennemy(scene_t *scene, const char *path, sfVector2f pos);
+
+bool ennemy_check_hurt(ennemy_t *ennemy, scene_t *scene, window_t *win,
+    float dtime);
+
+void destroy_ennemy(ennemy_t *ennemy, scene_t *scene);
+
+dir_t ennemy_get_view_dir(object_t *obj, window_t *win);
 
 bool ennemy_check_hurt(ennemy_t *ennemy, scene_t *scene, window_t *win,
     float dtime);
@@ -35,6 +52,9 @@ dir_t ennemy_get_view_dir(object_t *obj, window_t *win);
 sfFloatRect get_attack_hitbox_rect(sfFloatRect player_rect, player_t *player);
 
 bool is_player_in_range(ennemy_t *ennemy, window_t *win);
+
+void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win,
+    scene_t *scene);
 
 void player_check_hurt(player_t *player, scene_t *scene);
 
@@ -48,11 +68,23 @@ void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
 
 int change_amongus_rect(any_t *dico, object_t *obj, window_t *win);
 
-int *get_rect(ennemy_t *ennemy, window_t *win, any_t *data, int rect_id);
+void check_drop(ennemy_t *ennemy, scene_t *scene);
+
+int *get_rect(ennemy_t *ennemy, window_t *win, any_t *data);
+
+int get_rect_id(any_t *data, player_t *player);
 
 int sprite_set_change(object_t *ennemy, any_t *ennemy_data);
 
+void update_xp(ennemy_t *ennemy, window_t *win, scene_t *scene);
+
 int ennemy_set_stop(ennemy_t *ennemy);
+
+bool check_is_dashing(ennemy_t *ennemy, window_t *win);
+
+bool check_wall(ennemy_t *ennemy, sfVector2f new, window_t *win);
+
+bool check_wall(ennemy_t *ennemy, sfVector2f new, window_t *win);
 
 /**
 ** @brief update pos of the obj sprite to follow the ennemy

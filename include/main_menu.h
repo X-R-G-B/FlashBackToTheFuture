@@ -30,9 +30,17 @@ int init_menu(window_t *);
 
 void close_window(object_t *, scene_t *, window_t *, set_event_t *);
 
+void set_sandbox_overlay(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *event);
+
 void free_pop_up(void *list);
 
+void replace_button(object_t *obj, dico_t *dico);
+
 int check_if_pop_up_true(dico_t *dico, char *key);
+
+void sandbox_button_off(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
 
 void add_scene_pop_up_component(scene_t *scene, list_ptr_t *buttons,
     char *key);
@@ -50,6 +58,9 @@ void play_pop_up(object_t *obj, scene_t *scene,
 
 void settings_pop_up( object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
+
+void click_sandbox(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *event);
 
 int create_scene_loading_basic(window_t *win);
 
@@ -85,5 +96,10 @@ void set_settings_overlay(object_t *obj, scene_t *scene,
 
 void set_play_overlay(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
+
+void set_credits_overlay(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+
+int init_making_of(scene_t *scene);
 
 #endif /* !MENU_H_ */

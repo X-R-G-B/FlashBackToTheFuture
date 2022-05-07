@@ -41,7 +41,10 @@ int update_hud_stats(object_t *obj, player_t *player, const char stat_name[],
     any_t *max_stat_data = NULL;
     any_t *stats = NULL;
 
-    stats = dico_t_get_value(player->obj->components, "stats");
+    if (obj == NULL || player == NULL || player->obj == NULL) {
+        return RET_ERR_INPUT;
+    }
+    stats = dico_t_get_value(player->obj->components, PLAYER_STATS);
     if (stats == NULL || stats->type != DICT) {
         return RET_ERR_INPUT;
     }
@@ -100,7 +103,8 @@ int init_hud(window_t *win, scene_t *scene)
     }
     if (init_life_hud(win, scene) != RET_OK ||
             init_energy_hud(win, scene) != RET_OK ||
-            init_head_with_border(win, scene) != RET_OK) {
+            init_head_with_border(win, scene) != RET_OK ||
+            init_xp_hud(win, scene) != RET_OK) {
         return RET_ERR_INPUT;
     }
     return RET_OK;

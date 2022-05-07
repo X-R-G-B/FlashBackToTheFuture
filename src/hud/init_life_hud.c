@@ -8,7 +8,7 @@
 #include "my_bgs.h"
 #include "my_json.h"
 #include "my_rpg.h"
-#include "my_macro.h"
+#include "macro.h"
 
 static const char life_hud_path[] = "./assets/image/hud/life_bar.png";
 static const sfIntRect life_hud_rec = {0, 0, 60, 188};
@@ -20,15 +20,15 @@ void update_life_hud(object_t *object, scene_t *scene,
 {
     player_t *player = NULL;
     static float prev_stat_value = -1;
+    static float prev_max_stat_value = -1;
 
     if (object == NULL || win == NULL || scene == NULL) {
         return;
     }
     player = dico_t_get_value(win->components, PLAYER);
-    if (player == NULL) {
-        return;
-    }
-    if (player->life == prev_stat_value ||
+    if (player == NULL || (player->life == prev_stat_value &&
+            check_evolution_stat(player, &prev_max_stat_value,
+            life_max_name) == false) ||
             (player->life <= 0 && prev_stat_value <= 0)) {
         return;
     }
@@ -42,7 +42,7 @@ void update_life_hud(object_t *object, scene_t *scene,
 static int create_life_hud(object_t **life_hud, player_t **player,
     scene_t *scene, window_t *win)
 {
-    *life_hud = create_object(update_life_hud, NULL, scene, -2);
+    *life_hud = create_object(update_life_hud, NULL, scene, LAYER_HUD);
     *player = dico_t_get_value(win->components, PLAYER);
     if (*life_hud == NULL || *player == NULL) {
         return RET_ERR_MALLOC;

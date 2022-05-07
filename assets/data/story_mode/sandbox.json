@@ -1,0 +1,167 @@
+{
+    "map data": {
+        "map": [
+            "#c#########################################################C#",
+            "####aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa####",
+            "###.......................................................###",
+            "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
+            "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfSfffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffPfd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.ddddddddddddddddddddddddd...ddddddddddddddddddddddddd.b##",
+            "##B.ddddddddddddddddddddddddd.p.ddddddddddddddddddddddddd.b##",
+            "##B.ddddddddddddddddddddddddd...ddddddddddddddddddddddddd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffLfffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dffffffffffffffffff2ffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfff3fffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.ddddddddddddddddddddddddd...ddddddddddddddddddddddddd.b##",
+            "##B.ddddddddddddddddddddddddd.p.ddddddddddddddddddddddddd.b##",
+            "##B.ddddddddddddddddddddddddd...ddddddddddddddddddddddddd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffSfffffffffffffffd...dffffffffffSffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffSfffffffffffffffd...dffffffffffffffSffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd.p.dfffffffffffffffffffffffd.b##",
+            "##B.dfffffffffffffffffffffffd...dfffffffffffffffffffffffd.b##",
+            "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
+            "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
+            "##B.ddddddddddddddddddddddddddddddddddddddddddddddddddddd.b##",
+            "###.......................................................###",
+            "####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####",
+            "#v#########################################################V#"
+        ],
+        "char type": {
+            "V": {
+                "path": "./assets/image/map/squares/corner.png",
+                "rotation": 180.0,
+                "col": 1
+            },
+            "v": {
+                "path": "./assets/image/map/squares/corner.png",
+                "rotation": 270.0,
+                "col": 1
+            },
+            "C": {
+                "path": "./assets/image/map/squares/corner.png",
+                "rotation": 90.0,
+                "col": 1
+            },
+            "c": {
+                "path": "./assets/image/map/squares/corner.png",
+                "col": 1
+            },
+            "S": {
+                "path": "./assets/image/map/squares/dirt.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/amongus.json"
+                }
+            },
+            "P": {
+                "path": "./assets/image/map/squares/dirt.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/hobo.json"
+                }
+            },
+            "3": {
+                "path": "./assets/image/map/squares/dirt.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/dark_ennemy.json"
+                }
+            },
+            "4": {
+                "path": "./assets/image/map/squares/dirt.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/forest_people.json"
+                }
+            },
+            "2": {
+                "path": "./assets/image/map/squares/dirt.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/pinguin_killer.json"
+                }
+            },
+            "L": {
+                "path": "./assets/image/map/squares/dirt.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/warrior.json"
+                }
+            },
+            "b": {
+                "path": "./assets/image/map/squares/fall.png",
+                "rotation": 90.0,
+                "col": 1
+            },
+            "z": {
+                "path": "./assets/image/map/squares/dirt.png"
+            },
+            "B": {
+                "rotation": 270.0,
+                "path": "./assets/image/map/squares/fall.png",
+                "col": 1
+            },
+            "A": {
+                "path": "./assets/image/map/squares/fall.png",
+                "rotation": 180.0,
+                "col": 1
+            },
+            "a": {
+                "path": "./assets/image/map/squares/fall.png",
+                "col": 1
+            },
+            "p": {
+                "path": "./assets/image/map/squares/way.png",
+                "rotation": 90.0
+            },
+            ".": {
+                "col": 0
+            },
+            "#": {
+                "col": 1
+            },
+            "d": {
+                "path": "./assets/image/map/squares/dirt.png"
+            },
+            "f": {
+                "path": "./assets/image/map/squares/flower.png"
+            }
+        }
+    },
+    "spawn": [30, 3]
+}

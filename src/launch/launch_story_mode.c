@@ -9,11 +9,13 @@
 #include "my_rpg.h"
 #include "my_json.h"
 #include "my_conversions.h"
+#include "audio.h"
 #include "my_strings.h"
 
 static const char stage_path_start[] = "./assets/data/story_mode/stage_";
 static const int start_len = 31;
 static const char stage_path_end[] = ".json";
+static const char current_stage_key[] = "current stage";
 static const int end_len = 5;
 
 static void fill_string(int number_len, char *res, char *number)
@@ -49,32 +51,36 @@ char *get_stage_path(int current_stage)
     return res;
 }
 
-static int init_stage(window_t *win, any_t **save,
-    any_t **current_stage, char **stage_path)
+static int init_stage(any_t *save, any_t **current_stage, char **stage_path)
 {
-    (*current_stage) = dico_t_get_any((*save)->value.dict, "current stage");
-    win->components = dico_t_add_data(win->components, SAVE, *save,
-        destroy_any);
-    if (win->components == NULL || *current_stage == NULL ||
-        (*current_stage)->type != INT) {
+    *current_stage = dico_t_get_any(save->value.dict, current_stage_key);
+    if (*current_stage == NULL || (*current_stage)->type != INT) {
         return RET_ERR_INPUT;
     }
-    (*stage_path) = get_stage_path((*current_stage)->value.i);
+    *stage_path = get_stage_path((*current_stage)->value.i);
     if ((*stage_path) == NULL) {
         return RET_ERR_INPUT;
     }
     return RET_OK;
 }
 
-int launch_story_mode(window_t *win, const char save_path[], scene_t *scene)
+int launch_story_mode(window_t *win, scene_t *scene)
 {
-    any_t *save = parse_json_file(save_path);
+    any_t *save = NULL;
     any_t *current_stage = NULL;
     char *stage_path = NULL;
+    int ret = RET_OK;
 
-    if (save == NULL) {
+    if (win == NULL || scene == NULL) {
         return RET_ERR_INPUT;
     }
-    init_stage(win, &save, &current_stage, &stage_path);
-    return launch_stage(win, stage_path, current_stage->value.i, scene);
+    toggle_music_in_scene(scene);
+    save = dico_t_get_any(win->components, SAVE);
+    if (save == NULL || save->type != DICT) {
+        return RET_ERR_INPUT;
+    }
+    init_stage(save, &current_stage, &stage_path);
+    ret = launch_stage(win, stage_path, current_stage->value.i, scene);
+    free(stage_path);
+    return ret;
 }

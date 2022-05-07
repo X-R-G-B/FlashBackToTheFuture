@@ -8,6 +8,7 @@
 #ifndef RPG_H_
     #define RPG_H_
 
+    #include <stdbool.h>
     #define RET_OK 0
     #define RET_ERR_MALLOC 1
     #define RET_ERR_INPUT 2
@@ -23,8 +24,19 @@
     #include "my_bgs.h"
     #include "my_json.h"
 
-static const char PLAYER_DATA[] = "./assets/data/player/data.json";
-static const char PLAYER_STATS[] = "./assets/data/player/stats.json";
+static const char ICON_PATH[] = "./assets/image/logo/FBTTF_logo.png";
+
+static const char DATA_INV_JSON[] = "assets/data/player/inventory_data.json";
+static const char INV_SCENE[] = "INVENTORY";
+static const char INV_BUTTONS_COMP[] = "INVENTOR_BUTTONS";
+static const char KEY_OBJ[] = "MYTHICAL 86";
+static const char POTIONS[] =  "86 heal";
+static const char INFINITY_86[] = "86 infinity";
+static const char MAX_LIFE[] = "max_life";
+static const char POTIONS_TEXT[] = "potions text pos";
+
+static const char PLAYER_DATA_PATH[] = "./assets/data/player/data.json";
+static const char PLAYER_STATS_PATH[] = "./assets/data/player/stats.json";
 
 static const char COLLISION_ARRAY[] = "collision array";
 
@@ -34,8 +46,14 @@ static const char DEAD_MESSAGE[] = "dead message";
 static const char DEAD_SCREEN[] = "dead screen";
 
 static const char PLAYER[] = "player";
+static const char PLAYER_STATS[] = "stats";
+static const char PLAYER_DATA[] = "data";
 
-static const char STORY_DATA_PATH[] =
+static const char roulade_key[] = "roulade";
+
+static const char hurt_key[] = "hurt";
+
+static const char SAVE_PATH[] =
     "./assets/data/story_mode/save.json";
 static const char SAVE[] = "story_mode_data";
 
@@ -46,6 +64,7 @@ typedef enum state_e {
     MOVING,
     STOP,
     DYING,
+    ROULADE,
     DIE,
     IN_POP_UP,
     STUNT
@@ -85,10 +104,25 @@ void click_save(object_t *obj, scene_t *scene, window_t *win,
 
 bool check_collision(player_t *player, scene_t *scene);
 
+void update_spawner(object_t *obj, scene_t *scene, window_t *win,
+    float time);
+
+void roulade_event(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
+
 int move_object_between_scene(window_t *win, scene_t *fst_scene,
     scene_t *scd_scene);
 
 void increment_hud_pos(window_t *win, sfVector2f to_add);
+
+int create_stat_pop_text_from_window(window_t *win, int stat, const char *path,
+    sfVector2f pos);
+
+int create_stat_pop_text(scene_t *scene, int stat, const char *path,
+    sfVector2f pos);
+
+int create_pop_text(scene_t *scene, const char *path, sfVector2f pos,
+    char *text);
 
 void replace_objects(window_t *win, scene_t *scene);
 
@@ -104,7 +138,11 @@ int *get_player_spawn(scene_t *scene);
 
 bool check_up_collision(object_t *player, char **map, sfVector2i pos);
 
+void update_roulade(player_t *obj, scene_t *scene, window_t *win, float dtime);
+
 bool check_right_collision(object_t *player, char **map, sfVector2i pos);
+
+void square_set_components(object_t *square, dico_t *char_type);
 
 bool check_left_collision(object_t *player, char **map, sfVector2i pos);
 
@@ -116,15 +154,21 @@ void update_attack(player_t *player, scene_t *scene, window_t *win,
 void add_main_menu_elements_to_hud_list(window_t *win, scene_t *scene,
     list_ptr_t *hud_list);
 
-int launch_story_mode(window_t *win, const char save_path[], scene_t *scene);
+int launch_story_mode(window_t *win, scene_t *scene);
 
 int add_collision_array_in_scene(scene_t *scene);
 
 void wordarray_free_ptr(void *data);
 
+int init_pause_button(window_t *win, list_ptr_t *pause_menu,
+    scene_t *scene, list_ptr_t *hud_elements);
+
 char *get_stage_name(int stage_id);
 
-int launch_game(void);
+void update_text(object_t *obj, scene_t *scene, window_t *win,
+    float dtime);
+
+int launch_game(bool is_full_screen);
 
 void set_stop(player_t *player);
 
@@ -138,7 +182,8 @@ char **create_new_map(char **map);
 
 char **stage_map_to_collision_array(scene_t *scene);
 
-int launch_stage(window_t *win, char *stage_path, int stage_id, scene_t *scene);
+int launch_stage(window_t *win, const char *stage_path, int stage_id,
+    scene_t *scene);
 
 void attack_event(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *set_event);
@@ -193,6 +238,8 @@ void destroy_player(void *player_void);
 void dead_event_input(object_t *object, scene_t *scene,
     window_t *window, set_event_t *event);
 
+void set_dead_opacity(object_t *dead_message, object_t *dead_screen);
+
 void free_pop_up(void *list);
 
 int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
@@ -217,6 +264,11 @@ int set_player_default_stats(player_t *player, any_t *stats);
 
 void go_to_home(scene_t *scene, window_t *win);
 
+void restart_game(scene_t *scene, window_t *win);
+
+bool check_evolution_stat(player_t *player, float *prev_max_stat,
+    const char stat_name[]);
+
 void upgrade_health(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 
@@ -224,5 +276,68 @@ void upgrade_energy(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 
 void toggle_pop_up(dico_t *dico, const char *key);
+
+int init_xp_hud(window_t *win, scene_t *scene);
+
+void update_xp_bar(object_t *object, scene_t *scene,
+    window_t *window, float time);
+
+void level_up(scene_t *scene, window_t *win);
+
+int init_player_scale_handling(object_t *obj);
+
+int update_player_view(object_t *obj, window_t *win, float time);
+
+void set_up_scale(object_t *obj, float time);
+
+void set_down_scale(object_t *obj, float time);
+
+void activate_up_scale(object_t *obj, scene_t *scene,
+    window_t *win, float time);
+
+void activate_down_scale(object_t *obj, scene_t *scene,
+    window_t *win, float time);
+
+void activate_dash(object_t *obj, scene_t *scene,
+    window_t *win, __attribute__((unused)) float time);
+int create_inventory(window_t *win);
+
+void open_inventory(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+
+void close_inventory(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+
+void get_infinity_86(window_t *win);
+
+void get_potions(window_t *win);
+
+void toggle_key_obj(window_t *win);
+
+void heal(window_t *win);
+
+void use_heal_potion(object_t *obj, scene_t *scene,
+    window_t *win, set_event_t *event);
+
+int create_number_of_potions(scene_t *scene, window_t *win);
+
+void modif_potion_value(window_t *win, int nbr_potions, bool click);
+
+int check_if_pop_up_true(dico_t *dico, char *key);
+
+int change_xp_bar_stats(any_t *max_xp_data, any_t *actual_xp_data,
+    object_t *object, scene_t *scene);
+
+any_t *get_xp_data(player_t *player, const char data_name[]);
+
+void drop_right_item(object_t *obj, window_t *win);
+
+int init_credits(window_t *win);
+
+void go_to_credits(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
+
+void go_to_home_direct(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
 
 #endif /* !RPG_H_ */

@@ -21,6 +21,8 @@
     #define BGS_ERR_INPUT 3
 
 static const char SET_ICON[] = "__set_icon";
+static const char SCENE[] = "scene";
+static const char WINDOW[] = "window";
 
 typedef struct time_clock_s time_clock_t;
 typedef struct object_s object_t;

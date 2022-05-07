@@ -12,7 +12,11 @@
 void settings_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt)
 {
-    if (scene->pause == false || obj->is_visible == false) {
+    if (win == NULL) {
+        return;
+    }
+    if (scene == NULL || scene->pause == false || obj == NULL ||
+            obj->is_visible == false) {
         win->click = NULL;
         pressed_button_off(obj, scene, win, evt);
         return;
@@ -22,21 +26,14 @@ void settings_button_off(object_t *obj, scene_t *scene, window_t *win,
     pressed_button_off(obj, scene, win, evt);
 }
 
-void restart_button_off(object_t *obj, scene_t *scene, window_t *win,
-    set_event_t *evt)
-{
-    if (scene->pause == false || obj->is_visible == false) {
-        win->click = NULL;
-        pressed_button_off(obj, scene, win, evt);
-        return;
-    }
-    pressed_button_off(obj, scene, win, evt);
-}
-
 void exit_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt)
 {
-    if (scene->pause == false || obj->is_visible == false) {
+    if (win == NULL) {
+        return;
+    }
+    if (scene == NULL || scene->pause == false || obj == NULL ||
+            obj->is_visible == false) {
         win->click = NULL;
         pressed_button_off(obj, scene, win, evt);
         return;
@@ -48,7 +45,11 @@ void exit_button_off(object_t *obj, scene_t *scene, window_t *win,
 void resume_event_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt)
 {
-    if (scene->pause == false || obj->is_visible == false) {
+    if (win == NULL) {
+        return;
+    }
+    if (scene == NULL || scene->pause == false || obj == NULL ||
+            obj->is_visible == false) {
         win->click = NULL;
         pressed_button_off(obj, scene, win, evt);
         return;
@@ -62,7 +63,8 @@ void resume_event_off(object_t *obj, scene_t *scene, window_t *win,
 void home_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt)
 {
-    if (scene->pause == false || obj->is_visible == false) {
+    if (scene == NULL || scene->pause == false || obj == NULL ||
+            obj->is_visible == false) {
         win->click = NULL;
         pressed_button_off(obj, scene, win, evt);
         return;

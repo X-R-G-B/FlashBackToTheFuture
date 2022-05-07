@@ -38,7 +38,6 @@ static void check_remove_scene_obj(scene_t *scene)
     while (scene->to_remove->len > 0 && scene->to_remove->start != NULL) {
         elem = scene->to_remove->start->var;
         scene_remove_obj(scene, elem);
-        rm_fst_elem(scene->to_remove);
     }
 }
 

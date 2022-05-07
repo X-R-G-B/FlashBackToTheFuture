@@ -6,6 +6,7 @@
 */
 
 #include "my_rpg.h"
+#include "audio.h"
 #include "main_menu.h"
 
 static void add_escape_event(object_t *obj)
@@ -31,7 +32,7 @@ static void set_button_rectangle(list_ptr_t *buttons)
         return;
     }
     obj->bigdata.sprite_bigdata.rect = (sfIntRect) {273, 9, 231, 76};
-    obj = get_element_i_var(buttons, 2);
+    obj = get_element_i_var(buttons, 3);
     if (obj == NULL) {
         return;
     }
@@ -41,6 +42,10 @@ static void set_button_rectangle(list_ptr_t *buttons)
         return;
     }
     obj->bigdata.sprite_bigdata.rect = (sfIntRect) {13, 5, 217, 75};
+    obj = get_element_i_var(buttons, 2);
+    if (obj != NULL) {
+        obj->bigdata.sprite_bigdata.rect = (sfIntRect) {0, 0, 425, 59};
+    }
 }
 
 static int init_main_menu_buttons(scene_t *scene, window_t *win)
@@ -55,6 +60,7 @@ static int init_main_menu_buttons(scene_t *scene, window_t *win)
     }
     set_button_rectangle(main_menu);
     window_add_component(win, settings, SETTINGS_MENU, free_pop_up);
+    set_drag_objects(settings, win, scene);
     scene_add_components(scene, load_game, PLAY, free_pop_up);
     scene_add_components(scene, main_menu, MENU, free_pop_up);
     if (scene->components == NULL) {
@@ -72,13 +78,14 @@ int init_menu(window_t *win)
 
     create_scene_loading_basic(win);
     scene = create_scene(win, sfBlack, "MAIN MENU");
-    if (scene == NULL) {
+    if (scene == NULL || init_music(win, scene) != RET_OK) {
         return (RET_ERR_MALLOC);
     }
     obj = create_object(NULL, NULL, scene, 0);
     if (init_main_menu_buttons(scene, win) == RET_ERR_MALLOC || obj == NULL) {
         return (RET_ERR_MALLOC);
     }
+    init_making_of(scene);
     add_escape_event(obj);
     return RET_OK;
 }

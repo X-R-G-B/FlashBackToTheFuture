@@ -16,11 +16,14 @@
 #include "my_rpg.h"
 
 static void update_leaf(struct element_s *elem,
-    __attribute__((unused)) framebuffer_t *buf,
+    framebuffer_t *buf,
     float dtime)
 {
     float y = 0;
 
+    if (elem == NULL || buf == NULL) {
+        return;
+    }
     elem->data.rect.rect.top += (int) MAX(dtime * 200, 1);
     y = elem->data.rect.rect.top;
     if (y > (float) buf->height) {

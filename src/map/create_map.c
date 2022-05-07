@@ -7,16 +7,22 @@
 
 #include "ennemies.h"
 #include "my_rpg.h"
+#include "my_puts.h"
 #include "my_wordarray.h"
 #include "my_json.h"
 #include "macro.h"
 #include "my_bgs_components.h"
+#include "npc.h"
 
 static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
-    knockback, next_stage
+    knockback, update_spawner, activate_up_scale,
+    activate_down_scale, activate_dash, activate_dash, activate_dash,
+    init_npc_spawner, update_grandpa, init_npc_spawner, init_npc_spawner,
+    update_magician, update_spawner, update_spawner, update_spawner,
+    update_spawner, update_spawner
 };
 
-static const char square_type_update[] = "pz";
+static const char square_type_update[] = "pSQqR:s*$=+1LP234";
 
 static void get_square_update(char current_char,
     void (**update)(object_t *, scene_t *, window_t *, float))
@@ -37,7 +43,7 @@ static int init_sprite(object_t *square, any_t *path, sfVector2f current_pos,
 
     if (square == NULL || object_set_sprite(square, path->value.str,
         (sfIntRect) {-1, -1, -1, -1}, current_pos) != BGS_OK) {
-        my_putstr("wrong square sprite path\n");
+        my_putstr(1, "wrong square sprite path\n");
         return RET_ERR_MALLOC;
     }
     if (rotation != NULL && rotation->type == FLOAT) {
@@ -66,9 +72,9 @@ static int init_square(scene_t *scene, char current_char, dico_t *char_type,
             return RET_ERR_MALLOC;
         }
     }
-    return (path != NULL && path->type == STR) ?
-        init_sprite(square, path, current_pos,
-        square_data->value.dict) : RET_OK;
+    square_set_components(square, square_data->value.dict);
+    return (path != NULL && path->type == STR) ? init_sprite(square, path,
+        current_pos, square_data->value.dict) : RET_OK;
 }
 
 static int browse_squares_pos(scene_t *scene, char **map, dico_t *char_type)
@@ -85,8 +91,6 @@ static int browse_squares_pos(scene_t *scene, char **map, dico_t *char_type)
         current_pos.y += SQUARE_SIZE;
     }
     my_wordarray_free(map);
-    create_ennemy(scene, "./assets/data/ennemy/amongus.json",
-        (sfVector2f) {590, 500});
     return ret;
 }
 

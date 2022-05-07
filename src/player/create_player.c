@@ -17,7 +17,7 @@
 
 static void (*event_on[])(object_t *, scene_t *, window_t *,
     set_event_t *) = {
-    attack_event, move_on
+    attack_event, roulade_event, move_on
 };
 
 static void (*event_off[])(object_t *, scene_t *, window_t *,
@@ -26,12 +26,12 @@ static void (*event_off[])(object_t *, scene_t *, window_t *,
 };
 
 static const node_params_t node[] = {
-    {sfMouseLeft, sfKeyL, KEY}, {sfMouseLeft, sfKeyZ, KEY},
-    {sfMouseLeft, sfKeyQ, KEY}, {sfMouseLeft, sfKeyS, KEY},
-    {sfMouseLeft, sfKeyD, KEY}
+    {sfMouseLeft, sfKeyL, KEY}, {sfMouseLeft, sfKeyM, KEY},
+    {sfMouseLeft, sfKeyZ, KEY}, {sfMouseLeft, sfKeyQ, KEY},
+    {sfMouseLeft, sfKeyS, KEY}, {sfMouseLeft, sfKeyD, KEY}
 };
 
-static const int event_nb = 5;
+static const int event_nb = 6;
 
 static const char player_path[] = "./assets/image/player/link_with_weapon.png";
 
@@ -60,20 +60,21 @@ int *get_player_spawn(scene_t *scene)
 
 static player_t *add_components(player_t *player, const char *stats)
 {
-    any_t *data = parse_json_file("./assets/data/player/data.json");
+    any_t *data = parse_json_file(PLAYER_DATA_PATH);
     any_t *stat = parse_json_file(stats);
 
     if (data == NULL || stat == NULL) {
         return NULL;
     }
-    player->obj->components = dico_t_add_data(player->obj->components, "data",
-        data, destroy_any);
-    player->obj->components = dico_t_add_data(player->obj->components, "stats",
-        stat, destroy_any);
+    player->obj->components = dico_t_add_data(player->obj->components,
+        PLAYER_DATA, data, destroy_any);
+    player->obj->components = dico_t_add_data(player->obj->components,
+        PLAYER_STATS, stat, destroy_any);
     if (player->obj->components == NULL) {
         return NULL;
     }
-    if (set_player_default_stats(player, stat) != RET_OK) {
+    if (set_player_default_stats(player, stat) != RET_OK ||
+            init_player_scale_handling(player->obj) != RET_OK) {
         return NULL;
     }
     set_stop(player);
@@ -92,11 +93,11 @@ static int add_event(player_t *player, int *spawn, scene_t *scene)
     }
     free(spawn);
     for (int i = 0; i < event_nb && ret == RET_OK; i++) {
-        if (i == 0) {
-            ret = event_add_node(create_event(event_on[0], false, obj,
+        if (i < 2) {
+            ret = event_add_node(create_event(event_on[i], false, obj,
                 event_off[0]), node[i]);
         } else {
-            ret = event_add_node(create_event(event_on[1], false, obj,
+            ret = event_add_node(create_event(event_on[2], false, obj,
                 event_off[1]), node[i]);
         }
     }

@@ -15,15 +15,17 @@
         [1, 43, 11, 15],
         [1, 62, 12, 16]
     ],
+    "dash time": 1.5,
+    "charge time": 0.5,
     "scale": 2.0,
     "rect actualisation": 0.09,
     "speed": 150.0,
     "range": 800.0,
-<<<<<<< Updated upstream
-    "life": 10.0,
-=======
     "life": 15.0,
     "blink time": 0.7,
->>>>>>> Stashed changes
-    "sprite path": "./assets/image/ennemy/amongus.png"
+    "sprite path": "./assets/image/ennemy/amongus.png",
+    "dammage": 30.0,
+    "xp loot": 5.0,
+    "range dash": 60.0,
+    "drop rate": 20.0
 }

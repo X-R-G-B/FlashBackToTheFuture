@@ -6,6 +6,7 @@
 */
 
 #include "ennemies.h"
+<<<<<<< HEAD
 
 static const char blink_time_key[] = "blink time";
 
@@ -26,6 +27,16 @@ static bool check_wall(ennemy_t *ennemy, sfVector2f new, window_t *win)
     return false;
 }
 
+=======
+#include "my_bgs.h"
+#include "my_rpg.h"
+#include "my_wordarray.h"
+#include "my_json.h"
+#include "my_strings.h"
+
+static const char blink_time_key[] = "blink time";
+
+>>>>>>> dev
 static float get_blink_time(ennemy_t *ennemy)
 {
     any_t *ennemy_data = NULL;
@@ -50,13 +61,18 @@ static void move_ennemy(ennemy_t *ennemy, float move, window_t *win)
     sfVector2f news[4] = {{0, 0 - move}, {0 - move, 0}, {0, move}, {move, 0}};
     dir_t dir = ennemy_get_view_dir(ennemy->obj, win);
 
+<<<<<<< HEAD
     if (check_wall(ennemy, news[dir], win) == true) {
+=======
+    if (dir == UNKNOWN_STATE || check_wall(ennemy, news[dir], win) == true) {
+>>>>>>> dev
         return;
     }
     ennemy->obj->bigdata.sprite_bigdata.pos.x -= news[dir].x;
     ennemy->obj->bigdata.sprite_bigdata.pos.y -= news[dir].y;
 }
 
+<<<<<<< HEAD
 void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win)
 {
     static float time = 0;
@@ -73,5 +89,37 @@ void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win)
         if (ennemy->life <= 0) {
             ennemy->state = DYING;
         }
+=======
+static void update_when_ennemy_die(ennemy_t *ennemy, window_t *win,
+    scene_t *scene)
+{
+    ennemy->obj->components = dico_t_rem(ennemy->obj->components, hurt_key);
+    if (ennemy->life <= 0) {
+        update_xp(ennemy, win, scene);
+        check_drop(ennemy, scene);
+        ennemy->state = DYING;
+    }
+}
+
+void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win,
+    scene_t *scene)
+{
+    float blink_time = get_blink_time(ennemy);
+    any_t *json = NULL;
+    float speed = 10;
+
+    if (blink_time < 0 || ennemy == NULL || ennemy->obj == NULL) {
+        return;
+    }
+    json = dico_t_get_value(ennemy->obj->components, ENNEMY_DATA);
+    json = get_from_any(json, "d", "speed");
+    ennemy->hurt_delta_time += dtime;
+    speed = (json == NULL || json->type != FLOAT) ? speed : json->value.f;
+    move_ennemy(ennemy,
+        (dtime * speed / (ennemy->hurt_delta_time * speed)) * 20, win);
+    if (ennemy->hurt_delta_time >= blink_time) {
+        ennemy->hurt_delta_time = 0;
+        update_when_ennemy_die(ennemy, win, scene);
+>>>>>>> dev
     }
 }

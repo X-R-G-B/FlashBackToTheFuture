@@ -16,13 +16,16 @@ void click_save(object_t *obj, scene_t *scene, window_t *win,
         win->click = NULL;
         return;
     }
-    launch_story_mode(win, STORY_DATA_PATH, scene);
+    launch_story_mode(win, scene);
 }
 
 void close_window(__attribute__((unused)) object_t *obj,
     __attribute__((unused)) scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *event)
 {
+    if (win == NULL || scene == NULL) {
+        return;
+    }
     if (check_if_pop_up_true(scene->components, PLAY) == 1 ||
         check_if_pop_up_true(win->components, SETTINGS_MENU) == 1) {
         set_is_visible_false(dico_t_get_value(scene->components, PLAY));
@@ -45,8 +48,12 @@ void go_back(__attribute__((unused)) object_t *obj, scene_t *scene,
 void play_pop_up(__attribute__((unused)) object_t *obj, scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *event)
 {
-    list_ptr_t *buttons = dico_t_get_value(scene->components, MENU);
+    list_ptr_t *buttons = NULL;
 
+    if (win == NULL || scene == NULL) {
+        return;
+    }
+    buttons = dico_t_get_value(scene->components, MENU);
     if (check_if_pop_up_true(win->components, SETTINGS_MENU) == 1) {
         win->click = NULL;
         set_is_visible_false(dico_t_get_value(win->components,
@@ -64,8 +71,12 @@ void settings_pop_up(__attribute__((unused)) object_t *obj, scene_t *scene,
     __attribute__((unused)) window_t *win,
     __attribute__((unused)) set_event_t *event)
 {
-    list_ptr_t *buttons = dico_t_get_value(scene->components, MENU);
+    list_ptr_t *buttons = NULL;
 
+    if (scene == NULL || win == NULL) {
+        return;
+    }
+    buttons = dico_t_get_value(scene->components, MENU);
     if (buttons == NULL) {
         return;
     }
@@ -73,7 +84,7 @@ void settings_pop_up(__attribute__((unused)) object_t *obj, scene_t *scene,
         win->click = NULL;
         set_is_visible_false(dico_t_get_value(scene->components, PLAY));
     }
-    obj = get_element_i_var(buttons, 2);
+    obj = get_element_i_var(buttons, 3);
     toggle_pop_up(win->components, SETTINGS_MENU);
     obj->bigdata.sprite_bigdata.rect.left = 17;
 }

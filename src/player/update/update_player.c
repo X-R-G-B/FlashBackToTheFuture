@@ -6,6 +6,7 @@
 */
 
 #include "main_menu.h"
+#include "my_dico.h"
 #include "my_rpg.h"
 #include "ennemies.h"
 #include "my_json.h"
@@ -19,6 +20,7 @@ static void (*update_ptr[])(player_t *, scene_t *, window_t *, float) = {
     update_movements,
     update_stop,
     update_dead,
+    update_roulade
 };
 
 static void update_stop(__attribute__((unused)) player_t *player,
@@ -41,21 +43,24 @@ static void player_check_life(player_t *player, window_t *win)
 void update_player(__attribute__((unused)) object_t *obj, scene_t *scene,
     window_t *win, float dtime)
 {
-    player_t *player = dico_t_get_value(win->components, PLAYER);
-    bool hurt = false;
+    player_t *player = NULL;
 
+    if (win == NULL) {
+        return;
+    }
+    player = dico_t_get_value(win->components, PLAYER);
     if (player == NULL || player->obj == NULL) {
         return;
     }
     sfRenderWindow_setView(win->win, player->view);
-    if (player->state >= 0 && player->state <= 3) {
+    if (player->state >= 0 && player->state <= 4) {
         update_ptr[player->state](player, scene, win, dtime);
     }
-    hurt = (bool) dico_t_get_value(player->obj->components, "hurt");
-    if (hurt == true) {
+    if (dico_t_get_value(player->obj->components, hurt_key) != NULL) {
         update_hurt(player, scene, win, dtime);
     } else if (player->state != DYING && player->state != DIE) {
         player_check_hurt(player, scene);
     }
+    update_player_view(obj, win, dtime);
     player_check_life(player, win);
 }
