@@ -10,8 +10,8 @@
 #include "my_rpg.h"
 #include "npc.h"
 
-const char npc_path_key[] = "npc path";
-const char bool_check_key[] = "bool check";
+extern const char npc_path_key[];
+extern const char bool_check_key[];
 extern const char npc_path_key[];
 
 static void go_to_next_stage(const char *str, scene_t *scene, window_t *win,
@@ -27,8 +27,7 @@ static void go_to_next_stage(const char *str, scene_t *scene, window_t *win,
 }
 
 static void callback_intro_magician(__attribute__((unused)) object_t *npc,
-    scene_t *scene,
-    __attribute__((unused)) window_t *win)
+    __attribute__((unused)) scene_t *scene, window_t *win)
 {
     char *path = NULL;
     bool check = false;
@@ -38,7 +37,7 @@ static void callback_intro_magician(__attribute__((unused)) object_t *npc,
     if (path == NULL || check == true) {
         return;
     }
-    add_text_dialog_json(scene, path, &go_to_next_stage, npc);
+    add_text_dialog_json(win, path, &go_to_next_stage, npc);
     object_add_components(npc, (void *) true, bool_check_key, NULL);
 }
 

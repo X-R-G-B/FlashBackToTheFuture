@@ -69,7 +69,7 @@ static void fill_dialog_text(text_dialog_t *text_d, const char *str,
     text_d->data = NULL;
 }
 
-text_dialog_t *add_text_dialog(scene_t *scene, const char *text,
+text_dialog_t *add_text_dialog(window_t *win, const char *text,
     bool need_pause,
     void (*callback)(const char *str, scene_t *scene,
     window_t *win, void *data))
@@ -77,10 +77,10 @@ text_dialog_t *add_text_dialog(scene_t *scene, const char *text,
     dialog_manager_t *dialog = NULL;
     list_t *text_d = NULL;
 
-    if (scene == NULL || text == NULL) {
+    if (win == NULL || text == NULL) {
         return NULL;
     }
-    dialog = dico_t_get_value(scene->components, compo_dialog);
+    dialog = dico_t_get_value(win->components, compo_dialog);
     if (dialog == NULL) {
         return NULL;
     }

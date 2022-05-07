@@ -56,11 +56,11 @@ void update_dialog(object_t *obj, scene_t *scene,
     dialog_manager_t *dialog = NULL;
     text_dialog_t *text = NULL;
 
-    if (scene == NULL || obj == NULL || scene->pause == true) {
+    if (scene == NULL || obj == NULL || scene->pause == true || win == NULL) {
         return;
     }
     update_position(obj, win);
-    dialog = dico_t_get_value(scene->components, compo_dialog);
+    dialog = dico_t_get_value(win->components, compo_dialog);
     if (dialog == NULL || dialog->dialogues == NULL ||
             dialog->dialogues->len <= 0) {
         obj->is_visible = false;
