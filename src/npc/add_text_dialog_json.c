@@ -25,11 +25,7 @@ static int itter_add_text(window_t *win, char *const *arr_text,
         if (tmp == NULL) {
             return RET_ERR_MALLOC;
         }
-<<<<<<< HEAD
-        text_dialog = add_text_dialog(scene, tmp, true, NULL);
-=======
         text_dialog = add_text_dialog(win, tmp, false, NULL);
->>>>>>> dev
         free(tmp);
     }
     if (text_dialog != NULL) {
