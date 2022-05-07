@@ -15,7 +15,7 @@ void play_sound(window_t *win, const char *comp_key)
         return;
     }
     obj = dico_t_get_value(win->components, comp_key);
-    if (obj == NULL) {
+    if (obj == NULL || obj->type != SOUND) {
         return;
     }
     sfSound_play(obj->drawable.sound);
