@@ -359,6 +359,9 @@ void upgrade_dammage(any_t *player_data);
 
 int init_movement(player_t *player, window_t *win, scene_t *scene);
 
+void update_elder(object_t *obj, scene_t *scene, window_t *win,
+    __attribute__((unused)) float dtime);
+
 void update_intro_magician(object_t *obj, scene_t *scene, window_t *win,
     float dtime);
 
