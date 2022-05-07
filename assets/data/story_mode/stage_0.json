@@ -25,8 +25,8 @@
             "##B.###.###.###.###.###.###.###.}dddfffffffffffdddd######ddddfffffffffffddd!###.###.###.###.###.###.###..b##",
             "##B..#...#...#...#...#...#...#..}dddfffffffffffdddd###M##ddddfffffffffffddd!.#...#...#...#...#...#...#...b##",
             "##B..##..##..##..##..##..##..##.}dddfffffffffffdydd######dyddfffffffffffddd!.##..##..##..##..##..##..##..b##",
-            "##B.############################}dddfffffffffffdddd....$.ddddfffffffffffddd!############################.b##",
-            "##B.##T###T###T###T###T###T###T#}dddddddddddddddddddddddddddddddddddddddddd!##T###T###T###T###T###T###T#.b##",
+            "##B.############################}dddfffffffffffdddd......ddddfffffffffffddd!############################.b##",
+            "##B.##T###T###T###T###T###T###T#}ddddddddddddddddddddddd9dddddddddddddddddd!##T###T###T###T###T###T###T#.b##",
             "##B.###.###.###.###.###.###.###.}ddddddddddddddddddd....ddddddddd######dddd!###.###.###.###.###.###.###..b##",
             "##B..#...#...#...#...#...#...#..}dd######ddddddddddd..i.ddddffddd######dddd!.#...#...#...#...#...#...#...b##",
             "##B..##..##..##..##..##..##..##.}dd######dddyddddddd....ddddffddd##m###dddd!.##..##..##..##..##..##..##..b##",
@@ -71,7 +71,7 @@
             "##B.#.#...#...#...#...#...#...#...#...#...#...#...#..GG.#...#...#...#...#...#...#...#...#...#...#...#...#...#...#..hgDghghDgDDgghggDgggDhhDggghhghhDDg.#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...b##",
             "##B.#.##..##..##..##..##..##..##..##..##..##..##..##.ghgghgghhhhDDDggDggghghgDhhhhghDgDgggDDgDhDghhhDhhhDghgggDDDhggDDhDghhgggDgghhgDhDhDhghtDggDhgygD.##..##..##..##..##..##..##..##.gDhh.##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..b##",
             "##B.#################################################hhghgghgDhgDDghDDgDghghhhDghDhgDhDhghgghgDgDhhhghhgDhDhggDhhDhhhhDghgggDgDghhggSgDgDhhgDDhDDgDgDh################################hhDD############################################################.b##",
-            "##B.###T###T###T###T###T###T###T###T###T###T###T###T#DhDDyh+ggghDhDDDDghDDhhhhghDhggthggDDhDghDgghDggDghhgghghhDDggDhhDDghgDgDghhgghhDhDDhgDgDDhghDDhg##T###T###T###T###T###T###T###T#Dh1h##T###T###T###T###T###T###T###T###T###T###T###T###T###T###T#.b##",
+            "##B.###T###T###T###T###T###T###T###T###T###T###T###T#DhDDyh+ggghDhDDDDghDDhhhhghDhggthggDDhDghDgghDggDghhgghghhDDggDhhDDghgDgDghhgghhDhDDhgDgDDhghDDhg##T###T###T###T###T###T###T###T#Dhgh##T###T###T###T###T###T###T###T###T###T###T###T###T###T###T#.b##",
             "##B.####.###.###.###.###.###.###.###.###.###.###.###.ggghgDhgDgDhDDgDDghDhhDhDhhggDggDhDDgDDDhhhDghghDghDghgghgDghghggDDhghhhhDgDDhghhgthhhhgghhgDghgD###.###.###.###.###.###.###.###.gDgg###.###.###.###.###.###.###.###.###.###.###.###.###.###.###..b##",
             "##B.#.#...#...#...#...#...#...#...#...#...#...#...#..gghDDhhDggDDDhDhgDhgDDhDghhDhhghgDDhDgDDDhgghghggggghghghghghhhhhDDhgtgghDDgghDhgDDDhhyDhhhgDhhDg.#...#...#...#...#...#...#...#..hDhg.#...#...#...#...#...#...#...#...#...#...#...#...#...#...#...b##",
             "##B.#.##..##..##..##..##..##..##..##..##..##..##..##.hghghghhDDDghgDgghDhghDghhDDggDhgghgghDDDhDhDhDgDhhDghDgghgghgghhDDDhhhghggggDghhghDhDDghhDhgggDgDhgDDghhDgDhDhgghgDhhDghgDgghDhghhDD.##..##..##..##..##..##..##..##..##..##..##..##..##..##..##..b##",
@@ -143,16 +143,10 @@
                     "ennemy path": "./assets/data/ennemy/amongus.json"
                 }
             },
-            "$": {
-                "path": "./assets/image/map/squares/void.png",
-                "components": {
-                    "npc path": "./assets/data/npc/stage_0/grandpa.json"
-                }
-            },
-            "1": {
+            "9": {
                 "path": "./assets/image/map/squares/dark_flower.png",
                 "components": {
-                    "npc path": "./assets/data/npc/stage_0/magician.json"
+                    "npc path": "./assets/data/npc/magician_intro.json"
                 }
             },
             "+": {

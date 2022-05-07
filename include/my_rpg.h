@@ -357,6 +357,9 @@ void upgrade_dammage(any_t *player_data);
 
 int init_movement(player_t *player, window_t *win, scene_t *scene);
 
+void update_intro_magician(object_t *obj, scene_t *scene, window_t *win,
+    float dtime);
+
 int init_sounds(scene_t *scene, window_t *win);
 
 void play_sound(window_t *win, const char *comp_key);
