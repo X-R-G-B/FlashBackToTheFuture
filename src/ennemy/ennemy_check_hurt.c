@@ -92,8 +92,6 @@ static void ennemy_check_collision(ennemy_t *ennemy, window_t *win)
         return;
     } else if (rect_contains_segment(sfSprite_getGlobalBounds(
         ennemy->obj->drawable.sprite), fst_pos, scd_pos) == true) {
-        add_gore_sword(win, fst_pos);
-        add_gore_sword(win, (sfVector2f) {sfSprite_getGlobalBounds(ennemy->obj->drawable.sprite).left, sfSprite_getGlobalBounds(ennemy->obj->drawable.sprite).top});
         set_hurt(ennemy, player, scd_pos, win);
     }
 }
