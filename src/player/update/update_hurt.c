@@ -80,7 +80,8 @@ static void check_blink_time_end(float *since_start, float dtime, window_t *win,
     }
     *since_start += dtime;
     if (*since_start < time_nulll) {
-        update_player_rollback(player, *since_start * (dtime * coef), win, dtime);
+        update_player_rollback(player, *since_start * (dtime * coef), win,
+            dtime);
     } else if (*since_start >= blink_time->value.f) {
         *since_start = 0;
         player->obj->components = dico_t_rem(player->obj->components, hurt_key);
