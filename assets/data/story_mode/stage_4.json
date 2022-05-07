@@ -185,7 +185,7 @@
             "?": {
                 "path": "./assets/image/map/squares/water.png",
                 "components": {
-                    "npc path": "./assets/data/npc/fish.json"
+                    "npc path": "./assets/data/npc/stage_4/fish.json"
                 }
             },
             "S": {
@@ -233,25 +233,25 @@
             "*": {
                 "path": "./assets/image/map/squares/flower.png",
                 "components": {
-                    "npc path": "./assets/data/npc/morpheus.json"
+                    "npc path": "./assets/data/npc/stage_4/morpheus.json"
                 }
             },
             "=": {
                 "path": "./assets/image/map/squares/dirt.png",
                 "components": {
-                    "npc path": "./assets/data/npc/hobo.json"
+                    "npc path": "./assets/data/npc/stage_4/hobo.json"
                 }
             },
             "+": {
                 "path": "./assets/image/map/squares/dirt.png",
                 "components": {
-                    "npc path": "./assets/data/npc/nico.json"
+                    "npc path": "./assets/data/npc/stage_4/nico.json"
                 }
             },
             "0": {
                 "path": "./assets/image/map/squares/flower.png",
                 "components": {
-                    "npc path": "./assets/data/npc/old_hobo.json"
+                    "npc path": "./assets/data/npc/stage_4/old_hobo.json"
                 }
             },
             ".": {

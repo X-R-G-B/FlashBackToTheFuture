@@ -1,0 +1,15 @@
+{
+    "sprite path": "./assets/image/npc/hobo.png",
+    "rect": [[0, 0, 115, 191]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 0.5,
+    "dialogus": [
+        "*rot*",
+        "Heuuuuh bonjours ?",
+        "Tu es si fou que ca ?",
+        "Ahhhh tu consommes la 86 ?",
+        "Je comprends mieux \nles 86 d'infinitees\nsont surement exellentes",
+        "Mais prends garde a SANS\nle boss de ce monde,\nil est tres fort"
+    ]
+}
