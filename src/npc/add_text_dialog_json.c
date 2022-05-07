@@ -32,7 +32,7 @@ static int add_text_dialog_itter(scene_t *scene, any_t *json,
             my_wordarray_free(arr_text);
             return RET_ERR_MALLOC;
         }
-        text_dialog = add_text_dialog(scene, tmp, false, NULL);
+        text_dialog = add_text_dialog(scene, tmp, true, NULL);
         free(tmp);
     }
     my_wordarray_free(arr_text);

@@ -23,14 +23,16 @@ void reaload_dialogs(const char *str, scene_t *scene, window_t *win, void *data)
     object->components = dico_t_rem(object->components, bool_check_key);
 }
 
-void callback_npc(__attribute__((unused)) object_t *npc,
-    scene_t *scene,
+void callback_npc(object_t *npc, scene_t *scene,
     __attribute__((unused)) window_t *win)
 {
     char *path = NULL;
     bool check = false;
 
-    path = (char *) dico_t_get_value(npc->components, npc_path_key);
+    if (npc == NULL || scene == NULL) {
+        return;
+    }
+    path = dico_t_get_value(npc->components, npc_path_key);
     check = (bool) dico_t_get_value(npc->components, bool_check_key);
     if (path == NULL || check == true) {
         return;
