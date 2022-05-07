@@ -359,4 +359,6 @@ int init_sounds(scene_t *scene, window_t *win);
 
 void play_sound(window_t *win, const char *comp_key);
 
+void play_music(window_t *win, const char *comp_key);
+
 #endif /* !RPG_H_ */
