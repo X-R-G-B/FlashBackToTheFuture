@@ -21,10 +21,10 @@
     "rect actualisation": 0.09,
     "speed": 150.0,
     "range": 500.0,
-    "life": 30.0,
+    "life": 15.0,
+    "dammage": 30.0,
     "blink time": 0.7,
     "sprite path": "./assets/image/ennemy/amongus.png",
-    "dammage": 30.0,
     "xp loot": 5.0,
     "range dash": 60.0,
     "drop rate": 20.0
