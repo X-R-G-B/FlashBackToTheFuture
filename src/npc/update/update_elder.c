@@ -40,6 +40,7 @@ static void check_next_stage_event(object_t *obj, window_t *win, scene_t *scene)
     if (sfFloatRect_intersects(&player_rect, &npc_rect, NULL) == sfTrue &&
         sfKeyboard_isKeyPressed(key_interract) == sfTrue) {
         if (good_infinity_86_nbr(win) != RET_OK) {
+            restart_game(scene, win);
             return;
         }
         create_view_rotation(scene);
