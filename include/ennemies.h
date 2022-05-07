@@ -40,8 +40,6 @@ bool ennemy_check_hurt(ennemy_t *ennemy, scene_t *scene, window_t *win,
 
 void destroy_ennemy(ennemy_t *ennemy, scene_t *scene);
 
-void destroy_ennemy(ennemy_t *ennemy, scene_t *scene);
-
 dir_t ennemy_get_view_dir(object_t *obj, window_t *win);
 
 sfFloatRect get_attack_hitbox_rect(sfFloatRect player_rect, player_t *player);
