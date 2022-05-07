@@ -62,8 +62,7 @@ void get_infinity_86(window_t *win)
         return;
     }
     key_obj->value.i += 1;
-    if (write_json(json, dico_t_get_value(player->obj->components,
-        stats_path_key)) != BGS_OK) {
-        return;
-    }
+    write_json(json, dico_t_get_value(player->obj->components,
+        stats_path_key));
+    play_sound(win, INFINITY_86_SOUND);
 }

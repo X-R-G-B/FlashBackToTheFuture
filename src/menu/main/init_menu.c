@@ -85,6 +85,7 @@ int init_menu(window_t *win)
     if (init_main_menu_buttons(scene, win) == RET_ERR_MALLOC || obj == NULL) {
         return (RET_ERR_MALLOC);
     }
+    init_sounds(scene, win);
     init_making_of(scene);
     add_escape_event(obj);
     return RET_OK;

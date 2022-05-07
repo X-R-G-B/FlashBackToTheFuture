@@ -25,6 +25,13 @@
     #include "my_bgs.h"
     #include "my_json.h"
 
+static const char HURTED_SOUND[] = "hurtedplayer";
+static const char HURT_SOUNG[] = "hurtplayer";
+static const char OPEN_INV_SOUND[] = "openinv";
+static const char CLOSE_INV_SOUND[] = "closeinv";
+static const char CONSUM_CAN_SOUND[] = "usepotion";
+static const char INFINITY_86_SOUND[] = "86infsound";
+
 static const char ICON_PATH[] = "./assets/image/logo/FBTTF_logo.png";
 
 static const char DATA_INV_JSON[] = "assets/data/player/inventory_data.json";
@@ -349,5 +356,9 @@ void go_to_home_direct(object_t *obj, scene_t *scene, window_t *win,
 void upgrade_dammage(any_t *player_data);
 
 int init_movement(player_t *player, window_t *win, scene_t *scene);
+
+int init_sounds(scene_t *scene, window_t *win);
+
+void play_sound(window_t *win, const char *comp_key);
 
 #endif /* !RPG_H_ */

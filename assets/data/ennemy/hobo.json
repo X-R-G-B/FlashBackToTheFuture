@@ -11,17 +11,18 @@
         [15, 41, 97, 122],
         [14, 210, 96, 118]
     ],
-    "dash time": 1.0,
-    "charge time": 0.0,
+    "dash time": 1.5,
+    "charge time": 0.5,
     "scale": 0.5,
     "rect actualisation": 0.09,
-    "speed": 50.0,
-    "range": 1000.0,
-    "life": 30.0,
-    "dammage": 76.0,
-    "blink time": 0.5,
+    "speed": 200.0,
+    "range": 600.0,
+    "life": 50.0,
+    "dammage": 17.0,
+    "blink time": 0.7,
     "sprite path": "./assets/image/ennemy/hobo.png",
-    "xp loot": 20.0,
-    "drop rate": 40.0,
-    "range dash": 130.0
+    "xp loot": 50.0,
+    "drop rate": 100.0,
+    "knock back coef": 40.0,
+    "range dash": 50.0
 }
