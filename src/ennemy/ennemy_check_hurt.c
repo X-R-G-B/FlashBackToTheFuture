@@ -8,8 +8,6 @@
 #include <stdlib.h>
 #include "macro.h"
 #include "ennemies.h"
-<<<<<<< HEAD
-=======
 #include "maths_function.h"
 
 const char pop_text_file[] = "./assets/data/pop_text/ennemy_hurt.json";
@@ -17,23 +15,11 @@ static const char attack_key[] = "attack";
 static const char sword_key[] = "sword";
 static const char dammage_key[] = "dammage";
 static const char dammage_hitbox_key[] = "dammage hitbox";
->>>>>>> dev
 
 static any_t *get_current_sword_pos(player_t *player)
 {
     any_t *data = NULL;
 
-<<<<<<< HEAD
-    if (player == NULL) {
-        return NULL;
-    }
-    data = dico_t_get_value(player->obj->components, "data");
-    if (data == NULL) {
-        return NULL;
-    }
-    return get_from_any(data, "dddaa", "attack", "sword",
-        "damage hitbox", player->dir, get_rect_id(data, player));
-=======
     if (player == NULL || player->obj == NULL) {
         return NULL;
     }
@@ -43,7 +29,6 @@ static any_t *get_current_sword_pos(player_t *player)
     }
     return get_from_any(data, "dddaa", attack_key, sword_key,
         dammage_hitbox_key, player->dir, get_rect_id(data, player));
->>>>>>> dev
 }
 
 static sfVector2f get_pos(any_t *current_sword_pos, int id,
@@ -65,20 +50,6 @@ static sfVector2f get_pos(any_t *current_sword_pos, int id,
     return vect;
 }
 
-<<<<<<< HEAD
-static void set_hurt(ennemy_t *ennemy, player_t *player)
-{
-    bool hurt = true;
-    any_t *data = dico_t_get_value(player->obj->components, "data");
-    any_t *dammage = NULL;
-
-    dammage = get_from_any(data, "ddd", "attack", "sword", "dammage");
-    if (dammage == NULL || dammage->type != FLOAT) {
-        return;
-    }
-    ennemy->life -= dammage->value.f;
-    ennemy->obj->components = dico_t_add_data(ennemy->obj->components, "hurt",
-=======
 static void set_hurt(ennemy_t *ennemy, player_t *player, sfVector2f impact,
     window_t *win)
 {
@@ -99,7 +70,6 @@ static void set_hurt(ennemy_t *ennemy, player_t *player, sfVector2f impact,
     }
     ennemy->life -= dammage->value.f;
     ennemy->obj->components = dico_t_add_data(ennemy->obj->components, hurt_key,
->>>>>>> dev
         (void *) hurt, NULL);
 }
 
@@ -122,11 +92,7 @@ static void ennemy_check_collision(ennemy_t *ennemy, window_t *win)
         return;
     } else if (rect_contains_segment(sfSprite_getGlobalBounds(
         ennemy->obj->drawable.sprite), fst_pos, scd_pos) == true) {
-<<<<<<< HEAD
-        set_hurt(ennemy, player);
-=======
         set_hurt(ennemy, player, scd_pos, win);
->>>>>>> dev
     }
 }
 
@@ -136,15 +102,6 @@ bool ennemy_check_hurt(ennemy_t *ennemy, scene_t *scene, window_t *win,
     bool hurt = false;
     player_t *player = NULL;
 
-<<<<<<< HEAD
-    if (ennemy == NULL || scene == NULL || win == NULL) {
-        return false;
-    }
-    player = dico_t_get_value(win->components, PLAYER);
-    hurt = (bool) dico_t_get_value(ennemy->obj->components, "hurt");
-    if (hurt == true) {
-        ennemy_update_hurt(ennemy, dtime, win);
-=======
     if (ennemy == NULL || ennemy->obj == NULL || scene == NULL || win == NULL) {
         return false;
     }
@@ -152,7 +109,6 @@ bool ennemy_check_hurt(ennemy_t *ennemy, scene_t *scene, window_t *win,
     hurt = (bool) dico_t_get_value(ennemy->obj->components, hurt_key);
     if (hurt == true) {
         ennemy_update_hurt(ennemy, dtime, win, scene);
->>>>>>> dev
     } else if (player != NULL && player->state == ATTACKING) {
         ennemy_check_collision(ennemy, win);
     }
