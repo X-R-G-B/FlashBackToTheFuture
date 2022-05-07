@@ -35,10 +35,11 @@ static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
     update_spawner,
     update_spawner,
     init_npc_spawner,
+    update_spawner,
     update_spawner
 };
 
-static const char square_type_update[] = "pSQqR:s*$=+1]?LP2340D";
+static const char square_type_update[] = "pSQqR:s*$=+1]?LP2340D!";
 
 static void get_square_update(char current_char,
     void (**update)(object_t *, scene_t *, window_t *, float))
