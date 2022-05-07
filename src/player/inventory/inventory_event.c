@@ -73,6 +73,7 @@ void open_inventory(__attribute__((unused)) object_t *obj,
     window_add_component(win, actual_scene, ACTUAL_SCENE, free_dup);
     window_change_scene(win, INV_SCENE);
     toggle_key_obj(win);
+    play_sound(win, OPEN_INV_SOUND);
     set_potion_text(win);
     sfRenderWindow_setView(win->win, sfRenderWindow_getDefaultView(win->win));
 }
@@ -90,6 +91,7 @@ void close_inventory(__attribute__((unused)) object_t *obj,
     if (actual_scene == NULL) {
         return;
     }
+    play_sound(win, CLOSE_INV_SOUND);
     window_change_scene(win, actual_scene);
     win->components = dico_t_rem(win->components, ACTUAL_SCENE);
 }
