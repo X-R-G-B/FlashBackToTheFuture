@@ -73,6 +73,8 @@ void update_xp(ennemy_t *ennemy, window_t *win, scene_t *scene);
 
 int ennemy_set_stop(ennemy_t *ennemy);
 
+void destroy_ennemy_cast(void *data);
+
 bool check_is_dashing(ennemy_t *ennemy, window_t *win);
 
 bool check_wall(ennemy_t *ennemy, sfVector2f new, window_t *win);

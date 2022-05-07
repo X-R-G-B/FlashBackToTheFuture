@@ -5,24 +5,29 @@
 ** pathfind add to scene
 */
 
+#include <SFML/System/Vector2.h>
+#include "my_wordarray.h"
+#include "my_strings.h"
 #include "ennemy_pathfind.h"
 #include "my_bgs.h"
 #include "my_dico.h"
 #include "my_rpg.h"
-#include <SFML/System/Vector2.h>
 
-static sfVector2i get_player_pos_in_map(player_t *obj)
+static sfVector2i get_player_pos_in_map(player_t *obj, char **arr)
 {
     sfVector2f pos = {10, 10};
-    sfVector2i new = {20, 20};
+    sfVector2i new = {0, 0};
 
-    if (obj == NULL) {
+    if (obj == NULL || arr == NULL) {
         return (new);
     }
     pos = obj->obj->bigdata.sprite_bigdata.pos;
     new = (sfVector2i) {pos.x / SQUARE_SIZE, pos.y / SQUARE_SIZE};
     if (new.x < 0 || new.y < 0) {
-        return ((sfVector2i) {20, 20});
+        return ((sfVector2i) {0, 0});
+    }
+    if (new.y >= my_wordarray_len(arr) || new.x >= my_strlen(arr[new.y])) {
+        return ((sfVector2i) {0, 0});
     }
     return (new);
 }
@@ -44,7 +49,8 @@ static void pathfind_update_path(__attribute__((unused)) object_t *obj_cust,
     if (collision_array == NULL) {
         return;
     }
-    vect = get_player_pos_in_map(dico_t_get_value(win->components, PLAYER));
+    vect = get_player_pos_in_map(dico_t_get_value(win->components, PLAYER),
+        collision_array);
     tmp = collision_array[vect.y][vect.x];
     collision_array[vect.y][vect.x] = 'P';
     init_pathfind(collision_array, 'P', '#', scene);
