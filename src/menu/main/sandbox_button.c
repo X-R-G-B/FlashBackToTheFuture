@@ -22,7 +22,7 @@ static int init_new_scene_objects(window_t *win, scene_t *scene)
         create_player(win, scene, sandbox_player_stats) == NULL ||
         init_hud_elements(win, scene) != RET_OK ||
         add_collision_array_in_scene(scene) != RET_OK ||
-        init_dialog(scene) != RET_OK ||
+        init_dialog(scene, win) != RET_OK ||
         init_stat_upgrade_pop_up(scene,
         dico_t_get_value(win->components, HUD_ELEMENTS), win) != RET_OK ||
         create_inventory(win) != RET_OK) {
