@@ -84,6 +84,7 @@ static void set_hurt(player_t *player, ennemy_t *ennemy, scene_t *scene)
     if (dammage == NULL || dammage->type != FLOAT) {
         return;
     }
+    play_sound(dico_t_get_value(scene->components, WINDOW), HURTED_SOUND);
     player->life -= dammage->value.f;
     create_stat_pop_text(scene, (dammage->value.f * -1),
         pop_text_file, player->obj->bigdata.sprite_bigdata.pos);

@@ -52,6 +52,7 @@ SRC_CORE		:=	add.c					\
 					window_remove.c			\
 					object_change_scene.c	\
 					remove.c				\
+					remove_object.c			\
 					scene_loading.c			\
 					scene_loop.c			\
 					start.c					\
