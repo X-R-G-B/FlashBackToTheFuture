@@ -31,6 +31,8 @@ static const char OPEN_INV_SOUND[] = "openinv";
 static const char CLOSE_INV_SOUND[] = "closeinv";
 static const char CONSUM_CAN_SOUND[] = "usepotion";
 static const char INFINITY_86_SOUND[] = "86infsound";
+static const char PARCHEMIN_SOUND[] = "parcheminsound";
+static const char LEVEL_UP_SOUND[] = "level_up_sound";
 
 static const char ICON_PATH[] = "./assets/image/logo/FBTTF_logo.png";
 
@@ -366,5 +368,7 @@ void update_intro_magician(object_t *obj, scene_t *scene, window_t *win,
 int init_sounds(scene_t *scene, window_t *win);
 
 void play_sound(window_t *win, const char *comp_key);
+
+void play_music(window_t *win, const char *comp_key);
 
 #endif /* !RPG_H_ */

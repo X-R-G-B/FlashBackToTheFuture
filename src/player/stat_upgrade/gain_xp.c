@@ -100,10 +100,8 @@ void update_xp(ennemy_t *ennemy, window_t *win, scene_t *scene)
     any_t *xp = NULL;
     any_t *loot_xp = NULL;
 
-    if (ennemy == NULL || win == NULL || scene == NULL) {
-        return;
-    }
-    if (init_any_stats(&player_stats, &ennemy_stats, ennemy, win) != RET_OK ||
+    if (win == NULL || ennemy == NULL || scene == NULL ||
+        init_any_stats(&player_stats, &ennemy_stats, ennemy, win) != RET_OK ||
         init_any_xp(&xp, &loot_xp, ennemy_stats, player_stats) != RET_OK) {
         return;
     }
@@ -111,5 +109,6 @@ void update_xp(ennemy_t *ennemy, window_t *win, scene_t *scene)
     if (gain_xp(player_stats, ennemy_stats, xp,
             dico_t_get_value(win->components, PLAYER)) == LVL_UP) {
         level_up(scene, win);
+        play_sound(win, LEVEL_UP_SOUND);
     }
 }
