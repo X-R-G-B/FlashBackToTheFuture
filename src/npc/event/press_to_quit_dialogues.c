@@ -26,7 +26,7 @@ void event_quit_dialog_off(__attribute__((unused)) object_t *obj,
     if (scene == NULL || scene->pause == true) {
         return;
     }
-    dialog = dico_t_get_value(scene->components, compo_dialog);
+    dialog = dico_t_get_value(win->components, compo_dialog);
     if (dialog == NULL || dialog->dialogues == NULL ||
             dialog->dialogues->len <= 0 || dialog->dialogues->start == NULL) {
         return;

@@ -35,7 +35,6 @@ static int create_scene_objects(window_t *win, scene_t *prev_scene,
         return RET_ERR_MALLOC;
     }
     replace_objects(win, scene);
-    create_meteo_handler(win, scene);
     return RET_OK;
 }
 

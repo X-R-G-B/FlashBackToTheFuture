@@ -62,7 +62,6 @@ scene_t *init_scene(const char *stage_path, window_t *win, char *stage_name)
     if (scene->components == NULL) {
         return NULL;
     }
-    create_meteo_handler(win, scene);
     return scene;
 }
 
@@ -72,9 +71,10 @@ static int init_new_scene_objects(window_t *win, scene_t *scene)
         create_player(win, scene, PLAYER_STATS_PATH) == NULL ||
         init_hud_elements(win, scene) != RET_OK ||
         add_collision_array_in_scene(scene) != RET_OK ||
-        init_dialog(scene) != RET_OK ||
+        init_dialog(scene, win) != RET_OK ||
         init_stat_upgrade_pop_up(scene,
         dico_t_get_value(win->components, HUD_ELEMENTS), win) != RET_OK ||
+        create_meteo_handler(win, scene) != RET_OK ||
         create_inventory(win) != RET_OK) {
         return RET_ERR_MALLOC;
     }
