@@ -21,7 +21,11 @@ static const float coef = 1000;
 
 const char data_directions[] = "dirrections player hurt";
 
-static int nb_intervals = 100;
+static const int nb_intervals = 100;
+
+static const float update_time = 1.0 / 30.0;
+
+static const int coef_vector_new = 3;
 
 static void update_move_player(player_t *player, window_t *win, sfVector2f new)
 {
@@ -43,17 +47,25 @@ static void update_move_player(player_t *player, window_t *win, sfVector2f new)
 }
 
 static void update_player_rollback(player_t *player, float since_start,
-    window_t *win)
+    window_t *win, float dtime)
 {
     sfVector2f *dirrection = NULL;
+    static float time_up = 0;
     sfVector2f new = {0};
 
+    time_up += dtime;
+    if (time_up < update_time) {
+        return;
+    }
+    time_up -= update_time;
     dirrection = dico_t_get_value(player->obj->components, data_directions);
     if (dirrection == NULL) {
         return;
     }
     new = (sfVector2f) {dirrection->x / since_start,
         dirrection->y / since_start};
+    new.x *= coef_vector_new;
+    new.y *= coef_vector_new;
     update_move_player(player, win, new);
 }
 
@@ -68,7 +80,7 @@ static void check_blink_time_end(float *since_start, float dtime, window_t *win,
     }
     *since_start += dtime;
     if (*since_start < time_nulll) {
-        update_player_rollback(player, *since_start * (dtime * coef), win);
+        update_player_rollback(player, *since_start * (dtime * coef), win, dtime);
     } else if (*since_start >= blink_time->value.f) {
         *since_start = 0;
         player->obj->components = dico_t_rem(player->obj->components, hurt_key);
