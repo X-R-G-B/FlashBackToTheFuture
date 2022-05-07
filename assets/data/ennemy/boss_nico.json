@@ -24,5 +24,6 @@
     "xp loot": 70.0,
     "drop rate": 100.0,
     "range dash": 100.0,
+    "knock back coef": 20.0,
     "is boss": "non"
 }
