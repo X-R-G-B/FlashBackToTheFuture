@@ -6,13 +6,15 @@
     "time": 0.0,
     "scale": 3.0,
     "dialogus": [
+        "Enfin reveille ?",
         "...",
         "C'est ici que nos chemins se separent",
-        "C'est sur cette ile que d'apres la legende\n celui qui a les 5 86 d'infinitee pourra \nacceder au tresor legendaire de la prophetie",
+        "C'est sur cette ile que d'apres \nla legende celui qui a les 5 86 \nd'infinitee",
+        "pourra acceder au tresor \nlegendaire de la prophetie",
         "...",
         "Mais tu n'en a que 4",
         "Sait tu ou est la derniere",
         "Et bien c'est moi qui l'ai",
-        "et maintenant je vais te tuer et recuperer le tresor"
+        "et maintenant je vais te tuer et \nrecuperer le tresor"
     ]
 }

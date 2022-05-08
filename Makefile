@@ -180,6 +180,7 @@ SRC_SETTINGS_MENU	:=	$(addprefix settings_menu/,$(SRC_SETTINGS_MENU))
 
 SRC_PAUSE			:=	create_pause_menu.c						\
 						home_button_event.c						\
+						check_restart_end_magician.c			\
 						restart_button.c						\
 						pressed_button_event.c					\
 						pause_button_event.c

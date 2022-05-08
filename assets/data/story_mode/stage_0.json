@@ -213,7 +213,7 @@
                 "path": "./assets/image/map/squares/dark_flower.png"
             },
             "8": {
-                "path": "./assets/image/map/squares/dark_flower.png",
+                "path": "./assets/image/map/squares/sand_2.png",
                 "components": {
                     "npc path": "./assets/data/npc/chest.json"
                 }

@@ -92,6 +92,8 @@ void pressed_button_on(object_t *obj, scene_t *scene, window_t *win,
 void pressed_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
 
+void check_restart_end_magician(scene_t *scene);
+
 void exit_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
 

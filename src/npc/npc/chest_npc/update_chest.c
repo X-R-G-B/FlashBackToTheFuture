@@ -119,6 +119,6 @@ void init_chest(object_t *obj, scene_t *scene, window_t *win,
     }
     create_chest(scene, json, rect, obj);
     free(rect);
-    obj->components = dico_t_rem(obj->components, npc_path_key);
     destroy_any(json);
+    obj->components = dico_t_rem(obj->components, npc_path_key);
 }
