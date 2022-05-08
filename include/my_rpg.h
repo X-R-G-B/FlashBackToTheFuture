@@ -194,4 +194,13 @@ void update_elder(object_t *obj, scene_t *scene, window_t *win,
 void update_intro_magician(object_t *obj, scene_t *scene, window_t *win,
     float dtime);
 
+void update_life_text_hud(object_t *object, scene_t *scene,
+    window_t *win, __attribute__((unused)) float time);
+
+void update_energy_text_hud(object_t *object, scene_t *scene,
+    window_t *win, __attribute__((unused)) float time);
+
+int update_text_hud(object_t *obj, player_t *player,
+    const char stat_name[], float *stat_value);
+
 #endif /* !RPG_H_ */

@@ -50,7 +50,7 @@ static void init_dead_screen_pos(window_t *win)
 }
 
 static void config_input_and_components(window_t *win,
-    object_t *dead_message, object_t *dead_screen, scene_t *scene)
+    object_t *dead_message, object_t *dead_screen)
 {
     bool *can_play = malloc(sizeof(bool));
 
@@ -63,7 +63,7 @@ static void config_input_and_components(window_t *win,
             NULL), (node_params_t) {sfMouseLeft, sfKeySpace, KEY}) != BGS_OK) {
         return;
     }
-    if (scene_add_components(scene, can_play,
+    if (window_add_component(win, can_play,
         can_play_dead_screen, free) != BGS_OK ||
         window_add_component(win, dead_message,
             DEAD_MESSAGE, NULL) != BGS_OK ||
@@ -107,7 +107,7 @@ int init_dead_menu(window_t *win, scene_t *scene)
             return RET_ERR_INPUT;
         }
     }
-    config_input_and_components(win, dead_screens[0], dead_screens[1], scene);
+    config_input_and_components(win, dead_screens[0], dead_screens[1]);
     free_list(dead_objects);
     init_dead_screen_pos(win);
     return RET_OK;
