@@ -89,6 +89,7 @@ SRC_MAP				:=	stage_map_to_collision_array.c			\
 						check_collision.c						\
 						create_map.c							\
 						create_collision_map.c					\
+						change_meteo_json.c						\
 						$(SRC_SQUARE_UPDATES)
 SRC_MAP				:=	$(addprefix map/,$(SRC_MAP))
 # ----------------------------------------------------------------------------

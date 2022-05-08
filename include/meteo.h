@@ -67,4 +67,6 @@ int change_meteo(window_t *win, enum meteo_type_e type);
 
 int add_dirt_player(window_t *win, player_t *player);
 
+int change_meteo_to_json(window_t *win, scene_t *scene);
+
 #endif
