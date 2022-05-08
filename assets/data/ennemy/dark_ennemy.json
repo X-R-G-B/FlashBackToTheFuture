@@ -22,7 +22,7 @@
     "blink time": 0.7,
     "sprite path": "./assets/image/ennemy/dark_ennemy.png",
     "xp loot": 60.0,
-    "knock back coef": 20.0,
+    "knock back coef": 5.0,
     "range dash": 120.0,
     "drop rate": 40.0
 }
