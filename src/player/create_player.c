@@ -14,6 +14,7 @@
 #include "my_json.h"
 #include "ennemy_pathfind.h"
 #include "macro.h"
+#include "my_strings.h"
 
 static void (*event_on[])(object_t *, scene_t *, window_t *,
     set_event_t *) = {
@@ -32,6 +33,8 @@ static const node_params_t node[] = {
 };
 
 static const int event_nb = 6;
+
+const char stats_path_key[] = "stats path";
 
 static const char player_path[] = "./assets/image/player/link_with_weapon.png";
 
@@ -67,21 +70,20 @@ static player_t *add_components(player_t *player, const char *stats)
         return NULL;
     }
     player->obj->components = dico_t_add_data(player->obj->components,
+        stats_path_key, my_strdup(stats), free);
+    player->obj->components = dico_t_add_data(player->obj->components,
         PLAYER_DATA, data, destroy_any);
     player->obj->components = dico_t_add_data(player->obj->components,
         PLAYER_STATS, stat, destroy_any);
-    if (player->obj->components == NULL) {
-        return NULL;
-    }
-    if (set_player_default_stats(player, stat) != RET_OK ||
-            init_player_scale_handling(player->obj) != RET_OK) {
+    if (player->obj->components == NULL || set_player_default_stats(player,
+        stat) != RET_OK || init_player_scale_handling(player->obj) != RET_OK) {
         return NULL;
     }
     set_stop(player);
     return player;
 }
 
-static int add_event(player_t *player, int *spawn, scene_t *scene)
+static int add_event(player_t *player, int *spawn)
 {
     int ret = RET_OK;
     object_t *obj = player->obj;
@@ -101,7 +103,6 @@ static int add_event(player_t *player, int *spawn, scene_t *scene)
                 event_off[1]), node[i]);
         }
     }
-    pathfind_add_to_scene(scene);
     return ret;
 }
 
@@ -140,6 +141,6 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats)
     if (spawn == NULL || create_view(win, player, spawn) == NULL) {
         return (NULL);
     }
-    return (add_event(player, spawn, scene) == RET_OK) ?
+    return (add_event(player, spawn) == RET_OK) ?
         add_components(player, stats) : NULL;
 }

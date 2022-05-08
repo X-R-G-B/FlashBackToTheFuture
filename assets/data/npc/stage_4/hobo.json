@@ -1,0 +1,18 @@
+{
+    "sprite path": "./assets/image/npc/hobo.png",
+    "rect": [[0, 0, 115, 191]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 0.5,
+    "dialogus": [
+        "*rot*...",
+        "*encore un rot*...",
+        "*encore encore un rot*...",
+        "*encore x2876 un rot*...",
+        "Fait gaffe mec *rot* il y a des 'hobos'\nqui veullent te voler tes 86...",
+        "Mais toi tu es un mailleur 'hobo' ques eux tu\nrespectes les 86, tu les trakkkkkkkkkkk *rot*",
+        "...",
+        "*rot*...",
+        "Ehhhhh... t'aurais pas une binouze ?"
+    ]
+}

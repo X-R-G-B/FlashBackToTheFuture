@@ -1,0 +1,15 @@
+{
+    "sprite path": "./assets/image/npc/old_hobo.png",
+    "rect": [[0, 0, 115, 191]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 0.5,
+    "dialogus": [
+        "Bonjour mon ami, toi aussi tu es a la\nrecherche des 86 d'infinitees ?",
+        "Cela fait 86 annees que je suis a la\nrecherche de ces 86...\nMais prends garde a NICO",
+        "C'est le boss de cette ile, j'espere\nque tu as beaucoup d'xp\nafin de lui briser les genoux",
+        "Fait attention a ne pas te noyer",
+        "NICO n'hesitera pas a te couler\n(HRP c fo hein ...\nNON pas les genoux NOOooooooooooon)",
+        "..."
+    ]
+}

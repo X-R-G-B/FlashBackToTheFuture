@@ -10,8 +10,10 @@
 #include "audio.h"
 #include "main_menu.h"
 
+extern const char compo_dialog[];
+
 static const char *TO_REMOVE_COMP_WIN[] = {PLAYER, PAUSE_MENU, DEAD_MESSAGE,
-    DEAD_SCREEN, HUD_ELEMENTS, NULL};
+    DEAD_SCREEN, HUD_ELEMENTS, compo_dialog, NULL};
 
 static const char *TO_REMOVE_SCENE[] = {INV_SCENE, NULL};
 

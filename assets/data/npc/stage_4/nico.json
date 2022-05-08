@@ -1,0 +1,11 @@
+{
+    "sprite path": "./assets/image/npc/nico.png",
+    "rect": [[0, 0, 159, 211]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 0.7,
+    "dialogus": [
+        "Bonjour je suis seulement NICo\net pas NICO Je suis ici\npour te mettre en garde",
+        "NICO est tres puissant\nalors tien toi pret"
+    ]
+}

@@ -8,10 +8,10 @@
             "##B.xggxxxgxgxgxxxxggxxxxxgxxgxxggxgxxxxgggxgxxgxxg######.b##",
             "##B.xxggxxxggxggggg.........xxgxxgxgxggxggggxgxxggg######.b##",
             "##B.gxgggxxxgxxxxgg.........rrrrrrrrrrrrrrrrrrrrrrr###H##.b##",
-            "##B.ggxxgxggxxxxggx......###wwwwwwwwwwwwwwwwwwwwwww######.b##",
-            "##B.xgggxxggxxxgxgx...#P..............................n#..b##",
-            "##B.xgxxgxxgggxggxg...#.Lllllllllllllllllllllllllllll.n##.b##",
-            "##B.gxgxggxxgggxgxg....##################################.b##",
+            "##B.ggxxgxggxxxxggx......###wwwwwwwwwwwwwwwwwwwwwww###1##.b##",
+            "##B.xgggxxggxxxgxgx...#Y..............................n##.b##",
+            "##B.xgxxgxxgggxggxg...#.Lllllllllllllllllllllllllllll.nxm.b##",
+            "##B.gxgxggx!gggxgxg....##################################.b##",
             "##B.xxggggxxxxxxxgx.........mmmmmmmmmmmmmmmmmmmmmmmmmmmmm.b##",
             "##B.gxxxgxxxgxgxxgxgxxxxxxxxggxxxxgxgxgggxggxxxxgxgxxxxgx.b##",
             "##B.ggxxxgxxxxggxxxgggxxgxggxggxxxxgxgxxxgggxggggxggxggxg.b##",
@@ -35,7 +35,7 @@
             "##B.gggxxxgg#.......#xxgxgxxxxgxgggxxxxggxgxgxxxggxxgxgxx.b##",
             "##B.xgxgxggxxqqqqqqqgxxggxggxggxgggxgxgxggxgxxxxgxggxgxgg.b##",
             "##B.gxggggxggxxxxxxgxxxxggxgggxgxggggxxxxgxgggggxgxgggggx.b##",
-            "##B.gxgggxxxxgxxxxxxgxggggggxggggxxgxxxxxgggxxxggxxxgggxx.b##",
+            "##B.gxgggxxxxgxxxxxPgxggggggxggggxxgxxxxxgggxxxggxxxgggxx.b##",
             "##B.gggxxxgxxxggggxggxgggxxxgxxxgxxgxxxgxxgggggxxxggggxgg.b##",
             "##B.xgxxggxxgxxxggxgxxgxxgxgxxggxxxxxxggxxgxggxggxxxxgggx.b##",
             "##B.ggggggggxxxgggxxxxxxxxxgxxxggxgxggggxgxxgggxxxggxgxxg.b##",
@@ -69,7 +69,7 @@
             "##B.xxggxxggggxgxgxgxxgxxxxgxxgxgxggxgxggggxgxgxgxxxgxxgx.b##",
             "##B.xxxxgxxxxxggggggxgxgxxxgxxgxxggxgxggxggxxggxxxxgxxxgg.b##",
             "##B.ggggxxgggxxxxxxgxxgxggxxgxxxxgxgxgggxgggxxxxggxgggggg.b##",
-            "##B.xxxggggxxgxxxgggggxxgxxxgggxxxggggxxggxgggxggggxggggg.b##",
+            "##B.xxxggggxxgxxxgggggxxgx=xgggxxxggggxxggxgggxggggxggggg.b##",
             "##B.gxgggxgxxxgxgxxgxgxxggxxgggxggxxggxggxgxxxgxxgxgxgxgg.b##",
             "##B.xxgxgxggxggxxgxxxggxxxxxgxgggxxxggggxgxxgxxgxgggxgxgg.b##",
             "##B.xggxgggxxxgxxxxgggxgggxxxxggxxgggxxgxgggxgggxgggxgxgg.b##",
@@ -83,8 +83,8 @@
             "##B.xxxxxxxxxggggxxg#:#xxgxxgxxxgxxgxgxxgxggxxxxxgxggxxxx.b##",
             "##B.ggxxxxgxgggxgxgx#.#ggxxggggggxgxxxxxggxxxgggggggggggg.b##",
             "##B.gOOgOgxOgOgxgOOggqgOgOgxxOOggOgOxgxxgOxOxOgOgxgOOgxgg.b##",
-            "##B.OggxOxOgOgggxxOOOOOxxgxOOxxOgOgOgxggxOgOgxxOgOOxOgOxO.b##",
-            "##B.OxxOxgOOOgxOxgggOOOgOOxxxxxOgOOxgggxOgggxggxxxggxgOgx.b##",
+            "##B.OggxOxOgOgggxxOOOO2xxgxOOxxOgOgOgxggxOgOgxxOgOOxOgOxO.b##",
+            "##B.OxxOxgOOOgxOxggg2OOgOOxxxxxOgOOxgggxOgggxggxxxggxgOgx.b##",
             "##B.OOOgOxggxxxOgOOOOOOgOxxgggOxxgOOgxggxgxOgxxgOxggOOgxg.b##",
             "##B.OxOgOOOxOOgxOxggOOxOgggxOgOOgxgOxxxxgxxggOgOxxOgxOOgg.b##",
             "##B.OOgOgOxgxxOOxxgxgxxOOgggOgOxOxOOOOgxgOgOgOgggxgOOxgOO.b##",
@@ -166,7 +166,7 @@
                 "rotation": 180.0,
                 "col": 0
             },
-            "P": {
+            "Y": {
                 "path": "./assets/image/map/squares/plateau.png"
             },
             "l": {
@@ -190,6 +190,36 @@
             "q": {
                 "path": "./assets/image/map/squares/boss_grass.png",
                 "col": 0
+            },
+            "1": {
+                "path": "./assets/image/map/squares/broken_boss_grass.png",
+                "components": {
+                    "npc path": "./assets/data/npc/stage_0/magician.json"
+                }
+            },
+            "=": {
+                "path": "./assets/image/map/squares/boss_grass.png",
+                "components": {
+                    "npc path": "./assets/data/npc/stage_2/first_hobo.json"
+                }
+            },
+            "P": {
+                "path": "./assets/image/map/squares/boss_grass.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/forest_people.json"
+                }
+            },
+            "2": {
+                "path": "./assets/image/map/squares/boss_grass.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/amongus.json"
+                }
+            },
+            "!": {
+                "path": "./assets/image/map/squares/boss_grass.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/boss_sans.json"
+                }
             },
             ":": {
                 "path": "./assets/image/map/squares/void.png",

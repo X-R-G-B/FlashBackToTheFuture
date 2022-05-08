@@ -22,6 +22,8 @@ static const char stage_name_start[] = "stage_";
 
 static const int start_len = 6;
 
+extern const char MUSIC_GAME[];
+
 char *get_stage_name(int stage_id)
 {
     char *number = my_itoa(stage_id);
@@ -73,6 +75,7 @@ static int init_new_scene_objects(window_t *win, scene_t *scene)
         init_stat_upgrade_pop_up(scene,
         dico_t_get_value(win->components, HUD_ELEMENTS), win) != RET_OK ||
         create_meteo_handler(win, scene) != RET_OK ||
+        pathfind_add_to_scene(scene) != RET_OK ||
         create_inventory(win) != RET_OK) {
         return RET_ERR_MALLOC;
     }
@@ -94,6 +97,7 @@ int launch_stage(window_t *win, const char *stage_path, int stage_id,
         free(stage_name);
         return RET_ERR_INPUT;
     }
+    play_music(win, MUSIC_GAME);
     free(stage_name);
     return RET_OK;
 }

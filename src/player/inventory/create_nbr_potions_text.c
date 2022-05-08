@@ -27,7 +27,7 @@ static int get_potions_nbr(window_t *win)
     if (win == NULL) {
         return -1;
     }
-    player_save = dico_t_get_value(win->components, SAVE);
+    player_save = get_player_stats(win);
     potions = get_from_any(player_save, "d", POTIONS);
     if (potions == NULL) {
         return -1;

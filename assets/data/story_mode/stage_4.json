@@ -1,0 +1,66 @@
+{
+    "map data": {
+        "map": [
+            "#c#####C#",
+            "####a####",
+            "###...###",
+            "##B.1.b##",
+            "###...###",
+            "####A####",
+            "#v#####V#"
+        ],
+        "char type": {
+            "V": {
+                "path": "./assets/image/map/squares/corner.png",
+                "rotation": 180.0,
+                "col": 1
+            },
+            "v": {
+                "path": "./assets/image/map/squares/corner.png",
+                "rotation": 270.0,
+                "col": 1
+            },
+            "C": {
+                "path": "./assets/image/map/squares/corner.png",
+                "rotation": 90.0,
+                "col": 1
+            },
+            "c": {
+                "path": "./assets/image/map/squares/corner.png",
+                "col": 1
+            },
+            "b": {
+                "path": "./assets/image/map/squares/fall.png",
+                "rotation": 90.0,
+                "col": 1
+            },
+            "B": {
+                "rotation": 270.0,
+                "path": "./assets/image/map/squares/fall.png",
+                "col": 1
+            },
+            "A": {
+                "path": "./assets/image/map/squares/fall.png",
+                "rotation": 180.0,
+                "col": 1
+            },
+            "a": {
+                "path": "./assets/image/map/squares/fall.png",
+                "col": 1
+            },
+            "1": {
+                "path": "./assets/image/map/squares/flower.png",
+                "components": {
+                    "npc path": "./assets/data/npc/stage_0/magician.json"
+                }
+            },
+            ".": {
+                "col": 0
+            },
+            "#": {
+                "col": 1
+            }
+        }
+    },
+    "spawn": [4, 3]
+}

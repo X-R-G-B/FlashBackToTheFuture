@@ -15,14 +15,35 @@
 #include "npc.h"
 
 static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
-    knockback, update_spawner, activate_up_scale,
-    activate_down_scale, activate_dash, activate_dash, activate_dash,
-    init_npc_spawner, update_grandpa, init_npc_spawner, init_npc_spawner,
-    update_magician, update_spawner, update_spawner, update_spawner,
-    update_spawner, update_spawner
+    knockback,
+    update_spawner,
+    activate_up_scale,
+    activate_down_scale,
+    activate_dash,
+    activate_dash,
+    activate_dash,
+    init_npc_spawner,
+    update_grandpa,
+    init_npc_spawner,
+    init_npc_spawner,
+    update_magician,
+    update_elder,
+    init_npc_spawner,
+    init_npc_spawner,
+    update_spawner,
+    update_spawner,
+    update_spawner,
+    update_spawner,
+    update_spawner,
+    update_spawner,
+    update_spawner,
+    init_npc_spawner,
+    update_spawner,
+    update_spawner,
+    update_intro_magician
 };
 
-static const char square_type_update[] = "pSQqR:s*$=+1LP234";
+static const char square_type_update[] = "pSQqR:s*$=+1]?LP2345670D!9";
 
 static void get_square_update(char current_char,
     void (**update)(object_t *, scene_t *, window_t *, float))

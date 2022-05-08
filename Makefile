@@ -220,7 +220,8 @@ SRC_NPC_UPDATE		:=	update_dialog_text.c					\
 						update_magician.c						\
 						update_intro_magician.c					\
 						update_dialogue_box.c					\
-						update_npc.c
+						update_npc.c							\
+						update_elder.c
 SRC_NPC_UPDATE		:=	$(addprefix update/,$(SRC_NPC_UPDATE))
 
 SRC_NPC_NPC			:=	callback_npc.c
@@ -239,7 +240,7 @@ SRC_NPC				:=	$(addprefix npc/,$(SRC_NPC))
 # ----------------------------------------------------------------------------
 # --------- SRC_AUDIO ----------------------------------------------------------
 SRC_AUDIO			:=	init_sound.c						\
-						play_sound.c
+						play_audio.c
 SRC_AUDIO			:=	$(addprefix audio/,$(SRC_AUDIO))
 # ----------------------------------------------------------------------------
 # ------ POP_TEXT_GENERATOR --------------------------------------------------
@@ -302,8 +303,12 @@ TOBJ				:=	$(TSRC:%.c=%.o)
 # Make the rpg
 .PHONY: 		all
 all:			RULE = all
-all:			$(LIB_TARGET) $(NAME)
+all:			$(LIB_TARGET)
+	@$(MAKE) COMPIL_FASTER -s -j2
+	@$(MAKE) $(NAME) -s
 	@echo -e $(GREEN)'[finished]'$(RESET)': $(NAME): $(RULE)'
+
+COMPIL_FASTER: $(OBJ)
 
 $(NAME):		RULE = $(NAME)
 $(NAME): 		$(OBJ)
