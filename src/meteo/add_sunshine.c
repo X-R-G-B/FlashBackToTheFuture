@@ -14,8 +14,8 @@
 #include "my_macro.h"
 #include "my_bgs.h"
 #include "my_bgs_framebuffer.h"
-#include "my_rpg.h"
 #include "meteo.h"
+#include "macro.h"
 
 static const sfVector2f vectors[NB_VECTORS_SUN] = {
     {.x = 12, .y = 6},

@@ -6,7 +6,7 @@
 */
 
 #include "my_bgs.h"
-#include "my_rpg.h"
+#include "player.h"
 
 void activate_dash(object_t *obj, scene_t *scene,
     window_t *win, __attribute__((unused)) float time)

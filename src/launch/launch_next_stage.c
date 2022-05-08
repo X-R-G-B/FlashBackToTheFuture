@@ -10,6 +10,8 @@
 #include "npc.h"
 #include "meteo.h"
 #include "my_json.h"
+#include "macro.h"
+#include "stage.h"
 
 static const int back_color[] = {51, 136, 238};
 

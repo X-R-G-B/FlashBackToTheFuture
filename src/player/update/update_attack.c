@@ -6,8 +6,8 @@
 */
 
 #include <stdlib.h>
-#include "my_rpg.h"
 #include "my_json.h"
+#include "player.h"
 
 static void increment_index(int *index, player_t *player, float *time)
 {

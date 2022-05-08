@@ -5,7 +5,7 @@
 ** is player on square
 */
 
-#include "my_rpg.h"
+#include "player.h"
 
 static bool check_foot_collision(sfFloatRect rect, sfFloatRect square_rect)
 {

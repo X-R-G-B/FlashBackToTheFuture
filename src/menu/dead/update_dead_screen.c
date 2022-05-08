@@ -7,6 +7,7 @@
 
 #include "my_bgs.h"
 #include "my_rpg.h"
+#include "player.h"
 
 extern const char can_play_dead_screen[];
 
@@ -25,14 +26,14 @@ void update_dead(__attribute__((unused)) player_t *player,
     dead_screen->is_visible = true;
 }
 
-static bool can_wait_for_draw(scene_t *scene, float *time_elapsed)
+static bool can_wait_for_draw(window_t *window, float *time_elapsed)
 {
     bool *can_play = NULL;
 
-    if (scene == NULL || time_elapsed == NULL) {
+    if (window == NULL || time_elapsed == NULL) {
         return false;
     }
-    can_play = dico_t_get_value(scene->components, can_play_dead_screen);
+    can_play = dico_t_get_value(window->components, can_play_dead_screen);
     if (can_play == NULL || *can_play == false) {
         return false;
     }
@@ -52,7 +53,8 @@ static void change_opacity(float *time_elapsed, sfColor *opacity,
     sfSprite_setColor(object->drawable.sprite, *opacity);
 }
 
-void update_dead_screen(object_t *object, scene_t *scene,
+void update_dead_screen(object_t *object,
+    __attribute__((unused)) scene_t *scene,
     window_t *window, float delta_time)
 {
     static float time_elapsed = 0;
@@ -60,7 +62,7 @@ void update_dead_screen(object_t *object, scene_t *scene,
     player_t *player = NULL;
 
     if (object == NULL || object->is_visible == false || window == NULL ||
-            can_wait_for_draw(scene, &time_elapsed) == false) {
+            can_wait_for_draw(window, &time_elapsed) == false) {
         return;
     }
     player = (player_t *) dico_t_get_value(window->components, PLAYER);

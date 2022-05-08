@@ -6,7 +6,7 @@
 */
 
 #include "my_bgs.h"
-#include "my_rpg.h"
+#include "player.h"
 
 extern const char can_player_down_scale[];
 

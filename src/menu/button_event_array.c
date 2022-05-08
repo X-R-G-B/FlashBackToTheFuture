@@ -8,6 +8,7 @@
 #include "main_menu.h"
 #include "my_rpg.h"
 #include "audio.h"
+#include "player.h"
 
 const char *str_on_hover[] = {
     "QUIT", "PLAY", "SETTINGS menu", "SANDBOX", "music button", "sound button",

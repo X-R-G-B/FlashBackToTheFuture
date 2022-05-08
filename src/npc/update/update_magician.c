@@ -6,7 +6,7 @@
 */
 
 #include "npc.h"
-#include "my_rpg.h"
+#include "player.h"
 
 extern const char npc_path_key[];
 

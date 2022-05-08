@@ -9,6 +9,8 @@
 #include "my_wordarray.h"
 #include "my_strings.h"
 #include "my_json.h"
+#include "macro.h"
+#include "stage.h"
 
 static char check_char_type(any_t *char_dict)
 {

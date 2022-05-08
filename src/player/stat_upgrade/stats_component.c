@@ -7,6 +7,7 @@
 
 #include "my_rpg.h"
 #include "my_bgs_button_generator.h"
+#include "macro.h"
 
 static const char STATS_UPGRADE[] = "./assets/data/player/stats_upgrade.json";
 

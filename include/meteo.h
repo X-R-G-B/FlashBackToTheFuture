@@ -9,7 +9,7 @@
     #define METEO_RPG_H_
 
     #include "my_bgs.h"
-#include "my_rpg.h"
+    #include "my_rpg.h"
 
     #define METEO_HANDLER_COMP "meteo_handler"
 

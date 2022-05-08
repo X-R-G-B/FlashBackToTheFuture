@@ -9,6 +9,8 @@
 #include "macro.h"
 #include "ennemies.h"
 #include "maths_function.h"
+#include "audio.h"
+#include "player.h"
 
 const char pop_text_file[] = "./assets/data/pop_text/ennemy_hurt.json";
 static const char attack_key[] = "attack";

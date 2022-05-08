@@ -7,6 +7,7 @@
 
 #include "my_rpg.h"
 #include "main_menu.h"
+#include "player.h"
 
 void add_list_obj_to_hud_list(list_ptr_t *hud_elements,
     list_ptr_t *to_cpy, player_t *player)
