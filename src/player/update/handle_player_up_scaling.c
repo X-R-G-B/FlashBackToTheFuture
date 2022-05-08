@@ -7,9 +7,11 @@
 
 #include "my_rpg.h"
 #include "my_bgs.h"
+#include "rpg_struct.h"
 
-static const float scale_time_factor = 0.01;
-static const float max_scale = 1.2;
+static const float scale_time_factor = 0.97;
+static const float max_scale = 1820;
+static const float update_time = 0.1;
 extern const char can_player_up_scale[];
 
 static void stop_scaling(object_t *obj)
@@ -26,40 +28,22 @@ static void stop_scaling(object_t *obj)
     can_move_scale->value = (void *) false;
 }
 
-static void update_up_scale(float time_elapsed, sfVector2f *current_scale)
-{
-    while (time_elapsed >= scale_time_factor) {
-        if (current_scale->x < 0) {
-            current_scale->x -= scale_time_factor;
-        } else {
-            current_scale->x += scale_time_factor;
-        }
-        current_scale->y += scale_time_factor;
-        time_elapsed -= scale_time_factor;
-    }
-    if (current_scale->x > max_scale) {
-        current_scale->x = max_scale;
-        current_scale->y = max_scale;
-    } else if (current_scale->x < max_scale * -1) {
-        current_scale->x = max_scale * -1;
-        current_scale->y = max_scale;
-    }
-}
-
-void set_up_scale(object_t *obj, float time)
+void set_up_scale(object_t *obj, float time, player_t *player)
 {
     static float time_elapsed = 0;
     sfVector2f current_scale = {0};
 
     time_elapsed += time;
-    if (obj == NULL) {
+    if (obj == NULL || player == NULL || time_elapsed < update_time) {
         return;
     }
-    current_scale = sfSprite_getScale(obj->drawable.sprite);
-    if (current_scale.x >= max_scale) {
+    current_scale = sfView_getSize(player->view);
+    if (current_scale.x <= max_scale) {
         stop_scaling(obj);
         return;
     }
-    update_up_scale(time_elapsed, &current_scale);
-    sfSprite_setScale(obj->drawable.sprite, current_scale);
+    time_elapsed -= update_time;
+    current_scale.x *= scale_time_factor;
+    current_scale.y *= scale_time_factor;
+    sfView_setSize(player->view, current_scale);
 }
