@@ -35,11 +35,10 @@ static void go_to_next_stage(const char *str, scene_t *scene, window_t *win,
         return;
     }
     object->components = dico_t_rem(object->components, bool_check_key);
-    printf("create ennemy\n");
     ennemy = create_ennemy(scene, path_magician_ennemy,
         object->bigdata.sprite_bigdata.pos);
     scene->components = dico_t_add_data(scene->components, end_boss_key,
-        ennemy, destroy_ennemy_cast);
+        ennemy, NULL);
     list_add_to_end(scene->to_remove, object);
 }
 
