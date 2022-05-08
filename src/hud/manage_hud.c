@@ -104,7 +104,8 @@ int init_hud(window_t *win, scene_t *scene)
     if (init_life_hud(win, scene) != RET_OK ||
             init_energy_hud(win, scene) != RET_OK ||
             init_head_with_border(win, scene) != RET_OK ||
-            init_xp_hud(win, scene) != RET_OK) {
+            init_xp_hud(win, scene) != RET_OK ||
+            init_text_hud(win, scene)) {
         return RET_ERR_INPUT;
     }
     return RET_OK;

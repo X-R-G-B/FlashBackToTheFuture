@@ -12,7 +12,7 @@
 
 static const char energy_hud_path[] = "./assets/image/hud/energy_bar.png";
 static const sfIntRect energy_hud_rect = {0, 0, 60, 188};
-static const sfVector2f energy_hud_pos = {113, 50};
+const sfVector2f energy_hud_pos = {113, 50};
 extern const char energy_max_name[];
 
 static void retake_energy(float time_elapsed, player_t *player)

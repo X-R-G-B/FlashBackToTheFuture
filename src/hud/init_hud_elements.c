@@ -39,8 +39,7 @@ static int create_hud_elements(window_t *win, scene_t *scene,
         init_pause_button(win, pause_menu, scene, hud_elements) != RET_OK ||
         init_dead_menu(win, scene) != RET_OK ||
         init_hud(win, scene) != RET_OK ||
-        init_movement(player, win, scene) != RET_OK ||
-        init_xp_hud(win, scene) != RET_OK) {
+        init_movement(player, win, scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     add_main_menu_elements_to_hud_list(win, scene, hud_elements);
