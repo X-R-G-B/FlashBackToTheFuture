@@ -7,6 +7,7 @@
 
 #include "my_rpg.h"
 #include "my_bgs_button_generator.h"
+#include "my_bgs.h"
 #include "macro.h"
 
 static const char STATS_UPGRADE[] = "./assets/data/player/stats_upgrade.json";
@@ -44,12 +45,12 @@ int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
     if (stat_upgrade == NULL || player == NULL) {
         return BGS_ERR_MALLOC;
     }
-    if (scene_add_components(scene, stat_upgrade,
+    if (window_add_component(win, stat_upgrade,
         STATS_UPGRADE_KEY, free_pop_up)
         != RET_OK || set_hud_list(elem, stat_upgrade,
         uid_elements, player) != RET_OK) {
         return RET_ERR_INPUT;
     }
-    toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
+    toggle_pop_up(win->components, STATS_UPGRADE_KEY);
     return RET_OK;
 }

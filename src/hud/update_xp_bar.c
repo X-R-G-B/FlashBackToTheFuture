@@ -62,7 +62,7 @@ static bool is_xp_max_upgraded(any_t *xp_max_data)
 }
 
 int change_xp_bar_stats(any_t *max_xp_data, any_t *actual_xp_data,
-    object_t *object, scene_t *scene)
+    object_t *object, window_t *win)
 {
     float actual_xp = 0;
     float max_xp = 0;
@@ -70,7 +70,7 @@ int change_xp_bar_stats(any_t *max_xp_data, any_t *actual_xp_data,
 
     actual_xp = actual_xp_data->value.f;
     max_xp = max_xp_data->value.f;
-    max_width = dico_t_get_value(scene->components, xp_max_width_key);
+    max_width = dico_t_get_value(win->components, xp_max_width_key);
     if (max_width == NULL || actual_xp > max_xp) {
         return RET_ERR_INPUT;
     }
@@ -100,6 +100,6 @@ void update_xp_bar(object_t *object, scene_t *scene,
         return;
     }
     if (is_xp_changed(actual_xp) || is_xp_max_upgraded(max_xp)) {
-        change_xp_bar_stats(max_xp, actual_xp, object, scene);
+        change_xp_bar_stats(max_xp, actual_xp, object, window);
     }
 }
