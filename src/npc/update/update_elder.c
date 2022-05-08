@@ -17,13 +17,13 @@ static const sfKeyCode key_interract = sfKeyN;
 
 static int good_infinity_86_nbr(window_t *win)
 {
-    any_t *data = dico_t_get_value(win->components, SAVE);
+    any_t *data = get_player_stats(win);
 
     data = get_from_any(data, "d", INFINITY_86);
     if (data == NULL) {
         return RET_ERR_MALLOC;
     }
-    if (data->value.i >= 5) {
+    if (data->value.i >= 4) {
         return RET_OK;
     }
     return RET_ERR_INPUT;
