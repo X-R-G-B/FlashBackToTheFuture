@@ -10,7 +10,17 @@
 #include "my_puts.h"
 #include "stage.h"
 
-int print_help(const char *exe)
+static bool is_graphic_env(char **env)
+{
+    for (int i = 0; env[i] != NULL; i++) {
+        if (my_strstartswith(env[i], "DISPLAY=") == 1) {
+            return true;
+        }
+    }
+    return false;
+}
+
+static int print_help(const char *exe)
 {
     my_printf(1, "USAGE: %s [-h] [-f]\n", exe);
     my_putstr(1, "DESCRIPTION:\n\ta mini RPG\n");
@@ -24,10 +34,14 @@ int print_help(const char *exe)
     return (0);
 }
 
-int main(int ac, char **av)
+int main(int ac, char **av, char **env)
 {
     bool is_full_screen = false;
 
+    if (is_graphic_env(env) == false) {
+        my_putstr(2, "No graphics environment :( sorry\n");
+        return (0);
+    }
     if (ac == 1) {
         return (launch_game(is_full_screen));
     }
