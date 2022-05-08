@@ -22,6 +22,7 @@ static void change_text_hud(object_t *obj, any_t *max_stat_data)
     }
     data_str = my_itoa((int) max_stat_data->value.f);
     sfText_setString(obj->drawable.text, data_str);
+    free(data_str);
 }
 
 int update_text_hud(object_t *obj, player_t *player,
