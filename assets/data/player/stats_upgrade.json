@@ -9,13 +9,13 @@
         {
             "text": "Up energy",
             "sprite path": "./assets/image/menu/stats/Upgrade.png",
-            "pos": [600.0, 1120.0],
+            "pos": [600.0, 1220.0],
             "plan": 0
         },
         {
             "text": "Up health",
             "sprite path": "./assets/image/menu/stats/Upgrade.png",
-            "pos": [400.0, 1120.0],
+            "pos": [400.0, 1220.0],
             "plan": 0
         },
         {
