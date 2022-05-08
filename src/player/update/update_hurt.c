@@ -23,7 +23,7 @@ const char data_directions[] = "dirrections player hurt";
 
 static const int nb_intervals = 100;
 
-static const float update_time = 1.0 / 30.0;
+static const float update_time = 1.0 / 20.0;
 
 static const int coef_vector_new = 3;
 
