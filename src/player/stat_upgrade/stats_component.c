@@ -5,9 +5,10 @@
 ** stats_component
 */
 
-#include "my_rpg.h"
 #include "my_bgs_button_generator.h"
 #include "my_bgs.h"
+#include "my_rpg.h"
+#include "main_menu.h"
 #include "macro.h"
 
 static const char STATS_UPGRADE[] = "./assets/data/player/stats_upgrade.json";
