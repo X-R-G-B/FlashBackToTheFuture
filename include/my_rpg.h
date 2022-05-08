@@ -135,9 +135,9 @@ void update_xp_bar(object_t *object, scene_t *scene,
 
 void level_up(scene_t *scene, window_t *win);
 
-void set_up_scale(object_t *obj, float time);
+void set_up_scale(object_t *obj, float time, player_t *player);
 
-void set_down_scale(object_t *obj, float time);
+void set_down_scale(object_t *obj, float time, player_t *player);
 
 void activate_up_scale(object_t *obj, scene_t *scene,
     window_t *win, float time);
