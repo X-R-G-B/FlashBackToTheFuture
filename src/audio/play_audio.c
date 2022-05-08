@@ -18,7 +18,7 @@ void play_music(window_t *win, const char *comp_key)
     if (obj == NULL || obj->type != SOUND) {
         return;
     }
-    sfMusic_setLoop(obj->drawable.music, true);
+    sfMusic_setLoop(obj->drawable.music, sfTrue);
     sfMusic_play(obj->drawable.music);
 }
 
