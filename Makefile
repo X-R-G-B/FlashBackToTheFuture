@@ -217,6 +217,7 @@ SRC_NPC_EVENT		:=	$(addprefix event/,$(SRC_NPC_EVENT))
 SRC_NPC_UPDATE		:=	update_dialog_text.c					\
 						update_grandpa.c						\
 						magician_view_rotation.c				\
+						update_chest.c							\
 						update_magician.c						\
 						update_intro_magician.c					\
 						update_dialogue_box.c					\
