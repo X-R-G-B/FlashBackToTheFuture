@@ -8,7 +8,8 @@
 #include <stdlib.h>
 #include "my_conversions.h"
 #include "my_bgs.h"
-#include "my_rpg.h"
+#include "macro.h"
+#include "player.h"
 
 extern const char life_max_name[];
 extern const char energy_max_name[];

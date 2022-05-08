@@ -8,6 +8,7 @@
 #include "my_bgs.h"
 #include "macro.h"
 #include "my_rpg.h"
+#include "player.h"
 
 extern const sfVector2f life_hud_pos;
 extern const sfVector2f energy_hud_pos;
