@@ -5,12 +5,22 @@
 ** home button event
 */
 
+#include <SFML/System/Vector2.h>
 #include <stdlib.h>
 #include "my_rpg.h"
+#include "audio.h"
 #include "main_menu.h"
+#include "macro.h"
+#include "player.h"
 
-static const char *TO_REMOVE[] = {PLAYER, PAUSE_MENU, SAVE, DEAD_MESSAGE,
-    DEAD_SCREEN, HUD_ELEMENTS};
+extern const char compo_dialog[];
+extern const char can_play_dead_screen[];
+
+static const char *TO_REMOVE_COMP_WIN[] = {PLAYER, PAUSE_MENU, DEAD_MESSAGE,
+    DEAD_SCREEN, HUD_ELEMENTS, can_play_dead_screen, compo_dialog,
+    STATS_UPGRADE_KEY, NULL};
+
+static const char *TO_REMOVE_SCENE[] = {INV_SCENE, NULL};
 
 static void check_type(dico_t *dico, list_t *elem, list_t **button_elem)
 {
@@ -41,12 +51,20 @@ static void browse_list(list_ptr_t *setting_menu, list_ptr_t *buttons,
 {
     list_t *elem = setting_menu->start;
     list_t *button_elem = buttons->start;
+    window_t *win = dico_t_get_value(scene->components, WINDOW);
     any_t *dico = NULL;
 
+    if (win == NULL) {
+        return;
+    }
     for (int i = 0; i < setting_menu->len; i++, elem = elem->next) {
         dico = button_elem->var;
         object_change_scene(elem->var, scene, next_scene);
-        check_type(dico->value.dict, elem, &button_elem);
+        if (i < setting_menu->len - 2) {
+            check_type(dico->value.dict, elem, &button_elem);
+        } else {
+            replace_button(elem->var, dico->value.dict);
+        }
     }
 }
 
@@ -75,10 +93,16 @@ static void move_setting_menu_to_main_menu(window_t *win, scene_t *scene)
 
 void remove_components(window_t *win)
 {
-    for (int i = 0; TO_REMOVE[i] != NULL; i++) {
-        win->components = dico_t_rem(win->components, TO_REMOVE[i]);
+    for (int i = 0; TO_REMOVE_COMP_WIN[i] != NULL; i++) {
+        win->components = dico_t_rem(win->components, TO_REMOVE_COMP_WIN[i]);
         if (win->components == NULL) {
-            return;
+            break;
+        }
+    }
+    for (int i = 0; TO_REMOVE_SCENE[i] != NULL; i++) {
+        win->scenes = dico_t_rem(win->scenes, TO_REMOVE_SCENE[i]);
+        if (win->scenes == NULL) {
+            break;
         }
     }
 }
@@ -87,18 +111,20 @@ void go_to_home(scene_t *scene, window_t *win)
 {
     player_t *player = NULL;
 
-    if (win == NULL|| scene == NULL) {
+    if (scene == NULL || win == NULL) {
         return;
     }
     player = dico_t_get_value(win->components, PLAYER);
-    if (player == NULL) {
+    if (player == NULL || player->view == NULL) {
         return;
     }
     move_setting_menu_to_main_menu(win, scene);
     window_change_scene(win, "MAIN MENU");
+    toggle_music_in_scene(dico_t_get_value(win->scenes, "MAIN MENU"));
     list_add_to_end(win->to_remove, scene);
     sfView_setCenter(player->view,
         (sfVector2f) {WIN_SIZE_X / 2.0, WIN_SIZE_Y / 2.0});
+    sfView_setSize(player->view, (sfVector2f) {WIN_SIZE_X, WIN_SIZE_Y});
     sfRenderWindow_setView(win->win, player->view);
     remove_components(win);
     list_add_to_end(win->to_remove, scene);

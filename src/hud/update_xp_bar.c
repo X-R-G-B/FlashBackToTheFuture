@@ -6,18 +6,24 @@
 */
 
 #include "my_bgs.h"
-#include "my_rpg.h"
 #include "my_macro.h"
+#include "my_json.h"
+#include "my_bgs.h"
+#include "macro.h"
+#include "player.h"
 
-static const char xp_level_name[] = "actual xp";
-static const char xp_max_name[] = "xp max";
+const char xp_level_name[] = "actual xp";
+const char xp_max_name[] = "xp max";
 extern const char xp_max_width_key[];
 
-static any_t *get_xp_data(player_t *player, const char data_name[])
+any_t *get_xp_data(player_t *player, const char data_name[])
 {
     any_t *stats = NULL;
     any_t *max_xp_data = NULL;
 
+    if (player == NULL || player->obj == NULL) {
+        return NULL;
+    }
     stats = dico_t_get_value(player->obj->components, PLAYER_STATS);
     if (stats == NULL || stats->type != DICT) {
         return NULL;
@@ -55,8 +61,8 @@ static bool is_xp_max_upgraded(any_t *xp_max_data)
     return false;
 }
 
-static int change_xp_bar_stats(any_t *max_xp_data, any_t *actual_xp_data,
-    object_t *object, scene_t *scene)
+int change_xp_bar_stats(any_t *max_xp_data, any_t *actual_xp_data,
+    object_t *object, window_t *win)
 {
     float actual_xp = 0;
     float max_xp = 0;
@@ -64,7 +70,7 @@ static int change_xp_bar_stats(any_t *max_xp_data, any_t *actual_xp_data,
 
     actual_xp = actual_xp_data->value.f;
     max_xp = max_xp_data->value.f;
-    max_width = dico_t_get_value(scene->components, xp_max_width_key);
+    max_width = dico_t_get_value(win->components, xp_max_width_key);
     if (max_width == NULL || actual_xp > max_xp) {
         return RET_ERR_INPUT;
     }
@@ -94,6 +100,6 @@ void update_xp_bar(object_t *object, scene_t *scene,
         return;
     }
     if (is_xp_changed(actual_xp) || is_xp_max_upgraded(max_xp)) {
-        change_xp_bar_stats(max_xp, actual_xp, object, scene);
+        change_xp_bar_stats(max_xp, actual_xp, object, window);
     }
 }

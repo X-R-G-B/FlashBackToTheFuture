@@ -7,6 +7,7 @@
 
 #include "ennemies.h"
 #include "main_menu.h"
+#include "macro.h"
 
 int add_to_ennemy_list(ennemy_t *ennemy, scene_t *scene)
 {

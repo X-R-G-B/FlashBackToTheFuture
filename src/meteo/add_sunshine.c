@@ -14,8 +14,8 @@
 #include "my_macro.h"
 #include "my_bgs.h"
 #include "my_bgs_framebuffer.h"
-#include "my_rpg.h"
 #include "meteo.h"
+#include "macro.h"
 
 static const sfVector2f vectors[NB_VECTORS_SUN] = {
     {.x = 12, .y = 6},
@@ -46,7 +46,7 @@ static const sfVector2f vectors[NB_VECTORS_SUN] = {
     {.x = 9, .y = 7}
 };
 
-static float time_disappear = 5;
+static float time_disappear = 2;
 
 static void update_sun(struct element_s *elem,
     framebuffer_t *buf,
@@ -54,13 +54,14 @@ static void update_sun(struct element_s *elem,
 {
     float y = 0;
     sfVector2f vect = {0};
+    int add_rand = rand() % 3;
 
     if (elem == NULL || buf == NULL) {
         return;
     }
     vect = (sfVector2f) {
-        .x = elem->data.line.point_b.x - elem->data.line.point_a.x,
-        .y = elem->data.line.point_b.y - elem->data.line.point_a.y
+        .x = elem->data.line.point_b.x - elem->data.line.point_a.x + add_rand,
+        .y = elem->data.line.point_b.y - elem->data.line.point_a.y + add_rand
     };
     elem->data.line.point_b.y += (int) (((vect.y) * (dtime * 100)) / 3.0);
     elem->data.line.point_b.x += (int) (((vect.x) * (dtime * 100)) / 3.0);
@@ -80,6 +81,7 @@ static void update_circle_sun(struct element_s *elem, framebuffer_t *buf,
     if (elem == NULL || buf == NULL) {
         return;
     }
+    elem->data.circle.radius += rand() % 2;
     time += dtime;
     if (time > time_disappear) {
         list_add_to_end(buf->to_remove, elem);
@@ -90,12 +92,21 @@ static void update_circle_sun(struct element_s *elem, framebuffer_t *buf,
 static void update_circle_sun_rand(struct element_s *elem, framebuffer_t *buf,
     __attribute__((unused)) float dtime)
 {
+    int new_a = 0;
+
     if (elem == NULL || buf == NULL) {
         return;
     }
-    elem->data.circle.radius += rand() % 5;
-    elem->data.circle.color.a -= rand() % 5;
-    if (elem->data.circle.radius > (unsigned int) 70 + rand() % 50) {
+    elem->data.circle.radius += (50 - rand() % 100);
+    new_a = elem->data.circle.color.a - rand() % 20;
+    if (new_a <= 0) {
+        list_add_to_end(buf->to_remove, elem);
+        return;
+    }
+    elem->data.circle.color.a = new_a;
+    elem->data.circle.center.x += rand() % 5;
+    elem->data.circle.center.y += rand() % 2;
+    if (elem->data.circle.radius <= 0 || elem->data.circle.color.a <= 0) {
         list_add_to_start(buf->to_remove, elem);
     }
 }
@@ -104,7 +115,7 @@ static void add_circle_suns(window_t *win)
 {
     elem_circle_t circle = {
         .color = sfColor_fromRGBA(255, 255, 0, 150),
-        .center = (sfVector2f) {30, 30},
+        .center = (sfVector2f) {40, 40},
         .is_plain = true,
         .radius = 30
     };

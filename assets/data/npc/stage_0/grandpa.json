@@ -1,0 +1,15 @@
+{
+    "sprite path": "./assets/image/npc/stage_0/grandpa.png",
+    "rect": [[0, 0, 42, 60]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 1.3,
+    "dialogus": [
+        "...",
+        "Le jour est arrive chakal...",
+        "Tu dois partir a LAVENTURE pour \nreunir les 5 86 d'infinitees de la \nlegende de la propheties",
+        "Je vais te donner un conseil \ntres precieux",
+        "Appuie sur 'E' pour parler \naux autres villageois",
+        "Et utilise 'Z' 'Q' 'S' 'D' \npour te deplacer"
+    ]
+}

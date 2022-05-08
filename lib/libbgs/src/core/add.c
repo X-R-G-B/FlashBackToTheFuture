@@ -16,9 +16,10 @@ int window_add_scene(window_t *win, scene_t *scene, const char *scene_name)
     if (win == NULL || scene == NULL || scene_name == NULL) {
         return BGS_ERR_INPUT;
     }
+    scene->components = dico_t_add_data(scene->components, WINDOW, win, NULL);
     win->scenes = dico_t_add_data(win->scenes, scene_name, scene,
             remove_scene);
-    if (win->scenes == NULL) {
+    if (win->scenes == NULL || scene->components == NULL) {
         return (BGS_ERR_MALLOC);
     }
     return BGS_OK;

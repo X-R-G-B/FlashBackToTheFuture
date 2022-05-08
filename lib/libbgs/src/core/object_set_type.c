@@ -10,7 +10,7 @@
 
 static int check_display_function(object_t *obj)
 {
-    scene_t *scene = dico_t_get_value(obj->components, "scene");
+    scene_t *scene = dico_t_get_value(obj->components, SCENE);
     list_t *elem = NULL;
     layer_t *layer = NULL;
 
@@ -74,6 +74,7 @@ int object_set_text(object_t *object, char const *path, char const *text,
     }
     object->drawable.text = sfText_create();
     if (object->drawable.text == NULL) {
+        sfFont_destroy(object->bigdata.text_bigdata.font);
         return BGS_ERR_MALLOC;
     }
     sfText_setFont(object->drawable.text, object->bigdata.text_bigdata.font);
@@ -91,7 +92,7 @@ int object_set_sprite(object_t *object, char const *path, sfIntRect rect,
     if (object == NULL || path == NULL) {
         return BGS_ERR_INPUT;
     }
-    scene = dico_t_get_value(object->components, "scene");
+    scene = dico_t_get_value(object->components, SCENE);
     object->is_visible = true;
     if (sprite_set_texture(object, pos, rect, path) != BGS_OK) {
         list_add_to_end(scene->to_remove, object);

@@ -23,32 +23,41 @@ RESET		=	'\033[0m'
 # ----------------------------------------------------------------------------
 # SRC
 
-CFLAGS				=	-Iinclude/ -Ilib/include/ -Wall -Wextra -Wpedantic
-
+CFLAGS				=	-Iinclude/ -Ilib/include/ -Wall -Wextra	\
+						-Wpedantic -Wno-pointer-to-int-cast		\
+						-Wno-int-to-pointer-cast
 # -------- SRC_METEO ---------------------------------------------------------
 SRC_METEO			:=	add_leaf.c								\
 						add_snow.c								\
 						add_sunshine.c							\
+						add_movement.c							\
 						change_meteo.c							\
 						meteo_handler.c							\
-						meteo_handler_init.c
+						meteo_handler_init.c					\
+						init_movement.c
 SRC_METEO			:=	$(addprefix meteo/,$(SRC_METEO))
 # ----------------------------------------------------------------------------
 # --------- SRC_ENNEMY -------------------------------------------------------
 
-SRC_ENNEMY_UPDATE	:=	ennemy_update.c							\
+SRC_ENNEMY_UPDATE	:=	check_wall.c							\
+						ennemy_check_is_dashing.c				\
+						ennemy_update.c							\
 						hurt.c									\
+						update_ennemy_attack.c					\
 						update_ennemy_move.c
 SRC_ENNEMY_UPDATE	:=	$(addprefix update/,$(SRC_ENNEMY_UPDATE))
 
 SRC_ENNEMY			:=	create_ennemy.c							\
+						drop_right_item.c						\
 						ennemy_get_view_dir.c					\
+						check_drop.c							\
 						sprite_set_change.c						\
 						add_to_ennemy_list.c					\
 						ennemy_check_hurt.c						\
 						destroy_ennemy.c						\
 						$(SRC_ENNEMY_UPDATE)					\
-						is_player_in_range.c
+						is_player_in_range.c					\
+						ennemy_static.c
 SRC_ENNEMY			:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 # ----------------------------------------------------------------------------
 # -------- SRC_LAUNCH --------------------------------------------------------
@@ -59,39 +68,62 @@ SRC_LAUNCH			:=	launch_game.c							\
 						replace_objects_in_next_stage.c			\
 						launch_next_stage.c						\
 						scene_loading_basic.c					\
-						temp_file_temp_pause_button.c
+						init_credits.c							\
+						init_pause_button.c						\
+						launch_static.c
 SRC_LAUNCH			:=	$(addprefix launch/,$(SRC_LAUNCH))
 # ----------------------------------------------------------------------------
 # -------------- SRC_MAP -----------------------------------------------------
 SRC_SQUARE_UPDATES	:=	is_player_on_square.c					\
 						next_stage.c							\
-						knockback.c
+						knockback.c								\
+						activate_player_down_scale.c			\
+						activate_player_up_scale.c				\
+						activate_dash.c							\
+						spawner.c								\
+						npc_spawner.c
 SRC_SQUARE_UPDATES	:=	$(addprefix square_updates/,$(SRC_SQUARE_UPDATES))
 
 SRC_MAP				:=	stage_map_to_collision_array.c			\
 						wordarray_free_cast.c					\
 						check_player_pos_in_map.c				\
+						square_set_components.c					\
 						check_collision.c						\
 						create_map.c							\
 						create_collision_map.c					\
+						change_meteo_json.c						\
 						$(SRC_SQUARE_UPDATES)
 SRC_MAP				:=	$(addprefix map/,$(SRC_MAP))
 # ----------------------------------------------------------------------------
 # ------- SRC_PLAYER ---------------------------------------------------------
 SRC_EVENT			:=	attack.c								\
+						roulade.c								\
 						move.c
 SRC_EVENT			:=	$(addprefix event/,$(SRC_EVENT))
 
 SRC_UPDATE			:=	update_player.c							\
+						update_roulade.c						\
 						update_hurt.c							\
 						update_movement.c						\
-						update_attack.c
+						update_attack.c							\
+						update_scale_with_height.c				\
+						handle_player_down_scaling.c			\
+						handle_player_up_scaling.c
 SRC_UPDATE			:=	$(addprefix update/,$(SRC_UPDATE))
 
 SRC_STAT_UPGRADE	:=	upgrade_stat.c							\
 						stats_component.c						\
-						gain_xp.c
+						gain_xp.c								\
+						upgrade_dammage.c
 SRC_STAT_UPGRADE	:=	$(addprefix stat_upgrade/,$(SRC_STAT_UPGRADE))
+
+SRC_INVENTORY		:=	create_inventory.c						\
+						inventory_event.c						\
+						update_data_json_inv.c					\
+						toggle_key_obj.c						\
+						heal.c									\
+						create_nbr_potions_text.c
+SRC_INVENTORY		:=	$(addprefix inventory/, $(SRC_INVENTORY))
 
 SRC_PLAYER			:=	set_stop.c								\
 						create_player.c							\
@@ -99,9 +131,12 @@ SRC_PLAYER			:=	set_stop.c								\
 						player_check_hurt.c						\
 						destroy_player.c						\
 						set_player_default_stats.c				\
+						init_player_scale_handling.c			\
 						$(SRC_EVENT)							\
 						$(SRC_UPDATE)							\
-						$(SRC_STAT_UPGRADE)
+						$(SRC_STAT_UPGRADE)						\
+						$(SRC_INVENTORY)						\
+						player_static.c
 SRC_PLAYER			:=	$(addprefix player/,$(SRC_PLAYER))
 # ----------------------------------------------------------------------------
 # -------- SRC_HUD ----------------------------------------------------------
@@ -114,21 +149,38 @@ SRC_HUD				:=	manage_hud.c							\
 						init_energy_hud.c						\
 						check_evolution_stat.c					\
 						init_xp_hud.c							\
-						update_xp_bar.c
+						update_xp_bar.c							\
+						init_text_hud.c							\
+						update_text_hud.c
 SRC_HUD				:=	$(addprefix hud/,$(SRC_HUD))
 # ----------------------------------------------------------------------------
 # -------- SRC_MENU ----------------------------------------------------------
 SRC_MAIN			:=	event_menu.c							\
 						init_menu.c								\
+						init_music.c							\
+						sandbox_button.c						\
 						pop_up_management.c 					\
-						set_frame.c								\
 						on_click_event.c						\
 						exit.c									\
+						making_of.c								\
 						set_overlay.c
 SRC_MAIN			:=	$(addprefix main/,$(SRC_MAIN))
 
+SRC_SETTINGS_MENU	:=	add_new_audio.c							\
+						set_drag_objects.c						\
+						set_frame.c								\
+						toggle_music_in_scene.c					\
+						bar_update.c							\
+						replace_button.c						\
+						button_hover_event.c					\
+						drag_button_on.c						\
+						drag_button_off.c						\
+						init_audio_list.c
+SRC_SETTINGS_MENU	:=	$(addprefix settings_menu/,$(SRC_SETTINGS_MENU))
+
 SRC_PAUSE			:=	create_pause_menu.c						\
 						home_button_event.c						\
+						check_restart_end_magician.c			\
 						restart_button.c						\
 						pressed_button_event.c					\
 						pause_button_event.c
@@ -136,13 +188,16 @@ SRC_PAUSE			:=	$(addprefix pause/,$(SRC_PAUSE))
 
 SRC_DEAD			:=	configure_dead_screen.c					\
 						event_dead_screen.c						\
-						dead_screen.c
+						update_dead_screen.c					\
+						update_dead_message.c
 SRC_DEAD			:=	$(addprefix dead/,$(SRC_DEAD))
 
 SRC_MENU			:=	$(SRC_PAUSE)							\
 						$(SRC_MAIN)								\
+						$(SRC_SETTINGS_MENU)					\
 						$(SRC_DEAD)								\
-						button_event_array.c
+						button_event_array.c					\
+						menu_static.c
 SRC_MENU			:=	$(addprefix menu/,$(SRC_MENU))
 # ----------------------------------------------------------------------------
 # ------- SRC_PATHFIND -------------------------------------------------------
@@ -154,7 +209,11 @@ SRC_PATH			:=	init_find.c								\
 SRC_PATH			:=	$(addprefix pathfind/,$(SRC_PATH))
 # ----------------------------------------------------------------------------
 # -------- SRC_MATH ----------------------------------------------------------
-SRC_MATH			:=	rect_contains_segment.c					\
+SRC_MATH			:=	check_circle_col.c						\
+						get_distance.c							\
+						rect_contains_segment.c					\
+						get_rand_number.c						\
+						get_vector_dir.c						\
 						gore_effect.c
 SRC_MATH			:=	$(addprefix math/,$(SRC_MATH))
 # ----------------------------------------------------------------------------
@@ -164,25 +223,54 @@ SRC_NPC_EVENT		:=	press_to_continue.c						\
 SRC_NPC_EVENT		:=	$(addprefix event/,$(SRC_NPC_EVENT))
 
 SRC_NPC_UPDATE		:=	update_dialog_text.c					\
+						update_grandpa.c						\
+						magician_view_rotation.c				\
+						update_magician.c						\
+						update_end_magician.c					\
+						update_intro_magician.c					\
 						update_dialogue_box.c					\
-						update_npc.c
+						update_npc.c							\
+						update_elder.c							\
+						event_skip_tp_magi.c
 SRC_NPC_UPDATE		:=	$(addprefix update/,$(SRC_NPC_UPDATE))
 
-SRC_NPC_NPC			:=	magician.c
+SRC_CHEST			:=	dropping_infinity_86.c					\
+	  					reset_86_number.c						\
+						update_chest.c
+SRC_CHEST			:=	$(addprefix chest_npc/,$(SRC_CHEST))
+
+SRC_NPC_NPC			:=	callback_npc.c							\
+						$(SRC_CHEST)
 SRC_NPC_NPC			:=	$(addprefix npc/,$(SRC_NPC_NPC))
 
 SRC_NPC				:=	add_text_dialog.c						\
+						add_text_dialog_json.c					\
 						aplly_rect_npc.c						\
 						create_npc.c							\
 						init_dialog.c							\
+						pretyprint.c							\
 						$(SRC_NPC_EVENT)						\
 						$(SRC_NPC_UPDATE)						\
 						$(SRC_NPC_NPC)
 SRC_NPC				:=	$(addprefix npc/,$(SRC_NPC))
 # ----------------------------------------------------------------------------
+# --------- SRC_AUDIO ----------------------------------------------------------
+SRC_AUDIO			:=	init_sound.c						\
+						play_audio.c						\
+						audio_static.c
+SRC_AUDIO			:=	$(addprefix audio/,$(SRC_AUDIO))
+# ----------------------------------------------------------------------------
+# ------ POP_TEXT_GENERATOR --------------------------------------------------
+SRC_POP_TEXT_GENERATOR	:=	create_pop_text.c		\
+							create_stat_pop_text.c	\
+							update_text.c
+SRC_POP_TEXT_GENERATOR	:=	\
+					$(addprefix pop_text_generator/,$(SRC_POP_TEXT_GENERATOR))
+# ----------------------------------------------------------------------------
 # ------ SRC -----------------------------------------------------------------
 SRC					:=	main.c									\
 						$(SRC_LAUNCH)							\
+						$(SRC_POP_TEXT_GENERATOR)				\
 						$(SRC_PATH)								\
 						$(SRC_MAP)								\
         				$(SRC_MENU)								\
@@ -191,7 +279,8 @@ SRC					:=	main.c									\
 						$(SRC_METEO)							\
 						$(SRC_MATH)								\
 						$(SRC_HUD)								\
-						$(SRC_NPC)
+						$(SRC_NPC)								\
+						$(SRC_AUDIO)
 SRC					:= 	$(addprefix src/,$(SRC))
 # ----------------------------------------------------------------------------
 # ----- OBJ ------------------------------------------------------------------
@@ -231,8 +320,12 @@ TOBJ				:=	$(TSRC:%.c=%.o)
 # Make the rpg
 .PHONY: 		all
 all:			RULE = all
-all:			$(LIB_TARGET) $(NAME)
+all:			$(LIB_TARGET)
+	@$(MAKE) COMPIL_FASTER -s -j2
+	@$(MAKE) $(NAME) -s
 	@echo -e $(GREEN)'[finished]'$(RESET)': $(NAME): $(RULE)'
+
+COMPIL_FASTER: $(OBJ)
 
 $(NAME):		RULE = $(NAME)
 $(NAME): 		$(OBJ)

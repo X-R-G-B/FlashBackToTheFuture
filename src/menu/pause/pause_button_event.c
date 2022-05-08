@@ -8,6 +8,7 @@
 #include "my_rpg.h"
 #include "my_bgs_button_generator.h"
 #include "main_menu.h"
+#include "audio.h"
 
 void settings_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt)
@@ -21,6 +22,7 @@ void settings_button_off(object_t *obj, scene_t *scene, window_t *win,
         pressed_button_off(obj, scene, win, evt);
         return;
     }
+    play_sound(win, PARCHEMIN_SOUND);
     toggle_pop_up(win->components, SETTINGS_MENU);
     toggle_pop_up(win->components, PAUSE_MENU);
     pressed_button_off(obj, scene, win, evt);

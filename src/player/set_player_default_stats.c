@@ -7,6 +7,7 @@
 
 #include "my_json.h"
 #include "my_rpg.h"
+#include "macro.h"
 
 const char life_max_name[] = "max_life";
 const char energy_max_name[] = "max_energy";

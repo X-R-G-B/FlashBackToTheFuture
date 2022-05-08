@@ -1,0 +1,15 @@
+{
+    "sprite path": "./assets/image/npc/hobo.png",
+    "rect": [[0, 0, 115, 191]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 0.5,
+    "dialogus": [
+        "Salut mon ami",
+        "Cherche tu les 86 d'infinitees ?",
+        "Oui ?",
+        "Je sais par ou tu devrais aller",
+        "Vers le bat' a Bintou, en haut",
+        "Bonne chance !\nEt peut etre a bientot"
+    ]
+}

@@ -10,15 +10,17 @@
 #include <stdlib.h>
 #include "list.h"
 #include "my_bgs.h"
+#include "my_bgs_components.h"
 #include "macro.h"
+#include "my_dico.h"
 #include "my_rpg.h"
 #include "npc.h"
 
 static const char path_dialog_img[] = "./assets/image/npc/dialog_box.png";
 static const sfIntRect rect_dialog = {-1, -1, -1, -1};
-const sfVector2f pos_dialog = {0, 470};
+const sfVector2f pos_dialog = {0, 300};
 
-static const char path_font_dialog[] = "./assets/fonts/Menlo-Regular.ttf";
+const char path_font[] = "./assets/fonts/Menlo-Regular.ttf";
 const sfVector2f pos_text = {0, 470};
 
 const char compo_dialog[] = "componente dialog";
@@ -59,7 +61,7 @@ static void destroy_dialog_manager_t(void *dialog_void)
     free(dialog);
 }
 
-static object_t *create_dialog_obj(scene_t *scene)
+static object_t *create_dialog_obj(scene_t *scene, list_ptr_t *list)
 {
     object_t *dialog = NULL;
     object_t *text = NULL;
@@ -70,21 +72,23 @@ static object_t *create_dialog_obj(scene_t *scene)
         return (NULL);
     }
     dialog->is_visible = false;
+    list_add_to_end(list, dialog);
     text = create_object(update_text_dialog, NULL, scene, LAYER_BUTTON);
-    if (object_set_text(text, path_font_dialog, "", pos_text) != BGS_OK) {
+    if (object_set_text(text, path_font, "", pos_text) != BGS_OK) {
         return (NULL);
     }
     text->is_visible = false;
+    list_add_to_end(list, text);
     return (dialog);
 }
 
-static int add_component(scene_t *scene, dialog_manager_t *comp,
+static int add_component(window_t *win, dialog_manager_t *comp,
     object_t *dialog)
 {
     if (dialog == NULL) {
         return (RET_ERR_INPUT);
     }
-    if (scene_add_components(scene, comp, compo_dialog,
+    if (window_add_component(win, comp, compo_dialog,
         &destroy_dialog_manager_t) != BGS_OK) {
         destroy_dialog_manager_t(comp);
         return (RET_OK);
@@ -94,9 +98,10 @@ static int add_component(scene_t *scene, dialog_manager_t *comp,
     return (RET_OK);
 }
 
-int init_dialog(scene_t *scene)
+int init_dialog(scene_t *scene, window_t *win)
 {
     dialog_manager_t *comp = NULL;
+    list_ptr_t *list_elem = NULL;
 
     if (scene == NULL) {
         return (RET_ERR_INPUT);
@@ -105,7 +110,9 @@ int init_dialog(scene_t *scene)
     if (comp == NULL) {
         return (RET_ERR_MALLOC);
     }
-    if (add_component(scene, comp, create_dialog_obj(scene)) != RET_OK) {
+    list_elem = dico_t_get_value(win->components, HUD_ELEMENTS);
+    if (add_component(win, comp, create_dialog_obj(scene, list_elem)) !=
+            RET_OK) {
         return (RET_ERR_MALLOC);
     }
     return (RET_OK);

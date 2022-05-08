@@ -6,11 +6,28 @@
 */
 
 #include <stdlib.h>
+#include "my_dico.h"
 #include "my_rpg.h"
+#include "npc.h"
 #include "meteo.h"
 #include "my_json.h"
+#include "macro.h"
+#include "rpg_struct.h"
+#include "stage.h"
+#include "player.h"
+#include "main_menu.h"
 
 static const int back_color[] = {51, 136, 238};
+
+static void destroy_elements(window_t *win)
+{
+    scene_t *scene = dico_t_get_value(win->components, win->current_scene);
+
+    if (scene == NULL) {
+        return;
+    }
+    event_quit_dialog_off(NULL, scene, win, NULL);
+}
 
 static int increment_current_stage_data(any_t *save)
 {
@@ -20,7 +37,7 @@ static int increment_current_stage_data(any_t *save)
         return -1;
     }
     current_stage->value.i += 1;
-    if (write_json(save, STORY_DATA_PATH) != JS_OK) {
+    if (write_json(save, SAVE_PATH) != JS_OK) {
         return -1;
     }
     return current_stage->value.i;
@@ -29,13 +46,22 @@ static int increment_current_stage_data(any_t *save)
 static int create_scene_objects(window_t *win, scene_t *prev_scene,
     scene_t *scene)
 {
+    player_t *player = NULL;
+
     if (move_object_between_scene(win, prev_scene, scene) != RET_OK ||
         create_map(scene) != RET_OK ||
-        add_collision_array_in_scene(scene) != RET_OK) {
+        add_collision_array_in_scene(scene) != RET_OK ||
+        change_meteo_to_json(win, scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     replace_objects(win, scene);
-    create_meteo_handler(win, scene);
+    player = dico_t_get_value(win->components, PLAYER);
+    if (player == NULL || win == NULL) {
+        return (RET_ERR_INPUT);
+    }
+    set_stop(player);
+    check_if_pop_up_true(win->components, SETTINGS_MENU);
+    check_if_pop_up_true(win->components, PAUSE_MENU);
     return RET_OK;
 }
 
@@ -83,6 +109,7 @@ int launch_next_stage(window_t *win)
         return RET_ERR_INPUT;
     }
     list_add_to_end(win->to_remove, current_scene);
+    destroy_elements(win);
     return create_new_scene(get_stage_path(new_stage),
         get_stage_name(new_stage), win, current_scene);
 }

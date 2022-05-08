@@ -11,9 +11,9 @@
 #include <stdlib.h>
 #include "my_bgs.h"
 #include "my_dico.h"
-#include "my_rpg.h"
 #include "my_strings.h"
 #include "npc.h"
+#include "player.h"
 
 static void set_new_text(dialog_manager_t *dialog, text_dialog_t *text,
     window_t *win)
@@ -24,7 +24,7 @@ static void set_new_text(dialog_manager_t *dialog, text_dialog_t *text,
         return;
     }
     player = dico_t_get_value(win->components, PLAYER);
-    if (dialog->text == NULL || my_strcmp(dialog->text, text->str) != 0) {
+    if (dialog->text == NULL || dialog->text != text->str) {
         dialog->text = text->str;
     }
     if (player != NULL && text->need_pause == true) {
@@ -56,11 +56,11 @@ void update_dialog(object_t *obj, scene_t *scene,
     dialog_manager_t *dialog = NULL;
     text_dialog_t *text = NULL;
 
-    if (scene == NULL || obj == NULL || scene->pause == true) {
+    if (scene == NULL || obj == NULL || scene->pause == true || win == NULL) {
         return;
     }
     update_position(obj, win);
-    dialog = dico_t_get_value(scene->components, compo_dialog);
+    dialog = dico_t_get_value(win->components, compo_dialog);
     if (dialog == NULL || dialog->dialogues == NULL ||
             dialog->dialogues->len <= 0) {
         obj->is_visible = false;

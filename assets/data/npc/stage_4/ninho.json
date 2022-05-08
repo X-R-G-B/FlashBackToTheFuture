@@ -1,0 +1,12 @@
+{
+    "sprite path": "./assets/image/npc/ninho.png",
+    "rect": [[35, 17, 209, 471], [44, 22, 187, 443], [804, 42, 389, 397]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 0.4,
+    "dialogus": [
+        "SALUT C'EST NINHO",
+        "SWIPE UP",
+        "POUR ECOUTER MA NOUVELLE MIXTAPE"
+    ]
+}

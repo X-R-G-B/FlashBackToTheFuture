@@ -20,14 +20,13 @@
     #define GO_LT "3"
     #define GO_DN "2"
 
-    #include <stdbool.h>
-    #include <SFML/Graphics/Rect.h>
-    #include <SFML/System/Vector2.h>
+    #define RET_OK 0
+    #define RET_ERR_MALLOC 1
+    #define RET_ERR_INPUT 2
 
-bool rect_contains_segment(
-    sfFloatRect rect,
-    sfVector2f point_a,
-    sfVector2f point_b
-);
+    #define SQUARE_SIZE 40
+
+    #define WIN_SIZE_Y 1080
+    #define WIN_SIZE_X 1920
 
 #endif

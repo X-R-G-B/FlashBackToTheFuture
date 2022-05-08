@@ -52,6 +52,7 @@ SRC_CORE		:=	add.c					\
 					window_remove.c			\
 					object_change_scene.c	\
 					remove.c				\
+					remove_object.c			\
 					scene_loading.c			\
 					scene_loop.c			\
 					start.c					\
@@ -113,11 +114,14 @@ LIBS_DEP	=	../libdico/libdico.a ../libstr/libstr.a ../liblist/liblist.a
 	@echo -e $(BLUE)'[compil]: $(notdir $^) -> $(notdir $@)'$(RESET)
 
 all: 	CURR_RULE = all
-all: 	init
+all: 	init $(LIBS_DEP)
+	@$(MAKE) COMPIL_FASTER -s -j2
 	@$(MAKE) $(NAME) -s
 
+COMPIL_FASTER: $(OBJ)
+
 $(NAME): CURR_RULE = $(NAME)
-$(NAME): init $(LIBS_DEP) $(OBJ)
+$(NAME): init $(OBJ)
 	@ar rc $(NAME) $(OBJ)
 	@echo -e $(GREEN)'[finished]: $(NAME): $(CURR_RULE)'$(RESET)
 

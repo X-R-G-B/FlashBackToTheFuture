@@ -1,0 +1,238 @@
+{
+    "map data": {
+        "map": [
+            "#c#########################################################C#",
+            "####aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa####",
+            "###.......................................................###",
+            "##B.gxxxxxgxggggggxgggxgggggxxgxxggxggxxgxxgxggxgxxgxgxgg.b##",
+            "##B.xggxxxgxgxgxxxxggxxxxxgxxgxxggxgxxxxgggxgxxgxxg######.b##",
+            "##B.xxggxxxggxggggg.........xxgxxgxgxggxggggxgxxggg######.b##",
+            "##B.gxgggxxxgxxxxgg.........rrrrrrrrrrrrrrrrrrrrrrr###H##.b##",
+            "##B.ggxxgxggxxxxggx......###wwwwwwwwwwwwwwwwwwwwwww###1##.b##",
+            "##B.xgggxxggxxxgxgx...#Y..............................n##.b##",
+            "##B.xgxxgxxgggxggxg...#.Lllllllllllllllllllllllllllll.nxm.b##",
+            "##B.gxgxggx!gggxgxg....##################################.b##",
+            "##B.xxggggxxxxxxxgx.........mmmmmmmmmmmmmmmmmmmmmmmmmmmmm.b##",
+            "##B.gxxxgxxxgxgxxgxgxxxxxxxxggxxxxgxgxgggxggxxxxgxgxxxxgx.b##",
+            "##B.ggxxxgxxxxggxxxgggxxgxggxggxxxxgxgxxxgggxggggxggxggxg.b##",
+            "##B.xxggggxxxgxxxxgggxxggxxxxxgxgxxxgggxxgxxggxggxgggggxg.b##",
+            "##B.ggggxgxxggggxxxxxgggxgxxxgxgxgxgxxxxgggggxgxxxgxxgxxx.b##",
+            "##B.xgxgxxgxxggxggxxxgxxxxgxxggxggxgxxxggxgxggggxxxggxggg.b##",
+            "##B.xxggxxxxxggxxgggxgxggxggggxgxxxgxggggxxgggggxgxxgxxxx.b##",
+            "##B.ggxxxxgxgggggxgxxgxxggxxggxgxggxgggxxgggxxxxxgxgxggxg.b##",
+            "##B.ggxgxgxgxxggggxxgggxxxggxggxggxgxgxxxxgxggxxggxxgxxxg.b##",
+            "##B.########gQQQQQQQg####################################.b##",
+            "##B.mmmmmmmm#.......#mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm.b##",
+            "##B.gxxxgxxx#:::::::#ggxxgxggxxggxgxgxxgxggggxxggxgxxgxgx.b##",
+            "##B.xggggxxx#.......#xgxxxxggxxxxxxxxgxxxxgxgxxxgxxxgggxx.b##",
+            "##B.ggxxxxxg#.......#ggxxgxxgxgxxgggxgxxxggxgggggxggxgxxg.b##",
+            "##B.gxgxggxg#.......#ggggggxggxxggggggxgxgxxggxxggxxgxggx.b##",
+            "##B.xxxgxxgg#...S...#gggggxggxxggxgxgxgxxxgxxxggggggxxxgx.b##",
+            "##B.xgggxxxg#.......#ggxxggggxgxgxxxxxgxggxxxggggxgxggggx.b##",
+            "##B.xxxxxggg#.......#xxgggxxgxgxxgxxgxgxxggggxggxgxxxgxxg.b##",
+            "##B.gxggxggg#.......#gxgxgxgxxgggxxggggxgxggggxgxggxxggxg.b##",
+            "##B.gxgxgxgg#:::::::#xxgggxggggggggxggxxgggxxgxxggggggxgx.b##",
+            "##B.gggxxxgg#.......#xxgxgxxxxgxgggxxxxggxgxgxxxggxxgxgxx.b##",
+            "##B.xgxgxggxxqqqqqqqgxxggxggxggxgggxgxgxggxgxxxxgxggxgxgg.b##",
+            "##B.gxggggxggxxxxxxgxxxxggxgggxgxggggxxxxgxgggggxgxgggggx.b##",
+            "##B.gxgggxxxxgxxxxxPgxggggggxggggxxgxxxxxgggxxxggxxxgggxx.b##",
+            "##B.gggxxxgxxxggggxggxgggxxxgxxxgxxgxxxgxxgggggxxxggggxgg.b##",
+            "##B.xgxxggxxgxxxggxgxxgxxgxgxxggxxxxxxggxxgxggxggxxxxgggx.b##",
+            "##B.ggggggggxxxgggxxxxxxxxxgxxxggxgxggggxgxxgggxxxggxgxxg.b##",
+            "##B.gxgggxxxxgxxxgxgxxgxgxxxgggxggggggxxgxgggxxggxggggxgx.b##",
+            "##B.gxggxgxxgxggxggxxgxggggggggxgggxgxgxgxggggxgggxxxggxg.b##",
+            "##B.xgxggxxxxgggxxgxxxgggxggxxxggxgxxgxxxgxgxxxxgxxxggxxx.b##",
+            "##B.xxxxgxxgxgxxxxgxggxggxgggxgxxgggggxgggxxxxgggggggxxxg.b##",
+            "##B.xgggxxxxxgggggxxgxxggxxgxgxggxxggxxxxxxxxxgggxxggxggg.b##",
+            "##B.xgxgxgggggxggxgxggggggxgxxxxgxxxgxxgxxgxgggxxgxgggggg.b##",
+            "##B.gxggxgggggggxxgxggxgxgxxxgggxxxgxggxggxgggxgggggxxxgx.b##",
+            "##B.ggxgxgggxxgxggxgxggxggggggxxxxgxggxgxxgxgggxgxgxxgxgg.b##",
+            "##B.gxxgxxxxggxgggggggxxxgggxgxgxxgxgggxgggxggggxxgxxxxxx.b##",
+            "##B.rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrxxgxggxrrrrrrr.b##",
+            "##B.wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww#.....#wwwwwww.b##",
+            "##B.xxxxxgxxxggxxgggggxxxxgxxgxgxxxxgggggxx#.....#xxxxxxg.b##",
+            "##B.gggxxxgxggggxgggggxgggxxxgxggxgxxxxgggg#.....#gggggxx.b##",
+            "##B.xgggggxxgxxxgxgxgggxgxxggxxxggxgxggxggg#.....#xxxgxxg.b##",
+            "##B.xggxxgxxxxgxxxgxggxxxxxxgggxxxgxxxxgxxx#.....#ggxxgxg.b##",
+            "##B.xxgxgxgggxggxggxggxxxgxgxxggxgggxggxgxg#..s..#xxxxxgg.b##",
+            "##B.gxgxxgxxgggxggxxxxxgggxxxxxxxgxxxgxgggg#.....#xxggggx.b##",
+            "##B.gggggxggxxxxxxgxxxxxxgxxxggxgxxggxgxxgg#.....#xxgxxxx.b##",
+            "##B.xggggxgxxxggggxxxgxgxxxxxxgggxgxxggxxgx#.....#gggxgxx.b##",
+            "##B.xggxxggxgggggxgxxxgxgxgxxxgxgxxgxxggxxg#.....#gxgxgxg.b##",
+            "##B.gxggxgggxxxggxxxxxggggggggggxxxxgggxgxg#.....#xgxxxgx.b##",
+            "##B.gxgxgggxxxgxggxxgggxxxggxgxgxgxxxxgxgxgxQQQQQxggxgggx.b##",
+            "##B.gxgggxggggxxxxggxgggxxxxxxgxgxggxxxgxggggxxgxgxgxxgxx.b##",
+            "##B.gxxgxxgxggggxggxxxxxggxggxgggggxgxxxxxxgxgxxgxxxxxgxg.b##",
+            "##B.ggxggggxxxgxxxgxgxxxxxxxxggggggxxgxgggxxgggxgggxgxxgx.b##",
+            "##B.gxxxggxgxggxgggggggxxgggxxgxxxxxgxgxggggggxgxgggggxgg.b##",
+            "##B.xxggxxgxggxgggxgxgxxxxgxxgxggxxxxggxxxggggggggxxxgggx.b##",
+            "##B.xxggxxggggxgxgxgxxgxxxxgxxgxgxggxgxggggxgxgxgxxxgxxgx.b##",
+            "##B.xxxxgxxxxxggggggxgxgxxxgxxgxxggxgxggxggxxggxxxxgxxxgg.b##",
+            "##B.ggggxxgggxxxxxxgxxgxggxxgxxxxgxgxgggxgggxxxxggxgggggg.b##",
+            "##B.xxxggggxxgxxxgggggxxgx=xgggxxxggggxxggxgggxggggxggggg.b##",
+            "##B.gxgggxgxxxgxgxxgxgxxggxxgggxggxxggxggxgxxxgxxgxgxgxgg.b##",
+            "##B.xxgxgxggxggxxgxxxggxxxxxgxgggxxxggggxgxxgxxgxgggxgxgg.b##",
+            "##B.xggxgggxxxgxxxxgggxgggxxxxggxxgggxxgxgggxgggxgggxgxgg.b##",
+            "##B.gxgggxxggggxxxxgggxxgxgxgxggggxxggxxgggggxgggxxgxgxgx.b##",
+            "##B.################xQx##################################.b##",
+            "##B.mmmmmmmmmmmmmmmm#.#mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm.b##",
+            "##B.xxxgxgxggxgxxxgg#:#gggxxggggxgggxxxxgxxxxxxxggxgxxggx.b##",
+            "##B.xggxxggggxgxxggg#.#xggxgxxxxgggxgxxggxxxxxxxgxxxggxxg.b##",
+            "##B.ggxggxgxggggggxg#E#gggxggggxxgxgxgxxxgxggxgggxggxggxx.b##",
+            "##B.ggxxxxxgxxxgggxg#.#gxxggxxxxgggxxxxxxxgggggxgggxxxgxx.b##",
+            "##B.xxxxxxxxxggggxxg#:#xxgxxgxxxgxxgxgxxgxggxxxxxgxggxxxx.b##",
+            "##B.ggxxxxgxgggxgxgx#.#ggxxggggggxgxxxxxggxxxgggggggggggg.b##",
+            "##B.gOOgOgxOgOgxgOOggqgOgOgxxOOggOgOxgxxgOxOxOgOgxgOOgxgg.b##",
+            "##B.OggxOxOgOgggxxOOOO2xxgxOOxxOgOgOgxggxOgOgxxOgOOxOgOxO.b##",
+            "##B.OxxOxgOOOgxOxggg2OOgOOxxxxxOgOOxgggxOgggxggxxxggxgOgx.b##",
+            "##B.OOOgOxggxxxOgOOOOOOgOxxgggOxxgOOgxggxgxOgxxgOxggOOgxg.b##",
+            "##B.OxOgOOOxOOgxOxggOOxOgggxOgOOgxgOxxxxgxxggOgOxxOgxOOgg.b##",
+            "##B.OOgOgOxgxxOOxxgxgxxOOgggOgOxOxOOOOgxgOgOgOgggxgOOxgOO.b##",
+            "##B.xgxOxgOOggxOxxgxOxOOOgggxxxxgOxxOOOOxxgggxxxOggxgOxgx.b##",
+            "##B.xxggOOOxggOxxOOxgOOOxgxgxOxxgxOgxgxOOggOOgOOxOOOOggOx.b##",
+            "##B.gxxxxgOxOgggOxgOxxxOOxgggxxOxxggxxOxggOxxggOOOggxxggg.b##",
+            "###.......................................................###",
+            "####AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA####",
+            "#v#########################################################V#"
+        ],
+        "char type": {
+            "V": {
+                "path": "./assets/image/map/squares/boss_corner.png",
+                "rotation": 180.0,
+                "col": 1
+            },
+            "v": {
+                "path": "./assets/image/map/squares/boss_corner.png",
+                "rotation": 270.0,
+                "col": 1
+            },
+            "C": {
+                "path": "./assets/image/map/squares/boss_corner.png",
+                "rotation": 90.0,
+                "col": 1
+            },
+            "c": {
+                "path": "./assets/image/map/squares/boss_corner.png",
+                "col": 1
+            },
+            "b": {
+                "path": "./assets/image/map/squares/boss_fall.png",
+                "rotation": 90.0,
+                "col": 1
+            },
+            "B": {
+                "rotation": 270.0,
+                "path": "./assets/image/map/squares/boss_fall.png",
+                "col": 1
+            },
+            "A": {
+                "path": "./assets/image/map/squares/boss_fall.png",
+                "rotation": 180.0,
+                "col": 1
+            },
+            "a": {
+                "path": "./assets/image/map/squares/boss_fall.png",
+                "col": 1
+            },
+            "E": {
+                "path": "./assets/image/map/squares/stairs.png"
+            },
+            "s": {
+                "path": "./assets/image/map/squares/boss_stairs.png"
+            },
+            "S": {
+                "path": "./assets/image/map/squares/big_boss_stairs.png"
+            },
+            "g": {
+                "path": "./assets/image/map/squares/boss_grass.png"
+            },
+            "x": {
+                "path": "./assets/image/map/squares/broken_boss_grass.png"
+            },
+            "H": {
+                "path": "./assets/image/map/squares/boss_house.png",
+                "col": 1
+            },
+            "m": {
+                "path": "./assets/image/map/squares/barrier.png",
+                "col": 1
+            },
+            "w": {
+                "path": "./assets/image/map/squares/mono_barrier.png",
+                "col": 1
+            },
+            "r": {
+                "path": "./assets/image/map/squares/boss_grass_shadow.png",
+                "rotation": 180.0,
+                "col": 0
+            },
+            "Y": {
+                "path": "./assets/image/map/squares/plateau.png"
+            },
+            "l": {
+                "path": "./assets/image/map/squares/ladder.png",
+                "rotation": 90.0
+            },
+            "n": {
+                "path": "./assets/image/map/squares/ladder.png"
+            },
+            "L": {
+                "path": "./assets/image/map/squares/begin_ladder.png",
+                "rotation": 90.0
+            },
+            "O": {
+                "path": "./assets/image/map/squares/bones.png"
+            },
+            "Q": {
+                "path": "./assets/image/map/squares/broken_boss_grass.png",
+                "col": 0
+            },
+            "q": {
+                "path": "./assets/image/map/squares/boss_grass.png",
+                "col": 0
+            },
+            "1": {
+                "path": "./assets/image/map/squares/broken_boss_grass.png",
+                "components": {
+                    "npc path": "./assets/data/npc/stage_3/magician.json"
+                }
+            },
+            "=": {
+                "path": "./assets/image/map/squares/boss_grass.png",
+                "components": {
+                    "npc path": "./assets/data/npc/stage_2/first_hobo.json"
+                }
+            },
+            "P": {
+                "path": "./assets/image/map/squares/boss_grass.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/forest_people.json"
+                }
+            },
+            "2": {
+                "path": "./assets/image/map/squares/boss_grass.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/amongus.json"
+                }
+            },
+            "!": {
+                "path": "./assets/image/map/squares/boss_grass.png",
+                "components": {
+                    "ennemy path": "./assets/data/ennemy/boss_sans.json"
+                }
+            },
+            ":": {
+                "path": "./assets/image/map/squares/void.png",
+                "col": 0
+            },
+            ".": {
+                "col": 0
+            },
+            "#": {
+                "col": 1
+            }
+        }
+    },
+    "spawn": [55, 88],
+    "meteo": "snow"
+}

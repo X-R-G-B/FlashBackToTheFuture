@@ -73,7 +73,7 @@ static void check_obj_in_update_list(object_t *obj)
     if (obj == NULL) {
         return;
     }
-    scene = dico_t_get_value(obj->components, "scene");
+    scene = dico_t_get_value(obj->components, SCENE);
     if (scene == NULL) {
         return;
     }

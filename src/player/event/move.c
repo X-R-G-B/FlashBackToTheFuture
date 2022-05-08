@@ -7,7 +7,9 @@
 
 #include "my_bgs.h"
 #include "my_bgs_components.h"
-#include "my_rpg.h"
+#include "meteo.h"
+#include "macro.h"
+#include "player.h"
 
 static const dir_t player_dir[] = {UP, LEFT, DOWN, RIGHT};
 static const sfKeyCode key[] = {sfKeyZ, sfKeyQ, sfKeyS, sfKeyD, -1};
@@ -15,15 +17,16 @@ static const sfKeyCode key[] = {sfKeyZ, sfKeyQ, sfKeyS, sfKeyD, -1};
 static int handle_changings_movements(player_t *player, int dir)
 {
     dir_t prev_dir = player->dir;
+    sfVector2f scale = {0};
 
     player->dir = player_dir[dir];
+    scale = sfSprite_getScale(player->obj->drawable.sprite);
     if (player->dir == RIGHT && prev_dir != RIGHT) {
-        sfSprite_setScale(player->obj->drawable.sprite,
-            (sfVector2f) {-1, 1});
+        scale.x = (scale.x < 0) ? scale.x : scale.x * -1;
     } else if (player->dir != RIGHT && prev_dir == RIGHT) {
-        sfSprite_setScale(player->obj->drawable.sprite,
-            (sfVector2f) {1, 1});
+        scale.x = (scale.x < 0) ? scale.x * -1 : scale.x;
     }
+    sfSprite_setScale(player->obj->drawable.sprite, scale);
     return RET_OK;
 }
 
@@ -41,6 +44,7 @@ void move_on(object_t *object, scene_t *scene, window_t *win,
         return;
     }
     player->state = MOVING;
+    add_dirt_player(win, player);
     for (int dir = 0; key[dir] != -1; dir++) {
         if (event->input_key.event_code.key == key[dir]) {
             handle_changings_movements(player, dir);

@@ -2,11 +2,12 @@
 ** EPITECH PROJECT, 2022
 ** rpg
 ** File description:
-** replace objects in next stage 
+** replace objects in next stage
 */
 
 #include <stdlib.h>
 #include "my_rpg.h"
+#include "player.h"
 
 static void replace_hud(window_t *win, player_t *player, int *spawn)
 {

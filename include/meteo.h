@@ -9,6 +9,7 @@
     #define METEO_RPG_H_
 
     #include "my_bgs.h"
+    #include "my_rpg.h"
 
     #define METEO_HANDLER_COMP "meteo_handler"
 
@@ -64,6 +65,8 @@ int create_meteo_handler(window_t *win, scene_t *scene);
 **/
 int change_meteo(window_t *win, enum meteo_type_e type);
 
-int add_gore_sword(window_t *win, sfVector2f pos);
+int add_dirt_player(window_t *win, player_t *player);
+
+int change_meteo_to_json(window_t *win, scene_t *scene);
 
 #endif

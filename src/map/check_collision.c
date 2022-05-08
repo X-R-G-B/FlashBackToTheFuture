@@ -5,11 +5,13 @@
 ** check_collision
 */
 
+#include <SFML/System/Vector2.h>
+#include <stdbool.h>
 #include "my_rpg.h"
 #include "my_strings.h"
 #include "my_wordarray.h"
-#include <SFML/System/Vector2.h>
-#include <stdbool.h>
+#include "macro.h"
+#include "player.h"
 
 static sfVector2i get_player_pos_in_map(object_t *obj)
 {

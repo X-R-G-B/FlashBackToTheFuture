@@ -1,0 +1,12 @@
+{
+    "sprite path": "./assets/image/npc/chest.png",
+    "rect": [0, 1, 30, 29],
+    "scd rect": [34, 0, 30, 30],
+    "current": 0,
+    "time": 0.0,
+    "scale": 3.0,
+    "dialogus": [
+        "*rot*",
+        "Le coffre a bu les 86 d'infinitees"
+    ]
+}

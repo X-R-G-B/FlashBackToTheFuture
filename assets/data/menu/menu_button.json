@@ -3,19 +3,24 @@
         {
             "text": "QUIT",
             "sprite path": "./assets/image/menu/main_menu/default_screen/QUIT.png",
-            "pos": [700.0, 300.0],
+            "pos": [740.0, 300.0],
             "plan": 0
         },
         {
             "text": "PLAY",
             "sprite path": "./assets/image/menu/main_menu/default_screen/PLAY.png",
-            "pos": [400.0, 340.0],
+            "pos": [380.0, 340.0],
             "plan": 0
+        },
+        {
+            "text": "SANDBOX",
+            "sprite path": "./assets/image/menu/main_menu/default_screen/sandbox.png",
+            "pos": [500.0, 500.0]
         },
         {
             "text": "SETTINGS menu",
             "sprite path": "./assets/image/menu/main_menu/default_screen/SETTINGS.png",
-            "pos": [540.0, 540.0],
+            "pos": [620.0, 540.0],
             "plan": 0
         },
         {
@@ -27,8 +32,14 @@
         {
             "text": "Overlay",
             "sprite path": "./assets/image/menu/main_menu/default_screen/selection_overlay.png",
-            "pos": [390.0, 340.0],
+            "pos": [375.0, 340.0],
             "plan": 1
+        },
+        {
+            "text": "CREDITS",
+            "sprite path": "./assets/image/menu/main_menu/default_screen/credits.png",
+            "pos": [840.0, 262.0],
+            "plan": 0
         }
     ]
 }

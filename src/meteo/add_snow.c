@@ -13,7 +13,7 @@
 #include "my_macro.h"
 #include "my_bgs.h"
 #include "my_bgs_framebuffer.h"
-#include "my_rpg.h"
+#include "macro.h"
 
 static void update_snow(struct element_s *elem,
     __attribute__((unused)) framebuffer_t *buf,

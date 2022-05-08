@@ -9,6 +9,8 @@
 #include "my_bgs.h"
 #include "my_rpg.h"
 #include "macro.h"
+#include "player.h"
+#include "my_bgs_components.h"
 
 static const char xp_hud_borders_sprite_path[] =
     "./assets/image/hud/xp_bar_border.png";
@@ -19,6 +21,8 @@ static const char xp_hud_bar_sprite_path[] =
 static const sfIntRect xp_hud_bar_rect = {0, 0, 516, 28};
 static const sfVector2f xp_hud_bar_pos = {976.6, 958.5};
 const char xp_max_width_key[] = "xp_max_width";
+extern const char xp_level_name[];
+extern const char xp_max_name[];
 
 static int init_xp_borders_hud(window_t *win, scene_t *scene, player_t *player)
 {
@@ -34,12 +38,26 @@ static int init_xp_borders_hud(window_t *win, scene_t *scene, player_t *player)
     return RET_OK;
 }
 
-static int add_max_width_in_components(scene_t *scene)
+static int add_max_width_in_components(window_t *win)
 {
-    if (scene_add_components(scene, (void *) &xp_hud_bar_rect.width,
+    if (window_add_component(win, (void *) &xp_hud_bar_rect.width,
             xp_max_width_key, NULL) != BGS_OK) {
         return RET_ERR_INPUT;
     }
+    return RET_OK;
+}
+
+int update_init_xp_hud(player_t *player, object_t *obj, window_t *win)
+{
+    any_t *max_xp = NULL;
+    any_t *actual_xp = NULL;
+
+    max_xp = get_xp_data(player, xp_max_name);
+    actual_xp = get_xp_data(player, xp_level_name);
+    if (max_xp == NULL || actual_xp == NULL) {
+        return RET_ERR_INPUT;
+    }
+    change_xp_bar_stats(max_xp, actual_xp, obj, win);
     return RET_OK;
 }
 
@@ -51,10 +69,11 @@ static int init_xp_bar_hud(window_t *win, scene_t *scene, player_t *player)
     if (xp_hud_bar == NULL ||
             object_set_sprite(xp_hud_bar, xp_hud_bar_sprite_path,
             xp_hud_bar_rect, xp_hud_bar_pos) != BGS_OK ||
-            add_hud_to_hud_element(win, xp_hud_bar, player) != RET_OK) {
+            add_hud_to_hud_element(win, xp_hud_bar, player) != RET_OK ||
+            add_max_width_in_components(win) != RET_OK ||
+            update_init_xp_hud(player, xp_hud_bar, win) != RET_OK) {
         return RET_ERR_INPUT;
     }
-    add_max_width_in_components(scene);
     return RET_OK;
 }
 

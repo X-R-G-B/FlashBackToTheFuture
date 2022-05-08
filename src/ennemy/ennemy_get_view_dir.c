@@ -5,13 +5,15 @@
 ** ennemy get new dir
 */
 
-#include "math.h"
+#include <SFML/Graphics/Sprite.h>
+#include <SFML/System/Vector2.h>
+#include <math.h>
+#include "maths_function.h"
 #include "my_macro.h"
 #include "my_rpg.h"
 #include "ennemies.h"
 #include "my_json.h"
-#include <SFML/Graphics/Sprite.h>
-#include <SFML/System/Vector2.h>
+#include "player.h"
 
 static const double pi = 3.1415926535;
 
@@ -49,7 +51,7 @@ dir_t ennemy_get_view_dir(object_t *obj, window_t *win)
     return UNKNOWN_STATE;
 }
 
-int *get_rect(ennemy_t *ennemy, window_t *win, any_t *data, int rect_id)
+int *get_rect(ennemy_t *ennemy, window_t *win, any_t *data)
 {
     dir_t dir = UNKNOWN_STATE;
     sfVector2f scale = {0};
@@ -68,6 +70,7 @@ int *get_rect(ennemy_t *ennemy, window_t *win, any_t *data, int rect_id)
         scale.x = MAX(scale.x, scale.x * -1);
         sfSprite_setScale(ennemy->obj->drawable.sprite, scale);
     }
-    arr = get_any_int_array(get_from_any(data, "daa", "move", dir, rect_id));
+    arr = get_any_int_array(get_from_any(data, "daa", "move", dir,
+        ennemy->rect_id));
     return arr;
 }

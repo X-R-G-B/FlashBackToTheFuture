@@ -35,7 +35,11 @@ LIB = -L . -lmy
 $(NAME): $(OBJ)
 	ar rc $(NAME) $(OBJ)
 
-all: $(NAME)
+COMPIL_FASTER: $(OBJ)
+
+all:
+	$(MAKE) COMPIL_FASTER -s -j2
+	$(MAKE) $(NAME) -s
 
 debug: CFLAGS += -g3
 debug: fclean $(NAME)

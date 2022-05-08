@@ -8,6 +8,8 @@
 #include "my_bgs_button_generator.h"
 #include "main_menu.h"
 #include "my_rpg.h"
+#include "stage.h"
+#include "audio.h"
 
 void click_save(object_t *obj, scene_t *scene, window_t *win,
     __attribute__((unused)) set_event_t *event)
@@ -16,7 +18,7 @@ void click_save(object_t *obj, scene_t *scene, window_t *win,
         win->click = NULL;
         return;
     }
-    launch_story_mode(win, STORY_DATA_PATH, scene);
+    launch_story_mode(win, scene);
 }
 
 void close_window(__attribute__((unused)) object_t *obj,
@@ -59,6 +61,7 @@ void play_pop_up(__attribute__((unused)) object_t *obj, scene_t *scene,
         set_is_visible_false(dico_t_get_value(win->components,
             SETTINGS_MENU));
     }
+    play_sound(win, PARCHEMIN_SOUND);
     toggle_pop_up(scene->components, PLAY);
     if (buttons == NULL) {
         return;
@@ -84,7 +87,8 @@ void settings_pop_up(__attribute__((unused)) object_t *obj, scene_t *scene,
         win->click = NULL;
         set_is_visible_false(dico_t_get_value(scene->components, PLAY));
     }
-    obj = get_element_i_var(buttons, 2);
+    obj = get_element_i_var(buttons, 3);
+    play_sound(win, PARCHEMIN_SOUND);
     toggle_pop_up(win->components, SETTINGS_MENU);
     obj->bigdata.sprite_bigdata.rect.left = 17;
 }

@@ -7,8 +7,16 @@
 
 #include <stdlib.h>
 #include "macro.h"
-#include "meteo.h"
 #include "ennemies.h"
+#include "maths_function.h"
+#include "audio.h"
+#include "player.h"
+
+const char pop_text_file[] = "./assets/data/pop_text/ennemy_hurt.json";
+static const char attack_key[] = "attack";
+static const char sword_key[] = "sword";
+static const char dammage_hitbox_key[] = "dammage hitbox";
+extern const char dammages_key[];
 
 static any_t *get_current_sword_pos(player_t *player)
 {
@@ -21,8 +29,8 @@ static any_t *get_current_sword_pos(player_t *player)
     if (data == NULL) {
         return NULL;
     }
-    return get_from_any(data, "dddaa", "attack", "sword",
-        "damage hitbox", player->dir, get_rect_id(data, player));
+    return get_from_any(data, "dddaa", attack_key, sword_key,
+        dammage_hitbox_key, player->dir, get_rect_id(data, player));
 }
 
 static sfVector2f get_pos(any_t *current_sword_pos, int id,
@@ -48,16 +56,23 @@ static void set_hurt(ennemy_t *ennemy, player_t *player, sfVector2f impact,
     window_t *win)
 {
     bool hurt = true;
-    any_t *data = dico_t_get_value(player->obj->components, PLAYER_DATA);
+    any_t *data = dico_t_get_value(player->obj->components, PLAYER_STATS);
     any_t *dammage = NULL;
 
-    dammage = get_from_any(data, "ddd", "attack", "sword", "dammage");
+    dammage = get_from_any(data, "d", dammages_key);
     add_gore_sword(win, impact);
     if (dammage == NULL || dammage->type != FLOAT) {
         return;
     }
+    create_stat_pop_text_from_window(win, (int) (dammage->value.f * -1),
+        pop_text_file, impact);
+    if (ennemy->state == ATTACKING) {
+        ennemy->state = STOP;
+        ennemy->delta_time = 0;
+    }
+    play_sound(win, HURT_SOUNG);
     ennemy->life -= dammage->value.f;
-    ennemy->obj->components = dico_t_add_data(ennemy->obj->components, "hurt",
+    ennemy->obj->components = dico_t_add_data(ennemy->obj->components, hurt_key,
         (void *) hurt, NULL);
 }
 
@@ -94,7 +109,7 @@ bool ennemy_check_hurt(ennemy_t *ennemy, scene_t *scene, window_t *win,
         return false;
     }
     player = dico_t_get_value(win->components, PLAYER);
-    hurt = (bool) dico_t_get_value(ennemy->obj->components, "hurt");
+    hurt = (bool) dico_t_get_value(ennemy->obj->components, hurt_key);
     if (hurt == true) {
         ennemy_update_hurt(ennemy, dtime, win, scene);
     } else if (player != NULL && player->state == ATTACKING) {

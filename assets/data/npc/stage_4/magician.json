@@ -1,0 +1,12 @@
+{
+    "sprite path": "./assets/image/npc/magician.png",
+    "rect": [[6, 57, 26, 37], [40, 57, 42, 37], [85, 57, 50, 37],
+        [144, 65, 43, 29], [195, 58, 34, 34], [236, 57, 24, 37]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 3.0,
+    "dialogus": [
+        "Bonjour...",
+        "Au revoir"
+    ]
+}

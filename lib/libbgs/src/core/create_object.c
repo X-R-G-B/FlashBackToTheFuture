@@ -45,7 +45,7 @@ object_t *create_object(
         free(object);
         return (NULL);
     }
-    if (object_add_components(object, scene, "scene", NULL) != BGS_OK ||
+    if (object_add_components(object, scene, SCENE, NULL) != BGS_OK ||
             scene_add_object(scene, object, layer) != BGS_OK) {
         free(object);
         return (NULL);
