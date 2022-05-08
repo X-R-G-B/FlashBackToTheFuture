@@ -46,7 +46,7 @@ static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
     update_end_magician
 };
 
-static const char square_type_update[] = "pSQqR:s*$=+1]?LP2345670D!987";
+static const char square_type_update[] = "pSQqR:s*$=+1]?LP2345670D!98<";
 
 static void get_square_update(char current_char,
     void (**update)(object_t *, scene_t *, window_t *, float))

@@ -9,6 +9,7 @@
     #define NPC_RPG_H_
 
     #include <stdbool.h>
+    #include "rpg_struct.h"
     #include "list.h"
     #include "my_bgs.h"
     #include "my_json.h"
@@ -89,6 +90,9 @@ int add_text_dialog_json(window_t *win, const char *path,
         void *data), void *data);
 
 char *parseprety(const char *str);
+
+void check_have_enough_infinity_86(player_t *player, object_t *chest,
+    window_t *win, scene_t *scene);
 
 char *parseprety_free(char *str);
 

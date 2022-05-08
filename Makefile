@@ -224,15 +224,20 @@ SRC_NPC_EVENT		:=	$(addprefix event/,$(SRC_NPC_EVENT))
 SRC_NPC_UPDATE		:=	update_dialog_text.c					\
 						update_grandpa.c						\
 						magician_view_rotation.c				\
-						update_chest.c							\
 						update_magician.c						\
+						update_end_magician.c					\
 						update_intro_magician.c					\
 						update_dialogue_box.c					\
 						update_npc.c							\
 						update_elder.c
 SRC_NPC_UPDATE		:=	$(addprefix update/,$(SRC_NPC_UPDATE))
 
-SRC_NPC_NPC			:=	callback_npc.c
+SRC_CHEST			:=	dropping_infinity_86.c					\
+						update_chest.c
+SRC_CHEST			:=	$(addprefix chest_npc/,$(SRC_CHEST))
+
+SRC_NPC_NPC			:=	callback_npc.c							\
+						$(SRC_CHEST)
 SRC_NPC_NPC			:=	$(addprefix npc/,$(SRC_NPC_NPC))
 
 SRC_NPC				:=	add_text_dialog.c						\
