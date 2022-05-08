@@ -5,6 +5,7 @@
 ** update_text_hux
 */
 
+#include <stdlib.h>
 #include "my_conversions.h"
 #include "my_bgs.h"
 #include "my_rpg.h"
