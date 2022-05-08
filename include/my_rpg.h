@@ -25,49 +25,48 @@
     #include "my_bgs.h"
     #include "my_json.h"
 
-static const char HURTED_SOUND[] = "hurtedplayer";
-static const char HURT_SOUNG[] = "hurtplayer";
-static const char OPEN_INV_SOUND[] = "openinv";
-static const char CLOSE_INV_SOUND[] = "closeinv";
-static const char CONSUM_CAN_SOUND[] = "usepotion";
-static const char INFINITY_86_SOUND[] = "86infsound";
-static const char PARCHEMIN_SOUND[] = "parcheminsound";
-static const char LEVEL_UP_SOUND[] = "level_up_sound";
+extern const char HURTED_SOUND[];
+extern const char HURT_SOUNG[];
+extern const char OPEN_INV_SOUND[];
+extern const char CLOSE_INV_SOUND[];
+extern const char CONSUM_CAN_SOUND[];
+extern const char INFINITY_86_SOUND[];
+extern const char PARCHEMIN_SOUND[];
+extern const char LEVEL_UP_SOUND[];
 
-static const char ICON_PATH[] = "./assets/image/logo/FBTTF_logo.png";
+extern const char ICON_PATH[];
 
-static const char DATA_INV_JSON[] = "assets/data/player/inventory_data.json";
-static const char INV_SCENE[] = "INVENTORY";
-static const char INV_BUTTONS_COMP[] = "INVENTOR_BUTTONS";
-static const char KEY_OBJ[] = "MYTHICAL 86";
-static const char POTIONS[] =  "86 heal";
-static const char INFINITY_86[] = "86 infinity";
-static const char MAX_LIFE[] = "max_life";
-static const char POTIONS_TEXT[] = "potions text pos";
+extern const char DATA_INV_JSON[];
+extern const char INV_SCENE[];
+extern const char INV_BUTTONS_COMP[];
+extern const char KEY_OBJ[];
+extern const char POTIONS[];
+extern const char INFINITY_86[];
+extern const char MAX_LIFE[];
+extern const char POTIONS_TEXT[];
 
-static const char PLAYER_DATA_PATH[] = "./assets/data/player/data.json";
-static const char PLAYER_STATS_PATH[] = "./assets/data/player/stats.json";
+extern const char PLAYER_DATA_PATH[];
+extern const char PLAYER_STATS_PATH[];
 
-static const char COLLISION_ARRAY[] = "collision array";
+extern const char COLLISION_ARRAY[];
 
-static const char HUD_ELEMENTS[] = "hud_elements";
-static const char PAUSE_MENU[] = "pause";
-static const char DEAD_MESSAGE[] = "dead message";
-static const char DEAD_SCREEN[] = "dead screen";
+extern const char HUD_ELEMENTS[];
+extern const char PAUSE_MENU[];
+extern const char DEAD_MESSAGE[];
+extern const char DEAD_SCREEN[];
 
-static const char PLAYER[] = "player";
-static const char PLAYER_STATS[] = "stats";
-static const char PLAYER_DATA[] = "data";
+extern const char PLAYER[];
+extern const char PLAYER_STATS[];
+extern const char PLAYER_DATA[];
 
-static const char roulade_key[] = "roulade";
+extern const char roulade_key[];
 
-static const char hurt_key[] = "hurt";
+extern const char hurt_key[];
 
-static const char SAVE_PATH[] =
-    "./assets/data/story_mode/save.json";
-static const char SAVE[] = "story_mode_data";
+extern const char SAVE_PATH[];
+extern const char SAVE[];
 
-static const char STAGE_DATA[] = "stage_data";
+extern const char STAGE_DATA[];
 
 typedef enum state_e {
     ATTACKING,

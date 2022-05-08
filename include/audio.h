@@ -10,15 +10,16 @@
 
     #include "my_bgs.h"
 
-static const char AUDIO_LIST[] = "audio list";
-static const char SOUND_LIST[] = "sound list";
-static const char MUSIC_VOLUME[] = "music volume";
-static const char SOUND_VOLUME[] = "sound volume";
+extern const char AUDIO_LIST[];
+extern const char SOUND_LIST[];
+extern const char MUSIC_VOLUME[];
+extern const char SOUND_VOLUME[];
 
-static const char DELIM_START[] = "delim_start";
-static const char DELIM_END[] = "delim_end";
-static const char BAR[] = "bar";
-static const char BUTTON[] = "button";
+extern const char DELIM_START[];
+extern const char DELIM_END[];
+
+extern const char BAR[];
+extern const char BUTTON[];
 
 int init_audio_list(window_t *win);
 
