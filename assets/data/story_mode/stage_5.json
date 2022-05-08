@@ -233,7 +233,7 @@
             "1": {
                 "path": "./assets/image/map/squares/dark_flower.png",
                 "components": {
-                    "npc path": "./assets/data/npc/stage_0/magician.json"
+                    "npc path": "./assets/data/npc/stage_5/magician.json"
                 }
             },
             "*": {

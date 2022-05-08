@@ -194,7 +194,7 @@
             "1": {
                 "path": "./assets/image/map/squares/broken_boss_grass.png",
                 "components": {
-                    "npc path": "./assets/data/npc/stage_0/magician.json"
+                    "npc path": "./assets/data/npc/stage_3/magician.json"
                 }
             },
             "=": {
