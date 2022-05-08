@@ -61,7 +61,7 @@ static void config_input_and_components(window_t *win,
             NULL), (node_params_t) {sfMouseLeft, sfKeySpace, KEY}) != BGS_OK) {
         return;
     }
-    if (scene_add_components(scene, can_play,
+    if (window_add_component(win, can_play,
         can_play_dead_screen, free) != BGS_OK ||
         window_add_component(win, dead_message,
             DEAD_MESSAGE, NULL) != BGS_OK ||

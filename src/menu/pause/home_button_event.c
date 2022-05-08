@@ -11,9 +11,10 @@
 #include "main_menu.h"
 
 extern const char compo_dialog[];
+extern const char can_play_dead_screen[];
 
 static const char *TO_REMOVE_COMP_WIN[] = {PLAYER, PAUSE_MENU, DEAD_MESSAGE,
-    DEAD_SCREEN, HUD_ELEMENTS, compo_dialog, NULL};
+    DEAD_SCREEN, HUD_ELEMENTS, can_play_dead_screen, compo_dialog, NULL};
 
 static const char *TO_REMOVE_SCENE[] = {INV_SCENE, NULL};
 
