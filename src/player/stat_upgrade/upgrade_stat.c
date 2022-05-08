@@ -9,6 +9,7 @@
 #include "my_json.h"
 #include "my_strings.h"
 #include "player.h"
+#include "main_menu.h"
 
 extern const char life_max_name[];
 extern const char energy_max_name[];

@@ -32,7 +32,7 @@ void free_pop_up(void *list);
 
 void replace_button(object_t *obj, dico_t *dico);
 
-int check_if_pop_up_true(dico_t *dico, char *key);
+int check_if_pop_up_true(dico_t *dico, const char *key);
 
 void sandbox_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
