@@ -115,7 +115,7 @@
             "##Bnnnnnnnnnnnnnnnnnnnnnnnnnnn.#.nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn.#.nnnnnnnnnnnnnnnnnnnnnnnnnnnnb##",
             "##Bnnnnnnnnnnnnnnnnnnnnnnnnnnn.g.nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn.g.nnnnnnnnnnnnnnnnnnnnnnnnnnnnb##",
             "##Bnnnnnnnnnnnnnnnnnnnnnnnnnnn.#.nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn.#.nnnnnnnnnnnnnnnnnnnnnnnnnnnnb##",
-            "##Bnnnnnnnnnnnnnnnnnnnnnnnnnnn.#.nnnnnnnnnnnnnnnn9nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn.#.nnnnnnnnnnnnnnnnnnnnnnnnnnnnb##",
+            "##Bnnnnnnnnnnnnnnnnnnnnnnnnnnn.#.nnnnnnnnnnnnnnnn<nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn.#.nnnnnnnnnnnnnnnnnnnnnnnnnnnnb##",
             "##Bnnnnnnnnnnnnnnnnnnnnnnnnnnn.g.nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn.g.nnnnnnnnnnnnnnnnnnnnnnnnnnnnb##",
             "##Bnnnnnnnnnnnnnnnnnnnnnnnnnnn.#.nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn.#.nnnnnnnnnnnnnnnnnnnnnnnnnnnnb##",
             "##Bnnnnnnnnnnnnnnnnnnnnnnnnnnn.#.nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn.#.nnnnnnnnnnnnnnnnnnnnnnnnnnnnb##",
@@ -220,8 +220,14 @@
             },
             "o": {
                 "path": "./assets/image/map/squares/grass.png"
+            },
+            "<": {
+                "path": "./assets/image/map/squares/sand_2.png",
+                "components": {
+                    "npc path": "./assets/data/npc/magician_end.json"
+                }
             }
         }
     },
-    "spawn": [75, 85]
+    "spawn": [45, 115]
 }

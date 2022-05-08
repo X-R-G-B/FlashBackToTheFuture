@@ -33,7 +33,7 @@ static void retake_energy(float time_elapsed, player_t *player)
     }
     time += time_elapsed;
     for (; time > 0.03; time -= 0.03) {
-        player->energy += 5;
+        player->energy += max_stat_data->value.f / energy_hud_rect.height;
     }
     if (player->energy > max_stat_data->value.f) {
         player->energy = max_stat_data->value.f;

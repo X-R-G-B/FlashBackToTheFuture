@@ -17,5 +17,5 @@ void upgrade_dammage(any_t *player_stat)
     if (dammages == NULL || dammages->type != FLOAT) {
         return;
     }
-    dammages->value.f *= 1.10;
+    dammages->value.f = (int) (dammages->value.f * 1.2);
 }

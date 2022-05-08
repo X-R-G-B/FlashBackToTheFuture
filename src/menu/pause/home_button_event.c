@@ -5,6 +5,7 @@
 ** home button event
 */
 
+#include <SFML/System/Vector2.h>
 #include <stdlib.h>
 #include "my_rpg.h"
 #include "audio.h"
@@ -113,7 +114,7 @@ void go_to_home(scene_t *scene, window_t *win)
         return;
     }
     player = dico_t_get_value(win->components, PLAYER);
-    if (player == NULL) {
+    if (player == NULL || player->view == NULL) {
         return;
     }
     move_setting_menu_to_main_menu(win, scene);
@@ -122,6 +123,7 @@ void go_to_home(scene_t *scene, window_t *win)
     list_add_to_end(win->to_remove, scene);
     sfView_setCenter(player->view,
         (sfVector2f) {WIN_SIZE_X / 2.0, WIN_SIZE_Y / 2.0});
+    sfView_setSize(player->view, (sfVector2f) {WIN_SIZE_X, WIN_SIZE_Y});
     sfRenderWindow_setView(win->win, player->view);
     remove_components(win);
     list_add_to_end(win->to_remove, scene);

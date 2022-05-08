@@ -63,9 +63,12 @@ static int update_stats(any_t *player_stats, any_t *xp, any_t *xp_max,
         return RET_ERR_MALLOC;
     }
     for (; xp_max->value.f <= xp->value.f; (*lvl_gained)++) {
+        xp_max->value.f = (int) (xp_max->value.f * 1.2);
         xp->value.f -= xp_max->value.f;
         lvl->value.f += 1.0;
-        xp_max->value.f *= 1.2;
+    }
+    if (xp->value.f < 0.0) {
+        xp->value.f = 0;
     }
     return RET_OK;
 }

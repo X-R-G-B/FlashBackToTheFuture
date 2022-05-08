@@ -5,6 +5,7 @@
 ** create meteo with the currrent meteo
 */
 
+#include "macro.h"
 #include "my_bgs.h"
 #include "my_bgs_framebuffer.h"
 #include "meteo.h"
@@ -25,15 +26,14 @@ int (*add_elems_func[4])(window_t *win, int x) = {
 static void set_view_particle(window_t *win)
 {
     const sfView *view = NULL;
-    sfVector2f vec = {0};
 
     view = sfRenderWindow_getView(win->win);
     if (view == NULL) {
         return;
     }
-    vec.x = sfView_getCenter(view).x - (sfView_getSize(view).x / 2);
-    vec.y = sfView_getCenter(view).y - (sfView_getSize(view).y / 2);
-    win->buf->pos_on_win = vec;
+    win->buf->pos_on_win = sfView_getCenter(view);
+    win->buf->pos_on_win.x -= WIN_SIZE_X / 2.0;
+    win->buf->pos_on_win.y -= WIN_SIZE_Y / 2.0;
 }
 
 static void execute_function(window_t *win, struct meteo_rpg_s *meteo)

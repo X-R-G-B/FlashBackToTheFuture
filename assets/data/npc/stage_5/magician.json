@@ -1,0 +1,17 @@
+{
+    "sprite path": "./assets/image/npc/magician.png",
+    "rect": [[6, 57, 26, 37], [40, 57, 42, 37], [85, 57, 50, 37],
+        [144, 65, 43, 29], [195, 58, 34, 34], [236, 57, 24, 37]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 3.0,
+    "dialogus": [
+        "Bravo, je ne peux que te feliciter",
+        "Garder les 86 d'infinitees sans les boires...",
+        "Tu peux etre fier de toi, tu y es presque !",
+        "C'est ici que nous nous separons...",
+        "Malheureusement, je ne peux aller plus loin\ndans la quete avec toi",
+        "Je te laisser avec le doyen\nUn vieil ami...",
+        "Il t'aidera a aller au bout de ta quete"
+    ]
+}
