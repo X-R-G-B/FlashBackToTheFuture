@@ -12,6 +12,7 @@
 #include "audio.h"
 #include "my_strings.h"
 #include "macro.h"
+#include "stage.h"
 
 static const char stage_path_start[] = "./assets/data/story_mode/stage_";
 static const int start_len = 31;

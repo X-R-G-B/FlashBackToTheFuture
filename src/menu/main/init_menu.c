@@ -5,10 +5,10 @@
 ** init_menu
 */
 
-#include "my_rpg.h"
 #include "audio.h"
 #include "main_menu.h"
 #include "macro.h"
+#include "stage.h"
 
 static void add_escape_event(object_t *obj)
 {

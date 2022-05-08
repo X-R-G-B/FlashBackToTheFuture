@@ -10,6 +10,7 @@
 #include "my_bgs_components.h"
 #include "main_menu.h"
 #include "macro.h"
+#include "stage.h"
 
 static list_ptr_t *create_hud_list(window_t *win, scene_t *scene)
 {

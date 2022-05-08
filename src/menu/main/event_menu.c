@@ -8,6 +8,7 @@
 #include "my_bgs_button_generator.h"
 #include "main_menu.h"
 #include "my_rpg.h"
+#include "stage.h"
 
 void click_save(object_t *obj, scene_t *scene, window_t *win,
     __attribute__((unused)) set_event_t *event)

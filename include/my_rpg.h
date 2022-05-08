@@ -16,6 +16,7 @@
 
     #include "my_bgs.h"
     #include "my_json.h"
+    #include "rpg_struct.h"
 
 extern const char HURTED_SOUND[];
 extern const char HURT_SOUNG[];
@@ -60,48 +61,13 @@ extern const char SAVE[];
 
 extern const char STAGE_DATA[];
 
-typedef enum state_e {
-    ATTACKING,
-    MOVING,
-    STOP,
-    DYING,
-    ROULADE,
-    DIE,
-    IN_POP_UP,
-    STUNT
-} state_t;
-
-typedef enum dir_e {
-    UNKNOWN_STATE = -1,
-    UP = 0,
-    LEFT = 1,
-    DOWN = 2,
-    RIGHT = 3
-} dir_t;
-
-typedef struct player_s {
-    state_t state;
-    dir_t dir;
-    object_t *obj;
-    sfView *view;
-    float life;
-    float energy;
-    framebuffer_t *buf;
-} player_t;
-
-void next_stage(object_t *obj, scene_t *scene, window_t *win, float time);
-
 any_t *get_player_stats(window_t *win);
-
-int launch_next_stage(window_t *win);
 
 void change_player_pos(player_t *player, float move,
     window_t *win);
 
 void add_list_obj_to_hud_list(list_ptr_t *hud_elements,
     list_ptr_t *to_cpy, player_t *player);
-
-char *get_stage_path(int current_stage);
 
 void click_save(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *event);
@@ -110,8 +76,6 @@ bool check_collision(player_t *player, scene_t *scene);
 
 void update_spawner(object_t *obj, scene_t *scene, window_t *win,
     float time);
-
-scene_t *init_scene(const char *stage_path, window_t *win, char *stage_name);
 
 void roulade_event(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
@@ -160,21 +124,13 @@ void update_attack(player_t *player, scene_t *scene, window_t *win,
 void add_main_menu_elements_to_hud_list(window_t *win, scene_t *scene,
     list_ptr_t *hud_list);
 
-int launch_story_mode(window_t *win, scene_t *scene);
-
-int add_collision_array_in_scene(scene_t *scene);
-
 void wordarray_free_ptr(void *data);
 
 int init_pause_button(window_t *win, list_ptr_t *pause_menu,
     scene_t *scene, list_ptr_t *hud_elements);
 
-char *get_stage_name(int stage_id);
-
 void update_text(object_t *obj, scene_t *scene, window_t *win,
     float dtime);
-
-int launch_game(bool is_full_screen);
 
 void set_stop(player_t *player);
 
@@ -182,21 +138,8 @@ void knockback(object_t *obj, scene_t *scene, window_t *win, float time);
 
 bool is_player_on_square(window_t *win, sfFloatRect rect);
 
-player_t *create_player(window_t *win, scene_t *scene, const char *stats);
-
-char **create_new_map(char **map);
-
-char **stage_map_to_collision_array(scene_t *scene);
-
-int launch_stage(window_t *win, const char *stage_path, int stage_id,
-    scene_t *scene);
-
 void attack_event(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *set_event);
-
-list_ptr_t *create_pause_menu(scene_t *scene, window_t *win);
-
-int init_hud_elements(window_t *win, scene_t *scene);
 
 void home_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
@@ -237,8 +180,6 @@ void update_dead_screen(object_t *object, scene_t *scene,
 void update_dead(player_t *player, scene_t *screen,
     window_t *win, float delta_time);
 
-int init_dead_menu(window_t *win, scene_t *scene);
-
 void destroy_player(void *player_void);
 
 void dead_event_input(object_t *object, scene_t *scene,
@@ -248,23 +189,11 @@ void set_dead_opacity(object_t *dead_message, object_t *dead_screen);
 
 void free_pop_up(void *list);
 
-int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
-    window_t *win);
-
-int init_life_hud(window_t *win, scene_t *scene);
-
-int init_energy_hud(window_t *win, scene_t *scene);
-
 int update_hud_stats(object_t *obj, player_t *player, const char stat_name[],
     float stat_value);
 
 int add_hud_to_hud_element(window_t *win, object_t *hud_data,
     player_t *player);
-
-int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
-    window_t *win);
-
-int init_hud(window_t *win, scene_t *scene);
 
 int set_player_default_stats(player_t *player, any_t *stats);
 
@@ -306,7 +235,6 @@ void activate_down_scale(object_t *obj, scene_t *scene,
 
 void activate_dash(object_t *obj, scene_t *scene,
     window_t *win, __attribute__((unused)) float time);
-int create_inventory(window_t *win);
 
 void open_inventory(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
@@ -351,12 +279,10 @@ void upgrade_dammage(any_t *player_data);
 int init_movement(player_t *player, window_t *win, scene_t *scene);
 
 void update_elder(object_t *obj, scene_t *scene, window_t *win,
-    __attribute__((unused)) float dtime);
+    float dtime);
 
 void update_intro_magician(object_t *obj, scene_t *scene, window_t *win,
     float dtime);
-
-int init_sounds(scene_t *scene, window_t *win);
 
 void play_sound(window_t *win, const char *comp_key);
 

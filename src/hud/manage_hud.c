@@ -10,6 +10,7 @@
 #include "my_macro.h"
 #include "my_rpg.h"
 #include "macro.h"
+#include "stage.h"
 
 static const char head_with_borders_path[] =
     "./assets/image/hud/head_with_borders.png";
@@ -31,7 +32,7 @@ static void change_stat_hud(object_t *obj, player_t *player,
     obj->bigdata.sprite_bigdata.rect.height =
         ABSOL(stat_value * (float) size.y / max_stat);
     obj->bigdata.sprite_bigdata.pos.y =
-        (view.y - WIN_SIZE_Y / 2 + 50) +
+        (view.y - WIN_SIZE_Y / 2.0 + 50) +
         sfSprite_getOrigin(obj->drawable.sprite).y +
         (size.y - stat_value * (float) size.y / max_stat);
 }
