@@ -9,6 +9,7 @@
 #include "my_rpg.h"
 #include "audio.h"
 #include "main_menu.h"
+#include "macro.h"
 
 extern const char compo_dialog[];
 

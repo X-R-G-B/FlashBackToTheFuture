@@ -5,9 +5,10 @@
 ** create_nbr_potions_text
 */
 
+#include <stdlib.h>
 #include "my_rpg.h"
 #include "my_conversions.h"
-#include <stdlib.h>
+#include "macro.h"
 
 extern const char path_font[];
 

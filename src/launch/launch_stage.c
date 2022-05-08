@@ -15,6 +15,7 @@
 #include "ennemy_pathfind.h"
 #include "audio.h"
 #include "npc.h"
+#include "macro.h"
 
 static const int back_color[] = {51, 136, 238};
 

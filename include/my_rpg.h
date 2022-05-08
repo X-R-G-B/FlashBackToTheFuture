@@ -8,20 +8,12 @@
 #ifndef RPG_H_
     #define RPG_H_
 
-    #include "my_bgs_framebuffer.h"
     #include <stdbool.h>
-    #define RET_OK 0
-    #define RET_ERR_MALLOC 1
-    #define RET_ERR_INPUT 2
-
-    #define SQUARE_SIZE 40
-
-    #define WIN_SIZE_Y 1080
-    #define WIN_SIZE_X 1920
+    #include <SFML/System/Vector2.h>
+    #include "my_bgs_framebuffer.h"
 
     #define STATS_UPGRADE_KEY "stats_update_pop_up"
 
-    #include <SFML/System/Vector2.h>
     #include "my_bgs.h"
     #include "my_json.h"
 

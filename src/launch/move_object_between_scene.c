@@ -7,6 +7,7 @@
 
 #include "my_rpg.h"
 #include "main_menu.h"
+#include "macro.h"
 
 static int obj_list_change_scene(dico_t *dict, const char *key,
     scene_t *fst_scene, scene_t *scd_scene)

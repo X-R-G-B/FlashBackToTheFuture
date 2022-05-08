@@ -12,6 +12,7 @@
 #include "my_bgs_components.h"
 #include "my_json.h"
 #include "my_rpg.h"
+#include "macro.h"
 
 static const char *rects_keys[] = {"up", "left", "down", "right", NULL};
 

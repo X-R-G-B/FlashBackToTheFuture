@@ -6,8 +6,11 @@
 */
 
 #include "my_bgs.h"
-#include "my_rpg.h"
 #include "my_macro.h"
+#include "my_json.h"
+#include "my_bgs.h"
+#include "my_rpg.h"
+#include "macro.h"
 
 const char xp_level_name[] = "actual xp";
 const char xp_max_name[] = "xp max";

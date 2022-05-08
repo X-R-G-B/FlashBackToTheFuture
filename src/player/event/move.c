@@ -7,8 +7,8 @@
 
 #include "my_bgs.h"
 #include "my_bgs_components.h"
-#include "my_rpg.h"
 #include "meteo.h"
+#include "macro.h"
 
 static const dir_t player_dir[] = {UP, LEFT, DOWN, RIGHT};
 static const sfKeyCode key[] = {sfKeyZ, sfKeyQ, sfKeyS, sfKeyD, -1};

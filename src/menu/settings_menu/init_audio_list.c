@@ -8,6 +8,7 @@
 #include "audio.h"
 #include "my_bgs_components.h"
 #include "my_rpg.h"
+#include "macro.h"
 
 int init_audio_list(window_t *win)
 {

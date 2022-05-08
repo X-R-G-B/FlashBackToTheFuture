@@ -9,7 +9,7 @@
 #include <stdlib.h>
 #include "ennemies.h"
 #include "ennemy_pathfind.h"
-#include "my_rpg.h"
+#include "macro.h"
 
 static const char rect_actualisation[] = "rect actualisation";
 static const char speed[] = "speed";

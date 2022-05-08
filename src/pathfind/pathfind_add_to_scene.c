@@ -12,6 +12,7 @@
 #include "my_bgs.h"
 #include "my_dico.h"
 #include "my_rpg.h"
+#include "macro.h"
 
 static sfVector2i get_player_pos_in_map(player_t *obj, char **arr)
 {

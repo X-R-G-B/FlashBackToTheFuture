@@ -9,6 +9,7 @@
 #include "my_rpg.h"
 #include "meteo.h"
 #include "my_json.h"
+#include "macro.h"
 
 static const int back_color[] = {51, 136, 238};
 
