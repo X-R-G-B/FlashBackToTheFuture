@@ -12,6 +12,8 @@
 
 static const char STATS_UPGRADE[] = "./assets/data/player/stats_upgrade.json";
 
+extern const char PLAYER[];
+
 static int set_hud_list(list_t *elem, list_ptr_t *stat_upgrade,
     list_ptr_t *uid_elements, player_t *player)
 {
@@ -41,7 +43,7 @@ int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
         return RET_ERR_INPUT;
     }
     stat_upgrade = create_button(scene, STATS_UPGRADE);
-    player = dico_t_get_value(win->components, "player");
+    player = dico_t_get_value(win->components, PLAYER);
     if (stat_upgrade == NULL || player == NULL) {
         return BGS_ERR_MALLOC;
     }
@@ -51,6 +53,6 @@ int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
         uid_elements, player) != RET_OK) {
         return RET_ERR_INPUT;
     }
-    toggle_pop_up(win->components, STATS_UPGRADE_KEY);
+    check_if_pop_up_true(win->components, STATS_UPGRADE_KEY);
     return RET_OK;
 }
