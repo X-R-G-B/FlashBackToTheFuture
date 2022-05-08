@@ -27,17 +27,14 @@ static void go_to_next_stage(const char *str, scene_t *scene, window_t *win,
     void *data)
 {
     object_t *object = data;
-    sfVector2f *position = NULL;
 
     if (str == NULL || scene == NULL || win == NULL || data == NULL) {
         return;
     }
-    position = dico_t_get_value(object->components, key_position);
-    if (position == NULL) {
-        return;
-    }
     object->components = dico_t_rem(object->components, bool_check_key);
-    create_ennemy(scene, path_magician_ennemy, *position);
+    create_ennemy(scene, path_magician_ennemy,
+        object->bigdata.sprite_bigdata.pos);
+    list_add_to_end(scene->to_remove, object);
 }
 
 static void callback_end_magician(__attribute__((unused)) object_t *npc,
@@ -45,22 +42,15 @@ static void callback_end_magician(__attribute__((unused)) object_t *npc,
 {
     char *path = NULL;
     bool check = false;
-    sfVector2f *position = NULL;
 
-    path = (char *) dico_t_get_value((npc == NULL) ? NULL : npc->components,
-        npc_path_key);
-    check = (bool) dico_t_get_value((npc == NULL) ? NULL : npc->components,
-        bool_check_key);
+    if (npc == NULL) {
+        return;
+    }
+    path = (char *) dico_t_get_value(npc->components, npc_path_key);
+    check = (bool) dico_t_get_value(npc->components, bool_check_key);
     if (path == NULL || check == true) {
         return;
     }
-    position = malloc(sizeof(sfVector2f));
-    if (position == NULL) {
-        return;
-    }
-    position->x = npc->bigdata.sprite_bigdata.pos.x;
-    position->y = npc->bigdata.sprite_bigdata.pos.y;
-    object_add_components(npc, position, key_position, free);
     add_text_dialog_json(win, path, &go_to_next_stage, npc);
     object_add_components(npc, (void *) true, bool_check_key, NULL);
 }
