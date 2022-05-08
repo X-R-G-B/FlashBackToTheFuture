@@ -13,6 +13,7 @@
 #include "macro.h"
 #include "my_bgs_components.h"
 #include "npc.h"
+#include "player.h"
 
 static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
     knockback,

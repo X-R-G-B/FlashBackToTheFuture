@@ -8,6 +8,7 @@
 #include "my_rpg.h"
 #include "ennemies.h"
 #include "main_menu.h"
+#include "player.h"
 
 extern const char can_play_dead_screen[];
 

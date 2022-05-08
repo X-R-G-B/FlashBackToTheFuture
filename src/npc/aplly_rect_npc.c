@@ -12,7 +12,7 @@
 #include "my_bgs.h"
 #include "my_json.h"
 #include "my_puts.h"
-#include "my_rpg.h"
+#include "macro.h"
 
 static int aplly_intrect_npc(any_t *true_rect, object_t *npc)
 {

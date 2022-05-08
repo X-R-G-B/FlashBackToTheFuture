@@ -15,6 +15,7 @@
 #include "ennemy_pathfind.h"
 #include "macro.h"
 #include "my_strings.h"
+#include "player.h"
 
 static void (*event_on[])(object_t *, scene_t *, window_t *,
     set_event_t *) = {

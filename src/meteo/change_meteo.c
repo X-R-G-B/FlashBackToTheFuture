@@ -10,7 +10,7 @@
 #include "meteo.h"
 #include "my_bgs_framebuffer.h"
 #include "my_dico.h"
-#include "my_rpg.h"
+#include "macro.h"
 
 int change_meteo(window_t *win, enum meteo_type_e type)
 {

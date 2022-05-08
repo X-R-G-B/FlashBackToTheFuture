@@ -14,6 +14,7 @@
 #include "my_bgs.h"
 #include "my_bgs_framebuffer.h"
 #include "my_rpg.h"
+#include "macro.h"
 
 static void update_circle_t(struct element_s *elem, framebuffer_t *buf,
     __attribute__((unused)) float dtime)

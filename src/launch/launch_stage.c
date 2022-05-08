@@ -6,7 +6,6 @@
 */
 
 #include <stdlib.h>
-#include "my_rpg.h"
 #include "my_conversions.h"
 #include "main_menu.h"
 #include "my_strings.h"
@@ -15,6 +14,9 @@
 #include "ennemy_pathfind.h"
 #include "audio.h"
 #include "npc.h"
+#include "macro.h"
+#include "stage.h"
+#include "player.h"
 
 static const int back_color[] = {51, 136, 238};
 

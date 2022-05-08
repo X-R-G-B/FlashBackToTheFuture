@@ -6,8 +6,8 @@
 */
 
 #include <stdlib.h>
-#include "my_rpg.h"
 #include "my_json.h"
+#include "player.h"
 
 static void set_sprite_new_rect(object_t *obj, int *rect, int *origin)
 {

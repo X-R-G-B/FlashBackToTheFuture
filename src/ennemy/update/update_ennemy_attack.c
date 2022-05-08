@@ -10,7 +10,7 @@
 #include "my_dico.h"
 #include "my_json.h"
 #include "ennemies.h"
-#include "my_rpg.h"
+#include "macro.h"
 
 static const char dash_time_key[] = "dash time";
 static const char charge_time_key[] = "charge time";

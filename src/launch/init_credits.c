@@ -10,6 +10,7 @@
 #include "my_bgs_button_generator.h"
 #include "my_puts.h"
 #include "my_rpg.h"
+#include "macro.h"
 
 static const char credits_scene_name[] = "CREDITS";
 

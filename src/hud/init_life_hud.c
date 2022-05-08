@@ -9,6 +9,7 @@
 #include "my_json.h"
 #include "my_rpg.h"
 #include "macro.h"
+#include "player.h"
 
 static const char life_hud_path[] = "./assets/image/hud/life_bar.png";
 static const sfIntRect life_hud_rec = {0, 0, 60, 188};

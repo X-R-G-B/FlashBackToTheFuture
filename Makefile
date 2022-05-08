@@ -56,7 +56,8 @@ SRC_ENNEMY			:=	create_ennemy.c							\
 						ennemy_check_hurt.c						\
 						destroy_ennemy.c						\
 						$(SRC_ENNEMY_UPDATE)					\
-						is_player_in_range.c
+						is_player_in_range.c					\
+						ennemy_static.c
 SRC_ENNEMY			:=	$(addprefix ennemy/,$(SRC_ENNEMY))
 # ----------------------------------------------------------------------------
 # -------- SRC_LAUNCH --------------------------------------------------------
@@ -68,7 +69,8 @@ SRC_LAUNCH			:=	launch_game.c							\
 						launch_next_stage.c						\
 						scene_loading_basic.c					\
 						init_credits.c							\
-						init_pause_button.c
+						init_pause_button.c						\
+						launch_static.c
 SRC_LAUNCH			:=	$(addprefix launch/,$(SRC_LAUNCH))
 # ----------------------------------------------------------------------------
 # -------------- SRC_MAP -----------------------------------------------------
@@ -132,7 +134,8 @@ SRC_PLAYER			:=	set_stop.c								\
 						$(SRC_EVENT)							\
 						$(SRC_UPDATE)							\
 						$(SRC_STAT_UPGRADE)						\
-						$(SRC_INVENTORY)
+						$(SRC_INVENTORY)						\
+						player_static.c
 SRC_PLAYER			:=	$(addprefix player/,$(SRC_PLAYER))
 # ----------------------------------------------------------------------------
 # -------- SRC_HUD ----------------------------------------------------------
@@ -189,7 +192,8 @@ SRC_MENU			:=	$(SRC_PAUSE)							\
 						$(SRC_MAIN)								\
 						$(SRC_SETTINGS_MENU)					\
 						$(SRC_DEAD)								\
-						button_event_array.c
+						button_event_array.c					\
+						menu_static.c
 SRC_MENU			:=	$(addprefix menu/,$(SRC_MENU))
 # ----------------------------------------------------------------------------
 # ------- SRC_PATHFIND -------------------------------------------------------
@@ -240,7 +244,8 @@ SRC_NPC				:=	$(addprefix npc/,$(SRC_NPC))
 # ----------------------------------------------------------------------------
 # --------- SRC_AUDIO ----------------------------------------------------------
 SRC_AUDIO			:=	init_sound.c						\
-						play_audio.c
+						play_audio.c						\
+						audio_static.c
 SRC_AUDIO			:=	$(addprefix audio/,$(SRC_AUDIO))
 # ----------------------------------------------------------------------------
 # ------ POP_TEXT_GENERATOR --------------------------------------------------

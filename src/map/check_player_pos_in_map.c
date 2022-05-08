@@ -5,8 +5,9 @@
 ** check player pos in map
 */
 
-#include "my_rpg.h"
 #include <SFML/System/Vector2.h>
+#include "my_rpg.h"
+#include "macro.h"
 
 bool check_right_collision(object_t *player, char **map, sfVector2i pos)
 {

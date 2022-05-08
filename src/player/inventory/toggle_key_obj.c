@@ -6,6 +6,7 @@
 */
 
 #include "my_rpg.h"
+#include "player.h"
 
 static const int max_key_obj = 5;
 
