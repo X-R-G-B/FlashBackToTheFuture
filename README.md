@@ -9,6 +9,14 @@ https://cooltext.com/Logo-Design-White
 
 https://cooltext.com/Logo-Design-Epic-Stone
 
+- meteo in stage:
+```json
+{
+    "meteo": "leaf"
+}
+```
+meteo can be `leaf`, `snow`, `sun`
+
 ## LINK
 
 __true link__
@@ -42,8 +50,6 @@ lot of map
 ### non used
 - spirit
 ![spirit](https://www.spriters-resource.com/resources/sheets/71/73866.png)
-- dasher
-![dasher](https://www.spriters-resource.com/resources/sheets/124/127391.png)
 - full mob fight
 ![mob](https://www.spriters-resource.com/resources/sheets/115/118559.png)
 - little mod

@@ -23,6 +23,6 @@
     "sprite path": "./assets/image/ennemy/warrior.png",
     "xp loot": 50.0,
     "drop rate": 90.0,
-    "knock back coef": 40.0,
+    "knock back coef": 13.0,
     "range dash": 200.0
 }

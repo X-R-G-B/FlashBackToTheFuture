@@ -5,8 +5,14 @@
 ** magician view rotation
 */
 
+#include "my_bgs.h"
+#include "my_dico.h"
 #include "npc.h"
-#include "my_rpg.h"
+#include "macro.h"
+#include "rpg_struct.h"
+#include "stage.h"
+#include "player.h"
+#include <stdbool.h>
 
 static const char view_rotation_data[] = "./assets/data/npc/rotation_data.json";
 
@@ -19,6 +25,20 @@ static const char actualisation_time_key[] = "actualisation time";
 static const char rotation_key[] = "rotation";
 
 static const char zoom_key[] = "zoom";
+
+static bool check_can_go_next_stage(window_t *win)
+{
+    player_t *player = NULL;
+
+    player = dico_t_get_value(win->components, PLAYER);
+    if (player == NULL) {
+        return (false);
+    }
+    if (player-> state != STOP) {
+        return (false);
+    }
+    return (true);
+}
 
 static void update_view(player_t *player, any_t *rotation_data, float *time)
 {
@@ -85,15 +105,16 @@ static void update_rotation(object_t *obj, scene_t *scene, window_t *win,
 
 void create_view_rotation(scene_t *scene)
 {
-    object_t *obj = create_object(update_rotation, NULL, scene, 0);
+    object_t *obj = NULL;
     window_t *win = NULL;
     any_t *rotation_data = NULL;
 
-    if (obj == NULL) {
+    win = dico_t_get_value(scene->components, WINDOW);
+    if (win == NULL || check_can_go_next_stage(win) == false) {
         return;
     }
-    win = dico_t_get_value(scene->components, WINDOW);
-    if (win == NULL) {
+    obj = create_object(update_rotation, NULL, scene, 0);
+    if (object_set_custom(obj) != BGS_OK) {
         return;
     }
     rotation_data = parse_json_file(view_rotation_data);

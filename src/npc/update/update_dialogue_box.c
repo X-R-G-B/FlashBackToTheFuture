@@ -11,9 +11,9 @@
 #include <stdlib.h>
 #include "my_bgs.h"
 #include "my_dico.h"
-#include "my_rpg.h"
 #include "my_strings.h"
 #include "npc.h"
+#include "player.h"
 
 static void set_new_text(dialog_manager_t *dialog, text_dialog_t *text,
     window_t *win)

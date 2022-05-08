@@ -10,10 +10,10 @@
 #include <stdbool.h>
 #include "ennemies.h"
 #include "my_dico.h"
-#include "my_rpg.h"
 #include "my_json.h"
 #include "math.h"
 #include "maths_function.h"
+#include "player.h"
 
 static const float time_nulll = 1;
 
@@ -23,7 +23,7 @@ const char data_directions[] = "dirrections player hurt";
 
 static const int nb_intervals = 100;
 
-static const float update_time = 1.0 / 30.0;
+static const float update_time = 1.0 / 20.0;
 
 static const int coef_vector_new = 3;
 

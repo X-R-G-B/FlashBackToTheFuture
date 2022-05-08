@@ -7,10 +7,10 @@
 
 #include "ennemies.h"
 #include "my_bgs.h"
-#include "my_rpg.h"
 #include "my_wordarray.h"
 #include "my_json.h"
 #include "my_strings.h"
+#include "player.h"
 
 static const char blink_time_key[] = "blink time";
 

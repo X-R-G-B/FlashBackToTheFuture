@@ -6,8 +6,8 @@
 */
 
 #include <stdlib.h>
-#include "my_rpg.h"
 #include "my_json.h"
+#include "player.h"
 
 static void apply_rect(player_t *player, const char *key, dico_t *dico)
 {

@@ -9,6 +9,7 @@
 #include "my_rpg.h"
 #include "my_conversions.h"
 #include "my_strings.h"
+#include "macro.h"
 
 int create_stat_pop_text_from_window(window_t *win, int stat, const char *path,
     sfVector2f pos)

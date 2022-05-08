@@ -8,6 +8,7 @@
 #include "my_rpg.h"
 #include "my_bgs_components.h"
 #include "audio.h"
+#include "macro.h"
 
 static const char sound_hited_path[] = "./assets/music/sound/roblox.ogg";
 static const char sound_hit_path[] = "./assets/music/sound/hit-marker.ogg";

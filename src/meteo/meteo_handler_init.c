@@ -12,7 +12,7 @@
 #include "my_bgs_components.h"
 #include "my_bgs_framebuffer.h"
 #include "my_dico.h"
-#include "my_rpg.h"
+#include "macro.h"
 
 static struct meteo_rpg_s *create_meteo(void)
 {

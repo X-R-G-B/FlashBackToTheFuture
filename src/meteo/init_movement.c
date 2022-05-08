@@ -5,17 +5,18 @@
 ** init mouvements of dirt
 */
 
+#include <SFML/Graphics/Color.h>
+#include <SFML/Graphics/View.h>
+#include <SFML/System/Vector2.h>
+#include <stdbool.h>
+#include <stdlib.h>
 #include "list.h"
 #include "macro.h"
 #include "my_bgs.h"
 #include "my_bgs_framebuffer.h"
 #include "my_dico.h"
 #include "my_rpg.h"
-#include <SFML/Graphics/Color.h>
-#include <SFML/Graphics/View.h>
-#include <SFML/System/Vector2.h>
-#include <stdbool.h>
-#include <stdlib.h>
+#include "player.h"
 
 static void update_buf_player(__attribute__((unused)) object_t *obj,
     __attribute__((unused)) scene_t *scene, window_t *win,

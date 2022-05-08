@@ -6,7 +6,6 @@
 */
 
 #include <stdlib.h>
-#include "my_rpg.h"
 #include "my_conversions.h"
 #include "main_menu.h"
 #include "my_strings.h"
@@ -15,6 +14,9 @@
 #include "ennemy_pathfind.h"
 #include "audio.h"
 #include "npc.h"
+#include "macro.h"
+#include "stage.h"
+#include "player.h"
 
 static const int back_color[] = {51, 136, 238};
 
@@ -75,6 +77,7 @@ static int init_new_scene_objects(window_t *win, scene_t *scene)
         init_stat_upgrade_pop_up(scene,
         dico_t_get_value(win->components, HUD_ELEMENTS), win) != RET_OK ||
         create_meteo_handler(win, scene) != RET_OK ||
+        change_meteo_to_json(win, scene) != RET_OK ||
         pathfind_add_to_scene(scene) != RET_OK ||
         create_inventory(win) != RET_OK) {
         return RET_ERR_MALLOC;

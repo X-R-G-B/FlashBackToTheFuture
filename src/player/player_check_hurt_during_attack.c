@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include "my_json.h"
 #include "ennemies.h"
+#include "player.h"
 
 static int browse_rect_list(list_t *elem, list_ptr_t *rect_list,
     player_t *player)

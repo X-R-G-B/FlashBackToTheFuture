@@ -6,6 +6,7 @@
 */
 
 #include "ennemies.h"
+#include "macro.h"
 
 static const char ennemy_path_key[] = "ennemy path";
 

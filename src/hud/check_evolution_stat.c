@@ -6,7 +6,7 @@
 */
 
 #include "my_json.h"
-#include "my_rpg.h"
+#include "player.h"
 
 static any_t *get_stats_of_player(player_t *player, float *prev_max_stat)
 {

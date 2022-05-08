@@ -5,10 +5,12 @@
 ** inventory_event
 */
 
+#include <stdlib.h>
 #include "my_rpg.h"
 #include "my_bgs_components.h"
 #include "my_strings.h"
-#include <stdlib.h>
+#include "audio.h"
+#include "player.h"
 
 const char ACTUAL_SCENE[] = "actual scene";
 

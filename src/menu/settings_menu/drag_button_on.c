@@ -6,7 +6,8 @@
 */
 
 #include "audio.h"
-#include "my_rpg.h"
+#include "macro.h"
+#include "player.h"
 
 static int get_delim(int *delim_start, int *delim_end, object_t *obj,
     window_t *win)
@@ -35,7 +36,7 @@ static float get_view_left(window_t *win)
         return 0;
     }
     view_pos = sfView_getCenter(player->view);
-    return view_pos.x - (WIN_SIZE_X / 2);
+    return view_pos.x - (WIN_SIZE_X / 2.0);
 }
 
 void drag_button_on(object_t *obj, __attribute__((unused)) scene_t *scene,
