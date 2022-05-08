@@ -114,7 +114,7 @@ void go_to_home(scene_t *scene, window_t *win)
         return;
     }
     player = dico_t_get_value(win->components, PLAYER);
-    if (player == NULL) {
+    if (player == NULL || player->view == NULL) {
         return;
     }
     move_setting_menu_to_main_menu(win, scene);
