@@ -107,4 +107,7 @@ void event_quit_dialog_off(__attribute__((unused)) object_t *obj,
     scene_t *scene, window_t *win,
     __attribute__((unused)) set_event_t *event);
 
+void update_end_magician(object_t *obj, scene_t *scene, window_t *win,
+    float dtime)
+
 #endif

@@ -21,8 +21,6 @@ extern const char npc_path_key[];
 
 static const char path_magician_ennemy[] = "jsp_guillaume";
 
-static const char key_position[] = "KEY NPC POSITION";
-
 static void go_to_next_stage(const char *str, scene_t *scene, window_t *win,
     void *data)
 {
