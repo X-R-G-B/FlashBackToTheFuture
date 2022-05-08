@@ -14,6 +14,8 @@
 
 extern const char npc_path_key[];
 
+static const sfIntRect detection = {-50, -50, 100, 300};
+
 static const char check_into_chest_json[] =
         "./assets/data/npc/check_into_chest.json";
 
@@ -46,10 +48,10 @@ static sfFloatRect get_chest_detection_rect(object_t *obj)
 {
     sfFloatRect chest_rect = sfSprite_getGlobalBounds(obj->drawable.sprite);
 
-    chest_rect.left -= 50;
-    chest_rect.top -= 50;
-    chest_rect.width += 100;
-    chest_rect.height += 300;
+    chest_rect.left += detection.left;
+    chest_rect.top += detection.top;
+    chest_rect.width += detection.width;
+    chest_rect.height += detection.height;
     return chest_rect;
 }
 

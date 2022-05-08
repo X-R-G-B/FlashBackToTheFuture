@@ -128,9 +128,9 @@ void check_have_enough_infinity_86(player_t *player, object_t *chest,
     object_set_custom(obj);
     obj->components = dico_t_add_data(obj->components, chest_key, chest, NULL);
     rect = dico_t_get_value(chest->components, scd_rect_key);
-    if (rect != NULL) {
-        chest->bigdata.sprite_bigdata.rect = *rect;
-    }
+    chest->bigdata.sprite_bigdata.rect = (rect != NULL) ? *rect :
+        (sfIntRect) {0, 0, 0, 0};
+    reset_86_number(player);
     add_text_dialog_json(win, open_chest_dialog, &reaload_dialogs, chest);
     chest->components = dico_t_rem(chest->components, scd_rect_key);
 }

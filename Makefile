@@ -234,6 +234,7 @@ SRC_NPC_UPDATE		:=	update_dialog_text.c					\
 SRC_NPC_UPDATE		:=	$(addprefix update/,$(SRC_NPC_UPDATE))
 
 SRC_CHEST			:=	dropping_infinity_86.c					\
+	  					reset_86_number.c						\
 						update_chest.c
 SRC_CHEST			:=	$(addprefix chest_npc/,$(SRC_CHEST))
 
