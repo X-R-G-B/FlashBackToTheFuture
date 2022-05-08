@@ -6,7 +6,9 @@
     "time": 0.0,
     "scale": 3.0,
     "dialogus": [
-        "Bonjour...",
-        "Au revoir"
+        "Bravo ! tu as reussi",
+        "SANS ne fera plus de mal aux\nhabitans, continue comme ca",
+        "Si tu n'as pas tue SANS\ntu peux toujous aller...",
+        "a la suite mais la quete\nne pourra pas se terminer"
     ]
 }

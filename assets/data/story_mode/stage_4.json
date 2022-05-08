@@ -51,7 +51,7 @@
             "1": {
                 "path": "./assets/image/map/squares/flower.png",
                 "components": {
-                    "npc path": "./assets/data/npc/stage_0/magician.json"
+                    "npc path": "./assets/data/npc/stage_4/magician.json"
                 }
             },
             ".": {
