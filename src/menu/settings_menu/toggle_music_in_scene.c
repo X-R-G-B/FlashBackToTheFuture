@@ -7,6 +7,7 @@
 
 #include "my_rpg.h"
 #include "audio.h"
+#include "macro.h"
 
 static int toggle_audio(object_t *obj)
 {

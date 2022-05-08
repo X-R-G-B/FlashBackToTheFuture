@@ -8,7 +8,7 @@
 #include <stdbool.h>
 #include "my_strings.h"
 #include "my_puts.h"
-#include "my_rpg.h"
+#include "stage.h"
 
 int print_help(const char *exe)
 {

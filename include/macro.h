@@ -20,4 +20,13 @@
     #define GO_LT "3"
     #define GO_DN "2"
 
+    #define RET_OK 0
+    #define RET_ERR_MALLOC 1
+    #define RET_ERR_INPUT 2
+
+    #define SQUARE_SIZE 40
+
+    #define WIN_SIZE_Y 1080
+    #define WIN_SIZE_X 1920
+
 #endif

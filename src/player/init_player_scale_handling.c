@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include "my_bgs.h"
 #include "my_rpg.h"
+#include "macro.h"
 
 const char can_player_up_scale[] = "can_up_scale";
 const char can_player_down_scale[] = "can_down_scale";

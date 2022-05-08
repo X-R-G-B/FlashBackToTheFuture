@@ -5,16 +5,16 @@
 ** check if wall
 */
 
-#include "ennemies.h"
-#include "my_bgs.h"
-#include "my_rpg.h"
-#include "my_wordarray.h"
-#include "my_json.h"
-#include "my_strings.h"
 #include <SFML/Graphics/Rect.h>
 #include <SFML/Graphics/Sprite.h>
 #include <SFML/System/Vector2.h>
 #include <stdbool.h>
+#include "ennemies.h"
+#include "my_bgs.h"
+#include "my_wordarray.h"
+#include "my_json.h"
+#include "my_strings.h"
+#include "macro.h"
 
 static bool check_point_x_y(sfVector2f border, sfVector2f new,
     char *const *map)

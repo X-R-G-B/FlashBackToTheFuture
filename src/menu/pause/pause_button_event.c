@@ -8,6 +8,7 @@
 #include "my_rpg.h"
 #include "my_bgs_button_generator.h"
 #include "main_menu.h"
+#include "audio.h"
 
 void settings_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt)

@@ -6,12 +6,15 @@
 */
 
 #include <SFML/System/Vector2.h>
+#include "list.h"
 #include "my_wordarray.h"
 #include "my_strings.h"
 #include "ennemy_pathfind.h"
 #include "my_bgs.h"
 #include "my_dico.h"
 #include "my_rpg.h"
+#include "macro.h"
+#include "player.h"
 
 static sfVector2i get_player_pos_in_map(player_t *obj, char **arr)
 {
@@ -55,22 +58,27 @@ static void pathfind_update_path(__attribute__((unused)) object_t *obj_cust,
     collision_array[vect.y][vect.x] = 'P';
     init_pathfind(collision_array, 'P', '#', scene);
     collision_array[vect.y][vect.x] = tmp;
-    timer -= 0.5;
+    timer -= TIME_UPDATE_PATH;
 }
 
 int pathfind_add_to_scene(scene_t *scene)
 {
+    window_t *win = NULL;
     object_t *obj = NULL;
+    list_ptr_t *list_hud = NULL;
 
     if (scene == NULL) {
         return (RET_ERR_INPUT);
     }
-    obj = create_object(pathfind_update_path, NULL, scene, 50);
-    if (obj == NULL) {
-        return (RET_ERR_MALLOC);
+    win = dico_t_get_value(scene->components, WINDOW);
+    if (win == NULL) {
+        return (RET_ERR_INPUT);
     }
+    obj = create_object(pathfind_update_path, NULL, scene, 50);
     if (object_set_custom(obj) != BGS_OK) {
         return (RET_ERR_MALLOC);
     }
+    list_hud = dico_t_get_value(win->components, HUD_ELEMENTS);
+    list_add_to_end(list_hud, obj);
     return (RET_OK);
 }

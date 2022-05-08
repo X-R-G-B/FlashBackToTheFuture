@@ -10,6 +10,7 @@
 #include "my_rpg.h"
 #include "audio.h"
 #include "main_menu.h"
+#include "macro.h"
 
 static int get_save(window_t *win)
 {

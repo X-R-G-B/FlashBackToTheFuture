@@ -9,6 +9,8 @@
 #include "main_menu.h"
 #include "npc.h"
 #include "audio.h"
+#include "macro.h"
+#include "stage.h"
 
 static const char sandbox_world_path[] =
     "./assets/data/story_mode/sandbox.json";

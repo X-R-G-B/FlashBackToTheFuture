@@ -16,7 +16,7 @@
 #include "my_bgs.h"
 #include "my_bgs_framebuffer.h"
 #include "my_json.h"
-#include "my_rpg.h"
+#include "macro.h"
 
 sfVector2i vectors[][2] = {
     {{.x = 0, .y = 0}, {.x = 0, .y = 8}},

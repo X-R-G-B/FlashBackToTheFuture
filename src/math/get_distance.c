@@ -6,7 +6,8 @@
 */
 
 #include <SFML/System/Vector2.h>
-#include "my_rpg.h"
+#include <stddef.h>
+#include "macro.h"
 
 sfVector2f get_distance(sfVector2f point_a, sfVector2f point_b)
 {

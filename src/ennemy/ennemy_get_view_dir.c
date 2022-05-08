@@ -13,6 +13,7 @@
 #include "my_rpg.h"
 #include "ennemies.h"
 #include "my_json.h"
+#include "player.h"
 
 static const double pi = 3.1415926535;
 

@@ -7,6 +7,7 @@
 
 #include "my_bgs.h"
 #include "my_rpg.h"
+#include "macro.h"
 
 extern const char can_player_up_scale[];
 extern const char can_player_down_scale[];

@@ -7,6 +7,8 @@
 
 #include "my_rpg.h"
 #include "main_menu.h"
+#include "macro.h"
+#include "player.h"
 
 static void click_pause(__attribute__((unused)) object_t *obj, scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *evt)

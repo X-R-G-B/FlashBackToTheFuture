@@ -12,8 +12,8 @@
 #include "my_bgs.h"
 #include "my_bgs_components.h"
 #include "my_dico.h"
-#include "my_rpg.h"
 #include "npc.h"
+#include "macro.h"
 
 static const sfKeyCode key_next = sfKeyA;
 extern const char bool_check_key[];
