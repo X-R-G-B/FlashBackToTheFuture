@@ -12,6 +12,9 @@
 
 static bool is_graphic_env(char **env)
 {
+    if (env == NULL) {
+        return false;
+    }
     for (int i = 0; env[i] != NULL; i++) {
         if (my_strstartswith(env[i], "DISPLAY=") == 1) {
             return true;
