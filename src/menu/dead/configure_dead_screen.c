@@ -48,7 +48,7 @@ static void init_dead_screen_pos(window_t *win)
 }
 
 static void config_input_and_components(window_t *win,
-    object_t *dead_message, object_t *dead_screen, scene_t *scene)
+    object_t *dead_message, object_t *dead_screen)
 {
     bool *can_play = malloc(sizeof(bool));
 
@@ -105,7 +105,7 @@ int init_dead_menu(window_t *win, scene_t *scene)
             return RET_ERR_INPUT;
         }
     }
-    config_input_and_components(win, dead_screens[0], dead_screens[1], scene);
+    config_input_and_components(win, dead_screens[0], dead_screens[1]);
     free_list(dead_objects);
     init_dead_screen_pos(win);
     return RET_OK;

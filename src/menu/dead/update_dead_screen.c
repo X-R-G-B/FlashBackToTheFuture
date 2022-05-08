@@ -29,7 +29,7 @@ static bool can_wait_for_draw(window_t *window, float *time_elapsed)
 {
     bool *can_play = NULL;
 
-    if (window == NULL || window->components == NULL || time_elapsed == NULL) {
+    if (window == NULL || time_elapsed == NULL) {
         return false;
     }
     can_play = dico_t_get_value(window->components, can_play_dead_screen);
