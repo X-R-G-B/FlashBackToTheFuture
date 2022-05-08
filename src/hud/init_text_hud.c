@@ -74,7 +74,8 @@ int init_text_hud(window_t *win, scene_t *scene)
         return RET_ERR_INPUT;
     }
     player = dico_t_get_value(win->components, PLAYER);
-    if (create_max_life_and_energy(scene, &life_text_max, &energy_text_max)) {
+    if (create_max_life_and_energy(scene, &life_text_max,
+            &energy_text_max) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     if (add_hud_to_hud_element(win, life_text_max, player) != RET_OK ||
