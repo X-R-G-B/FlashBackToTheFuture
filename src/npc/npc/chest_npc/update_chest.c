@@ -86,9 +86,8 @@ static void create_chest(scene_t *scene, any_t *json, int *rect, object_t *obj)
         scd_rect_key));
 
     if (sprite_path == NULL || sprite_path->type != STR || rect_array == NULL ||
-            scd_rect == NULL) {
+            scd_rect == NULL)
         return;
-    }
     npc = create_object(update_chest, NULL, scene, LAYER_ENNEMY);
     if (object_set_sprite(npc, sprite_path->value.str, (sfIntRect)
             {rect[0], rect[1], rect[2], rect[3]},

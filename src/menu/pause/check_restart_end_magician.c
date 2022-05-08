@@ -14,7 +14,7 @@ extern const char npc_path_key[];
 
 extern const char end_boss_key[];
 
-extern const char end_magician_key[]; 
+extern const char end_magician_key[];
 
 static char end_magician_path[] = "./assets/data/npc/magician_end.json";
 

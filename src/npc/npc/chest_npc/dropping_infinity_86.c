@@ -17,7 +17,7 @@ extern const char infinity_sprite_path[];
 extern const char scd_rect_key[];
 
 static const char open_chest_dialog[] = "./assets/data/npc/chest.json";
- 
+
 static const char closed_chest_dialog[] = "./assets/data/npc/closed_chest.json";
 
 static const float drop_infinity_86 = 0.4;
