@@ -6,9 +6,9 @@
 */
 
 #include "npc.h"
-#include "my_rpg.h"
 #include "macro.h"
 #include "stage.h"
+#include "player.h"
 
 static const char view_rotation_data[] = "./assets/data/npc/rotation_data.json";
 

@@ -16,6 +16,7 @@
 #include "npc.h"
 #include "macro.h"
 #include "stage.h"
+#include "player.h"
 
 static const int back_color[] = {51, 136, 238};
 

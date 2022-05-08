@@ -11,6 +11,7 @@
 #include "my_rpg.h"
 #include "macro.h"
 #include "stage.h"
+#include "player.h"
 
 static const char head_with_borders_path[] =
     "./assets/image/hud/head_with_borders.png";

@@ -13,6 +13,7 @@
 #include "my_dico.h"
 #include "my_json.h"
 #include "audio.h"
+#include "player.h"
 
 extern const char pop_text_file[];
 

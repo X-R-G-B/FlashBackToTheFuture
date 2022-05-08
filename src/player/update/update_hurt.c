@@ -10,10 +10,10 @@
 #include <stdbool.h>
 #include "ennemies.h"
 #include "my_dico.h"
-#include "my_rpg.h"
 #include "my_json.h"
 #include "math.h"
 #include "maths_function.h"
+#include "player.h"
 
 static const float time_nulll = 1;
 

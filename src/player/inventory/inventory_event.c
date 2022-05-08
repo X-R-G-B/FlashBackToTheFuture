@@ -10,6 +10,7 @@
 #include "my_bgs_components.h"
 #include "my_strings.h"
 #include "audio.h"
+#include "player.h"
 
 const char ACTUAL_SCENE[] = "actual scene";
 

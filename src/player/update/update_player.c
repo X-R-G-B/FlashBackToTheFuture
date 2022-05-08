@@ -10,6 +10,7 @@
 #include "my_rpg.h"
 #include "ennemies.h"
 #include "my_json.h"
+#include "player.h"
 
 static void update_stop(__attribute__((unused)) player_t *player,
     __attribute__((unused)) scene_t *scene,
@@ -23,6 +24,7 @@ static void (*update_ptr[])(player_t *, scene_t *, window_t *, float) = {
     update_roulade
 };
 
+// TODO: here why ?
 static void update_stop(__attribute__((unused)) player_t *player,
     __attribute__((unused)) scene_t *scene,
     __attribute__((unused)) window_t *win, __attribute__((unused)) float time)

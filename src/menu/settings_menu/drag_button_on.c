@@ -6,8 +6,8 @@
 */
 
 #include "audio.h"
-#include "my_rpg.h"
 #include "macro.h"
+#include "player.h"
 
 static int get_delim(int *delim_start, int *delim_end, object_t *obj,
     window_t *win)

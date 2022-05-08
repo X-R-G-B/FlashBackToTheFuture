@@ -5,8 +5,8 @@
 ** next level
 */
 
-#include "my_rpg.h"
 #include "stage.h"
+#include "player.h"
 
 void next_stage(object_t *obj,
     __attribute__((unused)) scene_t *scene, window_t *win,

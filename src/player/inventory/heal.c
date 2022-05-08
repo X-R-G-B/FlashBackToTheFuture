@@ -10,6 +10,7 @@
 #include "my_conversions.h"
 #include "macro.h"
 #include "audio.h"
+#include "player.h"
 
 static const char use_potion_file[] = "./assets/data/pop_text/use_potion.json";
 

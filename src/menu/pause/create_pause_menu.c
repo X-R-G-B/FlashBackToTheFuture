@@ -10,6 +10,7 @@
 #include "my_json.h"
 #include "my_bgs.h"
 #include "macro.h"
+#include "player.h"
 
 static const char button_path[] = "./assets/data/menu/pause.json";
 static const char data_path[] = "./assets/data/menu/pressed.json";

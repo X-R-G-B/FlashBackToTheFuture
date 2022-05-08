@@ -10,6 +10,7 @@
 #include "my_bgs_components.h"
 #include "my_rpg.h"
 #include "macro.h"
+#include "player.h"
 
 static const char dead_screen_path[] = "./assets/data/menu/dead_screen.json";
 static void (*dead_screen_update[2])(object_t *, scene_t *,

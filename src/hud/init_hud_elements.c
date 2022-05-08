@@ -11,6 +11,7 @@
 #include "main_menu.h"
 #include "macro.h"
 #include "stage.h"
+#include "player.h"
 
 static list_ptr_t *create_hud_list(window_t *win, scene_t *scene)
 {

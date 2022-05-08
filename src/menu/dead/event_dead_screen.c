@@ -8,6 +8,7 @@
 #include "my_bgs_components.h"
 #include "my_rpg.h"
 #include "stage.h"
+#include "player.h"
 
 static void handle_dead_key_input(int key, window_t *window, scene_t *scene)
 {

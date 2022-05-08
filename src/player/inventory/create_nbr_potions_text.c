@@ -9,6 +9,7 @@
 #include "my_rpg.h"
 #include "my_conversions.h"
 #include "macro.h"
+#include "player.h"
 
 extern const char path_font[];
 

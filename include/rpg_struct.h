@@ -9,6 +9,7 @@
     #define MYRPG_STRUCT_PLAYER_H_
 
     #include "my_bgs.h"
+    #include "my_json.h"
 
 typedef enum state_e {
     ATTACKING,
@@ -38,5 +39,9 @@ typedef struct player_s {
     float energy;
     framebuffer_t *buf;
 } player_t;
+
+void destroy_player(void *player_void);
+
+int set_player_default_stats(player_t *player, any_t *stats);
 
 #endif

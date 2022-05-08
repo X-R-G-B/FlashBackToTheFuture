@@ -5,8 +5,8 @@
 ** attack event
 */
 
-#include "my_rpg.h"
 #include "macro.h"
+#include "player.h"
 
 static const char energy_cost_key[] = "energy cost";
 

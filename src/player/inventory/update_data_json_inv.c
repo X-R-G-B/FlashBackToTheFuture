@@ -8,6 +8,7 @@
 #include "my_json.h"
 #include "my_rpg.h"
 #include "audio.h"
+#include "player.h"
 
 extern const char stats_path_key[];
 

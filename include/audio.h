@@ -10,6 +10,15 @@
 
     #include "my_bgs.h"
 
+extern const char HURTED_SOUND[];
+extern const char HURT_SOUNG[];
+extern const char OPEN_INV_SOUND[];
+extern const char CLOSE_INV_SOUND[];
+extern const char CONSUM_CAN_SOUND[];
+extern const char INFINITY_86_SOUND[];
+extern const char PARCHEMIN_SOUND[];
+extern const char LEVEL_UP_SOUND[];
+
 extern const char AUDIO_LIST[];
 extern const char SOUND_LIST[];
 extern const char MUSIC_VOLUME[];
