@@ -9,6 +9,14 @@ https://cooltext.com/Logo-Design-White
 
 https://cooltext.com/Logo-Design-Epic-Stone
 
+- meteo in stage:
+```json
+{
+    "meteo": "leaf"
+}
+```
+meteo can be `leaf`, `snow`, `sun`
+
 ## LINK
 
 __true link__

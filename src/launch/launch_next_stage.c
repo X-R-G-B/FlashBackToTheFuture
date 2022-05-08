@@ -44,7 +44,8 @@ static int create_scene_objects(window_t *win, scene_t *prev_scene,
 {
     if (move_object_between_scene(win, prev_scene, scene) != RET_OK ||
         create_map(scene) != RET_OK ||
-        add_collision_array_in_scene(scene) != RET_OK) {
+        add_collision_array_in_scene(scene) != RET_OK ||
+        change_meteo_to_json(win, scene) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     replace_objects(win, scene);
