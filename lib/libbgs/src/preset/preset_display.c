@@ -43,9 +43,6 @@ void display_text(object_t *object,
         object->is_visible == false) {
         return;
     }
-    if (object->bigdata.text_bigdata.pos.x > -1) {
-        sfText_setPosition(object->drawable.text,
-            object->bigdata.text_bigdata.pos);
-    }
+    sfText_setPosition(object->drawable.text, object->bigdata.text_bigdata.pos);
     sfRenderWindow_drawText(win, object->drawable.text, NULL);
 }
