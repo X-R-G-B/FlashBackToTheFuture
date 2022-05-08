@@ -49,9 +49,6 @@ int init_life_hud(window_t *win, scene_t *scene);
 
 int init_energy_hud(window_t *win, scene_t *scene);
 
-int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
-    window_t *win);
-
 int init_hud(window_t *win, scene_t *scene);
 
 int create_inventory(window_t *win);

@@ -9,6 +9,7 @@
 #include "my_json.h"
 #include "my_strings.h"
 #include "player.h"
+#include "main_menu.h"
 
 extern const char life_max_name[];
 extern const char energy_max_name[];
@@ -68,7 +69,7 @@ void level_up(scene_t *scene, window_t *win)
         return;
     }
     if (scene->pause == false) {
-        toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
+        toggle_pop_up(win->components, STATS_UPGRADE_KEY);
     }
     player->state = IN_POP_UP;
     scene->pause = true;
@@ -89,7 +90,7 @@ void upgrade_energy(__attribute__((unused)) object_t *obj,
     }
     player->state = STOP;
     scene->pause = false;
-    if (check_if_pop_up_true(scene->components, STATS_UPGRADE_KEY) == 1) {
+    if (check_if_pop_up_true(win->components, STATS_UPGRADE_KEY) == 1) {
         upgrade(win, energy_max_name);
         set_stat_max(player, energy_max_name);
     }
@@ -110,7 +111,7 @@ void upgrade_health(__attribute__((unused)) object_t *obj,
     }
     player->state = STOP;
     scene->pause = false;
-    if (check_if_pop_up_true(scene->components, STATS_UPGRADE_KEY) == 1) {
+    if (check_if_pop_up_true(win->components, STATS_UPGRADE_KEY) == 1) {
         upgrade(win, life_max_name);
         set_stat_max(player, life_max_name);
     }

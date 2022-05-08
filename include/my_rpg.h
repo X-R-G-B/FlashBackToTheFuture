@@ -171,10 +171,8 @@ int create_number_of_potions(scene_t *scene, window_t *win);
 
 void modif_potion_value(window_t *win, int nbr_potions, bool click);
 
-int check_if_pop_up_true(dico_t *dico, char *key);
-
 int change_xp_bar_stats(any_t *max_xp_data, any_t *actual_xp_data,
-    object_t *object, scene_t *scene);
+    object_t *object, window_t *win);
 
 any_t *get_xp_data(player_t *player, const char data_name[]);
 
