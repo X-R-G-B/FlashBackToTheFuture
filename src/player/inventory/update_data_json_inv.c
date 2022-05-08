@@ -63,6 +63,7 @@ void get_infinity_86(window_t *win)
     if (key_obj == NULL || key_obj->type != INT) {
         return;
     }
+    level_up(dico_t_get_value(win->scenes, win->current_scene), win);
     key_obj->value.i += 1;
     write_json(json, dico_t_get_value(player->obj->components,
         stats_path_key));
