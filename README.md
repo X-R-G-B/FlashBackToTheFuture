@@ -1,21 +1,32 @@
 # Flash Back To The Future
 
+## Synopsis
+
+You are an adventurer that is searching the 5 86 of infinity.
+
+You will start in a village where a magician will bring you into a flashback.
+
+In this flashback your quest for 86 start and you will meet some villagers and monsters.
+
+You will gain XP during all the game by killing mobs and will upgrade your stats.
+
+Enjoy your adventure.
+
 The amazing RPG
 The Best RPG
+
+## Made by:
+
+- **Romain PANNO** : [link](https://github.com/romainpanno).
+- **Xavier MITAULT** : [link](https://github.com/Saverio976).
+- **Guillaume ABEL** : [link](https://github.com/guillaumeAbel).
+- **Brice DE SOUSA** : [link](https://github.com/KitetsuK).
 
 # SPRITES
 
 https://cooltext.com/Logo-Design-White
 
 https://cooltext.com/Logo-Design-Epic-Stone
-
-- meteo in stage:
-```json
-{
-    "meteo": "leaf"
-}
-```
-meteo can be `leaf`, `snow`, `sun`
 
 ## LINK
 
@@ -46,34 +57,5 @@ lot of map
 ![dark-ennemy](/assets/image/ennemy/dark_ennemy.png)
 - pinguin
 ![pinguin](/assets/image/ennemy/pinguin_killer.png)
-
-### non used
-- spirit
-![spirit](https://www.spriters-resource.com/resources/sheets/71/73866.png)
-- full mob fight
-![mob](https://www.spriters-resource.com/resources/sheets/115/118559.png)
-- little mod
-![mob](https://www.spriters-resource.com/resources/sheets/7/7587.png)
-- hydre
-![hydre](https://www.spriters-resource.com/resources/sheets/116/118946.png)
-- only pinguin
-![pinguin](https://www.spriters-resource.com/resources/sheets/91/94335.png)
-- pnj
-![pnj](https://www.spriters-resource.com/resources/sheets/65/68453.png)
-- bat-dragon
-![dragon](https://www.spriters-resource.com/resources/sheets/81/84227.png)
-- magician
-![magi](https://www.spriters-resource.com/resources/sheets/152/155357.png)
-- lot of magician
-![magi](https://www.spriters-resource.com/resources/sheets/116/118982.png)
-- fly
-![fly](https://www.spriters-resource.com/resources/sheets/37/39636.png)
-- big mob 2d
-![big](https://www.spriters-resource.com/resources/sheets/149/152059.png)
-- basic mob 2d fight
-![mob](https://www.spriters-resource.com/resources/sheets/135/138142.png)
-
-## ICON
-
-combat
-![combat](https://www.spriters-resource.com/resources/sheets/64/67630.png)
+-forest people
+![forest people](./assets/image/ennemy/forest_people.png)
