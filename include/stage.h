@@ -58,4 +58,10 @@ int create_inventory(window_t *win);
 
 int init_sounds(scene_t *scene, window_t *win);
 
+int init_movement(player_t *player, window_t *win, scene_t *scene);
+
+int init_xp_hud(window_t *win, scene_t *scene);
+
+void restart_game(scene_t *scene, window_t *win);
+
 #endif

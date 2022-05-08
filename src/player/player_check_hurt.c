@@ -12,6 +12,7 @@
 #include "maths_function.h"
 #include "my_dico.h"
 #include "my_json.h"
+#include "audio.h"
 
 extern const char pop_text_file[];
 

@@ -52,4 +52,8 @@ void drag_button_on_hover(object_t *obj, scene_t *scene, window_t *win,
 void drag_button_on(object_t *obj, __attribute__((unused)) scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *evt);
 
+void play_sound(window_t *win, const char *comp_key);
+
+void play_music(window_t *win, const char *comp_key);
+
 #endif /* !SOUND_H_ */

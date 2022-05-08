@@ -199,8 +199,6 @@ int set_player_default_stats(player_t *player, any_t *stats);
 
 void go_to_home(scene_t *scene, window_t *win);
 
-void restart_game(scene_t *scene, window_t *win);
-
 bool check_evolution_stat(player_t *player, float *prev_max_stat,
     const char stat_name[]);
 
@@ -211,8 +209,6 @@ void upgrade_energy(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 
 void toggle_pop_up(dico_t *dico, const char *key);
-
-int init_xp_hud(window_t *win, scene_t *scene);
 
 void update_xp_bar(object_t *object, scene_t *scene,
     window_t *window, float time);
@@ -276,16 +272,10 @@ void go_to_home_direct(object_t *obj, scene_t *scene, window_t *win,
 
 void upgrade_dammage(any_t *player_data);
 
-int init_movement(player_t *player, window_t *win, scene_t *scene);
-
 void update_elder(object_t *obj, scene_t *scene, window_t *win,
     float dtime);
 
 void update_intro_magician(object_t *obj, scene_t *scene, window_t *win,
     float dtime);
-
-void play_sound(window_t *win, const char *comp_key);
-
-void play_music(window_t *win, const char *comp_key);
 
 #endif /* !RPG_H_ */
