@@ -67,6 +67,9 @@ static int update_stats(any_t *player_stats, any_t *xp, any_t *xp_max,
         xp->value.f -= xp_max->value.f;
         lvl->value.f += 1.0;
     }
+    if (xp->value.f < 0.0) {
+        xp->value.f = 0;
+    }
     return RET_OK;
 }
 
