@@ -59,22 +59,15 @@ static void upgrade(window_t *win, const char *stat_max_key)
 void level_up(scene_t *scene, window_t *win)
 {
     player_t *player = NULL;
-    static int test = 0;
-    printf("Level Up numéro %d\n", test);
-    test += 1;
 
     if (win == NULL || scene == NULL) {
-        printf("Check passed\n");
         return;
     }
     player = dico_t_get_value(win->components, PLAYER);
     if (player == NULL) {
-        printf("Check passed ( player )\n");
         return;
     }
-    printf("Pause ? : %d\n", scene->pause);
     if (scene->pause == false) {
-        printf("Toggle done\n");
         toggle_pop_up(scene->components, STATS_UPGRADE_KEY);
     }
     player->state = IN_POP_UP;
