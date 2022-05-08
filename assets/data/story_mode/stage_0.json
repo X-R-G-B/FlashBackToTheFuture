@@ -131,19 +131,6 @@
             "#########################################################################################################################################################################################"
         ],
         "char type": {
-            "F": {
-                "path": "./assets/image/map/squares/long_house_clear.png"
-            },
-            "m": {
-                "path": "./assets/image/map/squares/short_blue_house_clear.png"
-            },
-            "M": {
-                "path": "./assets/image/map/squares/short_red_house_clear.png"
-            },
-            "T": {
-                "path": "./assets/image/map/squares/green_tree.png",
-                "col": 1
-            },
             "V": {
                 "path": "./assets/image/map/squares/corner.png",
                 "rotation": 180.0,
@@ -161,43 +148,6 @@
             },
             "c": {
                 "path": "./assets/image/map/squares/corner.png",
-                "col": 1
-            },
-            "L": {
-                "path": "./assets/image/map/squares/flower.png",
-                "components": {
-                    "ennemy path": "./assets/data/ennemy/ninho.json"
-                }
-            },
-            "S": {
-                "path": "./assets/image/map/squares/dark_flower.png",
-                "components": {
-                    "ennemy path": "./assets/data/ennemy/amongus.json"
-                }
-            },
-            "9": {
-                "path": "./assets/image/map/squares/dark_flower.png",
-                "components": {
-                    "npc path": "./assets/data/npc/magician_intro.json"
-                }
-            },
-            "+": {
-                "path": "./assets/image/map/squares/dark_flower.png",
-                "components": {
-                    "npc path": "./assets/data/npc/stage_0/villager_3.json"
-                }
-            },
-            "=": {
-                "path": "./assets/image/map/squares/void.png",
-                "components": {
-                    "npc path": "./assets/data/npc/stage_0/villager_2.json"
-                }
-            },
-            "*": {
-                "path": "./assets/image/map/squares/void.png",
-                "components": {
-                    "npc path": "./assets/data/npc/stage_0/villager_1.json"
-                },
                 "col": 1
             },
             "b": {
@@ -219,92 +169,48 @@
                 "path": "./assets/image/map/squares/fall.png",
                 "col": 1
             },
-            "p": {
-                "path": "./assets/image/map/squares/way.png",
-                "rotation": 90.0
+            "S": {
+                "path": "./assets/image/map/squares/water_sand_fade_2.png",
+                "col": 1,
+                "rotation": 180.0
             },
-            ".": {
-                "col": 0
+            "n": {
+                "path": "./assets/image/map/squares/sand_2.png"
             },
             "#": {
                 "col": 1
             },
+            ".": {
+                "col": 0
+            },
+            "T": {
+                "path": "./assets/image/map/squares/green_tree.png"
+            },
+            "G": {
+                "path": "./assets/image/map/squares/sand_dirt.png",
+                "rotation": 180.0
+            },
             "g": {
-                "path": "./assets/image/map/squares/grass.png"
+                "path": "./assets/image/map/squares/rock_wall.png",
+                "col": 1
+            },
+            "9": {
+                "path": "./assets/image/map/squares/sand_2.png",
+                "components": {
+                    "npc path" :"./assets/data/npc/magician_intro.json"
+                }
+            },
+            "t": {
+                "path": "./assets/image/map/squares/dirt_fade.png"
             },
             "d": {
                 "path": "./assets/image/map/squares/dirt.png"
             },
-            "f": {
-                "path": "./assets/image/map/squares/flower.png"
-            },
-            "i": {
-                "path": "./assets/image/map/squares/big_way.png",
-                "rotation": 90.0
-            },
-            "I": {
-                "path": "./assets/image/map/squares/big_way.png"
-            },
-            "^": {
-                "path": "./assets/image/map/squares/ground_corner.png",
-                "rotation": 180.0
-            },
-            "|": {
-                "path": "./assets/image/map/squares/ground_corner.png"
-            },
-            "-": {
-                "path": "./assets/image/map/squares/ground_corner.png",
-                "rotation": 90.0
-            },
-            "/": {
-                "path": "./assets/image/map/squares/ground_corner.png",
-                "rotation": 270.0
-            },
-            "G": {
-                "path": "./assets/image/map/squares/ground.png"
-            },
-            "y": {
-                "path": "./assets/image/map/squares/bush_block_alone.png",
-                "col": 1
-            },
-            "r": {
-                "path": "./assets/image/map/squares/path.png",
-                "rotation": 270.0
-            },
-            "N": {
-                "path": "./assets/image/map/squares/path.png"
-            },
-            "k": {
-                "path": "./assets/image/map/squares/path.png",
-                "rotation": 180.0
-            },
-            "K": {
-                "path": "./assets/image/map/squares/path.png",
-                "rotation": 90.0
-            },
-            "D": {
-                "path": "./assets/image/map/squares/dark_flower.png"
-            },
-            "t": {
-                "path": "./assets/image/map/squares/dark_dead_tree.png",
-                "col": 1
-            },
-            "h": {
+            "u": {
                 "path": "./assets/image/map/squares/grass_bush.png"
             },
-            ",": {
-                "path": "./assets/image/map/squares/dirt_fade.png"
-            },
-            ";": {
-                "path": "./assets/image/map/squares/dirt_corner_fade.png"
-            },
-            ">": {
-                "path": "./assets/image/map/squares/dirt_corner_fade.png",
-                "rotation": 90.0
-            },
-            "<": {
-                "path": "./assets/image/map/squares/dirt_corner_fade.png",
-                "rotation": 270.0
+            "O": {
+                "path": "./assets/image/map/squares/dark_flower.png"
             },
             "8": {
                 "path": "./assets/image/map/squares/sand_2.png",
@@ -312,19 +218,10 @@
                     "npc path": "./assets/data/npc/chest.json"
                 }
             },
-            "!": {
-                "path": "./assets/image/map/squares/dirt_fade.png",
-                "rotation": 90.0
-            },
-            "?": {
-                "path": "./assets/image/map/squares/dirt_fade.png",
-                "rotation": 180.0
-            },
-            "}": {
-                "path": "./assets/image/map/squares/dirt_fade.png",
-                "rotation": 270.0
+            "o": {
+                "path": "./assets/image/map/squares/grass.png"
             }
         }
     },
-    "spawn": [45, 115]
+    "spawn": [75, 85]
 }

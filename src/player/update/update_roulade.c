@@ -8,7 +8,7 @@
 #include <stdlib.h>
 #include "player.h"
 
-static const char rect_key[] = "rect";
+const char rect_key[] = "rect";
 static const char rect_time_key[] = "rect time";
 static const char speed_key[] = "speed";
 

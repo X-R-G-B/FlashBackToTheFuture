@@ -19,7 +19,7 @@ static const float infinity_86_scale_value = 0.2;
 
 static const char heal_sprite_path[] = "./assets/image/item/86.png";
 
-static const char infinity_sprite_path[] =
+const char infinity_sprite_path[] =
     "./assets/image/inventory/86_infinity.png";
 
 static bool check_drop_chance(ennemy_t *ennemy)

@@ -180,6 +180,7 @@ SRC_SETTINGS_MENU	:=	$(addprefix settings_menu/,$(SRC_SETTINGS_MENU))
 
 SRC_PAUSE			:=	create_pause_menu.c						\
 						home_button_event.c						\
+						check_restart_end_magician.c			\
 						restart_button.c						\
 						pressed_button_event.c					\
 						pause_button_event.c
@@ -225,13 +226,20 @@ SRC_NPC_UPDATE		:=	update_dialog_text.c					\
 						update_grandpa.c						\
 						magician_view_rotation.c				\
 						update_magician.c						\
+						update_end_magician.c					\
 						update_intro_magician.c					\
 						update_dialogue_box.c					\
 						update_npc.c							\
 						update_elder.c
 SRC_NPC_UPDATE		:=	$(addprefix update/,$(SRC_NPC_UPDATE))
 
-SRC_NPC_NPC			:=	callback_npc.c
+SRC_CHEST			:=	dropping_infinity_86.c					\
+	  					reset_86_number.c						\
+						update_chest.c
+SRC_CHEST			:=	$(addprefix chest_npc/,$(SRC_CHEST))
+
+SRC_NPC_NPC			:=	callback_npc.c							\
+						$(SRC_CHEST)
 SRC_NPC_NPC			:=	$(addprefix npc/,$(SRC_NPC_NPC))
 
 SRC_NPC				:=	add_text_dialog.c						\

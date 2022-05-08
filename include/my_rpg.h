@@ -92,6 +92,8 @@ void pressed_button_on(object_t *obj, scene_t *scene, window_t *win,
 void pressed_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
 
+void check_restart_end_magician(scene_t *scene);
+
 void exit_button_off(object_t *obj, scene_t *scene, window_t *win,
     set_event_t *evt);
 
@@ -136,6 +138,8 @@ void update_xp_bar(object_t *object, scene_t *scene,
 void level_up(scene_t *scene, window_t *win);
 
 void set_up_scale(object_t *obj, float time, player_t *player);
+
+void reset_86_number(player_t *player);
 
 void set_down_scale(object_t *obj, float time, player_t *player);
 

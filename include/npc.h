@@ -9,6 +9,7 @@
     #define NPC_RPG_H_
 
     #include <stdbool.h>
+    #include "rpg_struct.h"
     #include "list.h"
     #include "my_bgs.h"
     #include "my_json.h"
@@ -45,6 +46,9 @@ extern const char json_magician[];
 
 extern const sfVector2f pos_dialog;
 extern const sfVector2f pos_text;
+
+void init_chest(object_t *obj, scene_t *scene, window_t *win,
+    float dtime);
 
 void callback_npc(__attribute__((unused)) object_t *npc,
     scene_t *scene,
@@ -87,7 +91,13 @@ int add_text_dialog_json(window_t *win, const char *path,
 
 char *parseprety(const char *str);
 
+void check_have_enough_infinity_86(player_t *player, object_t *chest,
+    window_t *win, scene_t *scene);
+
 char *parseprety_free(char *str);
+
+void reaload_dialogs(const char *str, scene_t *scene, window_t *win,
+    void *data);
 
 void create_view_rotation(scene_t *scene);
 
@@ -100,5 +110,8 @@ void init_npc_spawner(object_t *obj, scene_t *scene, window_t *win,
 void event_quit_dialog_off(__attribute__((unused)) object_t *obj,
     scene_t *scene, window_t *win,
     __attribute__((unused)) set_event_t *event);
+
+void update_end_magician(object_t *obj, scene_t *scene, window_t *win,
+    float dtime);
 
 #endif

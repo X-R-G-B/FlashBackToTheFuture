@@ -78,6 +78,7 @@ static void restart_spawner(scene_t *scene)
 void restart_game(scene_t *scene, window_t *win)
 {
     restart_spawner(scene);
+    check_restart_end_magician(scene);
     replace_objects(win, scene);
     restart_player_state(win);
     restart_dead_screen(win);
