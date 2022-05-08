@@ -25,13 +25,10 @@ typedef struct ennemy_s {
     int rect_id;
 } ennemy_t;
 
-static const char SPAWNER_LIST[] = "spawner list";
-
-static const char ENNEMY_DATA[] = "ennemy_data";
-
-static const char ENNEMY_LIST[] = "ennemy_list";
-
-static const char ENNEMY_KEY[] = "ennemy";
+extern const char SPAWNER_LIST[];
+extern const char ENNEMY_DATA[];
+extern const char ENNEMY_LIST[];
+extern const char ENNEMY_KEY[];
 
 ennemy_t *create_ennemy(scene_t *scene, const char *path, sfVector2f pos);
 

@@ -16,8 +16,8 @@
 #include "my_json.h"
 #include "my_macro.h"
 #include "my_puts.h"
-#include "my_rpg.h"
 #include "npc.h"
+#include "player.h"
 
 static const sfKeyCode key_interract = sfKeyE;
 

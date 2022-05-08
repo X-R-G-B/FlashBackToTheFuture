@@ -12,8 +12,8 @@
 #include "my_json.h"
 #include "my_strings.h"
 #include "my_wordarray.h"
-#include "my_rpg.h"
 #include "npc.h"
+#include "player.h"
 
 static float time_until_destroy = 0.2;
 

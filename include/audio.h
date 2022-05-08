@@ -10,15 +10,25 @@
 
     #include "my_bgs.h"
 
-static const char AUDIO_LIST[] = "audio list";
-static const char SOUND_LIST[] = "sound list";
-static const char MUSIC_VOLUME[] = "music volume";
-static const char SOUND_VOLUME[] = "sound volume";
+extern const char HURTED_SOUND[];
+extern const char HURT_SOUNG[];
+extern const char OPEN_INV_SOUND[];
+extern const char CLOSE_INV_SOUND[];
+extern const char CONSUM_CAN_SOUND[];
+extern const char INFINITY_86_SOUND[];
+extern const char PARCHEMIN_SOUND[];
+extern const char LEVEL_UP_SOUND[];
 
-static const char DELIM_START[] = "delim_start";
-static const char DELIM_END[] = "delim_end";
-static const char BAR[] = "bar";
-static const char BUTTON[] = "button";
+extern const char AUDIO_LIST[];
+extern const char SOUND_LIST[];
+extern const char MUSIC_VOLUME[];
+extern const char SOUND_VOLUME[];
+
+extern const char DELIM_START[];
+extern const char DELIM_END[];
+
+extern const char BAR[];
+extern const char BUTTON[];
 
 int init_audio_list(window_t *win);
 
@@ -50,5 +60,9 @@ void drag_button_on_hover(object_t *obj, scene_t *scene, window_t *win,
 
 void drag_button_on(object_t *obj, __attribute__((unused)) scene_t *scene,
     window_t *win, __attribute__((unused)) set_event_t *evt);
+
+void play_sound(window_t *win, const char *comp_key);
+
+void play_music(window_t *win, const char *comp_key);
 
 #endif /* !SOUND_H_ */

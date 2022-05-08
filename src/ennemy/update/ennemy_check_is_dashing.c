@@ -15,8 +15,8 @@
 #include "my_json.h"
 #include "my_puts.h"
 #include "ennemies.h"
-#include "my_rpg.h"
 #include "maths_function.h"
+#include "player.h"
 
 static const char range_dash[] = "range dash";
 

@@ -9,6 +9,7 @@
 #include "my_bgs.h"
 #include "my_rpg.h"
 #include "macro.h"
+#include "player.h"
 
 static const char xp_hud_borders_sprite_path[] =
     "./assets/image/hud/xp_bar_border.png";

@@ -8,6 +8,8 @@
 #include "my_rpg.h"
 #include "my_bgs_components.h"
 #include "my_conversions.h"
+#include "macro.h"
+#include "player.h"
 
 static const char inv_buttons[] =
     "./assets/data/player/inventory.json";

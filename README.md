@@ -42,8 +42,6 @@ lot of map
 ### non used
 - spirit
 ![spirit](https://www.spriters-resource.com/resources/sheets/71/73866.png)
-- dasher
-![dasher](https://www.spriters-resource.com/resources/sheets/124/127391.png)
 - full mob fight
 ![mob](https://www.spriters-resource.com/resources/sheets/115/118559.png)
 - little mod

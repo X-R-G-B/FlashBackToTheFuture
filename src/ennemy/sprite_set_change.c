@@ -5,8 +5,10 @@
 ** sprite set change
 */
 
-#include "my_rpg.h"
+#include <stddef.h>
+#include "my_bgs.h"
 #include "my_json.h"
+#include "macro.h"
 
 int sprite_set_change(object_t *ennemy, any_t *ennemy_data)
 {

@@ -8,6 +8,7 @@
 #include "my_rpg.h"
 #include "ennemies.h"
 #include "main_menu.h"
+#include "player.h"
 
 extern const char can_play_dead_screen[];
 
@@ -34,7 +35,7 @@ static void restart_player_state(window_t *win)
     }
 }
 
-static void restart_dead_screen(window_t *win, scene_t *scene)
+static void restart_dead_screen(window_t *win)
 {
     object_t *dead_message = NULL;
     object_t *dead_screen = NULL;
@@ -48,7 +49,7 @@ static void restart_dead_screen(window_t *win, scene_t *scene)
     if (dead_message == NULL || dead_screen == NULL) {
         return;
     }
-    can_play = dico_t_get_value(scene->components, can_play_dead_screen);
+    can_play = dico_t_get_value(win->components, can_play_dead_screen);
     if (can_play == NULL) {
         return;
     }
@@ -79,7 +80,7 @@ void restart_game(scene_t *scene, window_t *win)
     restart_spawner(scene);
     replace_objects(win, scene);
     restart_player_state(win);
-    restart_dead_screen(win, scene);
+    restart_dead_screen(win);
     scene->pause = false;
     set_is_visible_false(dico_t_get_value(win->components, PAUSE_MENU));
     set_is_visible_false(dico_t_get_value(win->components, SETTINGS_MENU));

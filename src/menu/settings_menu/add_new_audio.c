@@ -7,6 +7,7 @@
 
 #include "my_rpg.h"
 #include "audio.h"
+#include "macro.h"
 
 static list_ptr_t *get_list(window_t *win, object_t *obj)
 {

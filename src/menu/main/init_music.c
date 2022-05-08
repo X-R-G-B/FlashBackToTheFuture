@@ -5,8 +5,8 @@
 ** init_music
 */
 
-#include "my_rpg.h"
 #include "audio.h"
+#include "macro.h"
 
 static const char music_path[] = "./assets/music/main_menu.ogg";
 

@@ -6,7 +6,7 @@
 */
 
 #include <stdlib.h>
-#include "my_rpg.h"
+#include "player.h"
 
 static const char rect_key[] = "rect";
 static const char rect_time_key[] = "rect time";
@@ -30,7 +30,7 @@ static void apply_rect(player_t *player, int current_id)
     player->obj->bigdata.sprite_bigdata.rect = (sfIntRect) {rect[0], rect[1],
         rect[2], rect[3]};
     sfSprite_setOrigin(player->obj->drawable.sprite,
-        (sfVector2f) {rect[2] / 2, rect[3] / 2});
+        (sfVector2f) {rect[2] / 2.0, rect[3] / 2.0});
     free(rect);
 }
 

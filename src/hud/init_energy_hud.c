@@ -9,6 +9,7 @@
 #include "my_json.h"
 #include "my_rpg.h"
 #include "macro.h"
+#include "player.h"
 
 static const char energy_hud_path[] = "./assets/image/hud/energy_bar.png";
 static const sfIntRect energy_hud_rect = {0, 0, 60, 188};

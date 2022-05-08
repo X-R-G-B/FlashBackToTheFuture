@@ -5,8 +5,10 @@
 ** gain_xp
 */
 
-#include "my_rpg.h"
 #include "ennemies.h"
+#include "macro.h"
+#include "audio.h"
+#include "player.h"
 
 const char XP[] = "actual xp";
 const char LOOT_XP[] = "xp loot";

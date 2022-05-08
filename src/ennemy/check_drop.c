@@ -9,6 +9,7 @@
 #include "macro.h"
 #include "ennemies.h"
 #include "maths_function.h"
+#include "player.h"
 
 const char is_boss_key[] = "is boss";
 

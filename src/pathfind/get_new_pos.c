@@ -11,6 +11,7 @@
 #include "my_dico.h"
 #include "my_rpg.h"
 #include "ennemy_pathfind.h"
+#include "macro.h"
 
 //print map for debug (utils but use only when needed)
 //void print_map_debug(pathfind_t *path)
