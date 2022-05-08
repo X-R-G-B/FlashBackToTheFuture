@@ -1,0 +1,18 @@
+{
+    "sprite path": "./assets/image/npc/magician.png",
+    "rect": [[6, 57, 26, 37], [40, 57, 42, 37], [85, 57, 50, 37],
+        [144, 65, 43, 29], [195, 58, 34, 34], [236, 57, 24, 37]],
+    "current": 0,
+    "time": 0.0,
+    "scale": 3.0,
+    "dialogus": [
+        "...",
+        "C'est ici que nos chemins se separent",
+        "C'est sur cette ile que d'apres la legende\n celui qui a les 5 86 d'infinitee pourra \nacceder au tresor legendaire de la prophetie",
+        "...",
+        "Mais tu n'en a que 4",
+        "Sait tu ou est la derniere",
+        "Et bien c'est moi qui l'ai",
+        "et maintenant je vais te tuer et recuperer le tresor"
+    ]
+}
