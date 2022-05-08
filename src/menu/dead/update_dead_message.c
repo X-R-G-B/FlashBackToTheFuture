@@ -36,7 +36,7 @@ void update_dead_message(object_t *object, scene_t *scene,
             object->is_visible == false || opacity.a == 255) {
         return;
     }
-    can_play = (bool *) dico_t_get_value(scene->components,
+    can_play = (bool *) dico_t_get_value(win->components,
         can_play_dead_screen);
     if (can_play == NULL || *can_play == true) {
         return;

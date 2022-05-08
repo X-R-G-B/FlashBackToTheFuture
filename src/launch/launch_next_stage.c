@@ -7,12 +7,23 @@
 
 #include <stdlib.h>
 #include "my_rpg.h"
+#include "npc.h"
 #include "meteo.h"
 #include "my_json.h"
 #include "macro.h"
 #include "stage.h"
 
 static const int back_color[] = {51, 136, 238};
+
+static void destroy_elements(window_t *win)
+{
+    scene_t *scene = dico_t_get_value(win->components, win->current_scene);
+
+    if (scene == NULL) {
+        return;
+    }
+    event_quit_dialog_off(NULL, scene, win, NULL);
+}
 
 static int increment_current_stage_data(any_t *save)
 {
@@ -84,6 +95,7 @@ int launch_next_stage(window_t *win)
         return RET_ERR_INPUT;
     }
     list_add_to_end(win->to_remove, current_scene);
+    destroy_elements(win);
     return create_new_scene(get_stage_path(new_stage),
         get_stage_name(new_stage), win, current_scene);
 }

@@ -64,4 +64,5 @@ int init_xp_hud(window_t *win, scene_t *scene);
 
 void restart_game(scene_t *scene, window_t *win);
 
+int init_text_hud(window_t *win, scene_t *scene);
 #endif
