@@ -9,6 +9,7 @@
 #include "my_dico.h"
 #include "my_strings.h"
 #include "my_json.h"
+#include "macro.h"
 #include "my_rpg.h"
 #include "meteo.h"
 

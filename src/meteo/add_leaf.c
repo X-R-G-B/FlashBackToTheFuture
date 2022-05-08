@@ -24,7 +24,7 @@ static void update_leaf(struct element_s *elem,
     if (elem == NULL || buf == NULL) {
         return;
     }
-    elem->data.rect.rect.top += (int) MAX(dtime * 200, 1);
+    elem->data.rect.rect.top += (int) MAX(dtime * 300, 2);
     y = elem->data.rect.rect.top;
     if (y > (float) buf->height) {
         list_add_to_start(buf->to_remove, elem);
