@@ -13,7 +13,7 @@
 
 static const char life_hud_path[] = "./assets/image/hud/life_bar.png";
 static const sfIntRect life_hud_rec = {0, 0, 60, 188};
-static const sfVector2f life_hud_pos = {285, 50};
+const sfVector2f life_hud_pos = {285, 50};
 extern const char life_max_name[];
 
 void update_life_hud(object_t *object, scene_t *scene,
