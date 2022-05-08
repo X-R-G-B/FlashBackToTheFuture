@@ -34,7 +34,8 @@ void set_up_scale(object_t *obj, float time, player_t *player)
     sfVector2f current_scale = {0};
 
     time_elapsed += time;
-    if (obj == NULL || player == NULL || time_elapsed < update_time) {
+    if (obj == NULL || player == NULL || time_elapsed < update_time ||
+            player->view == NULL) {
         return;
     }
     current_scale = sfView_getSize(player->view);
