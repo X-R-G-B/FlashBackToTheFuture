@@ -5,20 +5,22 @@
 ** magician view rotation
 */
 
+#include <SFML/Window/Keyboard.h>
+#include <stdbool.h>
 #include "my_bgs.h"
+#include "my_bgs_components.h"
 #include "my_dico.h"
 #include "npc.h"
 #include "macro.h"
 #include "rpg_struct.h"
 #include "stage.h"
 #include "player.h"
-#include <stdbool.h>
 
 static const char view_rotation_data[] = "./assets/data/npc/rotation_data.json";
 
-static const char rotation_data_key[] = "rotation data";
+const char rotation_data_key[] = "rotation data";
 
-static const char total_time_key[] = "total time";
+const char total_time_key[] = "total time";
 
 static const char actualisation_time_key[] = "actualisation time";
 
@@ -117,6 +119,8 @@ void create_view_rotation(scene_t *scene)
     if (object_set_custom(obj) != BGS_OK) {
         return;
     }
+    event_add_node(create_event(skip_event_magician_tp, false, obj, NULL),
+        (node_params_t) {sfMouseLeft, sfKeyReturn, KEY});
     rotation_data = parse_json_file(view_rotation_data);
     if (rotation_data == NULL || rotation_data->type != DICT) {
         return;

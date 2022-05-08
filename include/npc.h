@@ -107,9 +107,11 @@ void update_magician(object_t *obj, scene_t *scene, window_t *win,
 void init_npc_spawner(object_t *obj, scene_t *scene, window_t *win,
     __attribute__((unused)) float time);
 
-void event_quit_dialog_off(__attribute__((unused)) object_t *obj,
-    scene_t *scene, window_t *win,
-    __attribute__((unused)) set_event_t *event);
+void event_quit_dialog_off(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *event);
+
+void skip_event_magician_tp(object_t *obj, scene_t *scene, window_t *win,
+    set_event_t *evt);
 
 void update_end_magician(object_t *obj, scene_t *scene, window_t *win,
     float dtime);
