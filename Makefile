@@ -305,8 +305,12 @@ TOBJ				:=	$(TSRC:%.c=%.o)
 # Make the rpg
 .PHONY: 		all
 all:			RULE = all
-all:			$(LIB_TARGET) $(NAME)
+all:			$(LIB_TARGET)
+	@$(MAKE) COMPIL_FASTER -s -j2
+	@$(MAKE) $(NAME) -s
 	@echo -e $(GREEN)'[finished]'$(RESET)': $(NAME): $(RULE)'
+
+COMPIL_FASTER: $(OBJ)
 
 $(NAME):		RULE = $(NAME)
 $(NAME): 		$(OBJ)
