@@ -231,7 +231,8 @@ SRC_NPC_UPDATE		:=	update_dialog_text.c					\
 						update_dialogue_box.c					\
 						update_npc.c							\
 						update_elder.c							\
-						event_skip_tp_magi.c
+						event_skip_tp_magi.c					\
+						update_ninho.c
 SRC_NPC_UPDATE		:=	$(addprefix update/,$(SRC_NPC_UPDATE))
 
 SRC_CHEST			:=	dropping_infinity_86.c					\

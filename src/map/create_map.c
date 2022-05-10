@@ -30,7 +30,7 @@ static void (*square_updates[])(object_t *, scene_t *, window_t *, float) = {
     update_magician,
     update_elder,
     init_npc_spawner,
-    init_npc_spawner,
+    update_ninho,
     update_spawner,
     update_spawner,
     update_spawner,
