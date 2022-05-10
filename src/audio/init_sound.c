@@ -23,7 +23,7 @@ static const char sound_open_parchemin[] =
 static const char sound_level_up[] =
     "./assets/music/sound/level_up_sound.ogg";
 static const char sound_ninho[] =
-    "./assets/music/sound/ninho_sound.mp3";
+    "./assets/music/sound/ninho_sound.ogg";
 
 const int layer = 0;
 
