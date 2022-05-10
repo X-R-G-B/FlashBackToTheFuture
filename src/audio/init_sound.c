@@ -75,7 +75,7 @@ int init_sounds(scene_t *scene, window_t *win)
     for (int i = 0; keys_to_get[i] != NULL ||
         paths_to_data_sound[i] != NULL; i++) {
         init_win_component_sound(win, scene, keys_to_get[i],
-             paths_to_data_sound[i]);
+            paths_to_data_sound[i]);
     }
     return RET_OK;
 }
