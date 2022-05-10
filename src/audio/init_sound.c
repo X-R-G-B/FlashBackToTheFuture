@@ -22,6 +22,8 @@ static const char sound_open_parchemin[] =
     "./assets/music/sound/paper.ogg";
 static const char sound_level_up[] =
     "./assets/music/sound/level_up_sound.ogg";
+static const char sound_ninho[] =
+    "./assets/music/sound/ninho_sound.mp3";
 
 const int layer = 0;
 
@@ -34,6 +36,7 @@ static const char *keys_to_get[] = {
     INFINITY_86_SOUND,
     PARCHEMIN_SOUND,
     LEVEL_UP_SOUND,
+    NINHO,
     NULL
 };
 
@@ -46,6 +49,7 @@ static const char *paths_to_data_sound[] = {
     sound_infinity_86,
     sound_open_parchemin,
     sound_level_up,
+    sound_ninho,
     NULL
 };
 

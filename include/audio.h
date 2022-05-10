@@ -18,6 +18,7 @@ extern const char CONSUM_CAN_SOUND[];
 extern const char INFINITY_86_SOUND[];
 extern const char PARCHEMIN_SOUND[];
 extern const char LEVEL_UP_SOUND[];
+extern const char NINHO[];
 
 extern const char AUDIO_LIST[];
 extern const char SOUND_LIST[];

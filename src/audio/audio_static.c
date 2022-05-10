@@ -21,3 +21,4 @@ const char CONSUM_CAN_SOUND[] = "usepotion";
 const char INFINITY_86_SOUND[] = "86infsound";
 const char PARCHEMIN_SOUND[] = "parcheminsound";
 const char LEVEL_UP_SOUND[] = "level_up_sound";
+const char NINHO[] = "salut_c_ninho";
