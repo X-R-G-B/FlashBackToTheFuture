@@ -87,6 +87,7 @@ int init_menu(window_t *win)
         return (RET_ERR_MALLOC);
     }
     init_sounds(scene, win);
+    init_music_game(win, scene);
     init_making_of(scene);
     add_escape_event(obj);
     return RET_OK;

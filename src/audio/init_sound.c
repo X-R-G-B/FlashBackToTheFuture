@@ -22,27 +22,32 @@ static const char sound_open_parchemin[] =
     "./assets/music/sound/paper.ogg";
 static const char sound_level_up[] =
     "./assets/music/sound/level_up_sound.ogg";
-const char MUSIC_GAME[] = "musicgame";
-static const char music_in_game[] =
-    "./assets/music/game_music.ogg";
-static const int layer = 0;
 
-static int init_win_component_music(window_t *win, scene_t *scene,
-    const char *key_to_get, const char *path_to_data)
-{
-    object_t *obj = NULL;
+const int layer = 0;
 
-    if (scene == NULL || win == NULL) {
-        return RET_ERR_INPUT;
-    }
-    obj = create_object(NULL, NULL, scene, layer);
-    if (object_set_audio(obj, path_to_data, false, false) != BGS_OK) {
-        return RET_ERR_MALLOC;
-    }
-    add_new_audio(obj, win);
-    window_add_component(win, obj, key_to_get, NULL);
-    return RET_OK;
-}
+static const char *keys_to_get[] = {
+    HURTED_SOUND,
+    HURT_SOUNG,
+    OPEN_INV_SOUND,
+    CLOSE_INV_SOUND,
+    CONSUM_CAN_SOUND,
+    INFINITY_86_SOUND,
+    PARCHEMIN_SOUND,
+    LEVEL_UP_SOUND,
+    NULL
+};
+
+static const char *paths_to_data_sound[] = {
+    sound_hited_path,
+    sound_hit_path,
+    sound_open_fridge,
+    sound_close_fridge,
+    sound_consum_86,
+    sound_infinity_86,
+    sound_open_parchemin,
+    sound_level_up,
+    NULL
+};
 
 static int init_win_component_sound(window_t *win, scene_t *scene,
     const char *key_to_get, const char *path_to_data)
@@ -63,15 +68,9 @@ static int init_win_component_sound(window_t *win, scene_t *scene,
 
 int init_sounds(scene_t *scene, window_t *win)
 {
-
-    init_win_component_sound(win, scene, HURTED_SOUND, sound_hited_path);
-    init_win_component_sound(win, scene, HURT_SOUNG, sound_hit_path);
-    init_win_component_sound(win, scene, OPEN_INV_SOUND, sound_open_fridge);
-    init_win_component_sound(win, scene, CLOSE_INV_SOUND, sound_close_fridge);
-    init_win_component_sound(win, scene, CONSUM_CAN_SOUND, sound_consum_86);
-    init_win_component_sound(win, scene, INFINITY_86_SOUND, sound_infinity_86);
-    init_win_component_sound(win, scene, PARCHEMIN_SOUND, sound_open_parchemin);
-    init_win_component_sound(win, scene, LEVEL_UP_SOUND, sound_level_up);
-    init_win_component_music(win, scene, MUSIC_GAME, music_in_game);
+    for (int i = 0; keys_to_get[i] != NULL ||
+        paths_to_data_sound[i] != NULL; i++) {
+        init_win_component_sound(win, scene, keys_to_get[i], paths_to_data_sound[i]);
+    }
     return RET_OK;
 }

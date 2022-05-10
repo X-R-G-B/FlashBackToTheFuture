@@ -65,4 +65,6 @@ void play_sound(window_t *win, const char *comp_key);
 
 void play_music(window_t *win, const char *comp_key);
 
+int init_music_game(window_t *win, scene_t *scene);
+
 #endif /* !SOUND_H_ */

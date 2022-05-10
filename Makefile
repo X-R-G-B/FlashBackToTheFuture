@@ -257,7 +257,8 @@ SRC_NPC				:=	$(addprefix npc/,$(SRC_NPC))
 # --------- SRC_AUDIO ----------------------------------------------------------
 SRC_AUDIO			:=	init_sound.c						\
 						play_audio.c						\
-						audio_static.c
+						audio_static.c						\
+						init_music.c
 SRC_AUDIO			:=	$(addprefix audio/,$(SRC_AUDIO))
 # ----------------------------------------------------------------------------
 # ------ POP_TEXT_GENERATOR --------------------------------------------------
