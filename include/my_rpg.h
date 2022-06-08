@@ -205,4 +205,7 @@ void update_energy_text_hud(object_t *object, scene_t *scene,
 int update_text_hud(object_t *obj, player_t *player,
     const char stat_name[], float *stat_value);
 
+void update_ninho(object_t *obj, scene_t *scene, window_t *win,
+    __attribute__((unused)) float dtime);
+
 #endif /* !RPG_H_ */

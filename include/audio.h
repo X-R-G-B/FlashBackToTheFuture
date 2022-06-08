@@ -18,6 +18,7 @@ extern const char CONSUM_CAN_SOUND[];
 extern const char INFINITY_86_SOUND[];
 extern const char PARCHEMIN_SOUND[];
 extern const char LEVEL_UP_SOUND[];
+extern const char NINHO[];
 
 extern const char AUDIO_LIST[];
 extern const char SOUND_LIST[];
@@ -64,5 +65,7 @@ void drag_button_on(object_t *obj, __attribute__((unused)) scene_t *scene,
 void play_sound(window_t *win, const char *comp_key);
 
 void play_music(window_t *win, const char *comp_key);
+
+int init_music_game(window_t *win, scene_t *scene);
 
 #endif /* !SOUND_H_ */
