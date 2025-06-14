@@ -1,0 +1,153 @@
+name: Release
+
+on:
+  push:
+    branches: [main, dev]
+
+env:
+  BRANCH: "main"
+
+jobs:
+  release-create:
+    permissions: write-all
+    runs-on: ubuntu-latest
+
+    outputs:
+      release: ${{ steps.release.outputs.release_tag }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - id: release
+        name: Create Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if [[ "${{ github.ref }}" == 'refs/heads/main' ]]; then
+            export GITHUB_OUTPUT=$GITHUB_OUTPUT
+            bash ./.github/workflows/release.sh "${{ env.BRANCH }}"
+          else
+            echo "release_tag=0.0.0" >> $GITHUB_OUTPUT
+          fi
+
+  release-windows:
+    runs-on: windows-latest
+    needs: [release-create]
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install winget
+        uses: Cyberboss/install-winget@v1
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install dependencies
+        run: ./scripts/install-deps-windows.ps1
+
+      - name: Build
+        run: ./scripts/bundle-windows.ps1
+
+      - name: Upload To Release
+        if: github.ref == 'refs/heads/main'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload ${{ needs.release-create.outputs.release }} ./fbttf-windows.zip
+          gh release upload ${{ needs.release-create.outputs.release }} ./fbttf-windows.exe
+
+      - name: Upload To Artifact
+        if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v3
+        with:
+          name: fbttf-windows.zip
+          path: ./fbttf-windows.zip
+
+      - name: Upload To Artifact
+        if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v3
+        with:
+          name: fbttf-windows.exe
+          path: ./fbttf-windows.exe
+
+  release-linux:
+    runs-on: ubuntu-latest
+    needs: [release-create]
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: sudo bash ./scripts/install-deps-linux.sh
+
+      - name: Build
+        run: bash ./scripts/bundle-linux.sh
+
+      - name: Upload To Release
+        if: github.ref == 'refs/heads/main'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload ${{ needs.release-create.outputs.release }} ./fbttf-linux.tar.gz
+          gh release upload ${{ needs.release-create.outputs.release }} ./fbttf-linux.sh
+
+      - name: Upload To Artifact
+        if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v3
+        with:
+          name: fbttf-linux.tar.gz
+          path: ./fbttf-linux.tar.gz
+
+      - name: Upload To Artifact
+        if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v3
+        with:
+          name: fbttf-linux.sh
+          path: ./fbttf-linux.sh
+
+  release-macos:
+    runs-on: macos-latest
+    needs: [release-create]
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: zsh ./scripts/install-deps-macos.sh
+
+      - name: Build
+        run: zsh ./scripts/bundle-macos.sh
+
+      - name: Upload To Release
+        if: github.ref == 'refs/heads/main'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload ${{ needs.release-create.outputs.release }} ./fbttf-macos.zip
+          gh release upload ${{ needs.release-create.outputs.release }} ./fbttf-macos.dmg
+
+      - name: Upload To Artifact
+        if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v3
+        with:
+          name: fbttf-macos.dmg
+          path: ./fbttf-macos.dmg
+
+      - name: Upload To Artifact
+        if: github.ref != 'refs/heads/main'
+        uses: actions/upload-artifact@v3
+        with:
+          name: fbttf-macos.zip
+          path: ./fbttf-macos.zip
