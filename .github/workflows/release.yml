@@ -62,20 +62,6 @@ jobs:
           gh release upload ${{ needs.release-create.outputs.release }} ./fbttf-windows.zip
           gh release upload ${{ needs.release-create.outputs.release }} ./fbttf-windows.exe
 
-      - name: Upload To Artifact
-        if: github.ref != 'refs/heads/main'
-        uses: actions/upload-artifact@v3
-        with:
-          name: fbttf-windows.zip
-          path: ./fbttf-windows.zip
-
-      - name: Upload To Artifact
-        if: github.ref != 'refs/heads/main'
-        uses: actions/upload-artifact@v3
-        with:
-          name: fbttf-windows.exe
-          path: ./fbttf-windows.exe
-
   release-linux:
     runs-on: ubuntu-latest
     needs: [release-create]
@@ -100,19 +86,6 @@ jobs:
           gh release upload ${{ needs.release-create.outputs.release }} ./fbttf-linux.tar.gz
           gh release upload ${{ needs.release-create.outputs.release }} ./fbttf-linux.sh
 
-      - name: Upload To Artifact
-        if: github.ref != 'refs/heads/main'
-        uses: actions/upload-artifact@v3
-        with:
-          name: fbttf-linux.tar.gz
-          path: ./fbttf-linux.tar.gz
-
-      - name: Upload To Artifact
-        if: github.ref != 'refs/heads/main'
-        uses: actions/upload-artifact@v3
-        with:
-          name: fbttf-linux.sh
-          path: ./fbttf-linux.sh
 
   release-macos:
     runs-on: macos-latest
@@ -137,17 +110,3 @@ jobs:
         run: |
           gh release upload ${{ needs.release-create.outputs.release }} ./fbttf-macos.zip
           gh release upload ${{ needs.release-create.outputs.release }} ./fbttf-macos.dmg
-
-      - name: Upload To Artifact
-        if: github.ref != 'refs/heads/main'
-        uses: actions/upload-artifact@v3
-        with:
-          name: fbttf-macos.dmg
-          path: ./fbttf-macos.dmg
-
-      - name: Upload To Artifact
-        if: github.ref != 'refs/heads/main'
-        uses: actions/upload-artifact@v3
-        with:
-          name: fbttf-macos.zip
-          path: ./fbttf-macos.zip
