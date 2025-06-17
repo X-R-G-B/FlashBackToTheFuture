@@ -92,7 +92,7 @@ static int add_object_to_update_list(scene_t *scene, object_t *dead_screens)
 int init_dead_menu(window_t *win, scene_t *scene)
 {
     object_t *dead_screens[2] = {NULL, NULL};
-    list_ptr_t *dead_objects = create_button(scene, dead_screen_path);
+    list_ptr_t *dead_objects = create_button(scene, dead_screen_path, win->path_root);
 
     if (win == NULL || dead_objects == NULL) {
         return BGS_ERR_MALLOC;

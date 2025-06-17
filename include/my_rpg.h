@@ -59,16 +59,16 @@ int create_stat_pop_text_from_window(window_t *win, int stat, const char *path,
     sfVector2f pos);
 
 int create_stat_pop_text(scene_t *scene, int stat, const char *path,
-    sfVector2f pos);
+    sfVector2f pos, const char *path_root);
 
 int create_pop_text(scene_t *scene, const char *path, sfVector2f pos,
-    char *text);
+    char *text, const char *path_root);
 
 void replace_objects(window_t *win, scene_t *scene);
 
 void hud_apply_right_pos(object_t *obj, object_t *player);
 
-int create_map(scene_t *scene);
+int create_map(scene_t *scene, const char *path_root);
 
 void square_set_components(object_t *square, dico_t *char_type);
 

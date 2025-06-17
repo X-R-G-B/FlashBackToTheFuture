@@ -95,21 +95,21 @@ static void update_images(object_t *obj, scene_t *scene, window_t *win,
     }
 }
 
-static int init_all_images(scene_t *scene)
+static int init_all_images(scene_t *scene, const char *path_root)
 {
     any_t *json = NULL;
     char **arr = NULL;
     sfIntRect rect = {-1, -1, -1, -1};
     object_t *obj = NULL;
 
-    json = parse_json_file(path_images_json);
+    json = parse_json_file(resolve_path(path_root, path_images_json));
     if (json == NULL) {
         return (RET_ERR_MALLOC);
     }
     arr = get_any_string_array(get_from_any(json, "d", elem_json_paths));
     for (int i = 0; arr != NULL && arr[i] != NULL; i++) {
         obj = create_object(update_images, NULL, scene, 2);
-        object_set_sprite(obj, arr[i], rect, pos_images);
+        object_set_sprite(obj, arr[i], rect, pos_images, path_root);
         object_add_components(obj, (void *) i, index_image_compo, NULL);
     }
     scene_add_components(scene, (void *) my_wordarray_len(arr),
@@ -119,7 +119,7 @@ static int init_all_images(scene_t *scene)
     return (RET_OK);
 }
 
-int init_making_of(scene_t *scene)
+int init_making_of(scene_t *scene, const char *path_root)
 {
     dico_t *dict = NULL;
 
@@ -139,6 +139,6 @@ int init_making_of(scene_t *scene)
         return (RET_ERR_INPUT);
     }
     dict->value = NULL;
-    init_all_images(scene);
+    init_all_images(scene, path_root);
     return (RET_OK);
 }

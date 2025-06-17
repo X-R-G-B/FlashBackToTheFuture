@@ -112,6 +112,7 @@ struct window_s {
     dico_t *components;
     scene_loading_t *loading;
     framebuffer_t *buf;
+    char path_root[1024];
 };
 
 int window_set_icon(window_t *win, char const path[]);
@@ -153,7 +154,7 @@ int scene_add_object(scene_t *scene, object_t *object, int layer);
 ** }
 **/
 int object_set_audio(object_t *object, char const *path, bool play_now,
-    bool loop_now);
+    bool loop_now, const char *path_root);
 
 /**
 ** @brief setup an object_t to be a sound
@@ -170,7 +171,7 @@ int object_set_audio(object_t *object, char const *path, bool play_now,
 ** }
 **/
 int object_set_sound(object_t *object, char const *path, bool play_now,
-    bool loop_now);
+    bool loop_now, const char *path_root);
 
 /**
 ** @brief setup an object_t to be a custom object
@@ -200,7 +201,7 @@ int object_set_custom(object_t *object);
 ** }
 **/
 int object_set_text(object_t *object, char const *path, char const *text,
-    sfVector2f pos);
+    sfVector2f pos, const char *path_root);
 
 /**
 ** @brief setup an object_t to be a sprite
@@ -218,7 +219,7 @@ int object_set_text(object_t *object, char const *path, char const *text,
 ** }
 **/
 int object_set_sprite(object_t *object, char const *path, sfIntRect rect,
-    sfVector2f pos);
+    sfVector2f pos, const char *path_root);
 
 /**
 ** @brief create an object that will need to be setup (object_set_* funcs)
@@ -355,7 +356,7 @@ void window_set_framerate_limit(window_t *win, unsigned int limit);
 ** window_t *: the window has been created
 ** }
 **/
-window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style);
+window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style, const char *path_root);
 
 // ----------------------------------------------------------------------------
 // scene_loading.c
@@ -373,7 +374,7 @@ window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style);
 **/
 int launch_scene_loading(window_t *window, const char *scene_name);
 
-list_ptr_t *create_button(scene_t *scene, const char *path);
+list_ptr_t *create_button(scene_t *scene, const char *path, const char *path_root);
 
 /**
 ** @brief remove an object (might cause segv)
@@ -404,5 +405,9 @@ int object_change_scene(object_t *obj, scene_t *src, scene_t *dest);
 layer_t *get_layer(scene_t *scene, int layer);
 
 int check_layer(dico_t *dico);
+
+// ------------------
+
+const char *resolve_path(const char *path_root, const char *path);
 
 #endif /* !BGS_H_ */

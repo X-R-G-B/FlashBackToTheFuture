@@ -67,7 +67,7 @@ int add_text_dialog_json(window_t *win, const char *path,
     if (win == NULL || path == NULL) {
         return RET_ERR_INPUT;
     }
-    json = parse_json_file(path);
+    json = parse_json_file(resolve_path(win->path_root, path));
     if (json == NULL) {
         return RET_ERR_INPUT;
     }

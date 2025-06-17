@@ -53,7 +53,7 @@ scene_t *init_scene(const char *stage_path, window_t *win, char *stage_name)
     any_t *data = NULL;
     scene_t *scene = NULL;
 
-    data = parse_json_file(stage_path);
+    data = parse_json_file(resolve_path(win->path_root, stage_path));
     scene = create_scene(win, sfColor_fromRGB(back_color[0], back_color[1],
         back_color[2]), stage_name);
     if (data == NULL || scene == NULL) {
@@ -69,7 +69,7 @@ scene_t *init_scene(const char *stage_path, window_t *win, char *stage_name)
 
 static int init_new_scene_objects(window_t *win, scene_t *scene)
 {
-    if (create_map(scene) != RET_OK ||
+    if (create_map(scene, win->path_root) != RET_OK ||
         create_player(win, scene, PLAYER_STATS_PATH) == NULL ||
         init_hud_elements(win, scene) != RET_OK ||
         add_collision_array_in_scene(scene) != RET_OK ||

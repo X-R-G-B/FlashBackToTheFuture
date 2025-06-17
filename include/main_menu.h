@@ -95,6 +95,6 @@ void set_play_overlay(object_t *obj, scene_t *scene,
 void set_credits_overlay(object_t *obj, scene_t *scene,
     window_t *win, set_event_t *event);
 
-int init_making_of(scene_t *scene);
+int init_making_of(scene_t *scene, const char *path_root);
 
 #endif /* !MENU_H_ */

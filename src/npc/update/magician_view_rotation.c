@@ -105,7 +105,7 @@ static void update_rotation(object_t *obj, scene_t *scene, window_t *win,
         rotation_data, &time);
 }
 
-void create_view_rotation(scene_t *scene)
+void create_view_rotation(scene_t *scene, const char *path_root)
 {
     object_t *obj = NULL;
     window_t *win = NULL;
@@ -121,7 +121,7 @@ void create_view_rotation(scene_t *scene)
     }
     event_add_node(create_event(skip_event_magician_tp, false, obj, NULL),
         (node_params_t) {sfMouseLeft, sfKeyReturn, KEY});
-    rotation_data = parse_json_file(view_rotation_data);
+    rotation_data = parse_json_file(resolve_path(path_root, view_rotation_data));
     if (rotation_data == NULL || rotation_data->type != DICT) {
         return;
     }

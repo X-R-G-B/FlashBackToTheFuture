@@ -18,11 +18,11 @@ static void add_escape_event(object_t *obj)
 }
 
 static void set_buttons(list_ptr_t **settings,
-    list_ptr_t **main_menu, list_ptr_t **load_game, scene_t *scene)
+    list_ptr_t **main_menu, list_ptr_t **load_game, scene_t *scene, const char *path_root)
 {
-    *settings = create_button(scene, settings_data_path);
-    *main_menu = create_button(scene, main_menu_data_path);
-    *load_game = create_button(scene, play_pop_up_menu_data_path);
+    *settings = create_button(scene, settings_data_path, path_root);
+    *main_menu = create_button(scene, main_menu_data_path, path_root);
+    *load_game = create_button(scene, play_pop_up_menu_data_path, path_root);
 }
 
 static void set_button_rectangle(list_ptr_t *buttons)
@@ -55,7 +55,7 @@ static int init_main_menu_buttons(scene_t *scene, window_t *win)
     list_ptr_t *load_game = NULL;
     list_ptr_t *settings = NULL;
 
-    set_buttons(&settings, &main_menu, &load_game, scene);
+    set_buttons(&settings, &main_menu, &load_game, scene, win->path_root);
     if (main_menu == NULL || load_game == NULL || settings == NULL) {
         return (RET_ERR_MALLOC);
     }
@@ -88,7 +88,7 @@ int init_menu(window_t *win)
     }
     init_sounds(scene, win);
     init_music_game(win, scene);
-    init_making_of(scene);
+    init_making_of(scene, win->path_root);
     add_escape_event(obj);
     return RET_OK;
 }

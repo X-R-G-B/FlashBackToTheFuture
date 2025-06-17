@@ -34,7 +34,7 @@ void modif_potion_value(window_t *win, int nbr_potions, bool click)
         return;
     }
     create_pop_text((click == true) ? scene : NULL, use_potion_file,
-        obj->bigdata.sprite_bigdata.pos, "-1");
+        obj->bigdata.sprite_bigdata.pos, "-1", win->path_root);
     text = my_itoa(nbr_potions);
     sfText_setString(obj->drawable.text, text);
     free(text);

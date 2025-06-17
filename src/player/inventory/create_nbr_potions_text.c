@@ -56,7 +56,7 @@ int create_number_of_potions(scene_t *scene, window_t *win)
     potions = my_itoa(potions_nbr);
     obj = create_object(NULL, NULL, scene, obj_layer);
     if (obj == NULL || object_set_text(obj, path_font,
-        potions, potions_text_pos) != BGS_OK) {
+        potions, potions_text_pos, win->path_root) != BGS_OK) {
         free(potions);
         return RET_ERR_MALLOC;
     }

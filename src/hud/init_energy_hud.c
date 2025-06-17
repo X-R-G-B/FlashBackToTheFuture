@@ -73,7 +73,7 @@ static int create_energy_hud(object_t **energy_hud, player_t **player,
         return RET_ERR_MALLOC;
     }
     if (object_set_sprite(*energy_hud, energy_hud_path,
-            energy_hud_rect, energy_hud_pos) != BGS_OK) {
+            energy_hud_rect, energy_hud_pos, win->path_root) != BGS_OK) {
         return RET_ERR_INPUT;
     }
     return RET_OK;

@@ -62,10 +62,10 @@ int *get_player_spawn(scene_t *scene)
     return spawn;
 }
 
-static player_t *add_components(player_t *player, const char *stats)
+static player_t *add_components(player_t *player, const char *stats, const char *path_root)
 {
-    any_t *data = parse_json_file(PLAYER_DATA_PATH);
-    any_t *stat = parse_json_file(stats);
+    any_t *data = parse_json_file(resolve_path(path_root, PLAYER_DATA_PATH));
+    any_t *stat = parse_json_file(resolve_path(path_root, stats));
 
     if (data == NULL || stat == NULL) {
         return NULL;
@@ -84,13 +84,13 @@ static player_t *add_components(player_t *player, const char *stats)
     return player;
 }
 
-static int add_event(player_t *player, int *spawn)
+static int add_event(player_t *player, int *spawn, const char *path_root)
 {
     int ret = RET_OK;
     object_t *obj = player->obj;
 
     if (object_set_sprite(player->obj, player_path, (sfIntRect)
-        {12, 210, 57, 69}, (sfVector2f) {spawn[0], spawn[1]}) != BGS_OK) {
+        {12, 210, 57, 69}, (sfVector2f) {spawn[0], spawn[1]}, path_root) != BGS_OK) {
         free(spawn);
         return RET_ERR_INPUT;
     }
@@ -142,6 +142,6 @@ player_t *create_player(window_t *win, scene_t *scene, const char *stats)
     if (spawn == NULL || create_view(win, player, spawn) == NULL) {
         return (NULL);
     }
-    return (add_event(player, spawn) == RET_OK) ?
-        add_components(player, stats) : NULL;
+    return (add_event(player, spawn, win->path_root) == RET_OK) ?
+        add_components(player, stats, win->path_root) : NULL;
 }

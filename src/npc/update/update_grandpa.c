@@ -24,7 +24,7 @@ void update_grandpa(object_t *obj, scene_t *scene, window_t *win,
         return;
     }
     npc = add_npc(scene, npc_path, obj->bigdata.sprite_bigdata.pos,
-        &callback_npc);
+        &callback_npc, win->path_root);
     if (npc != NULL) {
         call_callback_npc(npc, scene, win);
     }

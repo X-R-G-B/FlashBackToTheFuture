@@ -30,7 +30,7 @@ extern const char ENNEMY_DATA[];
 extern const char ENNEMY_LIST[];
 extern const char ENNEMY_KEY[];
 
-ennemy_t *create_ennemy(scene_t *scene, const char *path, sfVector2f pos);
+ennemy_t *create_ennemy(scene_t *scene, const char *path, sfVector2f pos, const char *path_root);
 
 bool ennemy_check_hurt(ennemy_t *ennemy, scene_t *scene, window_t *win,
     float dtime);
@@ -46,7 +46,7 @@ bool is_player_in_range(ennemy_t *ennemy, window_t *win);
 void ennemy_update_hurt(ennemy_t *ennemy, float dtime, window_t *win,
     scene_t *scene);
 
-void player_check_hurt(player_t *player, scene_t *scene);
+void player_check_hurt(player_t *player, scene_t *scene, const char *path_root);
 
 int add_to_ennemy_list(ennemy_t *ennemy, scene_t *scene);
 
@@ -58,7 +58,7 @@ void update_ennemy_move(ennemy_t *ennemy, scene_t *scene, window_t *win,
 
 int change_amongus_rect(any_t *dico, object_t *obj, window_t *win);
 
-void check_drop(ennemy_t *ennemy, scene_t *scene);
+void check_drop(ennemy_t *ennemy, scene_t *scene, const char *path_root);
 
 int *get_rect(ennemy_t *ennemy, window_t *win, any_t *data);
 

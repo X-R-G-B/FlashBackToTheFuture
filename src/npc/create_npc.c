@@ -61,7 +61,7 @@ static int add_components(any_t *json, object_t *npc,
 }
 
 static object_t *create_object_npc(sfIntRect rect, sfVector2f pos, any_t *json,
-    scene_t *scene)
+    scene_t *scene, const char *path_root)
 {
     object_t *npc = NULL;
     any_t *path = NULL;
@@ -71,7 +71,7 @@ static object_t *create_object_npc(sfIntRect rect, sfVector2f pos, any_t *json,
         return (NULL);
     }
     npc = create_object(&update_npc, NULL, scene, LAYER_ENNEMY);
-    if (object_set_sprite(npc, path->value.str, rect, pos) != BGS_OK) {
+    if (object_set_sprite(npc, path->value.str, rect, pos, path_root) != BGS_OK) {
         return (NULL);
     }
     path = get_from_any(json, "d", "scale");
@@ -85,7 +85,7 @@ static object_t *create_object_npc(sfIntRect rect, sfVector2f pos, any_t *json,
 }
 
 object_t *add_npc(scene_t *scene, const char *path, sfVector2f pos,
-    void (*callback)(object_t *npc, scene_t *scene, window_t *win))
+    void (*callback)(object_t *npc, scene_t *scene, window_t *win), const char *path_root)
 {
     sfIntRect rect = {0};
     any_t *json = NULL;
@@ -94,12 +94,12 @@ object_t *add_npc(scene_t *scene, const char *path, sfVector2f pos,
     if (scene == NULL || path == NULL) {
         return NULL;
     }
-    json = parse_json_file(path);
+    json = parse_json_file(resolve_path(path_root, path));
     if (fill_pos_rect(json, &rect) != RET_OK) {
         destroy_any(json);
         return NULL;
     }
-    npc = create_object_npc(rect, pos, json, scene);
+    npc = create_object_npc(rect, pos, json, scene, path_root);
     if (add_components(json, npc, callback) != RET_OK) {
         return NULL;
     }

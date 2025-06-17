@@ -49,7 +49,7 @@ static int create_scene_objects(window_t *win, scene_t *prev_scene,
     player_t *player = NULL;
 
     if (move_object_between_scene(win, prev_scene, scene) != RET_OK ||
-        create_map(scene) != RET_OK ||
+        create_map(scene, win->path_root) != RET_OK ||
         add_collision_array_in_scene(scene) != RET_OK ||
         change_meteo_to_json(win, scene) != RET_OK) {
         return RET_ERR_MALLOC;
@@ -74,7 +74,7 @@ static int create_new_scene(char *stage_path, char *stage_name, window_t *win,
     if (stage_name == NULL || stage_path == NULL) {
         return RET_ERR_INPUT;
     }
-    stage_data = parse_json_file(stage_path);
+    stage_data = parse_json_file(resolve_path(win->path_root, stage_path));
     scene = create_scene(win, sfColor_fromRGB(back_color[0], back_color[1],
         back_color[2]), stage_name);
     free(stage_path);

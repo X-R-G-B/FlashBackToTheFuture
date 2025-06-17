@@ -25,6 +25,6 @@ int create_scene_loading_basic(window_t *win)
         return (-1);
     }
     object_set_sprite(obj, background_path, (sfIntRect) {-1, -1, -1, -1},
-        (sfVector2f) {960, 540});
+        (sfVector2f) {960, 540}, win->path_root);
     return (0);
 }

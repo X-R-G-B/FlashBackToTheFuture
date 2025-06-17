@@ -19,7 +19,7 @@ static int get_save(window_t *win)
     if (win == NULL) {
         return RET_ERR_MALLOC;
     }
-    save = parse_json_file(SAVE_PATH);
+    save = parse_json_file(resolve_path(win->path_root, SAVE_PATH));
     if (save == NULL || save->type != DICT) {
         return RET_ERR_INPUT;
     }
@@ -27,11 +27,11 @@ static int get_save(window_t *win)
     return (win->components == NULL) ? RET_ERR_MALLOC : RET_OK;
 }
 
-int launch_game(bool is_full_screen)
+int launch_game(bool is_full_screen, const char *path_root)
 {
     sfVideoMode mode = {1920, 1080, 32};
     window_t *win = create_window(mode, "My_Rpg", sfResize | sfClose |
-        ((is_full_screen == true) ? sfFullscreen : 0));
+        ((is_full_screen == true) ? sfFullscreen : 0), path_root);
 
     window_set_icon(win, ICON_PATH);
     srand(0);

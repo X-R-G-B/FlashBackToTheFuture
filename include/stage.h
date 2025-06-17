@@ -25,7 +25,7 @@ int add_collision_array_in_scene(scene_t *scene);
 
 char *get_stage_name(int stage_id);
 
-int launch_game(bool is_full_screen);
+int launch_game(bool is_full_screen, const char *path_root);
 
 player_t *create_player(window_t *win, scene_t *scene, const char *stats);
 

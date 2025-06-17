@@ -52,7 +52,7 @@ static void set_origin(object_t *obj)
 }
 
 static object_t *create_text(scene_t *scene, any_t *text_data, sfVector2f pos,
-    char *text)
+    char *text, const char *path_root)
 {
     object_t *obj = NULL;
     any_t *font = get_from_any(text_data, "d", font_key);
@@ -61,7 +61,7 @@ static object_t *create_text(scene_t *scene, any_t *text_data, sfVector2f pos,
         return NULL;
     }
     obj = create_object(update_text, NULL, scene, LAYER_PLAYER);
-    if (object_set_text(obj, font->value.str, text, pos) != BGS_OK) {
+    if (object_set_text(obj, font->value.str, text, pos, path_root) != BGS_OK) {
         return NULL;
     }
     obj->components = dico_t_add_data(obj->components, text_data_key, text_data,
@@ -76,10 +76,10 @@ static object_t *create_text(scene_t *scene, any_t *text_data, sfVector2f pos,
 }
 
 int create_pop_text(scene_t *scene, const char *path, sfVector2f pos,
-    char *text)
+    char *text, const char *path_root)
 {
-    any_t *text_data = get_text_data(scene, path, text);
-    object_t *text_obj = create_text(scene, text_data, pos, text);
+    any_t *text_data = get_text_data(scene, resolve_path(path_root, path), text);
+    object_t *text_obj = create_text(scene, text_data, pos, text, path_root);
 
     return (text_obj == NULL) ? RET_ERR_INPUT : RET_OK;
 }

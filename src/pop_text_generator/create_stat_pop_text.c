@@ -23,7 +23,7 @@ int create_stat_pop_text_from_window(window_t *win, int stat, const char *path,
     if (scene == NULL) {
         return RET_ERR_INPUT;
     }
-    return create_stat_pop_text(scene, stat, path, pos);
+    return create_stat_pop_text(scene, stat, path, pos, win->path_root);
 }
 
 static char *add_pos_sign(char *text)
@@ -46,7 +46,7 @@ static char *add_pos_sign(char *text)
 }
 
 int create_stat_pop_text(scene_t *scene, int stat, const char *path,
-    sfVector2f pos)
+    sfVector2f pos, const char *path_root)
 {
     char *text = NULL;
     int ret = RET_OK;
@@ -64,7 +64,7 @@ int create_stat_pop_text(scene_t *scene, int stat, const char *path,
             return RET_ERR_MALLOC;
         }
     }
-    ret = create_pop_text(scene, path, pos, text);
+    ret = create_pop_text(scene, path, pos, text, path_root);
     free(text);
     return ret;
 }

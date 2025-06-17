@@ -73,7 +73,7 @@ static void handle_go_back(ennemy_t *ennemy, player_t *player, any_t *data)
     object_add_components(player->obj, dirrections, data_directions, &free);
 }
 
-static void set_hurt(player_t *player, ennemy_t *ennemy, scene_t *scene)
+static void set_hurt(player_t *player, ennemy_t *ennemy, scene_t *scene, const char *path_root)
 {
     bool hurt = true;
     any_t *ennemy_data = dico_t_get_value(ennemy->obj->components, ENNEMY_DATA);
@@ -89,11 +89,11 @@ static void set_hurt(player_t *player, ennemy_t *ennemy, scene_t *scene)
     play_sound(dico_t_get_value(scene->components, WINDOW), HURTED_SOUND);
     player->life -= dammage->value.f;
     create_stat_pop_text(scene, (dammage->value.f * -1),
-        pop_text_file, player->obj->bigdata.sprite_bigdata.pos);
+        pop_text_file, player->obj->bigdata.sprite_bigdata.pos, path_root);
     handle_go_back(ennemy, player, ennemy_data);
 }
 
-void player_check_hurt(player_t *player, scene_t *scene)
+void player_check_hurt(player_t *player, scene_t *scene, const char *path_root)
 {
     list_ptr_t *ennemy_list = NULL;
     list_t *elem = NULL;
@@ -110,7 +110,7 @@ void player_check_hurt(player_t *player, scene_t *scene)
     elem = ennemy_list->start;
     for (int i = 0; i < ennemy_list->len; i++, elem = elem->next) {
         if (check_ennemy_col(elem->var, rect) == true) {
-            set_hurt(player, elem->var, scene);
+            set_hurt(player, elem->var, scene, path_root);
             return;
         }
     }

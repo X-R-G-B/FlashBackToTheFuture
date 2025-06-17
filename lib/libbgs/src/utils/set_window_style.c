@@ -25,7 +25,7 @@ int window_set_icon(window_t *win, char const path[])
     if (path == NULL || win == NULL) {
         return BGS_ERR_INPUT;
     }
-    image = sfImage_createFromFile(path);
+    image = sfImage_createFromFile(resolve_path(win->path_root, path));
     if (image == NULL) {
         return BGS_ERR_PATH;
     }

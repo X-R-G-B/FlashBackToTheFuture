@@ -46,7 +46,7 @@ static void check_next_stage_event(object_t *obj, window_t *win, scene_t *scene)
             restart_game(scene, win);
             return;
         }
-        create_view_rotation(scene);
+        create_view_rotation(scene, win->path_root);
     }
 }
 
@@ -72,7 +72,7 @@ void update_elder(object_t *obj, scene_t *scene, window_t *win,
         return;
     }
     npc = add_npc(scene, npc_path, obj->bigdata.sprite_bigdata.pos,
-        &callback_npc);
+        &callback_npc, win->path_root);
     npc->update = &elder_npc_update;
     obj->components = dico_t_rem(obj->components, npc_path_key);
 }

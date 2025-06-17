@@ -55,7 +55,7 @@ void update_ninho(object_t *obj, scene_t *scene, window_t *win,
         return;
     }
     npc = add_npc(scene, npc_path, obj->bigdata.sprite_bigdata.pos,
-        &callback_npc);
+        &callback_npc, win->path_root);
     npc->update = &ninho_npc_update;
     obj->components = dico_t_rem(obj->components, npc_path_key);
 }

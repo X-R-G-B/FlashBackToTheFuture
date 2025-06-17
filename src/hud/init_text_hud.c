@@ -20,12 +20,12 @@ extern const char energy_max_name[];
 static const float padding = 25;
 
 static int init_text_max(object_t *object,
-    sfVector2f pos, sfColor color)
+    sfVector2f pos, sfColor color, const char *path_root)
 {
     if (object == NULL) {
         return RET_ERR_INPUT;
     }
-    if (object_set_text(object, path_font, "42", pos) != BGS_OK) {
+    if (object_set_text(object, path_font, "42", pos, path_root) != BGS_OK) {
         return RET_ERR_MALLOC;
     }
     sfText_setColor(object->drawable.text, sfBlack);
@@ -35,7 +35,7 @@ static int init_text_max(object_t *object,
 }
 
 static int create_max_life_and_energy(scene_t *scene, object_t **life,
-    object_t **energy)
+    object_t **energy, const char *path_root)
 {
     sfVector2f life_text_pos = {0};
     sfVector2f energy_text_pos = {0};
@@ -49,8 +49,8 @@ static int create_max_life_and_energy(scene_t *scene, object_t **life,
         energy_hud_pos.y - padding};
     *life = create_object(&update_life_text_hud, NULL, scene, LAYER_HUD);
     *energy = create_object(&update_energy_text_hud, NULL, scene, LAYER_HUD);
-    if (init_text_max(*life, life_text_pos, sfRed) != RET_OK ||
-            init_text_max(*energy, energy_text_pos, sfGreen) != RET_OK) {
+    if (init_text_max(*life, life_text_pos, sfRed, path_root) != RET_OK ||
+            init_text_max(*energy, energy_text_pos, sfGreen, path_root) != RET_OK) {
         return RET_ERR_INPUT;
     }
     return RET_OK;
@@ -76,7 +76,7 @@ int init_text_hud(window_t *win, scene_t *scene)
     }
     player = dico_t_get_value(win->components, PLAYER);
     if (create_max_life_and_energy(scene, &life_text_max,
-            &energy_text_max) != RET_OK) {
+            &energy_text_max, win->path_root) != RET_OK) {
         return RET_ERR_MALLOC;
     }
     if (add_hud_to_hud_element(win, life_text_max, player) != RET_OK ||

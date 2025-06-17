@@ -25,6 +25,6 @@ void init_npc_spawner(object_t *obj, scene_t *scene, window_t *win,
         return;
     }
     add_npc(scene, npc_path, obj->bigdata.sprite_bigdata.pos,
-        &callback_npc);
+        &callback_npc, win->path_root);
     obj->components = dico_t_rem(obj->components, npc_path_key);
 }

@@ -49,7 +49,7 @@ static int create_life_hud(object_t **life_hud, player_t **player,
         return RET_ERR_MALLOC;
     }
     if (object_set_sprite(*life_hud, life_hud_path,
-            life_hud_rec, life_hud_pos) != BGS_OK) {
+            life_hud_rec, life_hud_pos, win->path_root) != BGS_OK) {
         return RET_ERR_INPUT;
     }
     return RET_OK;

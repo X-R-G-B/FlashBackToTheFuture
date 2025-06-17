@@ -74,7 +74,7 @@ static void move_setting_menu_to_main_menu(window_t *win, scene_t *scene)
     list_ptr_t *setting_menu = dico_t_get_value(win->components,
         SETTINGS_MENU);
     any_t *buttons = NULL;
-    any_t *setting_menu_data = parse_json_file(settings_data_path);
+    any_t *setting_menu_data = parse_json_file(resolve_path(win->path_root, settings_data_path));
 
     if (next_scene == NULL || setting_menu == NULL ||
         setting_menu_data == NULL) {

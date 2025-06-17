@@ -61,12 +61,12 @@ static void get_square_update(char current_char,
 }
 
 static int init_sprite(object_t *square, any_t *path, sfVector2f current_pos,
-    dico_t *square_data)
+    dico_t *square_data, const char *path_root)
 {
     any_t *rotation = dico_t_get_any(square_data, "rotation");
 
     if (square == NULL || object_set_sprite(square, path->value.str,
-        (sfIntRect) {-1, -1, -1, -1}, current_pos) != BGS_OK) {
+        (sfIntRect) {-1, -1, -1, -1}, current_pos, path_root) != BGS_OK) {
         my_putstr(1, "wrong square sprite path\n");
         return RET_ERR_MALLOC;
     }
@@ -77,7 +77,7 @@ static int init_sprite(object_t *square, any_t *path, sfVector2f current_pos,
 }
 
 static int init_square(scene_t *scene, char current_char, dico_t *char_type,
-    sfVector2f current_pos)
+    sfVector2f current_pos, const char *path_root)
 {
     object_t *square = NULL;
     void (*update)(object_t *, scene_t *, window_t *, float) = NULL;
@@ -98,17 +98,17 @@ static int init_square(scene_t *scene, char current_char, dico_t *char_type,
     }
     square_set_components(square, square_data->value.dict);
     return (path != NULL && path->type == STR) ? init_sprite(square, path,
-        current_pos, square_data->value.dict) : RET_OK;
+        current_pos, square_data->value.dict, path_root) : RET_OK;
 }
 
-static int browse_squares_pos(scene_t *scene, char **map, dico_t *char_type)
+static int browse_squares_pos(scene_t *scene, char **map, dico_t *char_type, const char *path_root)
 {
     sfVector2f current_pos = {SQUARE_SIZE / 2.0, SQUARE_SIZE / 2.0};
     int ret = RET_OK;
 
     for (int i = 0; map[i] != NULL && ret == RET_OK; i++) {
         for (int x = 0; map[i][x] != '\0' && ret == RET_OK; x++) {
-            ret = init_square(scene, map[i][x], char_type, current_pos);
+            ret = init_square(scene, map[i][x], char_type, current_pos, path_root);
             current_pos.x += SQUARE_SIZE;
         }
         current_pos.x = SQUARE_SIZE / 2.0;
@@ -118,7 +118,7 @@ static int browse_squares_pos(scene_t *scene, char **map, dico_t *char_type)
     return ret;
 }
 
-int create_map(scene_t *scene)
+int create_map(scene_t *scene, const char *path_root)
 {
     any_t *data = NULL;
     any_t *char_type = NULL;
@@ -136,5 +136,5 @@ int create_map(scene_t *scene)
     if (char_type == NULL || char_type->type != DICT || map == NULL) {
         return RET_ERR_INPUT;
     }
-    return browse_squares_pos(scene, map, char_type->value.dict);
+    return browse_squares_pos(scene, map, char_type->value.dict, path_root);
 }

@@ -43,7 +43,7 @@ int init_stat_upgrade_pop_up(scene_t *scene, list_ptr_t *uid_elements,
     if (scene == NULL || win->components == NULL) {
         return RET_ERR_INPUT;
     }
-    stat_upgrade = create_button(scene, STATS_UPGRADE);
+    stat_upgrade = create_button(scene, STATS_UPGRADE, win->path_root);
     player = dico_t_get_value(win->components, PLAYER);
     if (stat_upgrade == NULL || player == NULL) {
         return BGS_ERR_MALLOC;

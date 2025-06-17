@@ -31,7 +31,7 @@ static int init_xp_borders_hud(window_t *win, scene_t *scene, player_t *player)
     xp_hud_borders = create_object(NULL, NULL, scene, LAYER_HUD);
     if (xp_hud_borders == NULL ||
             object_set_sprite(xp_hud_borders, xp_hud_borders_sprite_path,
-            xp_hud_borders_rect, xp_hud_borders_pos) != BGS_OK ||
+            xp_hud_borders_rect, xp_hud_borders_pos, win->path_root) != BGS_OK ||
             add_hud_to_hud_element(win, xp_hud_borders, player) != RET_OK) {
         return RET_ERR_INPUT;
     }
@@ -68,7 +68,7 @@ static int init_xp_bar_hud(window_t *win, scene_t *scene, player_t *player)
     xp_hud_bar = create_object(update_xp_bar, NULL, scene, LAYER_HUD);
     if (xp_hud_bar == NULL ||
             object_set_sprite(xp_hud_bar, xp_hud_bar_sprite_path,
-            xp_hud_bar_rect, xp_hud_bar_pos) != BGS_OK ||
+            xp_hud_bar_rect, xp_hud_bar_pos, win->path_root) != BGS_OK ||
             add_hud_to_hud_element(win, xp_hud_bar, player) != RET_OK ||
             add_max_width_in_components(win) != RET_OK ||
             update_init_xp_hud(player, xp_hud_bar, win) != RET_OK) {

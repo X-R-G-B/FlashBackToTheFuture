@@ -28,7 +28,7 @@ int init_credits(window_t *win)
     if (scene == NULL) {
         return (RET_ERR_MALLOC);
     }
-    list_btn = create_button(scene, path_credits_button);
+    list_btn = create_button(scene, path_credits_button, win->path_root);
     if (list_btn == NULL) {
         return (RET_ERR_MALLOC);
     }

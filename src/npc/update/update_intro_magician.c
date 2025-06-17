@@ -23,7 +23,7 @@ static void go_to_next_stage(const char *str, scene_t *scene, window_t *win,
         return;
     }
     object->components = dico_t_rem(object->components, bool_check_key);
-    create_view_rotation(scene);
+    create_view_rotation(scene, win->path_root);
 }
 
 static void callback_intro_magician(__attribute__((unused)) object_t *npc,
@@ -56,7 +56,7 @@ void update_intro_magician(object_t *obj, scene_t *scene, window_t *win,
         return;
     }
     npc = add_npc(scene, npc_path, obj->bigdata.sprite_bigdata.pos,
-        &callback_intro_magician);
+        &callback_intro_magician, win->path_root);
     if (npc != NULL) {
         call_callback_npc(npc, scene, win);
     }

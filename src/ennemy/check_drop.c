@@ -63,14 +63,14 @@ static void update_86(object_t *obj, scene_t *scene, window_t *win,
     }
 }
 
-static void create_infinity_86(scene_t *scene, ennemy_t *ennemy, any_t *is_boss)
+static void create_infinity_86(scene_t *scene, ennemy_t *ennemy, any_t *is_boss, const char *path_root)
 {
     object_t *obj = NULL;
 
     obj = create_object(update_86, NULL, scene, LAYER_ENNEMY);
     if (object_set_sprite(obj, infinity_sprite_path,
             (sfIntRect) {-1, -1, -1, -1},
-            ennemy->obj->bigdata.sprite_bigdata.pos) == BGS_OK) {
+            ennemy->obj->bigdata.sprite_bigdata.pos, path_root) == BGS_OK) {
         obj->components = dico_t_add_data(obj->components, is_boss_key, is_boss,
             NULL);
         sfSprite_setScale(obj->drawable.sprite,
@@ -78,7 +78,7 @@ static void create_infinity_86(scene_t *scene, ennemy_t *ennemy, any_t *is_boss)
     }
 }
 
-static bool check_infinity_86_drop(ennemy_t *ennemy, scene_t *scene)
+static bool check_infinity_86_drop(ennemy_t *ennemy, scene_t *scene, const char *path_root)
 {
     any_t *ennemy_data = NULL;
     any_t *is_boss = NULL;
@@ -91,13 +91,13 @@ static bool check_infinity_86_drop(ennemy_t *ennemy, scene_t *scene)
     if (is_boss == NULL) {
         return false;
     }
-    create_infinity_86(scene, ennemy, is_boss);
+    create_infinity_86(scene, ennemy, is_boss, path_root);
     return true;
 }
 
-void check_drop(ennemy_t *ennemy, scene_t *scene)
+void check_drop(ennemy_t *ennemy, scene_t *scene, const char *path_root)
 {
-    if (check_infinity_86_drop(ennemy, scene) == true) {
+    if (check_infinity_86_drop(ennemy, scene, path_root) == true) {
         return;
     }
     if (check_drop_chance(ennemy) == false) {
@@ -105,5 +105,5 @@ void check_drop(ennemy_t *ennemy, scene_t *scene)
     }
     object_set_sprite(create_object(update_86, NULL, scene, LAYER_ENNEMY),
         heal_sprite_path, (sfIntRect) {-1, -1, -1, -1},
-        ennemy->obj->bigdata.sprite_bigdata.pos);
+        ennemy->obj->bigdata.sprite_bigdata.pos, path_root);
 }

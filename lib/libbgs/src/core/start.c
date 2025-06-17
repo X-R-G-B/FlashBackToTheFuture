@@ -12,6 +12,7 @@
 #include "libbgs_private.h"
 #include "my_bgs.h"
 #include "my_bgs_framebuffer.h"
+#include "my_strings.h"
 
 void window_toglle_vsync(window_t *win)
 {
@@ -70,7 +71,7 @@ static int window_set_default(window_t *win, sfVideoMode mode)
     return (BGS_OK);
 }
 
-window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style)
+window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style, const char *path_root)
 {
     window_t *win = malloc(sizeof(window_t));
 
@@ -89,6 +90,8 @@ window_t *create_window(sfVideoMode mode, const char *title, sfUint32 style)
     if (window_set_default(win, mode) != BGS_OK) {
         return (NULL);
     }
+    win->path_root[0] = '\0';
+    my_strcat(win->path_root, path_root);
     create_scene_loading(win);
     return win;
 }

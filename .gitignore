@@ -8,3 +8,5 @@ my_rpg
 butto.png
 vgcore*
 debug/
+AppDir
+*.AppImage

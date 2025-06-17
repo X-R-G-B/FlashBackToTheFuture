@@ -52,7 +52,7 @@ static int create_close_inv_event(scene_t *scene)
     return RET_OK;
 }
 
-static int create_buttons(scene_t *scene)
+static int create_buttons(scene_t *scene, const char *path_root)
 {
     list_ptr_t *buttons = NULL;
     list_ptr_t *key_obj = NULL;
@@ -60,8 +60,8 @@ static int create_buttons(scene_t *scene)
     if (scene == NULL) {
         return RET_ERR_INPUT;
     }
-    buttons = create_button(scene, inv_buttons);
-    key_obj = create_button(scene, the_86);
+    buttons = create_button(scene, inv_buttons, path_root);
+    key_obj = create_button(scene, the_86, path_root);
     if (buttons == NULL || key_obj == NULL) {
         return RET_ERR_MALLOC;
     }
@@ -100,7 +100,7 @@ int create_inventory(window_t *win)
     }
     scene = create_scene(win, sfWhite, INV_SCENE);
     if (scene == NULL || create_inventory_key(player, scene) != RET_OK ||
-        create_buttons(scene) != RET_OK ||
+        create_buttons(scene, win->path_root) != RET_OK ||
         create_number_of_potions(scene, win) != RET_OK) {
         return RET_ERR_INPUT;
     }

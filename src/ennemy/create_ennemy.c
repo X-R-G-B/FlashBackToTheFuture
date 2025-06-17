@@ -72,7 +72,7 @@ static ennemy_t *add_new_ennemy_struct(scene_t *scene, object_t *obj,
 }
 
 static ennemy_t *ennemy_set_sprite(object_t *ennemy, any_t *ennemy_data,
-    scene_t *scene, sfVector2f pos)
+    scene_t *scene, sfVector2f pos, const char *path_root)
 {
     any_t *sprite = dico_t_get_any(ennemy_data->value.dict, "sprite path");
     ennemy_t *ennemy_struct = NULL;
@@ -82,7 +82,7 @@ static ennemy_t *ennemy_set_sprite(object_t *ennemy, any_t *ennemy_data,
         return NULL;
     }
     if (object_set_sprite(ennemy, sprite->value.str,
-        (sfIntRect) {-1, -1, -1, -1}, pos) != BGS_OK ||
+        (sfIntRect) {-1, -1, -1, -1}, pos, path_root) != BGS_OK ||
         sprite_set_change(ennemy, ennemy_data) != RET_OK) {
         list_add_to_end(scene->to_remove, ennemy);
         return NULL;
@@ -95,7 +95,7 @@ static ennemy_t *ennemy_set_sprite(object_t *ennemy, any_t *ennemy_data,
     return ennemy_struct;
 }
 
-ennemy_t *create_ennemy(scene_t *scene, const char *path, sfVector2f pos)
+ennemy_t *create_ennemy(scene_t *scene, const char *path, sfVector2f pos, const char *path_root)
 {
     object_t *ennemy = NULL;
     any_t *ennemy_data = NULL;
@@ -104,7 +104,7 @@ ennemy_t *create_ennemy(scene_t *scene, const char *path, sfVector2f pos)
         return NULL;
     }
     ennemy = create_object(update_ennemy, NULL, scene, LAYER_ENNEMY);
-    ennemy_data = parse_json_file(path);
+    ennemy_data = parse_json_file(resolve_path(path_root, path));
     if (ennemy == NULL || ennemy_data == NULL) {
         return NULL;
     }
@@ -113,5 +113,5 @@ ennemy_t *create_ennemy(scene_t *scene, const char *path, sfVector2f pos)
     if (ennemy->components == NULL) {
         return NULL;
     }
-    return ennemy_set_sprite(ennemy, ennemy_data, scene, pos);
+    return ennemy_set_sprite(ennemy, ennemy_data, scene, pos, path_root);
 }

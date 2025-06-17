@@ -61,20 +61,20 @@ static void destroy_dialog_manager_t(void *dialog_void)
     free(dialog);
 }
 
-static object_t *create_dialog_obj(scene_t *scene, list_ptr_t *list)
+static object_t *create_dialog_obj(scene_t *scene, list_ptr_t *list, const char *path_root)
 {
     object_t *dialog = NULL;
     object_t *text = NULL;
 
     dialog = create_object(&update_dialog, NULL, scene, LAYER_MENUS);
     if (object_set_sprite(dialog, path_dialog_img, rect_dialog,
-            pos_dialog) != BGS_OK) {
+            pos_dialog, path_root) != BGS_OK) {
         return (NULL);
     }
     dialog->is_visible = false;
     list_add_to_end(list, dialog);
     text = create_object(update_text_dialog, NULL, scene, LAYER_BUTTON);
-    if (object_set_text(text, path_font, "", pos_text) != BGS_OK) {
+    if (object_set_text(text, path_font, "", pos_text, path_root) != BGS_OK) {
         return (NULL);
     }
     text->is_visible = false;
@@ -111,7 +111,7 @@ int init_dialog(scene_t *scene, window_t *win)
         return (RET_ERR_MALLOC);
     }
     list_elem = dico_t_get_value(win->components, HUD_ELEMENTS);
-    if (add_component(win, comp, create_dialog_obj(scene, list_elem)) !=
+    if (add_component(win, comp, create_dialog_obj(scene, list_elem, win->path_root)) !=
             RET_OK) {
         return (RET_ERR_MALLOC);
     }

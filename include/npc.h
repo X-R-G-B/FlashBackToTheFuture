@@ -64,7 +64,7 @@ int add_event_quit_to_dialog(object_t *dialog);
 int init_dialog(scene_t *scene, window_t *win);
 
 object_t *add_npc(scene_t *scene, const char *path, sfVector2f pos,
-    void (*callback)(object_t *npc, scene_t *scene, window_t *win));
+    void (*callback)(object_t *npc, scene_t *scene, window_t *win), const char *path_root);
 
 void update_npc(object_t *obj, scene_t *scene, window_t *win,
     float dtime);
@@ -99,7 +99,7 @@ char *parseprety_free(char *str);
 void reaload_dialogs(const char *str, scene_t *scene, window_t *win,
     void *data);
 
-void create_view_rotation(scene_t *scene);
+void create_view_rotation(scene_t *scene, const char *path_root);
 
 void update_magician(object_t *obj, scene_t *scene, window_t *win,
     __attribute__((unused)) float dtime);

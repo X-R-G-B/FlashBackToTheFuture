@@ -79,7 +79,7 @@ static void update_chest(object_t *obj, scene_t *scene, window_t *win,
     }
 }
 
-static void create_chest(scene_t *scene, any_t *json, int *rect, object_t *obj)
+static void create_chest(scene_t *scene, any_t *json, int *rect, object_t *obj, const char *path_root)
 {
     object_t *npc = NULL;
     sfIntRect *scd_rect = malloc(sizeof(sfIntRect));
@@ -93,7 +93,7 @@ static void create_chest(scene_t *scene, any_t *json, int *rect, object_t *obj)
     npc = create_object(update_chest, NULL, scene, LAYER_ENNEMY);
     if (object_set_sprite(npc, sprite_path->value.str, (sfIntRect)
             {rect[0], rect[1], rect[2], rect[3]},
-            obj->bigdata.sprite_bigdata.pos) != RET_OK) {
+            obj->bigdata.sprite_bigdata.pos, path_root) != RET_OK) {
         return;
     }
     *scd_rect = (sfIntRect) {rect_array[0], rect_array[1], rect_array[2],
@@ -113,12 +113,12 @@ void init_chest(object_t *obj, scene_t *scene, window_t *win,
             win == NULL) {
         return;
     }
-    json = parse_json_file(dico_t_get_value(obj->components, npc_path_key));
+    json = parse_json_file(resolve_path(win->path_root, dico_t_get_value(obj->components, npc_path_key)));
     rect = get_any_int_array(get_from_any(json, "d", rect_key));
     if (rect == NULL) {
         return;
     }
-    create_chest(scene, json, rect, obj);
+    create_chest(scene, json, rect, obj, win->path_root);
     free(rect);
     destroy_any(json);
     obj->components = dico_t_rem(obj->components, npc_path_key);

@@ -21,7 +21,7 @@ static const char sandbox_player_stats[] =
 
 static int init_new_scene_objects(window_t *win, scene_t *scene)
 {
-    if (create_map(scene) != RET_OK ||
+    if (create_map(scene, win->path_root) != RET_OK ||
         create_player(win, scene, sandbox_player_stats) == NULL ||
         init_hud_elements(win, scene) != RET_OK ||
         pathfind_add_to_scene(scene) != RET_OK ||

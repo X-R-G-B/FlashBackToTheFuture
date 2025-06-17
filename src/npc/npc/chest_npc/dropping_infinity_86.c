@@ -65,14 +65,14 @@ static void update_dropping_infinity_86(object_t *obj, scene_t *scene,
 }
 
 static void create_dropping_infinity_86(object_t *chest, scene_t *scene,
-    player_t *player)
+    player_t *player, const char *path_root)
 {
     object_t *obj = NULL;
     float *time = NULL;
 
     obj = create_object(update_dropping_infinity_86, NULL, scene, 0);
     if (object_set_sprite(obj, infinity_sprite_path, (sfIntRect)
-        {-1, -1, -1, -1}, player->obj->bigdata.sprite_bigdata.pos) != RET_OK) {
+        {-1, -1, -1, -1}, player->obj->bigdata.sprite_bigdata.pos, path_root) != RET_OK) {
         return;
     }
     sfSprite_setScale(obj->drawable.sprite, (sfVector2f) {0.2, 0.2});
@@ -105,7 +105,7 @@ static void update_animation(object_t *obj, scene_t *scene, window_t *win,
     time += dtime;
     while (time >= drop_infinity_86 && counter < 5) {
         time -= drop_infinity_86;
-        create_dropping_infinity_86(chest, scene, player);
+        create_dropping_infinity_86(chest, scene, player, win->path_root);
         counter++;
     }
 }

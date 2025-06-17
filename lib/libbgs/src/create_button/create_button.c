@@ -23,14 +23,14 @@ static int set_sprite(object_t *sprite, dico_t *dico)
     return BGS_OK;
 }
 
-static int init_sprite(float *pos, char *path, scene_t *scene, dico_t *dico)
+static int init_sprite(float *pos, char *path, scene_t *scene, dico_t *dico, const char *path_root)
 {
     int layer = check_layer(dico);
     object_t *sprite = create_object(NULL, NULL, scene, layer);
     any_t *size = dico_t_get_any(dico, "size");
 
     if (sprite == NULL || object_set_sprite(sprite, path, (sfIntRect)
-        {-1, -1, -1, -1}, (sfVector2f) {pos[1], pos[0]}) != BGS_OK) {
+        {-1, -1, -1, -1}, (sfVector2f) {pos[1], pos[0]}, path_root) != BGS_OK) {
         return BGS_ERR_INPUT;
     }
     if (size != NULL && size->type == FLOAT) {
@@ -45,7 +45,7 @@ static int init_sprite(float *pos, char *path, scene_t *scene, dico_t *dico)
     return set_sprite(sprite, dico);
 }
 
-static int init_text(float *pos, scene_t *scene, char *arg[2], dico_t *dico)
+static int init_text(float *pos, scene_t *scene, char *arg[2], dico_t *dico, const char *path_root)
 {
     any_t *size = dico_t_get_any(dico, "text size");
     any_t *char_size = dico_t_get_any(dico, "char size");
@@ -53,7 +53,7 @@ static int init_text(float *pos, scene_t *scene, char *arg[2], dico_t *dico)
     object_t *text = create_object(NULL, NULL, scene, layer);
 
     if (text == NULL || object_set_text(text, arg[0], arg[1],
-        (sfVector2f) {pos[1], pos[0]}) != BGS_OK) {
+        (sfVector2f) {pos[1], pos[0]}, path_root) != BGS_OK) {
         return BGS_OK;
     }
     if (size != NULL && size->type == FLOAT) {
@@ -67,7 +67,7 @@ static int init_text(float *pos, scene_t *scene, char *arg[2], dico_t *dico)
     return BGS_OK;
 }
 
-static int get_button_data(scene_t *scene, any_t *dico)
+static int get_button_data(scene_t *scene, any_t *dico, const char *path_root)
 {
     int ret = BGS_OK;
     float *txt_pos = get_any_float_array(get_from_any(dico, "d", "text pos"));
@@ -78,21 +78,21 @@ static int get_button_data(scene_t *scene, any_t *dico)
     char *arg[2] = {NULL, NULL};
 
     if (sprite_path != NULL && pos != NULL) {
-        ret = init_sprite(pos, sprite_path->value.str, scene, dico->value.dict);
+        ret = init_sprite(pos, sprite_path->value.str, scene, dico->value.dict, path_root);
     }
     if (font_path != NULL && txt_pos != NULL && text != NULL && ret == BGS_OK) {
         arg[0] = font_path->value.str;
         arg[1] = text->value.str;
-        ret = init_text(txt_pos, scene, arg, dico->value.dict);
+        ret = init_text(txt_pos, scene, arg, dico->value.dict, path_root);
     }
     destroy_pos_array(txt_pos, pos);
     return ret;
 }
 
-list_ptr_t *create_button(scene_t *scene, const char *path)
+list_ptr_t *create_button(scene_t *scene, const char *path, const char *path_root)
 {
     list_t *list = NULL;
-    any_t *any = parse_json_file(path);
+    any_t *any = parse_json_file(resolve_path(path_root, path));
     any_t *buttons_array = NULL;
     int ret = BGS_OK;
 
@@ -103,7 +103,7 @@ list_ptr_t *create_button(scene_t *scene, const char *path)
     buttons_array = dico_t_get_any(any->value.dict, "buttons");
     for (int i = 0; buttons_array != NULL && ret == BGS_OK &&
         i < buttons_array->value.array->len; i++) {
-        ret = get_button_data(scene, get_from_any(any, "da", "buttons", i));
+        ret = get_button_data(scene, get_from_any(any, "da", "buttons", i), path_root);
     }
     if (ret != BGS_OK) {
         destroy_any(any);

@@ -90,7 +90,7 @@ static int init_head_with_border(window_t *win, scene_t *scene)
         return RET_ERR_INPUT;
     }
     if (object_set_sprite(head_with_borders, head_with_borders_path,
-        head_with_borders_rect, head_with_borders_pos) != BGS_OK) {
+        head_with_borders_rect, head_with_borders_pos, win->path_root) != BGS_OK) {
         return RET_ERR_INPUT;
     }
     if (add_hud_to_hud_element(win, head_with_borders, player) != RET_OK) {

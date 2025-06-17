@@ -32,12 +32,12 @@ static int check_display_function(object_t *obj)
 }
 
 int object_set_audio(object_t *object, char const *path, bool play_now,
-    bool loop_now)
+    bool loop_now, const char *path_root)
 {
     if (object == NULL || path == NULL) {
         return BGS_ERR_INPUT;
     }
-    object->drawable.music = sfMusic_createFromFile(path);
+    object->drawable.music = sfMusic_createFromFile(resolve_path(path_root, path));
     if (object->drawable.music == NULL) {
         return BGS_ERR_PATH;
     }
@@ -61,14 +61,14 @@ int object_set_custom(object_t *object)
 }
 
 int object_set_text(object_t *object, char const *path, char const *text,
-    sfVector2f pos)
+    sfVector2f pos, const char *path_root)
 {
     if (object == NULL || path == NULL || text == NULL) {
         return BGS_ERR_INPUT;
     }
     object->is_visible = true;
     object->bigdata.text_bigdata.pos = pos;
-    object->bigdata.text_bigdata.font = sfFont_createFromFile(path);
+    object->bigdata.text_bigdata.font = sfFont_createFromFile(resolve_path(path_root, path));
     if (object->bigdata.text_bigdata.font == NULL) {
         return BGS_ERR_PATH;
     }
@@ -85,7 +85,7 @@ int object_set_text(object_t *object, char const *path, char const *text,
 }
 
 int object_set_sprite(object_t *object, char const *path, sfIntRect rect,
-    sfVector2f pos)
+    sfVector2f pos, const char *path_root)
 {
     scene_t *scene = NULL;
 
@@ -94,7 +94,7 @@ int object_set_sprite(object_t *object, char const *path, sfIntRect rect,
     }
     scene = dico_t_get_value(object->components, SCENE);
     object->is_visible = true;
-    if (sprite_set_texture(object, pos, rect, path) != BGS_OK) {
+    if (sprite_set_texture(object, pos, rect, resolve_path(path_root, path)) != BGS_OK) {
         list_add_to_end(scene->to_remove, object);
         return BGS_ERR_MALLOC;
     }

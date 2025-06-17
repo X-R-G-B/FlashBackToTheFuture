@@ -11,12 +11,12 @@
 #include "my_bgs_components.h"
 
 int object_set_sound(object_t *object, char const *path, bool play_now,
-    bool loop_now)
+    bool loop_now, const char *path_root)
 {
     if (object == NULL || path == NULL) {
         return BGS_ERR_INPUT;
     }
-    object->bigdata.sound_bigdata.buffer = sfSoundBuffer_createFromFile(path);
+    object->bigdata.sound_bigdata.buffer = sfSoundBuffer_createFromFile(resolve_path(path_root, path));
     if (object->bigdata.sound_bigdata.buffer == NULL) {
         return BGS_ERR_PATH;
     }

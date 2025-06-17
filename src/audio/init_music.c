@@ -33,7 +33,7 @@ static int init_win_component_music(window_t *win, scene_t *scene,
         return RET_ERR_INPUT;
     }
     obj = create_object(NULL, NULL, scene, layer);
-    if (object_set_audio(obj, path_to_data, false, false) != BGS_OK) {
+    if (object_set_audio(obj, path_to_data, false, false, win->path_root) != BGS_OK) {
         return RET_ERR_MALLOC;
     }
     add_new_audio(obj, win);

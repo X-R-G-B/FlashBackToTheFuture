@@ -18,7 +18,7 @@ int init_music(window_t *win, scene_t *scene)
         return RET_ERR_INPUT;
     }
     obj = create_object(NULL, NULL, scene, 0);
-    if (object_set_audio(obj, music_path, true, true) != BGS_OK) {
+    if (object_set_audio(obj, music_path, true, true, win->path_root) != BGS_OK) {
         return RET_ERR_INPUT;
     }
     add_new_audio(obj, win);

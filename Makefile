@@ -390,3 +390,26 @@ fn_tests_run:	fclean $(LIB_TARGET) $(OBJ)
 	@gcovr --exclude tests/
 	@gcovr --exclude tests/ --branch
 # ----------------------------------------------------------------------------
+
+# ----------------------------------------------------------------------------
+# AppImage
+
+LINUXDEPLOY_BIN	?=	linuxdeploy
+
+app: re
+	$(RM) -r AppDir
+	NO_STRIP=1 \
+		$(LINUXDEPLOY_BIN) \
+			--appdir=AppDir \
+			--executable ./my_rpg \
+			--desktop-file ./my_rpg.desktop \
+			--icon-file ./fbttf.png \
+			--output appimage
+	cp -r ./assets/ ./AppDir/
+	NO_STRIP=1 \
+		$(LINUXDEPLOY_BIN) \
+			--appdir=AppDir \
+			--executable ./my_rpg \
+			--desktop-file ./my_rpg.desktop \
+			--icon-file ./fbttf.png \
+			--output appimage

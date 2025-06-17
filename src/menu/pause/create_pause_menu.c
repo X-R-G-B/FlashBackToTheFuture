@@ -42,7 +42,7 @@ static int button_set_rect(object_t *obj, any_t *file, int *rect, int *origin)
 }
 
 static list_ptr_t *browse_list(list_ptr_t *list, int *rect, int *origin,
-    any_t *json)
+    any_t *json, const char *path_root)
 {
     any_t *file = NULL;
     int ret = RET_OK;
@@ -50,7 +50,7 @@ static list_ptr_t *browse_list(list_ptr_t *list, int *rect, int *origin,
 
     elem = list->start->next;
     for (int i = 1; i < list->len && ret == RET_OK; i++, elem = elem->next) {
-        file = parse_json_file(data_path);
+        file = parse_json_file(resolve_path(path_root, data_path));
         if (file == NULL) {
             return NULL;
         }
@@ -65,12 +65,12 @@ static list_ptr_t *browse_list(list_ptr_t *list, int *rect, int *origin,
 list_ptr_t *create_pause_menu(scene_t *scene, window_t *win)
 {
     list_ptr_t *list = NULL;
-    any_t *file = parse_json_file(data_path);
+    any_t *file = parse_json_file(resolve_path(win->path_root, data_path));
     any_t *data = NULL;
     int *rect = NULL;
     int *origin = NULL;
 
-    list = create_button(scene, button_path);
+    list = create_button(scene, button_path, win->path_root);
     if (list == NULL || file == NULL) {
         return NULL;
     }
@@ -83,5 +83,5 @@ list_ptr_t *create_pause_menu(scene_t *scene, window_t *win)
     if (rect == NULL || origin == NULL) {
         return NULL;
     }
-    return apply_right_pos(browse_list(list, rect, origin, file), win);
+    return apply_right_pos(browse_list(list, rect, origin, file, win->path_root), win);
 }

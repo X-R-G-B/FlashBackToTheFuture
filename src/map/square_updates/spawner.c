@@ -10,10 +10,10 @@
 
 static const char ennemy_path_key[] = "ennemy path";
 
-static int init_ennemy(object_t *obj, char *ennemy_path, scene_t *scene)
+static int init_ennemy(object_t *obj, char *ennemy_path, scene_t *scene, const char *path_root)
 {
     ennemy_t *ennemy = create_ennemy(scene, ennemy_path,
-        obj->bigdata.sprite_bigdata.pos);
+        obj->bigdata.sprite_bigdata.pos, path_root);
 
     if (ennemy == NULL) {
         return RET_ERR_MALLOC;
@@ -50,12 +50,12 @@ static list_ptr_t *init_spawner_list(scene_t *scene)
     return (scene->components == NULL) ? NULL : spawner_list;
 }
 
-static void check_init(object_t *obj, char *ennemy_path, scene_t *scene)
+static void check_init(object_t *obj, char *ennemy_path, scene_t *scene, const char *path_root)
 {
     ennemy_t *ennemy = dico_t_get_value(obj->components, ENNEMY_KEY);
     list_ptr_t *spawner_list = NULL;
 
-    if (ennemy == NULL && init_ennemy(obj, ennemy_path, scene) != RET_OK) {
+    if (ennemy == NULL && init_ennemy(obj, ennemy_path, scene, path_root) != RET_OK) {
         return;
     }
     spawner_list = dico_t_get_value(scene->components, SPAWNER_LIST);
@@ -80,5 +80,5 @@ void update_spawner(object_t *obj, scene_t *scene, window_t *win,
     if (ennemy_path == NULL) {
         return;
     }
-    check_init(obj, ennemy_path, scene);
+    check_init(obj, ennemy_path, scene, win->path_root);
 }

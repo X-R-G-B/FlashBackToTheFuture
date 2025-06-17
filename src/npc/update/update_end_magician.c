@@ -36,7 +36,7 @@ static void go_to_next_stage(const char *str, scene_t *scene, window_t *win,
     }
     object->components = dico_t_rem(object->components, bool_check_key);
     ennemy = create_ennemy(scene, path_magician_ennemy,
-        object->bigdata.sprite_bigdata.pos);
+        object->bigdata.sprite_bigdata.pos, win->path_root);
     scene->components = dico_t_add_data(scene->components, end_boss_key,
         ennemy, NULL);
     list_add_to_end(scene->to_remove, object);
@@ -75,7 +75,7 @@ void update_end_magician(object_t *obj, scene_t *scene, window_t *win,
         return;
     }
     npc = add_npc(scene, npc_path, obj->bigdata.sprite_bigdata.pos,
-        &callback_end_magician);
+        &callback_end_magician, win->path_root);
     if (npc != NULL) {
         call_callback_npc(npc, scene, win);
     }
