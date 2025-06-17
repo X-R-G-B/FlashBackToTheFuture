@@ -16,6 +16,5 @@ const char *resolve_path(const char *path_root, const char *path)
     buffer[0] = '\0';
     my_strcat(buffer, path_root);
     my_strcat(buffer, path);
-    my_printf(2, "%s\n", buffer);
     return buffer;
 }
