@@ -394,13 +394,29 @@ fn_tests_run:	fclean $(LIB_TARGET) $(OBJ)
 # ----------------------------------------------------------------------------
 # AppImage
 
-LINUXDEPLOY_BIN	?=	linuxdeploy
+LINUXDEPLOY_BIN	?=	deps/linuxdeploy-x86_64.AppImage
 
-app: re
+deps/linuxdeploy-x86_64.AppImage:
+	wget -O deps/linuxdeploy-x86_64.AppImage -c \
+		"https://github.com/linuxdeploy/linuxdeploy/releases/latest/download/linuxdeploy-x86_64.AppImage"
+	chmod a+x deps/linuxdeploy-x86_64.AppImage
+
+deps/linuxdeploy-plugin-checkrt.sh:
+	wget -O deps/linuxdeploy-plugin-checkrt.sh -c \
+		"https://github.com/darealshinji/linuxdeploy-plugin-checkrt/releases/latest/download/linuxdeploy-plugin-checkrt.sh"
+	chmod +x deps/linuxdeploy-plugin-checkrt.sh
+
+deps/linuxdeploy-plugin-appimage-x86_64.AppImage:
+	wget -O deps/linuxdeploy-plugin-appimage-x86_64.AppImage -c \
+		"https://github.com/linuxdeploy/linuxdeploy-plugin-appimage/releases/latest/download/linuxdeploy-plugin-appimage-x86_64.AppImage"
+	chmod +x deps/linuxdeploy-plugin-appimage-x86_64.AppImage
+
+app: deps/linuxdeploy-x86_64.AppImage deps/linuxdeploy-plugin-checkrt.sh deps/linuxdeploy-plugin-appimage-x86_64.AppImage re
 	$(RM) -r AppDir
 	NO_STRIP=1 \
 		$(LINUXDEPLOY_BIN) \
 			--appdir=AppDir \
+			--plugin checkrt \
 			--executable ./my_rpg \
 			--desktop-file ./my_rpg.desktop \
 			--icon-file ./fbttf.png \
@@ -409,6 +425,7 @@ app: re
 	NO_STRIP=1 \
 		$(LINUXDEPLOY_BIN) \
 			--appdir=AppDir \
+			--plugin checkrt \
 			--executable ./my_rpg \
 			--desktop-file ./my_rpg.desktop \
 			--icon-file ./fbttf.png \

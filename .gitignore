@@ -10,3 +10,4 @@ vgcore*
 debug/
 AppDir
 *.AppImage
+/deps/*
